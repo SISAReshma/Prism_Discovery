@@ -1,0 +1,158 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-4-1-nano-2026-01-14-10-41-59",
+  "metadata": {
+    "timestamp": "2026-01-14T10:41:59Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-4.1 nano",
+      "version": "gpt-4.1-nano",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4.1 nano is our fastest, most cost-effective model optimized for simple tasks. It is ideal for classification, auto-complete, and high-volume production use cases."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-4.1-nano",
+      "name": "GPT-4.1 nano",
+      "version": "gpt-4.1-nano",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4.1 nano is our fastest, most cost-effective model optimized for simple tasks. It is ideal for classification, auto-complete, and high-volume production use cases.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "gpt-4.1-nano"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "GPT"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "1047576"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "32768"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Jun 01, 2024"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "streaming, function_calling, structured_outputs, fine_tuning, distillation, predicted_outputs"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "chat_completions, responses, assistants, batch, fine_tuning"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "GPT-4.1"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "false"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Fastest and most cost-effective for simple tasks like classification, auto-complete, and high-volume production workloads"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "0.1"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "0.4"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "GPT",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-4.1-nano"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

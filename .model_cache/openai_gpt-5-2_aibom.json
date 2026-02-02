@@ -1,0 +1,229 @@
+{
+  "name": "GPT-5.2",
+  "version": "5.2",
+  "type": "code-generation, text-generation, multimodal, agentic-tasks, reasoning",
+  "author": "OpenAI",
+  "licenses": [
+    {
+      "name": "OpenAI Terms of Use",
+      "url": "https://openai.com/policies/terms-of-use"
+    }
+  ],
+  "libraries": [
+    "REST API"
+  ],
+  "source_url": "https://platform.openai.com/docs/models/gpt-5.2",
+  "bom_generation_timestamp": "2026-01-14T09:56:55.883623+00:00",
+  "bom_generation_method": "Web Scraping from OpenAI Documentation",
+  "bom_generated_by": "openai_model_scraper.py",
+  "other_references": [
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/text"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/text-to-speech"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/developer-mode"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/prompt-optimizer"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/image-generation"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/embeddings"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/tools-apply-patch"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/tools"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/your-data"
+    },
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/tools-connectors-mcp"
+    }
+  ],
+  "tags": [
+    "large-language-model",
+    "text-generation",
+    "code-generation",
+    "multimodal",
+    "reasoning",
+    "agentic",
+    "function-calling",
+    "streaming",
+    "api"
+  ],
+  "datasets": {
+    "name": "Not provided by the provider",
+    "source_url": "Not provided by the provider",
+    "license": "Not provided by the provider"
+  },
+  "architecture": "GPT",
+  "architecture_family": "GPT",
+  "parent_model": {
+    "name": "GPT-5.1",
+    "version": "5.1",
+    "source_url": "https://platform.openai.com/docs/models/gpt-5.1"
+  },
+  "base_model": {
+    "name": "GPT-5",
+    "version": "5",
+    "source_url": "https://platform.openai.com/docs/models/gpt-5"
+  },
+  "input": {
+    "text": "Input and Output",
+    "image": "Input only",
+    "audio": "Not supported",
+    "video": "Not supported"
+  },
+  "output": {
+    "text": "Input and Output",
+    "structured_outputs": "Supported",
+    "function_calling": "Supported"
+  },
+  "hardware": "Not provided by the provider",
+  "software": {
+    "endpoints": [
+      "v1/videos",
+      "v1/chat/completions",
+      "v1/images/generations",
+      "v1/batch",
+      "v1/fine",
+      "v1/audio/translations",
+      "v1/realtime",
+      "v1/moderations",
+      "v1/assistants",
+      "v1/audio/transcriptions",
+      "v1/completionsFeatures",
+      "v1/audio/speech",
+      "v1/images/edits",
+      "v1/responses",
+      "v1/embeddings"
+    ],
+    "libraries": [
+      "REST API"
+    ]
+  },
+  "intended_use": {
+    "description": "GPT-5.2 is our flagship model for coding and agentic tasks across industries.",
+    "best_for": "Complex reasoning, broad world knowledge, and code-heavy or multi-step agentic tasks",
+    "use_cases": [
+      "Text generation",
+      "coding and agentic tasks",
+      "Complex reasoning",
+      "front-end UI creation",
+      "Code generation"
+    ],
+    "capabilities": [
+      "General intelligence",
+      "Instruction following",
+      "Accuracy and token efficiency",
+      "Multimodality—especially vision",
+      "Code generation](https://platform",
+      "Tool calling and context management in the API",
+      "Spreadsheet understanding and creation",
+      "context management in the API"
+    ]
+  },
+  "out_of_scope_usage": "Not provided by the provider",
+  "misuse_or_malicious_use": "Not provided by the provider",
+  "environmental_impact": {
+    "co2_emissions": "Not provided by the provider",
+    "energy_consumption": "Not provided by the provider",
+    "carbon_footprint": "Not provided by the provider"
+  },
+  "ethical_considerations": "Not provided by the provider",
+  "attestation": {
+    "digital_signature": "Not provided by the provider",
+    "checksum": "Not provided by the provider",
+    "verification_method": "Not provided by the provider"
+  },
+  "model_specifications": {
+    "context_window": "400000 tokens",
+    "max_output_tokens": "128000 tokens",
+    "knowledge_cutoff": "Aug 31, 2025",
+    "snapshots": [
+      "gpt-5.2-2025-12-11"
+    ]
+  },
+  "pricing": {
+    "input": "$1.75 per 1M tokens",
+    "cached_input": "$0.175 per 1M tokens",
+    "output": "$14.00 per 1M tokens"
+  },
+  "features": {
+    "streaming": "Supported",
+    "function_calling": "Supported",
+    "structured_outputs": "Supported",
+    "fine_tuning": "Not supported",
+    "distillation": "Supported"
+  },
+  "tools": {
+    "web_search": "Supported",
+    "file_search": "Supported",
+    "image_generation": "Supported",
+    "code_interpreter": "Supported",
+    "computer_use": "Not supported",
+    "mcp": "Supported"
+  },
+  "reasoning_effort_levels": [
+    "none",
+    "xhigh",
+    "medium",
+    "low",
+    "high"
+  ],
+  "verbosity_levels": [
+    "medium",
+    "high",
+    "low"
+  ],
+  "rate_limits": [
+    {
+      "tier": "Tier 1",
+      "rpm": "500",
+      "tpm": "500,000",
+      "tpd": "1,500,000"
+    },
+    {
+      "tier": "Tier 2",
+      "rpm": "5,000",
+      "tpm": "1,000,000",
+      "tpd": "3,000,000"
+    },
+    {
+      "tier": "Tier 3",
+      "rpm": "5,000",
+      "tpm": "2,000,000",
+      "tpd": "100,000,000"
+    },
+    {
+      "tier": "Tier 4",
+      "rpm": "10,000",
+      "tpm": "4,000,000",
+      "tpd": "200,000,000"
+    },
+    {
+      "tier": "Tier 5",
+      "rpm": "15,000",
+      "tpm": "40,000,000",
+      "tpd": "15,000,000,000"
+    }
+  ]
+}

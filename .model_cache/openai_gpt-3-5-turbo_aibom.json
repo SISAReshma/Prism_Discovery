@@ -1,0 +1,155 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-3-5-turbo-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-3.5 Turbo",
+      "version": "gpt-3.5-turbo",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-3.5 Turbo models can understand and generate natural language or code and have been optimized for chat using the Chat Completions API but work well for non-chat tasks as well."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-3.5-turbo",
+      "name": "GPT-3.5 Turbo",
+      "version": "gpt-3.5-turbo",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-3.5 Turbo models can understand and generate natural language or code and have been optimized for chat using the Chat Completions API but work well for non-chat tasks as well.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "gpt-3.5-turbo"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "GPT"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "16385"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "4096"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Sep 01, 2021"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "streaming, function_calling, fine_tuning"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "chat_completions, responses, assistants, batch, fine_tuning"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "None"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "false"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Cost-effective general tasks, legacy applications, high-volume simple tasks"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "0.5"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "1.5"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-3.5-turbo"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

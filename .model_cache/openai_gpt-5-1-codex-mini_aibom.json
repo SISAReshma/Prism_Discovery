@@ -1,0 +1,158 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-5-1-codex-mini-2026-01-14-10-54-01",
+  "metadata": {
+    "timestamp": "2026-01-14T10:54:01Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-5.1 Codex Mini",
+      "version": "gpt-5.1-codex-mini",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-5.1 Codex Mini is a fast, cost-effective code generation model optimized for speed and efficiency in development workflows."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-5.1-codex-mini",
+      "name": "GPT-5.1 Codex Mini",
+      "version": "gpt-5.1-codex-mini",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-5.1 Codex Mini is a fast, cost-effective code generation model optimized for speed and efficiency in development workflows.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Code Generation Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "gpt-5.1-codex-mini"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "GPT-5"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "400000"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "128000"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Sep 30, 2024"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "streaming, function_calling, structured_outputs, fine_tuning, distillation, predicted_outputs"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "chat_completions, responses, assistants, batch, fine_tuning"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "GPT-5.1 Codex"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "false"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Fast, cost-effective code generation, IDE integrations, real-time coding assistance"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "1.25"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "5.0"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Code Generation",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-5.1-codex-mini"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

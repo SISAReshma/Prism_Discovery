@@ -1,0 +1,78 @@
+rules:
+  # =========================================================================
+  # JavaScript/TypeScript Import Detection Rules
+  # =========================================================================
+
+  # Detect: import { X } from 'module'
+  - id: js-named-import
+    pattern-either:
+      - pattern: import { $ITEMS } from '$MODULE'
+      - pattern: import { $ITEMS } from "$MODULE"
+    message: "JavaScript named import from $MODULE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: named-import
+
+  # Detect: import X from 'module'
+  - id: js-default-import
+    pattern-either:
+      - pattern: import $DEFAULT from '$MODULE'
+      - pattern: import $DEFAULT from "$MODULE"
+    message: "JavaScript default import from $MODULE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: default-import
+
+  # Detect: import * as X from 'module'
+  - id: js-namespace-import
+    pattern-either:
+      - pattern: import * as $NAME from '$MODULE'
+      - pattern: import * as $NAME from "$MODULE"
+    message: "JavaScript namespace import from $MODULE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: namespace-import
+
+  # Detect: const X = require('module')
+  - id: js-require-import
+    pattern-either:
+      - pattern: |
+          $VAR = require('$MODULE')
+      - pattern: |
+          $VAR = require("$MODULE")
+    message: "JavaScript require: $MODULE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: require
+
+  # Detect: require('module') standalone
+  - id: js-require-standalone
+    pattern-either:
+      - pattern: require('$MODULE')
+      - pattern: require("$MODULE")
+    message: "JavaScript require: $MODULE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: require-standalone
+
+  # Detect: import('module') - dynamic import
+  - id: js-dynamic-import
+    pattern-either:
+      - pattern: import('$MODULE')
+      - pattern: import("$MODULE")
+    message: "JavaScript dynamic import: $MODULE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: dynamic-import

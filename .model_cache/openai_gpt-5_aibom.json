@@ -1,0 +1,177 @@
+{
+  "name": "GPT-5",
+  "version": "5",
+  "type": "code-generation, text-generation, multimodal, agentic-tasks, reasoning",
+  "author": "OpenAI",
+  "licenses": [
+    {
+      "name": "OpenAI Terms of Use",
+      "url": "https://openai.com/policies/terms-of-use"
+    }
+  ],
+  "libraries": [
+    "REST API"
+  ],
+  "source_url": "https://platform.openai.com/docs/models/gpt-5",
+  "bom_generation_timestamp": "2026-01-14T10:00:34.418717+00:00",
+  "bom_generation_method": "Web Scraping from OpenAI Documentation",
+  "bom_generated_by": "openai_model_scraper.py",
+  "other_references": [
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/latest-model"
+    },
+    {
+      "type": "pricing",
+      "url": "https://platform.openai.com/docs/pricing"
+    },
+    {
+      "type": "policies",
+      "url": "https://openai.com/policies"
+    }
+  ],
+  "tags": [
+    "code-generation",
+    "reasoning",
+    "agentic",
+    "function-calling",
+    "streaming",
+    "api"
+  ],
+  "datasets": {
+    "name": "Not provided by the provider",
+    "source_url": "Not provided by the provider",
+    "license": "Not provided by the provider"
+  },
+  "architecture": "GPT",
+  "architecture_family": "GPT",
+  "parent_model": {
+    "name": "GPT-5.1.",
+    "version": "5.1.",
+    "source_url": "https://platform.openai.com/docs/models/gpt-5.1."
+  },
+  "base_model": {
+    "name": "GPT-5",
+    "version": "5",
+    "source_url": "https://platform.openai.com/docs/models/gpt-5"
+  },
+  "input": {
+    "text": "Input and Output",
+    "image": "Input only",
+    "audio": "Not supported",
+    "video": "Not supported"
+  },
+  "output": {
+    "text": "Input and Output",
+    "structured_outputs": "Supported",
+    "function_calling": "Supported"
+  },
+  "hardware": "Not provided by the provider",
+  "software": {
+    "endpoints": [
+      "v1/assistants",
+      "v1/moderations",
+      "v1/videos",
+      "v1/images/edits",
+      "v1/completionsFeatures",
+      "v1/batch",
+      "v1/fine",
+      "v1/audio/translations",
+      "v1/embeddings",
+      "v1/audio/speech",
+      "v1/images/generations",
+      "v1/realtime",
+      "v1/chat/completions",
+      "v1/audio/transcriptions",
+      "v1/responses"
+    ],
+    "libraries": [
+      "REST API"
+    ]
+  },
+  "intended_use": {
+    "description": "GPT-5 is our previous model for coding, reasoning, and agentic tasks across\ndomains.",
+    "use_cases": [
+      "coding and agentic tasks"
+    ],
+    "capabilities": "Not provided by the provider"
+  },
+  "out_of_scope_usage": "Not provided by the provider",
+  "misuse_or_malicious_use": "Not provided by the provider",
+  "environmental_impact": {
+    "co2_emissions": "Not provided by the provider",
+    "energy_consumption": "Not provided by the provider",
+    "carbon_footprint": "Not provided by the provider"
+  },
+  "ethical_considerations": "Not provided by the provider",
+  "attestation": {
+    "digital_signature": "Not provided by the provider",
+    "checksum": "Not provided by the provider",
+    "verification_method": "Not provided by the provider"
+  },
+  "model_specifications": {
+    "context_window": "400000 tokens",
+    "max_output_tokens": "128000 tokens",
+    "knowledge_cutoff": "Sep 30, 2024",
+    "snapshots": [
+      "gpt-5-2025-08-07"
+    ]
+  },
+  "pricing": {
+    "input": "$1.25 per 1M tokens",
+    "cached_input": "$0.125 per 1M tokens",
+    "output": "$10.00 per 1M tokens"
+  },
+  "features": {
+    "streaming": "Supported",
+    "function_calling": "Supported",
+    "structured_outputs": "Supported",
+    "fine_tuning": "Not supported",
+    "distillation": "Supported"
+  },
+  "tools": {
+    "web_search": "Supported",
+    "file_search": "Supported",
+    "image_generation": "Supported",
+    "code_interpreter": "Supported",
+    "computer_use": "Not supported",
+    "mcp": "Supported"
+  },
+  "reasoning_effort_levels": [
+    "high",
+    "low"
+  ],
+  "verbosity_levels": "Not provided by the provider",
+  "rate_limits": [
+    {
+      "tier": "Tier 1",
+      "rpm": "500",
+      "tpm": "500,000",
+      "tpd": "1,500,000"
+    },
+    {
+      "tier": "Tier 2",
+      "rpm": "5,000",
+      "tpm": "1,000,000",
+      "tpd": "3,000,000"
+    },
+    {
+      "tier": "Tier 3",
+      "rpm": "5,000",
+      "tpm": "2,000,000",
+      "tpd": "100,000,000"
+    },
+    {
+      "tier": "Tier 4",
+      "rpm": "10,000",
+      "tpm": "4,000,000",
+      "tpd": "200,000,000"
+    },
+    {
+      "tier": "Tier 5",
+      "rpm": "15,000",
+      "tpm": "40,000,000",
+      "tpd": "15,000,000,000"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+rules:
+  # =========================================================================
+  # Python Import Detection Rules
+  # =========================================================================
+
+  # Detect: from module import item
+  - id: python-from-import
+    pattern-either:
+      - pattern: from $MODULE import $ITEM
+      - pattern: from $MODULE import $ITEM as $ALIAS
+      - pattern: from $MODULE import *
+    message: "Python import: from $MODULE import $ITEM"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: from-import
+
+  # Detect: import module
+  - id: python-direct-import
+    pattern-either:
+      - pattern: import $MODULE
+      - pattern: import $MODULE as $ALIAS
+    message: "Python import: $MODULE"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: direct-import
+
+  # Detect: from . import (relative imports)
+  - id: python-relative-import
+    pattern-either:
+      - pattern: from .$MODULE import $ITEM
+      - pattern: from ..$MODULE import $ITEM
+      - pattern: from . import $ITEM
+      - pattern: from .. import $ITEM
+    message: "Python relative import: from .$MODULE import $ITEM"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: relative-import

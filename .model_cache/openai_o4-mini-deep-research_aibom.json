@@ -1,0 +1,158 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-o4-mini-deep-research-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "o4-mini Deep Research",
+      "version": "o4-mini-deep-research",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o4-mini Deep Research is a specialized version of o4-mini optimized for extended research tasks with a focus on cost-effectiveness."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-o4-mini-deep-research",
+      "name": "o4-mini Deep Research",
+      "version": "o4-mini-deep-research",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o4-mini Deep Research is a specialized version of o4-mini optimized for extended research tasks with a focus on cost-effectiveness.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Research Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "o4-mini-deep-research"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "o-series"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "200000"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "100000"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Jun 01, 2024"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "function_calling, structured_outputs"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "responses"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "o4-mini"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "true"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Cost-effective deep research, extended analysis tasks on a budget"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "2.0"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "8.0"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Research",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/o4-mini-deep-research"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

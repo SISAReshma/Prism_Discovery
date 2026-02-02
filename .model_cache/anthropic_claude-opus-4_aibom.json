@@ -1,0 +1,182 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:anthropic-claude-opus-4-20250514-2026-01-16-07-48-37",
+  "metadata": {
+    "timestamp": "2026-01-16T07:48:37Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "Claude Opus 4",
+      "version": "claude-opus-4-20250514",
+      "supplier": {
+        "name": "Anthropic",
+        "url": [
+          "https://anthropic.com"
+        ]
+      },
+      "description": "Previous generation premium model. Still available but recommend migrating to Claude Opus 4.5 for improved performance."
+    },
+    "tools": [
+      {
+        "vendor": "Anthropic",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "anthropic-claude-opus-4-20250514",
+      "name": "Claude Opus 4",
+      "version": "claude-opus-4-20250514",
+      "supplier": {
+        "name": "Anthropic",
+        "url": [
+          "https://anthropic.com"
+        ]
+      },
+      "description": "Previous generation premium model. Still available but recommend migrating to Claude Opus 4.5 for improved performance.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model [default]"
+        },
+        {
+          "name": "ai:provider",
+          "value": "Anthropic [default]"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "claude-opus-4-20250514"
+        },
+        {
+          "name": "ai:api_alias",
+          "value": "claude-opus-4-0"
+        },
+        {
+          "name": "ai:aws_bedrock_id",
+          "value": "anthropic.claude-opus-4-20250514-v1:0"
+        },
+        {
+          "name": "ai:gcp_vertex_id",
+          "value": "claude-opus-4@20250514"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "Claude 4 [default]"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer [default]"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "200000"
+        },
+        {
+          "name": "ai:context_window_beta",
+          "value": "N/A"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "32000"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Jan 2025"
+        },
+        {
+          "name": "ai:training_cutoff",
+          "value": "Mar 2025"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "extended_thinking, priority_tier, vision, multilingual, streaming, function_calling, structured_outputs"
+        },
+        {
+          "name": "ai:comparative_latency",
+          "value": "Moderate"
+        },
+        {
+          "name": "ai:platforms",
+          "value": "Anthropic API, AWS Bedrock, GCP Vertex AI"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "messages, batch"
+        },
+        {
+          "name": "ai:status",
+          "value": "legacy"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Legacy applications, migration path to Claude Opus 4.5"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD [default]"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "15.0"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "75.0"
+        },
+        {
+          "name": "ai:recommended_replacement",
+          "value": "claude-opus-4-5"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language Model",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "type": "website",
+          "url": "https://anthropic.com"
+        },
+        {
+          "type": "license",
+          "url": "https://www.anthropic.com/legal/aup"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+rules:
+  - id: anthropic-client-init
+    pattern-either:
+      - pattern: Anthropic($...)
+      - pattern: anthropic.Anthropic($...)
+      - pattern: AsyncAnthropic($...)
+      - pattern: anthropic.AsyncAnthropic($...)
+    message: "Anthropic client initialization detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-messages
+    pattern-either:
+      - pattern: $CLIENT.messages.create($...)
+      - pattern: $CLIENT.messages.stream($...)
+    message: "Anthropic messages API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-completions
+    pattern-either:
+      - pattern: $CLIENT.completions.create($...)
+    message: "Anthropic completions API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-model-config
+    patterns:
+      - pattern: |
+          $FUNC(..., model=$MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: "\"(claude-3|claude-2|claude-instant|claude-3.5|claude-3-opus|claude-3-sonnet|claude-3-haiku).*\""
+    message: "Anthropic Claude model configuration detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-bedrock
+    pattern-either:
+      - pattern: AnthropicBedrock($...)
+      - pattern: anthropic.AnthropicBedrock($...)
+    message: "Anthropic Bedrock client detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic

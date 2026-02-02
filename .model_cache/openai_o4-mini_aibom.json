@@ -1,0 +1,158 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-o4-mini-2026-01-14-10-41-59",
+  "metadata": {
+    "timestamp": "2026-01-14T10:41:59Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "o4-mini",
+      "version": "o4-mini",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o4-mini is a fast, affordable reasoning model for agentive tasks. It excels at coding tasks and is optimized for use with tools and function calling."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-o4-mini",
+      "name": "o4-mini",
+      "version": "o4-mini",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o4-mini is a fast, affordable reasoning model for agentive tasks. It excels at coding tasks and is optimized for use with tools and function calling.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "o4-mini"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "o-series"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "200000"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "100000"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Jun 01, 2024"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "streaming, function_calling, structured_outputs, distillation"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "chat_completions, responses, assistants, batch"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "None"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "true"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Agentive tasks requiring tool use and function calling, coding automation, and multi-step workflows"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "1.1"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "4.4"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "o-series",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/o4-mini"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

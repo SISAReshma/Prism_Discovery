@@ -1,0 +1,174 @@
+{
+  "name": "GPT-5",
+  "version": "5",
+  "type": "text-generation, multimodal, reasoning",
+  "author": "OpenAI",
+  "licenses": [
+    {
+      "name": "OpenAI Terms of Use",
+      "url": "https://openai.com/policies/terms-of-use"
+    }
+  ],
+  "libraries": [
+    "REST API"
+  ],
+  "source_url": "https://platform.openai.com/docs/models/gpt-5-mini",
+  "bom_generation_timestamp": "2026-01-14T09:59:05.104843+00:00",
+  "bom_generation_method": "Web Scraping from OpenAI Documentation",
+  "bom_generated_by": "openai_model_scraper.py",
+  "other_references": [
+    {
+      "type": "documentation",
+      "url": "https://platform.openai.com/docs/guides/gpt-5"
+    },
+    {
+      "type": "pricing",
+      "url": "https://platform.openai.com/docs/pricing"
+    },
+    {
+      "type": "policies",
+      "url": "https://openai.com/policies"
+    }
+  ],
+  "tags": [
+    "reasoning",
+    "function-calling",
+    "streaming",
+    "api"
+  ],
+  "datasets": {
+    "name": "Not provided by the provider",
+    "source_url": "Not provided by the provider",
+    "license": "Not provided by the provider"
+  },
+  "architecture": "GPT",
+  "architecture_family": "GPT",
+  "parent_model": {
+    "name": "Not provided by the provider",
+    "version": "Not provided by the provider",
+    "source_url": "Not provided by the provider"
+  },
+  "base_model": {
+    "name": "GPT-5",
+    "version": "5",
+    "source_url": "https://platform.openai.com/docs/models/gpt-5"
+  },
+  "input": {
+    "text": "Input and Output",
+    "image": "Input only",
+    "audio": "Not supported",
+    "video": "Not supported"
+  },
+  "output": {
+    "text": "Input and Output",
+    "structured_outputs": "Supported",
+    "function_calling": "Supported"
+  },
+  "hardware": "Not provided by the provider",
+  "software": {
+    "endpoints": [
+      "v1/realtime",
+      "v1/images/generations",
+      "v1/assistants",
+      "v1/audio/transcriptions",
+      "v1/videos",
+      "v1/moderations",
+      "v1/audio/speech",
+      "v1/fine",
+      "v1/completionsFeatures",
+      "v1/embeddings",
+      "v1/audio/translations",
+      "v1/batch",
+      "v1/chat/completions",
+      "v1/responses",
+      "v1/images/edits"
+    ],
+    "libraries": [
+      "REST API"
+    ]
+  },
+  "intended_use": {
+    "description": "GPT-5-mini is a cost-optimized model balancing performance and efficiency.",
+    "best_for": "Cost-optimized reasoning and chat; balances speed, cost, and capability",
+    "use_cases": "Chat applications, general reasoning tasks, cost-sensitive deployments",
+    "capabilities": "Balanced reasoning, efficient processing"
+  },
+  "out_of_scope_usage": "Not provided by the provider",
+  "misuse_or_malicious_use": "Not provided by the provider",
+  "environmental_impact": {
+    "co2_emissions": "Not provided by the provider",
+    "energy_consumption": "Not provided by the provider",
+    "carbon_footprint": "Not provided by the provider"
+  },
+  "ethical_considerations": "Not provided by the provider",
+  "attestation": {
+    "digital_signature": "Not provided by the provider",
+    "checksum": "Not provided by the provider",
+    "verification_method": "Not provided by the provider"
+  },
+  "model_specifications": {
+    "context_window": "400000 tokens",
+    "max_output_tokens": "128000 tokens",
+    "knowledge_cutoff": "May 31, 2024",
+    "snapshots": [
+      "gpt-5-mini-2025-08-07"
+    ]
+  },
+  "pricing": {
+    "input": "$0.25 per 1M tokens",
+    "cached_input": "$0.025 per 1M tokens",
+    "output": "$2.00 per 1M tokens"
+  },
+  "features": {
+    "streaming": "Supported",
+    "function_calling": "Supported",
+    "structured_outputs": "Supported",
+    "fine_tuning": "Not supported",
+    "distillation": "Not supported"
+  },
+  "tools": {
+    "web_search": "Supported",
+    "file_search": "Supported",
+    "image_generation": "Not supported",
+    "code_interpreter": "Supported",
+    "computer_use": "Not supported",
+    "mcp": "Supported"
+  },
+  "reasoning_effort_levels": [
+    "high",
+    "low"
+  ],
+  "verbosity_levels": "Not provided by the provider",
+  "rate_limits": [
+    {
+      "tier": "Tier 1",
+      "rpm": "500",
+      "tpm": "500,000",
+      "tpd": "5,000,000"
+    },
+    {
+      "tier": "Tier 2",
+      "rpm": "5,000",
+      "tpm": "2,000,000",
+      "tpd": "20,000,000"
+    },
+    {
+      "tier": "Tier 3",
+      "rpm": "5,000",
+      "tpm": "4,000,000",
+      "tpd": "40,000,000"
+    },
+    {
+      "tier": "Tier 4",
+      "rpm": "10,000",
+      "tpm": "10,000,000",
+      "tpd": "1,000,000,000"
+    },
+    {
+      "tier": "Tier 5",
+      "rpm": "30,000",
+      "tpm": "180,000,000",
+      "tpd": "15,000,000,000"
+    }
+  ]
+}
