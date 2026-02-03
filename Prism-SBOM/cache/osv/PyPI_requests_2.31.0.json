@@ -1,6 +1,6 @@
 {
   "key": "PyPI_requests_2.31.0",
-  "cached_at": "2026-02-03T07:08:51.630345Z",
+  "cached_at": "2026-02-03T08:02:11.613125Z",
   "data": [
     {
       "id": "GHSA-9hjg-9r4m-mvj7",
@@ -43,9 +43,9 @@
         "CGA-xgx2-r76q-v9mw"
       ],
       "database_specific": {
+        "github_reviewed_at": "2025-06-09T19:06:08Z",
         "github_reviewed": true,
         "severity": "MODERATE",
-        "github_reviewed_at": "2025-06-09T19:06:08Z",
         "cwe_ids": [
           "CWE-522"
         ],
@@ -329,9 +329,9 @@
         "CGA-x395-8f45-7j43"
       ],
       "database_specific": {
+        "github_reviewed_at": "2024-05-20T20:15:00Z",
         "github_reviewed": true,
         "severity": "MODERATE",
-        "github_reviewed_at": "2024-05-20T20:15:00Z",
         "cwe_ids": [
           "CWE-670"
         ],

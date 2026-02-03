@@ -62,13 +62,10 @@ def init_rate_limiter():
 rate_limiter = init_rate_limiter()
 
 # Initialize orchestrator
-REPORTS_DIR = Path("reports")
 TEMP_DIR = Path("temp")
-REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 orchestrator = ScanOrchestrator(
-    reports_dir=str(REPORTS_DIR),
     temp_dir=str(TEMP_DIR),
 )
 
@@ -311,11 +308,6 @@ async def start_scan(
     """
     # Get next scan ID from orchestrator
     scan_id = orchestrator.get_next_scan_id()
-    
-    # Create the scan folder immediately when scan starts
-    # This ensures the folder exists even if scan is abandoned
-    scan_folder = Path(orchestrator.reports_dir) / scan_id
-    scan_folder.mkdir(parents=True, exist_ok=True)
     
     # Update session with scan ID
     update_session(session_token, scan_id=scan_id)
@@ -818,7 +810,7 @@ async def generate_sbom(
     
     **Headers:** `session-token: <token from /source_type>`
     
-    **Returns:** Paths to generated report files.
+    **Returns:** All generated SBOM data.
     """
     from src.core.sbom_generator import generate_json_sbom, generate_spdx_sbom, generate_cyclonedx_sbom, generate_remediation_sbom
     
@@ -847,9 +839,8 @@ async def generate_sbom(
     if license_detection:
         catalog["license_detection"] = license_detection
     
-    # Generate reports
-    output_dir = Path(orchestrator.reports_dir) / scan_id
-    output_dir.mkdir(parents=True, exist_ok=True)
+    # Store catalog in session
+    update_session(session_token, catalog=catalog)
     
     metadata = {
         "timestamp": catalog.get("timestamp"),
@@ -858,39 +849,11 @@ async def generate_sbom(
         "scan_id": scan_id
     }
     
-    # Generate all formats
-    json_path = output_dir / f"{scan_id}.json.json"
-    spdx_path = output_dir / f"{scan_id}.spdx.json"
-    cyclonedx_path = output_dir / f"{scan_id}.cyclonedx.json"
-    remediation_path = output_dir / f"{scan_id}_remediation.json"
-    
+    # Generate all formats (no file saving)
     json_sbom = generate_json_sbom(catalog, metadata)
-    with open(json_path, 'w', encoding='utf-8') as f:
-        json.dump(json_sbom, f, indent=2, ensure_ascii=False)
-    
     spdx_sbom = generate_spdx_sbom(catalog, metadata)
-    with open(spdx_path, 'w', encoding='utf-8') as f:
-        json.dump(spdx_sbom, f, indent=2, ensure_ascii=False)
-    
     cyclonedx_sbom = generate_cyclonedx_sbom(catalog, metadata)
-    with open(cyclonedx_path, 'w', encoding='utf-8') as f:
-        json.dump(cyclonedx_sbom, f, indent=2, ensure_ascii=False)
-    
     remediation_sbom = generate_remediation_sbom(catalog, metadata)
-    with open(remediation_path, 'w', encoding='utf-8') as f:
-        json.dump(remediation_sbom, f, indent=2, ensure_ascii=False)
-    
-    # Store paths in session
-    update_session(
-        session_token,
-        sbom_files={
-            "json": str(json_path),
-            "spdx": str(spdx_path),
-            "cyclonedx": str(cyclonedx_path),
-            "remediation": str(remediation_path)
-        },
-        catalog=catalog
-    )
     
     # Calculate statistics using orchestrator's centralized method
     stats = orchestrator.calculate_statistics(packages)
@@ -916,29 +879,12 @@ async def generate_sbom(
         "vulnerability_summary": stats["vulnerability_summary"],
         "license_summary": stats["license_summary"],
         "components_preview": components_preview,
-        "reports_generated": {
-            "json": {
-                "path": str(json_path),
-                "format": "Custom JSON SBOM",
-                "description": "Full component details with all enriched fields"
-            },
-            "spdx": {
-                "path": str(spdx_path),
-                "format": "SPDX 2.3",
-                "description": "Industry standard SBOM format"
-            },
-            "cyclonedx": {
-                "path": str(cyclonedx_path),
-                "format": "CycloneDX 1.4",
-                "description": "OWASP standard SBOM format with vulnerability data"
-            },
-            "remediation": {
-                "path": str(remediation_path),
-                "format": "Remediation Report",
-                "description": "Actionable fix recommendations for vulnerabilities"
-            }
-        },
-        "next_step": "GET /download/{format} to download reports (json, spdx, cyclonedx, remediation)"
+        "reports": {
+            "json": json_sbom,
+            "spdx": spdx_sbom,
+            "cyclonedx": cyclonedx_sbom,
+            "remediation": remediation_sbom
+        }
     }
 
 
@@ -971,19 +917,6 @@ async def generate_json_endpoint(
     project_name = session.repo_name or f"project_{scan_id}"
     manifests = session.extra.get("manifest_files", [])
     
-    # Check if already exists in reports folder
-    output_dir = Path(orchestrator.reports_dir) / scan_id
-    json_path = output_dir / f"{scan_id}.json.json"
-    
-    if json_path.exists():
-        with open(json_path, 'r', encoding='utf-8') as f:
-            saved_response = json.load(f)
-        # Return saved response directly (same structure as API response)
-        saved_response["message"] = "JSON SBOM already exists"
-        return saved_response
-    
-    sbom_files = session.extra.get("sbom_files", {})
-    
     # Build catalog if not exists
     catalog = session.extra.get("catalog")
     if not catalog:
@@ -1001,9 +934,6 @@ async def generate_json_endpoint(
     if license_detection and "license_detection" not in catalog:
         catalog["license_detection"] = license_detection
     
-    # Generate JSON SBOM
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
     metadata = {
         "timestamp": catalog.get("timestamp"),
         "tool": catalog.get("tool", {}),
@@ -1016,26 +946,15 @@ async def generate_json_endpoint(
     # Calculate statistics using orchestrator's centralized method
     stats = orchestrator.calculate_statistics(packages)
     
-    # Build complete response (same structure saved to file and returned)
-    response = {
+    # Return response directly (no file saved)
+    return {
         "message": "JSON SBOM generated",
         "scan_id": scan_id,
-        "report_path": str(json_path),
         "scan_summary": stats["scan_summary"],
         "vulnerability_summary": stats["vulnerability_summary"],
         "license_summary": stats["license_summary"],
         "full_report": json_sbom
     }
-    
-    # Save complete response to file
-    with open(json_path, 'w', encoding='utf-8') as f:
-        json.dump(response, f, indent=2, ensure_ascii=False)
-    
-    # Update session
-    sbom_files["json"] = str(json_path)
-    update_session(session_token, sbom_files=sbom_files)
-    
-    return response
 
 
 # =============================================================================
@@ -1067,19 +986,6 @@ async def generate_spdx_endpoint(
     project_name = session.repo_name or f"project_{scan_id}"
     manifests = session.extra.get("manifest_files", [])
     
-    # Check if already exists in reports folder
-    output_dir = Path(orchestrator.reports_dir) / scan_id
-    spdx_path = output_dir / f"{scan_id}.spdx.json"
-    
-    if spdx_path.exists():
-        with open(spdx_path, 'r', encoding='utf-8') as f:
-            saved_response = json.load(f)
-        # Return saved response directly (same structure as API response)
-        saved_response["message"] = "SPDX SBOM already exists"
-        return saved_response
-    
-    sbom_files = session.extra.get("sbom_files", {})
-    
     # Build catalog if not exists
     catalog = session.extra.get("catalog")
     if not catalog:
@@ -1097,9 +1003,6 @@ async def generate_spdx_endpoint(
     if license_detection and "license_detection" not in catalog:
         catalog["license_detection"] = license_detection
     
-    # Generate SPDX SBOM
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
     metadata = {
         "timestamp": catalog.get("timestamp"),
         "tool": catalog.get("tool", {}),
@@ -1112,26 +1015,15 @@ async def generate_spdx_endpoint(
     # Calculate statistics using orchestrator's centralized method
     stats = orchestrator.calculate_statistics(packages)
     
-    # Build complete response (same structure saved to file and returned)
-    response = {
+    # Return response directly (no file saved)
+    return {
         "message": "SPDX SBOM generated",
         "scan_id": scan_id,
-        "report_path": str(spdx_path),
         "scan_summary": stats["scan_summary"],
         "vulnerability_summary": stats["vulnerability_summary"],
         "license_summary": stats["license_summary"],
         "full_report": spdx_sbom
     }
-    
-    # Save complete response to file
-    with open(spdx_path, 'w', encoding='utf-8') as f:
-        json.dump(response, f, indent=2, ensure_ascii=False)
-    
-    # Update session
-    sbom_files["spdx"] = str(spdx_path)
-    update_session(session_token, sbom_files=sbom_files)
-    
-    return response
 
 
 # =============================================================================
@@ -1163,19 +1055,6 @@ async def generate_cyclonedx_endpoint(
     project_name = session.repo_name or f"project_{scan_id}"
     manifests = session.extra.get("manifest_files", [])
     
-    # Check if already exists in reports folder
-    output_dir = Path(orchestrator.reports_dir) / scan_id
-    cyclonedx_path = output_dir / f"{scan_id}.cyclonedx.json"
-    
-    if cyclonedx_path.exists():
-        with open(cyclonedx_path, 'r', encoding='utf-8') as f:
-            saved_response = json.load(f)
-        # Return saved response directly (same structure as API response)
-        saved_response["message"] = "CycloneDX SBOM already exists"
-        return saved_response
-    
-    sbom_files = session.extra.get("sbom_files", {})
-    
     # Build catalog if not exists
     catalog = session.extra.get("catalog")
     if not catalog:
@@ -1193,9 +1072,6 @@ async def generate_cyclonedx_endpoint(
     if license_detection and "license_detection" not in catalog:
         catalog["license_detection"] = license_detection
     
-    # Generate CycloneDX SBOM
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
     metadata = {
         "timestamp": catalog.get("timestamp"),
         "tool": catalog.get("tool", {}),
@@ -1208,26 +1084,15 @@ async def generate_cyclonedx_endpoint(
     # Calculate statistics using orchestrator's centralized method
     stats = orchestrator.calculate_statistics(packages)
     
-    # Build complete response (same structure saved to file and returned)
-    response = {
+    # Return response directly (no file saved)
+    return {
         "message": "CycloneDX SBOM generated",
         "scan_id": scan_id,
-        "report_path": str(cyclonedx_path),
         "scan_summary": stats["scan_summary"],
         "vulnerability_summary": stats["vulnerability_summary"],
         "license_summary": stats["license_summary"],
         "full_report": cyclonedx_sbom
     }
-    
-    # Save complete response to file
-    with open(cyclonedx_path, 'w', encoding='utf-8') as f:
-        json.dump(response, f, indent=2, ensure_ascii=False)
-    
-    # Update session
-    sbom_files["cyclonedx"] = str(cyclonedx_path)
-    update_session(session_token, sbom_files=sbom_files)
-    
-    return response
 
 
 # =============================================================================
@@ -1259,19 +1124,6 @@ async def generate_remediation_endpoint(
     project_name = session.repo_name or f"project_{scan_id}"
     manifests = session.extra.get("manifest_files", [])
     
-    # Check if already exists in reports folder
-    output_dir = Path(orchestrator.reports_dir) / scan_id
-    remediation_path = output_dir / f"{scan_id}_remediation.json"
-    
-    if remediation_path.exists():
-        with open(remediation_path, 'r', encoding='utf-8') as f:
-            saved_response = json.load(f)
-        # Return saved response directly (same structure as API response)
-        saved_response["message"] = "Remediation report already exists"
-        return saved_response
-    
-    sbom_files = session.extra.get("sbom_files", {})
-    
     # Build catalog if not exists
     catalog = session.extra.get("catalog")
     if not catalog:
@@ -1284,9 +1136,6 @@ async def generate_remediation_endpoint(
         )
         update_session(session_token, catalog=catalog)
     
-    # Generate remediation report
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
     metadata = {
         "timestamp": catalog.get("timestamp"),
         "tool": catalog.get("tool", {}),
@@ -1296,24 +1145,13 @@ async def generate_remediation_endpoint(
     
     remediation_sbom = generate_remediation_sbom(catalog, metadata)
     
-    # Build complete response - remediation only needs scan_summary and remediation data
-    # No vulnerability_summary or license_summary since remediation is focused on fixes
-    response = {
+    # Return response directly (no file saved)
+    # Remediation only returns fix data, no vulnerability_summary or license_summary
+    return {
         "message": "Remediation report generated",
         "scan_id": scan_id,
-        "report_path": str(remediation_path),
         "full_report": remediation_sbom
     }
-    
-    # Save complete response to file
-    with open(remediation_path, 'w', encoding='utf-8') as f:
-        json.dump(response, f, indent=2, ensure_ascii=False)
-    
-    # Update session
-    sbom_files["remediation"] = str(remediation_path)
-    update_session(session_token, sbom_files=sbom_files)
-    
-    return response
 
 
 

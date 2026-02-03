@@ -1,6 +1,6 @@
 {
   "key": "PyPI_pyinstaller_5.13.0",
-  "cached_at": "2026-02-03T07:08:55.231396Z",
+  "cached_at": "2026-02-03T08:02:15.268941Z",
   "data": [
     {
       "id": "GHSA-9w2p-rh8c-v9g5",
@@ -13,14 +13,14 @@
       "modified": "2024-11-22T20:33:42.273183Z",
       "published": "2023-12-09T00:39:46Z",
       "database_specific": {
-        "severity": "HIGH",
-        "nvd_published_at": "2023-12-09T01:15:07Z",
-        "github_reviewed_at": "2023-12-09T00:39:46Z",
-        "github_reviewed": true,
         "cwe_ids": [
           "CWE-379",
           "CWE-732"
-        ]
+        ],
+        "severity": "HIGH",
+        "github_reviewed_at": "2023-12-09T00:39:46Z",
+        "nvd_published_at": "2023-12-09T01:15:07Z",
+        "github_reviewed": true
       },
       "references": [
         {
@@ -146,13 +146,13 @@
       "modified": "2025-09-10T20:33:15.059165Z",
       "published": "2025-09-10T20:30:18Z",
       "database_specific": {
-        "severity": "HIGH",
-        "nvd_published_at": "2025-09-09T23:15:37Z",
-        "github_reviewed_at": "2025-09-10T20:30:18Z",
-        "github_reviewed": true,
         "cwe_ids": [
           "CWE-94"
-        ]
+        ],
+        "severity": "HIGH",
+        "github_reviewed_at": "2025-09-10T20:30:18Z",
+        "nvd_published_at": "2025-09-09T23:15:37Z",
+        "github_reviewed": true
       },
       "references": [
         {

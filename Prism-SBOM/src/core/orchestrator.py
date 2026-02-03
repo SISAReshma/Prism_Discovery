@@ -158,75 +158,19 @@ class ScanOrchestrator:
         self.temp_dir = Path(temp_dir or TEMP_DIR)
         self.nvd_api_key = nvd_api_key
         
-        # Ensure directories exist
-        self.reports_dir.mkdir(parents=True, exist_ok=True)
+        # Only create temp_dir (for cloning repos), not reports_dir
         self.temp_dir.mkdir(parents=True, exist_ok=True)
         
         # Track active scans for status queries
         self._active_scans: Dict[str, ScanProgress] = {}
         
-        # Initialize sequential scan ID counter
-        self._scan_counter_file = self.reports_dir / "scan_counter.json"
-        self._load_scan_counter()
-    
-    def _load_scan_counter(self):
-        """Load or initialize the sequential scan ID counter"""
-        # If a counter file exists, load it. If not, derive next ID
-        # from existing numeric report directories to avoid accidental
-        # resets when the counter file is missing or corrupted.
-        try:
-            if self._scan_counter_file.exists():
-                with open(self._scan_counter_file, 'r') as f:
-                    data = json.load(f)
-                    loaded = int(data.get('next_scan_number', 1))
-            else:
-                loaded = None
-
-            # Compute highest numeric folder under reports and use that to
-            # ensure the next scan number is always greater than existing ones.
-            existing_nums = []
-            for child in self.reports_dir.iterdir():
-                if child.is_dir():
-                    name = child.name
-                    if name.isdigit():
-                        try:
-                            existing_nums.append(int(name))
-                        except Exception:
-                            pass
-
-            max_existing = max(existing_nums) if existing_nums else 0
-
-            if loaded is None:
-                # No counter file: start at max_existing + 1
-                self._next_scan_number = max_existing + 1
-            else:
-                # Ensure counter is at least max_existing + 1
-                self._next_scan_number = max(loaded, max_existing + 1)
-
-            # Persist corrected counter (in case we bumped it)
-            self._save_scan_counter()
-
-        except Exception as e:
-            logger.warning(f"Failed to initialize scan counter: {e}. Starting from 1.")
-            self._next_scan_number = 1
-            try:
-                self._save_scan_counter()
-            except Exception:
-                pass
-    
-    def _save_scan_counter(self):
-        """Save the sequential scan ID counter"""
-        try:
-            with open(self._scan_counter_file, 'w') as f:
-                json.dump({'next_scan_number': self._next_scan_number}, f)
-        except Exception as e:
-            logger.warning(f"Failed to save scan counter: {e}")
+        # Initialize sequential scan ID counter (in-memory only, no file persistence)
+        self._next_scan_number = 1
     
     def _get_next_scan_id(self) -> str:
         """Get the next sequential scan ID (1, 2, 3, ...)"""
         scan_id = str(self._next_scan_number)
         self._next_scan_number += 1
-        self._save_scan_counter()
         return scan_id
     
     def get_scan_status(self, scan_id: str) -> Optional[Dict[str, Any]]:
