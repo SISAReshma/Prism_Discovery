@@ -47,8 +47,12 @@ def get_session(token: str) -> Optional[SessionData]:
 
 def get_session_source_type(token: str) -> Optional[str]:
     """Get the source type for a given session token"""
-    session = _SESSION_STORE.get(token)
+    session = get_session(token)  # Reuse get_session to avoid duplicate lookup pattern
     return session.source_type if session else None
+
+
+# Pre-computed set of SessionData fields for O(1) lookup in update_session
+_SESSION_FIELDS: frozenset = frozenset({'source_type', 'local_path', 'file_count', 'validated', 'extra'})
 
 
 def update_session(token: str, **kwargs) -> bool:
@@ -60,8 +64,9 @@ def update_session(token: str, **kwargs) -> bool:
     if not session:
         return False
     
+    # Use pre-computed field set instead of hasattr() for each iteration
     for key, value in kwargs.items():
-        if hasattr(session, key):
+        if key in _SESSION_FIELDS:
             setattr(session, key, value)
         else:
             session.extra[key] = value

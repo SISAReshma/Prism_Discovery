@@ -4,38 +4,31 @@ Detects languages, finds manifest files, and extracts dependencies.
 Simplified version of unified_manifest_parser for the AIBOM API.
 """
 
-import os
 import re
 import json
 from pathlib import Path
-from typing import Dict, List, Set, Optional
+from typing import Dict, List, Set
 
+# Import language configuration from config
+from config import EXT_TO_LANG, MANIFEST_FILES
 
 # =============================================================================
 # LANGUAGE DETECTION
 # =============================================================================
 
-# File extensions for each language
-LANGUAGE_EXTENSIONS = {
-    "python": {".py", ".pyx", ".pyi", ".ipynb"},
-    "javascript": {".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs"},
-}
-
 
 def detect_languages(files: List[str]) -> Set[str]:
     """
     Detect programming languages based on file extensions.
-    
     Returns set of detected language names (e.g., {"python", "javascript"})
     """
     languages = set()
-    
+    # Use pre-computed reverse mapping from config for O(1) lookup per file
     for file_path in files:
         ext = Path(file_path).suffix.lower()
-        for lang, extensions in LANGUAGE_EXTENSIONS.items():
-            if ext in extensions:
-                languages.add(lang)
-    
+        lang = EXT_TO_LANG.get(ext)
+        if lang:
+            languages.add(lang)
     return languages
 
 
@@ -43,31 +36,9 @@ def detect_languages(files: List[str]) -> Set[str]:
 # MANIFEST DETECTION
 # =============================================================================
 
-# Manifest files for each language
-MANIFEST_FILES = {
-    "python": {
-        "requirements.txt",
-        "requirements-dev.txt",
-        "requirements_dev.txt",
-        "pyproject.toml",
-        "setup.py",
-        "setup.cfg",
-        "Pipfile",
-        "Pipfile.lock",
-    },
-    "javascript": {
-        "package.json",
-        "package-lock.json",
-        "yarn.lock",
-        "pnpm-lock.yaml",
-    },
-}
-
-
 def find_manifest_files(files: List[str], languages: Set[str]) -> Dict[str, List[str]]:
     """
     Find manifest files for detected languages.
-    
     Returns dict mapping language to list of manifest file paths.
     """
     manifests = {lang: [] for lang in languages}
@@ -76,13 +47,15 @@ def find_manifest_files(files: List[str], languages: Set[str]) -> Dict[str, List
         filename = Path(file_path).name.lower()
         
         for lang in languages:
-            if lang in MANIFEST_FILES:
-                # Direct match
-                if filename in {m.lower() for m in MANIFEST_FILES[lang]}:
-                    manifests[lang].append(file_path)
-                # Also check for requirements*.txt pattern
-                elif lang == "python" and filename.startswith("requirements") and filename.endswith(".txt"):
-                    manifests[lang].append(file_path)
+            manifest_set = MANIFEST_FILES.get(lang)
+            if not manifest_set:
+                continue
+            # Direct O(1) lookup in pre-lowercased frozenset
+            if filename in manifest_set:
+                manifests[lang].append(file_path)
+            # Also check for requirements*.txt pattern (Python only)
+            elif lang == "python" and filename.startswith("requirements") and filename.endswith(".txt"):
+                manifests[lang].append(file_path)
     
     return manifests
 
@@ -150,6 +123,103 @@ def parse_package_json(content: str) -> List[str]:
     return packages
 
 
+def parse_setup_py(content: str) -> List[str]:
+    """Parse setup.py and extract packages from install_requires (regex-based, no eval)."""
+    packages = []
+    
+    # Find install_requires=[...] or install_requires = [...]
+    pattern = r'install_requires\s*=\s*\[([^\]]+)\]'
+    matches = re.findall(pattern, content, re.DOTALL)
+    
+    for match in matches:
+        # Extract quoted strings (single or double quotes)
+        quoted = re.findall(r'["\']([^"\',]+)["\']', match)
+        for dep in quoted:
+            dep = dep.strip()
+            # Remove version specifiers and extras
+            pkg_match = re.match(r'^([a-zA-Z0-9_-]+)', dep)
+            if pkg_match:
+                packages.append(pkg_match.group(1).lower())
+    
+    return packages
+
+
+def parse_setup_cfg(content: str) -> List[str]:
+    """Parse setup.cfg and extract packages from [options] install_requires."""
+    packages = []
+    
+    # Find [options] section and extract install_requires
+    in_options = False
+    in_install_requires = False
+    
+    for line in content.split('\n'):
+        line = line.strip()
+        
+        # Check for [options] section
+        if line.lower() == '[options]':
+            in_options = True
+            continue
+        
+        # Check for new section (exit options)
+        if in_options and line.startswith('['):
+            break
+        
+        # Check for install_requires key
+        if in_options and line.startswith('install_requires'):
+            in_install_requires = True
+            # Handle inline format: install_requires = package1, package2
+            if '=' in line:
+                inline = line.split('=', 1)[1].strip()
+                if inline:
+                    pkg_match = re.match(r'^([a-zA-Z0-9_-]+)', inline)
+                    if pkg_match:
+                        packages.append(pkg_match.group(1).lower())
+            continue
+        
+        # Parse multi-line install_requires
+        if in_install_requires:
+            if not line or line.startswith('['):
+                in_install_requires = False
+                continue
+            
+            # Extract package name (handle version specifiers)
+            pkg_match = re.match(r'^([a-zA-Z0-9_-]+)', line)
+            if pkg_match:
+                packages.append(pkg_match.group(1).lower())
+    
+    return packages
+
+
+def parse_pipfile(content: str) -> List[str]:
+    """Parse Pipfile (TOML format) and extract packages from [packages] section."""
+    packages = []
+    
+    # Find [packages] section
+    in_packages = False
+    
+    for line in content.split('\n'):
+        line = line.strip()
+        
+        # Check for [packages] section
+        if line == '[packages]':
+            in_packages = True
+            continue
+        
+        # Exit on new section
+        if in_packages and line.startswith('['):
+            break
+        
+        # Parse package lines: package = "version" or package = {version = "*"}
+        if in_packages and line and not line.startswith('#'):
+            if '=' in line:
+                pkg_name = line.split('=')[0].strip()
+                # Validate package name format
+                if re.match(r'^[a-zA-Z0-9_-]+$', pkg_name):
+                    packages.append(pkg_name.lower())
+    
+    return packages
+
+
 def parse_manifest(checkout_path: Path, manifest_path: str, language: str) -> List[str]:
     """Parse a single manifest file and extract package names."""
     full_path = checkout_path / manifest_path
@@ -169,7 +239,12 @@ def parse_manifest(checkout_path: Path, manifest_path: str, language: str) -> Li
             return parse_requirements_txt(content)
         elif filename == "pyproject.toml":
             return parse_pyproject_toml(content)
-        # TODO: Add setup.py, Pipfile parsing if needed
+        elif filename == "setup.py":
+            return parse_setup_py(content)
+        elif filename == "setup.cfg":
+            return parse_setup_cfg(content)
+        elif filename == "pipfile":
+            return parse_pipfile(content)
     
     elif language == "javascript":
         if filename == "package.json":

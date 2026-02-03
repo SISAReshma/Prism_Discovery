@@ -6,6 +6,7 @@ Runs semgrep rules to detect Python and JavaScript imports.
 
 import json
 import subprocess
+import logging
 from pathlib import Path
 from typing import Dict, List, Set, Optional
 
@@ -13,8 +14,12 @@ from config import (
     SEMGREP_MAX_MEMORY_MB,
     SEMGREP_TIMEOUT_SECONDS,
     SEMGREP_RULE_FILES,
-    SEMGREP_IMPORT_EXTRACTORS,
+    PYTHON_BUILTINS,
+    JS_BUILTINS,
+    LANGUAGE_EXTENSIONS,
 )
+
+logger = logging.getLogger(__name__)
 
 # =============================================================================
 # CONFIGURATION
@@ -22,35 +27,6 @@ from config import (
 
 BASE_DIR = Path(__file__).resolve().parent
 SEMGREP_RULES_DIR = BASE_DIR / "semgrep"
-
-# =============================================================================
-# BUILTIN MODULES
-# =============================================================================
-
-PYTHON_BUILTINS = {
-    "os", "sys", "re", "json", "pathlib", "typing", "collections", "itertools",
-    "functools", "datetime", "time", "math", "random", "string", "subprocess",
-    "threading", "multiprocessing", "asyncio", "logging", "argparse", "unittest",
-    "io", "csv", "pickle", "copy", "warnings", "traceback", "inspect", "ast",
-    "importlib", "enum", "dataclasses", "contextlib", "tempfile", "shutil",
-    "glob", "gzip", "zipfile", "tarfile", "urllib", "http", "email", "socket",
-    "ssl", "sqlite3", "xml", "html", "hashlib", "hmac", "secrets", "uuid",
-    "abc", "builtins", "codecs", "configparser", "ctypes", "decimal", "difflib",
-    "dis", "doctest", "fileinput", "fnmatch", "fractions", "ftplib", "gc",
-    "getopt", "getpass", "gettext", "graphlib", "heapq", "imaplib", "ipaddress",
-    "keyword", "linecache", "locale", "mailbox", "mimetypes", "numbers", "operator",
-    "struct", "statistics", "textwrap", "weakref", "zoneinfo"
-}
-
-JS_BUILTINS = {
-    "fs", "path", "http", "https", "url", "os", "util", "events", "stream",
-    "crypto", "buffer", "querystring", "readline", "zlib", "child_process",
-    "cluster", "dns", "net", "tls", "dgram", "console", "process", "assert",
-    "module", "vm", "worker_threads", "perf_hooks", "inspector", "async_hooks",
-    "node:fs", "node:path", "node:http", "node:https", "node:url", "node:os",
-    "node:util", "node:events", "node:stream", "node:crypto", "node:buffer",
-    "node:child_process", "node:process", "node:assert", "node:module",
-}
 
 
 # =============================================================================
@@ -60,6 +36,20 @@ JS_BUILTINS = {
 def run_semgrep(checkout: Path, rule_file: Path, language: str) -> List[Dict]:
     """Run Semgrep with specific rule file and return findings."""
     if not rule_file.exists():
+        print(f"[SEMGREP] ERROR: Rule file not found: {rule_file}")
+        logger.error(f"[SEMGREP] Rule file not found: {rule_file}")
+        return []
+    
+    # Count files that will be scanned using config-defined extensions
+    exts = LANGUAGE_EXTENSIONS.get(language, frozenset())
+    file_count = sum(1 for ext in exts for _ in checkout.rglob(f"*{ext}"))
+    print(f"[SEMGREP] Scanning {file_count} {language} files in {checkout}")
+    print(f"[SEMGREP] Using rule: {rule_file}")
+    logger.info(f"[SEMGREP] Scanning {file_count} {language} files with {rule_file.name}")
+    
+    if file_count == 0:
+        print(f"[SEMGREP] WARNING: No {language} files found!")
+        logger.warning(f"[SEMGREP] No {language} files found in {checkout}")
         return []
     
     cmd = [
@@ -74,6 +64,7 @@ def run_semgrep(checkout: Path, rule_file: Path, language: str) -> List[Dict]:
     ]
     
     try:
+        print(f"[SEMGREP] Running: semgrep --config {rule_file.name} ...")
         result = subprocess.run(
             cmd, 
             capture_output=True, 
@@ -82,21 +73,40 @@ def run_semgrep(checkout: Path, rule_file: Path, language: str) -> List[Dict]:
             cwd=str(checkout)
         )
         
+        if result.returncode != 0:
+            print(f"[SEMGREP] Warning: Exit code {result.returncode}")
+            logger.warning(f"[SEMGREP] Non-zero exit code: {result.returncode}")
+            if result.stderr:
+                print(f"[SEMGREP] Stderr: {result.stderr[:300]}")
+                logger.debug(f"[SEMGREP] Stderr: {result.stderr[:500]}")
+        
         if result.stdout.strip():
             try:
                 data = json.loads(result.stdout)
-                return data.get("results", [])
-            except json.JSONDecodeError:
-                pass
+                findings = data.get("results", [])
+                print(f"[SEMGREP] Found {len(findings)} import findings for {language}")
+                logger.info(f"[SEMGREP] Found {len(findings)} import findings for {language}")
+                return findings
+            except json.JSONDecodeError as e:
+                print(f"[SEMGREP] ERROR: JSON parse failed: {e}")
+                logger.error(f"[SEMGREP] JSON parse error: {e}")
+                return []
         
+        print(f"[SEMGREP] No findings (empty output) for {language}")
+        logger.info(f"[SEMGREP] No findings (empty output) for {language}")
         return []
     
     except subprocess.TimeoutExpired:
+        print(f"[SEMGREP] ERROR: Timeout after {SEMGREP_TIMEOUT_SECONDS}s")
+        logger.error(f"[SEMGREP] Timeout after {SEMGREP_TIMEOUT_SECONDS}s")
         return []
     except FileNotFoundError:
-        # semgrep not installed
+        print("[SEMGREP] ERROR: semgrep command not found - is it installed?")
+        logger.error("[SEMGREP] semgrep command not found - is it installed?")
         return []
-    except Exception:
+    except Exception as e:
+        print(f"[SEMGREP] ERROR: Unexpected error: {e}")
+        logger.error(f"[SEMGREP] Unexpected error: {e}")
         return []
 
 
@@ -105,46 +115,81 @@ def run_semgrep(checkout: Path, rule_file: Path, language: str) -> List[Dict]:
 # =============================================================================
 
 def extract_python_import_info(finding: Dict) -> Optional[Dict]:
-    """Extract module and imported item from Python import finding."""
+    """Extract module and imported item from Python import finding.
+    
+    Semgrep OSS doesn't export metavars in JSON, so we parse from message.
+    Message formats from python_imports.yml:
+      - "Python import: <module>"                      (direct-import)
+      - "Python import: from <module> import <item>"   (from-import)
+      - "Python relative import: from .<module> import <item>" (relative-import)
+    """
     extra = finding.get("extra", {})
+    metadata = extra.get("metadata", {})
+    message = extra.get("message", "")
+    
+    module = ""
+    item = ""
+    
+    # Try metavars first (works in some semgrep versions)
     metavars = extra.get("metavars", {})
+    if metavars:
+        module = metavars.get("$MODULE", {}).get("abstract_content", "").strip()
+        item = metavars.get("$ITEM", {}).get("abstract_content", "").strip()
     
-    module_raw = metavars.get("$MODULE", {}).get("abstract_content", "")
-    item_raw = metavars.get("$ITEM", {}).get("abstract_content", "")
+    # Parse from message (semgrep OSS interpolates $MODULE into message)
+    if not module and message:
+        # Handle relative import message format
+        if "Python relative import:" in message:
+            # "Python relative import: from .module import item"
+            content = message.split("Python relative import:", 1)[-1].strip()
+            if content.startswith("from "):
+                parts = content.split(" import ", 1)
+                if len(parts) >= 2:
+                    module = parts[0].replace("from ", "").strip()
+                    item = parts[1].strip()
+                    # Handle "from . import item" case where module might be empty/just dots
+                    if module in (".", "..", "..."):
+                        item = parts[1].strip()
+                        module = module  # Keep the dots
+        
+        # Handle regular import message format
+        elif "Python import:" in message:
+            # "Python import: from module import item" or "Python import: module"
+            content = message.split("Python import:", 1)[-1].strip()
+            
+            if content.startswith("from "):
+                # "from module import item" pattern
+                parts = content.split(" import ", 1)
+                if len(parts) >= 2:
+                    module = parts[0].replace("from ", "").strip()
+                    item = parts[1].strip()
+            else:
+                # Direct import: just the module name
+                module = content.strip()
     
-    # If metavars empty, parse from message
-    if not module_raw:
-        message = extra.get("message", "")
-        if " import: from " in message:
-            parts = message.split(" import: from ", 1)
-            if len(parts) == 2:
-                rest = parts[1]
-                if " import " in rest:
-                    mod_part, item_part = rest.split(" import ", 1)
-                    module_raw = mod_part.strip()
-                    item_raw = item_part.strip()
-        elif " import: " in message:
-            parts = message.split(" import: ", 1)
-            if len(parts) == 2:
-                module_raw = parts[1].strip()
-    
-    module = module_raw.strip() if module_raw else ""
-    item = item_raw.strip() if item_raw else ""
-    
+    # Validate we got a module
     if not module or module == "$MODULE":
         return None
     
-    base_package = module.replace(" ", ".").split(".")[0]
-    is_builtin = base_package.lower() in PYTHON_BUILTINS
+    # Reject invalid module names that contain " import " - these are parsing errors
+    # from semgrep matching the wrong pattern (e.g., direct-import matching from-import)
+    if " import " in module:
+        return None
     
-    import_type = extra.get("metadata", {}).get("import_type", "unknown")
-    is_relative = import_type == "relative-import" or module.startswith(".")
+    # Read metadata from semgrep rules
+    import_type = metadata.get("import_type", "unknown")
+    is_relative = metadata.get("is_relative", False) or module.startswith(".")
+    
+    # Clean relative import prefix for base_package extraction
+    module_clean = module.lstrip(".")
+    base_package = module_clean.split(".")[0] if module_clean else module
+    is_builtin = base_package.lower() in PYTHON_BUILTINS
     
     return {
         "file": finding.get("path", ""),
         "line": finding.get("start", {}).get("line", 0),
         "module": module,
-        "imported_item": item if item else None,
+        "imported_item": item or None,
         "base_package": base_package,
         "is_builtin": is_builtin,
         "is_relative": is_relative,
@@ -154,51 +199,63 @@ def extract_python_import_info(finding: Dict) -> Optional[Dict]:
 
 
 def extract_js_import_info(finding: Dict) -> Optional[Dict]:
-    """Extract module from JavaScript/TypeScript import finding."""
+    """Extract module from JavaScript/TypeScript import finding.
+    
+    Semgrep OSS doesn't export metavars, so we parse from message.
+    Message formats from javascript_imports.yml:
+      - "JavaScript named import from <module>"
+      - "JavaScript default import from <module>"
+      - "JavaScript namespace import from <module>"
+      - "JavaScript require: <module>"
+      - "JavaScript dynamic import: <module>"
+    """
     extra = finding.get("extra", {})
     metavars = extra.get("metavars", {})
+    metadata = extra.get("metadata", {})
+    message = extra.get("message", "")
     
-    module = metavars.get("$MODULE", {}).get("abstract_content", "")
+    # Skip if marked by semgrep rule (e.g., path aliases)
+    if metadata.get("skip"):
+        return None
     
-    # If metavars empty, parse from message
-    if not module:
-        message = extra.get("message", "")
+    module = ""
+    
+    # Try metavars first (works in some semgrep versions)
+    if metavars:
+        module = metavars.get("$MODULE", {}).get("abstract_content", "").strip()
+    
+    # Parse from message (semgrep OSS interpolates $MODULE into message)
+    if not module and message:
+        # Pattern: "JavaScript X import from <module>" or "JavaScript require: <module>"
         if " from " in message:
-            parts = message.split(" from ", 1)
-            if len(parts) == 2:
-                module = parts[1].strip()
-        elif " import: " in message or " require: " in message:
-            for sep in [" import: ", " require: "]:
-                if sep in message:
-                    parts = message.split(sep, 1)
-                    if len(parts) == 2:
-                        module = parts[1].strip()
-                        break
+            # Named/default/namespace import: extract after "from "
+            module = message.split(" from ", 1)[-1].strip()
+        elif "require:" in message:
+            # Require pattern: "JavaScript require: <module>"
+            module = message.split("require:", 1)[-1].strip()
+        elif "dynamic import:" in message:
+            # Dynamic import: "JavaScript dynamic import: <module>"
+            module = message.split("dynamic import:", 1)[-1].strip()
     
-    module = module.strip().strip('"').strip("'")
-    
+    # Validate we got a module
     if not module or module == "$MODULE":
         return None
     
-    # Filter out TypeScript path aliases (@/ is for local imports)
-    if module.startswith("@/"):
-        return None
+    # Read metadata from semgrep rules
+    import_type = metadata.get("import_type", "unknown")
+    is_relative = metadata.get("is_relative", False) or module.startswith(".") or module.startswith("/")
     
-    # Get base package
-    # For scoped packages (@scope/package), use full scope/package as base
-    # For sub-paths (langchain/embeddings), extract only the root package
+    # Python-only: derive base_package (scoped packages need special handling)
     if module.startswith("@"):
-        # Scoped package: @anthropic-ai/sdk or @clerk/nextjs/server
+        # Scoped package: @anthropic-ai/sdk → @anthropic-ai/sdk
         parts = module.split("/")
         base_package = f"{parts[0]}/{parts[1]}" if len(parts) >= 2 else module
     else:
-        # Regular package: extract root before any slash
-        # langchain/embeddings/openai -> langchain
-        # dotenv -> dotenv
+        # Regular package: langchain/embeddings → langchain
         base_package = module.split("/")[0]
     
+    # Python-only: check against builtin set
     is_builtin = base_package in JS_BUILTINS or module in JS_BUILTINS
-    is_relative = module.startswith(".") or module.startswith("/")
     
     return {
         "file": finding.get("path", ""),
@@ -208,7 +265,7 @@ def extract_js_import_info(finding: Dict) -> Optional[Dict]:
         "base_package": base_package,
         "is_builtin": is_builtin,
         "is_relative": is_relative,
-        "import_type": extra.get("metadata", {}).get("import_type", "unknown"),
+        "import_type": import_type,
         "language": "javascript",
     }
 
@@ -227,32 +284,9 @@ IMPORT_EXTRACTORS = {
 def make_path_relative(file_path: str, checkout: Path) -> str:
     """Convert absolute file path to relative path from checkout root."""
     try:
-        from pathlib import Path as PathLib
-        abs_path = PathLib(file_path)
-        checkout_abs = PathLib(checkout).resolve()
-        
-        # Try to make it relative to checkout
-        try:
-            rel_path = abs_path.relative_to(checkout_abs)
-            return str(rel_path).replace("\\", "/")
-        except ValueError:
-            # If path is not relative to checkout, try to find common path
-            # This handles WSL paths like /mnt/c/Users/...
-            file_str = str(abs_path)
-            checkout_str = str(checkout_abs)
-            
-            # Find common suffix
-            if checkout_abs.name in file_str:
-                idx = file_str.find(checkout_abs.name)
-                if idx != -1:
-                    # Extract everything after the checkout directory
-                    rel_part = file_str[idx + len(checkout_abs.name):].lstrip("/\\")
-                    return rel_part.replace("\\", "/")
-            
-            # Fallback: return as-is but try to clean up
-            return file_str.replace("\\", "/")
-    except Exception:
-        # Fallback
+        return str(Path(file_path).relative_to(checkout)).replace("\\", "/")
+    except ValueError:
+        # Path already relative or outside checkout
         return file_path.replace("\\", "/")
 
 
@@ -292,12 +326,28 @@ def categorize_imports(findings: List[Dict], language: str, checkout: Path) -> D
     # Get extractor function for this language dynamically
     extractor = IMPORT_EXTRACTORS.get(language)
     if not extractor:
+        print(f"[CATEGORIZE] No extractor for language: {language}")
         return result
     
+    null_count = 0
     for finding in findings:
         import_info = extractor(finding)
         
         if import_info is None:
+            null_count += 1
+            # Debug: Print first few failures with full finding structure
+            if null_count <= 3:
+                metavars = finding.get("extra", {}).get("metavars", {})
+                check_id = finding.get("check_id", "unknown")
+                extra_keys = list(finding.get("extra", {}).keys())
+                print(f"[CATEGORIZE] Extraction returned None.")
+                print(f"[CATEGORIZE]   check_id: {check_id}")
+                print(f"[CATEGORIZE]   extra keys: {extra_keys}")
+                print(f"[CATEGORIZE]   metavars: {metavars}")
+                # Print first finding fully for debugging
+                if null_count == 1:
+                    import json
+                    print(f"[CATEGORIZE] FULL FINDING: {json.dumps(finding, indent=2, default=str)[:1000]}")
             continue
         
         # Make file path relative
@@ -310,6 +360,11 @@ def categorize_imports(findings: List[Dict], language: str, checkout: Path) -> D
             result["builtin"].append(import_info)
         else:
             result["third_party"].append(import_info)
+    
+    # Debug summary
+    if null_count > 0:
+        print(f"[CATEGORIZE] {null_count} of {len(findings)} findings had extraction failures")
+    print(f"[CATEGORIZE] Results for {language}: third_party={len(result['third_party'])}, builtin={len(result['builtin'])}, relative={len(result['relative'])}")
     
     return result
 
@@ -337,38 +392,40 @@ def filter_local_imports(scan_results: Dict, code_tokens: Set[str]) -> Dict:
     """Filter out local/internal imports by matching against code tokens."""
     filtered = {}
     
-    for lang in scan_results.keys():
+    for lang, lang_data in scan_results.items():
         filtered[lang] = {
             "third_party": [],
-            "builtin": scan_results[lang].get("builtin", []),
-            "relative": scan_results[lang].get("relative", [])
+            "builtin": lang_data.get("builtin", []),
+            "relative": lang_data.get("relative", [])
         }
         
-        for imp in scan_results[lang].get("third_party", []):
-            module = imp.get("module", "")
-            imported_item = imp.get("imported_item", "")
+        for imp in lang_data.get("third_party", []):
             base_package = imp.get("base_package", "")
             
-            # Check if any part matches code tokens (local module)
-            is_local = False
-            
+            # Fast check: base_package is most likely match
             if base_package and base_package in code_tokens:
-                is_local = True
+                continue
+            
+            imported_item = imp.get("imported_item", "")
             if imported_item and imported_item in code_tokens:
-                is_local = True
+                continue
+            
+            module = imp.get("module", "")
             if module:
+                # Only split if base_package check failed (lazy evaluation)
                 module_parts = module.split(".")
                 if any(part in code_tokens for part in module_parts):
-                    is_local = True
+                    continue
             
-            if not is_local:
-                filtered[lang]["third_party"].append(imp)
+            # Not local - keep it
+            filtered[lang]["third_party"].append(imp)
     
     return filtered
 
 
 def extract_packages_with_sources(filtered_results: Dict, languages: Set[str]) -> Dict:
     """Extract unique packages with their source file mappings."""
+    # Use sets internally for O(1) deduplication, convert to list at end
     packages = {lang: {} for lang in languages}
     
     for lang in languages:
@@ -377,25 +434,23 @@ def extract_packages_with_sources(filtered_results: Dict, languages: Set[str]) -
         
         for imp in filtered_results[lang].get("third_party", []):
             base = imp.get("base_package", "")
-            source_file = imp.get("file", "")
-            
             if not base:
                 continue
             
-            if base not in packages[lang]:
-                packages[lang][base] = {
-                    "package": base,
-                    "source_files": []
-                }
+            source_file = imp.get("file", "")
             
-            if source_file and source_file not in packages[lang][base]["source_files"]:
-                packages[lang][base]["source_files"].append(source_file)
+            if base not in packages[lang]:
+                packages[lang][base] = set()  # Use set for O(1) add
+            
+            if source_file:
+                packages[lang][base].add(source_file)
     
-    # Convert to list format dynamically based on detected languages
+    # Convert to list format with sorted source_files
     result = {}
     for lang in languages:
         result[f"{lang}_imports"] = [
-            packages[lang][pkg] for pkg in sorted(packages.get(lang, {}).keys())
+            {"package": pkg, "source_files": sorted(packages[lang][pkg])}
+            for pkg in sorted(packages.get(lang, {}).keys())
         ]
     
     # Ensure expected keys exist for response model compatibility
@@ -411,7 +466,7 @@ def extract_packages_with_sources(filtered_results: Dict, languages: Set[str]) -
 # SCAN FUNCTIONS (Used by endpoints)
 # =============================================================================
 
-def scan_and_dedupe(checkout: Path, languages: Set[str]) -> Dict:
+def scan_and_dedupe(checkout, languages: Set[str]) -> Dict:
     """
     Scan for imports and deduplicate results.
     
@@ -421,8 +476,11 @@ def scan_and_dedupe(checkout: Path, languages: Set[str]) -> Dict:
     
     Returns scan results with summary (no filtering).
     """
+    # Ensure checkout is a Path object
+    checkout_path = Path(checkout) if isinstance(checkout, str) else checkout
+    
     # Step 1: Run semgrep scan
-    scan_results = scan_imports(checkout, languages)
+    scan_results = scan_imports(checkout_path, languages)
     
     # Step 2: Deduplicate each category
     for lang in scan_results.keys():

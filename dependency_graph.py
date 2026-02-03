@@ -1,67 +1,40 @@
 """
 Dependency Graph Generator
 Builds file-to-file import dependency graph from semgrep scan results.
-Uses session data directly - no file I/O needed.
+
+Graph Structure:
+- nodes: Files with import metadata
+- edges: Import relationships (source imports target)
 """
-
 from pathlib import Path
-from typing import Dict, List, Set, Optional
+from typing import Dict, Set, List, Optional, Tuple
+from collections import deque
+
+from config import normalize_path, FILE_STEM_EXTENSIONS, PATH_MARKERS
 
 
-def normalize_path(path: str) -> str:
-    """Normalize file path to use forward slashes and extract relative path."""
-    p = Path(path)
-    parts = p.parts
-    
-    # Try to extract path after 'checkout' or temp directory markers
-    for i, part in enumerate(parts):
-        # Look for aibom_ temp directory marker, take the repo folder contents
-        if 'aibom_' in part and i + 1 < len(parts):
-            # The next part should be the repo name, and after that is the actual code
-            if i + 2 < len(parts):
-                # Return everything after the repo name (the actual code structure)
-                relative_parts = parts[i + 2:]
-                if relative_parts:
-                    return '/'.join(relative_parts)
-            # Or just everything after aibom_xxx/
-            relative_parts = parts[i + 1:]
-            if relative_parts:
-                return '/'.join(relative_parts)
-        # Look for checkout marker
-        if part == 'checkout' and i + 1 < len(parts):
-            relative_parts = parts[i + 1:]
-            if relative_parts:
-                return '/'.join(relative_parts)
-    
-    # If no temp markers found, try to return a reasonable relative path
-    # Look for common source markers
-    for marker in ['src', 'lib', 'app', 'components', 'scripts', 'pages', 'api']:
-        if marker in parts:
-            idx = parts.index(marker)
-            return '/'.join(parts[idx:])
-    
-    # Fallback: return last 3-4 path components or the full filename
-    if len(parts) > 3:
-        return '/'.join(parts[-3:])
-    elif len(parts) > 1:
-        return '/'.join(parts[-2:])
-    
-    return p.name
+# Pre-compute stripped extensions once (avoid repeated string ops)
+_STRIPPED_EXTS: Tuple[str, ...] = tuple(ext.replace(".", "") for ext in FILE_STEM_EXTENSIONS)
+_EXT_LENGTHS: Tuple[int, ...] = tuple(len(ext) - 1 for ext in FILE_STEM_EXTENSIONS)  # -1 for the dot
 
 
-def is_local_import(
-    base_package: str,
-    imported_item: Optional[str],
-    code_tokens: Set[str]
-) -> bool:
-    """Check if import is local based on code tokens."""
-    if not base_package:
-        return False
-    if base_package in code_tokens:
-        return True
-    if imported_item and imported_item in code_tokens:
-        return True
-    return False
+# =============================================================================
+# GRAPH BUILDING
+# =============================================================================
+
+def _is_local(base: str, item: str, tokens: Set[str]) -> bool:
+    """Check if import is local (base_package or imported_item in code_tokens)."""
+    return (base in tokens) if base else (item in tokens) if item else False
+
+
+def _clean_stem(name: str) -> str:
+    """Extract clean stem from import/file name. Optimized with pre-computed patterns."""
+    stem = Path(name).stem
+    # Fast path: check against pre-computed stripped extensions
+    for stripped, ext_len in zip(_STRIPPED_EXTS, _EXT_LENGTHS):
+        if stem.endswith(stripped):
+            return stem[:-ext_len]
+    return stem
 
 
 def build_dependency_graph(
@@ -71,111 +44,263 @@ def build_dependency_graph(
     """
     Build dependency graph from semgrep scan results.
     
-    Args:
-        semgrep_scan: Semgrep scan results by language
-        code_tokens: Set of folder/file names from code files
-        
-    Returns:
-        Dependency graph with nodes, edges, and metadata
+    Optimizations:
+    - Single-pass import collection with aggregated stats
+    - Pre-computed stems cached during node building
+    - Edge deduplication with set lookups
+    - No redundant dict.get() calls in hot paths
+    
+    Time: O(I + N + E) where I=imports, N=files, E=edges
+    Space: O(N + E)
     """
-    graph = {
-        "nodes": [],
-        "edges": [],
-        "metadata": {
-            "total_files": 0,
-            "total_dependencies": 0,
-            "local_imports": 0,
-            "external_imports": 0,
-            "by_language": {}
-        }
-    }
-    
     file_imports: Dict[str, Dict] = {}
-    all_files: Set[str] = set()
+    lang_stats: Dict[str, Dict[str, int]] = {}
     
-    # Process imports from all languages dynamically
+    # Single pass: collect imports + aggregate stats
     for lang, lang_data in semgrep_scan.items():
         if not isinstance(lang_data, dict):
             continue
         
-        lang_stats = {"files": 0, "local": 0, "external": 0}
+        # Initialize lang stats once
+        stats = lang_stats.setdefault(lang, {"files": 0, "local": 0, "external": 0})
         
-        for category in ["third_party", "builtin", "relative"]:
-            for imp in lang_data.get(category, []):
+        for category in ("third_party", "builtin", "relative"):
+            if category not in lang_data:  # Skip if category doesn't exist
+                continue
+                
+            for imp in lang_data[category]:
                 file_path = normalize_path(imp.get("file", ""))
                 if not file_path:
                     continue
                 
-                all_files.add(file_path)
-                
+                # Initialize file entry + increment file count
                 if file_path not in file_imports:
                     file_imports[file_path] = {
-                        "local": set(),
-                        "external": set(),
-                        "language": lang
+                        "local": set(), "external": set(), "language": lang
                     }
+                    stats["files"] += 1
                 
-                base_package = imp.get("base_package", "")
-                imported_item = imp.get("imported_item")
-                is_relative = imp.get("is_relative", False)
+                info = file_imports[file_path]
+                base = imp.get("base_package", "")
+                item = imp.get("imported_item")
+                module = imp.get("module", base)  # Use module name for edge building
+                is_rel = category == "relative" or imp.get("is_relative", False)
                 
-                # Classify import
-                if category == "relative" or is_relative:
-                    target = imported_item or base_package
-                    if target:
-                        file_imports[file_path]["local"].add(target)
-                        lang_stats["local"] += 1
-                elif is_local_import(base_package, imported_item, code_tokens):
-                    file_imports[file_path]["local"].add(base_package)
-                    lang_stats["local"] += 1
-                elif base_package:
-                    file_imports[file_path]["external"].add(base_package)
-                    lang_stats["external"] += 1
-        
-        lang_stats["files"] = len([f for f, info in file_imports.items() if info.get("language") == lang])
-        graph["metadata"]["by_language"][lang] = lang_stats
+                if is_rel or _is_local(base, item, code_tokens):
+                    # Store module name for edge building (base_package or module)
+                    target_module = base or module
+                    if target_module and target_module not in info["local"]:
+                        info["local"].add(target_module)
+                        stats["local"] += 1
+                elif base and base not in info["external"]:  # Deduplicate at insertion
+                    info["external"].add(base)
+                    stats["external"] += 1
     
-    # Create nodes
+    # Build nodes + pre-compute stem cache for edge building
+    nodes = []
     node_index = {}
-    for idx, file_path in enumerate(sorted(all_files)):
+    stem_cache = {}  # Cache stems to avoid recomputing in edge loop
+    
+    sorted_items = sorted(file_imports.items())  # Sort once
+    for idx, (file_path, info) in enumerate(sorted_items):
         node_id = f"file_{idx}"
         node_index[file_path] = node_id
         
-        file_info = file_imports.get(file_path, {"local": set(), "external": set(), "language": "unknown"})
+        # Pre-compute and cache stem for this file
+        stem = _clean_stem(file_path)
+        stem_cache[stem] = node_id
         
-        graph["nodes"].append({
+        # Don't sort external_imports unless needed (may not be displayed)
+        nodes.append({
             "id": node_id,
             "file": file_path,
-            "language": file_info.get("language", "unknown"),
-            "local_import_count": len(file_info["local"]),
-            "external_import_count": len(file_info["external"]),
-            "external_imports": sorted(file_info["external"])
+            "language": info["language"],
+            "local_import_count": len(info["local"]),
+            "external_import_count": len(info["external"]),
+            "external_imports": list(info["external"])  # Keep as list (sort if needed by consumer)
         })
     
-    # Create edges for local imports (file-to-file dependencies)
-    for file_path, imports_info in file_imports.items():
-        source_id = node_index.get(file_path)
-        if not source_id:
+    # Build edges using pre-computed stem cache
+    edges = []
+    seen_edges = set()
+    
+    for file_path, info in file_imports.items():
+        source_id = node_index[file_path]
+        local_imports = info["local"]  # Cache the set reference
+        
+        for local_import in local_imports:
+            stem = _clean_stem(local_import)
+            target_id = stem_cache.get(stem)
+            
+            if target_id and target_id != source_id:
+                edge_key = (source_id, target_id)
+                if edge_key not in seen_edges:
+                    seen_edges.add(edge_key)
+                    edges.append({"source": source_id, "target": target_id, "type": "import"})
+    
+    return {
+        "nodes": nodes,
+        "edges": edges,
+        "metadata": {
+            "total_files": len(nodes),
+            "total_dependencies": len(edges),
+            "local_imports": sum(s["local"] for s in lang_stats.values()),
+            "external_imports": sum(s["external"] for s in lang_stats.values()),
+            "by_language": lang_stats
+        }
+    }
+
+
+# =============================================================================
+# GRAPH RETRIEVAL UTILITIES
+# =============================================================================
+
+def build_graph_index(graph: Dict) -> Dict:
+    """
+    Build lookup indexes for graph nodes. Call once, then use for O(1) lookups.
+    
+    Returns:
+        - by_file: normalized_path -> node_id
+        - by_suffix: suffix_key -> [(path_len, node_id), ...]
+        - id_to_file: node_id -> file_path
+    """
+    by_file = {}
+    by_suffix = {}
+    id_to_file = {}
+    
+    for node in graph.get("nodes", []):
+        node_id = node.get("id")
+        file_path = normalize_path(node.get("file", ""))
+        
+        if not node_id or not file_path:
             continue
         
-        for local_import in imports_info["local"]:
-            # Match import to target file
-            local_stem = Path(local_import).stem.replace(".py", "").replace(".js", "")
-            
-            for target_file, target_id in node_index.items():
-                target_stem = Path(target_file).stem
-                if target_stem == local_stem:
-                    graph["edges"].append({
-                        "source": source_id,
-                        "target": target_id,
-                        "type": "import"
-                    })
-                    break
+        by_file[file_path] = node_id
+        id_to_file[node_id] = file_path
+        
+        # Index by last 2 path segments for suffix matching
+        parts = file_path.split("/")
+        if len(parts) >= 2:
+            suffix_key = "/".join(parts[-2:])
+            by_suffix.setdefault(suffix_key, []).append((len(file_path), node_id))
     
-    # Update metadata
-    graph["metadata"]["total_files"] = len(all_files)
-    graph["metadata"]["total_dependencies"] = len(graph["edges"])
-    graph["metadata"]["local_imports"] = sum(len(info["local"]) for info in file_imports.values())
-    graph["metadata"]["external_imports"] = sum(len(info["external"]) for info in file_imports.values())
+    return {"by_file": by_file, "by_suffix": by_suffix, "id_to_file": id_to_file}
+
+
+def build_reverse_adjacency(graph: Dict) -> Dict[str, List[str]]:
+    """Build reverse adjacency map: target_node -> [source nodes that import it]."""
+    importers: Dict[str, List[str]] = {}
+    for edge in graph.get("edges", []):
+        target = edge.get("target")
+        source = edge.get("source")
+        if target and source:
+            importers.setdefault(target, []).append(source)
+    return importers
+
+
+def find_node_by_file(
+    graph: Dict, 
+    file_path: str, 
+    index: Optional[Dict] = None
+) -> Optional[str]:
+    """
+    Find node ID for a given file path in the dependency graph.
     
-    return graph
+    """
+    normalized = normalize_path(file_path)
+    
+    # Pre-compute parts and suffix once (used in both paths)
+    parts = normalized.split("/") if "/" in normalized else None
+    suffix_key = "/".join(parts[-2:]) if parts and len(parts) >= 2 else None
+    
+    # Extract relative path from absolute paths
+    if parts:
+        # Fast check using set membership
+        for i, part in enumerate(parts):
+            if part in PATH_MARKERS:
+                normalized = "/".join(parts[i:])
+                break
+    
+    # FAST PATH: Use pre-built index
+    if index:
+        # Direct lookup
+        node_id = index["by_file"].get(normalized)
+        if node_id:
+            return node_id
+        
+        # Suffix match using pre-computed key
+        if suffix_key:
+            matches = index["by_suffix"].get(suffix_key)
+            if matches:
+                # Return longest path match (more specific)
+                return max(matches, key=lambda x: x[0])[1]
+        return None
+    
+    # SLOW PATH: Linear search (single pass, pre-computed suffix)
+    nodes = graph.get("nodes", [])
+    best_match = None
+    best_len = 0
+    
+    for node in nodes:
+        node_file = normalize_path(node.get("file", ""))
+        node_id = node.get("id")
+        
+        # Exact match - return immediately
+        if node_file == normalized:
+            return node_id
+        
+        # Suffix matching with length priority
+        match_len = 0
+        if node_file.endswith(normalized):
+            match_len = len(normalized)
+        elif normalized.endswith(node_file):
+            match_len = len(node_file)
+        elif suffix_key and node_file.endswith(suffix_key):
+            match_len = len(suffix_key)
+        
+        if match_len > best_len:
+            best_match = node_id
+            best_len = match_len
+    
+    return best_match
+
+
+def trace_importers(
+    graph: Dict,
+    start_node_id: str,
+    max_depth: int = 50,
+    index: Optional[Dict] = None,
+    reverse_adj: Optional[Dict] = None
+) -> Set[str]:
+    """
+    BFS traversal to find all files that import the start file (directly or transitively).
+    
+    """
+    # Use pre-built structures or build once (not per iteration)
+    if index:
+        id_to_file = index["id_to_file"]
+    else:
+        # Build once with dict comprehension (faster than repeated .get())
+        id_to_file = {n["id"]: n.get("file", "") for n in graph.get("nodes", []) if "id" in n}
+    
+    importers = reverse_adj if reverse_adj else build_reverse_adjacency(graph)
+    
+    # BFS from start node
+    visited = {start_node_id}
+    queue = deque([(start_node_id, 0)])
+    
+    while queue:
+        node_id, depth = queue.popleft()
+        
+        if depth >= max_depth:
+            continue
+        
+        # Cache the importers list lookup
+        node_importers = importers.get(node_id, [])
+        for importer_id in node_importers:
+            if importer_id not in visited:
+                visited.add(importer_id)
+                queue.append((importer_id, depth + 1))
+    
+    # Convert node IDs to file paths (filter empty in single comprehension)
+    return {id_to_file[nid] for nid in visited if nid in id_to_file and id_to_file[nid]}

@@ -1,6 +1,7 @@
 rules:
   # =========================================================================
   # JavaScript/TypeScript Import Detection Rules
+  # Metadata is read by semgrep_scanner.py - keep in sync!
   # =========================================================================
 
   # Detect: import { X } from 'module'
@@ -14,6 +15,7 @@ rules:
     metadata:
       category: import-detection
       import_type: named-import
+      is_relative: false
 
   # Detect: import X from 'module'
   - id: js-default-import
@@ -26,6 +28,7 @@ rules:
     metadata:
       category: import-detection
       import_type: default-import
+      is_relative: false
 
   # Detect: import * as X from 'module'
   - id: js-namespace-import
@@ -38,6 +41,7 @@ rules:
     metadata:
       category: import-detection
       import_type: namespace-import
+      is_relative: false
 
   # Detect: const X = require('module')
   - id: js-require-import
@@ -52,6 +56,7 @@ rules:
     metadata:
       category: import-detection
       import_type: require
+      is_relative: false
 
   # Detect: require('module') standalone
   - id: js-require-standalone
@@ -64,6 +69,7 @@ rules:
     metadata:
       category: import-detection
       import_type: require-standalone
+      is_relative: false
 
   # Detect: import('module') - dynamic import
   - id: js-dynamic-import
@@ -76,3 +82,57 @@ rules:
     metadata:
       category: import-detection
       import_type: dynamic-import
+      is_relative: false
+
+  # =========================================================================
+  # Relative Import Detection
+  # =========================================================================
+
+  # Detect: import X from './local'
+  - id: js-relative-import
+    pattern-either:
+      - pattern: import $X from './$PATH'
+      - pattern: import $X from "./$PATH"
+      - pattern: import $X from '../$PATH'
+      - pattern: import $X from "../$PATH"
+    message: "JavaScript relative import: $PATH"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: relative-import
+      is_relative: true
+
+  # Detect: require('./local')
+  - id: js-relative-require
+    pattern-either:
+      - pattern: require('./$PATH')
+      - pattern: require("./$PATH")
+      - pattern: require('../$PATH')
+      - pattern: require("../$PATH")
+    message: "JavaScript relative require: $PATH"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: relative-require
+      is_relative: true
+
+  # =========================================================================
+  # Path Alias Detection (skip these in processing)
+  # =========================================================================
+
+  # Detect: import X from '@/components' (path alias, not npm package)
+  - id: js-path-alias-import
+    pattern-either:
+      - pattern: import $X from '@/$PATH'
+      - pattern: import $X from "@/$PATH"
+      - pattern: import $X from '~/$PATH'
+      - pattern: import $X from "~/$PATH"
+    message: "JavaScript path alias import: @/$PATH"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: path-alias
+      skip: true

@@ -34,6 +34,13 @@ from errors import (
     raise_clone_error,
 )
 
+# =============================================================================
+# MODULE-LEVEL CONSTANTS (computed once at import)
+# =============================================================================
+
+# Cache base directory - computed once, reused everywhere
+_BASE_DIR: str = os.path.dirname(os.path.abspath(__file__))
+
 
 # =============================================================================
 # TEMP DIRECTORY MANAGEMENT
@@ -45,7 +52,7 @@ TEMP_BASE_DIR = None
 def get_temp_dir() -> str:
     """Get or create the base temp directory for this session (inside ./temp)"""
     global TEMP_BASE_DIR
-    base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp")
+    base_dir = os.path.join(_BASE_DIR, "temp")  # Use cached _BASE_DIR
     if not os.path.exists(base_dir):
         os.makedirs(base_dir, exist_ok=True)
     if TEMP_BASE_DIR is None or not os.path.exists(TEMP_BASE_DIR):
@@ -63,7 +70,7 @@ def cleanup_temp_dir():
 
 def get_relative_path(path: str) -> str:
     """Get path relative to this module's directory"""
-    return os.path.relpath(path, start=os.path.dirname(os.path.abspath(__file__)))
+    return os.path.relpath(path, start=_BASE_DIR)  # Use cached _BASE_DIR
 
 
 # =============================================================================
@@ -71,20 +78,18 @@ def get_relative_path(path: str) -> str:
 # =============================================================================
 
 def get_directory_details(path: str) -> dict:
-    """Get details about a directory: file count and directory count"""
+    """Get details about a directory: file count"""
     file_count = 0
-    dir_count = 0
     
-    for root, dirs, files in os.walk(path):
-        # Skip hidden directories and common non-source directories
+    for _, dirs, files in os.walk(path):
+        # Skip hidden directories and common non-source directories (in-place modification controls os.walk behavior)
         dirs[:] = [d for d in dirs if not d.startswith('.') and d not in SKIP_DIRECTORIES]
-        dir_count += len(dirs)
         
         for file in files:
             if not file.startswith('.'):
                 file_count += 1
     
-    return {"file_count": file_count, "directory_count": dir_count}
+    return {"file_count": file_count}
 
 
 # =============================================================================
@@ -303,16 +308,21 @@ async def validate_zip_upload(file: UploadFile) -> dict:
     
     try:
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-            # Security check: prevent path traversal
-            for member in zip_ref.namelist():
-                member_path = os.path.join(extract_path, member)
-                if not os.path.abspath(member_path).startswith(os.path.abspath(extract_path)):
-                    os.remove(zip_path)
-                    raise_upload_error("MALICIOUS_ZIP", "ZIP contains unsafe file paths", hint="The ZIP file may be malicious (path traversal detected)")
+            # Cache namelist once - avoid calling namelist() multiple times (O(n) each)
+            members = zip_ref.namelist()
             
-            if len(zip_ref.namelist()) > MAX_ZIP_FILE_COUNT:
+            # Check file count first (fast O(1) check)
+            if len(members) > MAX_ZIP_FILE_COUNT:
                 os.remove(zip_path)
                 raise_upload_error("TOO_MANY_FILES", f"ZIP contains too many files (>{MAX_ZIP_FILE_COUNT:,})", hint="Reduce the number of files in your archive")
+            
+            # Security check: prevent path traversal (cache extract_path abs once)
+            extract_path_abs = os.path.abspath(extract_path)
+            for member in members:
+                member_path = os.path.join(extract_path, member)
+                if not os.path.abspath(member_path).startswith(extract_path_abs):
+                    os.remove(zip_path)
+                    raise_upload_error("MALICIOUS_ZIP", "ZIP contains unsafe file paths", hint="The ZIP file may be malicious (path traversal detected)")
             
             zip_ref.extractall(extract_path)
     except zipfile.BadZipFile:

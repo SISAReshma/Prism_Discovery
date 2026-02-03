@@ -1,85 +1,73 @@
 """
-Model Extractor Module
+Model Extractor Module - Optimized
 Centralized model name extraction from semgrep findings.
 Extensible patterns for different providers and formats.
+
 """
 
 import re
 import logging
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Pattern
+from functools import lru_cache
+
+from config import (
+    MODEL_METAVAR_PRIORITY,
+    MODEL_FALSE_POSITIVES,
+    MODEL_PROVIDER_PATTERNS,
+    RULE_PROVIDER_KEYWORDS,
+)
 
 logger = logging.getLogger(__name__)
 
+
 # =============================================================================
-# PROVIDER-SPECIFIC EXTRACTION PATTERNS
+# PRE-COMPILED REGEX PATTERNS (compiled once at module load)
 # =============================================================================
 
-# Each extractor returns (model_name, provider) or (None, None)
-# Extractors are tried in order - first match wins
-
-METAVAR_PRIORITY = [
-    "$MODEL",
-    "$MODEL_NAME", 
-    "$MODEL_ID",
-    "$VALUE",
-    "$REPLICATE_MODEL",  # For replicate.run("model", ...)
-]
-
-# Provider-specific patterns for code extraction
-# Format: (regex_pattern, provider_name, group_number)
-PROVIDER_CODE_PATTERNS: List[Tuple[str, str, int]] = [
+# Provider-specific patterns: (compiled_pattern, provider_name)
+_CODE_PATTERNS: List[Tuple[Pattern, str]] = [
     # Replicate: replicate.run("owner/model:version", ...)
-    (r'\.run\s*\(\s*["\']([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+[^"\']*)["\']', "replicate", 1),
+    (re.compile(r'\.run\s*\(\s*["\']([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+[^"\']*)["\']', re.IGNORECASE), "replicate"),
     
     # Replicate stream: replicate.stream("owner/model:version", ...)
-    (r'\.stream\s*\(\s*["\']([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+[^"\']*)["\']', "replicate", 1),
+    (re.compile(r'\.stream\s*\(\s*["\']([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+[^"\']*)["\']', re.IGNORECASE), "replicate"),
     
     # OpenAI/Anthropic/Google: model: "gpt-4", model: "claude-3", etc.
-    (r'model\s*[=:]\s*["\']([^"\']+)["\']', "generic", 1),
+    (re.compile(r'model\s*[=:]\s*["\']([^"\']+)["\']', re.IGNORECASE), "generic"),
     
     # modelName: "gpt-4" (LangChain style)
-    (r'modelName\s*[=:]\s*["\']([^"\']+)["\']', "langchain", 1),
+    (re.compile(r'modelName\s*[=:]\s*["\']([^"\']+)["\']', re.IGNORECASE), "langchain"),
     
     # model_name: "gpt-4" (Python style)
-    (r'model_name\s*[=:]\s*["\']([^"\']+)["\']', "generic", 1),
+    (re.compile(r'model_name\s*[=:]\s*["\']([^"\']+)["\']', re.IGNORECASE), "generic"),
     
     # getGenerativeModel({ model: "gemini-pro" })
-    (r'getGenerativeModel\s*\(\s*\{\s*model\s*:\s*["\']([^"\']+)["\']', "google", 1),
+    (re.compile(r'getGenerativeModel\s*\(\s*\{\s*model\s*:\s*["\']([^"\']+)["\']', re.IGNORECASE), "google"),
     
     # HuggingFace: from_pretrained("model-name")
-    (r'from_pretrained\s*\(\s*["\']([^"\']+)["\']', "huggingface", 1),
+    (re.compile(r'from_pretrained\s*\(\s*["\']([^"\']+)["\']', re.IGNORECASE), "huggingface"),
     
     # OpenAI constructor: openai("gpt-4")
-    (r'openai\s*\(\s*["\']([^"\']+)["\']', "openai", 1),
+    (re.compile(r'openai\s*\(\s*["\']([^"\']+)["\']', re.IGNORECASE), "openai"),
     
     # Anthropic constructor: anthropic("claude-3")
-    (r'anthropic\s*\(\s*["\']([^"\']+)["\']', "anthropic", 1),
+    (re.compile(r'anthropic\s*\(\s*["\']([^"\']+)["\']', re.IGNORECASE), "anthropic"),
     
     # Google constructor: google("gemini-pro")
-    (r'google\s*\(\s*["\']([^"\']+)["\']', "google", 1),
+    (re.compile(r'google\s*\(\s*["\']([^"\']+)["\']', re.IGNORECASE), "google"),
 ]
 
-# Message extraction patterns (from semgrep message field)
-MESSAGE_PATTERNS: List[Tuple[str, int]] = [
+# Message extraction patterns (pre-compiled)
+_MESSAGE_PATTERNS: List[Pattern] = [
     # "model: gpt-4" or "model detected: gpt-4"
-    (r'model[^:]*:\s*([a-zA-Z0-9_\-\.\/\:]+)$', 1),
+    re.compile(r'model[^:]*:\s*([a-zA-Z0-9_\-\.\/\:]+)$', re.IGNORECASE),
     
     # Quoted value: 'gpt-4' or "gpt-4"
-    (r"['\"]([^'\"]+)['\"]", 1),
+    re.compile(r"['\"]([^'\"]+)['\"]"),
     
     # Replicate format in message: "stability-ai/stable-diffusion:abc123"
-    (r'([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+:[a-f0-9]+)', 1),
+    re.compile(r'([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+:[a-f0-9]+)'),
 ]
-
-# False positives to filter out
-FALSE_POSITIVES = {
-    "model_name", "model", "name", "models", "model_id",
-    "modelname", "model_type", "type", "api", "endpoint",
-    "client", "config", "options", "params", "settings",
-    "default", "none", "null", "undefined", "true", "false",
-    "process", "env", "string", "object", "array",
-    "$model", "$value", "$model_name",
-}
 
 
 # =============================================================================
@@ -88,7 +76,7 @@ FALSE_POSITIVES = {
 
 def extract_from_metavars(metavars: Dict) -> Optional[str]:
     """Extract model from semgrep metavariables (most reliable)."""
-    for metavar_key in METAVAR_PRIORITY:
+    for metavar_key in MODEL_METAVAR_PRIORITY:
         val = metavars.get(metavar_key, {}).get("abstract_content", "")
         if val and val.strip():
             logger.debug(f"[MODEL_EXTRACT] Found {metavar_key}='{val}'")
@@ -97,59 +85,52 @@ def extract_from_metavars(metavars: Dict) -> Optional[str]:
 
 
 def extract_from_message(message: str) -> Optional[str]:
-    """Extract model from semgrep message field."""
+    """Extract model from semgrep message field using pre-compiled patterns."""
     if not message:
         return None
     
-    for pattern, group in MESSAGE_PATTERNS:
-        match = re.search(pattern, message, re.IGNORECASE)
-        if match:
-            val = match.group(group)
+    for pattern in _MESSAGE_PATTERNS:
+        if match := pattern.search(message):
+            val = match.group(1)
             logger.debug(f"[MODEL_EXTRACT] Matched message pattern: '{val}'")
             return val
     
     return None
 
 
+@lru_cache(maxsize=64)
+def _get_provider_hint(rule_id: str) -> Optional[str]:
+    """Get provider hint from rule ID (cached for repeated lookups)."""
+    rule_lower = rule_id.lower()
+    for keyword, provider in RULE_PROVIDER_KEYWORDS.items():
+        if keyword in rule_lower:
+            return provider
+    return None
+
+
 def extract_from_code(code: str, rule_id: str = "") -> Tuple[Optional[str], Optional[str]]:
     """
-    Extract model from code snippet.
+    Extract model from code snippet using pre-compiled patterns.
     Returns (model_name, provider) tuple.
     """
     if not code:
         return None, None
     
-    # Determine provider hint from rule_id
-    provider_hint = None
-    rule_lower = rule_id.lower()
-    if "replicate" in rule_lower:
-        provider_hint = "replicate"
-    elif "openai" in rule_lower:
-        provider_hint = "openai"
-    elif "anthropic" in rule_lower:
-        provider_hint = "anthropic"
-    elif "google" in rule_lower or "gemini" in rule_lower:
-        provider_hint = "google"
-    elif "langchain" in rule_lower:
-        provider_hint = "langchain"
-    elif "huggingface" in rule_lower or "hf" in rule_lower:
-        provider_hint = "huggingface"
+    provider_hint = _get_provider_hint(rule_id) if rule_id else None
     
-    # Try provider-specific patterns first if we have a hint
+    # If we have a provider hint, try matching patterns for that provider first
     if provider_hint:
-        for pattern, provider, group in PROVIDER_CODE_PATTERNS:
+        for pattern, provider in _CODE_PATTERNS:
             if provider == provider_hint or provider == "generic":
-                match = re.search(pattern, code, re.IGNORECASE)
-                if match:
-                    val = match.group(group)
+                if match := pattern.search(code):
+                    val = match.group(1)
                     logger.debug(f"[MODEL_EXTRACT] Matched provider '{provider}' pattern: '{val}'")
                     return val, provider
     
     # Try all patterns
-    for pattern, provider, group in PROVIDER_CODE_PATTERNS:
-        match = re.search(pattern, code, re.IGNORECASE)
-        if match:
-            val = match.group(group)
+    for pattern, provider in _CODE_PATTERNS:
+        if match := pattern.search(code):
+            val = match.group(1)
             logger.debug(f"[MODEL_EXTRACT] Matched code pattern for '{provider}': '{val}'")
             return val, provider
     
@@ -163,19 +144,17 @@ def clean_model_value(value: str) -> Optional[str]:
     
     value = value.strip()
     
-    # Remove prefix
+    # Remove "models/" prefix
     if value.startswith("models/"):
         value = value[7:]
     
-    # Filter false positives
-    if value.lower() in FALSE_POSITIVES:
-        return None
-    
-    # Must have some meaningful content
+    # Quick validation checks (ordered by likelihood of failure)
     if len(value) < 2:
         return None
     
-    # Filter out variable references
+    if value.lower() in MODEL_FALSE_POSITIVES:
+        return None
+    
     if value.startswith("$") or value.startswith("process.env"):
         return None
     
@@ -192,39 +171,33 @@ def extract_model_value(finding: Dict) -> Optional[str]:
     2. Message field
     3. Code extraction with provider patterns
     """
-    extra = finding.get("extra", {}) or {}
-    metavars = extra.get("metavars", {}) or {}
+    extra = finding.get("extra") or {}
+    metavars = extra.get("metavars") or {}
     rule_id = finding.get("check_id", "")
     
     logger.debug(f"[MODEL_EXTRACT] Processing finding: {rule_id}")
     logger.debug(f"[MODEL_EXTRACT] Metavars present: {list(metavars.keys())}")
     
-    model_value = None
-    provider = None
-    
     # 1. Try metavars first (most reliable)
-    model_value = extract_from_metavars(metavars)
+    if model_value := extract_from_metavars(metavars):
+        if cleaned := clean_model_value(model_value):
+            logger.info(f"[MODEL_EXTRACT] ✓ Extracted model: '{cleaned}' (source: metavar)")
+            return cleaned
     
     # 2. Try message field
-    if not model_value:
-        message = extra.get("message", "")
-        model_value = extract_from_message(message)
+    if model_value := extract_from_message(extra.get("message", "")):
+        if cleaned := clean_model_value(model_value):
+            logger.info(f"[MODEL_EXTRACT] ✓ Extracted model: '{cleaned}' (source: message)")
+            return cleaned
     
     # 3. Try code extraction
-    if not model_value:
-        code = extra.get("lines", "")
-        model_value, provider = extract_from_code(code, rule_id)
-    
-    # Clean and validate
+    model_value, provider = extract_from_code(extra.get("lines", ""), rule_id)
     if model_value:
-        cleaned = clean_model_value(model_value)
-        if cleaned:
+        if cleaned := clean_model_value(model_value):
             logger.info(f"[MODEL_EXTRACT] ✓ Extracted model: '{cleaned}' (provider: {provider or 'unknown'})")
             return cleaned
-        else:
-            logger.debug(f"[MODEL_EXTRACT] Value '{model_value}' filtered as false positive")
     
-    logger.debug(f"[MODEL_EXTRACT] No model value found in this finding")
+    logger.debug("[MODEL_EXTRACT] No model value found in this finding")
     return None
 
 
@@ -240,7 +213,6 @@ def extract_replicate_model(finding: Dict) -> Optional[Dict]:
     if not model_value:
         return None
     
-    # Parse Replicate format
     result = {
         "full_name": model_value,
         "owner": None,
@@ -248,16 +220,15 @@ def extract_replicate_model(finding: Dict) -> Optional[Dict]:
         "version": None
     }
     
-    # Split owner/model:version
+    # Parse Replicate format: owner/model:version
     if "/" in model_value:
-        parts = model_value.split("/", 1)
-        result["owner"] = parts[0]
+        owner, model_part = model_value.split("/", 1)
+        result["owner"] = owner
         
-        model_part = parts[1]
         if ":" in model_part:
-            model_parts = model_part.split(":", 1)
-            result["model"] = model_parts[0]
-            result["version"] = model_parts[1]
+            model_name, version = model_part.split(":", 1)
+            result["model"] = model_name
+            result["version"] = version
         else:
             result["model"] = model_part
     else:
@@ -269,35 +240,17 @@ def extract_replicate_model(finding: Dict) -> Optional[Dict]:
 def get_model_provider(model_name: str) -> str:
     """
     Determine the provider from a model name.
+    Uses pre-built pattern sets for O(1) average lookup.
     """
     model_lower = model_name.lower()
     
-    # OpenAI patterns
-    if any(p in model_lower for p in ["gpt-", "o1-", "o3-", "o4-", "text-embedding-", "dall-e", "whisper"]):
-        return "openai"
+    # Check each provider's patterns
+    for provider, patterns in MODEL_PROVIDER_PATTERNS.items():
+        if any(pattern in model_lower for pattern in patterns):
+            return provider
     
-    # Anthropic patterns
-    if any(p in model_lower for p in ["claude-", "anthropic"]):
-        return "anthropic"
-    
-    # Google patterns
-    if any(p in model_lower for p in ["gemini-", "palm-", "bard"]):
-        return "google"
-    
-    # Replicate patterns (owner/model format)
+    # Special case: Replicate format (owner/model)
     if "/" in model_name:
         return "replicate"
-    
-    # Meta/Llama patterns
-    if any(p in model_lower for p in ["llama-", "llama2", "llama3", "meta-llama"]):
-        return "meta"
-    
-    # Mistral patterns
-    if "mistral" in model_lower:
-        return "mistral"
-    
-    # Cohere patterns
-    if any(p in model_lower for p in ["command-", "cohere"]):
-        return "cohere"
     
     return "unknown"

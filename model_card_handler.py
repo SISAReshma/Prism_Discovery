@@ -2,17 +2,39 @@
 Model Card Handler - Fetches model cards with iterative suffix stripping
 Sources: Local Cache → HuggingFace → Azure AI Foundry
 
-Adapted from Prism-AIBOM for AIBOM_endpoints API.
+Optimized version with:
+- Pre-indexed cache for O(1) lookups
+- Configurable API URLs and timeouts
+- Reduced cyclomatic complexity
+- Eliminated duplicate code
 """
-import os
+
 import json
-import re
-import requests
+import logging
 from pathlib import Path
 from datetime import datetime, timedelta
-from typing import Optional, List, Dict, Any, Tuple
-import logging
+from typing import Optional, Dict, Any, List, Generator, Tuple
+from functools import lru_cache
 
+import requests
+
+# Import from the same directory (AIBOM_endpoints/config.py)
+import sys
+from pathlib import Path as _ImportPath
+_module_dir = _ImportPath(__file__).parent
+if str(_module_dir) not in sys.path:
+    sys.path.insert(0, str(_module_dir))
+
+from config import (
+    MODEL_CACHE_EXPIRY_DAYS,
+    MODEL_CACHE_DIR,
+    HUGGINGFACE_API_BASE,
+    HUGGINGFACE_RAW_BASE,
+    AZURE_AI_CATALOG_API,
+    MODEL_CARD_TIMEOUT,
+    README_FETCH_TIMEOUT,
+    MODEL_PROVIDER_PREFIXES,
+)
 from model_suffix_handler import (
     strip_model_name_incrementally,
     parse_suffix,
@@ -21,122 +43,112 @@ from model_suffix_handler import (
 
 logger = logging.getLogger(__name__)
 
-# Cache settings
-CACHE_EXPIRY_DAYS = 7
-# Correct cache path: .model_cache (hidden directory) in Prism-AIBOM
-MODEL_CACHE_PATH = Path(__file__).parent.parent / "Prism-AIBOM" / ".model_cache"
-
 
 def _normalize_model_id(name: str) -> str:
     """Normalize model ID for filename matching."""
-    return name.replace('/', '_').replace(':', '_').replace('.', '-').lower()
+    return name.replace("/", "_").replace(":", "_").replace(".", "-").lower()
 
 
 class ModelCache:
     """
-    File-based model card cache.
-    Matches Prism-AIBOM's cache format with pre-generated AIBOMs.
+    File-based model card cache with pre-indexed lookups.
+    
+    Optimization: Builds an in-memory index of AIBOM files on first access,
+    avoiding repeated directory scans.
     """
     
-    def __init__(self, cache_dir: Path = MODEL_CACHE_PATH):
+    def __init__(self, cache_dir: Path = MODEL_CACHE_DIR):
         self.cache_dir = cache_dir
         self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self._aibom_index: Optional[Dict[str, Path]] = None
+    
+    def _build_aibom_index(self) -> Dict[str, Path]:
+        """Build index of AIBOM files: normalized_name -> file_path."""
+        index: Dict[str, Path] = {}
+        
+        for cache_file in self.cache_dir.glob("*_aibom.json"):
+            filename = cache_file.name.lower()
+            name_part = filename.replace("_aibom.json", "")
+            
+            # Strip provider prefix and index by model name
+            for prefix in MODEL_PROVIDER_PREFIXES:
+                if name_part.startswith(prefix):
+                    model_name = name_part[len(prefix):]
+                    index[model_name] = cache_file
+                    # Also index with provider prefix for fuzzy matching
+                    index[name_part] = cache_file
+                    break
+            else:
+                # No prefix matched - index as-is
+                index[name_part] = cache_file
+        
+        return index
+    
+    @property
+    def aibom_index(self) -> Dict[str, Path]:
+        """Lazy-loaded AIBOM file index."""
+        if self._aibom_index is None:
+            self._aibom_index = self._build_aibom_index()
+        return self._aibom_index
+    
+    def invalidate_index(self) -> None:
+        """Invalidate the cache index (call after adding new files)."""
+        self._aibom_index = None
     
     def _get_cache_path(self, model_id: str) -> Path:
-        """Get cache file path for model ID (sanitized)."""
-        # Sanitize model ID for filesystem (replace / with _)
+        """Get cache file path for model ID."""
         safe_id = model_id.replace("/", "__").replace("\\", "__")
         return self.cache_dir / f"{safe_id}.json"
+    
+    def _load_aibom_file(self, cache_file: Path, source: str) -> Optional[Dict]:
+        """Load and tag an AIBOM file."""
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            logger.info(f"AIBOM cache hit ({source}): {cache_file.name}")
+            data["_lookup_source"] = source
+            data["_cache_file"] = cache_file.name
+            return data
+        except Exception as e:
+            logger.warning(f"Error reading AIBOM cache {cache_file}: {e}")
+            return None
     
     def get_aibom(self, model_id: str) -> Optional[Dict]:
         """
         Search for pre-generated AIBOM in cache (exact match).
-        Looks for files like openai_gpt-3-5-turbo_aibom.json
-        
-        Args:
-            model_id: Model name to search for (e.g., "gpt-3.5-turbo")
-        
-        Returns:
-            AIBOM data dict if found, None otherwise
+        O(1) lookup using pre-built index.
         """
         safe_id = _normalize_model_id(model_id)
         
-        # Search through all AIBOM files in cache
-        for cache_file in self.cache_dir.glob("*_aibom.json"):
-            filename = cache_file.name.lower()
-            # Extract model name from filename (format: provider_modelname_aibom.json)
-            name_part = filename.replace('_aibom.json', '')
-            # Provider prefix removal
-            for prefix in ['openai_', 'anthropic_', 'google_', 'huggingface_', 'azure_']:
-                if name_part.startswith(prefix):
-                    name_part = name_part[len(prefix):]
-                    break
-            
-            # Compare normalized versions
-            if name_part == safe_id:
-                try:
-                    with open(cache_file, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                    logger.info(f"AIBOM cache hit: {cache_file.name}")
-                    data["_lookup_source"] = "local_aibom_cache"
-                    data["_cache_file"] = str(cache_file.name)
-                    return data
-                except Exception as e:
-                    logger.warning(f"Error reading AIBOM cache: {e}")
+        if cache_file := self.aibom_index.get(safe_id):
+            return self._load_aibom_file(cache_file, "local_aibom_cache")
         
         return None
     
     def search_aibom_fuzzy(self, model_id: str) -> Optional[Dict]:
         """
-        Fuzzy search for AIBOM in cache - matches if model_id is contained in filename.
-        Used for stripped model name matching.
-        
-        Args:
-            model_id: Base model name to search for
-        
-        Returns:
-            AIBOM data dict if found, None otherwise
+        Fuzzy search for AIBOM - matches if model_id is contained in indexed name.
+        O(n) worst case, but typically fast due to early termination.
         """
         safe_id = _normalize_model_id(model_id)
         
-        for cache_file in self.cache_dir.glob("*_aibom.json"):
-            filename = cache_file.name.lower()
-            name_part = filename.replace('_aibom.json', '')
-            
-            # Check if the safe_id matches the model part of the filename
-            for prefix in ['openai_', 'anthropic_', 'google_', 'huggingface_', 'azure_']:
-                if name_part.startswith(prefix):
-                    model_part = name_part[len(prefix):]
-                    if model_part == safe_id or safe_id in model_part:
-                        try:
-                            with open(cache_file, 'r', encoding='utf-8') as f:
-                                data = json.load(f)
-                            logger.info(f"AIBOM fuzzy match: {cache_file.name} for '{model_id}'")
-                            data["_lookup_source"] = "local_aibom_cache_fuzzy"
-                            data["_cache_file"] = str(cache_file.name)
-                            return data
-                        except Exception as e:
-                            logger.warning(f"Error reading AIBOM cache: {e}")
-                    break
+        for indexed_name, cache_file in self.aibom_index.items():
+            if safe_id in indexed_name or indexed_name in safe_id:
+                return self._load_aibom_file(cache_file, "local_aibom_cache_fuzzy")
         
         return None
     
     def get(self, model_id: str) -> Optional[Dict]:
         """
         Get cached model card if exists and not expired.
-        Checks both AIBOM format and regular cache format.
-        
-        Returns:
-            Model card dict with 'source' set to 'cache', or None
+        Checks AIBOM format first, then regular cache.
         """
         # First check AIBOM cache (pre-generated)
-        aibom = self.get_aibom(model_id)
-        if aibom:
+        if aibom := self.get_aibom(model_id):
             return aibom
         
         # Then check regular cache
         cache_path = self._get_cache_path(model_id)
-        
         if not cache_path.exists():
             return None
         
@@ -146,11 +158,10 @@ class ModelCache:
             
             # Check expiry
             cached_time = datetime.fromisoformat(cached.get("cached_at", "2000-01-01"))
-            if datetime.now() - cached_time > timedelta(days=CACHE_EXPIRY_DAYS):
+            if datetime.now() - cached_time > timedelta(days=MODEL_CACHE_EXPIRY_DAYS):
                 logger.info(f"Cache expired for {model_id}")
                 return None
             
-            # Return cached data with source tag
             result = cached.get("data", cached)
             result["_lookup_source"] = "cache"
             result["_cached_at"] = cached.get("cached_at")
@@ -161,17 +172,7 @@ class ModelCache:
             return None
     
     def save(self, model_id: str, data: Dict, source: str = "unknown") -> bool:
-        """
-        Save model card to cache.
-        
-        Args:
-            model_id: Model identifier
-            data: Model card data
-            source: Where the data came from (huggingface, azure, etc.)
-        
-        Returns:
-            True if saved successfully
-        """
+        """Save model card to cache."""
         cache_path = self._get_cache_path(model_id)
         
         try:
@@ -194,41 +195,24 @@ class ModelCache:
 
 
 class HuggingFaceProvider:
-    """
-    Fetch model cards from HuggingFace Hub API.
-    """
-    
-    API_BASE = "https://huggingface.co/api/models"
+    """Fetch model cards from HuggingFace Hub API."""
     
     @classmethod
     def fetch(cls, model_id: str, hf_token: Optional[str] = None) -> Optional[Dict]:
         """
         Fetch model metadata from HuggingFace API.
-        
-        Args:
-            model_id: Model identifier (e.g., "openai/gpt-3.5-turbo")
-            hf_token: Optional HuggingFace API token
-        
         Returns:
             Model card dict with '_lookup_source' set, or None if not found
         """
-        url = f"{cls.API_BASE}/{model_id}"
-        
-        headers = {}
-        if hf_token:
-            headers["Authorization"] = f"Bearer {hf_token}"
+        url = f"{HUGGINGFACE_API_BASE}/{model_id}"
+        headers = {"Authorization": f"Bearer {hf_token}"} if hf_token else {}
         
         try:
-            response = requests.get(url, headers=headers, timeout=30)
+            response = requests.get(url, headers=headers, timeout=MODEL_CARD_TIMEOUT)
             
-            if response.status_code == 404:
-                logger.debug(f"Model not found on HuggingFace: {model_id}")
-                return None
-            
-            if response.status_code == 401:
-                # 401 usually means model doesn't exist or is private/gated
-                # Not necessarily an invalid token
-                logger.debug(f"Model not accessible on HuggingFace (401): {model_id}")
+            # Handle common failure cases
+            if response.status_code in (404, 401):
+                logger.debug(f"Model not accessible on HuggingFace ({response.status_code}): {model_id}")
                 return None
             
             if response.status_code != 200:
@@ -237,7 +221,6 @@ class HuggingFaceProvider:
             
             data = response.json()
             
-            # Structure the response
             result = {
                 "model_id": data.get("id", model_id),
                 "model_name": data.get("modelId", model_id),
@@ -256,20 +239,11 @@ class HuggingFaceProvider:
                 "gated": data.get("gated", False),
                 "disabled": data.get("disabled", False),
                 "_lookup_source": "huggingface",
-                "_raw_response": data  # Keep raw response
+                "_raw_response": data
             }
             
-            # Try to fetch README/model card content
-            readme_url = f"https://huggingface.co/{model_id}/raw/main/README.md"
-            try:
-                readme_response = requests.get(readme_url, headers=headers, timeout=15)
-                if readme_response.status_code == 200:
-                    result["readme_content"] = readme_response.text
-                    result["has_model_card"] = True
-                else:
-                    result["has_model_card"] = False
-            except Exception:
-                result["has_model_card"] = False
+            # Try to fetch README
+            result["has_model_card"] = cls._fetch_readme(model_id, result, headers)
             
             return result
             
@@ -279,58 +253,51 @@ class HuggingFaceProvider:
         except Exception as e:
             logger.error(f"Error fetching {model_id} from HuggingFace: {e}")
             return None
+    
+    @classmethod
+    def _fetch_readme(cls, model_id: str, result: Dict, headers: Dict) -> bool:
+        """Fetch README content and add to result. Returns True if found."""
+        readme_url = f"{HUGGINGFACE_RAW_BASE}/{model_id}/raw/main/README.md"
+        try:
+            readme_response = requests.get(readme_url, headers=headers, timeout=README_FETCH_TIMEOUT)
+            if readme_response.status_code == 200:
+                result["readme_content"] = readme_response.text
+                return True
+        except Exception:
+            pass
+        return False
 
 
 class AzureAIFoundryProvider:
-    """
-    Fetch model info from Azure AI Foundry catalog.
-    Note: This is a simplified implementation without Playwright.
-    For full scraping, see Prism-AIBOM's model_fetcher.py
-    """
-    
-    CATALOG_API = "https://ai.azure.com/api/catalog/models"
+    """Fetch model info from Azure AI Foundry catalog."""
     
     @classmethod
     def fetch(cls, model_id: str) -> Optional[Dict]:
-        """
-        Attempt to fetch model from Azure AI Foundry.
-        
-        Note: This is a basic implementation. Azure AI Foundry
-        may require authentication or browser-based access.
-        
-        Args:
-            model_id: Model identifier
-        
-        Returns:
-            Model info dict or None
-        """
-        # Azure AI Foundry uses different naming conventions
-        # This is a simplified check - full implementation requires Playwright
-        
+        """Attempt to fetch model from Azure AI Foundry."""
         try:
-            # Try the public catalog API endpoint
-            search_url = f"{cls.CATALOG_API}?search={model_id}"
+            search_url = f"{AZURE_AI_CATALOG_API}?search={model_id}"
             
-            response = requests.get(search_url, timeout=30, headers={
-                "Accept": "application/json",
-                "User-Agent": "Mozilla/5.0"
-            })
+            response = requests.get(
+                search_url,
+                timeout=MODEL_CARD_TIMEOUT,
+                headers={"Accept": "application/json", "User-Agent": "Mozilla/5.0"}
+            )
             
             if response.status_code != 200:
                 logger.debug(f"Azure catalog returned {response.status_code}")
                 return None
             
             data = response.json()
-            
-            # Check if we got results
             models = data.get("models", data.get("items", []))
+            
             if not models:
                 return None
             
             # Find exact or close match
+            model_id_lower = model_id.lower()
             for model in models:
                 name = model.get("name", "").lower()
-                if model_id.lower() in name or name in model_id.lower():
+                if model_id_lower in name or name in model_id_lower:
                     return {
                         "model_id": model.get("id", model_id),
                         "model_name": model.get("name"),
@@ -349,6 +316,42 @@ class AzureAIFoundryProvider:
             return None
 
 
+# =============================================================================
+# LOOKUP STRATEGY
+# =============================================================================
+
+def _try_providers(
+    model_name: str,
+    cache: ModelCache,
+    hf_token: Optional[str],
+    try_azure: bool
+) -> Tuple[Optional[Dict], str]:
+    """
+    Try all providers for a model name.
+    Returns (result, source) or (None, "").
+    """
+    # 1. Local AIBOM cache
+    if cached := cache.get_aibom(model_name):
+        return cached, "local_aibom_cache"
+    
+    # 2. Fuzzy AIBOM cache match
+    if cached := cache.search_aibom_fuzzy(model_name):
+        return cached, "local_aibom_cache_fuzzy"
+    
+    # 3. HuggingFace
+    if hf_result := HuggingFaceProvider.fetch(model_name, hf_token):
+        cache.save(model_name, hf_result, source="huggingface")
+        return hf_result, "huggingface"
+    
+    # 4. Azure AI Foundry
+    if try_azure:
+        if azure_result := AzureAIFoundryProvider.fetch(model_name):
+            cache.save(model_name, azure_result, source="azure_ai_foundry")
+            return azure_result, "azure_ai_foundry"
+    
+    return None, ""
+
+
 def fetch_model_card(
     model_name: str,
     hf_token: Optional[str] = None,
@@ -357,14 +360,14 @@ def fetch_model_card(
     try_azure: bool = True
 ) -> Dict[str, Any]:
     """
-    Fetch model card with cascading lookup strategy (matches Prism-AIBOM).
+    Fetch model card with cascading lookup strategy.
     
-    Lookup order (Prism-AIBOM workflow):
-    1. Local AIBOM cache (exact match) - Pre-generated AIBOMs for OpenAI, Anthropic, etc.
-    2. HuggingFace API (for open-source models)
-    3. Azure AI Foundry (for Azure-hosted models)
-    4. Strip suffixes and try local AIBOM cache again
-    5. Strip suffixes and retry HF/Azure
+    Lookup order:
+    1. Local AIBOM cache (exact match)
+    2. Local AIBOM cache (fuzzy match)
+    3. HuggingFace API
+    4. Azure AI Foundry
+    5. Strip suffixes and retry 1-4
     
     Args:
         model_name: Full model name (e.g., "gpt-3.5-turbo-16k")
@@ -374,15 +377,7 @@ def fetch_model_card(
         try_azure: Whether to try Azure AI Foundry
     
     Returns:
-        Dict with:
-        - model_card_found: bool
-        - original_model_name: str
-        - base_model_name: str (may differ if stripping worked)
-        - stripped_suffixes: List of removed suffixes
-        - suffix_info: List of parsed suffix meanings
-        - model_card: Dict or None
-        - lookup_source: str (local_aibom_cache, huggingface, azure, etc.)
-        - iterations_required: int
+        Dict with model_card_found, model_card, lookup_source, etc.
     """
     if cache is None:
         cache = ModelCache()
@@ -400,116 +395,37 @@ def fetch_model_card(
     
     iteration = 0
     
-    # ===== STEP 1: Check local AIBOM cache first (exact match) =====
+    # Try with original name first
     iteration += 1
-    logger.info(f"Step 1: Checking local AIBOM cache for: {model_name}")
-    cached_aibom = cache.get_aibom(model_name)
-    if cached_aibom:
+    logger.info(f"Iteration {iteration}: Trying providers for: {model_name}")
+    
+    model_card, source = _try_providers(model_name, cache, hf_token, try_azure)
+    if model_card:
         result["model_card_found"] = True
-        result["model_card"] = cached_aibom
-        result["lookup_source"] = "local_aibom_cache"
+        result["model_card"] = model_card
+        result["lookup_source"] = source
         result["iterations_required"] = iteration
         return result
     
-    # ===== STEP 2: Try HuggingFace with full name =====
-    iteration += 1
-    logger.info(f"Step 2: Trying HuggingFace for: {model_name}")
-    hf_result = HuggingFaceProvider.fetch(model_name, hf_token)
-    if hf_result:
-        cache.save(model_name, hf_result, source="huggingface")
-        result["model_card_found"] = True
-        result["model_card"] = hf_result
-        result["lookup_source"] = "huggingface"
-        result["iterations_required"] = iteration
-        return result
-    
-    # ===== STEP 3: Try Azure AI Foundry with full name =====
-    if try_azure:
-        iteration += 1
-        logger.info(f"Step 3: Trying Azure AI Foundry for: {model_name}")
-        azure_result = AzureAIFoundryProvider.fetch(model_name)
-        if azure_result:
-            cache.save(model_name, azure_result, source="azure_ai_foundry")
-            result["model_card_found"] = True
-            result["model_card"] = azure_result
-            result["lookup_source"] = "azure_ai_foundry"
-            result["iterations_required"] = iteration
-            return result
-    
-    # ===== STEP 4 & 5: Strip suffixes and retry =====
+    # Try with stripped suffixes
     if try_stripping:
         for stripped_name, removed_suffixes in strip_model_name_incrementally(model_name):
             iteration += 1
-            logger.info(f"Step 4/5: Trying stripped name: {stripped_name} (removed: {removed_suffixes})")
+            logger.info(f"Iteration {iteration}: Trying stripped name: {stripped_name}")
             
-            # Try local AIBOM cache with stripped name
-            cached_aibom = cache.get_aibom(stripped_name)
-            if cached_aibom:
+            model_card, source = _try_providers(stripped_name, cache, hf_token, try_azure)
+            if model_card:
                 result["model_card_found"] = True
                 result["base_model_name"] = stripped_name
                 result["stripped_suffixes"] = removed_suffixes
-                result["model_card"] = cached_aibom
-                result["lookup_source"] = "local_aibom_cache_stripped"
+                result["model_card"] = model_card
+                result["lookup_source"] = f"{source}_stripped"
                 result["iterations_required"] = iteration
-                
-                # Parse suffix info
-                for suffix in removed_suffixes:
-                    result["suffix_info"].append(parse_suffix(suffix))
-                
+                result["suffix_info"] = [parse_suffix(s) for s in removed_suffixes]
                 return result
-            
-            # Also try fuzzy match in AIBOM cache
-            cached_aibom = cache.search_aibom_fuzzy(stripped_name)
-            if cached_aibom:
-                result["model_card_found"] = True
-                result["base_model_name"] = stripped_name
-                result["stripped_suffixes"] = removed_suffixes
-                result["model_card"] = cached_aibom
-                result["lookup_source"] = "local_aibom_cache_fuzzy"
-                result["iterations_required"] = iteration
-                
-                for suffix in removed_suffixes:
-                    result["suffix_info"].append(parse_suffix(suffix))
-                
-                return result
-            
-            # Try HuggingFace with stripped name
-            hf_result = HuggingFaceProvider.fetch(stripped_name, hf_token)
-            if hf_result:
-                cache.save(stripped_name, hf_result, source="huggingface")
-                result["model_card_found"] = True
-                result["base_model_name"] = stripped_name
-                result["stripped_suffixes"] = removed_suffixes
-                result["model_card"] = hf_result
-                result["lookup_source"] = "huggingface_stripped"
-                result["iterations_required"] = iteration
-                
-                for suffix in removed_suffixes:
-                    result["suffix_info"].append(parse_suffix(suffix))
-                
-                return result
-            
-            # Try Azure with stripped name
-            if try_azure:
-                azure_result = AzureAIFoundryProvider.fetch(stripped_name)
-                if azure_result:
-                    cache.save(stripped_name, azure_result, source="azure_ai_foundry")
-                    result["model_card_found"] = True
-                    result["base_model_name"] = stripped_name
-                    result["stripped_suffixes"] = removed_suffixes
-                    result["model_card"] = azure_result
-                    result["lookup_source"] = "azure_ai_foundry_stripped"
-                    result["iterations_required"] = iteration
-                    
-                    for suffix in removed_suffixes:
-                        result["suffix_info"].append(parse_suffix(suffix))
-                    
-                    return result
     
-    # Not found anywhere
+    # Not found - extract suffix info for reference
     result["iterations_required"] = iteration
-    
-    # Still extract suffix info from original name for reference
     suffix_info_full = extract_suffix_info(model_name)
     if suffix_info_full.get("has_suffixes"):
         result["suffix_info"] = suffix_info_full.get("parsed_suffixes", [])
@@ -526,25 +442,14 @@ def process_models_for_cards(
     """
     Process multiple model names and fetch their model cards.
     
-    Args:
-        model_names: List of model names to lookup
-        hf_token: Optional HuggingFace API token
-        try_stripping: Whether to try suffix stripping
-        try_azure: Whether to try Azure AI Foundry
-    
     Returns:
-        Dict with:
-        - models_processed: int
-        - found_count: int
-        - not_found_count: int
-        - results: List of fetch results
-        - summary: Dict with source breakdown
+        Dict with models_processed, found_count, results, summary
     """
     cache = ModelCache()
     
-    results = []
+    results: List[Dict] = []
     found_count = 0
-    source_counts = {}
+    source_counts: Dict[str, int] = {}
     
     for model_name in model_names:
         result = fetch_model_card(
@@ -559,25 +464,25 @@ def process_models_for_cards(
         
         if result["model_card_found"]:
             found_count += 1
-            source = result["lookup_source"]
+            source = result["lookup_source"] or "unknown"
             source_counts[source] = source_counts.get(source, 0) + 1
     
+    total = len(model_names)
     return {
-        "models_processed": len(model_names),
+        "models_processed": total,
         "found_count": found_count,
-        "not_found_count": len(model_names) - found_count,
+        "not_found_count": total - found_count,
         "results": results,
         "summary": {
             "source_breakdown": source_counts,
-            "success_rate": f"{(found_count / len(model_names) * 100):.1f}%" if model_names else "0%"
+            "success_rate": f"{(found_count / total * 100):.1f}%" if total else "0%"
         }
     }
 
 
-# Expose for imports
 __all__ = [
     "ModelCache",
-    "HuggingFaceProvider", 
+    "HuggingFaceProvider",
     "AzureAIFoundryProvider",
     "fetch_model_card",
     "process_models_for_cards"

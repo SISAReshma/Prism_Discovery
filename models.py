@@ -22,8 +22,6 @@ class SourceTypeResponse(BaseModel):
     message: str
     session_token: str
     source_type: str
-    unlocked_endpoint: str
-    locked_endpoints: List[str]
 
 
 # =============================================================================
@@ -76,7 +74,6 @@ class LocalValidationResponse(ValidationResponse):
 class FileInfo(BaseModel):
     """Information about a single file"""
     path: str
-    extension: str
     size_bytes: Optional[int] = None
 
 
@@ -84,7 +81,7 @@ class FilesResponse(BaseModel):
     """Response for /files endpoint"""
     total_files: int
     files: List[str]
-    by_extension: dict
+    
 
 
 class CodeTokensResponse(BaseModel):
@@ -396,14 +393,6 @@ class ModelDetection(BaseModel):
     library: str = "detected"
 
 
-class APICallDetection(BaseModel):
-    """A detected API call with source location"""
-    method: str
-    url: Optional[str] = None
-    file: str
-    line: int
-    code_snippet: str = ""
-
 
 class LibraryScanResult(BaseModel):
     """Scan result for a single library"""
@@ -440,7 +429,6 @@ class AITargetedScanResponse(BaseModel):
     scan_results: Dict[str, LibraryScanResult]
     models_detected: List[ModelDetection] = []
     distinct_models: List[str] = []
-    api_calls_found: List[APICallDetection] = []
     model_detection_findings: List[ScanFinding] = []
     summary: ScanSummary
 

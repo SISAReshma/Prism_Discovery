@@ -15,14 +15,10 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Set
 from datetime import datetime, timedelta
 
-
-# =============================================================================
-# CACHE CONFIGURATION
-# =============================================================================
-
-CACHE_DIR = Path(__file__).parent / ".cache"
-CACHE_FILE = CACHE_DIR / "pypi_imports_cache.json"
-CACHE_DURATION_DAYS = 7
+from config import (
+    CACHE_DIR, CACHE_FILE, CACHE_DURATION_DAYS, 
+    KNOWN_PACKAGE_MAPPINGS, MAX_WHEEL_DOWNLOAD_SIZE
+)
 
 
 class PyPIImportCache:
@@ -75,59 +71,12 @@ class PyPIImportCache:
 # Global cache instance
 _cache = PyPIImportCache()
 
-
-# =============================================================================
-# KNOWN STATIC MAPPINGS (fast path)
-# =============================================================================
-
-KNOWN_PACKAGE_MAPPINGS = {
-    # Google AI packages
-    "google-genai": ["google"],
-    "google-ai-generativelanguage": ["google"],
-    "google-cloud-aiplatform": ["google", "vertexai"],
-    "google-cloud-storage": ["google"],
-    "google-generativeai": ["google"],
-    
-    # AI/LLM frameworks
-    "openai": ["openai"],
-    "anthropic": ["anthropic"],
-    "langchain": ["langchain"],
-    "langchain-core": ["langchain_core"],
-    "langchain-community": ["langchain_community"],
-    "langchain-openai": ["langchain_openai"],
-    "langchain-anthropic": ["langchain_anthropic"],
-    "transformers": ["transformers"],
-    "torch": ["torch"],
-    "tensorflow": ["tensorflow", "tf"],
-    "tensorflow-gpu": ["tensorflow", "tf"],
-    
-    # Image processing
-    "Pillow": ["PIL"],
-    "pillow": ["PIL"],
-    "opencv-python": ["cv2"],
-    "opencv-contrib-python": ["cv2"],
-    
-    # Machine Learning
-    "scikit-learn": ["sklearn"],
-    "scikit-image": ["skimage"],
-    
-    # Data science
-    "python-dateutil": ["dateutil"],
-    "msgpack-python": ["msgpack"],
-    "beautifulsoup4": ["bs4"],
-    
-    # Deep Learning
-    "torchvision": ["torchvision"],
-    
-    # NLP
-    "sentence-transformers": ["sentence_transformers"],
-    
-    # Others
-    "PyYAML": ["yaml"],
-    "pyyaml": ["yaml"],
-    "protobuf": ["google.protobuf"],
+# Pre-computed normalized mappings for O(1) lookup (avoid repeated normalization)
+_NORMALIZE_RE = re.compile(r'[-_.]+')
+_NORMALIZED_MAPPINGS = {
+    _NORMALIZE_RE.sub('-', pkg).lower(): imports
+    for pkg, imports in KNOWN_PACKAGE_MAPPINGS.items()
 }
-
 
 # =============================================================================
 # PYPI RESOLUTION (download wheel → read top_level.txt)
@@ -135,16 +84,14 @@ KNOWN_PACKAGE_MAPPINGS = {
 
 def _normalize_package_name(name: str) -> str:
     """Normalize package name for comparison (PEP 503)."""
-    return re.sub(r'[-_.]+', '-', name).lower()
+    return _NORMALIZE_RE.sub('-', name).lower()
 
 
 def _fetch_wheel_url(package_name: str) -> Optional[str]:
     """
     Fetch the smallest wheel URL from PyPI.
-    
     Args:
         package_name: Package name to fetch
-        
     Returns:
         URL to wheel file, or None if not found
     """
@@ -157,7 +104,6 @@ def _fetch_wheel_url(package_name: str) -> Optional[str]:
         
         response.raise_for_status()
         data = response.json()
-        
         # Get latest version's files
         urls = data.get('urls', [])
         
@@ -200,13 +146,12 @@ def _fetch_wheel_url(package_name: str) -> Optional[str]:
 def _extract_top_level_from_wheel(wheel_url: str) -> Optional[List[str]]:
     """
     Download wheel and extract top_level.txt.
-    
     Args:
         wheel_url: URL to the wheel file
-        
     Returns:
         List of import names from top_level.txt, or None
     """
+    tmp_path = None
     try:
         # Download to temp file
         with tempfile.NamedTemporaryFile(suffix='.whl', delete=False) as tmp:
@@ -215,59 +160,56 @@ def _extract_top_level_from_wheel(wheel_url: str) -> Optional[List[str]]:
             response = requests.get(wheel_url, timeout=30, stream=True)
             response.raise_for_status()
             
-            # Limit download size (10MB max)
-            max_size = 10 * 1024 * 1024
+            # Limit download size
             downloaded = 0
             
             for chunk in response.iter_content(chunk_size=8192):
                 downloaded += len(chunk)
-                if downloaded > max_size:
+                if downloaded > MAX_WHEEL_DOWNLOAD_SIZE:
                     tmp.close()
-                    os.unlink(tmp_path)
-                    return None
+                    return None  # Cleanup in finally block
                 tmp.write(chunk)
-        
         # Extract top_level.txt from wheel (it's a ZIP file)
         import_names = []
         
-        try:
-            with zipfile.ZipFile(tmp_path, 'r') as whl:
-                # Find top_level.txt in any .dist-info directory
+        with zipfile.ZipFile(tmp_path, 'r') as whl:
+            # Find top_level.txt in any .dist-info directory
+            for name in whl.namelist():
+                if name.endswith('top_level.txt'):
+                    content = whl.read(name).decode('utf-8')
+                    import_names = [
+                        line.strip() 
+                        for line in content.strip().split('\n')
+                        if line.strip()
+                    ]
+                    break
+            
+            # If no top_level.txt, try RECORD file to infer packages
+            if not import_names:
                 for name in whl.namelist():
-                    if name.endswith('top_level.txt'):
+                    if name.endswith('RECORD'):
                         content = whl.read(name).decode('utf-8')
-                        import_names = [
-                            line.strip() 
-                            for line in content.strip().split('\n')
-                            if line.strip()
-                        ]
+                        # Parse RECORD to find top-level packages
+                        seen = set()
+                        for line in content.split('\n'):
+                            if '/' in line:
+                                top = line.split('/')[0]
+                                if top and not top.endswith('.dist-info') and top not in seen:
+                                    seen.add(top)
+                                    import_names.append(top)
                         break
-                
-                # If no top_level.txt, try RECORD file to infer packages
-                if not import_names:
-                    for name in whl.namelist():
-                        if name.endswith('RECORD'):
-                            content = whl.read(name).decode('utf-8')
-                            # Parse RECORD to find top-level packages
-                            seen = set()
-                            for line in content.split('\n'):
-                                if '/' in line:
-                                    top = line.split('/')[0]
-                                    if top and not top.endswith('.dist-info') and top not in seen:
-                                        seen.add(top)
-                                        import_names.append(top)
-                            break
-        finally:
-            # Cleanup temp file
-            try:
-                os.unlink(tmp_path)
-            except Exception:
-                pass
         
         return import_names if import_names else None
         
     except Exception:
         return None
+    finally:
+        # Always cleanup temp file (even on error)
+        if tmp_path:
+            try:
+                os.unlink(tmp_path)
+            except Exception:
+                pass
 
 
 def resolve_from_pypi(package_name: str) -> Optional[List[str]]:
@@ -314,25 +256,18 @@ def resolve_from_pypi(package_name: str) -> Optional[List[str]]:
 
 def _heuristic_import_names(package_name: str) -> List[str]:
     """Generate heuristic import names from package name."""
-    names = []
+    # Normalize then convert to underscore format (inverse of normalization)
+    normalized = _normalize_package_name(package_name)
+    base_name = normalized.replace('-', '_')
+    names = [base_name]
     
-    # Base: replace hyphens with underscores
-    base_name = package_name.replace('-', '_')
-    names.append(base_name)
-    
-    # Also add original name
-    if package_name != base_name:
-        names.append(package_name)
-    
-    # For packages like "google-genai", try "google"
-    if '-' in package_name:
-        prefix = package_name.split('-')[0]
-        if prefix not in names:
+    # Also try first segment for compound packages (google-genai → google)
+    if '-' in normalized:
+        prefix = normalized.split('-')[0]
+        if prefix != base_name:
             names.append(prefix)
     
     return names
-
-
 # =============================================================================
 # MAIN RESOLUTION FUNCTION
 # =============================================================================
@@ -341,22 +276,15 @@ def resolve_package_imports(package_name: str) -> Tuple[List[str], str]:
     """
     Resolve a PyPI package name to its possible import names.
     Uses 3-tier resolution: static mapping → PyPI wheel → heuristics.
-    
     Args:
         package_name: Package name from manifest (e.g., "scikit-learn")
-        
     Returns:
         Tuple of (list of import names, resolution method)
     """
-    # 1. Check static mappings first (fast path)
-    if package_name in KNOWN_PACKAGE_MAPPINGS:
-        return (KNOWN_PACKAGE_MAPPINGS[package_name], "static")
-    
-    # Normalize for case-insensitive matching
+    # 1. Check static mappings first (O(1) lookup with normalized key)
     normalized = _normalize_package_name(package_name)
-    for known_pkg, imports in KNOWN_PACKAGE_MAPPINGS.items():
-        if _normalize_package_name(known_pkg) == normalized:
-            return (imports, "static")
+    if normalized in _NORMALIZED_MAPPINGS:
+        return (_NORMALIZED_MAPPINGS[normalized], "static")
     
     # 2. Try PyPI wheel download (accurate)
     import_names = resolve_from_pypi(package_name)
@@ -370,6 +298,100 @@ def resolve_package_imports(package_name: str) -> Tuple[List[str], str]:
 # =============================================================================
 # PACKAGE COMPARISON & UNUSED DETECTION
 # =============================================================================
+
+def _build_import_set(imports_data: List[Dict], is_js: bool = False) -> Set[str]:
+    """Build normalized set of imports for comparison."""
+    imports_set: Set[str] = set()
+    for imp in imports_data:
+        pkg = imp.get("package", "")
+        if not pkg:
+            continue
+        imports_set.add(pkg.lower())
+        if is_js:
+            # Scoped packages: @scope/name → also add 'name'
+            if pkg.startswith("@") and "/" in pkg:
+                imports_set.add(pkg.split("/")[1].lower())
+        else:
+            # Python: langchain.agents → also add 'langchain'
+            if "." in pkg:
+                imports_set.add(pkg.split(".")[0].lower())
+    return imports_set
+
+def _check_is_used(pkg: str, import_names: List[str], actual_imports: Set[str], is_js: bool = False) -> bool:
+    """Check if a package is used based on import names."""
+    # Pre-compute lowercased import names
+    import_names_lower = {n.lower() for n in import_names}
+    
+    # Check if any resolved import matches
+    if import_names_lower & actual_imports:
+        return True
+    if is_js:
+        # Check without scope for @scope/name
+        if pkg.startswith("@") and "/" in pkg:
+            return pkg.split("/")[1].lower() in actual_imports
+    else:
+        # Python: also check normalized package name
+        pkg_normalized = pkg.lower().replace("-", "_")
+        if pkg_normalized in actual_imports:
+            return True
+        # Check partial matches (langchain in langchain_community)
+        return any(pkg_normalized in ai.replace("-", "_") for ai in actual_imports)
+    
+    return False
+
+
+def _process_language(
+    manifest: List[str],
+    imports_data: List[Dict],
+    language: str,
+    result: Dict,
+    method_counts: Dict,
+    is_js: bool = False
+) -> None:
+    """Process packages for a single language."""
+    actual_imports = _build_import_set(imports_data, is_js)
+    
+    result["resolution_summary"]["total_manifest_packages"] += len(manifest)
+    
+    for pkg in manifest:
+        if not pkg:
+            continue
+        
+        # Resolve: Python uses 3-tier, JS uses direct
+        if is_js:
+            import_names = [pkg]
+            method = "direct"
+        else:
+            import_names, method = resolve_package_imports(pkg)
+        
+        method_counts[method] = method_counts.get(method, 0) + 1
+        
+        is_used = _check_is_used(pkg, import_names, actual_imports, is_js)
+        
+        resolved_entry = {
+            "package": pkg,
+            "language": language,
+            "import_names": import_names,
+            "resolution_method": method,
+            "is_used": is_used
+        }
+        result["resolved_packages"].append(resolved_entry)
+        
+        lib_entry = {
+            "package": pkg,
+            "import_names": import_names,
+            "resolution_method": method
+        }
+        
+        if is_used:
+            result["used_libraries"][language].append(lib_entry)
+            result["resolution_summary"]["total_used"] += 1
+        else:
+            lib_entry["reason"] = "in manifest, not found in code imports"
+            result["unused_libraries"][language].append(lib_entry)
+            result["resolution_summary"]["total_unused"] += 1
+    
+    result["resolution_summary"]["total_resolved"] += len(manifest)
 
 def resolve_and_compare(
     manifest_packages: Dict[str, List[str]],
@@ -405,141 +427,27 @@ def resolve_and_compare(
             "resolution_methods": {}
         }
     }
-    
     method_counts = {}
     
-    # ==========================================================================
-    # PYTHON: Resolve package → import names, then compare
-    # ==========================================================================
-    
     if "python" in languages:
-        python_manifest = manifest_packages.get("python", [])
-        python_imports_data = semgrep_imports.get("python_imports", [])
-        
-        # Build set of actual imports from semgrep
-        actual_imports: Set[str] = set()
-        for imp in python_imports_data:
-            pkg = imp.get("package", "")
-            if pkg:
-                actual_imports.add(pkg.lower())
-                # Also add base package (e.g., "langchain.agents" → "langchain")
-                if "." in pkg:
-                    actual_imports.add(pkg.split(".")[0].lower())
-        
-        result["resolution_summary"]["total_manifest_packages"] += len(python_manifest)
-        
-        for pkg in python_manifest:
-            if not pkg:
-                continue
-            
-            # Resolve package → import names
-            import_names, method = resolve_package_imports(pkg)
-            method_counts[method] = method_counts.get(method, 0) + 1
-            
-            resolved_entry = {
-                "package": pkg,
-                "language": "python",
-                "import_names": import_names,
-                "resolution_method": method
-            }
-            
-            # Check if any resolved import matches actual imports
-            is_used = any(
-                imp.lower() in actual_imports or
-                actual_imports & {n.lower() for n in import_names}
-                for imp in import_names
-            )
-            
-            # More thorough check - also check if package name itself matches
-            if not is_used:
-                pkg_lower = pkg.lower().replace("-", "_")
-                is_used = pkg_lower in actual_imports or any(
-                    pkg_lower in ai.replace("-", "_") or ai.replace("-", "_") in pkg_lower
-                    for ai in actual_imports
-                )
-            
-            resolved_entry["is_used"] = is_used
-            result["resolved_packages"].append(resolved_entry)
-            
-            if is_used:
-                result["used_libraries"]["python"].append({
-                    "package": pkg,
-                    "import_names": import_names,
-                    "resolution_method": method
-                })
-                result["resolution_summary"]["total_used"] += 1
-            else:
-                result["unused_libraries"]["python"].append({
-                    "package": pkg,
-                    "import_names": import_names,
-                    "resolution_method": method,
-                    "reason": "in manifest, not found in code imports"
-                })
-                result["resolution_summary"]["total_unused"] += 1
-        
-        result["resolution_summary"]["total_resolved"] += len(python_manifest)
-    
-    # ==========================================================================
-    # JAVASCRIPT: Direct comparison (package name = import name)
-    # ==========================================================================
+        _process_language(
+            manifest=manifest_packages.get("python", []),
+            imports_data=semgrep_imports.get("python_imports", []),
+            language="python",
+            result=result,
+            method_counts=method_counts,
+            is_js=False
+        )
     
     if "javascript" in languages:
-        js_manifest = manifest_packages.get("javascript", [])
-        js_imports_data = semgrep_imports.get("javascript_imports", [])
-        
-        # Build set of actual imports from semgrep
-        actual_js_imports: Set[str] = set()
-        for imp in js_imports_data:
-            pkg = imp.get("package", "")
-            if pkg:
-                actual_js_imports.add(pkg.lower())
-                # For scoped packages, also add without scope
-                if pkg.startswith("@") and "/" in pkg:
-                    actual_js_imports.add(pkg.split("/")[1].lower())
-        
-        result["resolution_summary"]["total_manifest_packages"] += len(js_manifest)
-        
-        for pkg in js_manifest:
-            if not pkg:
-                continue
-            
-            method_counts["direct"] = method_counts.get("direct", 0) + 1
-            
-            resolved_entry = {
-                "package": pkg,
-                "language": "javascript",
-                "import_names": [pkg],  # JS: package = import
-                "resolution_method": "direct"
-            }
-            
-            # Direct comparison for JS
-            is_used = pkg.lower() in actual_js_imports
-            
-            # Also check without scope
-            if not is_used and pkg.startswith("@") and "/" in pkg:
-                is_used = pkg.split("/")[1].lower() in actual_js_imports
-            
-            resolved_entry["is_used"] = is_used
-            result["resolved_packages"].append(resolved_entry)
-            
-            if is_used:
-                result["used_libraries"]["javascript"].append({
-                    "package": pkg,
-                    "import_names": [pkg],
-                    "resolution_method": "direct"
-                })
-                result["resolution_summary"]["total_used"] += 1
-            else:
-                result["unused_libraries"]["javascript"].append({
-                    "package": pkg,
-                    "import_names": [pkg],
-                    "resolution_method": "direct",
-                    "reason": "in manifest, not found in code imports"
-                })
-                result["resolution_summary"]["total_unused"] += 1
-        
-        result["resolution_summary"]["total_resolved"] += len(js_manifest)
+        _process_language(
+            manifest=manifest_packages.get("javascript", []),
+            imports_data=semgrep_imports.get("javascript_imports", []),
+            language="javascript",
+            result=result,
+            method_counts=method_counts,
+            is_js=True
+        )
     
     result["resolution_summary"]["resolution_methods"] = method_counts
-    
     return result
