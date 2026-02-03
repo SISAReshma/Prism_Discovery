@@ -11,7 +11,7 @@ Usage:
 
 Features:
     - Supported ecosystems: Python (PyPI) and npm (JavaScript/Node) ONLY
-    - Vulnerability scanning (OSV.dev + NVD)
+    - Vulnerability scanning (OSV.dev)
     - SBOM generation (SPDX 2.3, CycloneDX 1.5, JSON)
     - CERT-IN PURL format (pkg:ecosystem/Package@version)
     - Metadata enrichment (deps.dev for license/homepage, registry APIs for description/supplier/hashes)
@@ -22,8 +22,6 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
-import uuid
-from datetime import datetime, timezone
 from getpass import getpass
 from typing import Optional, Tuple, Dict, Any
 from dotenv import load_dotenv

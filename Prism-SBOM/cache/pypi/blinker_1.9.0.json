@@ -1,0 +1,22 @@
+{
+  "key": "blinker_1.9.0",
+  "cached_at": "2026-02-03T07:10:50.564022Z",
+  "data": {
+    "name": "blinker",
+    "version": "1.9.0",
+    "license": "MIT License",
+    "supplier": "Jason Kirtland",
+    "description": "Fast, simple object-to-object and broadcast signaling",
+    "release_date": "2024-11-08T17:25:46.184412Z",
+    "homepage": "https://pypi.org/project/blinker/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

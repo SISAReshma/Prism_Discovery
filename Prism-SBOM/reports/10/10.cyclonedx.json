@@ -1,0 +1,4365 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-02-03T03:37:21.026925+00:00",
+    "tools": [
+      {
+        "name": "StackSQScanner",
+        "vendor": "SISA Information Security Pvt. Ltd",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "chadyi/AITradeGame"
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "pkg:supplier/Pallets/Flask@3.0.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "Flask",
+      "version": "3.0.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD License"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/Flask@3.0.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:flask:3.0.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/Flask"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/flask"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "Flask"
+        },
+        {
+          "name": "component_version",
+          "value": "3.0.0"
+        },
+        {
+          "name": "component_description",
+          "value": "A simple framework for building complex web applications."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD License"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-09-30T14:36:10Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"21128f47e4e3b9d597a3e8521a329bf56909b690fcc3fa3e477725aa81367638\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/Flask@3.0.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/flask"
+        },
+        {
+          "name": "dependency_type",
+          "value": "direct"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "True"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21128f47e4e3b9d597a3e8521a329bf56909b690fcc3fa3e477725aa81367638"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "A simple framework for building complex web applications.",
+      "component_dependencies": [
+        {
+          "purl": "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows",
+          "name": "blinker",
+          "version": "1.9.0",
+          "supplier": "Jason Kirtland"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows",
+          "name": "click",
+          "version": "8.3.1",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Importlibmetadata/importlibmetadata@8.7.1?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows",
+          "name": "itsdangerous",
+          "version": "2.2.0",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows",
+          "name": "jinja2",
+          "version": "3.1.6",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows",
+          "name": "werkzeug",
+          "version": "3.1.5",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows",
+          "name": "markupsafe",
+          "version": "3.0.3",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows",
+          "name": "zipp",
+          "version": "3.23.0",
+          "supplier": "Jason R. Coombs"
+        }
+      ],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "Flask-CORS",
+      "version": "4.0.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:flask_cors:4.0.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/Flask-CORS"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/corydolphin/flask-cors"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "Flask-CORS"
+        },
+        {
+          "name": "component_version",
+          "value": "4.0.0"
+        },
+        {
+          "name": "component_description",
+          "value": "A Flask extension adding a decorator for CORS support"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Cory Dolphin"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Patched - All known vulnerabilities fixed in current version"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-06-26T05:38:44Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"bc3492bfd6368d27cfe79c7821df5a8a319e1a6d5eab277a3794be19bdc51783\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/corydolphin/flask-cors"
+        },
+        {
+          "name": "dependency_type",
+          "value": "direct"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "True"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc3492bfd6368d27cfe79c7821df5a8a319e1a6d5eab277a3794be19bdc51783"
+        }
+      ],
+      "supplier": {
+        "name": "Cory Dolphin"
+      },
+      "description": "A Flask extension adding a decorator for CORS support",
+      "component_dependencies": [
+        {
+          "purl": "pkg:supplier/Pallets/flask@3.1.2?arch=x86_64&os=windows",
+          "name": "flask",
+          "version": "3.1.2",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows",
+          "name": "blinker",
+          "version": "1.9.0",
+          "supplier": "Jason Kirtland"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows",
+          "name": "click",
+          "version": "8.3.1",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Importlibmetadata/importlibmetadata@8.7.1?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows",
+          "name": "itsdangerous",
+          "version": "2.2.0",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows",
+          "name": "jinja2",
+          "version": "3.1.6",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows",
+          "name": "markupsafe",
+          "version": "3.0.3",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows",
+          "name": "werkzeug",
+          "version": "3.1.5",
+          "supplier": "Pallets"
+        },
+        {
+          "purl": "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows",
+          "name": "zipp",
+          "version": "3.23.0",
+          "supplier": "Jason R. Coombs"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "id": "GHSA-43qf-4rqw-9q2g",
+          "severity": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "summary": "Flask-CORS vulnerable to Improper Handling of Case Sensitivity",
+          "fixed_in": "6.0.0",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6866",
+          "modified": "2025-11-03T21:57:24.048409Z",
+          "published": "2025-03-20T12:32:45Z",
+          "aliases": [
+            "CVE-2024-6866"
+          ],
+          "details": "corydolphin/flask-cors version 5.0.1 contains a vulnerability where the request path matching is case-insensitive due to the use of the `try_match` function, which is originally intended for matching hosts. This results in a mismatch because paths in URLs are case-sensitive, but the regex matching treats them as case-insensitive. This misconfiguration can lead to significant security vulnerabilities, allowing unauthorized origins to access paths meant to be restricted, resulting in data exposure and potential data leaks."
+        },
+        {
+          "id": "GHSA-7rxf-gvfg-47g4",
+          "severity": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "summary": "Flask-CORS improper regex path matching vulnerability",
+          "fixed_in": "6.0.0",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6839",
+          "modified": "2025-11-03T21:57:16.624715Z",
+          "published": "2025-03-20T12:32:45Z",
+          "aliases": [
+            "CVE-2024-6839"
+          ],
+          "details": "corydolphin/flask-cors version 5.0.1 contains an improper regex path matching vulnerability. The plugin prioritizes longer regex patterns over more specific ones when matching paths, which can lead to less restrictive CORS policies being applied to sensitive endpoints. This mismatch in regex pattern priority allows unauthorized cross-origin access to sensitive data or functionality, potentially exposing confidential information and increasing the risk of unauthorized actions by malicious actors."
+        },
+        {
+          "id": "GHSA-84pr-m4jr-85g5",
+          "severity": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+          "severity_level": "MEDIUM",
+          "summary": "flask-cors vulnerable to log injection when the log level is set to debug",
+          "fixed_in": "4.0.1",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-1681",
+          "modified": "2025-11-03T23:01:22.383418Z",
+          "published": "2024-04-19T21:31:08Z",
+          "aliases": [
+            "CVE-2024-1681"
+          ],
+          "details": "corydolphin/flask-cors is vulnerable to log injection when the log level is set to debug. An attacker can inject fake log entries into the log file by sending a specially crafted GET request containing a CRLF sequence in the request path. This vulnerability allows attackers to corrupt log files, potentially covering tracks of other attacks, confusing log post-processing tools, and forging log entries. The issue is due to improper output neutralization for logs."
+        },
+        {
+          "id": "GHSA-8vgw-p6qm-5gr7",
+          "severity": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "summary": "Flask-CORS allows for inconsistent CORS matching",
+          "fixed_in": "6.0.0",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6844",
+          "modified": "2025-11-03T22:02:47.725498Z",
+          "published": "2025-03-20T12:32:45Z",
+          "aliases": [
+            "CVE-2024-6844"
+          ],
+          "details": "A vulnerability in corydolphin/flask-cors version 5.0.1 allows for inconsistent CORS matching due to the handling of the '+' character in URL paths. The request.path is passed through the unquote_plus function, which converts the '+' character to a space ' '. This behavior leads to incorrect path normalization, causing potential mismatches in CORS configuration. As a result, endpoints may not be matched correctly to their CORS settings, leading to unexpected CORS policy application. This can cause unauthorized cross-origin access or block valid requests, creating security vulnerabilities and usability issues."
+        },
+        {
+          "id": "GHSA-hxwh-jpp2-84pm",
+          "severity": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "summary": "Flask-CORS allows the `Access-Control-Allow-Private-Network` CORS header to be set to true by default",
+          "fixed_in": "4.0.2",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6221",
+          "modified": "2025-04-07T20:13:56.570363Z",
+          "published": "2024-08-18T21:31:07Z",
+          "aliases": [
+            "CVE-2024-6221",
+            "PYSEC-2024-71"
+          ],
+          "details": "A vulnerability in corydolphin/flask-cors version 4.0.1 allows the `Access-Control-Allow-Private-Network` CORS header to be set to true by default, without any configuration option. This behavior can expose private network resources to unauthorized external access, leading to significant security risks such as data breaches, unauthorized access to sensitive information, and potential network intrusions."
+        },
+        {
+          "id": "PYSEC-2024-71",
+          "severity": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "summary": null,
+          "fixed_in": "4.0.2",
+          "url": "https://huntr.com/bounties/a42935fc-6f57-4818-bca4-3d528235df4d",
+          "modified": "2025-10-09T08:27:44.186589Z",
+          "published": "2024-08-18T19:15:00Z",
+          "aliases": [
+            "CVE-2024-6221",
+            "GHSA-hxwh-jpp2-84pm"
+          ],
+          "details": "A vulnerability in corydolphin/flask-cors up to version 4.0.1 allows the `Access-Control-Allow-Private-Network` CORS header to be set to true by default, without any configuration option. This behavior can expose private network resources to unauthorized external access, leading to significant security risks such as data breaches, unauthorized access to sensitive information, and potential network intrusions."
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:supplier/Kennethreitz/requests@2.31.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "requests",
+      "version": "2.31.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Kennethreitz/requests@2.31.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:requests:2.31.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/requests"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/psf/requests"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "requests"
+        },
+        {
+          "name": "component_version",
+          "value": "2.31.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Python HTTP for Humans."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Kenneth Reitz"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Patched - All known vulnerabilities fixed in current version"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-05-22T15:12:42Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Kennethreitz/requests@2.31.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/psf/requests"
+        },
+        {
+          "name": "dependency_type",
+          "value": "direct"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "True"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f"
+        }
+      ],
+      "supplier": {
+        "name": "Kenneth Reitz"
+      },
+      "description": "Python HTTP for Humans.",
+      "component_dependencies": [
+        {
+          "purl": "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows",
+          "name": "certifi",
+          "version": "2026.1.4",
+          "supplier": "Kenneth Reitz"
+        },
+        {
+          "purl": "pkg:supplier/Charsetnormalizer/charsetnormalizer@3.4.4?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows",
+          "name": "idna",
+          "version": "3.11.0",
+          "supplier": "Kim Davies"
+        },
+        {
+          "purl": "pkg:supplier/Andreypetrov/urllib3@2.6.3?arch=x86_64&os=windows",
+          "name": "urllib3",
+          "version": "2.6.3",
+          "supplier": "Andrey Petrov"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "id": "GHSA-9hjg-9r4m-mvj7",
+          "severity": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs",
+          "fixed_in": "2.32.4",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+          "modified": "2025-06-09T19:27:13.389930Z",
+          "published": "2025-06-09T19:06:08Z",
+          "aliases": [
+            "CVE-2024-47081"
+          ],
+          "details": "### Impact\n\nDue to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs.\n\n### Workarounds\nFor older versions of Requests, use of the .netrc file can be disabled with `trust_env=False` on your Requests Session ([docs](https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env)).\n\n### References\nhttps://github.com/psf/requests/pull/6965\nhttps://seclists.org/fulldisclosure/2025/Jun/2"
+        },
+        {
+          "id": "GHSA-9wx4-h78v-vm56",
+          "severity": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+          "severity_level": "LOW",
+          "summary": "Requests `Session` object does not verify requests after making first request with verify=False",
+          "fixed_in": "2.32.0",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-35195",
+          "modified": "2026-01-16T00:17:43.184646Z",
+          "published": "2024-05-20T20:15:00Z",
+          "aliases": [
+            "CVE-2024-35195"
+          ],
+          "details": "When using a `requests.Session`, if the first request to a given origin is made with `verify=False`, TLS certificate verification may remain disabled for all subsequent requests to that origin, even if `verify=True` is explicitly specified later.\n\nThis occurs because the underlying connection is reused from the session's connection pool, causing the initial TLS verification setting to persist for the lifetime of the pooled connection. As a result, applications may unintentionally send requests without certificate verification, leading to potential man-in-the-middle attacks and compromised confidentiality or integrity.\n\nThis behavior affects versions of `requests` prior to 2.32.0."
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:supplier/Openai/openai@1.0.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "openai",
+      "version": "1.0.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Openai/openai@1.0.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:openai:1.0.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/openai"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/openai/openai-python"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "openai"
+        },
+        {
+          "name": "component_version",
+          "value": "1.0.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Client library for the openai API"
+        },
+        {
+          "name": "component_supplier",
+          "value": "OpenAI"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-11-06T16:20:35Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"e9220abf3f0332ddfcbcef3e13f70e71459618637d2e7e87b82241aaca1147f4\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Openai/openai@1.0.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/openai/openai-python"
+        },
+        {
+          "name": "dependency_type",
+          "value": "direct"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "True"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9220abf3f0332ddfcbcef3e13f70e71459618637d2e7e87b82241aaca1147f4"
+        }
+      ],
+      "supplier": {
+        "name": "OpenAI"
+      },
+      "description": "Client library for the openai API",
+      "component_dependencies": [
+        {
+          "purl": "pkg:supplier/Alexgrnholm/anyio@3.7.1?arch=x86_64&os=windows",
+          "name": "anyio",
+          "version": "3.7.1",
+          "supplier": "Alex Grönholm"
+        },
+        {
+          "purl": "pkg:supplier/Nircohen/distro@1.9.0?arch=x86_64&os=windows",
+          "name": "distro",
+          "version": "1.9.0",
+          "supplier": "Nir Cohen"
+        },
+        {
+          "purl": "pkg:supplier/Tomchristie/httpx@0.28.1?arch=x86_64&os=windows",
+          "name": "httpx",
+          "version": "0.28.1",
+          "supplier": "Tom Christie"
+        },
+        {
+          "purl": "pkg:supplier/Samuelcolvin/pydantic@2.12.5?arch=x86_64&os=windows",
+          "name": "pydantic",
+          "version": "2.12.5",
+          "supplier": "Samuel Colvin"
+        },
+        {
+          "purl": "pkg:supplier/Tqdmdevelopers/tqdm@4.67.2?arch=x86_64&os=windows",
+          "name": "tqdm",
+          "version": "4.67.2",
+          "supplier": "tqdm developers"
+        },
+        {
+          "purl": "pkg:supplier/Typingextensions/typingextensions@4.15.0?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Annotatedtypes/annotatedtypes@0.7.0?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows",
+          "name": "certifi",
+          "version": "2026.1.4",
+          "supplier": "Kenneth Reitz"
+        },
+        {
+          "purl": "pkg:supplier/Alexgrnholm/exceptiongroup@1.3.1?arch=x86_64&os=windows",
+          "name": "exceptiongroup",
+          "version": "1.3.1",
+          "supplier": "Alex Grönholm"
+        },
+        {
+          "purl": "pkg:supplier/Nathanieljsmith/h11@0.16.0?arch=x86_64&os=windows",
+          "name": "h11",
+          "version": "0.16.0",
+          "supplier": "Nathaniel J. Smith"
+        },
+        {
+          "purl": "pkg:supplier/Tomchristie/httpcore@1.0.9?arch=x86_64&os=windows",
+          "name": "httpcore",
+          "version": "1.0.9",
+          "supplier": "Tom Christie"
+        },
+        {
+          "purl": "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows",
+          "name": "idna",
+          "version": "3.11.0",
+          "supplier": "Kim Davies"
+        },
+        {
+          "purl": "pkg:supplier/Pydanticcore/pydanticcore@2.41.5?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Nathanieljsmith/sniffio@1.3.1?arch=x86_64&os=windows",
+          "name": "sniffio",
+          "version": "1.3.1",
+          "supplier": "Nathaniel J. Smith"
+        },
+        {
+          "purl": "pkg:supplier/Typinginspection/typinginspection@0.4.2?arch=x86_64&os=windows"
+        }
+      ],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "pyinstaller",
+      "version": "5.13.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:pyinstaller:5.13.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/pyinstaller"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pyinstaller/pyinstaller"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "pyinstaller"
+        },
+        {
+          "name": "component_version",
+          "value": "5.13.0"
+        },
+        {
+          "name": "component_description",
+          "value": "PyInstaller bundles a Python application and all its dependencies into a single package."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Hartmut Goebel, Giovanni Bajo, David Vierra, David Cortesi, Martin Zibricky"
+        },
+        {
+          "name": "component_license",
+          "value": "GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)"
+        },
+        {
+          "name": "patch_status",
+          "value": "Patched - All known vulnerabilities fixed in current version"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-06-24T23:21:32Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"7fdd319828de679f9c5e381eff998ee9b4164bf4457e7fca56946701cf002c3f\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pyinstaller/pyinstaller"
+        },
+        {
+          "name": "dependency_type",
+          "value": "direct"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "True"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fdd319828de679f9c5e381eff998ee9b4164bf4457e7fca56946701cf002c3f"
+        }
+      ],
+      "supplier": {
+        "name": "Hartmut Goebel, Giovanni Bajo, David Vierra, David Cortesi, Martin Zibricky"
+      },
+      "description": "PyInstaller bundles a Python application and all its dependencies into a single package.",
+      "component_dependencies": [
+        {
+          "purl": "pkg:supplier/Ronaldoussoren/altgraph@0.17.5?arch=x86_64&os=windows",
+          "name": "altgraph",
+          "version": "0.17.5",
+          "supplier": "Ronald Oussoren"
+        },
+        {
+          "purl": "pkg:supplier/Pyinstallerhookscontrib/pyinstallerhookscontrib@2026.0.0?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Pythonpackagingauthority/setuptools@80.10.2?arch=x86_64&os=windows",
+          "name": "setuptools",
+          "version": "80.10.2",
+          "supplier": "Python Packaging Authority"
+        },
+        {
+          "purl": "pkg:supplier/Importlibmetadata/importlibmetadata@8.7.1?arch=x86_64&os=windows"
+        },
+        {
+          "purl": "pkg:supplier/Donaldstufft/packaging@26.0.0?arch=x86_64&os=windows",
+          "name": "packaging",
+          "version": "26.0.0",
+          "supplier": "Donald Stufft"
+        },
+        {
+          "purl": "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows",
+          "name": "zipp",
+          "version": "3.23.0",
+          "supplier": "Jason R. Coombs"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "id": "GHSA-9w2p-rh8c-v9g5",
+          "severity": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "severity_level": "HIGH",
+          "summary": "Local Privilege Escalation in Windows",
+          "fixed_in": "5.13.1",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-49797",
+          "modified": "2024-11-22T20:33:42.273183Z",
+          "published": "2023-12-09T00:39:46Z",
+          "aliases": [
+            "CVE-2023-49797",
+            "PYSEC-2023-292"
+          ],
+          "details": "### Impact\n\nA PyInstaller built application, elevated as a privileged process, may be tricked by an unprivileged attacker into deleting files the unprivileged user does not otherwise have access to.\n\nA user is affected if **all** the following are satisfied:\n\n* The user runs an application containing either `matplotlib` or `win32com`.\n* The application is ran as administrator (or at least a user with higher privileges than the attacker).\n* The user's temporary directory is not locked to that specific user (most likely due to `TMP`/`TEMP` environment variables pointing to an unprotected, arbitrary, non default location).\n* Either:\n  - The attacker is able to very carefully time the replacement of a temporary file with a symlink. This switch must occur exactly between [`shutil.rmtree()`'s builtin symlink check](https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/shutil.py#L623) and the deletion itself\n  - The application was built with Python 3.7.x or earlier which has no protection against Directory Junctions links\n\n### Patches\n\nThe vulnerability has been addressed in https://github.com/pyinstaller/pyinstaller/pull/7827 which corresponds to `pyinstaller >= 5.13.1`\n\n### Workarounds\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_\n\nNo workaround, although the attack complexity becomes much higher if the application is built with Python >= 3.8.0."
+        },
+        {
+          "id": "GHSA-p2xp-xx3r-mffc",
+          "severity": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+          "severity_level": "UNKNOWN",
+          "summary": "PyInstaller has local privilege escalation vulnerability",
+          "fixed_in": "6.0.0",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59042",
+          "modified": "2025-09-10T20:33:15.059165Z",
+          "published": "2025-09-10T20:30:18Z",
+          "aliases": [
+            "CVE-2025-59042"
+          ],
+          "details": "### Impact\n\nDue to a special entry being appended to `sys.path` during the bootstrap process of a PyInstaller-frozen application, and due to the bootstrap script attempting to load an optional module for bytecode decryption while this entry is still present in `sys.path`, an application built with PyInstaller < 6.0.0 may be tricked by an unprivileged attacker into executing arbitrary python code when **all** of the following conditions are met:\n\n1. Application is built with PyInstaller < 6.0.0; both onedir and onefile mode are affected.\n2. Optional bytecode encryption code feature was **not** enabled during the application build.\n3. The attacker can create files/directories in the same directory where the executable is located.\n4. The filesystem supports creation of files/directories that contain `?` in their name (i.e., non-Windows systems).\n5. The attacker is able to determine the offset at which the PYZ archive is embedded in the executable.\n\nThe attacker can create a directory (or a zip archive) next to the executable, with the name that matches the format used by PyInstaller's bootloader to transmit information about the location of PYZ archive to the bootstrap script. If this directory (or zip archive) contains a python module whose name matches the name used by the optional bytecode encryption feature, this module will be loaded and executed by the bootstrap script (in the absence of the real, built-in module that is available when the bytecode-encryption feature is enabled). This results in arbitrary code execution that requires no modification of the executable itself.\n\nIf the executable is running with elevated privileges (for example, due to having the `setuid` bit set), the code in the injected module is also executed with the said elevated privileges, resulting in a local privilege escalation.\n\n### Patches\n\nPyInstaller 6.0.0 (f5adf291c8b832d5aff7632844f7e3ddf7ad4923) removed support for bytecode encryption; this effectively removes the described attack vector, due to the bootstrap script not attempting to load the optional module for bytecode-decryption anymore.\n\nPyInstaller 6.10.0 (cfd60b510f95f92cb81fc42735c399bb781a4739) reworked the bootstrap process to avoid (ab)using `sys.path` for transmitting location of the PYZ archive, which further eliminates the possibility of described injection procedure.\n\n### Workarounds\n\nIf upgrading PyInstaller is no feasible, this issue can be worked around by ensuring proper permissions on directories containing security-sensitive executables (i.e., executables with `setuid` bit set) should mitigate the issue."
+        },
+        {
+          "id": "PYSEC-2023-292",
+          "severity": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "severity_level": "HIGH",
+          "summary": null,
+          "fixed_in": "5.13.1",
+          "url": "https://github.com/pyinstaller/pyinstaller/security/advisories/GHSA-9w2p-rh8c-v9g5",
+          "modified": "2024-11-21T14:56:57.538134Z",
+          "published": "2023-12-09T01:15:00Z",
+          "aliases": [
+            "CVE-2023-49797",
+            "GHSA-9w2p-rh8c-v9g5"
+          ],
+          "details": "PyInstaller bundles a Python application and all its dependencies into a single package. A PyInstaller built application, elevated as a privileged process, may be tricked by an unprivileged attacker into deleting files the unprivileged user does not otherwise have access to. A user is affected if **all** the following are satisfied: 1. The user runs an application containing either `matplotlib` or `win32com`. 2. The application is ran as administrator (or at least a user with higher privileges than the attacker). 3. The user's temporary directory is not locked to that specific user (most likely due to `TMP`/`TEMP` environment variables pointing to an unprotected, arbitrary, non default location). Either: A. The attacker is able to very carefully time the replacement of a temporary file with a symlink. This switch must occur exactly between `shutil.rmtree()`'s builtin symlink check and the deletion itself B: The application was built with Python 3.7.x or earlier which has no protection against Directory Junctions links. The vulnerability has been addressed in PR #7827 which corresponds to `pyinstaller >= 5.13.1`. Users are advised to upgrade. There are no known workarounds for this vulnerability."
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "blinker",
+      "version": "1.9.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:blinker:1.9.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/blinker"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets-eco/blinker"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "blinker"
+        },
+        {
+          "name": "component_version",
+          "value": "1.9.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Fast, simple object-to-object and broadcast signaling"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Jason Kirtland"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2024-11-08T17:25:46Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets-eco/blinker"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc"
+        }
+      ],
+      "supplier": {
+        "name": "Jason Kirtland"
+      },
+      "description": "Fast, simple object-to-object and broadcast signaling",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "click",
+      "version": "8.3.1",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:click:8.3.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/click"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/click"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "click"
+        },
+        {
+          "name": "component_version",
+          "value": "8.3.1"
+        },
+        {
+          "name": "component_description",
+          "value": "Composable command line interface toolkit"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-11-15T20:45:41Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/click"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "Composable command line interface toolkit",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Jasonrcoombs/importlibmetadata@8.7.1?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "importlib-metadata",
+      "version": "8.7.1",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Jasonrcoombs/importlibmetadata@8.7.1?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:importlib_metadata:8.7.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/importlib-metadata"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/python/importlib_metadata"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "importlib-metadata"
+        },
+        {
+          "name": "component_version",
+          "value": "8.7.1"
+        },
+        {
+          "name": "component_description",
+          "value": "Read metadata from Python packages"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Jason R. Coombs"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-12-21T10:00:18Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"5a1f80bf1daa489495071efbb095d75a634cf28a8bc299581244063b53176151\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Jasonrcoombs/importlibmetadata@8.7.1?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/python/importlib_metadata"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5a1f80bf1daa489495071efbb095d75a634cf28a8bc299581244063b53176151"
+        }
+      ],
+      "supplier": {
+        "name": "Jason R. Coombs"
+      },
+      "description": "Read metadata from Python packages",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "itsdangerous",
+      "version": "2.2.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD License"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:itsdangerous:2.2.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/itsdangerous"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/itsdangerous"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "itsdangerous"
+        },
+        {
+          "name": "component_version",
+          "value": "2.2.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Safely pass data to untrusted environments and back."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD License"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2024-04-16T21:28:14Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/itsdangerous"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "Safely pass data to untrusted environments and back.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "jinja2",
+      "version": "3.1.6",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD License"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:jinja2:3.1.6:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/jinja2"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/jinja"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "jinja2"
+        },
+        {
+          "name": "component_version",
+          "value": "3.1.6"
+        },
+        {
+          "name": "component_description",
+          "value": "A very fast and expressive template engine."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD License"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-03-05T20:05:00Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/jinja"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "A very fast and expressive template engine.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "werkzeug",
+      "version": "3.1.5",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:werkzeug:3.1.5:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/werkzeug"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/werkzeug"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "werkzeug"
+        },
+        {
+          "name": "component_version",
+          "value": "3.1.5"
+        },
+        {
+          "name": "component_description",
+          "value": "The comprehensive WSGI web application library."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-08T17:49:21Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"5111e36e91086ece91f93268bb39b4a35c1e6f1feac762c9c822ded0a4e322dc\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/werkzeug"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5111e36e91086ece91f93268bb39b4a35c1e6f1feac762c9c822ded0a4e322dc"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "The comprehensive WSGI web application library.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "markupsafe",
+      "version": "3.0.3",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:markupsafe:3.0.3:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/markupsafe"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/markupsafe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "markupsafe"
+        },
+        {
+          "name": "component_version",
+          "value": "3.0.3"
+        },
+        {
+          "name": "component_description",
+          "value": "Safely add untrusted strings to HTML/XML markup."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-09-27T18:37:32Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"2f981d352f04553a7171b8e44369f2af4055f888dfb147d55e42d29e29e74559\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/markupsafe"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2f981d352f04553a7171b8e44369f2af4055f888dfb147d55e42d29e29e74559"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "Safely add untrusted strings to HTML/XML markup.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "zipp",
+      "version": "3.23.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:zipp:3.23.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/zipp"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/jaraco/zipp"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "zipp"
+        },
+        {
+          "name": "component_version",
+          "value": "3.23.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Backport of pathlib-compatible object wrapper for zip files"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Jason R. Coombs"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-06-08T17:06:38Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"071652d6115ed432f5ce1d34c336c0adfd6a884660d1e9712a256d3d3bd4b14e\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/jaraco/zipp"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "071652d6115ed432f5ce1d34c336c0adfd6a884660d1e9712a256d3d3bd4b14e"
+        }
+      ],
+      "supplier": {
+        "name": "Jason R. Coombs"
+      },
+      "description": "Backport of pathlib-compatible object wrapper for zip files",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pallets/flask@3.1.2?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "flask",
+      "version": "3.1.2",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pallets/flask@3.1.2?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:flask:3.1.2:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/flask"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pallets/flask"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "flask"
+        },
+        {
+          "name": "component_version",
+          "value": "3.1.2"
+        },
+        {
+          "name": "component_description",
+          "value": "A simple framework for building complex web applications."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Pallets"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-08-19T21:03:19Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"ca1d8112ec8a6158cc29ea4858963350011b5c846a414cdb7a954aa9e967d03c\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pallets/flask@3.1.2?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pallets/flask"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca1d8112ec8a6158cc29ea4858963350011b5c846a414cdb7a954aa9e967d03c"
+        }
+      ],
+      "supplier": {
+        "name": "Pallets"
+      },
+      "description": "A simple framework for building complex web applications.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "certifi",
+      "version": "2026.1.4",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MPL-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:certifi:2026.1.4:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/certifi"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/certifi/python-certifi"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "certifi"
+        },
+        {
+          "name": "component_version",
+          "value": "2026.1.4"
+        },
+        {
+          "name": "component_description",
+          "value": "Python package for providing Mozilla's CA Bundle."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Kenneth Reitz"
+        },
+        {
+          "name": "component_license",
+          "value": "MPL-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-04T02:42:40Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"9943707519e4add1115f44c2bc244f782c0249876bf51b6599fee1ffbedd685c\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/certifi/python-certifi"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9943707519e4add1115f44c2bc244f782c0249876bf51b6599fee1ffbedd685c"
+        }
+      ],
+      "supplier": {
+        "name": "Kenneth Reitz"
+      },
+      "description": "Python package for providing Mozilla's CA Bundle.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Ahmedrtahri/charsetnormalizer@3.4.4?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "charset-normalizer",
+      "version": "3.4.4",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Ahmedrtahri/charsetnormalizer@3.4.4?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:charset_normalizer:3.4.4:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/charset-normalizer"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/jawah/charset_normalizer"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "charset-normalizer"
+        },
+        {
+          "name": "component_version",
+          "value": "3.4.4"
+        },
+        {
+          "name": "component_description",
+          "value": "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Ahmed R. TAHRI"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-10-14T04:42:17Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"e824f1492727fa856dd6eda4f7cee25f8518a12f3c4a56a74e8095695089cf6d\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Ahmedrtahri/charsetnormalizer@3.4.4?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/jawah/charset_normalizer"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e824f1492727fa856dd6eda4f7cee25f8518a12f3c4a56a74e8095695089cf6d"
+        }
+      ],
+      "supplier": {
+        "name": "Ahmed R. TAHRI"
+      },
+      "description": "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "idna",
+      "version": "3.11.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:idna:3.11.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/idna"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/kjd/idna"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "idna"
+        },
+        {
+          "name": "component_version",
+          "value": "3.11.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Internationalized Domain Names in Applications (IDNA)"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Kim Davies"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-10-12T14:55:18Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/kjd/idna"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea"
+        }
+      ],
+      "supplier": {
+        "name": "Kim Davies"
+      },
+      "description": "Internationalized Domain Names in Applications (IDNA)",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Andreypetrov/urllib3@2.6.3?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "urllib3",
+      "version": "2.6.3",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Andreypetrov/urllib3@2.6.3?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:urllib3:2.6.3:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/urllib3"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/urllib3/urllib3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "urllib3"
+        },
+        {
+          "name": "component_version",
+          "value": "2.6.3"
+        },
+        {
+          "name": "component_description",
+          "value": "HTTP library with thread-safe connection pooling, file post, and more."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Andrey Petrov"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-07T16:24:42Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Andreypetrov/urllib3@2.6.3?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/urllib3/urllib3"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4"
+        }
+      ],
+      "supplier": {
+        "name": "Andrey Petrov"
+      },
+      "description": "HTTP library with thread-safe connection pooling, file post, and more.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Alexgrnholm/anyio@3.7.1?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "anyio",
+      "version": "3.7.1",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Alexgrnholm/anyio@3.7.1?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:anyio:3.7.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/anyio"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/agronholm/anyio"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "anyio"
+        },
+        {
+          "name": "component_version",
+          "value": "3.7.1"
+        },
+        {
+          "name": "component_description",
+          "value": "High level compatibility layer for multiple asynchronous event loop implementations"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Alex Grönholm"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-07-05T16:44:59Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"91dee416e570e92c64041bd18b900d1d6fa78dff7048769ce5ac5ddad004fbb5\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Alexgrnholm/anyio@3.7.1?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/agronholm/anyio"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "91dee416e570e92c64041bd18b900d1d6fa78dff7048769ce5ac5ddad004fbb5"
+        }
+      ],
+      "supplier": {
+        "name": "Alex Grönholm"
+      },
+      "description": "High level compatibility layer for multiple asynchronous event loop implementations",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Nircohen/distro@1.9.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "distro",
+      "version": "1.9.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Nircohen/distro@1.9.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:distro:1.9.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/distro"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/python-distro/distro"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "distro"
+        },
+        {
+          "name": "component_version",
+          "value": "1.9.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Distro - an OS platform information API"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Nir Cohen"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2023-12-24T09:54:30Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Nircohen/distro@1.9.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/python-distro/distro"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2"
+        }
+      ],
+      "supplier": {
+        "name": "Nir Cohen"
+      },
+      "description": "Distro - an OS platform information API",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Tomchristie/httpx@0.28.1?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "httpx",
+      "version": "0.28.1",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Tomchristie/httpx@0.28.1?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:httpx:0.28.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/httpx"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/encode/httpx"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "httpx"
+        },
+        {
+          "name": "component_version",
+          "value": "0.28.1"
+        },
+        {
+          "name": "component_description",
+          "value": "The next generation HTTP client."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Tom Christie"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2024-12-06T15:37:21Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Tomchristie/httpx@0.28.1?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/encode/httpx"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad"
+        }
+      ],
+      "supplier": {
+        "name": "Tom Christie"
+      },
+      "description": "The next generation HTTP client.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Samuelcolvin/pydantic@2.12.5?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "pydantic",
+      "version": "2.12.5",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Samuelcolvin/pydantic@2.12.5?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:pydantic:2.12.5:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/pydantic"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pydantic/pydantic"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "pydantic"
+        },
+        {
+          "name": "component_version",
+          "value": "2.12.5"
+        },
+        {
+          "name": "component_description",
+          "value": "Data validation using Python type hints"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Samuel Colvin"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-11-26T15:11:44Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"e561593fccf61e8a20fc46dfc2dfe075b8be7d0188df33f221ad1f0139180f9d\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Samuelcolvin/pydantic@2.12.5?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pydantic/pydantic"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e561593fccf61e8a20fc46dfc2dfe075b8be7d0188df33f221ad1f0139180f9d"
+        }
+      ],
+      "supplier": {
+        "name": "Samuel Colvin"
+      },
+      "description": "Data validation using Python type hints",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Tqdmdevelopers/tqdm@4.67.2?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "tqdm",
+      "version": "4.67.2",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT AND MPL-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Tqdmdevelopers/tqdm@4.67.2?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:tqdm:4.67.2:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/tqdm"
+        },
+        {
+          "type": "website",
+          "url": "https://tqdm.github.io"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "tqdm"
+        },
+        {
+          "name": "component_version",
+          "value": "4.67.2"
+        },
+        {
+          "name": "component_description",
+          "value": "Fast, Extensible Progress Meter"
+        },
+        {
+          "name": "component_supplier",
+          "value": "tqdm developers"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT AND MPL-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-30T23:12:04Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"9a12abcbbff58b6036b2167d9d3853042b9d436fe7330f06ae047867f2f8e0a7\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Tqdmdevelopers/tqdm@4.67.2?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://tqdm.github.io"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a12abcbbff58b6036b2167d9d3853042b9d436fe7330f06ae047867f2f8e0a7"
+        }
+      ],
+      "supplier": {
+        "name": "tqdm developers"
+      },
+      "description": "Fast, Extensible Progress Meter",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Guidovanrossum/typingextensions@4.15.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "typing-extensions",
+      "version": "4.15.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "PSF-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Guidovanrossum/typingextensions@4.15.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:typing_extensions:4.15.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/typing-extensions"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/python/typing_extensions"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "typing-extensions"
+        },
+        {
+          "name": "component_version",
+          "value": "4.15.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Backported and Experimental Type Hints for Python 3.9+"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Guido van Rossum, Jukka Lehtosalo, Łukasz Langa, Michael Lee"
+        },
+        {
+          "name": "component_license",
+          "value": "PSF-2.0"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-08-25T13:49:24Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Guidovanrossum/typingextensions@4.15.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/python/typing_extensions"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"
+        }
+      ],
+      "supplier": {
+        "name": "Guido van Rossum, Jukka Lehtosalo, Łukasz Langa, Michael Lee"
+      },
+      "description": "Backported and Experimental Type Hints for Python 3.9+",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Adriangarciabadaracco/annotatedtypes@0.7.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "annotated-types",
+      "version": "0.7.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Adriangarciabadaracco/annotatedtypes@0.7.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:annotated_types:0.7.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/annotated-types"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/annotated-types/annotated-types"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "annotated-types"
+        },
+        {
+          "name": "component_version",
+          "value": "0.7.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Reusable constraint types to use with typing.Annotated"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Adrian Garcia Badaracco"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2024-05-20T21:33:24Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Adriangarciabadaracco/annotatedtypes@0.7.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/annotated-types/annotated-types"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53"
+        }
+      ],
+      "supplier": {
+        "name": "Adrian Garcia Badaracco"
+      },
+      "description": "Reusable constraint types to use with typing.Annotated",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Alexgrnholm/exceptiongroup@1.3.1?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "exceptiongroup",
+      "version": "1.3.1",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Alexgrnholm/exceptiongroup@1.3.1?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:exceptiongroup:1.3.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/exceptiongroup"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/agronholm/exceptiongroup"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "exceptiongroup"
+        },
+        {
+          "name": "component_version",
+          "value": "1.3.1"
+        },
+        {
+          "name": "component_description",
+          "value": "Backport of PEP 654 (exception groups)"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Alex Grönholm"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-11-21T23:01:53Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Alexgrnholm/exceptiongroup@1.3.1?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/agronholm/exceptiongroup"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598"
+        }
+      ],
+      "supplier": {
+        "name": "Alex Grönholm"
+      },
+      "description": "Backport of PEP 654 (exception groups)",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Nathanieljsmith/h11@0.16.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "h11",
+      "version": "0.16.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Nathanieljsmith/h11@0.16.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:h11:0.16.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/h11"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/python-hyper/h11"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "h11"
+        },
+        {
+          "name": "component_version",
+          "value": "0.16.0"
+        },
+        {
+          "name": "component_description",
+          "value": "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Nathaniel J. Smith"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-04-24T03:35:24Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Nathanieljsmith/h11@0.16.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/python-hyper/h11"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86"
+        }
+      ],
+      "supplier": {
+        "name": "Nathaniel J. Smith"
+      },
+      "description": "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Tomchristie/httpcore@1.0.9?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "httpcore",
+      "version": "1.0.9",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Tomchristie/httpcore@1.0.9?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:httpcore:1.0.9:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/httpcore"
+        },
+        {
+          "type": "website",
+          "url": "https://www.encode.io/httpcore/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "httpcore"
+        },
+        {
+          "name": "component_version",
+          "value": "1.0.9"
+        },
+        {
+          "name": "component_description",
+          "value": "A minimal low-level HTTP client."
+        },
+        {
+          "name": "component_supplier",
+          "value": "Tom Christie"
+        },
+        {
+          "name": "component_license",
+          "value": "BSD-3-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-04-24T22:06:20Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Tomchristie/httpcore@1.0.9?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://www.encode.io/httpcore/"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55"
+        }
+      ],
+      "supplier": {
+        "name": "Tom Christie"
+      },
+      "description": "A minimal low-level HTTP client.",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Samuelcolvin/pydanticcore@2.41.5?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "pydantic-core",
+      "version": "2.41.5",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Samuelcolvin/pydanticcore@2.41.5?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:pydantic_core:2.41.5:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/pydantic-core"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pydantic/pydantic-core"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "pydantic-core"
+        },
+        {
+          "name": "component_version",
+          "value": "2.41.5"
+        },
+        {
+          "name": "component_description",
+          "value": "Core functionality for Pydantic validation and serialization"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Samuel Colvin"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-11-04T13:42:18Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"77b63866ca88d804225eaa4af3e664c5faf3568cea95360d21f4725ab6e07146\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Samuelcolvin/pydanticcore@2.41.5?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pydantic/pydantic-core"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "77b63866ca88d804225eaa4af3e664c5faf3568cea95360d21f4725ab6e07146"
+        }
+      ],
+      "supplier": {
+        "name": "Samuel Colvin"
+      },
+      "description": "Core functionality for Pydantic validation and serialization",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Nathanieljsmith/sniffio@1.3.1?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "sniffio",
+      "version": "1.3.1",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0 OR MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Nathanieljsmith/sniffio@1.3.1?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:sniffio:1.3.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/sniffio"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/python-trio/sniffio"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "sniffio"
+        },
+        {
+          "name": "component_version",
+          "value": "1.3.1"
+        },
+        {
+          "name": "component_description",
+          "value": "Sniff out which async library your code is running under"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Nathaniel J. Smith"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache-2.0 OR MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2024-02-25T23:20:01Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Nathanieljsmith/sniffio@1.3.1?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/python-trio/sniffio"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2"
+        }
+      ],
+      "supplier": {
+        "name": "Nathaniel J. Smith"
+      },
+      "description": "Sniff out which async library your code is running under",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Victorienplot/typinginspection@0.4.2?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "typing-inspection",
+      "version": "0.4.2",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Victorienplot/typinginspection@0.4.2?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:typing_inspection:0.4.2:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/typing-inspection"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pydantic/typing-inspection"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "typing-inspection"
+        },
+        {
+          "name": "component_version",
+          "value": "0.4.2"
+        },
+        {
+          "name": "component_description",
+          "value": "Runtime typing introspection tools"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Victorien Plot"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-10-01T02:14:40Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"4ed1cacbdc298c220f1bd249ed5287caa16f34d44ef4e9c3d0cbad5b521545e7\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Victorienplot/typinginspection@0.4.2?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pydantic/typing-inspection"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ed1cacbdc298c220f1bd249ed5287caa16f34d44ef4e9c3d0cbad5b521545e7"
+        }
+      ],
+      "supplier": {
+        "name": "Victorien Plot"
+      },
+      "description": "Runtime typing introspection tools",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Ronaldoussoren/altgraph@0.17.5?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "altgraph",
+      "version": "0.17.5",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Ronaldoussoren/altgraph@0.17.5?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:altgraph:0.17.5:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/altgraph"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/ronaldoussoren/altgraph"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "altgraph"
+        },
+        {
+          "name": "component_version",
+          "value": "0.17.5"
+        },
+        {
+          "name": "component_description",
+          "value": "Python graph (network) package"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Ronald Oussoren"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2025-11-21T20:35:49Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"f3a22400bce1b0c701683820ac4f3b159cd301acab067c51c653e06961600597\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Ronaldoussoren/altgraph@0.17.5?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/ronaldoussoren/altgraph"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f3a22400bce1b0c701683820ac4f3b159cd301acab067c51c653e06961600597"
+        }
+      ],
+      "supplier": {
+        "name": "Ronald Oussoren"
+      },
+      "description": "Python graph (network) package",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Legorooj/pyinstallerhookscontrib@2026.0.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "pyinstaller-hooks-contrib",
+      "version": "2026.0.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache Software License"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Legorooj/pyinstallerhookscontrib@2026.0.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:pyinstaller_hooks_contrib:2026.0.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/pyinstaller-hooks-contrib"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pyinstaller/pyinstaller-hooks-contrib"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "pyinstaller-hooks-contrib"
+        },
+        {
+          "name": "component_version",
+          "value": "2026.0.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Community maintained hooks for PyInstaller"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Legorooj"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache Software License"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-20T00:15:21Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"0590db8edeba3e6c30c8474937021f5cd39c0602b4d10f74a064c73911efaca5\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Legorooj/pyinstallerhookscontrib@2026.0.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pyinstaller/pyinstaller-hooks-contrib"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0590db8edeba3e6c30c8474937021f5cd39c0602b4d10f74a064c73911efaca5"
+        }
+      ],
+      "supplier": {
+        "name": "Legorooj"
+      },
+      "description": "Community maintained hooks for PyInstaller",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Pythonpackagingauthority/setuptools@80.10.2?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "setuptools",
+      "version": "80.10.2",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Pythonpackagingauthority/setuptools@80.10.2?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:setuptools:80.10.2:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/setuptools"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pypa/setuptools"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "setuptools"
+        },
+        {
+          "name": "component_version",
+          "value": "80.10.2"
+        },
+        {
+          "name": "component_description",
+          "value": "Easily download, build, install, upgrade, and uninstall Python packages"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Python Packaging Authority"
+        },
+        {
+          "name": "component_license",
+          "value": "MIT"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-25T22:38:15Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"95b30ddfb717250edb492926c92b5221f7ef3fbcc2b07579bcd4a27da21d0173\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Pythonpackagingauthority/setuptools@80.10.2?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pypa/setuptools"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95b30ddfb717250edb492926c92b5221f7ef3fbcc2b07579bcd4a27da21d0173"
+        }
+      ],
+      "supplier": {
+        "name": "Python Packaging Authority"
+      },
+      "description": "Easily download, build, install, upgrade, and uninstall Python packages",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "bom-ref": "pkg:supplier/Donaldstufft/packaging@26.0.0?arch=x86_64&os=windows",
+      "type": "library",
+      "name": "packaging",
+      "version": "26.0.0",
+      "scope": "required",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0 OR BSD-2-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:supplier/Donaldstufft/packaging@26.0.0?arch=x86_64&os=windows",
+      "cpe": "cpe:2.3:a:*:packaging:26.0.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/packaging"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/pypa/packaging"
+        }
+      ],
+      "properties": [
+        {
+          "name": "component_name",
+          "value": "packaging"
+        },
+        {
+          "name": "component_version",
+          "value": "26.0.0"
+        },
+        {
+          "name": "component_description",
+          "value": "Core utilities for Python packages"
+        },
+        {
+          "name": "component_supplier",
+          "value": "Donald Stufft"
+        },
+        {
+          "name": "component_license",
+          "value": "Apache-2.0 OR BSD-2-Clause"
+        },
+        {
+          "name": "patch_status",
+          "value": "Up to date - No known vulnerabilities"
+        },
+        {
+          "name": "release_date",
+          "value": "2026-01-21T20:50:37Z"
+        },
+        {
+          "name": "criticality",
+          "value": "Medium"
+        },
+        {
+          "name": "hashes",
+          "value": "[{\"alg\": \"SHA-256\", \"content\": \"b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529\"}]"
+        },
+        {
+          "name": "unique_identifier",
+          "value": "pkg:supplier/Donaldstufft/packaging@26.0.0?arch=x86_64&os=windows"
+        },
+        {
+          "name": "homepage",
+          "value": "https://github.com/pypa/packaging"
+        },
+        {
+          "name": "dependency_type",
+          "value": "transitive"
+        },
+        {
+          "name": "eol_status",
+          "value": "Active"
+        },
+        {
+          "name": "is_deprecated",
+          "value": "False"
+        },
+        {
+          "name": "is_direct_dependency",
+          "value": "False"
+        },
+        {
+          "name": "language",
+          "value": "python"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529"
+        }
+      ],
+      "supplier": {
+        "name": "Donald Stufft"
+      },
+      "description": "Core utilities for Python packages",
+      "component_dependencies": [],
+      "vulnerabilities": []
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:supplier/Pallets/Flask@3.0.0?arch=x86_64&os=windows",
+      "dependsOn": [
+        "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows",
+        "pkg:supplier/Importlibmetadata/importlibmetadata@8.7.1?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows",
+        "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows"
+      ]
+    },
+    {
+      "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows",
+      "dependsOn": [
+        "pkg:supplier/Pallets/flask@3.1.2?arch=x86_64&os=windows",
+        "pkg:supplier/Jasonkirtland/blinker@1.9.0?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/click@8.3.1?arch=x86_64&os=windows",
+        "pkg:supplier/Importlibmetadata/importlibmetadata@8.7.1?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/itsdangerous@2.2.0?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/jinja2@3.1.6?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/markupsafe@3.0.3?arch=x86_64&os=windows",
+        "pkg:supplier/Pallets/werkzeug@3.1.5?arch=x86_64&os=windows",
+        "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows"
+      ]
+    },
+    {
+      "ref": "pkg:supplier/Kennethreitz/requests@2.31.0?arch=x86_64&os=windows",
+      "dependsOn": [
+        "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows",
+        "pkg:supplier/Charsetnormalizer/charsetnormalizer@3.4.4?arch=x86_64&os=windows",
+        "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows",
+        "pkg:supplier/Andreypetrov/urllib3@2.6.3?arch=x86_64&os=windows"
+      ]
+    },
+    {
+      "ref": "pkg:supplier/Openai/openai@1.0.0?arch=x86_64&os=windows",
+      "dependsOn": [
+        "pkg:supplier/Alexgrnholm/anyio@3.7.1?arch=x86_64&os=windows",
+        "pkg:supplier/Nircohen/distro@1.9.0?arch=x86_64&os=windows",
+        "pkg:supplier/Tomchristie/httpx@0.28.1?arch=x86_64&os=windows",
+        "pkg:supplier/Samuelcolvin/pydantic@2.12.5?arch=x86_64&os=windows",
+        "pkg:supplier/Tqdmdevelopers/tqdm@4.67.2?arch=x86_64&os=windows",
+        "pkg:supplier/Typingextensions/typingextensions@4.15.0?arch=x86_64&os=windows",
+        "pkg:supplier/Annotatedtypes/annotatedtypes@0.7.0?arch=x86_64&os=windows",
+        "pkg:supplier/Kennethreitz/certifi@2026.1.4?arch=x86_64&os=windows",
+        "pkg:supplier/Alexgrnholm/exceptiongroup@1.3.1?arch=x86_64&os=windows",
+        "pkg:supplier/Nathanieljsmith/h11@0.16.0?arch=x86_64&os=windows",
+        "pkg:supplier/Tomchristie/httpcore@1.0.9?arch=x86_64&os=windows",
+        "pkg:supplier/Kimdavies/idna@3.11.0?arch=x86_64&os=windows",
+        "pkg:supplier/Pydanticcore/pydanticcore@2.41.5?arch=x86_64&os=windows",
+        "pkg:supplier/Nathanieljsmith/sniffio@1.3.1?arch=x86_64&os=windows",
+        "pkg:supplier/Typinginspection/typinginspection@0.4.2?arch=x86_64&os=windows"
+      ]
+    },
+    {
+      "ref": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows",
+      "dependsOn": [
+        "pkg:supplier/Ronaldoussoren/altgraph@0.17.5?arch=x86_64&os=windows",
+        "pkg:supplier/Pyinstallerhookscontrib/pyinstallerhookscontrib@2026.0.0?arch=x86_64&os=windows",
+        "pkg:supplier/Pythonpackagingauthority/setuptools@80.10.2?arch=x86_64&os=windows",
+        "pkg:supplier/Importlibmetadata/importlibmetadata@8.7.1?arch=x86_64&os=windows",
+        "pkg:supplier/Donaldstufft/packaging@26.0.0?arch=x86_64&os=windows",
+        "pkg:supplier/Jasonrcoombs/zipp@3.23.0?arch=x86_64&os=windows"
+      ]
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "id": "GHSA-43qf-4rqw-9q2g",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Flask-CORS vulnerable to Improper Handling of Case Sensitivity",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-7rxf-gvfg-47g4",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Flask-CORS improper regex path matching vulnerability",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-84pr-m4jr-85g5",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "flask-cors vulnerable to log injection when the log level is set to debug",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-8vgw-p6qm-5gr7",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Flask-CORS allows for inconsistent CORS matching",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-hxwh-jpp2-84pm",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Flask-CORS allows the `Access-Control-Allow-Private-Network` CORS header to be set to true by default",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "PYSEC-2024-71",
+      "source": {
+        "name": "OSV"
+      },
+      "description": null,
+      "affects": [
+        {
+          "ref": "pkg:supplier/Corydolphin/FlaskCORS@4.0.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9hjg-9r4m-mvj7",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Requests vulnerable to .netrc credentials leak via malicious URLs",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Kennethreitz/requests@2.31.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9wx4-h78v-vm56",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Requests `Session` object does not verify requests after making first request with verify=False",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Kennethreitz/requests@2.31.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9w2p-rh8c-v9g5",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "Local Privilege Escalation in Windows",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "GHSA-p2xp-xx3r-mffc",
+      "source": {
+        "name": "OSV"
+      },
+      "description": "PyInstaller has local privilege escalation vulnerability",
+      "affects": [
+        {
+          "ref": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+          "method": "CVSSv3"
+        }
+      ]
+    },
+    {
+      "id": "PYSEC-2023-292",
+      "source": {
+        "name": "OSV"
+      },
+      "description": null,
+      "affects": [
+        {
+          "ref": "pkg:supplier/Hartmutgoebel/pyinstaller@5.13.0?arch=x86_64&os=windows"
+        }
+      ],
+      "ratings": [
+        {
+          "source": {
+            "name": "CVSS"
+          },
+          "severity": "unknown",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "method": "CVSSv3"
+        }
+      ]
+    }
+  ]
+}

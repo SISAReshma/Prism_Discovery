@@ -1,0 +1,11 @@
+{
+  "key": "npm_jest-snapshot_29.7.0",
+  "cached_at": "2026-02-03T04:52:11.277203Z",
+  "data": {
+    "name": "jest-snapshot",
+    "version": "29.7.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jestjs/jest#readme",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "anyio_3.7.1",
+  "cached_at": "2026-02-03T07:10:52.882702Z",
+  "data": {
+    "name": "anyio",
+    "version": "3.7.1",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "High level compatibility layer for multiple asynchronous event loop implementations",
+    "release_date": "2023-07-05T16:44:59.805649Z",
+    "homepage": "https://pypi.org/project/anyio/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "91dee416e570e92c64041bd18b900d1d6fa78dff7048769ce5ac5ddad004fbb5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "npm_strip-bom_4.0.0",
+  "cached_at": "2026-02-03T04:52:59.488660Z",
+  "data": {
+    "name": "strip-bom",
+    "version": "4.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/sindresorhus/strip-bom#readme",
+    "description": ""
+  }
+}

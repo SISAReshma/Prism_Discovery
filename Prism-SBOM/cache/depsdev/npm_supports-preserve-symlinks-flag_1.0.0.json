@@ -1,0 +1,11 @@
+{
+  "key": "npm_supports-preserve-symlinks-flag_1.0.0",
+  "cached_at": "2026-02-03T04:54:04.679015Z",
+  "data": {
+    "name": "supports-preserve-symlinks-flag",
+    "version": "1.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/inspect-js/node-supports-preserve-symlinks-flag#readme",
+    "description": ""
+  }
+}

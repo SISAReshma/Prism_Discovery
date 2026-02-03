@@ -1,0 +1,11 @@
+{
+  "key": "npm_strip-json-comments_3.1.1",
+  "cached_at": "2026-02-03T04:52:44.153137Z",
+  "data": {
+    "name": "strip-json-comments",
+    "version": "3.1.1",
+    "license": "MIT",
+    "homepage": "https://github.com/sindresorhus/strip-json-comments#readme",
+    "description": ""
+  }
+}

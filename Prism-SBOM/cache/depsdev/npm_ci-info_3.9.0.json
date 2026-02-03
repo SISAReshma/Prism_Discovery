@@ -1,0 +1,11 @@
+{
+  "key": "npm_ci-info_3.9.0",
+  "cached_at": "2026-02-03T04:52:02.923487Z",
+  "data": {
+    "name": "ci-info",
+    "version": "3.9.0",
+    "license": "MIT",
+    "homepage": "https://github.com/watson/ci-info",
+    "description": ""
+  }
+}

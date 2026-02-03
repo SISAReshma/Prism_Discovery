@@ -3,13 +3,17 @@ from __future__ import annotations
 from typing import Dict, Any, List
 import urllib.parse
 from src.utils.hash_utils import hashes_for_files
-from src.utils.package_metadata_utils import (
+from src.clients.pypi_client import (
     fetch_pypi_meta,
     extract_license_from_pypi_meta,
     extract_hashes_from_pypi_meta,
+    extract_release_date_from_pypi,
+)
+from src.clients.npm_client import (
     fetch_npm_meta,
     extract_license_from_npm_meta,
     extract_hashes_from_npm_meta,
+    extract_release_date_from_npm,
     infer_license_type,
 )
 from src.core import vulnerability_provider
@@ -76,7 +80,7 @@ def enrich_python_pkg(pkg: Dict[str, Any]) -> Dict[str, Any]:
                 out["component_license"] = out["license"]
             
             # hashes (SHA-256)
-            from src.utils.package_metadata_utils import extract_hashes_from_pypi_meta, extract_release_date_from_pypi
+            from src.clients.pypi_client import extract_hashes_from_pypi_meta, extract_release_date_from_pypi
             hashes = extract_hashes_from_pypi_meta(pypi, ver if ver != "UNKNOWN" else None)
             if hashes:
                 out["hashes"] = hashes
@@ -282,7 +286,7 @@ def enrich_npm_pkg(pkg: Dict[str, Any]) -> Dict[str, Any]:
                     out["hashes"] = hashes
             
             # release date from 'time' field
-            from src.utils.package_metadata_utils import extract_release_date_from_npm
+            from src.clients.npm_client import extract_release_date_from_npm
             release_date = extract_release_date_from_npm(npm_meta, ver if ver != "UNKNOWN" else None)
             if release_date:
                 out["release_date"] = release_date

@@ -11,12 +11,26 @@ Each package object:
 
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-class NpmCataloger:
+from src.catalogers.base import BaseCataloger
+
+
+class NpmCataloger(BaseCataloger):
     def __init__(self):
         pass
+
+    @property
+    def language(self) -> str:
+        """Return language name."""
+        return "javascript"
+
+    @property
+    def ecosystem(self) -> str:
+        """Return ecosystem name."""
+        return "npm"
 
     def detect(self, root: Path) -> bool:
         """Check if this is a Node.js project."""
@@ -119,7 +133,6 @@ class NpmCataloger:
                 version_constraint = ver if isinstance(ver, str) else ""
                 clean_ver = ver
                 if isinstance(ver, str):
-                    import re
                     clean_ver = re.sub(r"^[\\^~=<> ]+", "", ver)
                 
                 out.append({
@@ -138,7 +151,6 @@ class NpmCataloger:
                 version_constraint = ver if isinstance(ver, str) else ""
                 clean_ver = ver
                 if isinstance(ver, str):
-                    import re
                     clean_ver = re.sub(r"^[\\^~=<> ]+", "", ver)
                 
                 out.append({

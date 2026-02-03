@@ -4,7 +4,8 @@ Conda Package Cataloger
 Catalogs conda packages from:
 1. conda-meta/*.json (locally installed packages)
 2. environment.yml (environment specifications)
-3. Anaconda API (fallback for missing metadata)
+
+NOTE: Enrichment (license, description, supplier) happens in /registry_enrich endpoint.
 """
 
 import os
@@ -15,7 +16,6 @@ from pathlib import Path
 from typing import List, Dict, Optional, Any
 
 from src.catalogers.base import BaseCataloger
-from src.clients.anaconda_client import AnacondaClient
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,6 @@ class CondaCataloger(BaseCataloger):
     def __init__(self):
         self._language = "conda"
         self._ecosystem = "conda"
-        self.anaconda_client = AnacondaClient()
     
     @property
     def language(self) -> str:
@@ -78,9 +77,24 @@ class CondaCataloger(BaseCataloger):
             packages.extend(env_packages)
             manifests.append(str(env_file))
 
-        # Enrich packages
+        # Set basic fields for each package (NO enrichment - that happens in /registry_enrich)
         for pkg in packages:
-            self._enrich_package(pkg)
+            name = pkg.get("name")
+            version = pkg.get("version", "UNKNOWN")
+            channel = pkg.get("channel", "conda-forge")
+            
+            pkg["is_direct_dependency"] = True
+            pkg.setdefault("scope", "required")
+            pkg.setdefault("type", "library")
+            pkg.setdefault("purl", f"pkg:conda/{channel}/{name}@{version}")
+            
+            # Placeholders (will be filled by /registry_enrich)
+            pkg.setdefault("component_name", name)
+            pkg.setdefault("component_version", version)
+            pkg.setdefault("component_license", "NOASSERTION")
+            pkg.setdefault("hashes", [])
+
+        print(f"[INFO] Found {len(packages)} DIRECT dependencies from conda manifests")
 
         return {
             "packages": packages,
@@ -167,29 +181,7 @@ class CondaCataloger(BaseCataloger):
         return {
             "name": name,
             "version": version,
-            "language": "python",
+            "language": "conda",
             "ecosystem": "conda",
             "channel": channel
         }
-
-    def _enrich_package(self, pkg: Dict[str, Any]) -> None:
-        """Enrich package with metadata."""
-        name = pkg.get("name")
-        channel = pkg.get("channel", "conda-forge")
-
-        if pkg.get("license"):
-            return
-
-        try:
-            metadata = self.anaconda_client.get_package_info(name, channel)
-            if metadata:
-                pkg.setdefault("license", metadata.get("license", "NOASSERTION"))
-                pkg.setdefault("description", metadata.get("summary", ""))
-                pkg.setdefault("supplier", metadata.get("owner", {}).get("name", ""))
-        except Exception as e:
-            logger.debug(f"Failed to enrich {name}: {e}")
-
-        pkg.setdefault("license", "NOASSERTION")
-        pkg.setdefault("description", "")
-        pkg.setdefault("supplier", "Conda Community")
-        pkg.setdefault("purl", f"pkg:conda/{channel}/{name}@{pkg.get('version', 'UNKNOWN')}")

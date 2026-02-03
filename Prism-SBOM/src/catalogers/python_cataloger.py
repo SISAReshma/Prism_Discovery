@@ -28,10 +28,22 @@ try:
 except ModuleNotFoundError:
     import tomli as tomllib  # type: ignore
 
+from src.catalogers.base import BaseCataloger
 
-class PythonCataloger:
+
+class PythonCataloger(BaseCataloger):
     def __init__(self):
-        self.language = "python"
+        pass
+
+    @property
+    def language(self) -> str:
+        """Return language name."""
+        return "python"
+
+    @property
+    def ecosystem(self) -> str:
+        """Return ecosystem name."""
+        return "pypi"
 
     # -------------------------
     def _should_skip_path(self, path: Path) -> bool:

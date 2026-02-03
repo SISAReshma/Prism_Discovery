@@ -1,0 +1,66 @@
+{
+  "scan_metadata": {
+    "scan_id": "11",
+    "timestamp": "2026-02-03T03:44:45.119397+00:00",
+    "repository": "chadyi/AITradeGame",
+    "scan_type": "full",
+    "tool": "StackSQScanner"
+  },
+  "vulnerable_libraries": [
+    {
+      "library": "pyinstaller",
+      "current_version": "5.13.0",
+      "vulnerabilities_count": 3,
+      "priority": "HIGH",
+      "recommended_action": {
+        "type": "upgrade",
+        "action": "Upgrade from 5.13.0 to 6.0.0 or later",
+        "current_version": "5.13.0",
+        "fixed_version": "6.0.0",
+        "fix_command": "pip install pyinstaller>=6.0.0",
+        "fixes_vulnerabilities": 3,
+        "status": "action_required"
+      }
+    },
+    {
+      "library": "Flask-CORS",
+      "current_version": "4.0.0",
+      "vulnerabilities_count": 6,
+      "priority": "MEDIUM",
+      "recommended_action": {
+        "type": "upgrade",
+        "action": "Upgrade from 4.0.0 to 6.0.0 or later",
+        "current_version": "4.0.0",
+        "fixed_version": "6.0.0",
+        "fix_command": "pip install Flask-CORS>=6.0.0",
+        "fixes_vulnerabilities": 6,
+        "status": "action_required"
+      }
+    },
+    {
+      "library": "requests",
+      "current_version": "2.31.0",
+      "vulnerabilities_count": 2,
+      "priority": "MEDIUM",
+      "recommended_action": {
+        "type": "upgrade",
+        "action": "Upgrade from 2.31.0 to 2.32.4 or later",
+        "current_version": "2.31.0",
+        "fixed_version": "2.32.4",
+        "fix_command": "pip install requests>=2.32.4",
+        "fixes_vulnerabilities": 2,
+        "status": "action_required"
+      }
+    }
+  ],
+  "action_summary": {
+    "total_actions_required": 3,
+    "by_type": {
+      "upgrade": 3,
+      "declare": 0,
+      "investigate": 0
+    },
+    "estimated_vulnerabilities_fixed": 11,
+    "estimated_fix_time": "5-10 minutes"
+  }
+}

@@ -27,7 +27,6 @@ Usage:
 """
 
 from __future__ import annotations
-import uuid
 import json
 import shutil
 from pathlib import Path
@@ -40,48 +39,19 @@ from enum import Enum
 import logging
 import time
 
-# Import rate limiter for registry API calls
-from src.utils.rate_limiter import get_rate_limiter
 from src.registry.language_registry import get_purl_type
+
+# Import registry clients for enrichment
+from src.clients.pypi_client import PyPIClient
+from src.clients.npm_client import NpmClient
+# Note: EOLClient not needed - EOL/deprecation now checked via PyPI/npm APIs directly
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
-# Initialize rate limiter for registry APIs
-_registry_rate_limiter = get_rate_limiter()
-
-
-def _rate_limited_request(url: str, api_name: str, timeout: int = 5) -> Optional[Any]:
-    """
-    Make a rate-limited HTTP request.
-    
-    Args:
-        url: URL to fetch
-        api_name: API identifier for rate limiting (pypi, npm, osv)
-        timeout: Request timeout in seconds
-    
-    Returns:
-        Response object or None if rate limited/failed
-    """
-    import requests
-    
-    # Check rate limit
-    usage = _registry_rate_limiter.get_current_usage(api_name)
-    if usage['remaining'] <= 0:
-        logger.warning(f"[RATE LIMIT] {api_name}: Rate limit exceeded, skipping request")
-        return None
-    
-    # Record the call
-    _registry_rate_limiter.record_call(api_name)
-    
-    # Add small delay between requests (100ms) to avoid bursts
-    time.sleep(0.1)
-    
-    try:
-        return requests.get(url, timeout=timeout)
-    except Exception as e:
-        logger.debug(f"[{api_name}] Request failed: {e}")
-        return None
+# Initialize registry clients
+_pypi_client = PyPIClient()
+_npm_client = NpmClient()
 
 
 class SourceType(str, Enum):
@@ -351,6 +321,7 @@ class ScanOrchestrator:
         Step 4b: Registry enrichment for description, supplier, hashes, and unique_identifier fields.
         
         Uses registry APIs (PyPI, npm) to fetch metadata that deps.dev doesn't provide.
+        Also enriches with EOL status for runtime awareness.
         
         NOTE: executable, archive, structured_properties are now detected via codebase scanning
         (see scan_codebase_properties method).
@@ -361,9 +332,26 @@ class ScanOrchestrator:
             packages: List of package dictionaries
             
         Returns:
-            Packages with description, supplier, hashes, unique_identifier fields
+            Packages with description, supplier, hashes, unique_identifier, eol_status fields
         """
-        return self._registry_enrich(packages)
+        packages = self._registry_enrich(packages)
+        packages = self._enrich_eol(packages)
+        return packages
+    
+    def enrich_eol(self, packages: List[Dict]) -> List[Dict]:
+        """
+        Step 4d: Enrich packages with End-of-Life (EOL) status.
+        
+        NOTE: EOL API tracks RUNTIMES (Python, Node.js, Java), not individual packages.
+        For library-level EOL tracking, we'd need package-specific deprecation data.
+        
+        Args:
+            packages: List of package dictionaries
+            
+        Returns:
+            Packages with eol_status, eol_date, is_eol fields
+        """
+        return self._enrich_eol(packages)
     
     def scan_codebase_properties(self, workspace: Path, packages: List[Dict]) -> List[Dict]:
         """
@@ -474,6 +462,208 @@ class ScanOrchestrator:
         return self._generate_remediation_report(catalog, scan_id, source)
     
     # NOTE: generate_executive_summary removed - executive summary not needed
+    
+    def calculate_statistics(self, packages: List[Dict]) -> Dict[str, Any]:
+        """
+        Calculate comprehensive statistics for packages.
+        
+        This centralizes all statistics calculations that were previously
+        duplicated across endpoints.
+        
+        Args:
+            packages: List of package dictionaries
+            
+        Returns:
+            Dict containing:
+            - scan_summary: total components, direct/transitive counts
+            - vulnerability_summary: total vulns, severity breakdown, affected packages
+            - license_summary: unique licenses count, breakdown by license
+            - patchable_summary: patchable vs unpatchable vulnerabilities
+        """
+        # Count dependencies by type
+        direct_deps = sum(1 for p in packages if p.get("is_direct_dependency", False))
+        transitive_deps = len(packages) - direct_deps
+        
+        # Count vulnerabilities and severity breakdown
+        total_vulns = 0
+        severity_breakdown = {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNKNOWN": 0}
+        patchable_count = 0
+        unpatchable_count = 0
+        packages_affected = 0
+        
+        for p in packages:
+            vulns = p.get("vulnerabilities", [])
+            if vulns:
+                packages_affected += 1
+                total_vulns += len(vulns)
+                
+                for v in vulns:
+                    # Severity breakdown
+                    sev = v.get("severity_level", "UNKNOWN").upper()
+                    if sev in severity_breakdown:
+                        severity_breakdown[sev] += 1
+                    else:
+                        severity_breakdown["UNKNOWN"] += 1
+                    
+                    # Patchable check
+                    fixed_in = v.get("fixed_in") or v.get("fixed_version")
+                    if fixed_in and fixed_in not in ["Unknown", "N/A", "", None]:
+                        patchable_count += 1
+                    else:
+                        unpatchable_count += 1
+        
+        # License summary
+        licenses = {}
+        for p in packages:
+            lic = p.get("component_license") or p.get("license") or "NOASSERTION"
+            licenses[lic] = licenses.get(lic, 0) + 1
+        
+        # Deprecated packages count
+        deprecated_count = sum(1 for p in packages if p.get("is_deprecated", False))
+        
+        return {
+            "scan_summary": {
+                "total_components": len(packages),
+                "direct_dependencies": direct_deps,
+                "transitive_dependencies": transitive_deps,
+                "deprecated_packages": deprecated_count
+            },
+            "vulnerability_summary": {
+                "total": total_vulns,
+                "by_severity": severity_breakdown,
+                "packages_affected": packages_affected,
+                "patchable": patchable_count,
+                "unpatchable": unpatchable_count
+            },
+            "license_summary": {
+                "unique_licenses": len(licenses),
+                "breakdown": licenses
+            }
+        }
+    
+    def format_vulnerable_packages(self, packages: List[Dict]) -> List[Dict]:
+        """
+        Format vulnerable packages list for API response.
+        
+        Args:
+            packages: List of enriched packages with vulnerabilities
+            
+        Returns:
+            List of packages with vulnerabilities, formatted for display
+        """
+        vulnerable_packages = []
+        
+        for p in packages:
+            pkg_vulns = p.get("vulnerabilities", [])
+            if not pkg_vulns:
+                continue
+            
+            is_direct = p.get("is_direct_dependency", True)
+            
+            # Build formatted vulnerability list
+            formatted_vulns = []
+            for v in pkg_vulns:
+                severity = v.get("severity", "UNKNOWN")
+                severity_level = v.get("severity_level", "UNKNOWN").upper()
+                
+                # Determine patch status
+                fixed_in = v.get("fixed_in") or v.get("fixed_version")
+                has_patch = fixed_in and fixed_in not in ["Unknown", "N/A", "", None]
+                patch_status = "can_be_patched" if has_patch else "no_patch_available"
+                
+                # Calculate criticality
+                base_criticality_map = {"CRITICAL": "critical", "HIGH": "high", "MEDIUM": "medium", "LOW": "low"}
+                criticality = base_criticality_map.get(severity_level, "unknown")
+                if is_direct and severity_level in ["CRITICAL", "HIGH"]:
+                    criticality = "critical" if severity_level == "CRITICAL" else "high"
+                
+                formatted_vuln = {
+                    "id": v.get("id", "Unknown"),
+                    "severity": severity,
+                    "severity_level": severity_level,
+                    "summary": v.get("summary", "No summary available"),
+                    "fixed_in": fixed_in if has_patch else None,
+                    "url": v.get("url") or f"https://osv.dev/vulnerability/{v.get('id', '')}",
+                    "modified": v.get("modified"),
+                    "published": v.get("published"),
+                    "aliases": v.get("aliases", []),
+                    "details": v.get("details", "N/A"),
+                    "patch_status": patch_status,
+                    "criticality": criticality
+                }
+                formatted_vulns.append(formatted_vuln)
+            
+            vulnerable_packages.append({
+                "component_name": p.get("name"),
+                "version": p.get("version"),
+                "vulnerabilities": formatted_vulns
+            })
+        
+        return vulnerable_packages
+    
+    def format_packages_summary(self, packages: List[Dict], limit: int = 15) -> List[Dict]:
+        """
+        Format packages list for API response preview.
+        
+        Args:
+            packages: List of packages
+            limit: Maximum number of packages to include in summary
+            
+        Returns:
+            List of package summaries for display
+        """
+        packages_summary = [{
+            "component_name": p.get("name"),
+            "version": p.get("version"),
+            "language": p.get("language") or p.get("ecosystem") or "unknown",
+            "is_direct_dependency": p.get("is_direct_dependency", p.get("is_direct", True))
+        } for p in packages[:limit]]
+        
+        if len(packages) > limit:
+            packages_summary.append({"note": f"...and {len(packages) - limit} more"})
+        
+        return packages_summary
+    
+    def count_by_registry(self, packages: List[Dict]) -> Dict[str, int]:
+        """
+        Count packages by registry type.
+        
+        Args:
+            packages: List of packages
+            
+        Returns:
+            Dict with counts for each registry (pypi, npm, etc.)
+        """
+        counts = {"pypi": 0, "npm": 0, "other": 0}
+        
+        for p in packages:
+            lang = (p.get("language") or p.get("ecosystem") or "").lower()
+            if lang in ["python", "pip", "pypi"]:
+                counts["pypi"] += 1
+            elif lang in ["javascript", "npm", "node"]:
+                counts["npm"] += 1
+            else:
+                counts["other"] += 1
+        
+        return counts
+    
+    def count_by_metadata_source(self, packages: List[Dict]) -> Dict[str, int]:
+        """
+        Count packages by metadata source (deps.dev vs fallback).
+        
+        Args:
+            packages: List of enriched packages
+            
+        Returns:
+            Dict with counts for deps.dev and fallback sources
+        """
+        depsdev_count = sum(1 for p in packages if p.get("metadata_source", "").lower() == "deps.dev")
+        fallback_count = len(packages) - depsdev_count
+        
+        return {
+            "depsdev": depsdev_count,
+            "fallback": fallback_count
+        }
     
     def get_next_scan_id(self) -> str:
         """
@@ -605,7 +795,8 @@ class ScanOrchestrator:
             # STEP 4b: Registry Enrichment (description, supplier, hashes)
             # ================================================================
             packages = self._registry_enrich(packages)
-            logger.info(f"[STEP 4b/10] Registry enrichment complete")
+            packages = self._enrich_eol(packages)  # Add EOL/deprecation status
+            logger.info(f"[STEP 4b/10] Registry enrichment complete (includes EOL check)")
             
             # ================================================================
             # STEP 4c: Codebase Property Scanning (CERT-IN: executable, archive, structured)
@@ -854,7 +1045,7 @@ class ScanOrchestrator:
                         else:
                             # Fallback to PyPI license if deps.dev is non-standard
                             try:
-                                from src.utils.package_metadata_utils import fetch_pypi_meta, extract_license_from_pypi_meta
+                                from src.clients.pypi_client import fetch_pypi_meta, extract_license_from_pypi_meta
                                 meta = fetch_pypi_meta(name, version)
                                 pypi_license = extract_license_from_pypi_meta(meta) if meta else "NOASSERTION"
                                 if pypi_license and pypi_license != "NOASSERTION":
@@ -962,30 +1153,21 @@ class ScanOrchestrator:
         """
         Registry enrichment: fills description, supplier, hashes, and unique_identifier fields.
         
-        Uses API FIRST, then cache as fallback (on rate limit or error):
-        - description: Package summary/description (deps.dev doesn't provide this)
-        - supplier: Package author/maintainer (deps.dev doesn't provide this)
-        - hashes: SHA-256/SHA-512 checksums (deps.dev doesn't provide this)
+        Uses dedicated registry clients (PyPIClient, NpmClient) with built-in:
+        - Rate limiting
+        - Caching with fallback
+        
+        Fields enriched (that deps.dev doesn't provide):
+        - description: Package summary/description
+        - supplier: Package author/maintainer
+        - hashes: SHA-256/SHA-512 checksums
         - unique_identifier: PURL format identifier
         
-        NOTE: executable, archive, structured_properties are now detected via codebase scanning
+        NOTE: executable, archive, structured_properties are detected via codebase scanning
         (see _scan_codebase_properties method) per CERT-IN guidelines.
-        
-        Flow:
-        1. Call API first (PyPI/npm registry)
-        2. If API succeeds - use and cache the response
-        3. If rate limited or error - fallback to cache
         
         Supported ecosystems: Python (PyPI) and npm only.
         """
-        # Import cache functions
-        try:
-            from src.utils.cache_manager import get_pypi_cache, set_pypi_cache, get_npm_cache, set_npm_cache
-            cache_available = True
-        except ImportError:
-            cache_available = False
-            logger.warning("Cache manager not available for registry enrichment")
-        
         for pkg in packages:
             lang = (pkg.get("language") or "").lower()
             name = pkg.get("name")
@@ -994,155 +1176,146 @@ class ScanOrchestrator:
             if not name:
                 continue
             
-            # Registry enrichment - API FIRST, cache fallback on rate limit
-            # Supported ecosystems: Python (PyPI) and npm only
+            # Registry enrichment using dedicated clients
             if lang == "python":
-                api_success = False
-                try:
-                    # Call API first
-                    logger.debug(f"[API CALL] PyPI: {name}@{version}")
-                    resp = _rate_limited_request(f"https://pypi.org/pypi/{name}/json", "pypi", timeout=5)
-                    
-                    if resp and resp.status_code == 200:
-                        data = resp.json()
-                        info = data.get("info", {})
-                        api_success = True
-                        
-                        # === Fields deps.dev doesn't provide ===
-                        # Description (from summary field)
-                        if not pkg.get("component_description") or pkg.get("component_description") == "No description available":
-                            pkg["component_description"] = info.get("summary") or "No description available"
-                            pkg["description"] = pkg["component_description"]
-                        
-                        # Supplier (from author/maintainer or their email fields)
-                        if not pkg.get("supplier") or pkg.get("supplier") == "Unknown":
-                            supplier = info.get("author") or info.get("maintainer")
-                            # If no author/maintainer, try to extract from email fields
-                            if not supplier:
-                                # Format: "Name <email>" or just "email"
-                                email_field = info.get("author_email") or info.get("maintainer_email") or ""
-                                if email_field:
-                                    # Extract name from "Name <email>" format
-                                    if "<" in email_field:
-                                        supplier = email_field.split("<")[0].strip()
-                                    else:
-                                        # Just email, use domain part
-                                        supplier = email_field.split("@")[0] if "@" in email_field else email_field
-                            if supplier:
-                                supplier = supplier.strip().strip('"').strip("'")
-                            pkg["supplier"] = supplier or "Unknown"
-                            pkg["component_supplier"] = pkg["supplier"]
-                        
-                        # Hashes (SHA-256 from digests)
-                        if not pkg.get("hashes"):
-                            hashes = []
-                            for url_info in data.get("urls", []) or []:
-                                digests = url_info.get("digests", {}) or {}
-                                sha256 = digests.get("sha256", "")
-                                if sha256:
-                                    hashes.append({"alg": "SHA-256", "content": sha256})
-                                    break  # Only first one
-                            pkg["hashes"] = hashes
-                        
-                        # Cache the response for future fallback
-                        if cache_available:
-                            set_pypi_cache(name, data, version)
-                            
-                    elif resp and resp.status_code == 429:
-                        # Rate limited - fallback to cache
-                        logger.warning(f"[RATE LIMITED] PyPI: {name}@{version} - falling back to cache")
-                        api_success = False
-                    else:
-                        # Package not found or other error
-                        logger.debug(f"[API ERROR] PyPI: {name}@{version} - status {resp.status_code if resp else 'None'}")
-                        api_success = False
-                        
-                except Exception as e:
-                    logger.debug(f"[API EXCEPTION] PyPI: {name}@{version} - {str(e)}")
-                    api_success = False
-                
-                # Fallback to cache if API failed
-                if not api_success and cache_available:
-                    cached_data = get_pypi_cache(name, version)
-                    if cached_data:
-                        logger.debug(f"[CACHE FALLBACK] PyPI: {name}@{version}")
-                        self._apply_cached_registry_data(pkg, cached_data)
+                info = _pypi_client.get_package_info(name, version)
+                if info["success"] or info.get("from_cache"):
+                    self._apply_registry_info(pkg, info)
                     
             elif lang in ["javascript", "node", "js", "npm"]:
-                api_success = False
-                try:
-                    # Call API first
-                    logger.debug(f"[API CALL] npm: {name}@{version}")
-                    resp = _rate_limited_request(f"https://registry.npmjs.org/{name}", "npm", timeout=5)
-                    
-                    if resp and resp.status_code == 200:
-                        data = resp.json()
-                        latest_version = data.get("dist-tags", {}).get("latest", version)
-                        version_data = data.get("versions", {}).get(version) or data.get("versions", {}).get(latest_version, {})
-                        api_success = True
-                    
-                        # === Fields deps.dev doesn't provide ===
-                        # Description
-                        if not pkg.get("component_description") or pkg.get("component_description") == "No description available":
-                            pkg["component_description"] = version_data.get("description") or data.get("description") or "No description available"
-                            pkg["description"] = pkg["component_description"]
-                        
-                        # Supplier (author)
-                        if not pkg.get("supplier") or pkg.get("supplier") == "Unknown":
-                            author = version_data.get("author") or data.get("author") or {}
-                            if isinstance(author, dict):
-                                supplier_name = author.get("name") or "Unknown"
-                                supplier_name = str(supplier_name).strip().strip('"').strip("'")
-                                pkg["supplier"] = supplier_name or "Unknown"
-                            else:
-                                supplier_name = str(author) if author else "Unknown"
-                                supplier_name = supplier_name.strip().strip('"').strip("'")
-                                pkg["supplier"] = supplier_name or "Unknown"
-                            pkg["component_supplier"] = pkg["supplier"]
-                        
-                        # Hashes (SHA-512 integrity or SHA-1 shasum)
-                        if not pkg.get("hashes"):
-                            hashes = []
-                            dist = version_data.get("dist", {})
-                            if dist.get("integrity"):
-                                integrity = dist["integrity"]
-                                if integrity.startswith("sha512-"):
-                                    hashes.append({"alg": "SHA-512", "content": integrity.replace("sha512-", "")})
-                            elif dist.get("shasum"):
-                                hashes.append({"alg": "SHA-1", "content": dist["shasum"]})
-                            pkg["hashes"] = hashes
-                        
-                        # Cache the response for future fallback
-                        if cache_available:
-                            set_npm_cache(name, data, version)
-                            
-                    elif resp and resp.status_code == 429:
-                        # Rate limited - fallback to cache
-                        logger.warning(f"[RATE LIMITED] npm: {name}@{version} - falling back to cache")
-                        api_success = False
-                    else:
-                        # Package not found or other error
-                        logger.debug(f"[API ERROR] npm: {name}@{version} - status {resp.status_code if resp else 'None'}")
-                        api_success = False
-                        
-                except Exception as e:
-                    logger.debug(f"[API EXCEPTION] npm: {name}@{version} - {str(e)}")
-                    api_success = False
-                
-                # Fallback to cache if API failed
-                if not api_success and cache_available:
-                    cached_data = get_npm_cache(name, version)
-                    if cached_data:
-                        logger.debug(f"[CACHE FALLBACK] npm: {name}@{version}")
-                        self._apply_cached_registry_data(pkg, cached_data)
+                info = _npm_client.get_package_info(name, version)
+                if info["success"] or info.get("from_cache"):
+                    self._apply_registry_info(pkg, info)
             
-            # Unique identifier (PURL) - generate for all ecosystems
+            # Unique identifier (PURL) - use CERT-IN format with supplier
+            from src.config import config
+            supplier = pkg.get("component_supplier") or pkg.get("supplier") or ""
             ecosystem = get_purl_type(lang or "unknown")
-            purl = f"pkg:{ecosystem}/{name}@{version}"
+            purl = config.generate_cert_in_identifier(ecosystem, name, version, supplier)
             pkg["unique_identifier"] = purl
         
         return packages
     
+    def _apply_registry_info(self, pkg: Dict, info: Dict) -> None:
+        """
+        Apply registry info to a package dict.
+        
+        Args:
+            pkg: Package dict to update
+            info: Registry info from PyPIClient or NpmClient
+        """
+        # Description
+        if not pkg.get("component_description") or pkg.get("component_description") == "No description available":
+            pkg["component_description"] = info.get("description") or "No description available"
+            pkg["description"] = pkg["component_description"]
+        
+        # Supplier
+        if not pkg.get("supplier") or pkg.get("supplier") == "Unknown":
+            pkg["supplier"] = info.get("supplier") or "Unknown"
+            pkg["component_supplier"] = pkg["supplier"]
+        
+        # Hashes
+        if not pkg.get("hashes"):
+            pkg["hashes"] = info.get("hashes") or []
+    
+    def _enrich_eol(self, packages: List[Dict]) -> List[Dict]:
+        """
+        Enrich packages with End-of-Life (EOL) / deprecation status.
+        
+        For libraries, we check:
+        - PyPI: yanked versions, Development Status classifiers (Inactive/Deprecated)
+        - npm: deprecated field on versions
+        
+        Fields added:
+        - eol_status: "Active", "Deprecated", "Yanked", or specific message
+        - eol_date: Deprecation date if available
+        - is_deprecated: Boolean indicating if package is deprecated/yanked
+        
+        Args:
+            packages: List of package dictionaries
+            
+        Returns:
+            Packages with deprecation/EOL information
+        """
+        from src.clients.pypi_client import fetch_pypi_meta
+        
+        for pkg in packages:
+            lang = (pkg.get("language") or "").lower()
+            name = pkg.get("name")
+            version = pkg.get("version")
+            
+            # Default values
+            pkg["eol_status"] = "Active"
+            pkg["eol_date"] = None
+            pkg["is_deprecated"] = False
+            
+            if not name:
+                continue
+            
+            try:
+                if lang == "python":
+                    # Check PyPI for deprecation
+                    meta = fetch_pypi_meta(name, version)
+                    if meta:
+                        info = meta.get("info", {})
+                        
+                        # Check if version is yanked
+                        # Need to check specific version in releases
+                        releases = meta.get("releases", {})
+                        if version and version in releases:
+                            version_files = releases[version]
+                            if version_files and isinstance(version_files, list):
+                                # Check if all files are yanked
+                                all_yanked = all(f.get("yanked", False) for f in version_files if isinstance(f, dict))
+                                if all_yanked and version_files:
+                                    yanked_reason = version_files[0].get("yanked_reason", "No reason provided") if version_files else ""
+                                    pkg["eol_status"] = f"Yanked: {yanked_reason}" if yanked_reason else "Yanked"
+                                    pkg["is_deprecated"] = True
+                                    continue
+                        
+                        # Check Development Status classifiers
+                        classifiers = info.get("classifiers", []) or []
+                        for classifier in classifiers:
+                            if "Development Status :: 7 - Inactive" in classifier:
+                                pkg["eol_status"] = "Inactive (no longer maintained)"
+                                pkg["is_deprecated"] = True
+                                break
+                            elif "Development Status :: 1 - Planning" in classifier:
+                                pkg["eol_status"] = "Pre-release (Planning stage)"
+                                break
+                        
+                elif lang in ["javascript", "npm", "node", "js"]:
+                    # Check npm for deprecation
+                    # The raw_data from npm includes deprecated field
+                    info = _npm_client.get_package_info(name, version)
+                    if info.get("success") and info.get("raw_data"):
+                        data = info["raw_data"]
+                        versions = data.get("versions", {})
+                        
+                        # Check if specific version is deprecated
+                        if version and version in versions:
+                            version_data = versions[version]
+                            deprecated = version_data.get("deprecated")
+                            if deprecated:
+                                pkg["eol_status"] = f"Deprecated: {deprecated}" if isinstance(deprecated, str) else "Deprecated"
+                                pkg["is_deprecated"] = True
+                        else:
+                            # Check if entire package is deprecated (latest version)
+                            latest = data.get("dist-tags", {}).get("latest")
+                            if latest and latest in versions:
+                                deprecated = versions[latest].get("deprecated")
+                                if deprecated:
+                                    pkg["eol_status"] = f"Deprecated: {deprecated}" if isinstance(deprecated, str) else "Deprecated"
+                                    pkg["is_deprecated"] = True
+                                    
+            except Exception as e:
+                logger.debug(f"[EOL] Failed to check deprecation for {name}: {e}")
+        
+        deprecated_count = sum(1 for p in packages if p.get("is_deprecated"))
+        logger.info(f"[EOL] Processed {len(packages)} packages, {deprecated_count} deprecated/yanked")
+        
+        return packages
+
     def _scan_codebase_properties(self, workspace: Path, packages: List[Dict]) -> List[Dict]:
         """
         Scan codebase for CERT-IN required properties and apply to all packages.
@@ -1184,29 +1357,6 @@ class ScanOrchestrator:
             pkg["structured_properties"] = structured_value
         
         return packages
-    
-    def _apply_cached_registry_data(self, pkg: Dict, cached: Dict) -> None:
-        """
-        Apply cached registry data to a package (used as fallback when API fails).
-        
-        Only applies description, supplier, and hashes from cache.
-        executable, archive, structured_properties are set via codebase scanning.
-        
-        Args:
-            pkg: Package dict to update
-            cached: Cached data from PyPI/npm cache
-        """
-        # Basic fields only - executable/archive/structured_properties come from codebase scan
-        if not pkg.get("component_description") or pkg.get("component_description") == "No description available":
-            pkg["component_description"] = cached.get("description") or "No description available"
-            pkg["description"] = pkg["component_description"]
-        
-        if not pkg.get("supplier") or pkg.get("supplier") == "Unknown":
-            pkg["supplier"] = cached.get("supplier") or "Unknown"
-            pkg["component_supplier"] = pkg["supplier"]
-        
-        if not pkg.get("hashes"):
-            pkg["hashes"] = cached.get("hashes") or []
     
     def _fetch_vulnerabilities(self, packages: List[Dict]) -> Tuple[List[Dict], int]:
         """

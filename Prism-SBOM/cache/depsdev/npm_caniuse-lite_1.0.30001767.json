@@ -1,0 +1,11 @@
+{
+  "key": "npm_caniuse-lite_1.0.30001767",
+  "cached_at": "2026-02-03T04:54:47.858306Z",
+  "data": {
+    "name": "caniuse-lite",
+    "version": "1.0.30001767",
+    "license": "CC-BY-4.0",
+    "homepage": "https://github.com/browserslist/caniuse-lite#readme",
+    "description": ""
+  }
+}

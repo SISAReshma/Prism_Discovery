@@ -1,0 +1,111 @@
+{
+  "message": "Remediation report generated",
+  "scan_id": "16",
+  "report_path": "reports\\16\\16_remediation.json",
+  "scan_summary": {
+    "total_components": 35,
+    "direct_dependencies": 5,
+    "transitive_dependencies": 30,
+    "deprecated_packages": 0
+  },
+  "vulnerability_summary": {
+    "total": 11,
+    "by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 10,
+      "UNKNOWN": 1
+    },
+    "packages_affected": 3,
+    "patchable": 11,
+    "unpatchable": 0
+  },
+  "license_summary": {
+    "unique_licenses": 11,
+    "breakdown": {
+      "BSD License": 3,
+      "MIT": 14,
+      "Apache-2.0": 4,
+      "GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)": 1,
+      "BSD-3-Clause": 7,
+      "MPL-2.0": 1,
+      "MIT AND MPL-2.0": 1,
+      "PSF-2.0": 1,
+      "Apache-2.0 OR MIT": 1,
+      "Apache Software License": 1,
+      "Apache-2.0 OR BSD-2-Clause": 1
+    }
+  },
+  "full_report": {
+    "scan_metadata": {
+      "scan_id": "16",
+      "timestamp": "2026-02-03T07:10:11.285969+00:00",
+      "repository": "chadyi/AITradeGame",
+      "scan_type": "full",
+      "tool": "SBOM"
+    },
+    "summary": {
+      "total_libraries_with_vulnerabilities": 3,
+      "total_vulnerabilities": 11,
+      "critical_actions": 0
+    },
+    "vulnerable_libraries": [
+      {
+        "library": "Flask-CORS",
+        "current_version": "4.0.0",
+        "vulnerabilities_count": 6,
+        "priority": "LOW",
+        "recommended_action": {
+          "type": "upgrade",
+          "action": "Upgrade from 4.0.0 to 6.0.0 or later",
+          "current_version": "4.0.0",
+          "fixed_version": "6.0.0",
+          "fix_command": "pip install Flask-CORS>=6.0.0",
+          "fixes_vulnerabilities": 6,
+          "status": "action_required"
+        }
+      },
+      {
+        "library": "requests",
+        "current_version": "2.31.0",
+        "vulnerabilities_count": 2,
+        "priority": "LOW",
+        "recommended_action": {
+          "type": "upgrade",
+          "action": "Upgrade from 2.31.0 to 2.32.4 or later",
+          "current_version": "2.31.0",
+          "fixed_version": "2.32.4",
+          "fix_command": "pip install requests>=2.32.4",
+          "fixes_vulnerabilities": 2,
+          "status": "action_required"
+        }
+      },
+      {
+        "library": "pyinstaller",
+        "current_version": "5.13.0",
+        "vulnerabilities_count": 3,
+        "priority": "LOW",
+        "recommended_action": {
+          "type": "upgrade",
+          "action": "Upgrade from 5.13.0 to 6.0.0 or later",
+          "current_version": "5.13.0",
+          "fixed_version": "6.0.0",
+          "fix_command": "pip install pyinstaller>=6.0.0",
+          "fixes_vulnerabilities": 3,
+          "status": "action_required"
+        }
+      }
+    ],
+    "action_summary": {
+      "total_actions_required": 3,
+      "by_type": {
+        "upgrade": 3,
+        "declare": 0,
+        "investigate": 0
+      },
+      "estimated_vulnerabilities_fixed": 11,
+      "estimated_fix_time": "5-10 minutes"
+    }
+  }
+}

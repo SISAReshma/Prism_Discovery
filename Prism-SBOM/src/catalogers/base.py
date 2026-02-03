@@ -9,8 +9,7 @@ This ensures a consistent interface across all languages.
 """
 
 from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any
 
 
 class BaseCataloger(ABC):

@@ -3,18 +3,10 @@ import json
 from datetime import datetime, timezone
 from copy import deepcopy
 from src.core.sbom_utils import enrich_python_pkg, enrich_npm_pkg
-import json
 
 # Configuration
 from src.config import config
 from src.registry.language_registry import get_purl_type
-
-# helpers you already have (keep using them if present)
-from src.utils.package_metadata_utils import (
-    fetch_pypi_meta,
-    extract_license_from_pypi_meta,
-)
-from src.utils.hash_utils import hashes_for_files
 
 
 def _generate_cpe(name: str, version: str, vendor: str = "*", language: str = "") -> str:
@@ -87,7 +79,8 @@ def _extract_external_refs(pkg: Dict[str, Any], metadata: Dict[str, Any]) -> Lis
 CERT21_FIELDS = [
     "component_name", "component_version", "component_description", "component_supplier", "component_license",
     "component_dependencies", "vulnerabilities", "patch_status", "release_date",
-    "criticality", "hashes", "unique_identifier", "homepage", "dependency_type"
+    "criticality", "hashes", "unique_identifier", "homepage", "dependency_type",
+    "eol_status", "is_deprecated"
 ]
 
 
@@ -134,13 +127,30 @@ def _normalize_pkg(pkg: Dict[str, Any], meta: Dict[str, Any]) -> Dict[str, Any]:
     mapped["component_supplier"] = pkg.get("component_supplier") or pkg.get("supplier") or "Unknown"
     mapped["homepage"] = pkg.get("homepage") or pkg.get("home_page") or "N/A"
     
-    # License: Check both fields, but handle empty strings properly
+    # License: Check both fields, but handle empty strings and invalid values properly
     # Don't fall back to NOASSERTION if we have a real license string
     license_value = pkg.get("component_license") or pkg.get("license")
-    if license_value and license_value not in ("", "NOASSERTION"):
+    invalid_licenses = ("", "NOASSERTION", "non-standard", "unknown", "N/A", None)
+    if license_value and license_value not in invalid_licenses:
         mapped["component_license"] = license_value
     else:
-        mapped["component_license"] = "NOASSERTION"
+        # Try to fetch license from PyPI if it's a Python package
+        if pkg.get("language", "").lower() == "python":
+            try:
+                from src.clients.pypi_client import fetch_pypi_meta, extract_license_from_pypi_meta
+                meta = fetch_pypi_meta(pkg.get("name") or pkg.get("component_name"), pkg.get("version") or pkg.get("component_version"))
+                if meta:
+                    pypi_license = extract_license_from_pypi_meta(meta)
+                    if pypi_license and pypi_license not in invalid_licenses:
+                        mapped["component_license"] = pypi_license
+                    else:
+                        mapped["component_license"] = "NOASSERTION"
+                else:
+                    mapped["component_license"] = "NOASSERTION"
+            except Exception:
+                mapped["component_license"] = "NOASSERTION"
+        else:
+            mapped["component_license"] = "NOASSERTION"
     
     # Dependencies
     deps_from_component = pkg.get("component_dependencies", [])
@@ -157,18 +167,20 @@ def _normalize_pkg(pkg: Dict[str, Any], meta: Dict[str, Any]) -> Dict[str, Any]:
     # Patch status: Calculate based on vulnerabilities (CERT-IN format)
     patch_status = pkg.get("patch_status")
     if not patch_status or patch_status.lower() in ["", "unknown", "none"]:
-        patch_status = config.calculate_patch_status(vulnerabilities)
+        from src.utils.patch_utils import determine_patch_status
+        pkg_version = pkg.get("component_version") or pkg.get("version", "")
+        patch_status = determine_patch_status(pkg_version, vulnerabilities)
     mapped["patch_status"] = patch_status
 
     
     # Dates
     mapped["release_date"] = pkg.get("release_date") or "Unknown"
     
-    # Criticality: Calculate based on vulnerabilities
+    # Criticality: Use pre-calculated value or calculate
     criticality = pkg.get("criticality")
-    if not criticality or criticality.lower() in ["", "unknown", "low"]:
-        is_direct = pkg.get("is_direct_dependency", True)
-        criticality = config.calculate_criticality(vulnerabilities, is_direct)
+    if not criticality or criticality.lower() in ["", "unknown"]:
+        from src.core.vulnerability_provider import calculate_criticality
+        criticality = calculate_criticality(pkg)
     mapped["criticality"] = criticality
     
     # Hashes
@@ -195,6 +207,10 @@ def _normalize_pkg(pkg: Dict[str, Any], meta: Dict[str, Any]) -> Dict[str, Any]:
     )
     
     mapped["unique_identifier"] = purl
+    
+    # EOL Status and Deprecation
+    mapped["eol_status"] = pkg.get("eol_status", "Active")
+    mapped["is_deprecated"] = pkg.get("is_deprecated", False)
 
     # 2. Construct final dict with ONLY the 21 fields
     final_pkg = {k: mapped.get(k, "") for k in CERT21_FIELDS}
@@ -262,13 +278,17 @@ def _build_components(catalog: Dict[str, Any], meta: Dict[str, Any]) -> List[Dic
         else:
             detailed_deps = []
         
-        # turn all fields into CycloneDX properties
+        # Fields to exclude from properties (will be in dedicated nested fields)
+        exclude_from_props = {"component_dependencies", "vulnerabilities"}
+        
+        # turn all fields into CycloneDX properties (except those in dedicated fields)
         props = [
             {
                 "name": k,
                 "value": json.dumps(v) if isinstance(v, (dict, list)) else str(v)
             }
             for k, v in norm.items()
+            if k not in exclude_from_props
         ]
 
         name = norm.get("component_name")
@@ -308,8 +328,8 @@ def _build_components(catalog: Dict[str, Any], meta: Dict[str, Any]) -> List[Dic
             "hashes": norm.get("hashes", []),
             "supplier": {"name": norm.get("component_supplier")} if norm.get("component_supplier") else None,
             "description": norm.get("component_description"),
-            "dependenciesDetailed": detailed_deps,
-            "vulnerabilitiesDetailed": norm.get("vulnerabilities", [])
+            "component_dependencies": detailed_deps,  # Nested array (not JSON string)
+            "vulnerabilities": norm.get("vulnerabilities", [])  # Nested array (not JSON string)
         }
         
         # Remove None values to keep JSON clean
@@ -329,66 +349,58 @@ def _mk_cyclonedx_dict(catalog: Dict[str, Any], meta: Dict[str, Any]) -> Dict[st
     # Extract vulnerabilities for root-level list
     vulns_list = []
     for comp in comps:
-        # Find the normalized package data corresponding to this component
-        # We can find it by purl/bom-ref in the catalog, but we already have it in properties
-        # Let's parse it from properties for safety, or better:
-        # iterate catalog again? No, inefficient.
-        # Let's extract from the 'vulnerabilities' property we just added.
-        
-        vuln_prop = next((p for p in comp["properties"] if p["name"] == "vulnerabilities"), None)
-        if vuln_prop:
-            try:
-                v_data = json.loads(vuln_prop["value"])
-                for v in v_data:
-                    # Map to CycloneDX vulnerability format
-                    cdx_vuln = {
-                        "id": v.get("id"),
-                        "source": {"name": v.get("source", "OSV")},
-                        "description": v.get("summary"),
-                        "affects": [{"ref": comp["bom-ref"]}]
-                    }
-                    
-                    # Try to map severity
-                    sev = v.get("severity", "Unknown")
-                    if sev and sev != "Unknown":
-                        rating = {
-                            "source": {"name": "CVSS"},
-                            "severity": "unknown"
-                        }
-                        # Simple heuristic
-                        if "CVSS" in str(sev):
-                            rating["vector"] = str(sev)
-                            rating["method"] = "CVSSv3"
-                        else:
-                            # If it's a score or word
-                            rating["severity"] = "info" # default
-                        
-                        cdx_vuln["ratings"] = [rating]
-                        
-                    # References
-                    if v.get("references"):
-                        cdx_vuln["advisories"] = [{"url": r} for r in v.get("references")]
-                        
-                    vulns_list.append(cdx_vuln)
-            except Exception:
-                pass
+        # Get vulnerabilities directly from nested array (not from properties)
+        v_data = comp.get("vulnerabilities", [])
+        for v in v_data:
+            # Map to CycloneDX vulnerability format
+            cdx_vuln = {
+                "id": v.get("id"),
+                "source": {"name": v.get("source", "OSV")},
+                "description": v.get("summary"),
+                "affects": [{"ref": comp["bom-ref"]}]
+            }
+            
+            # Try to map severity
+            sev = v.get("severity", "Unknown")
+            if sev and sev != "Unknown":
+                rating = {
+                    "source": {"name": "CVSS"},
+                    "severity": "unknown"
+                }
+                # Simple heuristic
+                if "CVSS" in str(sev):
+                    rating["vector"] = str(sev)
+                    rating["method"] = "CVSSv3"
+                else:
+                    # If it's a score or word
+                    rating["severity"] = "info" # default
+                
+                cdx_vuln["ratings"] = [rating]
+                
+            # References
+            if v.get("references"):
+                cdx_vuln["advisories"] = [{"url": r} for r in v.get("references")]
+                
+            vulns_list.append(cdx_vuln)
 
-    # Extract dependencies graph
+    # Extract dependencies graph from nested array (not from properties)
     dependencies = []
     for comp in comps:
         ref = comp["bom-ref"]
-        # Find dependencies property
-        dep_prop = next((p for p in comp["properties"] if p["name"] == "component_dependencies"), None)
-        if dep_prop:
-            try:
-                deps_list = json.loads(dep_prop["value"])
-                if deps_list:
-                    dependencies.append({
-                        "ref": ref,
-                        "dependsOn": deps_list
-                    })
-            except Exception:
-                pass
+        comp_deps = comp.get("component_dependencies", [])
+        if comp_deps:
+            # Extract just the PURL from detailed deps
+            deps_purls = []
+            for dep in comp_deps:
+                if isinstance(dep, dict):
+                    deps_purls.append(dep.get("purl", ""))
+                else:
+                    deps_purls.append(str(dep))
+            if deps_purls:
+                dependencies.append({
+                    "ref": ref,
+                    "dependsOn": deps_purls
+                })
 
     return {
         "bomFormat": "CycloneDX",
@@ -607,8 +619,11 @@ def _mk_json_sbom(catalog: Dict[str, Any], meta: Dict[str, Any]) -> Dict[str, An
 
     discovered_manifests = catalog.get("discovered_manifests") or catalog.get("manifests", [])
     workspace = catalog.get("workspace") or catalog.get("source", "")
+    
+    # Get license_detection from catalog (passed from API/CLI)
+    license_detection = catalog.get("license_detection") or catalog.get("repo_license")
 
-    return {
+    result = {
         "metadata": {
             "timestamp": meta["timestamp"],
             "tool": meta["tool"],
@@ -624,6 +639,12 @@ def _mk_json_sbom(catalog: Dict[str, Any], meta: Dict[str, Any]) -> Dict[str, An
         "discovered_manifests": discovered_manifests,
         "workspace": workspace
     }
+    
+    # Add license_detection if available
+    if license_detection:
+        result["license_detection"] = license_detection
+    
+    return result
 
 
 def generate_json_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any]) -> Dict[str, Any]:
@@ -706,5 +727,204 @@ def generate_all(catalog: Dict[str, Any], metadata: Dict[str, Any], resolve_tran
             "spdx": sb_spdx,
             "cyclonedx": sb_cdx,
             "json": sb_json
+        }
+    }
+
+
+def generate_remediation_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Generate remediation report with actionable fix recommendations.
+    
+    This report focuses on vulnerable packages and provides:
+    - Current vulnerable version
+    - Recommended fix version (fixed_in)
+    - Patch status
+    - Remediation action recommendation
+    
+    Args:
+        catalog: Package catalog from orchestrator
+        metadata: Scan metadata
+        
+    Returns:
+        Remediation report dictionary matching CLI format
+    """
+    meta = _ensure_repo_meta(metadata)
+    
+    # Group vulnerabilities by library
+    library_vulns = {}  # library_name -> {vulns: [], version: str, ...}
+    total_vulns = 0
+    
+    for pkg in catalog.get("packages", []):
+        vulns = pkg.get("vulnerabilities", [])
+        if not vulns:
+            continue
+        
+        pkg_name = pkg.get("name") or pkg.get("component_name")
+        pkg_version = pkg.get("version") or pkg.get("component_version")
+        language = pkg.get("language", "python").lower()
+        
+        if pkg_name not in library_vulns:
+            library_vulns[pkg_name] = {
+                "version": pkg_version,
+                "language": language,
+                "vulns": [],
+                "severity_breakdown": {"critical": 0, "high": 0, "medium": 0, "low": 0},
+                "used_in_files": pkg.get("used_in_files", ["Not found in source code analysis"])
+            }
+        
+        for v in vulns:
+            total_vulns += 1
+            
+            # Calculate severity level
+            severity = v.get("severity", "UNKNOWN")
+            cvss_score = v.get("cvss_score")
+            
+            if cvss_score and isinstance(cvss_score, (int, float)):
+                if cvss_score >= 9.0:
+                    severity_level = "CRITICAL"
+                elif cvss_score >= 7.0:
+                    severity_level = "HIGH"
+                elif cvss_score >= 4.0:
+                    severity_level = "MEDIUM"
+                elif cvss_score > 0:
+                    severity_level = "LOW"
+                else:
+                    severity_level = "UNKNOWN"
+            else:
+                severity_level = v.get("severity_level", "UNKNOWN").upper()
+                if severity_level not in ["CRITICAL", "HIGH", "MEDIUM", "LOW"]:
+                    sev_upper = str(severity).upper()
+                    if "CRITICAL" in sev_upper:
+                        severity_level = "CRITICAL"
+                    elif "HIGH" in sev_upper:
+                        severity_level = "HIGH"
+                    elif "MEDIUM" in sev_upper or "MODERATE" in sev_upper:
+                        severity_level = "MEDIUM"
+                    elif "LOW" in sev_upper:
+                        severity_level = "LOW"
+                    else:
+                        severity_level = "UNKNOWN"
+            
+            # Update severity breakdown
+            sev_key = severity_level.lower()
+            if sev_key in library_vulns[pkg_name]["severity_breakdown"]:
+                library_vulns[pkg_name]["severity_breakdown"][sev_key] += 1
+            
+            library_vulns[pkg_name]["vulns"].append({
+                "id": v.get("id"),
+                "severity_level": severity_level,
+                "fixed_in": v.get("fixed_in") or v.get("fixed_version")
+            })
+    
+    # Build vulnerable_libraries list in user's expected format
+    vulnerable_libraries = []
+    upgrade_count = 0
+    declare_count = 0
+    investigate_count = 0
+    critical_actions = 0
+    
+    for lib_name, lib_data in library_vulns.items():
+        vulns = lib_data["vulns"]
+        severity_breakdown = lib_data["severity_breakdown"]
+        version = lib_data["version"]
+        language = lib_data["language"]
+        
+        # Determine priority based on highest severity
+        if severity_breakdown["critical"] > 0:
+            priority = "CRITICAL"
+            critical_actions += 1
+        elif severity_breakdown["high"] > 0:
+            priority = "HIGH"
+        elif severity_breakdown["medium"] > 0:
+            priority = "MEDIUM"
+        else:
+            priority = "LOW"
+        
+        # Find the best fixed version (highest version that fixes most vulns)
+        fixed_versions = [v["fixed_in"] for v in vulns if v.get("fixed_in") and v["fixed_in"] not in ["Unknown", "N/A", "", None]]
+        
+        if fixed_versions:
+            # Sort versions and get the highest one
+            try:
+                from packaging.version import Version
+                fixed_versions_sorted = sorted(set(fixed_versions), key=lambda x: Version(x) if x else Version("0"), reverse=True)
+                best_fixed_version = fixed_versions_sorted[0]
+            except:
+                best_fixed_version = max(set(fixed_versions), key=fixed_versions.count)
+            
+            # Determine fix command based on language
+            if language in ["python", "pip"]:
+                fix_command = f"pip install {lib_name}>={best_fixed_version}"
+            elif language in ["javascript", "npm", "node"]:
+                fix_command = f"npm install {lib_name}@{best_fixed_version}"
+            else:
+                fix_command = f"Update {lib_name} to version {best_fixed_version}"
+            
+            recommended_action = {
+                "type": "upgrade",
+                "action": f"Upgrade from {version} to {best_fixed_version} or later",
+                "current_version": version,
+                "fixed_version": best_fixed_version,
+                "fix_command": fix_command,
+                "fixes_vulnerabilities": len(fixed_versions),
+                "status": "action_required"
+            }
+            upgrade_count += 1
+        else:
+            # No fix available
+            recommended_action = {
+                "type": "investigate",
+                "action": f"No fix available for {lib_name}@{version}. Consider alternative package or monitor for updates.",
+                "current_version": version,
+                "fixed_version": None,
+                "fix_command": None,
+                "fixes_vulnerabilities": 0,
+                "status": "investigation_required"
+            }
+            investigate_count += 1
+        
+        # Simplified vulnerable library format (without severity_breakdown, used_in_files, severity_level)
+        vulnerable_libraries.append({
+            "library": lib_name,
+            "current_version": version,
+            "vulnerabilities_count": len(vulns),
+            "priority": priority,
+            "recommended_action": recommended_action
+        })
+    
+    # Sort by priority (CRITICAL first, then HIGH, etc.)
+    priority_order = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}
+    vulnerable_libraries.sort(key=lambda x: priority_order.get(x["priority"], 4))
+    
+    # Count critical actions
+    critical_actions = sum(1 for vl in vulnerable_libraries if vl["priority"] == "CRITICAL")
+    
+    return {
+        "scan_metadata": {
+            "scan_id": meta.get("scan_id", ""),
+            "timestamp": meta["timestamp"],
+            "repository": meta.get("source", ""),
+            "scan_type": "full",
+            "tool": meta["tool"].get("name", "SBOM") if isinstance(meta["tool"], dict) else "SBOM"
+        },
+        "summary": {
+            "total_libraries_with_vulnerabilities": len(vulnerable_libraries),
+            "total_vulnerabilities": total_vulns,
+            "critical_actions": critical_actions
+        },
+        "vulnerable_libraries": vulnerable_libraries,
+        "action_summary": {
+            "total_actions_required": len(vulnerable_libraries),
+            "by_type": {
+                "upgrade": upgrade_count,
+                "declare": declare_count,
+                "investigate": investigate_count
+            },
+            "estimated_vulnerabilities_fixed": sum(
+                vl["recommended_action"]["fixes_vulnerabilities"] 
+                for vl in vulnerable_libraries 
+                if vl["recommended_action"]["fixes_vulnerabilities"]
+            ),
+            "estimated_fix_time": "5-10 minutes" if len(vulnerable_libraries) <= 5 else "15-30 minutes"
         }
     }

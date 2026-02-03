@@ -1,0 +1,11 @@
+{
+  "key": "npm_safe-buffer_5.2.1",
+  "cached_at": "2026-02-03T04:51:16.371968Z",
+  "data": {
+    "name": "safe-buffer",
+    "version": "5.2.1",
+    "license": "MIT",
+    "homepage": "https://github.com/feross/safe-buffer",
+    "description": ""
+  }
+}

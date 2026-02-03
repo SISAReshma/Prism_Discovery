@@ -21,7 +21,7 @@ except ImportError:
 
 # Tool Information (used in SBOM generation)
 # Override via: STACKSQ_TOOL_NAME, STACKSQ_TOOL_VENDOR, etc.
-TOOL_NAME = os.environ.get("STACKSQ_TOOL_NAME", "StackSQScanner")
+TOOL_NAME = os.environ.get("STACKSQ_TOOL_NAME", "SBOM")
 TOOL_VENDOR = os.environ.get("STACKSQ_TOOL_VENDOR", "SISA Information Security Pvt. Ltd")
 TOOL_VERSION = os.environ.get("STACKSQ_TOOL_VERSION", "1.0.0")
 TOOL_AUTHOR = os.environ.get("STACKSQ_TOOL_AUTHOR", "SISA Security Team")
@@ -40,13 +40,6 @@ MAX_FOLDER_SIZE = int(os.environ.get("STACKSQ_MAX_FOLDER_SIZE", str(500 * 1024 *
 # Supported Git Providers
 SUPPORTED_PROVIDERS = ["github.com", "gitlab.com", "bitbucket.org"]
 
-# Supported Manifest Files by Ecosystem (DEPRECATED: use src/registry/language_registry.py)
-SUPPORTED_MANIFEST_FILES = {
-    "python": ["requirements.txt", "pyproject.toml", "setup.py", "Pipfile", "Pipfile.lock"],
-    "javascript": ["package.json", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"],
-    "conda": ["environment.yml", "environment.yaml", "conda.yml", "conda.yaml"],
-}
-
 # SBOM Generation Settings
 DEFAULT_SBOM_FORMAT = os.environ.get("STACKSQ_SBOM_FORMAT", "cyclonedx")  # cyclonedx, spdx, json
 SBOM_SPEC_VERSION = {
@@ -59,11 +52,12 @@ PYPI_BASE_URL = os.environ.get("STACKSQ_PYPI_URL", "https://pypi.org/project")
 NPM_BASE_URL = os.environ.get("STACKSQ_NPM_URL", "https://www.npmjs.com/package")
 
 # External API Endpoints
-DEPS_DEV_API = os.environ.get("STACKSQ_DEPS_DEV_API", "https://api.deps.dev/v3alpha")
+DEPS_DEV_API = os.environ.get("STACKSQ_DEPS_DEV_API", "https://api.deps.dev/v3")
 PYPI_API = os.environ.get("STACKSQ_PYPI_API", "https://pypi.org/pypi")
 NPM_API = os.environ.get("STACKSQ_NPM_API", "https://registry.npmjs.org")
 OSV_API = os.environ.get("STACKSQ_OSV_API", "https://api.osv.dev/v1")
-NVD_API = os.environ.get("STACKSQ_NVD_API", "https://services.nvd.nist.gov/rest/json/cve/1.0")
+NVD_CVE_API = os.environ.get("STACKSQ_NVD_CVE_API", "https://services.nvd.nist.gov/rest/json/cve/1.0")
+NVD_SEARCH_API = os.environ.get("STACKSQ_NVD_SEARCH_API", "https://services.nvd.nist.gov/rest/json/cves/2.0")
 GITHUB_API = os.environ.get("STACKSQ_GITHUB_API", "https://api.github.com")
 GITLAB_API = os.environ.get("STACKSQ_GITLAB_API", "https://gitlab.com/api/v4")
 ANACONDA_API = os.environ.get("STACKSQ_ANACONDA_API", "https://api.anaconda.org")
@@ -138,12 +132,6 @@ DEFAULT_VALUES = {
     "comments": "",
 }
 
-def with_default_suffix(value: str) -> str:
-    """Add [default] suffix to a value if not already present."""
-    if value and not value.endswith(DEFAULT_SUFFIX):
-        return f"{value}{DEFAULT_SUFFIX}"
-    return value
-
 # Criticality Scoring
 CRITICALITY_WEIGHTS = {
     "has_critical_vuln": "High",
@@ -184,10 +172,6 @@ LICENSE_RISK_LEVELS = {
 #     # Temporary
 #     "temp", "tmp", ".tmp"
 # }
-
-# DEPRECATED: EOL dates now fetched from deps.dev API only
-# Keep empty dict for backwards compatibility with old code
-KNOWN_EOL_DATES = {}
 
 # License Types Mapping (for component_origin field per CERT-IN)
 LICENSE_ORIGIN_MAP = {
@@ -274,9 +258,7 @@ LOG_LEVEL = os.environ.get("STACKSQ_LOG_LEVEL", "INFO")  # DEBUG, INFO, WARNING,
 LOG_FORMAT = os.environ.get("STACKSQ_LOG_FORMAT", "[%(levelname)s] %(message)s")
 LOG_FILE = os.environ.get("STACKSQ_LOG_FILE", None)  # None for stdout only, or path to log file
 
-# Report Generation
-REPORTS_DIR = os.environ.get("STACKSQ_REPORTS_DIR", "reports")
-TEMP_DIR = os.environ.get("STACKSQ_TEMP_DIR", "temp")
+# Report Generation (REPORTS_DIR and TEMP_DIR defined at top of file)
 GENERATE_ALL_FORMATS = os.environ.get("STACKSQ_GENERATE_ALL_FORMATS", "true").lower() == "true"
 
 # Scan Settings
@@ -362,77 +344,9 @@ def get_download_location(ecosystem: str, package_name: str) -> str:
     return locations.get(ecosystem.lower(), "NOASSERTION")
 
 
-# Patch Status Calculator
-def calculate_patch_status(vulnerabilities: list) -> str:
-    """
-    Calculate patch status based on vulnerabilities (CERT-IN format).
-    
-    Per CERT-IN guidelines:
-    - "Up to date" = No vulnerabilities OR all patched
-    - "Patch available: v{X.Y.Z}" = Vulnerabilities with fixes available
-    - "None reported" = No vulnerability information
-    
-    Args:
-        vulnerabilities: List of vulnerability dictionaries
-        
-    Returns:
-        Status string (e.g., "Up to date", "Patch available: v6.0.0", "None reported")
-    """
-    if not vulnerabilities:
-        return "Up to date"  # No vulnerabilities = up to date
-    
-    # Collect all fixed_in versions
-    fixed_versions = []
-    has_unfixed = False
-    
-    for v in vulnerabilities:
-        fixed = v.get("fixed_in")
-        if fixed:
-            fixed_versions.append(fixed)
-        else:
-            has_unfixed = True
-    
-    if fixed_versions:
-        # Return recommended patch version (earliest)
-        patch_version = min(fixed_versions) if len(fixed_versions) > 1 else fixed_versions[0]
-        return f"Patch available: v{patch_version}"
-    elif has_unfixed:
-        return "None reported"  # Vulnerabilities exist but no patches
-    else:
-        return "Up to date"
-
-
-# Criticality Calculator
-def calculate_criticality(vulnerabilities: list, is_direct: bool = True) -> str:
-    """
-    Calculate component criticality.
-    
-    Args:
-        vulnerabilities: List of vulnerabilities
-        is_direct: Whether component is direct dependency
-        
-    Returns:
-        Criticality level (High/Medium/Low)
-    """
-    if not vulnerabilities:
-        return "Low"
-    
-    # Check for critical/high severity
-    for vuln in vulnerabilities:
-        severity = vuln.get("severity_string", "").upper()
-        if "CRITICAL" in severity or severity.startswith("10") or severity.startswith("9"):
-            return "High"
-        if "HIGH" in severity or severity.startswith("8") or severity.startswith("7"):
-            return "High"
-    
-    # Has medium severity or is direct dependency with vulns
-    if is_direct:
-        return "Medium"
-    
-    return "Low"
-
-
 # CERT-IN Unique Identifier Generator
+# Note: calculate_patch_status moved to src/utils/patch_utils.py
+# Note: calculate_criticality moved to src/core/vulnerability_provider.py
 def generate_cert_in_identifier(ecosystem: str, name: str, version: str, supplier: str = None) -> str:
     """
     Generate CERT-IN compliant unique identifier with supplier prefix.

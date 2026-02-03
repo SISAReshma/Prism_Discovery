@@ -83,6 +83,75 @@ def get_purl_type(language: str) -> str:
     return lang or "unknown"
 
 
+# Alias map for common language name variations
+ALIAS_MAP = {
+    "py": "python",
+    "js": "javascript",
+    "node": "javascript",
+    "npm": "javascript",
+}
+
+
+def get_ecosystem(language: str) -> str:
+    """
+    Get OSV ecosystem name for a given language.
+    
+    Args:
+        language: Language name (e.g., "python", "py", "javascript", "js")
+                  or ecosystem name (e.g., "PyPI", "npm")
+        
+    Returns:
+        Ecosystem name in OSV format (e.g., "PyPI", "npm")
+        Returns "unknown" if not recognized
+        
+    Examples:
+        >>> get_ecosystem("python")
+        'PyPI'
+        >>> get_ecosystem("pypi")
+        'PyPI'
+        >>> get_ecosystem("js")
+        'npm'
+    """
+    if not language:
+        return "unknown"
+    
+    lower = language.lower()
+    
+    # Check if it's already a valid ecosystem name (normalize to OSV format)
+    ecosystem_normalize = {
+        "pypi": "PyPI",
+        "npm": "npm",
+        "conda": "conda"
+    }
+    if lower in ecosystem_normalize:
+        return ecosystem_normalize[lower]
+    
+    # Resolve aliases first
+    canonical = ALIAS_MAP.get(lower, lower)
+    
+    # Find in registry
+    for entry in LANGUAGE_REGISTRY:
+        if entry.language.lower() == canonical:
+            return entry.ecosystem
+    
+    return "unknown"
+
+
+def get_language_to_ecosystem_map() -> Dict[str, str]:
+    """
+    Get a dictionary mapping language names to ecosystem names.
+    
+    Returns:
+        Dict like {"python": "PyPI", "javascript": "npm", ...}
+    """
+    mapping = {entry.language: entry.ecosystem for entry in LANGUAGE_REGISTRY}
+    # Add aliases
+    for alias, canonical in ALIAS_MAP.items():
+        if canonical in mapping:
+            mapping[alias] = mapping[canonical]
+    return mapping
+
+
 def get_cataloger_instances() -> List[object]:
     catalogers: List[object] = []
     for entry in LANGUAGE_REGISTRY:

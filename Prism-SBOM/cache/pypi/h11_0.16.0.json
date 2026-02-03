@@ -1,0 +1,22 @@
+{
+  "key": "h11_0.16.0",
+  "cached_at": "2026-02-03T07:10:54.314344Z",
+  "data": {
+    "name": "h11",
+    "version": "0.16.0",
+    "license": "MIT",
+    "supplier": "Nathaniel J. Smith",
+    "description": "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1",
+    "release_date": "2025-04-24T03:35:24.344199Z",
+    "homepage": "https://github.com/python-hyper/h11",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

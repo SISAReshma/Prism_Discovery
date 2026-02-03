@@ -1,0 +1,240 @@
+{
+  "report_type": "remediation",
+  "metadata": {
+    "timestamp": "2026-02-02T20:48:24.316501+00:00",
+    "tool": {
+      "name": "StackSQScanner",
+      "vendor": "SISA Information Security Pvt. Ltd",
+      "version": "1.0.0"
+    },
+    "source": "chadyi/AITradeGame"
+  },
+  "summary": {
+    "total_vulnerable_packages": 3,
+    "total_vulnerabilities": 11,
+    "patchable_vulnerabilities": 11,
+    "unpatchable_vulnerabilities": 0,
+    "severity_breakdown": {
+      "CRITICAL": 0,
+      "HIGH": 2,
+      "MEDIUM": 7,
+      "LOW": 1,
+      "UNKNOWN": 1
+    }
+  },
+  "remediation_priority": {
+    "immediate": [],
+    "high": [
+      "pyinstaller"
+    ],
+    "medium": [
+      "Flask-CORS",
+      "requests"
+    ],
+    "low": [
+      "pyinstaller",
+      "requests"
+    ]
+  },
+  "vulnerable_packages": [
+    {
+      "component_name": "pyinstaller",
+      "current_version": "5.13.0",
+      "is_direct_dependency": true,
+      "dependency_type": "direct",
+      "language": "python",
+      "vulnerabilities_count": 3,
+      "vulnerabilities": [
+        {
+          "vulnerability_id": "GHSA-9w2p-rh8c-v9g5",
+          "severity": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "severity_level": "HIGH",
+          "cvss_score": null,
+          "summary": "Local Privilege Escalation in Windows",
+          "fixed_in": "5.13.1",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade pyinstaller from 5.13.0 to 5.13.1",
+          "priority": "high",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-49797",
+          "aliases": [
+            "CVE-2023-49797",
+            "PYSEC-2023-292"
+          ]
+        },
+        {
+          "vulnerability_id": "GHSA-p2xp-xx3r-mffc",
+          "severity": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+          "severity_level": "UNKNOWN",
+          "cvss_score": null,
+          "summary": "PyInstaller has local privilege escalation vulnerability",
+          "fixed_in": "6.0.0",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade pyinstaller from 5.13.0 to 6.0.0",
+          "priority": "low",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59042",
+          "aliases": [
+            "CVE-2025-59042"
+          ]
+        },
+        {
+          "vulnerability_id": "PYSEC-2023-292",
+          "severity": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "severity_level": "HIGH",
+          "cvss_score": null,
+          "summary": null,
+          "fixed_in": "5.13.1",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade pyinstaller from 5.13.0 to 5.13.1",
+          "priority": "high",
+          "url": "https://github.com/pyinstaller/pyinstaller/security/advisories/GHSA-9w2p-rh8c-v9g5",
+          "aliases": [
+            "CVE-2023-49797",
+            "GHSA-9w2p-rh8c-v9g5"
+          ]
+        }
+      ]
+    },
+    {
+      "component_name": "Flask-CORS",
+      "current_version": "4.0.0",
+      "is_direct_dependency": true,
+      "dependency_type": "direct",
+      "language": "python",
+      "vulnerabilities_count": 6,
+      "vulnerabilities": [
+        {
+          "vulnerability_id": "GHSA-43qf-4rqw-9q2g",
+          "severity": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": "Flask-CORS vulnerable to Improper Handling of Case Sensitivity",
+          "fixed_in": "6.0.0",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade Flask-CORS from 4.0.0 to 6.0.0",
+          "priority": "medium",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6866",
+          "aliases": [
+            "CVE-2024-6866"
+          ]
+        },
+        {
+          "vulnerability_id": "GHSA-7rxf-gvfg-47g4",
+          "severity": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": "Flask-CORS improper regex path matching vulnerability",
+          "fixed_in": "6.0.0",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade Flask-CORS from 4.0.0 to 6.0.0",
+          "priority": "medium",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6839",
+          "aliases": [
+            "CVE-2024-6839"
+          ]
+        },
+        {
+          "vulnerability_id": "GHSA-84pr-m4jr-85g5",
+          "severity": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": "flask-cors vulnerable to log injection when the log level is set to debug",
+          "fixed_in": "4.0.1",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade Flask-CORS from 4.0.0 to 4.0.1",
+          "priority": "medium",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-1681",
+          "aliases": [
+            "CVE-2024-1681"
+          ]
+        },
+        {
+          "vulnerability_id": "GHSA-8vgw-p6qm-5gr7",
+          "severity": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": "Flask-CORS allows for inconsistent CORS matching",
+          "fixed_in": "6.0.0",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade Flask-CORS from 4.0.0 to 6.0.0",
+          "priority": "medium",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6844",
+          "aliases": [
+            "CVE-2024-6844"
+          ]
+        },
+        {
+          "vulnerability_id": "GHSA-hxwh-jpp2-84pm",
+          "severity": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": "Flask-CORS allows the `Access-Control-Allow-Private-Network` CORS header to be set to true by default",
+          "fixed_in": "4.0.2",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade Flask-CORS from 4.0.0 to 4.0.2",
+          "priority": "medium",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6221",
+          "aliases": [
+            "CVE-2024-6221",
+            "PYSEC-2024-71"
+          ]
+        },
+        {
+          "vulnerability_id": "PYSEC-2024-71",
+          "severity": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": null,
+          "fixed_in": "4.0.2",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade Flask-CORS from 4.0.0 to 4.0.2",
+          "priority": "medium",
+          "url": "https://huntr.com/bounties/a42935fc-6f57-4818-bca4-3d528235df4d",
+          "aliases": [
+            "CVE-2024-6221",
+            "GHSA-hxwh-jpp2-84pm"
+          ]
+        }
+      ]
+    },
+    {
+      "component_name": "requests",
+      "current_version": "2.31.0",
+      "is_direct_dependency": true,
+      "dependency_type": "direct",
+      "language": "python",
+      "vulnerabilities_count": 2,
+      "vulnerabilities": [
+        {
+          "vulnerability_id": "GHSA-9hjg-9r4m-mvj7",
+          "severity": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "severity_level": "MEDIUM",
+          "cvss_score": null,
+          "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs",
+          "fixed_in": "2.32.4",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade requests from 2.31.0 to 2.32.4",
+          "priority": "medium",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+          "aliases": [
+            "CVE-2024-47081"
+          ]
+        },
+        {
+          "vulnerability_id": "GHSA-9wx4-h78v-vm56",
+          "severity": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
+          "severity_level": "LOW",
+          "cvss_score": null,
+          "summary": "Requests `Session` object does not verify requests after making first request with verify=False",
+          "fixed_in": "2.32.0",
+          "patch_status": "can_be_patched",
+          "remediation_action": "Upgrade requests from 2.31.0 to 2.32.0",
+          "priority": "low",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-35195",
+          "aliases": [
+            "CVE-2024-35195"
+          ]
+        }
+      ]
+    }
+  ]
+}

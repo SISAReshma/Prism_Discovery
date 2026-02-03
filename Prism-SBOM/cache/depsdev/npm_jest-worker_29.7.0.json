@@ -1,0 +1,11 @@
+{
+  "key": "npm_jest-worker_29.7.0",
+  "cached_at": "2026-02-03T04:52:28.703793Z",
+  "data": {
+    "name": "jest-worker",
+    "version": "29.7.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jestjs/jest#readme",
+    "description": ""
+  }
+}

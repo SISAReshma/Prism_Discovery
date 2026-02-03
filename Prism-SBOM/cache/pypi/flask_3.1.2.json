@@ -1,0 +1,22 @@
+{
+  "key": "flask_3.1.2",
+  "cached_at": "2026-02-03T07:10:52.003344Z",
+  "data": {
+    "name": "Flask",
+    "version": "3.1.2",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "A simple framework for building complex web applications.",
+    "release_date": "2025-08-19T21:03:19.499263Z",
+    "homepage": "https://pypi.org/project/Flask/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ca1d8112ec8a6158cc29ea4858963350011b5c846a414cdb7a954aa9e967d03c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "npm_normalize-path_3.0.0",
+  "cached_at": "2026-02-03T04:53:58.342710Z",
+  "data": {
+    "name": "normalize-path",
+    "version": "3.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jonschlinkert/normalize-path",
+    "description": ""
+  }
+}

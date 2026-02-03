@@ -1,0 +1,22 @@
+{
+  "key": "jinja2_3.1.6",
+  "cached_at": "2026-02-03T07:10:51.282417Z",
+  "data": {
+    "name": "Jinja2",
+    "version": "3.1.6",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "A very fast and expressive template engine.",
+    "release_date": "2025-03-05T20:05:00.369721Z",
+    "homepage": "https://pypi.org/project/Jinja2/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

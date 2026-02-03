@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_typing-extensions_4.15.0",
+  "cached_at": "2026-02-03T07:07:23.938766Z",
+  "data": {
+    "name": "typing-extensions",
+    "version": "4.15.0",
+    "license": "PSF-2.0",
+    "homepage": "https://github.com/python/typing_extensions",
+    "description": ""
+  }
+}

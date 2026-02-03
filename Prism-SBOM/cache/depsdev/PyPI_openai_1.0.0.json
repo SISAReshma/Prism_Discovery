@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_openai_1.0.0",
+  "cached_at": "2026-02-03T07:07:09.890035Z",
+  "data": {
+    "name": "openai",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/openai/openai-python",
+    "description": ""
+  }
+}

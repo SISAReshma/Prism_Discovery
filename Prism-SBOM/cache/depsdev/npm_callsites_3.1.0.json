@@ -1,0 +1,11 @@
+{
+  "key": "npm_callsites_3.1.0",
+  "cached_at": "2026-02-03T04:54:07.457458Z",
+  "data": {
+    "name": "callsites",
+    "version": "3.1.0",
+    "license": "MIT",
+    "homepage": "https://github.com/sindresorhus/callsites#readme",
+    "description": ""
+  }
+}

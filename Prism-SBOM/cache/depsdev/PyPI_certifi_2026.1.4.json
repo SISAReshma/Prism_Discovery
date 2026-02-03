@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_certifi_2026.1.4",
+  "cached_at": "2026-02-03T07:07:17.577335Z",
+  "data": {
+    "name": "certifi",
+    "version": "2026.1.4",
+    "license": "MPL-2.0",
+    "homepage": "https://github.com/certifi/python-certifi",
+    "description": ""
+  }
+}

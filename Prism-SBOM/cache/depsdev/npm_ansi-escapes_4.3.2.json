@@ -1,0 +1,11 @@
+{
+  "key": "npm_ansi-escapes_4.3.2",
+  "cached_at": "2026-02-03T04:52:01.482925Z",
+  "data": {
+    "name": "ansi-escapes",
+    "version": "4.3.2",
+    "license": "MIT",
+    "homepage": "https://github.com/sindresorhus/ansi-escapes#readme",
+    "description": ""
+  }
+}

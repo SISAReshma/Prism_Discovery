@@ -10,11 +10,13 @@ from __future__ import annotations
 import requests
 from typing import Dict, Any, List, Optional
 from functools import lru_cache
-from datetime import datetime
 import time
 
 # Import rate limiter with exponential backoff
 from src.utils.rate_limiter import rate_limited_with_backoff
+
+# Import API URL from centralized config
+from src.config.config import DEPS_DEV_API
 
 # Enable local file cache for deps.dev results
 # Cache stores results in .cache/depsdev/ with 7-day TTL
@@ -25,11 +27,8 @@ try:
 except ImportError:
     CACHE_AVAILABLE = False
 
-# --- Constants ---
-DEPS_DEV_BASE = "https://api.deps.dev/v3alpha"
-
-# Ecosystem mapping (now centralized)
-from src.config.ecosystems import get_ecosystem
+# Ecosystem mapping
+from src.registry.language_registry import get_ecosystem
 
 
 
@@ -64,7 +63,7 @@ class DepsDevClient:
         norm_ecosystem = get_ecosystem(ecosystem) if ecosystem else ecosystem
         
         # Build URL
-        url = f"{DEPS_DEV_BASE}/systems/{norm_ecosystem}/packages/{name}/versions/{version}"
+        url = f"{DEPS_DEV_API}/systems/{norm_ecosystem}/packages/{name}/versions/{version}"
         
         try:
             response = self.session.get(url, timeout=15)
@@ -111,37 +110,6 @@ class DepsDevClient:
         
         return None
     
-    def get_vulnerabilities(self, ecosystem: str, name: str, version: str) -> List[Dict[str, Any]]:
-        """
-        Extract vulnerabilities from package info.
-        
-        Returns:
-            List of vulnerability dicts with normalized structure
-        """
-        package_info = self.get_package_info(ecosystem, name, version)
-        if not package_info:
-            return []
-        
-        advisories = package_info.get("advisoryKeys", [])
-        if not advisories:
-            return []
-        
-        # Normalize to match OSV format for consistency
-        vulnerabilities = []
-        for advisory in advisories:
-            vuln = {
-                "source": "deps.dev",
-                "id": advisory.get("id", ""),
-                "summary": "",  # deps.dev doesn't provide summary in advisoryKeys
-                "severity": "Unknown",
-                "fixed_in": "Unknown",
-                "references": [],
-                "timestamp": datetime.now().isoformat()
-            }
-            vulnerabilities.append(vuln)
-        
-        return vulnerabilities
-    
     @lru_cache(maxsize=1024)
     @rate_limited_with_backoff("depsdev", calls_per_minute=100)
     def get_dependency_graph(self, ecosystem: str, name: str, version: str) -> Dict[str, Any]:
@@ -156,8 +124,8 @@ class DepsDevClient:
                 "total_dependencies": 5
             }
         """
-        # Use the correct :dependencies endpoint
-        url = f"https://api.deps.dev/v3alpha/systems/{ecosystem}/packages/{name}/versions/{version}:dependencies"
+        # Use the correct :dependencies endpoint (v3 stable API)
+        url = f"https://api.deps.dev/v3/systems/{ecosystem}/packages/{name}/versions/{version}:dependencies"
         
         try:
             response = self.session.get(url, timeout=15)
@@ -300,13 +268,7 @@ def get_client(api_key: Optional[str] = None) -> DepsDevClient:
     return _client_instance
 
 
-# Convenience functions for backward compatibility
-def get_package_vulnerabilities(ecosystem: str, name: str, version: str) -> List[Dict[str, Any]]:
-    """Fetch vulnerabilities for a single package"""
-    client = get_client()
-    return client.get_vulnerabilities(ecosystem, name, version)
-
-
+# Convenience function for backward compatibility
 def get_package_metadata(ecosystem: str, name: str, version: str) -> Optional[Dict[str, Any]]:
     """Fetch complete metadata for a single package"""
     client = get_client()

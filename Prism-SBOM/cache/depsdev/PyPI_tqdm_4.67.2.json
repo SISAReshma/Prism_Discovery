@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_tqdm_4.67.2",
+  "cached_at": "2026-02-03T07:07:23.191577Z",
+  "data": {
+    "name": "tqdm",
+    "version": "4.67.2",
+    "license": "MIT AND MPL-2.0",
+    "homepage": "https://github.com/tqdm/tqdm",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pydantic-core_2.41.5",
+  "cached_at": "2026-02-03T07:10:54.702270Z",
+  "data": {
+    "name": "pydantic_core",
+    "version": "2.41.5",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Core functionality for Pydantic validation and serialization",
+    "release_date": "2025-11-04T13:39:04.116135Z",
+    "homepage": "https://github.com/pydantic/pydantic-core",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "77b63866ca88d804225eaa4af3e664c5faf3568cea95360d21f4725ab6e07146"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

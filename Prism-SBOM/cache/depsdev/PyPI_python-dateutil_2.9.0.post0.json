@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_python-dateutil_2.9.0.post0",
+  "cached_at": "2026-02-03T04:50:57.036099Z",
+  "data": {
+    "name": "python-dateutil",
+    "version": "2.9.0.post0",
+    "license": "non-standard",
+    "homepage": "https://github.com/dateutil/dateutil",
+    "description": ""
+  }
+}

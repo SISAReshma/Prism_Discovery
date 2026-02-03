@@ -16,16 +16,14 @@ from typing import Optional, Tuple, List, Dict, Any, Set
 import shutil
 import uuid
 import os
-import subprocess
 import json
 from datetime import datetime, timezone
 
 # Utility functions assumed implemented in repo
-from src.utils.file_utils import ensure_dir, extract_zip, cleanup_workspace
-from src.utils.git_utils import git_clone, probe_repo_access  # git_clone should accept token/username optional
-from src.core import vulnerability_provider
+from src.utils.file_utils import ensure_dir, extract_zip
+from src.utils.git_utils import git_clone  # git_clone should accept token/username optional
 from src.registry.language_registry import iter_manifest_patterns, get_purl_type, get_cataloger_instances, get_language_for_manifest
-from src.config.ecosystems import get_ecosystem
+from src.registry.language_registry import get_ecosystem
 # sbom generator is called later in pipeline (main.py) — scan returns catalog for them
 
 
@@ -452,19 +450,15 @@ def scan_workspace(workspace: Path,
                 # CERT-IN 21 FIELDS ENRICHMENT
                 # ============================================================
                 
-                # Import all new utilities
-                from src.utils.eol_utils import get_eol_for_package
-                from src.utils.file_analysis import (
-                    detect_executable_property,
-                    detect_archive_property,
-                    detect_structured_property,
-                    calculate_criticality
-                )
+                # Import utilities
+                from src.core.vulnerability_provider import calculate_criticality
                 from src.utils.license_utils import determine_usage_restrictions
                 from src.utils.patch_utils import determine_patch_status
                 
-                # 1. EOL Date (Field 11)
-                pkg["eol_date"] = get_eol_for_package(ecosystem, name, version)
+                # 1. EOL Date (Field 11) - Disabled for individual packages
+                # NOTE: endoflife.date API is for RUNTIMES (Python, Node.js),
+                # not individual libraries. Most libraries don't have official EOL.
+                pkg["eol_date"] = ""
                 
                 # 2. Patch Status (Field 9)
                 pkg["patch_status"] = determine_patch_status(version, normalized_vulns)
@@ -475,14 +469,12 @@ def scan_workspace(workspace: Path,
                 # 4. Usage Restrictions (Field 13)
                 pkg["usage_restrictions"] = determine_usage_restrictions(license_str)
                 
-                # 5. Executable Property (Field 18)
-                pkg["executable"] = detect_executable_property(pkg, workspace)
-                
-                # 6. Archive Property (Field 19)
-                pkg["archive"] = detect_archive_property(pkg)
-                
-                # 7. Structured Property (Field 20)
-                pkg["structured_properties"] = detect_structured_property(pkg, workspace)
+                # 5-7. Executable/Archive/Structured Properties (Fields 18-20)
+                # NOTE: These are now set at CODEBASE level by orchestrator._scan_codebase_properties()
+                # Per CERT-IN: they describe the codebase, not individual packages
+                pkg["executable"] = "See codebase scan"
+                pkg["archive"] = "See codebase scan"
+                pkg["structured_properties"] = "See codebase scan"
                 
                 # 8. Component Supplier (Field 4) - Extract from metadata
                 # Try to get supplier from deps.dev package info

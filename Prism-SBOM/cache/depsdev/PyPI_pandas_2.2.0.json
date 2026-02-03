@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_pandas_2.2.0",
+  "cached_at": "2026-02-03T04:50:50.622469Z",
+  "data": {
+    "name": "pandas",
+    "version": "2.2.0",
+    "license": "non-standard",
+    "homepage": "https://pandas.pydata.org",
+    "description": ""
+  }
+}

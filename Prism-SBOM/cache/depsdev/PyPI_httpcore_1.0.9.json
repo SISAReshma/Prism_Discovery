@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_httpcore_1.0.9",
+  "cached_at": "2026-02-03T07:07:26.736376Z",
+  "data": {
+    "name": "httpcore",
+    "version": "1.0.9",
+    "license": "BSD-3-Clause",
+    "homepage": "https://www.encode.io/httpcore/",
+    "description": ""
+  }
+}

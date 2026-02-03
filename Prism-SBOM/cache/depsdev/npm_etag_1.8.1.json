@@ -1,0 +1,11 @@
+{
+  "key": "npm_etag_1.8.1",
+  "cached_at": "2026-02-03T04:51:07.960418Z",
+  "data": {
+    "name": "etag",
+    "version": "1.8.1",
+    "license": "MIT",
+    "homepage": "https://github.com/jshttp/etag#readme",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pyinstaller_5.13.0",
+  "cached_at": "2026-02-03T07:10:50.375114Z",
+  "data": {
+    "name": "pyinstaller",
+    "version": "5.13.0",
+    "license": "GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)",
+    "supplier": "Hartmut Goebel, Giovanni Bajo, David Vierra, David Cortesi, Martin Zibricky",
+    "description": "PyInstaller bundles a Python application and all its dependencies into a single package.",
+    "release_date": "2023-06-24T23:21:11.925529Z",
+    "homepage": "https://www.pyinstaller.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7fdd319828de679f9c5e381eff998ee9b4164bf4457e7fca56946701cf002c3f"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <3.13,>=3.7"
+  }
+}
