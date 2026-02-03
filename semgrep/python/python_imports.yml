@@ -1,6 +1,7 @@
 rules:
   # =========================================================================
   # Python Import Detection Rules
+  # Metadata is read by semgrep_scanner.py - keep in sync!
   # =========================================================================
 
   # Detect: from module import item
@@ -15,6 +16,7 @@ rules:
     metadata:
       category: import-detection
       import_type: from-import
+      is_relative: false
 
   # Detect: import module
   - id: python-direct-import
@@ -27,6 +29,7 @@ rules:
     metadata:
       category: import-detection
       import_type: direct-import
+      is_relative: false
 
   # Detect: from . import (relative imports)
   - id: python-relative-import
@@ -41,3 +44,4 @@ rules:
     metadata:
       category: import-detection
       import_type: relative-import
+      is_relative: true

@@ -1,91 +1,127 @@
 """
-Model Deprecation Checker
-Validates models against deprecation databases and identifies risks.
-Builds recursive replacement chains to find active alternatives.
+Model Deprecation Checker - Optimized
+Validates models against deprecation databases with O(1) lookups.
+Builds replacement chains lazily for memory efficiency.
 
-Adapted from Prism-AIBOM for AIBOM_endpoints API.
 """
 import json
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, FrozenSet
 from datetime import datetime
 import logging
 
-logger = logging.getLogger(__name__)
+# Import from same directory to avoid path issues
+import sys
+_module_dir = Path(__file__).parent
+if str(_module_dir) not in sys.path:
+    sys.path.insert(0, str(_module_dir))
 
-# Deprecation cache directory - using Prism-AIBOM's .deprecation_cache
-DEPRECATION_CACHE_DIR = Path(__file__).parent.parent / "Prism-AIBOM" / ".deprecation_cache"
+from config import (
+    DEPRECATION_CACHE_DIR,
+    DEPRECATION_MAX_CHAIN_DEPTH,
+    DEPRECATION_SEVERITY_THRESHOLDS,
+    DEPRECATION_PROVIDER_PATTERNS,
+    DEPRECATED_STATUSES,
+)
+
+logger = logging.getLogger(__name__)
 
 
 class ModelDeprecationChecker:
-    """Check models against provider deprecation databases."""
+    """
+    Check models against provider deprecation databases.
+    
+    Performance optimizations:
+    - O(1) model lookups via pre-built index
+    - Lazy replacement chain building
+    - Cached provider detection
+    """
     
     def __init__(self):
-        """Initialize deprecation checker and load all provider data."""
-        self.deprecation_data = {}
-        self.replacement_chains = {}
+        """Initialize checker and load provider data."""
+        self.deprecation_data: Dict[str, Dict] = {}
+        self.model_index: Dict[str, Dict] = {}  # model_name -> {provider, deprecation_data}
+        self.replacement_chains: Dict[str, Dict] = {}  # Lazy-loaded chains
         self._load_all_providers()
-        self._build_replacement_chains()
+        self._build_model_index()
     
-    def _load_all_providers(self):
+    def _load_all_providers(self) -> None:
         """Load deprecation data from all provider JSON files."""
         if not DEPRECATION_CACHE_DIR.exists():
-            logger.warning(f"No deprecation cache directory found at {DEPRECATION_CACHE_DIR}")
+            logger.warning(f"No deprecation cache directory: {DEPRECATION_CACHE_DIR}")
             return
         
         for json_file in DEPRECATION_CACHE_DIR.glob("*_deprecations.json"):
-            provider_name = json_file.stem.replace("_deprecations", "")
+            provider_name = json_file.stem.replace("_deprecations", "").lower()
             try:
                 with open(json_file, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    self.deprecation_data[provider_name.lower()] = data
-                    logger.info(f"Loaded {provider_name} deprecation data")
+                    self.deprecation_data[provider_name] = json.load(f)
+                logger.info(f"Loaded {provider_name} deprecation data")
             except Exception as e:
                 logger.error(f"Error loading {json_file}: {e}")
     
-    def _build_replacement_chains(self):
+    def _build_model_index(self) -> None:
         """
-        Build recursive replacement chains for all providers.
-        Maps deprecated models to their final active replacement.
-        
-        Example: claude-3-opus-20240229 → claude-opus-4 → claude-opus-4-5 (active)
+        Build O(1) lookup index: model_name -> deprecation info.
+        Replaces O(n) linear search through all deprecations.
         """
         for provider, data in self.deprecation_data.items():
-            logger.debug(f"Building replacement chains for {provider}...")
-            self.replacement_chains[provider] = {}
-            
-            # Get deprecations list
             deprecations = data.get("deprecations", [])
             
-            # Build model lookup
-            model_lookup = {}
             for dep in deprecations:
                 model_id = dep.get("model_or_system", "")
-                model_lookup[model_id] = dep
-            
-            # For each deprecated model, trace replacement chain
-            for dep in deprecations:
-                model_id = dep.get("model_or_system", "")
-                status = dep.get("status", "").lower()
+                if not model_id:
+                    continue
                 
-                if status in ["deprecated", "shutdown", "legacy"]:
-                    chain = self._trace_replacement_chain(model_id, model_lookup)
-                    self.replacement_chains[provider][model_id] = chain
+                # Index by normalized name
+                normalized = self._normalize_model_name(model_id)
+                
+                # Store full deprecation data with provider
+                self.model_index[normalized] = {
+                    "provider": provider,
+                    "data": dep,
+                    "original_id": model_id
+                }
+    
+    @staticmethod
+    @lru_cache(maxsize=512)
+    def _normalize_model_name(model_name: str) -> str:
+        """Normalize model name for matching (cached for performance)."""
+        return model_name.replace("_", "-").lower()
+    
+    def _get_replacement_chain(self, model_id: str, provider: str) -> Dict:
+        """
+        Get or build replacement chain lazily (only when requested).
+        Reduces initialization time from O(n) to O(1) for unused models.
+        """
+        cache_key = f"{provider}:{model_id}"
+        
+        if cache_key in self.replacement_chains:
+            return self.replacement_chains[cache_key]
+        
+        # Build chain on demand
+        data = self.deprecation_data.get(provider, {})
+        deprecations = data.get("deprecations", [])
+        
+        # Build lookup for this provider
+        model_lookup = {dep.get("model_or_system", ""): dep for dep in deprecations}
+        
+        chain = self._trace_replacement_chain(model_id, model_lookup)
+        self.replacement_chains[cache_key] = chain
+        
+        return chain
     
     def _trace_replacement_chain(self, model_id: str, model_lookup: Dict) -> Dict:
         """
         Recursively trace replacement chain to find final active model.
-        
-        Returns:
-            Dict with chain info
+        Returns chain info with depth and final replacement.
         """
         chain = [model_id]
         visited = {model_id}
         current = model_id
-        max_depth = 10  # Prevent infinite loops
         
-        for _ in range(max_depth):
+        for _ in range(DEPRECATION_MAX_CHAIN_DEPTH):
             model_data = model_lookup.get(current)
             if not model_data:
                 break
@@ -94,14 +130,13 @@ class ModelDeprecationChecker:
             if not replacement:
                 break
             
-            # Handle multiple replacements like "gpt-5 or gpt-4.1"
+            # Handle "model1 or model2" format - take first option
             if " or " in replacement:
                 replacement = replacement.split(" or ")[0].strip()
             
             # Check if replacement is also deprecated
-            replacement_data = model_lookup.get(replacement)
-            if not replacement_data:
-                # Replacement not in deprecation list = likely active
+            if replacement not in model_lookup:
+                # Not in deprecation list = likely active
                 chain.append(replacement)
                 return {
                     "chain": chain,
@@ -109,171 +144,165 @@ class ModelDeprecationChecker:
                     "depth": len(chain) - 1
                 }
             
-            # Continue tracing if replacement is also deprecated
+            # Prevent circular references
             if replacement in visited:
-                # Circular reference detected
-                logger.warning(f"Circular replacement detected for {model_id}")
+                logger.warning(f"Circular replacement for {model_id}")
                 break
             
             chain.append(replacement)
             visited.add(replacement)
             current = replacement
         
-        # Return chain even if no final active replacement
-        final = chain[-1] if len(chain) > 1 else None
+        # Return partial chain if no final active replacement
         return {
             "chain": chain,
-            "final_replacement": final,
+            "final_replacement": chain[-1] if len(chain) > 1 else None,
             "depth": len(chain) - 1
         }
     
-    def check_model(self, model_name: str, provider: str = None) -> Optional[Dict]:
+    def check_model(self, model_name: str, provider: Optional[str] = None) -> Optional[Dict]:
         """
-        Check if a model is deprecated, retired, or retiring soon.
+        Check if a model is deprecated/retired (O(1) lookup).
         
         Args:
             model_name: Model identifier to check
-            provider: Optional provider hint (anthropic, openai, etc.)
+            provider: Optional provider hint (anthropic, openai, google)
         
         Returns:
             Deprecation info dict or None if model is active/not found
         """
-        # Normalize model name for matching
-        model_name_normalized = self._normalize_model_name(model_name)
+        normalized = self._normalize_model_name(model_name)
         
-        # Try to detect provider if not specified
-        if not provider:
-            provider = self._detect_provider(model_name)
-        
-        if not provider or provider not in self.deprecation_data:
-            # Try all providers
-            for prov in self.deprecation_data.keys():
-                result = self._check_in_provider(model_name_normalized, prov)
-                if result:
-                    return result
+        # O(1) index lookup
+        indexed = self.model_index.get(normalized)
+        if not indexed:
             return None
         
-        return self._check_in_provider(model_name_normalized, provider)
-    
-    def _normalize_model_name(self, model_name: str) -> str:
-        """Normalize model name for matching."""
-        # Convert underscores to hyphens, lowercase
-        return model_name.replace("_", "-").lower()
-    
-    def _check_in_provider(self, model_name: str, provider: str) -> Optional[Dict]:
-        """Check model in a specific provider's deprecation data."""
-        data = self.deprecation_data.get(provider)
-        if not data:
+        # Verify provider if specified
+        if provider and indexed["provider"] != provider.lower():
             return None
         
-        deprecations = data.get("deprecations", [])
+        dep = indexed["data"]
+        provider_name = indexed["provider"]
+        status = dep.get("status", "").lower()
         
-        for dep in deprecations:
-            dep_model = dep.get("model_or_system", "").lower()
-            
-            # EXACT match only - no partial matching to avoid false positives
-            # e.g., "gpt-4" should NOT match "chatgpt-4o-latest" or "gpt-4-turbo-preview"
-            if dep_model == model_name:
-                status = dep.get("status", "").lower()
-                
-                # Get replacement chain
-                chain_info = self.replacement_chains.get(provider, {}).get(dep.get("model_or_system", ""), {})
-                
-                # Calculate severity
-                severity = self._calculate_severity(dep, status)
-                
-                # Calculate days until shutdown
-                days_until_shutdown = self._calculate_days_until_shutdown(dep)
-                
-                return {
-                    "model_id": dep.get("model_or_system"),
-                    "provider": provider,
-                    "status": status,
-                    "is_deprecated": status in ["deprecated", "shutdown", "legacy"],
-                    "severity": severity,
-                    "announcement_date": dep.get("announcement_date"),
-                    "shutdown_date": dep.get("shutdown_date"),
-                    "days_until_shutdown": days_until_shutdown,
-                    "recommended_replacement": dep.get("recommended_replacement"),
-                    "final_replacement": chain_info.get("final_replacement"),
-                    "replacement_chain": chain_info.get("chain", []),
-                    "category": dep.get("category"),
-                    "type": dep.get("type"),
-                    "notes": dep.get("notes", ""),
-                    "deprecated_price": dep.get("deprecated_price")
-                }
+        # Only return if actually deprecated
+        if status not in DEPRECATED_STATUSES:
+            return None
         
-        return None
+        # Get replacement chain (lazy-loaded)
+        chain_info = self._get_replacement_chain(indexed["original_id"], provider_name)
+        
+        # Build response
+        return self._build_deprecation_response(dep, provider_name, status, chain_info)
     
-    def _detect_provider(self, model_name: str) -> Optional[str]:
-        """Detect provider from model name patterns."""
+    def _build_deprecation_response(
+        self, 
+        dep: Dict, 
+        provider: str, 
+        status: str, 
+        chain_info: Dict
+    ) -> Dict:
+        """Build standardized deprecation response (extracted for clarity)."""
+        days_until_shutdown = self._calculate_days_until_shutdown(dep)
+        severity = self._calculate_severity(status, days_until_shutdown)
+        
+        return {
+            "model_id": dep.get("model_or_system"),
+            "provider": provider,
+            "status": status,
+            "is_deprecated": status in DEPRECATED_STATUSES,
+            "severity": severity,
+            "announcement_date": dep.get("announcement_date"),
+            "shutdown_date": dep.get("shutdown_date"),
+            "days_until_shutdown": days_until_shutdown,
+            "recommended_replacement": dep.get("recommended_replacement"),
+            "final_replacement": chain_info.get("final_replacement"),
+            "replacement_chain": chain_info.get("chain", []),
+            "category": dep.get("category"),
+            "type": dep.get("type"),
+            "notes": dep.get("notes", ""),
+            "deprecated_price": dep.get("deprecated_price")
+        }
+    
+    @staticmethod
+    @lru_cache(maxsize=256)
+    def _detect_provider(model_name: str) -> Optional[str]:
+        """
+        Detect provider from model name patterns (cached).
+        Uses config-based patterns for maintainability.
+        """
         model_lower = model_name.lower()
         
-        if "claude" in model_lower:
-            return "anthropic"
-        elif any(x in model_lower for x in ["gpt", "davinci", "babbage", "o1", "o3", "o4", "dall-e", "whisper", "tts"]):
-            return "openai"
-        elif any(x in model_lower for x in ["gemini", "gemma", "palm", "imagen", "veo"]):
-            return "google"
+        for provider, patterns in DEPRECATION_PROVIDER_PATTERNS.items():
+            if any(pattern in model_lower for pattern in patterns):
+                return provider
         
         return None
     
-    def _calculate_severity(self, dep: Dict, status: str) -> str:
-        """Calculate risk severity based on status and shutdown date."""
+    @staticmethod
+    def _calculate_severity(status: str, days_until_shutdown: Optional[int]) -> str:
+        """
+        Calculate risk severity based on status and shutdown date.
+        Uses config-based thresholds.
+        """
         if status == "shutdown":
-            return "CRITICAL"  # Already past shutdown
+            return "CRITICAL"
         
         if status == "deprecated":
-            days = self._calculate_days_until_shutdown(dep)
-            if days is not None:
-                if days <= 0:
+            if days_until_shutdown is not None:
+                if days_until_shutdown <= DEPRECATION_SEVERITY_THRESHOLDS["CRITICAL"]:
                     return "CRITICAL"
-                elif days <= 30:
+                elif days_until_shutdown <= DEPRECATION_SEVERITY_THRESHOLDS["HIGH"]:
                     return "HIGH"
-                elif days <= 90:
+                elif days_until_shutdown <= DEPRECATION_SEVERITY_THRESHOLDS["MEDIUM"]:
                     return "MEDIUM"
-            return "HIGH"  # Deprecated without date = HIGH
+            return "HIGH"  # No date = HIGH risk
         
         if status == "legacy":
             return "LOW"
         
         return "INFO"
     
-    def _calculate_days_until_shutdown(self, dep: Dict) -> Optional[int]:
-        """Calculate days until shutdown."""
+    @staticmethod
+    def _calculate_days_until_shutdown(dep: Dict) -> Optional[int]:
+        """Calculate days until shutdown from ISO date string."""
         shutdown_date_str = dep.get("shutdown_date")
         if not shutdown_date_str:
             return None
         
         try:
             shutdown_date = datetime.strptime(shutdown_date_str, "%Y-%m-%d")
-            today = datetime.now()
-            delta = shutdown_date - today
+            delta = shutdown_date - datetime.now()
             return delta.days
         except (ValueError, TypeError):
             return None
     
-    def get_all_deprecated_models(self, provider: str = None) -> List[Dict]:
-        """Get all deprecated models, optionally filtered by provider."""
+    def get_all_deprecated_models(self, provider: Optional[str] = None) -> List[Dict]:
+        """
+        Get all deprecated models, optionally filtered by provider.
+        Uses pre-built index for faster filtering.
+        """
         results = []
         
-        providers = [provider] if provider else self.deprecation_data.keys()
+        # Filter by provider if specified
+        target_providers = [provider.lower()] if provider else self.deprecation_data.keys()
         
-        for prov in providers:
-            if prov not in self.deprecation_data:
+        for model_name, indexed in self.model_index.items():
+            if indexed["provider"] not in target_providers:
                 continue
             
-            data = self.deprecation_data[prov]
-            for dep in data.get("deprecations", []):
-                status = dep.get("status", "").lower()
-                if status in ["deprecated", "shutdown", "legacy"]:
-                    results.append({
-                        "model_id": dep.get("model_or_system"),
-                        "provider": prov,
-                        "status": status,
-                        "shutdown_date": dep.get("shutdown_date"),
-                        "recommended_replacement": dep.get("recommended_replacement")
-                    })
+            dep = indexed["data"]
+            status = dep.get("status", "").lower()
+            
+            if status in DEPRECATED_STATUSES:
+                results.append({
+                    "model_id": dep.get("model_or_system"),
+                    "provider": indexed["provider"],
+                    "status": status,
+                    "shutdown_date": dep.get("shutdown_date"),
+                    "recommended_replacement": dep.get("recommended_replacement")
+                })
         
         return results
 
@@ -284,7 +313,7 @@ def get_deprecation_checker() -> ModelDeprecationChecker:
     return ModelDeprecationChecker()
 
 
-def check_model_deprecation(model_name: str, provider: str = None) -> Optional[Dict]:
+def check_model_deprecation(model_name: str, provider: Optional[str] = None) -> Optional[Dict]:
     """
     Check if a model is deprecated/retired.
     
@@ -316,19 +345,14 @@ def check_models_deprecation(model_names: List[str]) -> Dict:
     for model_name in model_names:
         result = checker.check_model(model_name)
         
+        results.append({
+            "model_name": model_name,
+            "deprecation_found": result is not None,
+            "deprecation_info": result
+        })
+        
         if result:
             deprecated_count += 1
-            results.append({
-                "model_name": model_name,
-                "deprecation_found": True,
-                "deprecation_info": result
-            })
-        else:
-            results.append({
-                "model_name": model_name,
-                "deprecation_found": False,
-                "deprecation_info": None
-            })
     
     return {
         "models_checked": len(model_names),
@@ -338,7 +362,6 @@ def check_models_deprecation(model_names: List[str]) -> Dict:
     }
 
 
-# Expose for imports
 __all__ = [
     "ModelDeprecationChecker",
     "get_deprecation_checker",
