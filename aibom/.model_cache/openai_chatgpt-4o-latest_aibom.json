@@ -1,0 +1,101 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-chatgpt-4o-latest-2026-01-14-10-44-15",
+  "metadata": {
+    "timestamp": "2026-01-14T10:44:15Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "ChatGPT-4o",
+      "version": "chatgpt-4o-latest",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "ChatGPT-4o points to the GPT-4o snapshot currently used in ChatGPT. We recommend using an API model like GPT-5 or GPT-4o for most API integrations, but feel free to use this ChatGPT-4o model to test our latest improvements for chat use cases."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-chatgpt-4o-latest",
+      "name": "ChatGPT-4o",
+      "version": "chatgpt-4o-latest",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "ChatGPT-4o points to the GPT-4o snapshot currently used in ChatGPT. We recommend using an API model like GPT-5 or GPT-4o for most API integrations, but feel free to use this ChatGPT-4o model to test our latest improvements for chat use cases.",
+      "properties": {
+        "ai_model_type": "Large Language Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "chatgpt-4o-latest",
+        "ai_model_family": "GPT",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "128000",
+        "ai_max_output_tokens": "16384",
+        "ai_knowledge_cutoff": "Oct 01, 2023",
+        "ai_input_modalities": "text, image",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming, predicted_outputs",
+        "ai_api_endpoints": "chat_completions, responses, assistants, batch",
+        "ai_deprecated": "false",
+        "ai_parent_model": "GPT-4o",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Testing ChatGPT's latest improvements, chat-focused applications matching ChatGPT behavior",
+        "ai_pricing_input_per_million_tokens": "5.0",
+        "ai_pricing_output_per_million_tokens": "15.0",
+        "ai_pricing_currency": "USD"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "GPT",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/chatgpt-4o-latest"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

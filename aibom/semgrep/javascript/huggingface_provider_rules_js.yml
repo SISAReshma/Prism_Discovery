@@ -1,0 +1,85 @@
+rules:
+  - id: huggingface-inference-js
+    pattern-either:
+      - pattern: new HfInference($...)
+      - pattern: HfInference($...)
+      - pattern: new InferenceClient($...)
+    message: "Hugging Face Inference client detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-text-generation-js
+    pattern-either:
+      - pattern: $CLIENT.textGeneration($...)
+      - pattern: $CLIENT.textGenerationStream($...)
+      - pattern: await $CLIENT.textGeneration($...)
+    message: "Hugging Face text generation detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-conversational-js
+    pattern-either:
+      - pattern: $CLIENT.conversational($...)
+      - pattern: await $CLIENT.conversational($...)
+    message: "Hugging Face conversational detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-embedding-js
+    pattern-either:
+      - pattern: $CLIENT.featureExtraction($...)
+      - pattern: await $CLIENT.featureExtraction($...)
+    message: "Hugging Face embedding detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-image-js
+    pattern-either:
+      - pattern: $CLIENT.textToImage($...)
+      - pattern: $CLIENT.imageToText($...)
+      - pattern: $CLIENT.imageClassification($...)
+      - pattern: $CLIENT.imageSegmentation($...)
+    message: "Hugging Face image processing detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-audio-js
+    pattern-either:
+      - pattern: $CLIENT.automaticSpeechRecognition($...)
+      - pattern: $CLIENT.textToSpeech($...)
+      - pattern: $CLIENT.audioClassification($...)
+    message: "Hugging Face audio processing detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-nlp-js
+    pattern-either:
+      - pattern: $CLIENT.summarization($...)
+      - pattern: $CLIENT.translation($...)
+      - pattern: $CLIENT.questionAnswering($...)
+      - pattern: $CLIENT.sentenceSimilarity($...)
+      - pattern: $CLIENT.zeroShotClassification($...)
+    message: "Hugging Face NLP task detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface

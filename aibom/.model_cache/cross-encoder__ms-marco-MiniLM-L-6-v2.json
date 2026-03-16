@@ -1,0 +1,486 @@
+{
+  "model_id": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "source": "huggingface",
+  "cached_at": "2026-02-25T10:16:18.702428",
+  "data": {
+    "model_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "model_name": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "author": "cross-encoder",
+    "pipeline_tag": "text-ranking",
+    "tags": [
+      "sentence-transformers",
+      "pytorch",
+      "jax",
+      "onnx",
+      "safetensors",
+      "openvino",
+      "bert",
+      "text-classification",
+      "transformers",
+      "text-ranking",
+      "en",
+      "dataset:sentence-transformers/msmarco",
+      "base_model:cross-encoder/ms-marco-MiniLM-L12-v2",
+      "base_model:quantized:cross-encoder/ms-marco-MiniLM-L12-v2",
+      "license:apache-2.0",
+      "text-embeddings-inference",
+      "endpoints_compatible",
+      "region:us"
+    ],
+    "library_name": "sentence-transformers",
+    "license": null,
+    "downloads": 11509078,
+    "likes": 192,
+    "created_at": "2022-03-02T23:29:05.000Z",
+    "last_modified": "2025-08-29T14:36:10.000Z",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "flax_model.msgpack"
+      },
+      {
+        "rfilename": "model.safetensors"
+      },
+      {
+        "rfilename": "onnx/model.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O1.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O2.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O3.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O4.onnx"
+      },
+      {
+        "rfilename": "onnx/model_qint8_arm64.onnx"
+      },
+      {
+        "rfilename": "onnx/model_qint8_avx512.onnx"
+      },
+      {
+        "rfilename": "onnx/model_qint8_avx512_vnni.onnx"
+      },
+      {
+        "rfilename": "onnx/model_quint8_avx2.onnx"
+      },
+      {
+        "rfilename": "openvino/openvino_model.bin"
+      },
+      {
+        "rfilename": "openvino/openvino_model.xml"
+      },
+      {
+        "rfilename": "openvino/openvino_model_qint8_quantized.bin"
+      },
+      {
+        "rfilename": "openvino/openvino_model_qint8_quantized.xml"
+      },
+      {
+        "rfilename": "pytorch_model.bin"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      },
+      {
+        "rfilename": "vocab.txt"
+      }
+    ],
+    "card_data": {
+      "license": "apache-2.0",
+      "datasets": [
+        "sentence-transformers/msmarco"
+      ],
+      "language": [
+        "en"
+      ],
+      "base_model": [
+        "cross-encoder/ms-marco-MiniLM-L12-v2"
+      ],
+      "pipeline_tag": "text-ranking",
+      "library_name": "sentence-transformers",
+      "tags": [
+        "transformers"
+      ]
+    },
+    "spaces": [
+      "couchpotato0411/Automated_Ambiguity_Estimator_and_Paraphraser",
+      "Locrianzhu/Locrian_conversation",
+      "sterlinxo/cbae",
+      "sitayeb/sentiment-rag-chatbot",
+      "dpkdhull3/deepak-avatar",
+      "sitayeb/economic-rag-assistant",
+      "abhibisht89/neural-search-engine",
+      "algomuffin/neural-search-engine",
+      "zamal/DeepGit",
+      "hasaniqbal777/OpenFactCheck",
+      "NCTCMumbai/NCTC_OSINT_AGENT",
+      "hamza50/paris-hotel-finder",
+      "khoj/NSE",
+      "AkashKhamkar/Job_Search_Engine",
+      "namoopsoo/text-audio-video",
+      "TeamSAS/UB_VSA",
+      "rajistics/Ask-Wiki",
+      "diagaiwei/ir_chinese_medqa",
+      "shripadbhat/Question_Answering_Document",
+      "gfhayworth/hack_qa",
+      "jacinthes/PubMed-fact-checker",
+      "trhacknon/NCTC_OSINT",
+      "Prompting-MoE-MaS-SeR/SOTA-IR-Gradio",
+      "RAMYASRI-39/CHEERFUL_CBSE-10-sci",
+      "iamseyhmus7/turkish-news-rag-chat",
+      "Sammy03/neuralserach",
+      "shripadbhat/Clinical_Note_Question_Answering",
+      "profoz/index_demo",
+      "gfhayworth/sales_qa2",
+      "iamseyhmus7/Turkish-LLM-RAG-Chatbot",
+      "Aivre/aivre",
+      "trungmin/Multimodal-RAG",
+      "KeenWoo/AD_Multimodal_Chatbot",
+      "krishnadhulipalla/ChatBot",
+      "Jawahars/flan-t5-base-kyndryl2023-24",
+      "minhan6559/Log-Analysis-MultiAgent",
+      "the-dreimar/NyayaSpashti",
+      "Akashmj22122002/Akash_ai_talks",
+      "mhtkmr/professional-clone",
+      "Asish22/code-crawler",
+      "fizban/simiandb",
+      "domenicrosati/scite-qa-demo",
+      "sritang/hack_qa2",
+      "gfhayworth/chat_qa_demo2",
+      "Jackie2235/QueryExpansionForEtsy",
+      "nnngoc/chatbot_bk1",
+      "rishikesh/search_offers",
+      "NCTCMumbai/Expenditure_observer_bot",
+      "asif00/Talk_to_Doc-Advanced_RAG_for_Reasoning_and_QA_with_Gemini_Pro",
+      "RAMYASRI-39/Google-agent-Suthukeny",
+      "RAMYASRI-39/CHEERFUL_CBSE-9-sci",
+      "mdredze1/tobacco-watcher-chat-with-citations",
+      "Canstralian/NCTC_OSINT",
+      "Likith79an/askpkd",
+      "ssaiteja16/RagBenchCapstone10",
+      "S1131/Fin-Bot-2.0",
+      "PhoenixDecim/slm_financial_rag",
+      "msahu6174/convai43",
+      "msahu6174/convaigradio43",
+      "2023aa05079/CAI_Grp79_Assg2",
+      "Wasim0606/serenity_ai_advanced_mental_health_assistance",
+      "AKKI-AFK/DeepShelf",
+      "Sandini/News_Analyzer",
+      "nachodele/Fluxo",
+      "nemheen/biomedicalllm",
+      "Maria15/tourist_rag",
+      "fisherman611/vietnamese-legal-chatbot",
+      "entidi2608/juribot-backend",
+      "vinimoreira/RAG_backend",
+      "DeathBlade020/MedicalQAChatBotRAG",
+      "Kisiiuniversity/unibot",
+      "vebaev/BioTrace",
+      "ArthyP/enhanced-rag-demo",
+      "PercivalFletcher/Shreyansh-HackRx",
+      "Ghaymah/RAG-Ghaymah-Documentation",
+      "allbibek/semanticsphrase",
+      "TanmayTomar/FORENSIC-TOOLKIT",
+      "u-r-a-bot/RAGassignment",
+      "SilverWulfLabs/DeadCellsChatbot",
+      "Zeri00/Cogni-Chat-document-reader-v2",
+      "cdhunt96/career_conversation",
+      "grgonza86/Speedy_Treats_Lead_Agent",
+      "hmgill/Cellpose-SAM-Agent",
+      "schmidj/Metafinder_AI",
+      "Sharada25/dhammaai",
+      "LoneWolfgang/Abalone-RAG-Demo",
+      "DevNumb/chatbot",
+      "Altiuss/aigars-first-agent",
+      "ftftr/rag",
+      "sandhya932/karanam_sandhya_rani",
+      "abhismanc/career_conversation",
+      "jhale0493/career_conversationv2",
+      "Deeksha11-alt/1_foundations",
+      "dhpjames71/career_conversations",
+      "sotcsa/career_conversation",
+      "hugoortizz/career_conversations",
+      "OlenaOKushnir/career_conversation",
+      "Roshanchoudhury/career_conversation",
+      "krishnasimha/health-chatbot-v3",
+      "Ayush239/Ayush_Alter_Ego"
+    ],
+    "gated": false,
+    "disabled": false,
+    "_lookup_source": "huggingface",
+    "_raw_response": {
+      "_id": "621ffdc136468d709f17a20e",
+      "id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "private": false,
+      "pipeline_tag": "text-ranking",
+      "library_name": "sentence-transformers",
+      "tags": [
+        "sentence-transformers",
+        "pytorch",
+        "jax",
+        "onnx",
+        "safetensors",
+        "openvino",
+        "bert",
+        "text-classification",
+        "transformers",
+        "text-ranking",
+        "en",
+        "dataset:sentence-transformers/msmarco",
+        "base_model:cross-encoder/ms-marco-MiniLM-L12-v2",
+        "base_model:quantized:cross-encoder/ms-marco-MiniLM-L12-v2",
+        "license:apache-2.0",
+        "text-embeddings-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "downloads": 11509078,
+      "likes": 192,
+      "modelId": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "author": "cross-encoder",
+      "sha": "c5ee24cb16019beea0893ab7796b1df96625c6b8",
+      "lastModified": "2025-08-29T14:36:10.000Z",
+      "gated": false,
+      "disabled": false,
+      "mask_token": "[MASK]",
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "BertForSequenceClassification"
+        ],
+        "model_type": "bert",
+        "tokenizer_config": {
+          "cls_token": "[CLS]",
+          "mask_token": "[MASK]",
+          "pad_token": "[PAD]",
+          "sep_token": "[SEP]",
+          "unk_token": "[UNK]"
+        }
+      },
+      "cardData": {
+        "license": "apache-2.0",
+        "datasets": [
+          "sentence-transformers/msmarco"
+        ],
+        "language": [
+          "en"
+        ],
+        "base_model": [
+          "cross-encoder/ms-marco-MiniLM-L12-v2"
+        ],
+        "pipeline_tag": "text-ranking",
+        "library_name": "sentence-transformers",
+        "tags": [
+          "transformers"
+        ]
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForSequenceClassification",
+        "pipeline_tag": "text-classification",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "flax_model.msgpack"
+        },
+        {
+          "rfilename": "model.safetensors"
+        },
+        {
+          "rfilename": "onnx/model.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O1.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O2.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O3.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O4.onnx"
+        },
+        {
+          "rfilename": "onnx/model_qint8_arm64.onnx"
+        },
+        {
+          "rfilename": "onnx/model_qint8_avx512.onnx"
+        },
+        {
+          "rfilename": "onnx/model_qint8_avx512_vnni.onnx"
+        },
+        {
+          "rfilename": "onnx/model_quint8_avx2.onnx"
+        },
+        {
+          "rfilename": "openvino/openvino_model.bin"
+        },
+        {
+          "rfilename": "openvino/openvino_model.xml"
+        },
+        {
+          "rfilename": "openvino/openvino_model_qint8_quantized.bin"
+        },
+        {
+          "rfilename": "openvino/openvino_model_qint8_quantized.xml"
+        },
+        {
+          "rfilename": "pytorch_model.bin"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "vocab.txt"
+        }
+      ],
+      "spaces": [
+        "couchpotato0411/Automated_Ambiguity_Estimator_and_Paraphraser",
+        "Locrianzhu/Locrian_conversation",
+        "sterlinxo/cbae",
+        "sitayeb/sentiment-rag-chatbot",
+        "dpkdhull3/deepak-avatar",
+        "sitayeb/economic-rag-assistant",
+        "abhibisht89/neural-search-engine",
+        "algomuffin/neural-search-engine",
+        "zamal/DeepGit",
+        "hasaniqbal777/OpenFactCheck",
+        "NCTCMumbai/NCTC_OSINT_AGENT",
+        "hamza50/paris-hotel-finder",
+        "khoj/NSE",
+        "AkashKhamkar/Job_Search_Engine",
+        "namoopsoo/text-audio-video",
+        "TeamSAS/UB_VSA",
+        "rajistics/Ask-Wiki",
+        "diagaiwei/ir_chinese_medqa",
+        "shripadbhat/Question_Answering_Document",
+        "gfhayworth/hack_qa",
+        "jacinthes/PubMed-fact-checker",
+        "trhacknon/NCTC_OSINT",
+        "Prompting-MoE-MaS-SeR/SOTA-IR-Gradio",
+        "RAMYASRI-39/CHEERFUL_CBSE-10-sci",
+        "iamseyhmus7/turkish-news-rag-chat",
+        "Sammy03/neuralserach",
+        "shripadbhat/Clinical_Note_Question_Answering",
+        "profoz/index_demo",
+        "gfhayworth/sales_qa2",
+        "iamseyhmus7/Turkish-LLM-RAG-Chatbot",
+        "Aivre/aivre",
+        "trungmin/Multimodal-RAG",
+        "KeenWoo/AD_Multimodal_Chatbot",
+        "krishnadhulipalla/ChatBot",
+        "Jawahars/flan-t5-base-kyndryl2023-24",
+        "minhan6559/Log-Analysis-MultiAgent",
+        "the-dreimar/NyayaSpashti",
+        "Akashmj22122002/Akash_ai_talks",
+        "mhtkmr/professional-clone",
+        "Asish22/code-crawler",
+        "fizban/simiandb",
+        "domenicrosati/scite-qa-demo",
+        "sritang/hack_qa2",
+        "gfhayworth/chat_qa_demo2",
+        "Jackie2235/QueryExpansionForEtsy",
+        "nnngoc/chatbot_bk1",
+        "rishikesh/search_offers",
+        "NCTCMumbai/Expenditure_observer_bot",
+        "asif00/Talk_to_Doc-Advanced_RAG_for_Reasoning_and_QA_with_Gemini_Pro",
+        "RAMYASRI-39/Google-agent-Suthukeny",
+        "RAMYASRI-39/CHEERFUL_CBSE-9-sci",
+        "mdredze1/tobacco-watcher-chat-with-citations",
+        "Canstralian/NCTC_OSINT",
+        "Likith79an/askpkd",
+        "ssaiteja16/RagBenchCapstone10",
+        "S1131/Fin-Bot-2.0",
+        "PhoenixDecim/slm_financial_rag",
+        "msahu6174/convai43",
+        "msahu6174/convaigradio43",
+        "2023aa05079/CAI_Grp79_Assg2",
+        "Wasim0606/serenity_ai_advanced_mental_health_assistance",
+        "AKKI-AFK/DeepShelf",
+        "Sandini/News_Analyzer",
+        "nachodele/Fluxo",
+        "nemheen/biomedicalllm",
+        "Maria15/tourist_rag",
+        "fisherman611/vietnamese-legal-chatbot",
+        "entidi2608/juribot-backend",
+        "vinimoreira/RAG_backend",
+        "DeathBlade020/MedicalQAChatBotRAG",
+        "Kisiiuniversity/unibot",
+        "vebaev/BioTrace",
+        "ArthyP/enhanced-rag-demo",
+        "PercivalFletcher/Shreyansh-HackRx",
+        "Ghaymah/RAG-Ghaymah-Documentation",
+        "allbibek/semanticsphrase",
+        "TanmayTomar/FORENSIC-TOOLKIT",
+        "u-r-a-bot/RAGassignment",
+        "SilverWulfLabs/DeadCellsChatbot",
+        "Zeri00/Cogni-Chat-document-reader-v2",
+        "cdhunt96/career_conversation",
+        "grgonza86/Speedy_Treats_Lead_Agent",
+        "hmgill/Cellpose-SAM-Agent",
+        "schmidj/Metafinder_AI",
+        "Sharada25/dhammaai",
+        "LoneWolfgang/Abalone-RAG-Demo",
+        "DevNumb/chatbot",
+        "Altiuss/aigars-first-agent",
+        "ftftr/rag",
+        "sandhya932/karanam_sandhya_rani",
+        "abhismanc/career_conversation",
+        "jhale0493/career_conversationv2",
+        "Deeksha11-alt/1_foundations",
+        "dhpjames71/career_conversations",
+        "sotcsa/career_conversation",
+        "hugoortizz/career_conversations",
+        "OlenaOKushnir/career_conversation",
+        "Roshanchoudhury/career_conversation",
+        "krishnasimha/health-chatbot-v3",
+        "Ayush239/Ayush_Alter_Ego"
+      ],
+      "createdAt": "2022-03-02T23:29:05.000Z",
+      "safetensors": {
+        "parameters": {
+          "I64": 512,
+          "F32": 22713601
+        },
+        "total": 22714113
+      },
+      "usedStorage": 865250598
+    },
+    "readme_content": "---\nlicense: apache-2.0\ndatasets:\n- sentence-transformers/msmarco\nlanguage:\n- en\nbase_model:\n- cross-encoder/ms-marco-MiniLM-L12-v2\npipeline_tag: text-ranking\nlibrary_name: sentence-transformers\ntags:\n- transformers\n---\n# Cross-Encoder for MS Marco\n\nThis model was trained on the [MS Marco Passage Ranking](https://github.com/microsoft/MSMARCO-Passage-Ranking) task.\n\nThe model can be used for Information Retrieval: Given a query, encode the query will all possible passages (e.g. retrieved with ElasticSearch). Then sort the passages in a decreasing order. See [SBERT.net Retrieve & Re-rank](https://www.sbert.net/examples/applications/retrieve_rerank/README.html) for more details. The training code is available here: [SBERT.net Training MS Marco](https://github.com/UKPLab/sentence-transformers/tree/master/examples/cross_encoder/training/ms_marco)\n\n\n## Usage with SentenceTransformers\n\nThe usage is easy when you have [SentenceTransformers](https://www.sbert.net/) installed. Then you can use the pre-trained models like this:\n```python\nfrom sentence_transformers import CrossEncoder\n\nmodel = CrossEncoder('cross-encoder/ms-marco-MiniLM-L6-v2')\nscores = model.predict([\n    (\"How many people live in Berlin?\", \"Berlin had a population of 3,520,031 registered inhabitants in an area of 891.82 square kilometers.\"),\n    (\"How many people live in Berlin?\", \"Berlin is well known for its museums.\"),\n])\nprint(scores)\n# [ 8.607138 -4.320078]\n```\n\n\n## Usage with Transformers\n\n```python\nfrom transformers import AutoTokenizer, AutoModelForSequenceClassification\nimport torch\n\nmodel = AutoModelForSequenceClassification.from_pretrained('cross-encoder/ms-marco-MiniLM-L6-v2')\ntokenizer = AutoTokenizer.from_pretrained('cross-encoder/ms-marco-MiniLM-L6-v2')\n\nfeatures = tokenizer(['How many people live in Berlin?', 'How many people live in Berlin?'], ['Berlin has a population of 3,520,031 registered inhabitants in an area of 891.82 square kilometers.', 'New York City is famous for the Metropolitan Museum of Art.'],  padding=True, truncation=True, return_tensors=\"pt\")\n\nmodel.eval()\nwith torch.no_grad():\n    scores = model(**features).logits\n    print(scores)\n```\n\n\n## Performance\nIn the following table, we provide various pre-trained Cross-Encoders together with their performance on the [TREC Deep Learning 2019](https://microsoft.github.io/TREC-2019-Deep-Learning/) and the [MS Marco Passage Reranking](https://github.com/microsoft/MSMARCO-Passage-Ranking/) dataset. \n\n\n| Model-Name        | NDCG@10 (TREC DL 19) | MRR@10 (MS Marco Dev)  | Docs / Sec |\n| ------------- |:-------------| -----| --- | \n| **Version 2 models** | | | \n| cross-encoder/ms-marco-TinyBERT-L2-v2 | 69.84 | 32.56 | 9000\n| cross-encoder/ms-marco-MiniLM-L2-v2 | 71.01 | 34.85 | 4100\n| cross-encoder/ms-marco-MiniLM-L4-v2 | 73.04 | 37.70 | 2500\n| cross-encoder/ms-marco-MiniLM-L6-v2 | 74.30 | 39.01 | 1800\n| cross-encoder/ms-marco-MiniLM-L12-v2 | 74.31 | 39.02 | 960\n| **Version 1 models** | | | \n| cross-encoder/ms-marco-TinyBERT-L2  | 67.43 | 30.15  | 9000\n| cross-encoder/ms-marco-TinyBERT-L4  | 68.09 | 34.50  | 2900\n| cross-encoder/ms-marco-TinyBERT-L6 |  69.57 | 36.13  | 680\n| cross-encoder/ms-marco-electra-base | 71.99 | 36.41 | 340\n| **Other models** | | | \n| nboost/pt-tinybert-msmarco | 63.63 | 28.80 | 2900 \n| nboost/pt-bert-base-uncased-msmarco | 70.94 | 34.75 | 340 \n| nboost/pt-bert-large-msmarco | 73.36 | 36.48 | 100 \n| Capreolus/electra-base-msmarco | 71.23 | 36.89 | 340 \n| amberoad/bert-multilingual-passage-reranking-msmarco | 68.40 | 35.54 | 330 \n| sebastian-hofstaetter/distilbert-cat-margin_mse-T2-msmarco | 72.82 | 37.88 | 720\n \n Note: Runtime was computed on a V100 GPU.",
+    "has_model_card": true
+  }
+}

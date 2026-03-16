@@ -1,0 +1,1048 @@
+{
+  "metadata": {
+    "source": "https://platform.openai.com/docs/deprecations",
+    "provider": "OpenAI",
+    "last_updated": "2026-03-12",
+    "total_deprecations": 91,
+    "data_fetched_date": "2026-03-12"
+  },
+  "definitions": {
+    "deprecation": "The process of retiring a model or endpoint. When announced, it immediately becomes deprecated with a scheduled shutdown date.",
+    "legacy": "Models and endpoints that no longer receive updates. Will likely be deprecated in the future.",
+    "sunset_shutdown": "Terms used interchangeably to mean a model or endpoint is no longer accessible after the shutdown date."
+  },
+  "deprecations": [
+    {
+      "announcement_date": "2025-11-18",
+      "shutdown_date": "2026-02-17",
+      "model_or_system": "chatgpt-4o-latest",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5.1-chat-latest",
+      "deprecated_price": null,
+      "notes": "Model snapshot deprecation"
+    },
+    {
+      "announcement_date": "2025-11-17",
+      "shutdown_date": "2026-02-12",
+      "model_or_system": "codex-mini-latest",
+      "type": "model",
+      "category": "Code Generation",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-5-codex-mini",
+      "deprecated_price": null,
+      "notes": "Model snapshot deprecation - already past shutdown date"
+    },
+    {
+      "announcement_date": "2025-11-14",
+      "shutdown_date": "2026-05-12",
+      "model_or_system": "dall-e-2",
+      "type": "model",
+      "category": "Image Generation",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-image-1 or gpt-image-1-mini",
+      "deprecated_price": null,
+      "notes": "DALL·E model snapshots deprecation"
+    },
+    {
+      "announcement_date": "2025-11-14",
+      "shutdown_date": "2026-05-12",
+      "model_or_system": "dall-e-3",
+      "type": "model",
+      "category": "Image Generation",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-image-1 or gpt-image-1-mini",
+      "deprecated_price": null,
+      "notes": "DALL·E model snapshots deprecation"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-03-26",
+      "model_or_system": "gpt-4-0314",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5 or gpt-4.1",
+      "deprecated_price": null,
+      "notes": "Legacy GPT model snapshot - for latency sensitive tasks not requiring reasoning"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-03-26",
+      "model_or_system": "gpt-4-1106-preview",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5 or gpt-4.1",
+      "deprecated_price": null,
+      "notes": "Legacy GPT model snapshot"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-03-26",
+      "model_or_system": "gpt-4-0125-preview",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5 or gpt-4.1",
+      "deprecated_price": null,
+      "notes": "Includes gpt-4-turbo-preview and gpt-4-turbo-preview-completions aliases"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-03-26",
+      "model_or_system": "gpt-4-turbo-preview",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5 or gpt-4.1",
+      "deprecated_price": null,
+      "notes": "Points to gpt-4-0125-preview"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-03-26",
+      "model_or_system": "gpt-4-turbo-preview-completions",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5 or gpt-4.1",
+      "deprecated_price": null,
+      "notes": "Points to gpt-4-0125-preview"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-09-28",
+      "model_or_system": "gpt-3.5-turbo-instruct",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5-mini or gpt-4.1-mini",
+      "deprecated_price": null,
+      "notes": "For latency sensitive tasks not requiring reasoning"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-09-28",
+      "model_or_system": "babbage-002",
+      "type": "model",
+      "category": "Base Completion",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5-mini or gpt-4.1-mini",
+      "deprecated_price": null,
+      "notes": "Legacy base model"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-09-28",
+      "model_or_system": "davinci-002",
+      "type": "model",
+      "category": "Base Completion",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5-mini or gpt-4.1-mini",
+      "deprecated_price": null,
+      "notes": "Legacy base model"
+    },
+    {
+      "announcement_date": "2025-09-26",
+      "shutdown_date": "2026-09-28",
+      "model_or_system": "gpt-3.5-turbo-1106",
+      "type": "model",
+      "category": "LLM",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-5-mini or gpt-4.1-mini",
+      "deprecated_price": null,
+      "notes": "For latency sensitive tasks not requiring reasoning"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "OpenAI-Beta: realtime=v1",
+      "type": "api",
+      "category": "Realtime",
+      "status": "deprecated",
+      "recommended_replacement": "Realtime API (GA)",
+      "deprecated_price": null,
+      "notes": "Realtime API Beta deprecation - see migration guide for differences"
+    },
+    {
+      "announcement_date": "2025-08-20",
+      "shutdown_date": "2026-08-26",
+      "model_or_system": "Assistants API",
+      "type": "api",
+      "category": "Assistants",
+      "status": "deprecated",
+      "recommended_replacement": "Responses API and Conversations API",
+      "deprecated_price": null,
+      "notes": "One year deprecation notice - migrate to Responses API"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "gpt-4o-realtime-preview",
+      "type": "model",
+      "category": "Realtime",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-realtime-1.5",
+      "deprecated_price": null,
+      "notes": "Realtime preview model deprecation"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "gpt-4o-realtime-preview-2025-06-03",
+      "type": "model",
+      "category": "Realtime",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-realtime-1.5",
+      "deprecated_price": null,
+      "notes": "Realtime preview snapshot deprecation"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "gpt-4o-realtime-preview-2024-12-17",
+      "type": "model",
+      "category": "Realtime",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-realtime-1.5",
+      "deprecated_price": null,
+      "notes": "Realtime preview snapshot deprecation"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "gpt-4o-mini-realtime-preview",
+      "type": "model",
+      "category": "Realtime",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-realtime-mini",
+      "deprecated_price": null,
+      "notes": "Mini realtime preview model deprecation"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "gpt-4o-audio-preview",
+      "type": "model",
+      "category": "Audio",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-audio-1.5",
+      "deprecated_price": null,
+      "notes": "Audio preview model deprecation"
+    },
+    {
+      "announcement_date": "2025-09-15",
+      "shutdown_date": "2026-05-07",
+      "model_or_system": "gpt-4o-mini-audio-preview",
+      "type": "model",
+      "category": "Audio",
+      "status": "deprecated",
+      "recommended_replacement": "gpt-audio-mini",
+      "deprecated_price": null,
+      "notes": "Mini audio preview model deprecation"
+    },
+    {
+      "announcement_date": "2025-06-10",
+      "shutdown_date": "2025-10-10",
+      "model_or_system": "gpt-4o-realtime-preview-2024-10-01",
+      "type": "model",
+      "category": "Realtime",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-realtime",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-06-10",
+      "shutdown_date": "2025-10-10",
+      "model_or_system": "gpt-4o-audio-preview-2024-10-01",
+      "type": "model",
+      "category": "Audio",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o-audio-preview",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-04-28",
+      "shutdown_date": "2025-10-27",
+      "model_or_system": "text-moderation-007",
+      "type": "model",
+      "category": "Moderation",
+      "status": "shutdown",
+      "recommended_replacement": "omni-moderation",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-04-28",
+      "shutdown_date": "2025-10-27",
+      "model_or_system": "text-moderation-stable",
+      "type": "model",
+      "category": "Moderation",
+      "status": "shutdown",
+      "recommended_replacement": "omni-moderation",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-04-28",
+      "shutdown_date": "2025-10-27",
+      "model_or_system": "text-moderation-latest",
+      "type": "model",
+      "category": "Moderation",
+      "status": "shutdown",
+      "recommended_replacement": "omni-moderation",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-04-28",
+      "shutdown_date": "2025-07-28",
+      "model_or_system": "o1-preview",
+      "type": "model",
+      "category": "Reasoning",
+      "status": "shutdown",
+      "recommended_replacement": "o3",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-04-28",
+      "shutdown_date": "2025-10-27",
+      "model_or_system": "o1-mini",
+      "type": "model",
+      "category": "Reasoning",
+      "status": "shutdown",
+      "recommended_replacement": "o4-mini",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2025-04-14",
+      "shutdown_date": "2025-07-14",
+      "model_or_system": "gpt-4.5-preview",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4.1",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2024-10-02",
+      "shutdown_date": "2024-12-18",
+      "model_or_system": "OpenAI-Beta: assistants=v1",
+      "type": "api",
+      "category": "Assistants",
+      "status": "shutdown",
+      "recommended_replacement": "OpenAI-Beta: assistants=v2",
+      "deprecated_price": null,
+      "notes": "Assistants API v1 beta - already shut down"
+    },
+    {
+      "announcement_date": "2024-08-29",
+      "shutdown_date": "2024-10-28",
+      "model_or_system": "Fine-tuning training on babbage-002",
+      "type": "feature",
+      "category": "Fine-tuning",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o-mini",
+      "deprecated_price": null,
+      "notes": "New fine-tuning training no longer supported - existing fine-tuned models still work"
+    },
+    {
+      "announcement_date": "2024-08-29",
+      "shutdown_date": "2024-10-28",
+      "model_or_system": "Fine-tuning training on davinci-002",
+      "type": "feature",
+      "category": "Fine-tuning",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o-mini",
+      "deprecated_price": null,
+      "notes": "New fine-tuning training no longer supported - existing fine-tuned models still work"
+    },
+    {
+      "announcement_date": "2024-06-06",
+      "shutdown_date": "2025-06-06",
+      "model_or_system": "gpt-4-32k",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 60.00,
+        "output_per_million": 120.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2024-06-06",
+      "shutdown_date": "2025-06-06",
+      "model_or_system": "gpt-4-32k-0613",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 60.00,
+        "output_per_million": 120.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2024-06-06",
+      "shutdown_date": "2025-06-06",
+      "model_or_system": "gpt-4-32k-0314",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 60.00,
+        "output_per_million": 120.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2024-06-06",
+      "shutdown_date": "2024-12-06",
+      "model_or_system": "gpt-4-vision-preview",
+      "type": "model",
+      "category": "Vision",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 10.00,
+        "output_per_million": 30.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2024-06-06",
+      "shutdown_date": "2024-12-06",
+      "model_or_system": "gpt-4-1106-vision-preview",
+      "type": "model",
+      "category": "Vision",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 10.00,
+        "output_per_million": 30.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-11-06",
+      "shutdown_date": "2024-09-13",
+      "model_or_system": "gpt-3.5-turbo-0613",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo",
+      "deprecated_price": {
+        "input_per_million": 1.50,
+        "output_per_million": 2.00
+      },
+      "notes": "Already shut down - fine-tuned models not affected"
+    },
+    {
+      "announcement_date": "2023-11-06",
+      "shutdown_date": "2024-09-13",
+      "model_or_system": "gpt-3.5-turbo-16k-0613",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo",
+      "deprecated_price": {
+        "input_per_million": 3.00,
+        "output_per_million": 4.00
+      },
+      "notes": "Already shut down - fine-tuned models not affected"
+    },
+    {
+      "announcement_date": "2023-08-22",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "/v1/fine-tunes",
+      "type": "endpoint",
+      "category": "Fine-tuning",
+      "status": "shutdown",
+      "recommended_replacement": "/v1/fine_tuning/jobs",
+      "deprecated_price": null,
+      "notes": "Legacy fine-tunes endpoint - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-ada-001",
+      "type": "model",
+      "category": "InstructGPT",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": {
+        "per_million": 0.40
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-babbage-001",
+      "type": "model",
+      "category": "InstructGPT",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": {
+        "per_million": 0.50
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-curie-001",
+      "type": "model",
+      "category": "InstructGPT",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": {
+        "per_million": 2.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-davinci-001",
+      "type": "model",
+      "category": "InstructGPT",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-davinci-002",
+      "type": "model",
+      "category": "InstructGPT",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-davinci-003",
+      "type": "model",
+      "category": "InstructGPT",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "ada",
+      "type": "model",
+      "category": "Base GPT",
+      "status": "shutdown",
+      "recommended_replacement": "babbage-002",
+      "deprecated_price": {
+        "per_million": 0.40
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "babbage",
+      "type": "model",
+      "category": "Base GPT",
+      "status": "shutdown",
+      "recommended_replacement": "babbage-002",
+      "deprecated_price": {
+        "per_million": 0.50
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "curie",
+      "type": "model",
+      "category": "Base GPT",
+      "status": "shutdown",
+      "recommended_replacement": "davinci-002",
+      "deprecated_price": {
+        "per_million": 2.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "davinci",
+      "type": "model",
+      "category": "Base GPT",
+      "status": "shutdown",
+      "recommended_replacement": "davinci-002",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "code-davinci-002",
+      "type": "model",
+      "category": "Codex",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo-instruct",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-davinci-edit-001",
+      "type": "model",
+      "category": "Edit",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "code-davinci-edit-001",
+      "type": "model",
+      "category": "Edit",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "/v1/edits",
+      "type": "endpoint",
+      "category": "Edit",
+      "status": "shutdown",
+      "recommended_replacement": "/v1/chat/completions",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-similarity-ada-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 4.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-ada-doc-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 4.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-ada-query-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 4.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "code-search-ada-code-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 4.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "code-search-ada-text-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 4.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-similarity-babbage-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 5.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-babbage-doc-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 5.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-babbage-query-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 5.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "code-search-babbage-code-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 5.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "code-search-babbage-text-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 5.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-similarity-curie-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-curie-doc-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-curie-query-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 20.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-similarity-davinci-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 200.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-davinci-doc-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 200.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-07-06",
+      "shutdown_date": "2024-01-04",
+      "model_or_system": "text-search-davinci-query-001",
+      "type": "model",
+      "category": "Embedding",
+      "status": "shutdown",
+      "recommended_replacement": "text-embedding-3-small",
+      "deprecated_price": {
+        "per_million": 200.00
+      },
+      "notes": "First-generation embedding model - already shut down"
+    },
+    {
+      "announcement_date": "2023-06-13",
+      "shutdown_date": "2024-06-13",
+      "model_or_system": "gpt-4-0314",
+      "type": "model",
+      "category": "LLM",
+      "status": "legacy",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 30.00,
+        "output_per_million": 60.00
+      },
+      "notes": "Legacy model - marked for future deprecation"
+    },
+    {
+      "announcement_date": "2023-06-13",
+      "shutdown_date": "2024-09-13",
+      "model_or_system": "gpt-3.5-turbo-0301",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-3.5-turbo",
+      "deprecated_price": {
+        "input_per_million": 15.00,
+        "output_per_million": 20.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-06-13",
+      "shutdown_date": "2025-06-06",
+      "model_or_system": "gpt-4-32k-0314",
+      "type": "model",
+      "category": "LLM",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": {
+        "input_per_million": 60.00,
+        "output_per_million": 120.00
+      },
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-03-20",
+      "shutdown_date": "2023-03-23",
+      "model_or_system": "code-davinci-002",
+      "type": "model",
+      "category": "Codex",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-03-20",
+      "shutdown_date": "2023-03-23",
+      "model_or_system": "code-davinci-001",
+      "type": "model",
+      "category": "Codex",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-03-20",
+      "shutdown_date": "2023-03-23",
+      "model_or_system": "code-cushman-002",
+      "type": "model",
+      "category": "Codex",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2023-03-20",
+      "shutdown_date": "2023-03-23",
+      "model_or_system": "code-cushman-001",
+      "type": "model",
+      "category": "Codex",
+      "status": "shutdown",
+      "recommended_replacement": "gpt-4o",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2022-06-03",
+      "shutdown_date": "2022-12-03",
+      "model_or_system": "/v1/engines",
+      "type": "endpoint",
+      "category": "Legacy API",
+      "status": "shutdown",
+      "recommended_replacement": "/v1/models",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2022-06-03",
+      "shutdown_date": "2022-12-03",
+      "model_or_system": "/v1/search",
+      "type": "endpoint",
+      "category": "Legacy API",
+      "status": "shutdown",
+      "recommended_replacement": "See transition guide",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2022-06-03",
+      "shutdown_date": "2022-12-03",
+      "model_or_system": "/v1/classifications",
+      "type": "endpoint",
+      "category": "Legacy API",
+      "status": "shutdown",
+      "recommended_replacement": "See transition guide",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    },
+    {
+      "announcement_date": "2022-06-03",
+      "shutdown_date": "2022-12-03",
+      "model_or_system": "/v1/answers",
+      "type": "endpoint",
+      "category": "Legacy API",
+      "status": "shutdown",
+      "recommended_replacement": "See transition guide",
+      "deprecated_price": null,
+      "notes": "Already shut down"
+    }
+  ],
+  "summary": {
+    "total_deprecations": 91,
+    "by_status": {
+      "deprecated": 19,
+      "shutdown": 71,
+      "legacy": 1
+    },
+    "by_type": {
+      "model": 78,
+      "endpoint": 5,
+      "api": 3,
+      "feature": 2
+    },
+    "by_category": {
+      "LLM": 18,
+      "Embedding": 16,
+      "Realtime": 8,
+      "Moderation": 3,
+      "Image Generation": 2,
+      "Audio": 3,
+      "Reasoning": 2,
+      "Assistants": 2,
+      "Fine-tuning": 3,
+      "Vision": 2,
+      "InstructGPT": 6,
+      "Base GPT": 4,
+      "Codex": 5,
+      "Edit": 3,
+      "Code Generation": 1,
+      "Legacy API": 4
+    },
+    "upcoming_shutdowns": [
+      {
+        "shutdown_date": "2026-03-26",
+        "model": "gpt-4-0314, gpt-4-1106-preview, gpt-4-0125-preview",
+        "days_until_shutdown": 14
+      },
+      {
+        "shutdown_date": "2026-05-07",
+        "model": "gpt-4o-realtime-preview, gpt-4o-audio-preview (all variants), Realtime API Beta",
+        "days_until_shutdown": 56
+      },
+      {
+        "shutdown_date": "2026-05-12",
+        "model": "dall-e-2, dall-e-3",
+        "days_until_shutdown": 61
+      },
+      {
+        "shutdown_date": "2026-08-26",
+        "model": "Assistants API",
+        "days_until_shutdown": 167
+      },
+      {
+        "shutdown_date": "2026-09-28",
+        "model": "gpt-3.5-turbo-instruct, babbage-002, davinci-002, gpt-3.5-turbo-1106",
+        "days_until_shutdown": 200
+      }
+    ]
+  }
+}

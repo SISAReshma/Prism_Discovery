@@ -1,0 +1,76 @@
+rules:
+  - id: pinecone-client-init-go
+    pattern-either:
+      - pattern: pinecone.NewClient($...)
+      - pattern: pinecone.NewClientWithConfig($...)
+      - pattern: pinecone.New($...)
+    message: "Pinecone client initialization detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-index-go
+    pattern-either:
+      - pattern: $CLIENT.Index($...)
+      - pattern: $CLIENT.CreateIndex($...)
+      - pattern: $CLIENT.DescribeIndex($...)
+      - pattern: $CLIENT.ListIndexes($...)
+      - pattern: $CLIENT.DeleteIndex($...)
+    message: "Pinecone index access detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-upsert-go
+    pattern-either:
+      - pattern: $INDEX.Upsert($...)
+      - pattern: $INDEX.UpsertVectors($...)
+    message: "Pinecone upsert operation detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-query-go
+    pattern-either:
+      - pattern: $INDEX.Query($...)
+      - pattern: $INDEX.QueryByVectorId($...)
+      - pattern: $INDEX.Fetch($...)
+      - pattern: $INDEX.DescribeIndexStats($...)
+    message: "Pinecone query operation detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-delete-go
+    pattern-either:
+      - pattern: $INDEX.Delete($...)
+      - pattern: $INDEX.DeleteAll($...)
+    message: "Pinecone delete operation detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-request-go
+    pattern-either:
+      - pattern: |
+          pinecone.UpsertRequest{...}
+      - pattern: |
+          pinecone.QueryRequest{...}
+      - pattern: |
+          pinecone.CreateIndexRequest{...}
+    message: "Pinecone request struct detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone

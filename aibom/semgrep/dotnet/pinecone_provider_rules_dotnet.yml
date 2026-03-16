@@ -1,0 +1,92 @@
+rules:
+  # Pinecone .NET: Pinecone.NET NuGet package
+
+  - id: pinecone-client-init-dotnet
+    pattern-either:
+      - pattern: new PineconeClient($...)
+      - pattern: new PineconeApiClient($...)
+      - pattern: PineconeClient.Create($...)
+    message: "Pinecone client initialization detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-index-dotnet
+    pattern-either:
+      - pattern: $CLIENT.Index($...)
+      - pattern: $CLIENT.GetIndex($...)
+      - pattern: $CLIENT.GetIndexAsync($...)
+      - pattern: $CLIENT.CreateIndex($...)
+      - pattern: $CLIENT.CreateIndexAsync($...)
+      - pattern: $CLIENT.DescribeIndex($...)
+      - pattern: $CLIENT.DescribeIndexAsync($...)
+      - pattern: $CLIENT.ListIndexes($...)
+      - pattern: $CLIENT.ListIndexesAsync($...)
+      - pattern: $CLIENT.DeleteIndex($...)
+      - pattern: $CLIENT.DeleteIndexAsync($...)
+    message: "Pinecone index access detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-upsert-dotnet
+    pattern-either:
+      - pattern: $INDEX.Upsert($...)
+      - pattern: $INDEX.UpsertAsync($...)
+      - pattern: $INDEX.UpsertVectors($...)
+      - pattern: $INDEX.UpsertVectorsAsync($...)
+    message: "Pinecone upsert operation detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-query-dotnet
+    pattern-either:
+      - pattern: $INDEX.Query($...)
+      - pattern: $INDEX.QueryAsync($...)
+      - pattern: $INDEX.Fetch($...)
+      - pattern: $INDEX.FetchAsync($...)
+      - pattern: $INDEX.DescribeIndexStats($...)
+      - pattern: $INDEX.DescribeIndexStatsAsync($...)
+    message: "Pinecone query operation detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-delete-dotnet
+    pattern-either:
+      - pattern: $INDEX.Delete($...)
+      - pattern: $INDEX.DeleteAsync($...)
+      - pattern: $INDEX.DeleteAll($...)
+      - pattern: $INDEX.DeleteAllAsync($...)
+    message: "Pinecone delete operation detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-request-dotnet
+    pattern-either:
+      - pattern: |
+          new UpsertRequest { ... }
+      - pattern: |
+          new QueryRequest { ... }
+      - pattern: |
+          new CreateIndexRequest { ... }
+      - pattern: |
+          new Vector { ... }
+    message: "Pinecone request object detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone

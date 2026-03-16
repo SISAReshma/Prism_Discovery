@@ -1,0 +1,96 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-dall-e-2-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "DALL-E 2",
+      "version": "dall-e-2",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "DALL-E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-dall-e-2",
+      "name": "DALL-E 2",
+      "version": "dall-e-2",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "DALL-E 2 can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles.",
+      "properties": {
+        "ai_model_type": "Image Generation Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "dall-e-2",
+        "ai_model_family": "DALL-E",
+        "ai_architecture": "Diffusion",
+        "ai_context_window": "N/A",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "image",
+        "ai_supported_features": "None",
+        "ai_api_endpoints": "images/generations, images/edits, images/variations",
+        "ai_deprecated": "true",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Cost-effective image generation, image variations and edits - legacy model",
+        "ai_pricing_currency": "USD"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Diffusion",
+          "modelArchitecture": "Image Generation",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "image"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/dall-e-2"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

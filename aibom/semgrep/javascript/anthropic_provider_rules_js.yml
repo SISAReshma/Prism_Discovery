@@ -1,0 +1,58 @@
+rules:
+  - id: anthropic-client-init-js
+    pattern-either:
+      - pattern: new Anthropic($...)
+      - pattern: Anthropic($...)
+    message: "Anthropic client initialization detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-messages-js
+    pattern-either:
+      - pattern: $CLIENT.messages.create($...)
+      - pattern: $CLIENT.messages.stream($...)
+      - pattern: anthropic.messages.create($...)
+    message: "Anthropic messages API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-completions-js
+    pattern-either:
+      - pattern: $CLIENT.completions.create($...)
+    message: "Anthropic completions API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-model-config-js
+    patterns:
+      - pattern: |
+          { ..., model: $MODEL, ... }
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: "[\"'](claude-3|claude-2|claude-instant|claude-3.5|claude-3-opus|claude-3-sonnet|claude-3-haiku).*[\"']"
+    message: "Anthropic Claude model configuration detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-bedrock-js
+    pattern-either:
+      - pattern: new AnthropicBedrock($...)
+      - pattern: AnthropicBedrock($...)
+    message: "Anthropic Bedrock client detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic

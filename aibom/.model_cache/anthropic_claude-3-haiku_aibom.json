@@ -1,0 +1,107 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:anthropic-claude-3-haiku-20240307-2026-01-16-07-48-37",
+  "metadata": {
+    "timestamp": "2026-01-16T07:48:37Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "Claude Haiku 3",
+      "version": "claude-3-haiku-20240307",
+      "supplier": {
+        "name": "Anthropic",
+        "url": [
+          "https://anthropic.com"
+        ]
+      },
+      "description": "Claude 3 series fast model. Most cost-effective option for simple tasks. Recommend migrating to Claude Haiku 4.5 for improved capabilities."
+    },
+    "tools": [
+      {
+        "vendor": "Anthropic",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "anthropic-claude-3-haiku-20240307",
+      "name": "Claude Haiku 3",
+      "version": "claude-3-haiku-20240307",
+      "supplier": {
+        "name": "Anthropic",
+        "url": [
+          "https://anthropic.com"
+        ]
+      },
+      "description": "Claude 3 series fast model. Most cost-effective option for simple tasks. Recommend migrating to Claude Haiku 4.5 for improved capabilities.",
+      "properties": {
+        "ai_model_type": "Large Language Model [default]",
+        "ai_provider": "Anthropic [default]",
+        "ai_model_id": "claude-3-haiku-20240307",
+        "ai_api_alias": "None",
+        "ai_aws_bedrock_id": "anthropic.claude-3-haiku-20240307-v1:0",
+        "ai_gcp_vertex_id": "claude-3-haiku@20240307",
+        "ai_model_family": "Claude 3 [default]",
+        "ai_architecture": "Transformer [default]",
+        "ai_context_window": "200000",
+        "ai_context_window_beta": "N/A",
+        "ai_max_output_tokens": "4000",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_training_cutoff": "Aug 2023",
+        "ai_input_modalities": "text, image",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "vision, multilingual, streaming, function_calling, structured_outputs",
+        "ai_comparative_latency": "Fast",
+        "ai_platforms": "Anthropic API, AWS Bedrock, GCP Vertex AI",
+        "ai_api_endpoints": "messages, batch",
+        "ai_status": "legacy",
+        "ai_best_for": "Simple tasks, high-volume low-cost processing, legacy applications",
+        "ai_pricing_currency": "USD [default]",
+        "ai_pricing_input_per_million_tokens": "0.25",
+        "ai_pricing_output_per_million_tokens": "1.25",
+        "ai_recommended_replacement": "claude-haiku-4-5"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language Model",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "type": "website",
+          "url": "https://anthropic.com"
+        },
+        {
+          "type": "license",
+          "url": "https://www.anthropic.com/legal/aup"
+        }
+      ]
+    }
+  ]
+}

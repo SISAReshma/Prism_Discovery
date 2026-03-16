@@ -1,0 +1,85 @@
+rules:
+  - id: huggingface-pipeline
+    pattern-either:
+      - pattern: pipeline(...)
+      - pattern: transformers.pipeline(...)
+    message: "Hugging Face pipeline usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-automodel
+    pattern-either:
+      - pattern: AutoModel.from_pretrained(...)
+      - pattern: AutoModelForCausalLM.from_pretrained(...)
+      - pattern: AutoModelForSeq2SeqLM.from_pretrained(...)
+      - pattern: AutoModelForSequenceClassification.from_pretrained(...)
+      - pattern: AutoModelForTokenClassification.from_pretrained(...)
+      - pattern: AutoModelForQuestionAnswering.from_pretrained(...)
+    message: "Hugging Face AutoModel usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-tokenizer
+    pattern-either:
+      - pattern: AutoTokenizer.from_pretrained(...)
+      - pattern: transformers.AutoTokenizer.from_pretrained(...)
+    message: "Hugging Face tokenizer usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-inference-client
+    pattern-either:
+      - pattern: InferenceClient(...)
+      - pattern: huggingface_hub.InferenceClient(...)
+      - pattern: InferenceApi(...)
+    message: "Hugging Face Inference API client detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-hub
+    pattern-either:
+      - pattern: hf_hub_download(...)
+      - pattern: huggingface_hub.hf_hub_download(...)
+      - pattern: snapshot_download(...)
+    message: "Hugging Face Hub download detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-trainer
+    pattern-either:
+      - pattern: Trainer(...)
+      - pattern: transformers.Trainer(...)
+      - pattern: TrainingArguments(...)
+    message: "Hugging Face Trainer usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-diffusers
+    pattern-either:
+      - pattern: StableDiffusionPipeline.from_pretrained(...)
+      - pattern: DiffusionPipeline.from_pretrained(...)
+      - pattern: AutoPipelineForText2Image.from_pretrained(...)
+    message: "Hugging Face Diffusers pipeline detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface

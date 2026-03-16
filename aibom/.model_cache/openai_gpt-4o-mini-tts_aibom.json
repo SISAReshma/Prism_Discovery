@@ -1,0 +1,98 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-4o-mini-tts-2026-01-14-10-56-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:56:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-4o Mini TTS",
+      "version": "gpt-4o-mini-tts",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4o Mini TTS is a cost-effective text-to-speech model with natural-sounding voice output and multiple voice options."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-4o-mini-tts",
+      "name": "GPT-4o Mini TTS",
+      "version": "gpt-4o-mini-tts",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4o Mini TTS is a cost-effective text-to-speech model with natural-sounding voice output and multiple voice options.",
+      "properties": {
+        "ai_model_type": "Text-to-Speech Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-4o-mini-tts",
+        "ai_model_family": "GPT-4o",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "32768",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "audio",
+        "ai_supported_features": "streaming",
+        "ai_api_endpoints": "audio/speech",
+        "ai_deprecated": "false",
+        "ai_parent_model": "GPT-4o Mini",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Affordable text-to-speech, voice applications on a budget",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "0.6",
+        "ai_pricing_audio_output_per_million_tokens": "12.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Text-to-Speech",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "audio"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-4o-mini-tts"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

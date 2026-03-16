@@ -1,0 +1,238 @@
+rules:
+  # =========================================================================
+  # FETCH API
+  # =========================================================================
+  - id: api-fetch-call
+    pattern-either:
+      - pattern: fetch($URL, $...)
+      - pattern: await fetch($URL, $...)
+      - pattern: fetch($URL)
+      - pattern: await fetch($URL)
+    message: "Fetch API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+
+  - id: api-fetch-with-options
+    patterns:
+      - pattern: |
+          fetch($URL, { ..., method: $METHOD, ... })
+    message: "Fetch API call with method detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+
+  # =========================================================================
+  # AXIOS
+  # =========================================================================
+  - id: api-axios-request
+    pattern-either:
+      - pattern: axios($...)
+      - pattern: axios.get($URL, $...)
+      - pattern: axios.post($URL, $...)
+      - pattern: axios.put($URL, $...)
+      - pattern: axios.patch($URL, $...)
+      - pattern: axios.delete($URL, $...)
+      - pattern: axios.head($URL, $...)
+      - pattern: axios.options($URL, $...)
+      - pattern: axios.request($...)
+    message: "Axios HTTP request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: axios
+
+  - id: api-axios-instance
+    pattern-either:
+      - pattern: axios.create($...)
+      - pattern: $INSTANCE.get($URL, $...)
+      - pattern: $INSTANCE.post($URL, $...)
+      - pattern: $INSTANCE.put($URL, $...)
+      - pattern: $INSTANCE.patch($URL, $...)
+      - pattern: $INSTANCE.delete($URL, $...)
+    message: "Axios instance request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: axios
+
+  # =========================================================================
+  # NODE HTTP/HTTPS
+  # =========================================================================
+  - id: api-node-http-request
+    pattern-either:
+      - pattern: http.request($...)
+      - pattern: http.get($...)
+      - pattern: https.request($...)
+      - pattern: https.get($...)
+    message: "Node.js HTTP/HTTPS request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: node_http
+
+  # =========================================================================
+  # GOT / SUPERAGENT / NEEDLE / KY
+  # =========================================================================
+  - id: api-got-request
+    pattern-either:
+      - pattern: got($URL, $...)
+      - pattern: got.get($URL, $...)
+      - pattern: got.post($URL, $...)
+      - pattern: got.put($URL, $...)
+      - pattern: got.patch($URL, $...)
+      - pattern: got.delete($URL, $...)
+      - pattern: await got($URL, $...)
+    message: "Got HTTP request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: got
+
+  - id: api-superagent-request
+    pattern-either:
+      - pattern: superagent.get($URL)
+      - pattern: superagent.post($URL)
+      - pattern: superagent.put($URL)
+      - pattern: superagent.patch($URL)
+      - pattern: superagent.delete($URL)
+      - pattern: request.get($URL)
+      - pattern: request.post($URL)
+    message: "Superagent HTTP request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: superagent
+
+  - id: api-ky-request
+    pattern-either:
+      - pattern: ky($URL, $...)
+      - pattern: ky.get($URL, $...)
+      - pattern: ky.post($URL, $...)
+      - pattern: ky.put($URL, $...)
+      - pattern: ky.patch($URL, $...)
+      - pattern: ky.delete($URL, $...)
+    message: "Ky HTTP request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: ky
+
+  # =========================================================================
+  # XMLHTTPREQUEST
+  # =========================================================================
+  - id: api-xhr-request
+    pattern-either:
+      - pattern: new XMLHttpRequest()
+      - pattern: $XHR.open($METHOD, $URL, $...)
+      - pattern: $XHR.send($...)
+    message: "XMLHttpRequest detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: xhr
+
+  # =========================================================================
+  # GRAPHQL
+  # =========================================================================
+  - id: api-graphql-request
+    pattern-either:
+      - pattern: graphqlRequest($...)
+      - pattern: $CLIENT.query($...)
+      - pattern: $CLIENT.mutate($...)
+      - pattern: useQuery($...)
+      - pattern: useMutation($...)
+      - pattern: useLazyQuery($...)
+      - pattern: gql`...`
+    message: "GraphQL request detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: graphql
+
+  # =========================================================================
+  # WEBSOCKET
+  # =========================================================================
+  - id: api-websocket
+    pattern-either:
+      - pattern: new WebSocket($URL, $...)
+      - pattern: new WebSocket($URL)
+      - pattern: $WS.send($...)
+      - pattern: io($URL, $...)
+      - pattern: io.connect($URL, $...)
+    message: "WebSocket connection detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: websocket
+
+  # =========================================================================
+  # NEXT.JS / VERCEL SPECIFIC
+  # =========================================================================
+  - id: api-nextjs-fetch
+    pattern-either:
+      - pattern: fetch($URL, { ..., next: $OPTS, ... })
+      - pattern: fetch($URL, { ..., cache: $CACHE, ... })
+      - pattern: fetch($URL, { ..., revalidate: $TIME, ... })
+    message: "Next.js enhanced fetch detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: nextjs
+
+  # =========================================================================
+  # TRPC
+  # =========================================================================
+  - id: api-trpc-call
+    pattern-either:
+      - pattern: $TRPC.$ROUTE.query($...)
+      - pattern: $TRPC.$ROUTE.mutate($...)
+      - pattern: $TRPC.$ROUTE.useQuery($...)
+      - pattern: $TRPC.$ROUTE.useMutation($...)
+    message: "tRPC API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: trpc
+
+  # =========================================================================
+  # GENERIC URL PATTERNS
+  # =========================================================================
+  - id: api-url-construction
+    pattern-regex: '["''](https?:\/\/[^"'']+\/api\/[^"'']*)["\']'
+    message: "API URL pattern detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: url_pattern
+
+  - id: api-env-url
+    pattern-either:
+      - pattern: process.env.API_URL
+      - pattern: process.env.NEXT_PUBLIC_API_URL
+      - pattern: process.env.BACKEND_URL
+      - pattern: process.env.BASE_URL
+      - pattern: $ENV.API_URL
+      - pattern: $ENV.NEXT_PUBLIC_API_URL
+    message: "API URL from environment variable detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: env_url

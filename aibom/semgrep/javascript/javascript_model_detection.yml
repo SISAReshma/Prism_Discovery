@@ -1,0 +1,574 @@
+rules:
+  # ============================================
+  # Generic JavaScript/TypeScript Model Detection
+  # Cross-provider patterns for model name capture
+  # ============================================
+  
+  - id: js-model-in-object-literal
+    patterns:
+      - pattern-either:
+          - pattern: |
+              {
+                ...,
+                model: "$MODEL",
+                ...
+              }
+          - pattern: |
+              {
+                ...,
+                "model": "$MODEL",
+                ...
+              }
+          - pattern: |
+              {
+                ...,
+                modelName: "$MODEL",
+                ...
+              }
+          - pattern: |
+              {
+                ...,
+                modelId: "$MODEL",
+                ...
+              }
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-).*$
+    message: "AI model detected in object: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      confidence: "0.90"
+
+  - id: js-chat-completions-create
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $CLIENT.chat.completions.create({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              $CLIENT.completions.create({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              $CLIENT.messages.create({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^[a-zA-Z0-9\-\.]+$
+    message: "AI model detected in API call: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      api: completions
+      confidence: "0.95"
+
+  - id: js-model-string-variable
+    patterns:
+      - pattern-either:
+          - pattern: |
+              const $VAR = "$MODEL"
+          - pattern: |
+              let $VAR = "$MODEL"
+          - pattern: |
+              var $VAR = "$MODEL"
+          - pattern: |
+              export const $VAR = "$MODEL"
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-).*$
+    message: "AI model name in variable: $MODEL"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: model_detection
+      confidence: "0.85"
+
+  - id: js-get-generative-model
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $CLIENT.getGenerativeModel({ model: "$MODEL", ... })
+          - pattern: |
+              $CLIENT.getGenerativeModel({ "model": "$MODEL", ... })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^[a-zA-Z0-9\-\.]+$
+    message: "Generative model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      api: generative-model
+      confidence: "0.90"
+
+  - id: js-model-constructor-call
+    patterns:
+      - pattern-either:
+          - pattern: |
+              new $CLASS({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              new $CLASS({
+                ...,
+                modelName: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-).*$
+    message: "AI model in constructor: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      confidence: "0.90"
+
+  - id: js-ai-sdk-model-call
+    patterns:
+      - pattern-either:
+          - pattern: $PROVIDER("$MODEL", ...)
+          - pattern: $PROVIDER('$MODEL', ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|o[0-9]-|text-embedding-).*$
+    message: "AI SDK model call detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      confidence: "0.85"
+
+  - id: js-fetch-api-with-model
+    patterns:
+      - pattern-either:
+          - pattern: |
+              fetch($URL, {
+                ...,
+                body: JSON.stringify({
+                  ...,
+                  model: "$MODEL",
+                  ...
+                }),
+                ...
+              })
+          - pattern: |
+              axios.post($URL, {
+                ...,
+                model: "$MODEL",
+                ...
+              }, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|text-embedding-).*$
+    message: "AI model in HTTP request: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      api: http-request
+      confidence: "0.85"
+
+  # ============================================
+  # Common AI Framework Patterns
+  # ============================================
+
+  - id: js-langchain-model-instantiation
+    patterns:
+      - pattern-either:
+          - pattern: |
+              new Chat$PROVIDER({
+                ...,
+                modelName: "$MODEL",
+                ...
+              })
+          - pattern: |
+              new $PROVIDERChat({
+                ...,
+                modelName: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^[a-zA-Z0-9\-\.]+$
+    message: "LangChain model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      framework: langchain
+      confidence: "0.90"
+
+  - id: js-ollama-model-call
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $CLIENT.chat({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              ollama.chat({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(llama|mistral|phi|qwen|deepseek|gemma).*$
+    message: "Ollama model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      provider: ollama
+      confidence: "0.90"
+
+  # ============================================
+  # Replicate Model Detection
+  # Format: owner/model:version (e.g., stability-ai/stable-diffusion:abc123)
+  # ============================================
+
+  - id: js-replicate-run-model
+    patterns:
+      - pattern-either:
+          - pattern: $REP.run($MODEL, ...)
+          - pattern: await $REP.run($MODEL, ...)
+          - pattern: replicate.run($MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: .*[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+.*
+    message: "Replicate model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      provider: replicate
+      confidence: "0.95"
+
+  - id: js-replicate-stream-model
+    patterns:
+      - pattern-either:
+          - pattern: $REP.stream($MODEL, ...)
+          - pattern: await $REP.stream($MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: .*[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+.*
+    message: "Replicate streaming model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      provider: replicate
+      confidence: "0.95"
+
+  # ==========================================================================
+  # VARIABLE-INDIRECTION RULES
+  # Catches model names passed via variables (not string literals) to AI SDKs.
+  # These are commonly missed because the model string is assigned to a
+  # variable/parameter and then passed to API calls.
+  # ==========================================================================
+
+  # --------------------------------------------------------------------------
+  # 19. Function/constructor default parameter with model-like string
+  #     Catches: function run(model = "gpt-4o") { ... }
+  # --------------------------------------------------------------------------
+  - id: js-model-function-default-param
+    languages: [javascript, typescript]
+    message: "Model name in function default parameter: $VALUE"
+    severity: WARNING
+    metadata:
+      category: model_detection
+      pattern_type: function_default
+      confidence: "0.92"
+    patterns:
+      - pattern-either:
+          - pattern: |
+              function $FUNC(..., $PARAM = "$VALUE", ...) { ... }
+          - pattern: |
+              function $FUNC(..., $PARAM = '$VALUE', ...) { ... }
+          - pattern: |
+              const $FUNC = (..., $PARAM = "$VALUE", ...) => { ... }
+          - pattern: |
+              const $FUNC = (..., $PARAM = '$VALUE', ...) => { ... }
+      - metavariable-regex:
+          metavariable: $PARAM
+          regex: '(?i)^(model|modelName|model_name|modelId|model_id|llmModel|aiModel|engine|deployment|deploymentName)$'
+    tags: [javascript, typescript, model, function_default]
+
+  # --------------------------------------------------------------------------
+  # 20. Function default with HuggingFace-style org/model path
+  #     Catches: function load(model = "microsoft/Phi-3.5-mini-instruct")
+  # --------------------------------------------------------------------------
+  - id: js-model-function-default-hf-path
+    languages: [javascript, typescript]
+    message: "HuggingFace model path in function default: $VALUE"
+    severity: WARNING
+    metadata:
+      category: model_detection
+      pattern_type: function_default_hf
+      confidence: "0.95"
+    patterns:
+      - pattern-either:
+          - pattern: |
+              function $FUNC(..., $PARAM = "$VALUE", ...) { ... }
+          - pattern: |
+              function $FUNC(..., $PARAM = '$VALUE', ...) { ... }
+          - pattern: |
+              const $FUNC = (..., $PARAM = "$VALUE", ...) => { ... }
+      - metavariable-regex:
+          metavariable: $VALUE
+          regex: '^[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\.\-]+'
+    tags: [javascript, typescript, model, function_default, huggingface]
+
+  # --------------------------------------------------------------------------
+  # 21. Chat completions create with variable model (not string literal)
+  #     Catches: client.chat.completions.create({ model: modelVar, ... })
+  # --------------------------------------------------------------------------
+  - id: js-model-chat-completions-variable
+    languages: [javascript, typescript]
+    message: "Chat completions API call with variable model"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: chat_completions_var
+      confidence: "0.85"
+    pattern-either:
+      - pattern: |
+          $CLIENT.chat.completions.create({ ..., model: $VAR, ... })
+      - pattern: |
+          $CLIENT.completions.create({ ..., model: $VAR, ... })
+      - pattern: |
+          $CLIENT.messages.create({ ..., model: $VAR, ... })
+    tags: [javascript, typescript, model, api_call, variable]
+
+  # --------------------------------------------------------------------------
+  # 22. process.env model reference with fallback value
+  #     Catches: const MODEL = process.env.MODEL_NAME || "gpt-4o"
+  # --------------------------------------------------------------------------
+  - id: js-model-env-with-default
+    languages: [javascript, typescript]
+    message: "Model name in environment variable fallback: $DEFAULT"
+    severity: WARNING
+    metadata:
+      category: model_detection
+      pattern_type: env_default
+      confidence: "0.90"
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $VAR = process.env.$KEY || "$DEFAULT"
+          - pattern: |
+              const $VAR = process.env.$KEY || "$DEFAULT"
+          - pattern: |
+              let $VAR = process.env.$KEY || "$DEFAULT"
+          - pattern: |
+              const $VAR = process.env.$KEY ?? "$DEFAULT"
+      - metavariable-regex:
+          metavariable: $KEY
+          regex: '(?i).*(MODEL|ENGINE|DEPLOYMENT|LLM).*'
+    tags: [javascript, typescript, model, env_default]
+
+  # --------------------------------------------------------------------------
+  # 23. Model name strings in pattern arrays for model type detection
+  #     Catches: const modelPatterns = ['gpt-4o', 'claude-3', ...]
+  # --------------------------------------------------------------------------
+  - id: js-model-pattern-array
+    languages: [javascript, typescript]
+    message: "Model name pattern in array: $VALUE"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: pattern_array
+      confidence: "0.75"
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $VAR = [..., "$VALUE", ...]
+          - pattern: |
+              $VAR = [..., '$VALUE', ...]
+          - pattern: |
+              const $VAR = [..., "$VALUE", ...]
+          - pattern: |
+              const $VAR = [..., '$VALUE', ...]
+      - metavariable-regex:
+          metavariable: $VALUE
+          regex: '(?i)^(gpt-|o[0-9]|claude|llama|mistral|gemini|whisper|dall-e|stable-?diffusion|phi-|qwen|falcon|deepseek|vicuna|midjourney|imagen|sdxl|tts|wav2vec|bge-|gte-|sentence-transformer)'
+    tags: [javascript, typescript, model, pattern_array]
+
+  # --------------------------------------------------------------------------
+  # 24. Regex pattern strings containing model names (type detection logic)
+  #     Catches: /gpt|llama|mistral|claude/.test(modelName)
+  # --------------------------------------------------------------------------
+  - id: js-model-regex-test
+    languages: [javascript, typescript]
+    message: "Model detection regex test pattern"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: regex_test
+      confidence: "0.70"
+    pattern-regex: '/(.*(?:gpt|llama|mistral|claude|gemini|whisper|dall-e|stable.?diffusion|phi|qwen|falcon|deepseek|vicuna|anthropic|openai)[^/]*)/'
+    tags: [javascript, typescript, model, regex_pattern]
+
+  # --------------------------------------------------------------------------
+  # 25. Object/map with model as key (provider configuration maps)
+  #     Catches: const models = { "gpt-4o": { ... }, "claude-3": { ... } }
+  # --------------------------------------------------------------------------
+  - id: js-model-config-map-key
+    languages: [javascript, typescript]
+    message: "Model name as config map key: $MODEL"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: config_map_key
+      confidence: "0.90"
+    patterns:
+      - pattern-either:
+          - pattern: |
+              { ..., "$MODEL": $CONFIG, ... }
+          - pattern: |
+              { ..., '$MODEL': $CONFIG, ... }
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: '(?i)^(gpt-[0-9a-z\.\-]+|o[0-9]+(-mini|-preview)?|claude[a-z0-9\.\-]*|llama[a-z0-9\.\-]*|mistral[a-z0-9\.\-]*|gemini[a-z0-9\.\-]*|deepseek[a-z0-9\.\-]*|text-embedding[a-z0-9\.\-]*|whisper[a-z0-9\.\-]*|dall-e[a-z0-9\.\-]*|stable-diffusion[a-z0-9\.\-]*|phi[a-z0-9\.\-]*|qwen[a-z0-9\.\-]*|falcon[a-z0-9\.\-]*|vicuna[a-z0-9\.\-]*|command[a-z0-9\.\-]*)$'
+    tags: [javascript, typescript, model, config_map]
+
+  # --------------------------------------------------------------------------
+  # 26. S3 bucket model path references
+  #     Catches: const modelPath = "s3://bucket-name/path/to/model.zip"
+  # --------------------------------------------------------------------------
+  - id: js-model-s3-path
+    languages: [javascript, typescript]
+    message: "S3 model path detected"
+    severity: WARNING
+    metadata:
+      category: model_detection
+      pattern_type: s3_model_path
+      confidence: "0.90"
+    pattern-regex: '["\''](s3://[a-zA-Z0-9\.\-_/]+(?:model|checkpoint|weights|transformer|bert|gpt|llm)[a-zA-Z0-9\.\-_/]*)["\'']\s*'
+    tags: [javascript, typescript, model, s3_path]
+
+  # --------------------------------------------------------------------------
+  # 27. AWS Bedrock invoke model (JS SDK)
+  #     Catches: bedrockClient.send(new InvokeModelCommand({ modelId: ... }))
+  # --------------------------------------------------------------------------
+  - id: js-model-bedrock-invoke
+    languages: [javascript, typescript]
+    message: "AWS Bedrock model invocation detected"
+    severity: WARNING
+    metadata:
+      category: model_detection
+      pattern_type: bedrock_invoke
+      confidence: "0.90"
+    pattern-either:
+      - pattern: |
+          new InvokeModelCommand({ ..., modelId: "$MODEL", ... })
+      - pattern: |
+          new InvokeModelCommand({ ..., modelId: $VAR, ... })
+      - pattern: |
+          $CLIENT.send(new InvokeModelCommand($PARAMS))
+    tags: [javascript, typescript, model, bedrock, aws]
+
+  # --------------------------------------------------------------------------
+  # 28. Anthropic SDK message creation with variable model
+  #     Catches: anthropic.messages.create({ model: modelVar, ... })
+  # --------------------------------------------------------------------------
+  - id: js-model-anthropic-variable
+    languages: [javascript, typescript]
+    message: "Anthropic API call with variable model"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: anthropic_var
+      confidence: "0.85"
+    pattern-either:
+      - pattern: |
+          $CLIENT.messages.create({ ..., model: $VAR, ... })
+    tags: [javascript, typescript, model, anthropic, variable]
+
+  # --------------------------------------------------------------------------
+  # 29. Cohere client calls with variable model
+  #     Catches: cohere.chat({ model: modelVar, ... })
+  # --------------------------------------------------------------------------
+  - id: js-model-cohere-variable
+    languages: [javascript, typescript]
+    message: "Cohere API call with variable model"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: cohere_var
+      confidence: "0.85"
+    pattern-either:
+      - pattern: |
+          $CLIENT.chat({ ..., model: $VAR, ... })
+      - pattern: |
+          $CLIENT.generate({ ..., model: $VAR, ... })
+    tags: [javascript, typescript, model, cohere, variable]
+
+  # --------------------------------------------------------------------------
+  # 30. Ollama client calls with variable model
+  #     Catches: ollama.chat({ model: modelVar, ... })
+  # --------------------------------------------------------------------------
+  - id: js-model-ollama-variable
+    languages: [javascript, typescript]
+    message: "Ollama API call with variable model"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: ollama_var
+      confidence: "0.85"
+    pattern-either:
+      - pattern: |
+          ollama.chat({ ..., model: $VAR, ... })
+      - pattern: |
+          $CLIENT.chat({ ..., model: $VAR, ... })
+    tags: [javascript, typescript, model, ollama, variable]
+
+  # --------------------------------------------------------------------------
+  # 31. Replicate run/stream with variable model
+  #     Catches: await replicate.run(modelVersion, ...)
+  # --------------------------------------------------------------------------
+  - id: js-model-replicate-run-variable
+    languages: [javascript, typescript]
+    message: "Replicate API call with variable model"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: replicate_var
+      confidence: "0.85"
+    pattern-either:
+      - pattern: $REP.run($VAR, ...)
+      - pattern: await $REP.run($VAR, ...)
+      - pattern: $REP.stream($VAR, ...)
+      - pattern: await $REP.stream($VAR, ...)
+    tags: [javascript, typescript, model, replicate, variable]
+
+  # --------------------------------------------------------------------------
+  # 32. TypeScript interface/type with model-like default or literal
+  #     Catches: interface Config { model: "gpt-4o"; }
+  # --------------------------------------------------------------------------
+  - id: js-model-typescript-interface-literal
+    languages: [typescript]
+    message: "Model literal in TypeScript type: $MODEL"
+    severity: INFO
+    metadata:
+      category: model_detection
+      pattern_type: ts_interface_literal
+      confidence: "0.85"
+    pattern-regex: '(?:model|modelName|model_name|modelId)\s*(?:\??\s*:\s*)["\'']((?:gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-|whisper)[a-zA-Z0-9\.\-]*)["\'']\s*;?'
+    tags: [typescript, model, interface]

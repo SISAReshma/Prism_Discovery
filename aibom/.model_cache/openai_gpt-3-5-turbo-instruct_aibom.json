@@ -1,0 +1,98 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-3-5-turbo-instruct-2026-01-14-10-56-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:56:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-3.5 Turbo Instruct",
+      "version": "gpt-3.5-turbo-instruct",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-3.5 Turbo Instruct is optimized for instruction-following completions, similar to text-davinci-003."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-3.5-turbo-instruct",
+      "name": "GPT-3.5 Turbo Instruct",
+      "version": "gpt-3.5-turbo-instruct",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-3.5 Turbo Instruct is optimized for instruction-following completions, similar to text-davinci-003.",
+      "properties": {
+        "ai_model_type": "Large Language Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-3.5-turbo-instruct",
+        "ai_model_family": "GPT-3.5",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "4096",
+        "ai_max_output_tokens": "4096",
+        "ai_knowledge_cutoff": "Sep 01, 2021",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming",
+        "ai_api_endpoints": "completions",
+        "ai_deprecated": "false",
+        "ai_parent_model": "GPT-3.5 Turbo",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Instruction-following completions, legacy completion API applications",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "1.5",
+        "ai_pricing_output_per_million_tokens": "2.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-3.5-turbo-instruct"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

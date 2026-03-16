@@ -1,0 +1,94 @@
+rules:
+  - id: langchain-chat-model
+    pattern-either:
+      - pattern: ChatOpenAI(...)
+      - pattern: ChatAnthropic(...)
+      - pattern: ChatGoogleGenerativeAI(...)
+      - pattern: ChatVertexAI(...)
+      - pattern: ChatCohere(...)
+    message: "LangChain chat model instantiation detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain
+
+  - id: langchain-llm-model
+    pattern-either:
+      - pattern: OpenAI(...)
+      - pattern: HuggingFaceHub(...)
+      - pattern: Replicate(...)
+      - pattern: Cohere(...)
+      - pattern: Anthropic(...)
+    message: "LangChain LLM model instantiation detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain
+
+  - id: langchain-embeddings
+    pattern-either:
+      - pattern: OpenAIEmbeddings(...)
+      - pattern: HuggingFaceEmbeddings(...)
+      - pattern: CohereEmbeddings(...)
+      - pattern: GoogleGenerativeAIEmbeddings(...)
+    message: "LangChain embeddings model detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain
+
+  - id: langchain-chain
+    pattern-either:
+      - pattern: LLMChain(...)
+      - pattern: ConversationChain(...)
+      - pattern: RetrievalQA(...)
+      - pattern: RetrievalQA.from_chain_type(...)
+      - pattern: ConversationalRetrievalChain(...)
+    message: "LangChain chain usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain
+
+  - id: langchain-agent
+    pattern-either:
+      - pattern: initialize_agent(...)
+      - pattern: AgentExecutor(...)
+      - pattern: AgentExecutor.from_agent_and_tools(...)
+      - pattern: create_react_agent(...)
+      - pattern: create_openai_functions_agent(...)
+    message: "LangChain agent usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain
+
+  - id: langchain-retriever
+    pattern-either:
+      - pattern: $VEC.as_retriever(...)
+      - pattern: SelfQueryRetriever(...)
+      - pattern: ContextualCompressionRetriever(...)
+    message: "LangChain retriever usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain
+
+  - id: langchain-vectorstore
+    pattern-either:
+      - pattern: FAISS.from_documents(...)
+      - pattern: Chroma.from_documents(...)
+      - pattern: Pinecone.from_documents(...)
+      - pattern: Weaviate.from_documents(...)
+    message: "LangChain vectorstore usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: langchain
+      provider: langchain

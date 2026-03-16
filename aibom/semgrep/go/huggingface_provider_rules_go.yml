@@ -1,0 +1,83 @@
+rules:
+  - id: huggingface-inference-client-go
+    pattern-either:
+      - pattern: huggingface.NewInferenceClient($...)
+      - pattern: huggingface.NewClient($...)
+      - pattern: hf.NewInferenceClient($...)
+    message: "Hugging Face Inference client detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-text-generation-go
+    pattern-either:
+      - pattern: $CLIENT.TextGeneration($...)
+      - pattern: $CLIENT.TextGenerationStream($...)
+    message: "Hugging Face text generation detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-conversational-go
+    pattern-either:
+      - pattern: $CLIENT.Conversational($...)
+      - pattern: $CLIENT.ChatCompletion($...)
+    message: "Hugging Face conversational detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-embedding-go
+    pattern-either:
+      - pattern: $CLIENT.FeatureExtraction($...)
+      - pattern: $CLIENT.SentenceSimilarity($...)
+    message: "Hugging Face embedding detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-hub-download-go
+    pattern-either:
+      - pattern: huggingface.DownloadModel($...)
+      - pattern: $CLIENT.DownloadModel($...)
+      - pattern: $CLIENT.ModelInfo($...)
+    message: "Hugging Face Hub download detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-image-go
+    pattern-either:
+      - pattern: $CLIENT.TextToImage($...)
+      - pattern: $CLIENT.ImageToText($...)
+      - pattern: $CLIENT.ImageClassification($...)
+      - pattern: $CLIENT.ImageSegmentation($...)
+    message: "Hugging Face image processing detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-nlp-go
+    pattern-either:
+      - pattern: $CLIENT.Summarization($...)
+      - pattern: $CLIENT.Translation($...)
+      - pattern: $CLIENT.QuestionAnswering($...)
+      - pattern: $CLIENT.ZeroShotClassification($...)
+    message: "Hugging Face NLP task detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface

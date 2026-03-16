@@ -1,0 +1,101 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-o4-mini-deep-research-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "o4-mini Deep Research",
+      "version": "o4-mini-deep-research",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o4-mini Deep Research is a specialized version of o4-mini optimized for extended research tasks with a focus on cost-effectiveness."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-o4-mini-deep-research",
+      "name": "o4-mini Deep Research",
+      "version": "o4-mini-deep-research",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o4-mini Deep Research is a specialized version of o4-mini optimized for extended research tasks with a focus on cost-effectiveness.",
+      "properties": {
+        "ai_model_type": "Research Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "o4-mini-deep-research",
+        "ai_model_family": "o-series",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "200000",
+        "ai_max_output_tokens": "100000",
+        "ai_knowledge_cutoff": "Jun 01, 2024",
+        "ai_input_modalities": "text, image",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "function_calling, structured_outputs",
+        "ai_api_endpoints": "responses",
+        "ai_deprecated": "false",
+        "ai_parent_model": "o4-mini",
+        "ai_reasoning_tokens": "true",
+        "ai_best_for": "Cost-effective deep research, extended analysis tasks on a budget",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "2.0",
+        "ai_pricing_output_per_million_tokens": "8.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Research",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/o4-mini-deep-research"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

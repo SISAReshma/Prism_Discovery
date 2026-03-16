@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "description": "Dynamic rule category configuration for AI targeted scanning",
+  "categories": {
+    "provider": {
+      "enabled": true,
+      "description": "AI provider-specific rules (OpenAI, Anthropic, Google, etc.)",
+      "priority": 1,
+      "rule_pattern": "*_provider_rules*.yml",
+      "applies_to": ["AI_PROVIDER", "AI_ORCHESTRATION", "AI_FRAMEWORK"]
+    },
+    "model_detection": {
+      "enabled": true,
+      "description": "Model name detection rules (gpt-4, claude-3, gemini, etc.)",
+      "priority": 2,
+      "rule_pattern": "*_model_detection.yml",
+      "applies_to": ["ALL"]
+    },
+    "api_calls": {
+      "enabled": true,
+      "description": "HTTP/API call detection rules",
+      "priority": 3,
+      "rule_pattern": "*_api_calls.yml",
+      "applies_to": ["ALL"]
+    },
+    "imports": {
+      "enabled": false,
+      "description": "Import statement detection (usually handled by earlier endpoints)",
+      "priority": 4,
+      "rule_pattern": "*_imports.yml",
+      "applies_to": ["ALL"]
+    }
+  },
+  "provider_keywords": {
+    "openai": ["openai", "gpt", "davinci", "curie", "babbage", "ada", "whisper", "dall-e", "tts", "text-davinci", "text-embedding"],
+    "anthropic": ["anthropic", "claude"],
+    "google": ["google", "gemini", "palm", "vertex", "bard"],
+    "huggingface": ["huggingface", "transformers", "hf_", "diffusers"],
+    "langchain": ["langchain", "lcel"],
+    "pinecone": ["pinecone"],
+    "cohere": ["cohere", "command-r"],
+    "replicate": ["replicate"],
+    "ai_sdk": ["ai-sdk", "@ai-sdk", "vercel-ai"]
+  },
+  "language_mapping": {
+    "python": {
+      "extensions": [".py", ".pyx", ".pyi", ".ipynb"],
+      "rule_suffix": ".yml"
+    },
+    "javascript": {
+      "extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs"],
+      "rule_suffix": "_js.yml"
+    },
+    "go": {
+      "extensions": [".go"],
+      "rule_suffix": "_go.yml"
+    },
+    "dotnet": {
+      "extensions": [".cs", ".fs", ".vb"],
+      "rule_suffix": "_dotnet.yml"
+    },
+    "java": {
+      "extensions": [".java"],
+      "rule_suffix": "_java.yml"
+    }
+  }
+}

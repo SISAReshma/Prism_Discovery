@@ -1,0 +1,19 @@
+{
+  "provider": "azure-ai-foundry",
+  "model_id": "text-embedding-3-small",
+  "model_card_url": "https://ai.azure.com/catalog/models/text-embedding-3-small",
+  "fetched_at": "2026-01-08T23:36:24.868092",
+  "name": "Direct from Azure models",
+  "description": "Model text-embedding-3-small from Azure AI Foundry",
+  "license": "OverviewBenchmarksBenchmarks",
+  "version": "December 2025",
+  "context_length": "8191",
+  "quality_index": "",
+  "training_data": "September 2021",
+  "input_type": "Text",
+  "output_type": "Embeddings",
+  "provider_name": "OpenAI",
+  "languages": "1 Language",
+  "tags": [],
+  "task": "unknown"
+}

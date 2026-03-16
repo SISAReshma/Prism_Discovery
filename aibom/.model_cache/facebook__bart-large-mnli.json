@@ -1,0 +1,400 @@
+{
+  "model_id": "facebook/bart-large-mnli",
+  "source": "huggingface",
+  "cached_at": "2026-02-25T10:16:22.128816",
+  "data": {
+    "model_id": "facebook/bart-large-mnli",
+    "model_name": "facebook/bart-large-mnli",
+    "author": "facebook",
+    "pipeline_tag": "zero-shot-classification",
+    "tags": [
+      "transformers",
+      "pytorch",
+      "jax",
+      "rust",
+      "safetensors",
+      "bart",
+      "text-classification",
+      "zero-shot-classification",
+      "dataset:multi_nli",
+      "arxiv:1910.13461",
+      "arxiv:1909.00161",
+      "license:mit",
+      "endpoints_compatible",
+      "deploy:azure",
+      "region:us"
+    ],
+    "library_name": "transformers",
+    "license": null,
+    "downloads": 3537590,
+    "likes": 1538,
+    "created_at": "2022-03-02T23:29:05.000Z",
+    "last_modified": "2023-09-05T14:49:34.000Z",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "flax_model.msgpack"
+      },
+      {
+        "rfilename": "merges.txt"
+      },
+      {
+        "rfilename": "model.safetensors"
+      },
+      {
+        "rfilename": "pytorch_model.bin"
+      },
+      {
+        "rfilename": "rust_model.ot"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      },
+      {
+        "rfilename": "vocab.json"
+      }
+    ],
+    "card_data": {
+      "license": "mit",
+      "thumbnail": "https://huggingface.co/front/thumbnails/facebook.png",
+      "pipeline_tag": "zero-shot-classification",
+      "datasets": [
+        "multi_nli"
+      ]
+    },
+    "spaces": [
+      "Really-amin/Datasourceforcryptocurrency-2",
+      "A2avishkar/aigroup",
+      "gunship999/SexyImages",
+      "Yntec/ToyWorld",
+      "llamameta/flux-pro-uncensored",
+      "Uthar/SexyReality",
+      "Yntec/PrintingPress",
+      "Nymbo/Compare-6",
+      "llamameta/fluxproV2",
+      "pleonova/multi-label-summary-text",
+      "Yntec/ToyWorldXL",
+      "Yntec/blitz_diffusion",
+      "datasciencedojo/Zero-Shot-Text-Classification",
+      "John6666/Diffusion80XX4sg",
+      "John6666/PrintingPress4",
+      "Sybghat/resume-parser",
+      "llamameta/fast-sd3.5-large",
+      "Yntec/Image-Models-Test-2024",
+      "Yntec/Image-Models-Test-April-2024",
+      "DemiPoto/TestDifs",
+      "Abinivesh/Multi-models-prompt-to-image-generation",
+      "joeddav/zero-shot-demo",
+      "NativeAngels/Compare-6",
+      "John6666/hfd_test_nostopbutton",
+      "hongaik/service_text_classification",
+      "Nymbo/Diffusion80XX4sg",
+      "DemiPoto/testSortModels",
+      "kaleidoskop-hug/PrintingPress",
+      "docs-demos/bart-large-mnli",
+      "Chakshu123/image-colorization-with-hint",
+      "Yntec/MiniToyWorld",
+      "UNIST-Eunchan/Summarizing-app",
+      "John6666/ToyWorld4",
+      "eldoraboo/zero-shot",
+      "iamkb/zero-shot-nlp-classifier-multi-lang",
+      "Chakshu123/sketch-colorization-with-hint",
+      "John6666/Diffusion80XX4g",
+      "SAITAN666/StableDiffusion35Large-Image-Models-Test-November-2024",
+      "NativeAngels/HuggingfaceDiffusion",
+      "Yntec/Image-Models-Test-December-2024",
+      "asimokby/cv-parser-huggingface",
+      "OmarElgammal1/text-sentiment-analysis",
+      "John6666/Diffusion80XX4",
+      "K00B404/HuggingfaceDiffusion_custom",
+      "John6666/blitz_diffusion4",
+      "John6666/blitz_diffusion_builtin",
+      "yerang/LivePortrait2",
+      "NativeAngels/ToyWorld",
+      "K00B404/SimpleBrothel",
+      "ashishraics/NLP",
+      "FahadAlam/Zero-Shot-Text-Classification",
+      "chrismay/Sentiment-demo-app",
+      "HighCWu/anime-colorization-with-hint",
+      "Syrahealthorg/HealthCare_workforce",
+      "hudsonhayes/finance_tool",
+      "Blane187/multi-diffusion",
+      "Uthar/LewdExperiments",
+      "Uthar/BodyPaint",
+      "Uthar/HRGiger",
+      "Uthar/HighFashion",
+      "gauravbox/TalentLensAI",
+      "RAHULJUNEJA33/LexiGenAI-Transform-FSD-2_UserStory_n_TestCases",
+      "ghostai1/CPU-only-Zero-Shot-Text-Classification",
+      "kyled/PhraseSentimentEmotionAnalysis",
+      "MrVicente/RA-BART",
+      "Sukhyun/course_recommender",
+      "omerXfaruq/zero-shotts",
+      "rachith/ZeroShot_StanceDetection",
+      "lordvader31/almithal",
+      "lordvader31/text-matching",
+      "FYP-23-S1-21/Refineverse_Plugin",
+      "abhisheky127/Fold_TransactionClassification",
+      "AdityaKhalkar/Dataset-finder",
+      "Iseratho/frame-finder",
+      "DanielDJ1987/chat-financial",
+      "Anupam202224/MedicalReportandImageanalyze-A",
+      "ahmed-7124/MedicoGPT",
+      "Yeeezus/SexyImages",
+      "wozwize/media-unmasked-api",
+      "John6666/MiniToyWorld",
+      "amit098/legal_lens",
+      "aditizy/QuizCraftAi",
+      "CamBinDEV/Cam-Bin",
+      "BuildWithShubham/aws-cloud-recommender",
+      "satyaki-mitra/Text_Authenticator",
+      "shudipto001/sentiment_analyzer",
+      "davidefiocco/zeroshotcat",
+      "Wootang01/sentiment_analyzer_1",
+      "Sukhyun/MBTI_translator",
+      "mishtert/tracer",
+      "smjain/zeroshotclassifier",
+      "Sasidhar/information-extraction-demo",
+      "cgunadi/CDSS_Demo",
+      "HarshulNanda/VV",
+      "awacke1/ZeroShotClassifiers-Facebook-bart-large-mnli",
+      "ashhadahsan/summarizer-space",
+      "awacke1/HEDIS.Dash.Component.Top.Clinical.Terminology.Vocabulary",
+      "awacke1/Easy-Button-Zero-Shot-Text-Classifier-facebook-bart-large-mnli",
+      "srikotha/facebook-bart-large-mnli",
+      "ceckenrode/Easy-Button-Zero-Shot-Text-Classifier-facebook-bart-large-mnli"
+    ],
+    "gated": false,
+    "disabled": false,
+    "_lookup_source": "huggingface",
+    "_raw_response": {
+      "_id": "621ffdc136468d709f17adb7",
+      "id": "facebook/bart-large-mnli",
+      "private": false,
+      "pipeline_tag": "zero-shot-classification",
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "jax",
+        "rust",
+        "safetensors",
+        "bart",
+        "text-classification",
+        "zero-shot-classification",
+        "dataset:multi_nli",
+        "arxiv:1910.13461",
+        "arxiv:1909.00161",
+        "license:mit",
+        "endpoints_compatible",
+        "deploy:azure",
+        "region:us"
+      ],
+      "downloads": 3537590,
+      "likes": 1538,
+      "modelId": "facebook/bart-large-mnli",
+      "author": "facebook",
+      "sha": "d7645e127eaf1aefc7862fd59a17a5aa8558b8ce",
+      "lastModified": "2023-09-05T14:49:34.000Z",
+      "gated": false,
+      "disabled": false,
+      "mask_token": "<mask>",
+      "widgetData": [
+        {
+          "text": "I have a problem with my iphone that needs to be resolved asap!",
+          "candidate_labels": "urgent, not urgent, phone, tablet, computer",
+          "multi_class": true
+        },
+        {
+          "text": "Last week I upgraded my iOS version and ever since then my phone has been overheating whenever I use your app.",
+          "candidate_labels": "mobile, website, billing, account access",
+          "multi_class": false
+        },
+        {
+          "text": "A new model offers an explanation for how the Galilean satellites formed around the solar system\u2019s largest world. Konstantin Batygin did not set out to solve one of the solar system\u2019s most puzzling mysteries when he went for a run up a hill in Nice, France. Dr. Batygin, a Caltech researcher, best known for his contributions to the search for the solar system\u2019s missing \u201cPlanet Nine,\u201d spotted a beer bottle. At a steep, 20 degree grade, he wondered why it wasn\u2019t rolling down the hill. He realized there was a breeze at his back holding the bottle in place. Then he had a thought that would only pop into the mind of a theoretical astrophysicist: \u201cOh! This is how Europa formed.\u201d Europa is one of Jupiter\u2019s four large Galilean moons. And in a paper published Monday in the Astrophysical Journal, Dr. Batygin and a co-author, Alessandro Morbidelli, a planetary scientist at the C\u00f4te d\u2019Azur Observatory in France, present a theory explaining how some moons form around gas giants like Jupiter and Saturn, suggesting that millimeter-sized grains of hail produced during the solar system\u2019s formation became trapped around these massive worlds, taking shape one at a time into the potentially habitable moons we know today.",
+          "candidate_labels": "space & cosmos, scientific discovery, microbiology, robots, archeology",
+          "multi_class": true
+        }
+      ],
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "BartForSequenceClassification"
+        ],
+        "model_type": "bart",
+        "tokenizer_config": {}
+      },
+      "cardData": {
+        "license": "mit",
+        "thumbnail": "https://huggingface.co/front/thumbnails/facebook.png",
+        "pipeline_tag": "zero-shot-classification",
+        "datasets": [
+          "multi_nli"
+        ]
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForSequenceClassification",
+        "pipeline_tag": "text-classification",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "flax_model.msgpack"
+        },
+        {
+          "rfilename": "merges.txt"
+        },
+        {
+          "rfilename": "model.safetensors"
+        },
+        {
+          "rfilename": "pytorch_model.bin"
+        },
+        {
+          "rfilename": "rust_model.ot"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "vocab.json"
+        }
+      ],
+      "spaces": [
+        "Really-amin/Datasourceforcryptocurrency-2",
+        "A2avishkar/aigroup",
+        "gunship999/SexyImages",
+        "Yntec/ToyWorld",
+        "llamameta/flux-pro-uncensored",
+        "Uthar/SexyReality",
+        "Yntec/PrintingPress",
+        "Nymbo/Compare-6",
+        "llamameta/fluxproV2",
+        "pleonova/multi-label-summary-text",
+        "Yntec/ToyWorldXL",
+        "Yntec/blitz_diffusion",
+        "datasciencedojo/Zero-Shot-Text-Classification",
+        "John6666/Diffusion80XX4sg",
+        "John6666/PrintingPress4",
+        "Sybghat/resume-parser",
+        "llamameta/fast-sd3.5-large",
+        "Yntec/Image-Models-Test-2024",
+        "Yntec/Image-Models-Test-April-2024",
+        "DemiPoto/TestDifs",
+        "Abinivesh/Multi-models-prompt-to-image-generation",
+        "joeddav/zero-shot-demo",
+        "NativeAngels/Compare-6",
+        "John6666/hfd_test_nostopbutton",
+        "hongaik/service_text_classification",
+        "Nymbo/Diffusion80XX4sg",
+        "DemiPoto/testSortModels",
+        "kaleidoskop-hug/PrintingPress",
+        "docs-demos/bart-large-mnli",
+        "Chakshu123/image-colorization-with-hint",
+        "Yntec/MiniToyWorld",
+        "UNIST-Eunchan/Summarizing-app",
+        "John6666/ToyWorld4",
+        "eldoraboo/zero-shot",
+        "iamkb/zero-shot-nlp-classifier-multi-lang",
+        "Chakshu123/sketch-colorization-with-hint",
+        "John6666/Diffusion80XX4g",
+        "SAITAN666/StableDiffusion35Large-Image-Models-Test-November-2024",
+        "NativeAngels/HuggingfaceDiffusion",
+        "Yntec/Image-Models-Test-December-2024",
+        "asimokby/cv-parser-huggingface",
+        "OmarElgammal1/text-sentiment-analysis",
+        "John6666/Diffusion80XX4",
+        "K00B404/HuggingfaceDiffusion_custom",
+        "John6666/blitz_diffusion4",
+        "John6666/blitz_diffusion_builtin",
+        "yerang/LivePortrait2",
+        "NativeAngels/ToyWorld",
+        "K00B404/SimpleBrothel",
+        "ashishraics/NLP",
+        "FahadAlam/Zero-Shot-Text-Classification",
+        "chrismay/Sentiment-demo-app",
+        "HighCWu/anime-colorization-with-hint",
+        "Syrahealthorg/HealthCare_workforce",
+        "hudsonhayes/finance_tool",
+        "Blane187/multi-diffusion",
+        "Uthar/LewdExperiments",
+        "Uthar/BodyPaint",
+        "Uthar/HRGiger",
+        "Uthar/HighFashion",
+        "gauravbox/TalentLensAI",
+        "RAHULJUNEJA33/LexiGenAI-Transform-FSD-2_UserStory_n_TestCases",
+        "ghostai1/CPU-only-Zero-Shot-Text-Classification",
+        "kyled/PhraseSentimentEmotionAnalysis",
+        "MrVicente/RA-BART",
+        "Sukhyun/course_recommender",
+        "omerXfaruq/zero-shotts",
+        "rachith/ZeroShot_StanceDetection",
+        "lordvader31/almithal",
+        "lordvader31/text-matching",
+        "FYP-23-S1-21/Refineverse_Plugin",
+        "abhisheky127/Fold_TransactionClassification",
+        "AdityaKhalkar/Dataset-finder",
+        "Iseratho/frame-finder",
+        "DanielDJ1987/chat-financial",
+        "Anupam202224/MedicalReportandImageanalyze-A",
+        "ahmed-7124/MedicoGPT",
+        "Yeeezus/SexyImages",
+        "wozwize/media-unmasked-api",
+        "John6666/MiniToyWorld",
+        "amit098/legal_lens",
+        "aditizy/QuizCraftAi",
+        "CamBinDEV/Cam-Bin",
+        "BuildWithShubham/aws-cloud-recommender",
+        "satyaki-mitra/Text_Authenticator",
+        "shudipto001/sentiment_analyzer",
+        "davidefiocco/zeroshotcat",
+        "Wootang01/sentiment_analyzer_1",
+        "Sukhyun/MBTI_translator",
+        "mishtert/tracer",
+        "smjain/zeroshotclassifier",
+        "Sasidhar/information-extraction-demo",
+        "cgunadi/CDSS_Demo",
+        "HarshulNanda/VV",
+        "awacke1/ZeroShotClassifiers-Facebook-bart-large-mnli",
+        "ashhadahsan/summarizer-space",
+        "awacke1/HEDIS.Dash.Component.Top.Clinical.Terminology.Vocabulary",
+        "awacke1/Easy-Button-Zero-Shot-Text-Classifier-facebook-bart-large-mnli",
+        "srikotha/facebook-bart-large-mnli",
+        "ceckenrode/Easy-Button-Zero-Shot-Text-Classifier-facebook-bart-large-mnli"
+      ],
+      "createdAt": "2022-03-02T23:29:05.000Z",
+      "safetensors": {
+        "parameters": {
+          "F32": 407344133
+        },
+        "total": 407344133
+      },
+      "usedStorage": 14655739723
+    },
+    "readme_content": "---\nlicense: mit\nthumbnail: https://huggingface.co/front/thumbnails/facebook.png\npipeline_tag: zero-shot-classification\ndatasets:\n- multi_nli\n---\n\n# bart-large-mnli\n\nThis is the checkpoint for [bart-large](https://huggingface.co/facebook/bart-large) after being trained on the [MultiNLI (MNLI)](https://huggingface.co/datasets/multi_nli) dataset.\n\nAdditional information about this model:\n- The [bart-large](https://huggingface.co/facebook/bart-large) model page\n- [BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension\n](https://arxiv.org/abs/1910.13461)\n- [BART fairseq implementation](https://github.com/pytorch/fairseq/tree/master/fairseq/models/bart)\n\n## NLI-based Zero Shot Text Classification\n\n[Yin et al.](https://arxiv.org/abs/1909.00161) proposed a method for using pre-trained NLI models as a ready-made zero-shot sequence classifiers. The method works by posing the sequence to be classified as the NLI premise and to construct a hypothesis from each candidate label. For example, if we want to evaluate whether a sequence belongs to the class \"politics\", we could construct a hypothesis of `This text is about politics.`. The probabilities for entailment and contradiction are then converted to label probabilities.\n\nThis method is surprisingly effective in many cases, particularly when used with larger pre-trained models like BART and Roberta. See [this blog post](https://joeddav.github.io/blog/2020/05/29/ZSL.html) for a more expansive introduction to this and other zero shot methods, and see the code snippets below for examples of using this model for zero-shot classification both with Hugging Face's built-in pipeline and with native Transformers/PyTorch code.\n\n#### With the zero-shot classification pipeline\n\nThe model can be loaded with the `zero-shot-classification` pipeline like so:\n\n```python\nfrom transformers import pipeline\nclassifier = pipeline(\"zero-shot-classification\",\n                      model=\"facebook/bart-large-mnli\")\n```\n\nYou can then use this pipeline to classify sequences into any of the class names you specify.\n\n```python\nsequence_to_classify = \"one day I will see the world\"\ncandidate_labels = ['travel', 'cooking', 'dancing']\nclassifier(sequence_to_classify, candidate_labels)\n#{'labels': ['travel', 'dancing', 'cooking'],\n# 'scores': [0.9938651323318481, 0.0032737774308770895, 0.002861034357920289],\n# 'sequence': 'one day I will see the world'}\n```\n\nIf more than one candidate label can be correct, pass `multi_label=True` to calculate each class independently:\n\n```python\ncandidate_labels = ['travel', 'cooking', 'dancing', 'exploration']\nclassifier(sequence_to_classify, candidate_labels, multi_label=True)\n#{'labels': ['travel', 'exploration', 'dancing', 'cooking'],\n# 'scores': [0.9945111274719238,\n#  0.9383890628814697,\n#  0.0057061901316046715,\n#  0.0018193122232332826],\n# 'sequence': 'one day I will see the world'}\n```\n\n\n#### With manual PyTorch\n\n```python\n# pose sequence as a NLI premise and label as a hypothesis\nfrom transformers import AutoModelForSequenceClassification, AutoTokenizer\nnli_model = AutoModelForSequenceClassification.from_pretrained('facebook/bart-large-mnli')\ntokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-mnli')\n\npremise = sequence\nhypothesis = f'This example is {label}.'\n\n# run through model pre-trained on MNLI\nx = tokenizer.encode(premise, hypothesis, return_tensors='pt',\n                     truncation_strategy='only_first')\nlogits = nli_model(x.to(device))[0]\n\n# we throw away \"neutral\" (dim 1) and take the probability of\n# \"entailment\" (2) as the probability of the label being true \nentail_contradiction_logits = logits[:,[0,2]]\nprobs = entail_contradiction_logits.softmax(dim=1)\nprob_label_is_true = probs[:,1]\n```\n",
+    "has_model_card": true
+  }
+}

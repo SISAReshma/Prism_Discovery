@@ -1,0 +1,98 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-tts-1-2026-01-14-10-47-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:47:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "TTS-1",
+      "version": "tts-1",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "TTS is a model that converts text to natural sounding spoken text. The tts-1 model is optimized for realtime text-to-speech use cases. Use it with the Speech endpoint in the Audio API."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-tts-1",
+      "name": "TTS-1",
+      "version": "tts-1",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "TTS is a model that converts text to natural sounding spoken text. The tts-1 model is optimized for realtime text-to-speech use cases. Use it with the Speech endpoint in the Audio API.",
+      "properties": {
+        "ai_model_type": "Text-to-Speech Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "tts-1",
+        "ai_model_family": "Specialized",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "N/A",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "audio",
+        "ai_supported_features": "streaming",
+        "ai_api_endpoints": "speech",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Real-time text-to-speech, voice generation optimized for speed and low latency",
+        "ai_pricing_input_per_million_tokens": "15.0",
+        "ai_pricing_output_per_million_tokens": "N/A",
+        "ai_pricing_currency": "USD"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Text-to-Speech",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "audio"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/tts-1"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

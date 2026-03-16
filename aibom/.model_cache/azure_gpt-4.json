@@ -1,0 +1,19 @@
+{
+  "provider": "azure-ai-foundry",
+  "model_id": "gpt-4",
+  "model_card_url": "https://ai.azure.com/catalog/models/gpt-4",
+  "fetched_at": "2025-12-24T15:19:27.000172",
+  "name": "Direct from Azure models",
+  "description": "Model gpt-4 from Azure AI Foundry",
+  "license": "OverviewBenchmarksBenchmarks",
+  "version": "December 2025",
+  "context_length": "128000",
+  "quality_index": "",
+  "training_data": "December 2023",
+  "input_type": "",
+  "output_type": "",
+  "provider_name": "OpenAI",
+  "languages": "",
+  "tags": [],
+  "task": "unknown"
+}

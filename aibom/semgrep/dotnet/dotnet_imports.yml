@@ -1,0 +1,65 @@
+rules:
+  # =========================================================================
+  # .NET (C#/F#/VB) Import Detection Rules
+  # Metadata is read by semgrep_scanner.py - keep in sync!
+  # =========================================================================
+
+  # Detect: using Namespace;
+  - id: csharp-using-directive
+    pattern: |
+      using $MODULE;
+    message: "Dotnet import: $MODULE"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: using-directive
+      is_relative: false
+
+  # Detect: using static Namespace.Class;
+  - id: csharp-using-static
+    pattern: |
+      using static $MODULE;
+    message: "Dotnet import: $MODULE"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: using-static
+      is_relative: false
+
+  # Detect: using Alias = Namespace;
+  - id: csharp-using-alias
+    pattern: |
+      using $ALIAS = $MODULE;
+    message: "Dotnet import: $MODULE"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: using-alias
+      is_relative: false
+
+  # Detect: global using Namespace;
+  - id: csharp-global-using
+    pattern: |
+      global using $MODULE;
+    message: "Dotnet import: $MODULE"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: global-using
+      is_relative: false
+
+  # Detect: global using static Namespace.Class;
+  - id: csharp-global-using-static
+    pattern: |
+      global using static $MODULE;
+    message: "Dotnet import: $MODULE"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: global-using-static
+      is_relative: false
