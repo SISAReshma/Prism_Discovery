@@ -678,3 +678,46 @@ class ModelDeprecationResponse(BaseModel):
     results: List[ModelDeprecationResult]
     summary: DeprecationSummary
 
+
+# =============================================================================
+# FRAMEWORK DETECTION MODELS
+# =============================================================================
+
+class SubImport(BaseModel):
+    """A specific item imported from a base package.
+    
+    E.g. from openai import OpenAIError → item='OpenAIError', module='openai'
+    """
+    item: str
+    module: str = ""
+    file: str = ""
+    line: int = 0
+
+
+class DetectedFramework(BaseModel):
+    """A single detected framework with its sub-import mappings"""
+    base_package: str
+    category: str
+    framework_type: str  # "ai" | "api" | "agentic"
+    confidence: str = "LOW"
+    reason: str = ""
+    source_files: List[str] = []
+    sub_imports: List[SubImport] = []
+    language: Optional[str] = None
+
+
+class FrameworksSummary(BaseModel):
+    """Summary of framework detection results"""
+    total_ai: int
+    total_api: int
+    total_agentic: int
+    total_frameworks: int
+
+
+class FrameworksDetectedResponse(BaseModel):
+    """Response for /aibom/frameworks-detected endpoint"""
+    ai_frameworks: List[DetectedFramework] = []
+    api_frameworks: List[DetectedFramework] = []
+    agentic_frameworks: List[DetectedFramework] = []
+    summary: FrameworksSummary
+

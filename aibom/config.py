@@ -440,9 +440,10 @@ For [AI] libraries, assign ONE AI category:
 1. AI_PROVIDER: LLM APIs, AI SDKs (openai, anthropic, google-generativeai, cohere, replicate)
 2. ML_ALGORITHM: Classical ML (scikit-learn, xgboost, lightgbm, catboost)
 3. DL_ALGORITHM: Deep learning frameworks (torch, tensorflow, keras, jax)
-4. AI_ORCHESTRATION: RAG, agents, chains (langchain, llama-index, autogen, crewai)
-5. VECTOR_DB: Embedding storage (chromadb, pinecone, qdrant, weaviate, faiss)
-6. DATA_PROCESSING: AI-focused data utils (datasets, tokenizers, sentence-transformers)
+4. AI_ORCHESTRATION: RAG pipelines, prompt chains, retrieval orchestration (langchain, llama-index, haystack, promptflow)
+5. AGENTIC_FRAMEWORK: Autonomous agent frameworks, multi-agent systems, tool-using agents (crewai, autogen, langgraph, agency-swarm, semantic-kernel, taskweaver, ag2, smolagents, pydantic-ai, openai-agents-sdk)
+6. VECTOR_DB: Embedding storage (chromadb, pinecone, qdrant, weaviate, faiss)
+7. DATA_PROCESSING: AI-focused data utils (datasets, tokenizers, sentence-transformers)
 
 For [API] libraries, assign ONE API category:
 1. HTTP_CLIENT: Outbound HTTP/REST calls (requests, httpx, aiohttp, urllib3, axios, node-fetch, got)
@@ -464,7 +465,7 @@ Return ONLY JSON:
 # Valid AI categories for categorization validation (uppercase)
 VALID_CATEGORIES: FrozenSet[str] = frozenset({
     "AI_PROVIDER", "ML_ALGORITHM", "DL_ALGORITHM",
-    "AI_ORCHESTRATION", "VECTOR_DB", "DATA_PROCESSING", "UNKNOWN"
+    "AI_ORCHESTRATION", "AGENTIC_FRAMEWORK", "VECTOR_DB", "DATA_PROCESSING", "UNKNOWN"
 })
 
 # AI Library Categories (lowercase version for empty category responses)
@@ -487,6 +488,7 @@ API_CATEGORIES: FrozenSet[str] = frozenset({c.lower() for c in VALID_API_CATEGOR
 CATEGORY_TO_MODEL_TAG: Dict[str, str] = {
     "AI_PROVIDER": "LLM",
     "AI_ORCHESTRATION": "LLM",
+    "AGENTIC_FRAMEWORK": "LLM",
     "DL_ALGORITHM": "DL",
     "VECTOR_DB": "DL",
     "ML_ALGORITHM": "ML",

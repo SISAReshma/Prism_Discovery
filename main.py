@@ -76,7 +76,8 @@ from aibom.src.models import (
     APILibraryScanResult, APIScanSummary,
     ModelCardHandlerResponse, ModelCardResult, SuffixInfo,
     ModelDeprecationResponse, ModelDeprecationResult, DeprecationInfo, DeprecationSummary,
-    CategoryAPIFindings, APICallSegregationSummary, APICallSegregationResponse
+    CategoryAPIFindings, APICallSegregationSummary, APICallSegregationResponse,
+    FrameworksDetectedResponse, DetectedFramework, SubImport, FrameworksSummary
 )
 from core.session import (
     SessionData,
@@ -112,6 +113,7 @@ from aibom.src.package_resolver import resolve_and_compare
 from aibom.src.dependency_graph import build_dependency_graph
 from aibom.src.llm_validator import validate_libraries
 from aibom.src.llm_categorizer import run_categorization
+from aibom.src.framework_detector import detect_frameworks
 from aibom.src.ai_branch_tracer import trace_ai_branches, format_branch_summary
 from aibom.src.ai_targeted_scanner import scan_ai_branches, scan_api_branches
 from aibom.src.model_card_handler import process_models_for_cards
@@ -1696,6 +1698,83 @@ async def aibom_llm_categorize(
         total_ai_libraries=result["total_ai_libraries"],
         total_api_libraries=result["total_api_libraries"],
         model_used=result["model_used"]
+    )
+
+
+@app.get("/aibom/frameworks-detected", response_model=FrameworksDetectedResponse)
+async def aibom_frameworks_detected(
+    session: SessionData = Depends(require_validated_session()),
+    session_token: str = Header(...)
+):
+    """
+    Detect and group all frameworks by type: AI, API, and Agentic.
+    
+    Each framework includes its base package, category, sub-imports
+    (e.g. from openai import OpenAIError → OpenAIError mapped to openai),
+    and the source files where it is used.
+    
+    **Requires:** /aibom/llm-categorize and /aibom/filtered-imports must be called first.
+    
+    **Headers:** `session-token: <token from /aibom/set-repository>`
+    
+    **Framework Types:**
+    - **ai**: AI_PROVIDER, ML_ALGORITHM, DL_ALGORITHM, AI_ORCHESTRATION, VECTOR_DB, DATA_PROCESSING
+    - **api**: HTTP_CLIENT, API_FRAMEWORK, GRAPHQL, GRPC, WEBSOCKET, CLOUD_SDK, API_WRAPPER
+    - **agentic**: AGENTIC_FRAMEWORK (crewai, autogen, langgraph, semantic-kernel, etc.)
+    """
+    logger.info("[AIBOM] frameworks-detected: Detecting framework types")
+    _t0 = _time.monotonic()
+
+    if "llm_categorization" not in session.extra:
+        logger.warning("[AIBOM] frameworks-detected: LLM categorization not found")
+        raise_error(
+            "LLM_CATEGORIZATION_NOT_FOUND",
+            "LLM categorization not found",
+            hint="Call /aibom/llm-categorize first",
+        )
+
+    import_packages = session.extra.get("import_packages")
+    if not import_packages:
+        logger.warning("[AIBOM] frameworks-detected: Import packages not found")
+        raise HTTPException(
+            status_code=400,
+            detail="Import packages not found. Run /aibom/filtered-imports first.",
+        )
+
+    result = detect_frameworks(
+        categorization_data=session.extra["llm_categorization"],
+        import_packages=import_packages,
+    )
+
+    logger.info(
+        f"[AIBOM] frameworks-detected: "
+        f"{result['summary']['total_ai']} AI, "
+        f"{result['summary']['total_api']} API, "
+        f"{result['summary']['total_agentic']} agentic "
+        f"({(_time.monotonic()-_t0)*1000:.0f}ms)"
+    )
+    await update_session(session_token, frameworks_detected=result)
+
+    return FrameworksDetectedResponse(
+        ai_frameworks=[
+            DetectedFramework(
+                **{**fw, "sub_imports": [SubImport(**si) for si in fw.get("sub_imports", [])]}
+            )
+            for fw in result["ai_frameworks"]
+        ],
+        api_frameworks=[
+            DetectedFramework(
+                **{**fw, "sub_imports": [SubImport(**si) for si in fw.get("sub_imports", [])]}
+            )
+            for fw in result["api_frameworks"]
+        ],
+        agentic_frameworks=[
+            DetectedFramework(
+                **{**fw, "sub_imports": [SubImport(**si) for si in fw.get("sub_imports", [])]}
+            )
+            for fw in result["agentic_frameworks"]
+        ],
+        summary=FrameworksSummary(**result["summary"]),
     )
 
 

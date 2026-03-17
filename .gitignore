@@ -35,3 +35,5 @@ semgrep_output.json
 
 # ── Reports ──
 reports/
+report.zip
+report/
