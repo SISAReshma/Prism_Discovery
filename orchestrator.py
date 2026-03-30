@@ -7,14 +7,20 @@ FastAPI process via HTTP (localhost).
 """
 
 import asyncio
-import fcntl
 import json
 import os
 import logging
 import uuid
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any, List, Optional
+
+# Platform-specific imports for file locking
+if sys.platform != "win32":
+    import fcntl
+else:
+    fcntl = None
 
 import httpx
 from fastapi import APIRouter, Request, HTTPException
@@ -40,7 +46,10 @@ class _SharedJobStore:
         """Read-modify-write under an exclusive file lock."""
         fd = os.open(self._path, os.O_RDWR | os.O_CREAT, 0o600)
         try:
-            fcntl.flock(fd, fcntl.LOCK_EX)
+            # Use fcntl on Unix systems, skip on Windows
+            if fcntl is not None:
+                fcntl.flock(fd, fcntl.LOCK_EX)
+            
             raw = b""
             while True:
                 chunk = os.read(fd, 65536)
@@ -55,7 +64,9 @@ class _SharedJobStore:
             os.write(fd, out)
             return result
         finally:
-            fcntl.flock(fd, fcntl.LOCK_UN)
+            # Unlock on Unix systems only
+            if fcntl is not None:
+                fcntl.flock(fd, fcntl.LOCK_UN)
             os.close(fd)
 
     def __init__(self, path: str = _JOBS_FILE):

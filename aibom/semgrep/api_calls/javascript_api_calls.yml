@@ -1,6 +1,6 @@
 rules:
   # =========================================================================
-  # FETCH API
+  # FETCH API — generic catch-all
   # =========================================================================
   - id: api-fetch-call
     pattern-either:
@@ -14,6 +14,7 @@ rules:
     metadata:
       category: api_calls
       type: fetch
+      http_method: ANY
 
   - id: api-fetch-with-options
     patterns:
@@ -25,9 +26,71 @@ rules:
     metadata:
       category: api_calls
       type: fetch
+      http_method: ANY
+
+  # Structured fetch rules — capture $BODY, $HEADERS, $METHOD
+  - id: api-fetch-post-json
+    patterns:
+      - pattern: 'fetch($URL, { method: "POST", body: $BODY, headers: $HEADERS, ... })'
+      - pattern: "fetch($URL, { method: 'POST', body: $BODY, headers: $HEADERS, ... })"
+    message: "fetch POST with JSON body and headers"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+      http_method: POST
+
+  - id: api-fetch-post-body
+    patterns:
+      - pattern: 'fetch($URL, { method: "POST", body: $BODY, ... })'
+      - pattern: "fetch($URL, { method: 'POST', body: $BODY, ... })"
+    message: "fetch POST with body"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+      http_method: POST
+
+  - id: api-fetch-put
+    patterns:
+      - pattern: 'fetch($URL, { method: "PUT", body: $BODY, ... })'
+      - pattern: "fetch($URL, { method: 'PUT', body: $BODY, ... })"
+    message: "fetch PUT with body"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+      http_method: PUT
+
+  - id: api-fetch-patch
+    patterns:
+      - pattern: 'fetch($URL, { method: "PATCH", body: $BODY, ... })'
+      - pattern: 'fetch($URL, { method: "PATCH", body: $BODY, ... })'
+    message: "fetch PATCH with body"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+      http_method: PATCH
+
+  - id: api-fetch-delete
+    patterns:
+      - pattern: 'fetch($URL, { method: "DELETE", ... })'
+      - pattern: 'fetch($URL, { method: "DELETE", ... })'
+    message: "fetch DELETE"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fetch
+      http_method: DELETE
 
   # =========================================================================
-  # AXIOS
+  # AXIOS — generic catch-all
   # =========================================================================
   - id: api-axios-request
     pattern-either:
@@ -46,6 +109,7 @@ rules:
     metadata:
       category: api_calls
       type: axios
+      http_method: ANY
 
   - id: api-axios-instance
     pattern-either:
@@ -61,6 +125,42 @@ rules:
     metadata:
       category: api_calls
       type: axios
+      http_method: ANY
+
+  # Structured axios rules — capture $BODY and $HEADERS
+  - id: api-axios-post-data
+    patterns:
+      - pattern: 'axios.post($URL, $BODY, { headers: $HEADERS, ... })'
+      - pattern: axios.post($URL, $BODY, $...)
+    message: "axios.post with data body"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: axios
+      http_method: POST
+
+  - id: api-axios-put-data
+    patterns:
+      - pattern: axios.put($URL, $BODY, $...)
+    message: "axios.put with data body"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: axios
+      http_method: PUT
+
+  - id: api-axios-patch-data
+    patterns:
+      - pattern: axios.patch($URL, $BODY, $...)
+    message: "axios.patch with data body"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: axios
+      http_method: PATCH
 
   # =========================================================================
   # NODE HTTP/HTTPS
@@ -77,6 +177,7 @@ rules:
     metadata:
       category: api_calls
       type: node_http
+      http_method: ANY
 
   # =========================================================================
   # GOT / SUPERAGENT / NEEDLE / KY
@@ -96,6 +197,7 @@ rules:
     metadata:
       category: api_calls
       type: got
+      http_method: ANY
 
   - id: api-superagent-request
     pattern-either:
@@ -112,6 +214,7 @@ rules:
     metadata:
       category: api_calls
       type: superagent
+      http_method: ANY
 
   - id: api-ky-request
     pattern-either:
@@ -127,6 +230,7 @@ rules:
     metadata:
       category: api_calls
       type: ky
+      http_method: ANY
 
   # =========================================================================
   # XMLHTTPREQUEST
@@ -142,6 +246,7 @@ rules:
     metadata:
       category: api_calls
       type: xhr
+      http_method: ANY
 
   # =========================================================================
   # GRAPHQL
@@ -161,6 +266,7 @@ rules:
     metadata:
       category: api_calls
       type: graphql
+      http_method: POST
 
   # =========================================================================
   # WEBSOCKET
@@ -178,21 +284,23 @@ rules:
     metadata:
       category: api_calls
       type: websocket
+      http_method: WS
 
   # =========================================================================
   # NEXT.JS / VERCEL SPECIFIC
   # =========================================================================
   - id: api-nextjs-fetch
     pattern-either:
-      - pattern: fetch($URL, { ..., next: $OPTS, ... })
-      - pattern: fetch($URL, { ..., cache: $CACHE, ... })
-      - pattern: fetch($URL, { ..., revalidate: $TIME, ... })
+      - pattern: 'fetch($URL, { ..., next: $OPTS, ... })'
+      - pattern: 'fetch($URL, { ..., cache: $CACHE, ... })'
+      - pattern: 'fetch($URL, { ..., revalidate: $TIME, ... })'
     message: "Next.js enhanced fetch detected"
     languages: [javascript, typescript]
     severity: INFO
     metadata:
       category: api_calls
       type: nextjs
+      http_method: ANY
 
   # =========================================================================
   # TRPC
@@ -209,18 +317,20 @@ rules:
     metadata:
       category: api_calls
       type: trpc
+      http_method: ANY
 
   # =========================================================================
   # GENERIC URL PATTERNS
   # =========================================================================
   - id: api-url-construction
-    pattern-regex: '["''](https?:\/\/[^"'']+\/api\/[^"'']*)["\']'
+    pattern-regex: "[\"'](https?:\\/\\/[^\"']+\\/api\\/[^\"']*)[\"']"
     message: "API URL pattern detected"
     languages: [javascript, typescript]
     severity: INFO
     metadata:
       category: api_calls
       type: url_pattern
+      http_method: ANY
 
   - id: api-env-url
     pattern-either:
@@ -236,3 +346,4 @@ rules:
     metadata:
       category: api_calls
       type: env_url
+      http_method: ANY

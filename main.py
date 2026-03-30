@@ -1767,7 +1767,7 @@ async def aibom_ai_branch_trace(
     )
 
 
-@app.get("/aibom/ai-targeted-scan", response_model=AITargetedScanResponse)
+@app.get("/aibom/ai-targeted-scan", response_model=AITargetedScanResponse, response_model_exclude_none=True)
 async def aibom_ai_targeted_scan(
     session: SessionData = Depends(require_validated_session()),
     session_token: str = Header(...)
@@ -1841,43 +1841,11 @@ async def aibom_ai_targeted_scan(
             provider_rule_found=data.get("provider_rule_found", False)
         ))
     
-    # ── Build API scan results ──
-    api_scan_results = []
-    for data in api_result.get("api_scan_results", []):
-        api_scan_results.append(APILibraryScanResult(
-            library=data.get("library", ""),
-            category=data.get("category", "unknown"),
-            language=data.get("language", "python"),
-            scanned=data.get("scanned", True),
-            reason=data.get("reason"),
-            rules_used=data.get("rules_used", []),
-            traced_files_count=data.get("traced_files_count", 0),
-            findings_count=data.get("findings_count", 0),
-            findings=[ScanFinding(**f) for f in data.get("findings", [])],
-            endpoints_detected=data.get("endpoints_detected", []),
-            api_rule_found=data.get("api_rule_found", False)
-        ))
-    
     summary_data = result.get("summary", {})
     
     # ── Get files scanned from imports scan (stored in session) ──
     imports_scan_files = session.extra.get("imports_files_scanned", [])
     imports_scan_files_count = session.extra.get("imports_files_scanned_count", len(imports_scan_files))
-    
-    # Build API summary
-    api_summary = None
-    if api_summary_data.get("total_libraries", 0) > 0:
-        api_summary = APIScanSummary(
-            total_libraries=api_summary_data.get("total_libraries", 0),
-            libraries_scanned=api_summary_data.get("libraries_scanned", 0),
-            total_findings=api_summary_data.get("total_findings", 0),
-            unique_endpoints_detected=api_summary_data.get("unique_endpoints_detected", 0),
-            all_endpoints=api_summary_data.get("all_endpoints", []),
-            errors=api_summary_data.get("errors", []),
-            timestamp=api_summary_data.get("timestamp", ""),
-            language=api_summary_data.get("language", "python"),
-            rules_used=api_summary_data.get("rules_used", {})
-        )
     
     # Build all_models as list of {model_name, tag} from models_detected
     _models_with_tags = result.get("models_detected", [])
@@ -1890,6 +1858,8 @@ async def aibom_ai_targeted_scan(
             _all_models_dicts.append({"model_name": mname, "tag": m.get("tag", "AI")})
     _all_models_dicts.sort(key=lambda x: x["model_name"])
 
+    # API scan results are NOT included here — they live exclusively
+    # in /aibom/api-call-segregation to avoid data duplication.
     return AITargetedScanResponse(
         scan_results=scan_results,
         models_detected=[ModelDetection(**m) for m in result.get("models_detected", [])],
@@ -1907,12 +1877,12 @@ async def aibom_ai_targeted_scan(
             language=summary_data.get("language", "python"),
             rules_used=summary_data.get("rules_used", {})
         ),
-        api_scan_results=api_scan_results,
-        api_summary=api_summary
+        api_scan_results=[],
+        api_summary=None
     )
 
 
-@app.get("/aibom/api-call-segregation", response_model=APICallSegregationResponse)
+@app.get("/aibom/api-call-segregation", response_model=APICallSegregationResponse, response_model_exclude_none=True)
 async def aibom_api_call_segregation(
     session: SessionData = Depends(require_validated_session()),
     session_token: str = Header(...)
@@ -1945,10 +1915,16 @@ async def aibom_api_call_segregation(
     for lib in llm_validation.get("ai_libraries", []):
         ai_lib_names.add(lib.get("library", "").lower())
 
-    # Also check AI scan results — libraries scanned by AI rules are AI libs
+    # Only mark AI libraries that are ALSO in api_scan_results as AI-API libs
+    # (true BOTH-type libraries). Pure-AI-only libraries should NOT be in ai_lib_names.
+    api_lib_names_set = {
+        d.get("library", "").lower() for d in api_scan_results
+    }
     ai_scan_results = targeted_data.get("scan_results", [])
     for lib_data in ai_scan_results:
-        ai_lib_names.add(lib_data.get("library", "").lower())
+        lib_lower = lib_data.get("library", "").lower()
+        if lib_lower in api_lib_names_set:
+            ai_lib_names.add(lib_lower)
 
     # ── Group API results by category ──
     categories: dict[str, dict] = {}

@@ -15,6 +15,7 @@ rules:
       category: model_detection
       pattern_type: variable_assignment
       confidence: "0.95"
+      tags: [python, model, variable]
     patterns:
       - pattern-either:
           - pattern: $VAR = "$VALUE"
@@ -22,7 +23,6 @@ rules:
       - metavariable-regex:
           metavariable: $VAR
           regex: '^(model|models|model_name|model_id|MODEL|MODELS|MODEL_NAME|model_type|llm_model|ai_model|engine|deployment|deployment_name)$'
-    tags: [python, model, variable]
 
   # --------------------------------------------------------------------------
   # 2. Type-annotated variable assignment: model: str = "gpt-4"
@@ -35,6 +35,7 @@ rules:
       category: model_detection
       pattern_type: typed_assignment
       confidence: "0.95"
+      tags: [python, model, typed]
     patterns:
       - pattern-either:
           - pattern: '$VAR: $TYPE = "$VALUE"'
@@ -42,7 +43,6 @@ rules:
       - metavariable-regex:
           metavariable: $VAR
           regex: '^(model|models|model_name|model_id|MODEL|MODELS|MODEL_NAME|model_type|llm_model|ai_model|engine|deployment)$'
-    tags: [python, model, typed]
 
   # --------------------------------------------------------------------------
   # 3. Function/method keyword arguments: func(model="gpt-4")
@@ -55,6 +55,7 @@ rules:
       category: model_detection
       pattern_type: function_kwarg
       confidence: "0.98"
+      tags: [python, model, function]
     patterns:
       - pattern-either:
           - pattern: $FUNC(..., model="$VALUE", ...)
@@ -67,7 +68,6 @@ rules:
           - pattern: $FUNC(..., engine='$VALUE', ...)
           - pattern: $FUNC(..., deployment="$VALUE", ...)
           - pattern: $FUNC(..., deployment_name="$VALUE", ...)
-    tags: [python, model, function]
 
   # --------------------------------------------------------------------------
   # 4. Method calls: client.method(model="gpt-4")
@@ -80,6 +80,7 @@ rules:
       category: model_detection
       pattern_type: method_call
       confidence: "0.98"
+      tags: [python, model, method]
     patterns:
       - pattern-either:
           - pattern: $OBJ.$METHOD(..., model="$VALUE", ...)
@@ -88,7 +89,6 @@ rules:
           - pattern: $OBJ.$METHOD(..., model_name='$VALUE', ...)
           - pattern: $OBJ.$METHOD(..., engine="$VALUE", ...)
           - pattern: $OBJ.$METHOD(..., deployment="$VALUE", ...)
-    tags: [python, model, method]
 
   # --------------------------------------------------------------------------
   # 5. Dictionary literal: {"model": "gpt-4"}
@@ -101,6 +101,7 @@ rules:
       category: model_detection
       pattern_type: dict_literal
       confidence: "0.90"
+      tags: [python, model, dict]
     patterns:
       - pattern-either:
           - pattern: '{..., "model": "$VALUE", ...}'
@@ -111,7 +112,6 @@ rules:
           - pattern: '{..., "engine": "$VALUE", ...}'
           - pattern: '{..., "deployment": "$VALUE", ...}'
           - pattern: '{..., "deployment_name": "$VALUE", ...}'
-    tags: [python, model, dict]
 
   # --------------------------------------------------------------------------
   # 6. Dictionary assignment: config["model"] = "gpt-4"
@@ -124,6 +124,7 @@ rules:
       category: model_detection
       pattern_type: dict_assignment
       confidence: "0.92"
+      tags: [python, model, dict_assign]
     patterns:
       - pattern-either:
           - pattern: '$DICT["model"] = "$VALUE"'
@@ -134,7 +135,6 @@ rules:
           - pattern: '$DICT["engine"] = "$VALUE"'
           - pattern: '$DICT["deployment"] = "$VALUE"'
           - pattern: '$DICT["deployment_name"] = "$VALUE"'
-    tags: [python, model, dict_assign]
 
   # --------------------------------------------------------------------------
   # 7. Class attribute assignment: self.model = "gpt-4"
@@ -147,6 +147,7 @@ rules:
       category: model_detection
       pattern_type: class_attribute
       confidence: "0.93"
+      tags: [python, model, class]
     patterns:
       - pattern-either:
           - pattern: self.model = "$VALUE"
@@ -157,7 +158,6 @@ rules:
           - pattern: self.engine = "$VALUE"
           - pattern: self.deployment = "$VALUE"
           - pattern: self.deployment_name = "$VALUE"
-    tags: [python, model, class]
 
   # --------------------------------------------------------------------------
   # 8. Environment variable access: os.getenv("MODEL_NAME")
@@ -170,6 +170,7 @@ rules:
       category: model_detection
       pattern_type: env_var
       confidence: "0.85"
+      tags: [python, model, env]
     patterns:
       - pattern-either:
           - pattern: os.getenv("$VAR", ...)
@@ -181,7 +182,6 @@ rules:
       - metavariable-regex:
           metavariable: $VAR
           regex: '(?i).*(MODEL|ENGINE|DEPLOYMENT).*'
-    tags: [python, model, env]
 
   # --------------------------------------------------------------------------
   # 9. Config file access: config.get("model")
@@ -194,6 +194,7 @@ rules:
       category: model_detection
       pattern_type: config_access
       confidence: "0.80"
+      tags: [python, model, config]
     patterns:
       - pattern-either:
           - pattern: $OBJ.get("$KEY", ...)
@@ -203,7 +204,6 @@ rules:
       - metavariable-regex:
           metavariable: $KEY
           regex: '^(model|model_name|model_id|engine|deployment|deployment_name|MODEL|MODEL_NAME)$'
-    tags: [python, model, config]
 
   # --------------------------------------------------------------------------
   # 10. List of models: models = ["gpt-4", "claude-3"]
@@ -218,6 +218,7 @@ rules:
       category: model_detection
       pattern_type: list_assignment
       confidence: "0.90"
+      tags: [python, model, list]
     patterns:
       - pattern-either:
           - pattern: |
@@ -227,7 +228,6 @@ rules:
       - metavariable-regex:
           metavariable: $VAR
           regex: '(?i)^(models?|model[_\-]?(name|id|list|names|type)?|ai[_\-]?models?|llm[_\-]?models?|available[_\-]?models?|supported[_\-]?models?|default[_\-]?models?|allowed[_\-]?models?)$'
-    tags: [python, model, list]
 
   # --------------------------------------------------------------------------
   # 11. F-string with model: model = f"gpt-{version}"
@@ -240,6 +240,7 @@ rules:
       category: model_detection
       pattern_type: fstring
       confidence: "0.75"
+      tags: [python, model, fstring]
     patterns:
       - pattern-either:
           - pattern: $VAR = f"...$CONTENT..."
@@ -247,7 +248,6 @@ rules:
       - metavariable-regex:
           metavariable: $VAR
           regex: '^(model|model_name|MODEL|engine|deployment)$'
-    tags: [python, model, fstring]
 
   # --------------------------------------------------------------------------
   # 12. Common AI library patterns (OpenAI, Anthropic, HuggingFace, etc.)
@@ -260,6 +260,7 @@ rules:
       category: model_detection
       pattern_type: ai_sdk
       confidence: "0.99"
+      tags: [python, model, ai_sdk]
     patterns:
       - pattern-either:
           # OpenAI patterns
@@ -284,7 +285,6 @@ rules:
           - pattern: Anthropic(model="$VALUE", ...)
           # Google patterns
           - pattern: genai.GenerativeModel("$VALUE")
-    tags: [python, model, ai_sdk]
 
   # --------------------------------------------------------------------------
   # 13. Regex pattern to catch any model-like assignment
@@ -297,8 +297,8 @@ rules:
       category: model_detection
       pattern_type: regex_catchall
       confidence: "0.70"
+      tags: [python, model, regex]
     pattern-regex: '(?i)(model|engine|deployment)(?:_name|_id|)?\s*[=:]\s*["'']([^"'']+)["'']'
-    tags: [python, model, regex]
 
   # --------------------------------------------------------------------------
   # 14. Dictionary key with config/class value: {"gpt-4": SomeConfig(...)}
@@ -312,6 +312,7 @@ rules:
       category: model_detection
       pattern_type: dict_key_config
       confidence: "0.95"
+      tags: [python, model, dict_key]
     patterns:
       - pattern-either:
           - pattern: |
@@ -321,7 +322,6 @@ rules:
       - metavariable-regex:
           metavariable: $MODEL
           regex: '(?i)^(gpt-[0-9a-z\.\-]+|o[0-9]+(-mini|-preview)?|claude[a-z0-9\.\-]*|llama[a-z0-9\.\-]*|mistral[a-z0-9\.\-]*|gemini[a-z0-9\.\-]*|deepseek[a-z0-9\.\-]*|codellama[a-z0-9\.\-]*|text-embedding[a-z0-9\.\-]*|whisper[a-z0-9\.\-]*|dall-e[a-z0-9\.\-]*|stable-diffusion[a-z0-9\.\-]*|phi[a-z0-9\.\-]*|qwen[a-z0-9\.\-]*|falcon[a-z0-9\.\-]*|vicuna[a-z0-9\.\-]*|command[a-z0-9\.\-]*)$'
-    tags: [python, model, dict_key]
 
   # --------------------------------------------------------------------------
   # 15. Dictionary key with any value: {"gpt-4": ...}
@@ -334,6 +334,7 @@ rules:
       category: model_detection
       pattern_type: dict_key
       confidence: "0.85"
+      tags: [python, model, dict_key]
     patterns:
       - pattern-either:
           - pattern: |
@@ -343,7 +344,6 @@ rules:
       - metavariable-regex:
           metavariable: $MODEL
           regex: '(?i)^(gpt-[0-9a-z\.\-]+|claude[a-z0-9\.\-]*|llama[a-z0-9\.\-]*|mistral[a-z0-9\.\-]*|gemini[a-z0-9\.\-]*|o[0-9]+(-mini|-preview)?|deepseek[a-z0-9\.\-]*|code[a-z0-9\.\-]*|text-embedding[a-z0-9\.\-]*)$'
-    tags: [python, model, dict_key]
 
   # --------------------------------------------------------------------------
   # 16. Nested dictionary with model keys in provider mapping
@@ -356,8 +356,8 @@ rules:
       category: model_detection
       pattern_type: provider_dict
       confidence: "0.95"
+      tags: [python, model, provider_dict]
     pattern-regex: '(?:OPENAI|ANTHROPIC|GEMINI|META|MISTRAL|GROQ|AZURE|COHERE|OLLAMA)[^{]*\{[^}]*["'']([a-zA-Z0-9][-a-zA-Z0-9._]+)["'']\s*:\s*(?:LLM|Model|Config|Dict|\{)'
-    tags: [python, model, provider_dict]
 
   # --------------------------------------------------------------------------
   # 17. Class attribute dictionary with model configs
@@ -370,6 +370,7 @@ rules:
       category: model_detection
       pattern_type: class_dict_attr
       confidence: "0.90"
+      tags: [python, model, class_dict]
     patterns:
       - pattern-either:
           - pattern: |
@@ -383,7 +384,6 @@ rules:
       - metavariable-regex:
           metavariable: $ATTR
           regex: '(?i)^(_?model|_?models|_?config|_?defaults|_?settings|_?registry|_?mapping|supported)'
-    tags: [python, model, class_dict]
 
   # --------------------------------------------------------------------------
   # 18. Model name in tuple/list as first element with config
@@ -397,6 +397,7 @@ rules:
       category: model_detection
       pattern_type: tuple_config
       confidence: "0.85"
+      tags: [python, model, tuple]
     patterns:
       - pattern-either:
           - pattern: |
@@ -410,7 +411,6 @@ rules:
       - metavariable-regex:
           metavariable: $MODEL
           regex: '(?i)^(gpt-[0-9a-z\.\-]+|o[0-9]+(-mini|-preview)?|claude[a-z0-9\.\-]*|llama[a-z0-9\.\-]*|mistral[a-z0-9\.\-]*|gemini[a-z0-9\.\-]*|deepseek[a-z0-9\.\-]*|codellama[a-z0-9\.\-]*|text-embedding[a-z0-9\.\-]*|whisper[a-z0-9\.\-]*|dall-e[a-z0-9\.\-]*|stable-diffusion[a-z0-9\.\-]*|phi[a-z0-9\.\-]*|qwen[a-z0-9\.\-]*|falcon[a-z0-9\.\-]*|vicuna[a-z0-9\.\-]*|command[a-z0-9\.\-]*)$'
-    tags: [python, model, tuple]
 
   # ==========================================================================
   # VARIABLE-INDIRECTION RULES
@@ -431,6 +431,7 @@ rules:
       category: model_detection
       pattern_type: function_default
       confidence: "0.92"
+      tags: [python, model, function_default]
     patterns:
       - pattern-either:
           - pattern: |
@@ -442,7 +443,6 @@ rules:
       - metavariable-regex:
           metavariable: $PARAM
           regex: '(?i)^(model|model_name|model_id|llm_model|ai_model|engine|deployment|deployment_name|distilbert_dir|bert_dir|llm_dir|model_dir|model_path|pretrained_model|base_model|checkpoint)$'
-    tags: [python, model, function_default]
 
   # --------------------------------------------------------------------------
   # 20. Function default with HuggingFace-style org/model path
@@ -456,6 +456,7 @@ rules:
       category: model_detection
       pattern_type: function_default_hf
       confidence: "0.95"
+      tags: [python, model, function_default, huggingface]
     patterns:
       - pattern-either:
           - pattern: |
@@ -467,7 +468,6 @@ rules:
       - metavariable-regex:
           metavariable: $VALUE
           regex: '^[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\.\-]+'
-    tags: [python, model, function_default, huggingface]
 
   # --------------------------------------------------------------------------
   # 21. from_pretrained with variable (not string literal)
@@ -481,6 +481,7 @@ rules:
       category: model_detection
       pattern_type: from_pretrained_var
       confidence: "0.80"
+      tags: [python, model, from_pretrained, variable]
     patterns:
       - pattern-either:
           - pattern: AutoModelForCausalLM.from_pretrained($VAR, ...)
@@ -493,7 +494,6 @@ rules:
       - metavariable-regex:
           metavariable: $VAR
           regex: '^(?!["'']).*'
-    tags: [python, model, from_pretrained, variable]
 
   # --------------------------------------------------------------------------
   # 22. pipeline() called with variable model argument
@@ -507,10 +507,10 @@ rules:
       category: model_detection
       pattern_type: pipeline_var
       confidence: "0.80"
+      tags: [python, model, pipeline, variable]
     pattern-either:
       - pattern: pipeline(..., model=$VAR, ...)
       - pattern: transformers.pipeline(..., model=$VAR, ...)
-    tags: [python, model, pipeline, variable]
 
   # --------------------------------------------------------------------------
   # 23. Model name strings in pattern lists/tuples used for model type checks
@@ -524,6 +524,7 @@ rules:
       category: model_detection
       pattern_type: pattern_list
       confidence: "0.75"
+      tags: [python, model, pattern_list]
     patterns:
       - pattern-either:
           - pattern: |
@@ -536,7 +537,6 @@ rules:
       - metavariable-regex:
           metavariable: $VALUE
           regex: '(?i)^(gpt-|o[0-9]|claude|llama|mistral|gemini|whisper|dall-e|stable-?diffusion|phi-|qwen|falcon|deepseek|vicuna|midjourney|imagen|sdxl|tts|wav2vec|bge-|gte-|sentence-transformer)'
-    tags: [python, model, pattern_list]
 
   # --------------------------------------------------------------------------
   # 24. Model detection regex patterns (code that identifies models by regex)
@@ -550,8 +550,8 @@ rules:
       category: model_detection
       pattern_type: regex_detection_pattern
       confidence: "0.70"
+      tags: [python, model, regex_pattern]
     pattern-regex: '\(r["\''](.*(?:gpt|llama|mistral|claude|gemini|whisper|dall-e|stable.?diffusion|phi|qwen|falcon|deepseek|vicuna|anthropic|openai)[^"'']*)["\'']\s*,\s*["\''](text|image|audio|embedding|vision|classification|model_type|reject|accept)["\'']\)'
-    tags: [python, model, regex_pattern]
 
   # --------------------------------------------------------------------------
   # 25. Groq/OpenAI-compatible client with variable model
@@ -565,11 +565,11 @@ rules:
       category: model_detection
       pattern_type: chat_completions_var
       confidence: "0.85"
+      tags: [python, model, api_call, variable]
     pattern-either:
       - pattern: $CLIENT.chat.completions.create(..., model=$VAR, ...)
       - pattern: $CLIENT.completions.create(..., model=$VAR, ...)
       - pattern: $CLIENT.messages.create(..., model=$VAR, ...)
-    tags: [python, model, api_call, variable]
 
   # --------------------------------------------------------------------------
   # 26. os.getenv() / os.environ with model-value default
@@ -583,6 +583,7 @@ rules:
       category: model_detection
       pattern_type: env_default
       confidence: "0.90"
+      tags: [python, model, env_default]
     patterns:
       - pattern-either:
           - pattern: $VAR = os.getenv("$KEY", "$DEFAULT")
@@ -592,7 +593,6 @@ rules:
       - metavariable-regex:
           metavariable: $KEY
           regex: '(?i).*(MODEL|ENGINE|DEPLOYMENT|LLM).*'
-    tags: [python, model, env_default]
 
   # --------------------------------------------------------------------------
   # 27. Local model directory references (models loaded from disk)
@@ -606,6 +606,7 @@ rules:
       category: model_detection
       pattern_type: local_model_dir
       confidence: "0.88"
+      tags: [python, model, local_dir]
     patterns:
       - pattern-either:
           - pattern: |
@@ -619,7 +620,6 @@ rules:
       - metavariable-regex:
           metavariable: $VALUE
           regex: '(?i)^[a-zA-Z0-9_\-]*(model|classifier|bert|gpt|llm|transformer|checkpoint|weights)[a-zA-Z0-9_\-]*$'
-    tags: [python, model, local_dir]
 
   # --------------------------------------------------------------------------
   # 28. S3 bucket model path references
@@ -633,13 +633,13 @@ rules:
       category: model_detection
       pattern_type: s3_model_path
       confidence: "0.90"
+      tags: [python, model, s3_path]
     patterns:
       - pattern-either:
           - pattern: $VAR = "s3://$VALUE"
           - pattern: $VAR = 's3://$VALUE'
           - pattern: $FUNC(..., bucketpath="s3://$VALUE", ...)
           - pattern: $FUNC(..., bucket_path="s3://$VALUE", ...)
-    tags: [python, model, s3_path]
 
   # --------------------------------------------------------------------------
   # 29. Anthropic client message creation with variable model
@@ -653,10 +653,10 @@ rules:
       category: model_detection
       pattern_type: anthropic_var
       confidence: "0.85"
+      tags: [python, model, anthropic, variable]
     pattern-either:
       - pattern: $CLIENT.messages.create(..., model=$VAR, ...)
       - pattern: anthropic.Anthropic().messages.create(..., model=$VAR, ...)
-    tags: [python, model, anthropic, variable]
 
   # --------------------------------------------------------------------------
   # 30. AWS Bedrock invoke model
@@ -670,11 +670,11 @@ rules:
       category: model_detection
       pattern_type: bedrock_invoke
       confidence: "0.90"
+      tags: [python, model, bedrock, aws]
     pattern-either:
       - pattern: $CLIENT.invoke_model(..., modelId=$MODEL, ...)
       - pattern: $CLIENT.invoke_model(..., modelId="$MODEL", ...)
       - pattern: $CLIENT.invoke_model_with_response_stream(..., modelId=$MODEL, ...)
-    tags: [python, model, bedrock, aws]
 
   # --------------------------------------------------------------------------
   # 31. Cohere client generation with variable model
@@ -688,10 +688,19 @@ rules:
       category: model_detection
       pattern_type: cohere_var
       confidence: "0.85"
-    pattern-either:
-      - pattern: $CLIENT.chat(..., model=$VAR, ...)
-      - pattern: $CLIENT.generate(..., model=$VAR, ...)
-    tags: [python, model, cohere, variable]
+      tags: [python, model, cohere, variable]
+    # Import guard prevents false positives on ollama/other clients that also use .chat()/.generate()
+    patterns:
+      - pattern-either:
+          - pattern: $CLIENT.chat(..., model=$VAR, ...)
+          - pattern: $CLIENT.generate(..., model=$VAR, ...)
+      - pattern-either:
+          - pattern-inside: |
+              import cohere
+              ...
+          - pattern-inside: |
+              from cohere import $ITEM
+              ...
 
   # --------------------------------------------------------------------------
   # 32. Replicate run/stream with variable model
@@ -705,12 +714,21 @@ rules:
       category: model_detection
       pattern_type: replicate_var
       confidence: "0.85"
-    pattern-either:
-      - pattern: $CLIENT.run($VAR, ...)
-      - pattern: $CLIENT.stream($VAR, ...)
-      - pattern: replicate.run($VAR, ...)
-      - pattern: replicate.stream($VAR, ...)
-    tags: [python, model, replicate, variable]
+      tags: [python, model, replicate, variable]
+    # Import guard prevents false positives on any class that has .run()/.stream()
+    patterns:
+      - pattern-either:
+          - pattern: $CLIENT.run($VAR, ...)
+          - pattern: $CLIENT.stream($VAR, ...)
+          - pattern: replicate.run($VAR, ...)
+          - pattern: replicate.stream($VAR, ...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
 
   # --------------------------------------------------------------------------
   # 33. Together AI client with variable model
@@ -724,9 +742,9 @@ rules:
       category: model_detection
       pattern_type: together_var
       confidence: "0.85"
+      tags: [python, model, together, variable]
     pattern-either:
       - pattern: $CLIENT.chat.completions.create(..., model=$VAR, ...)
-    tags: [python, model, together, variable]
 
   # --------------------------------------------------------------------------
   # 34. Ollama client with variable model
@@ -740,7 +758,7 @@ rules:
       category: model_detection
       pattern_type: ollama_var
       confidence: "0.85"
+      tags: [python, model, ollama, variable]
     pattern-either:
       - pattern: $CLIENT.chat(..., model=$VAR, ...)
       - pattern: ollama.chat(..., model=$VAR, ...)
-    tags: [python, model, ollama, variable]

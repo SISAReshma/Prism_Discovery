@@ -11,13 +11,20 @@ import json
 import zipfile
 import tempfile
 import requests
+import asyncio
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Set
 from datetime import datetime, timedelta
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import logging
+
+logger = logging.getLogger(__name__)
+_executor = ThreadPoolExecutor(max_workers=3)  # Limit concurrent PyPI requests
 
 from aibom.config import (
     CACHE_DIR, CACHE_FILE, CACHE_DURATION_DAYS, 
-    KNOWN_PACKAGE_MAPPINGS, MAX_WHEEL_DOWNLOAD_SIZE
+    KNOWN_PACKAGE_MAPPINGS, MAX_WHEEL_DOWNLOAD_SIZE,
+    PYPI_JSON_API_TIMEOUT, PYPI_WHEEL_DOWNLOAD_TIMEOUT, PYPI_TOTAL_RESOLUTION_TIMEOUT
 )
 
 
@@ -97,7 +104,7 @@ def _fetch_wheel_url(package_name: str) -> Optional[str]:
     """
     try:
         url = f"https://pypi.org/pypi/{package_name}/json"
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=PYPI_JSON_API_TIMEOUT)
         
         if response.status_code == 404:
             return None
@@ -139,7 +146,11 @@ def _fetch_wheel_url(package_name: str) -> Optional[str]:
         wheels.sort(key=wheel_priority)
         return wheels[0].get('url')
         
-    except Exception:
+    except requests.Timeout:
+        logger.debug(f"[PyPI] Timeout fetching wheel URL for {package_name}")
+        return None
+    except Exception as e:
+        logger.debug(f"[PyPI] Error fetching wheel URL for {package_name}: {e}")
         return None
 
 
@@ -157,7 +168,7 @@ def _extract_top_level_from_wheel(wheel_url: str) -> Optional[List[str]]:
         with tempfile.NamedTemporaryFile(suffix='.whl', delete=False) as tmp:
             tmp_path = tmp.name
             
-            response = requests.get(wheel_url, timeout=30, stream=True)
+            response = requests.get(wheel_url, timeout=PYPI_WHEEL_DOWNLOAD_TIMEOUT, stream=True)
             response.raise_for_status()
             
             # Limit download size
@@ -201,7 +212,11 @@ def _extract_top_level_from_wheel(wheel_url: str) -> Optional[List[str]]:
         
         return import_names if import_names else None
         
-    except Exception:
+    except requests.Timeout:
+        logger.debug(f"[PyPI] Timeout downloading wheel from {wheel_url}")
+        return None
+    except Exception as e:
+        logger.debug(f"[PyPI] Error extracting wheel: {e}")
         return None
     finally:
         # Always cleanup temp file (even on error)
@@ -276,6 +291,12 @@ def resolve_package_imports(package_name: str) -> Tuple[List[str], str]:
     """
     Resolve a PyPI package name to its possible import names.
     Uses 3-tier resolution: static mapping → PyPI wheel → heuristics.
+    
+    Optimizations:
+    - Quick static mapping check (O(1))
+    - Very short timeout for PyPI lookups (5s) 
+    - Falls back to heuristics if timeout
+    
     Args:
         package_name: Package name from manifest (e.g., "scikit-learn")
     Returns:
@@ -286,12 +307,15 @@ def resolve_package_imports(package_name: str) -> Tuple[List[str], str]:
     if normalized in _NORMALIZED_MAPPINGS:
         return (_NORMALIZED_MAPPINGS[normalized], "static")
     
-    # 2. Try PyPI wheel download (accurate)
-    import_names = resolve_from_pypi(package_name)
-    if import_names:
-        return (import_names, "pypi")
+    # 2. Try PyPI wheel download with tight timeout (accurate but may timeout)
+    try:
+        import_names = resolve_from_pypi(package_name)
+        if import_names:
+            return (import_names, "pypi")
+    except Exception as e:
+        logger.debug(f"[PyPI] Resolution failed for {package_name}: {e}")
     
-    # 3. Fallback to heuristics
+    # 3. Fallback to heuristics (fast, always succeeds)
     return (_heuristic_import_names(package_name), "heuristic")
 
 
@@ -348,7 +372,13 @@ def _process_language(
     method_counts: Dict,
     is_js: bool = False
 ) -> None:
-    """Process packages for a single language."""
+    """
+    Process packages for a single language.
+    
+    Resolves packages in parallel for better performance:
+    - JavaScript/Go/dotnet: Direct resolution (no I/O)
+    - Python: Parallel PyPI lookups with timeout fallback
+    """
     actual_imports = _build_import_set(imports_data, is_js)
     
     # Ensure language keys exist
@@ -357,14 +387,26 @@ def _process_language(
     
     result["resolution_summary"]["total_manifest_packages"] += len(manifest)
     
+    # For Python, pre-resolve all packages in parallel for better performance
+    pkg_resolutions = {}
+    if language == "python" and manifest and not is_js:
+        # Pre-resolve all Python packages in parallel
+        pkg_resolutions = _resolve_packages_parallel(manifest)
+    
     for pkg in manifest:
         if not pkg:
             continue
         
-        # Resolve: Python uses 3-tier, JS/Go/dotnet use direct module path
-        if is_js or language in ("go", "dotnet"):
+        # Resolve: Python uses 3-tier (with parallel optimization), JS/Go/dotnet use direct
+        if is_js or language in ("go", "dotnet", "java"):
             import_names = [pkg]
             method = "direct"
+        elif language == "python":
+            # Use pre-resolved if available, otherwise resolve now
+            if pkg in pkg_resolutions:
+                import_names, method = pkg_resolutions[pkg]
+            else:
+                import_names, method = resolve_package_imports(pkg)
         else:
             import_names, method = resolve_package_imports(pkg)
         
@@ -396,6 +438,56 @@ def _process_language(
             result["resolution_summary"]["total_unused"] += 1
     
     result["resolution_summary"]["total_resolved"] += len(manifest)
+
+
+def _resolve_packages_parallel(packages: List[str], max_workers: int = 3) -> Dict[str, Tuple[List[str], str]]:
+    """
+    Resolve multiple Python packages in parallel with timeout.
+    
+    Args:
+        packages: List of package names to resolve
+        max_workers: Maximum concurrent PyPI requests
+        
+    Returns:
+        Dictionary mapping package_name → (import_names, method)
+    """
+    resolutions = {}
+    
+    if not packages:
+        return resolutions
+    
+    # Remove duplicates while preserving input
+    unique_packages = list(dict.fromkeys(packages))
+    
+    try:
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_pkg = {
+                executor.submit(resolve_package_imports, pkg): pkg 
+                for pkg in unique_packages
+            }
+            
+            # Process completions as they finish (no timeout on the batch)
+            # Individual PyPI timeouts handle slowness
+            for future in as_completed(future_to_pkg):
+                pkg = future_to_pkg[future]
+                try:
+                    result = future.result(timeout=1)  # Very short timeout since resolution should be done
+                    resolutions[pkg] = result
+                    logger.debug(f"[PyPI] Resolved {pkg} → {result[1]}")
+                except Exception as e:
+                    # On error, use heuristics
+                    logger.debug(f"[PyPI] Resolution failed for {pkg}: {e}")
+                    resolutions[pkg] = (_heuristic_import_names(pkg), "heuristic")
+    except Exception as e:
+        logger.warning(f"[PyPI] Parallel executor error: {e}")
+    
+    # Handle any packages that didn't get processed (shouldn't happen, but defensive)
+    for pkg in unique_packages:
+        if pkg not in resolutions:
+            logger.debug(f"[PyPI] {pkg} was not resolved, using heuristics")
+            resolutions[pkg] = (_heuristic_import_names(pkg), "heuristic")
+    
+    return resolutions
 
 def resolve_and_compare(
     manifest_packages: Dict[str, List[str]],

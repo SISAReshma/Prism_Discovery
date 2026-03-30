@@ -12,10 +12,20 @@ rules:
       provider: cohere
 
   - id: cohere-generate
-    pattern-either:
-      - pattern: $COHERE.generate(...)
-      - pattern: $COHERE.chat(...)
-      - pattern: $COHERE.chat_stream(...)
+    # Import guard: only fire when cohere is actually imported in the file.
+    # Prevents false positives on ollama/replicate code that also has .generate()/.chat()
+    patterns:
+      - pattern-either:
+          - pattern: $COHERE.generate(...)
+          - pattern: $COHERE.chat(...)
+          - pattern: $COHERE.chat_stream(...)
+      - pattern-either:
+          - pattern-inside: |
+              import cohere
+              ...
+          - pattern-inside: |
+              from cohere import $ITEM
+              ...
     message: "Cohere text generation detected"
     languages: [python]
     severity: INFO
@@ -24,9 +34,17 @@ rules:
       provider: cohere
 
   - id: cohere-embed
-    pattern-either:
-      - pattern: $COHERE.embed(...)
-      - pattern: $COHERE.embed_jobs.create(...)
+    patterns:
+      - pattern-either:
+          - pattern: $COHERE.embed(...)
+          - pattern: $COHERE.embed_jobs.create(...)
+      - pattern-either:
+          - pattern-inside: |
+              import cohere
+              ...
+          - pattern-inside: |
+              from cohere import $ITEM
+              ...
     message: "Cohere embedding detected"
     languages: [python]
     severity: INFO
@@ -35,8 +53,15 @@ rules:
       provider: cohere
 
   - id: cohere-classify
-    pattern-either:
+    patterns:
       - pattern: $COHERE.classify(...)
+      - pattern-either:
+          - pattern-inside: |
+              import cohere
+              ...
+          - pattern-inside: |
+              from cohere import $ITEM
+              ...
     message: "Cohere classification detected"
     languages: [python]
     severity: INFO
@@ -45,9 +70,17 @@ rules:
       provider: cohere
 
   - id: cohere-rerank
-    pattern-either:
-      - pattern: $COHERE.rerank(...)
-      - pattern: $COHERE.rerank_v2(...)
+    patterns:
+      - pattern-either:
+          - pattern: $COHERE.rerank(...)
+          - pattern: $COHERE.rerank_v2(...)
+      - pattern-either:
+          - pattern-inside: |
+              import cohere
+              ...
+          - pattern-inside: |
+              from cohere import $ITEM
+              ...
     message: "Cohere rerank detected"
     languages: [python]
     severity: INFO
@@ -56,8 +89,15 @@ rules:
       provider: cohere
 
   - id: cohere-summarize
-    pattern-either:
+    patterns:
       - pattern: $COHERE.summarize(...)
+      - pattern-either:
+          - pattern-inside: |
+              import cohere
+              ...
+          - pattern-inside: |
+              from cohere import $ITEM
+              ...
     message: "Cohere summarization detected"
     languages: [python]
     severity: INFO

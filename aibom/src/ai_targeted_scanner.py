@@ -17,7 +17,15 @@ from typing import Dict, List, Set, Optional, Tuple
 from datetime import datetime
 from functools import lru_cache
 
-from aibom.config import SEMGREP_DIR, NORMALIZED_PROVIDER_KEYWORDS, SUPPORTED_LANGUAGES, SKIP_DIRECTORIES, JS_LANGUAGE_VARIANTS, LANGUAGE_EXTENSIONS, NORMALIZED_API_KEYWORDS, API_METAVAR_PRIORITY, API_FALSE_POSITIVES, CATEGORY_TO_MODEL_TAG, MODEL_TAG_PATTERNS, MODEL_PROVIDER_PREFIXES_PATTERNS, PROVIDER_KEYWORDS
+from aibom.config import (
+    SEMGREP_DIR, NORMALIZED_PROVIDER_KEYWORDS, SUPPORTED_LANGUAGES,
+    SKIP_DIRECTORIES, JS_LANGUAGE_VARIANTS, LANGUAGE_EXTENSIONS,
+    NORMALIZED_API_KEYWORDS, API_METAVAR_PRIORITY, API_FALSE_POSITIVES,
+    CATEGORY_TO_MODEL_TAG, MODEL_TAG_PATTERNS, MODEL_PROVIDER_PREFIXES_PATTERNS,
+    PROVIDER_KEYWORDS, HTTP_METHOD_PATTERNS, REQUEST_BODY_PATTERNS,
+    REQUEST_HEADER_PATTERNS, SDK_METHOD_HTTP_MAP, SDK_PARAM_PATTERNS,
+)
+import re
 from aibom.src.model_extractor import extract_model_value, scan_file_for_models
 from core.log_sanitizer import sanitize_sensitive
 
@@ -280,20 +288,30 @@ def discover_all_rules() -> Dict[str, Dict[str, List[str]]]:
 
 @lru_cache(maxsize=8)
 def get_api_calls_rule(language: str) -> Optional[Path]:
-    """Get the api_calls rule file for a language (cached)."""
+    """Get the api_calls rule file for a language (cached).
+    
+    Searches in SEMGREP_DIR/api_calls/ first (where python_api_calls.yml etc. live),
+    then falls back to SEMGREP_DIR/<language>/ for backward compatibility.
+    """
+    # Strategy 1: Look in the dedicated api_calls/ directory
+    api_calls_dir = SEMGREP_DIR / "api_calls"
+    if api_calls_dir.exists():
+        # Direct name match: python_api_calls.yml, javascript_api_calls.yml, etc.
+        candidate = api_calls_dir / f"{language}_api_calls.yml"
+        if candidate.exists():
+            return candidate
+        # Glob fallback within api_calls/
+        for rule_file in api_calls_dir.glob(f"{language}*_api_calls.yml"):
+            return rule_file
+    
+    # Strategy 2: Look in the language-specific folder (backward compat)
     lang_folder = SEMGREP_DIR / language
-    
-    if not lang_folder.exists():
-        return None
-    
-    # Look for *_api_calls.yml
-    for rule_file in lang_folder.glob("*_api_calls.yml"):
-        return rule_file
-    
-    # Fallback to exact name
-    candidate = lang_folder / f"{language}_api_calls.yml"
-    if candidate.exists():
-        return candidate
+    if lang_folder and lang_folder.exists():
+        for rule_file in lang_folder.glob("*_api_calls.yml"):
+            return rule_file
+        candidate = lang_folder / f"{language}_api_calls.yml"
+        if candidate.exists():
+            return candidate
     
     return None
 
@@ -331,12 +349,12 @@ def find_api_category_for_library(library_name: str) -> Optional[str]:
     
     # Strategy 1: Direct lookup in normalized keywords
     if category := NORMALIZED_API_KEYWORDS.get(lib_lower):
-        return category
+        return category.upper()
     
     # Strategy 2: Partial keyword match
     for keyword_norm, category in NORMALIZED_API_KEYWORDS.items():
         if keyword_norm in lib_lower or lib_lower in keyword_norm:
-            return category
+            return category.upper()
     
     return None
 
@@ -509,6 +527,70 @@ def run_semgrep(
 # FINDING EXTRACTION
 # =============================================================================
 
+def _extract_sdk_details(code_snippet: str, rule_id: str = "") -> Dict:
+    """Extract SDK-level enrichment from a code snippet.
+    
+    Returns dict with:
+      api_method:  The SDK method call (e.g. 'AutoModel.from_pretrained')
+      http_method: Implied HTTP verb (e.g. 'GET' for downloads, 'POST' for creates)
+      request_body: Key parameters as dict (model, repo_id, filename, etc.)
+    """
+    result: Dict = {"api_method": None, "http_method": None, "request_body": None}
+    if not code_snippet:
+        return result
+    
+    # --- 1. Extract the method name from the code snippet ---
+    # Match patterns like: AutoModelForCausalLM.from_pretrained(...
+    #                      hf_hub_download(...
+    #                      client.chat.completions.create(...
+    #                      pipeline(...
+    #                      Trainer(...
+    method_match = re.search(
+        r'(?:([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)\.)?'
+        r'([A-Za-z_]\w*)\s*\(',
+        code_snippet
+    )
+    if method_match:
+        obj_part = method_match.group(1) or ""
+        method_name = method_match.group(2)
+        # Build the full method reference
+        if obj_part:
+            result["api_method"] = f"{obj_part}.{method_name}"
+        else:
+            result["api_method"] = method_name
+    
+    # --- 2. Map to implied HTTP method ---
+    if result["api_method"]:
+        # Try progressively shorter suffixes: chat.completions.create -> completions.create -> create
+        parts = result["api_method"].split(".")
+        for i in range(len(parts)):
+            suffix = ".".join(parts[i:])
+            if suffix in SDK_METHOD_HTTP_MAP:
+                result["http_method"] = SDK_METHOD_HTTP_MAP[suffix]
+                break
+    
+    # Also try from rule_id as fallback  (e.g. "huggingface-automodel" -> from_pretrained)
+    if not result["http_method"] and rule_id:
+        rule_lower = rule_id.lower()
+        for method_key, http_verb in SDK_METHOD_HTTP_MAP.items():
+            if method_key.replace("_", "-") in rule_lower or method_key.replace(".", "-") in rule_lower:
+                result["http_method"] = http_verb
+                break
+    
+    # --- 3. Extract key parameters ---
+    params: Dict[str, str] = {}
+    for pattern, label in SDK_PARAM_PATTERNS:
+        m = re.search(pattern, code_snippet)
+        if m:
+            val = m.group(1).strip()
+            if val and val not in ("None", "null", "undefined", "True", "False"):
+                params[label] = val
+    
+    if params:
+        result["request_body"] = params
+    
+    return result
+
 def _read_source_line(file_path: str, line_number: int) -> str:
     """Read a specific line from a source file for model extraction fallback.
     
@@ -556,17 +638,31 @@ def _process_finding(finding: Dict, checkout_dir: Path, rule_category: str) -> D
                 extra["lines"] = code_lines
                 finding = dict(finding, extra=extra)
     
-    return {
+    check_id = finding.get("check_id", "")
+    snippet = code_lines.strip()[:300] if code_lines else ""
+    
+    # SDK enrichment: extract method, implied HTTP verb, key params
+    sdk = _extract_sdk_details(snippet, check_id)
+    
+    result = {
         "file": file_path.replace("\\", "/"),
         "line": finding.get("start", {}).get("line", 0),
         "end_line": finding.get("end", {}).get("line", 0),
-        "rule_id": finding.get("check_id", ""),
+        "rule_id": check_id,
         "rule_category": rule_category,
         "message": extra.get("message", ""),
         "severity": extra.get("severity", "INFO"),
-        "code_snippet": code_lines.strip()[:300] if code_lines else "",
-        "model_value": extract_model_value(finding)
+        "code_snippet": snippet,
+        "model_value": extract_model_value(finding),
     }
+    # Only include SDK-enriched fields when they have real values
+    if sdk.get("api_method"):
+        result["api_method"] = sdk["api_method"]
+    if sdk.get("http_method"):
+        result["http_method"] = sdk["http_method"]
+    if sdk.get("request_body"):
+        result["request_body"] = sdk["request_body"]
+    return result
 
 
 def _normalize_language(lang_raw: str) -> str:
@@ -1111,37 +1207,180 @@ def _build_scan_response(
     }
 
 
+def _extract_http_method(finding: Dict, code_lines: str) -> str:
+    """Extract the HTTP verb (GET/POST/PUT/PATCH/DELETE) from a semgrep finding.
+
+    Priority:
+    1. Rule metadata ``http_method`` field when not 'ANY'
+    2. Rule ID encodes the verb (e.g. 'api-requests-post-json' → POST)
+    3. Code-line substring scan using HTTP_METHOD_PATTERNS
+    4. Returns 'UNKNOWN' if undetermined.
+    """
+    import re as _re
+
+    # 1. Metadata field
+    metadata = finding.get("extra", {}).get("metadata", {})
+    meta_method = metadata.get("http_method", "")
+    if meta_method and meta_method not in ("ANY", ""):
+        return meta_method.upper()
+
+    # 2. Rule ID heuristic
+    rule_id = (finding.get("check_id") or "").lower()
+    for verb in ("post", "put", "patch", "delete", "get", "head", "options"):
+        if f"-{verb}" in rule_id or f"_{verb}" in rule_id:
+            return verb.upper()
+
+    # 3. Code-line substring scan
+    code_lower = code_lines.lower()
+    for method, patterns in HTTP_METHOD_PATTERNS.items():
+        if any(p.lower() in code_lower for p in patterns):
+            return method
+
+    return "UNKNOWN"
+
+
+def _extract_api_url_info(finding: Dict) -> Tuple[Optional[str], bool, Optional[str]]:
+    """Extract API URL, dynamic flag, and raw variable name from a semgrep finding.
+
+    Returns
+    -------
+    (url, is_dynamic, url_raw)
+    - url:        resolved literal URL string, or None if dynamic
+    - is_dynamic: True when the URL is a variable / env var / f-string
+    - url_raw:    the raw variable expression when dynamic, or None
+    """
+    import re as _re
+
+    extra = finding.get("extra", {})
+    metavars = extra.get("metavars", {})
+    code_lines = (extra.get("lines") or "").strip()
+
+    # ── Strategy 1: Metavar lookup ──────────────────────────────────────────
+    for key in ("$URL", "$ROUTE", "$TARGET", "$URI", "$SERVICE",
+                "$HOST", "$RESOURCE", "$PATH", "$ENDPOINT", "$CONN"):
+        if key in metavars:
+            raw_val = metavars[key].get("abstract_content", "").strip()
+            if not raw_val or raw_val.lower() in API_FALSE_POSITIVES or len(raw_val) <= 1:
+                continue
+            # Looks like a quoted literal URL?
+            clean = raw_val.strip('"\'')
+            if clean.startswith(("http://", "https://", "/")):
+                return clean, False, None
+            # Looks like an env rule fired — special case
+            rule_id = (finding.get("check_id") or "").lower()
+            if "env" in rule_id or "environ" in raw_val.lower():
+                return None, True, raw_val
+            # Otherwise it's a variable / expression
+            return None, True, raw_val
+
+    # ── Strategy 2: Code-line regex for literal URL ──────────────────────────
+    if code_lines:
+        url_match = _re.search(r'["\']((https?://|/)[^"\']+)["\']', code_lines)
+        if url_match:
+            return url_match.group(1), False, None
+
+        # f-string with URL fragment
+        fstr = _re.search(r'f["\'].*(https?://[^"\'{]+)', code_lines)
+        if fstr:
+            return None, True, "f-string"
+
+    # ── Strategy 3: env_url rule always means dynamic ────────────────────────
+    rule_id = (finding.get("check_id") or "").lower()
+    if "env" in rule_id:
+        # Try to extract the env var name from the code
+        env_match = _re.search(r'(?:environ|getenv|process\.env)\.(?:get\()?["\']([A-Z_]+)["\']', code_lines)
+        env_name = env_match.group(1) if env_match else "ENV_VAR"
+        return None, True, env_name
+
+    return None, False, None
+
+
+def _extract_request_body(finding: Dict, code_lines: str) -> Optional[Dict]:
+    """Extract request body type and raw value from a semgrep finding.
+
+    Prefers the ``$BODY`` metavar from structured rules, then falls back
+    to regex matching against the code line.
+
+    Returns a dict like ``{"type": "json", "raw": "payload"}`` or None.
+    """
+    import re as _re
+
+    # 1. Structured metavar from semgrep
+    body_val = (finding.get("extra", {}).get("metavars", {})
+                        .get("$BODY", {}).get("abstract_content", "")).strip()
+    if body_val:
+        # Guess type from rule ID (already encodes POST/json hint)
+        rule_id = (finding.get("check_id") or "").lower()
+        body_type = "json" if "json" in rule_id else ("form" if "data" in rule_id else "body")
+        return {"type": body_type, "raw": body_val.strip('"\' ')[:100]}
+
+    # 2. Regex on code line
+    for pattern, body_type in REQUEST_BODY_PATTERNS:
+        m = _re.search(pattern, code_lines)
+        if m:
+            raw = m.group(1).strip().strip('"\'')
+            return {"type": body_type, "raw": raw[:100]}
+
+    return None
+
+
+def _extract_request_headers(finding: Dict, code_lines: str) -> Optional[List[str]]:
+    """Extract header key names (or variable name) from a semgrep finding.
+
+    Returns a list of string header names, e.g. ``["Authorization", "Content-Type"]``,
+    or ``["<variable-name>"]`` when assigned dynamically, or None if nothing found.
+    """
+    import re as _re
+
+    # 1. Structured metavar
+    hdr_val = (finding.get("extra", {}).get("metavars", {})
+                       .get("$HEADERS", {}).get("abstract_content", "")).strip()
+    if hdr_val:
+        # Already a literal dict from code?
+        keys = _re.findall(r'["\']([A-Za-z][A-Za-z0-9_-]{2,})["\']', hdr_val)
+        if keys:
+            return [k for k in keys if k.lower() not in ("true", "false", "none")]
+        return [hdr_val.strip('"\' ')[:80]]
+
+    # 2. Regex patterns on code line
+    for pattern in REQUEST_HEADER_PATTERNS:
+        m = _re.search(pattern, code_lines)
+        if m:
+            matched = m.group(1)
+            # Literal dict — extract just the key names
+            keys = _re.findall(r'["\']([A-Za-z][A-Za-z0-9_-]{2,})["\']', matched)
+            if keys:
+                return [k for k in keys if k.lower() not in ("true", "false", "none")]
+            # Variable name
+            var = matched.strip()
+            if var:
+                return [f"<{var}>"]   # tag as variable, not a literal key
+
+    return None
+
+
 # =============================================================================
 # API ENDPOINT EXTRACTION
 # =============================================================================
 
 def _extract_api_value(finding: Dict) -> Optional[str]:
     """Extract API URL/endpoint/route from a semgrep finding.
-    
-    Similar to extract_model_value but for API calls.
-    Checks metavariables for URL, ROUTE, etc.
+
+    Thin wrapper kept for backward compatibility; uses _extract_api_url_info.
     """
-    extra = finding.get("extra", {})
-    metavars = extra.get("metavars", {})
-    
-    # Strategy 1: Check metavariables in priority order
-    for metavar_key in API_METAVAR_PRIORITY:
-        if metavar_key in metavars:
-            val = metavars[metavar_key].get("abstract_content", "")
-            if val and val.lower() not in API_FALSE_POSITIVES and len(val) > 1:
-                return val.strip('"\'')
-    
-    # Strategy 2: Extract from code snippet
-    code_lines = (extra.get("lines") or "").strip()
+    url, _dyn, _raw = _extract_api_url_info(finding)
+    if url:
+        return url
+    # Fall back to code-line regex (same as original behaviour)
+    import re as _re
+    code_lines = (finding.get("extra", {}).get("lines") or "").strip()
     if code_lines:
-        # Look for quoted strings that look like URLs or routes
-        import re
-        # URL pattern
-        url_match = re.search(r'["\']((https?://|/)[^"\']+)["\']', code_lines)
+        url_match = _re.search(r'["\']((https?://|/)[^"\']+)["\']', code_lines)
         if url_match:
             return url_match.group(1)
-    
     return None
+
+
 
 
 def _process_api_finding(finding: Dict, checkout_dir: Path, rule_category: str) -> Dict:
@@ -1172,10 +1411,10 @@ def _process_api_finding(finding: Dict, checkout_dir: Path, rule_category: str) 
     
     # Get API category from rule metadata
     metadata = extra.get("metadata", {})
-    api_type = metadata.get("api_type", "")
-    api_category = metadata.get("category", rule_category)
+    api_type = metadata.get("api_type") or metadata.get("type") or ""
+    api_category = (metadata.get("category") or rule_category or "").upper()
     
-    return {
+    result = {
         "file": file_path.replace("\\", "/"),
         "line": finding.get("start", {}).get("line", 0),
         "end_line": finding.get("end", {}).get("line", 0),
@@ -1184,10 +1423,28 @@ def _process_api_finding(finding: Dict, checkout_dir: Path, rule_category: str) 
         "message": extra.get("message", ""),
         "severity": extra.get("severity", "INFO"),
         "code_snippet": code_lines.strip()[:300] if code_lines else "",
-        "model_value": None,
-        "api_method": api_type,
-        "api_url": _extract_api_value(finding)
     }
+    # Only include enriched fields when they have real values
+    if api_type:
+        result["api_method"] = api_type
+    api_url = _extract_api_value(finding)
+    if api_url:
+        result["api_url"] = api_url
+    http_method = _extract_http_method(finding, code_lines)
+    if http_method:
+        result["http_method"] = http_method
+    _, url_is_dynamic, url_raw = _extract_api_url_info(finding)
+    if url_is_dynamic is not None:
+        result["url_is_dynamic"] = url_is_dynamic
+    if url_raw:
+        result["url_raw"] = url_raw
+    request_body = _extract_request_body(finding, code_lines)
+    if request_body:
+        result["request_body"] = request_body
+    request_headers = _extract_request_headers(finding, code_lines)
+    if request_headers:
+        result["request_headers"] = request_headers
+    return result
 
 
 # =============================================================================
@@ -1223,6 +1480,20 @@ def scan_api_branches(
     # Build file cache ONCE
     file_cache = _build_file_cache(checkout_path)
     
+    # Build a fallback list of all Python .py files in the checkout.
+    # Used when a library's traced_files contain no Python source files
+    # (e.g., only requirements.txt) — we scan the whole Python codebase instead.
+    _python_fallback: List[str] = []
+    def _get_python_fallback() -> List[str]:
+        nonlocal _python_fallback
+        if not _python_fallback:
+            _python_fallback = [
+                v for k, v in file_cache.items()
+                if k.endswith(".py") and "/" not in k  # filename-only keys
+            ]
+            logger.info(f"[API-SCAN] Built Python fallback: {len(_python_fallback)} .py files")
+        return _python_fallback
+    
     # Determine primary language
     lang_counts: Dict[str, int] = {}
     for b in api_branches.values():
@@ -1237,12 +1508,33 @@ def scan_api_branches(
         primary_language = "python"
     
     # State tracking
-    scanned_pairs: Set[Tuple[str, str]] = set()
+    scanned_pairs: Set[Tuple[str, str]] = set()  # (file, rule_name) — for .py-traced files only
+    _fallback_findings_cache: Optional[List[Dict]] = None  # shared findings from fallback scan
+    _fallback_scan_done: bool = False
     api_scan_results: Dict[str, Dict] = {}
     all_errors: List[str] = []
     all_api_findings: List[Dict] = []
     all_api_endpoints: List[Dict] = []
     
+    def _get_fallback_findings(api_rule_path: Path) -> List[Dict]:
+        """Run semgrep on all Python fallback files ONCE and cache results."""
+        nonlocal _fallback_findings_cache, _fallback_scan_done
+        if not _fallback_scan_done:
+            _fallback_scan_done = True
+            py_files = _get_python_fallback()
+            if py_files:
+                logger.info(f"[API-SCAN] Running one-time fallback scan on {len(py_files)} Python files")
+                findings, err = run_semgrep(checkout_path, api_rule_path, py_files, file_cache=file_cache)
+                if err:
+                    logger.warning(f"[API-SCAN] Fallback scan error: {err}")
+                    _fallback_findings_cache = []
+                else:
+                    _fallback_findings_cache = findings
+                    logger.info(f"[API-SCAN] Fallback scan yielded {len(findings)} total findings")
+            else:
+                _fallback_findings_cache = []
+        return _fallback_findings_cache or []
+
     # For each API library: run the api_calls rule on its traced files
     for lib_name, branch in api_branches.items():
         traced_files = branch.get("traced_files", [])
@@ -1262,32 +1554,44 @@ def scan_api_branches(
         
         if api_rule:
             rule_name = api_rule.name
-            # Deduplicate: skip files already scanned with this rule
-            files_to_scan = [f for f in traced_files if (f, rule_name) not in scanned_pairs]
-            scanned_pairs.update((f, rule_name) for f in files_to_scan)
+            rules_used.append(rule_name)
             
-            if files_to_scan:
-                logger.info(f"[API-SCAN] Scanning {len(files_to_scan)} files for {lib_name} ({api_category})")
-                findings, error = run_semgrep(checkout_path, api_rule, files_to_scan, file_cache=file_cache)
-                
-                if error:
-                    all_errors.append(f"{lib_name}/api_calls: {error}")
-                elif findings:
-                    logger.info(f"[API-SCAN] Found {len(findings)} API findings for {lib_name}")
-                    
-                    # Filter findings by category if the library has a known API category
-                    lib_api_category = find_api_category_for_library(lib_name)
-                    
-                    for f in findings:
-                        processed = _process_api_finding(f, checkout_path, "api_calls")
-                        
-                        # If library has a known category, only include matching findings
-                        # OR include all if category is unknown
-                        finding_category = processed.get("rule_category", "")
-                        if not lib_api_category or finding_category == lib_api_category or api_category == "UNKNOWN":
-                            library_findings.append(processed)
-                    
-                    rules_used.append(rule_name)
+            # Determine whether this library has real .py traced files
+            py_traced = [f for f in traced_files if f.endswith(".py")]
+            
+            if py_traced:
+                # Normal case: scan the .py files directly (with dedup)
+                files_to_scan = [f for f in py_traced if (f, rule_name) not in scanned_pairs]
+                scanned_pairs.update((f, rule_name) for f in files_to_scan)
+                if files_to_scan:
+                    logger.info(f"[API-SCAN] Scanning {len(files_to_scan)} .py files for {lib_name}")
+                    findings, error = run_semgrep(checkout_path, api_rule, files_to_scan, file_cache=file_cache)
+                    if error:
+                        all_errors.append(f"{lib_name}/api_calls: {error}")
+                    elif findings:
+                        logger.info(f"[API-SCAN] Found {len(findings)} findings for {lib_name}")
+                        lib_api_category = find_api_category_for_library(lib_name)
+                        for f in findings:
+                            processed = _process_api_finding(f, checkout_path, "api_calls")
+                            if api_category and api_category != "UNKNOWN":
+                                processed["rule_category"] = api_category
+                            finding_category = processed.get("rule_category", "")
+                            if not lib_api_category or finding_category == lib_api_category or api_category == "UNKNOWN":
+                                library_findings.append(processed)
+            else:
+                # Fallback case: all traced files are non-.py (e.g. requirements.txt)
+                # Use the one-time cached fallback scan and filter relevant findings
+                logger.info(f"[API-SCAN] {lib_name}: using cached fallback scan (no .py traced files)")
+                all_fallback = _get_fallback_findings(api_rule)
+                lib_api_category = find_api_category_for_library(lib_name)
+                for f in all_fallback:
+                    processed = _process_api_finding(f, checkout_path, "api_calls")
+                    if api_category and api_category != "UNKNOWN":
+                        processed["rule_category"] = api_category
+                    finding_category = processed.get("rule_category", "")
+                    if not lib_api_category or finding_category == lib_api_category or api_category == "UNKNOWN":
+                        library_findings.append(processed)
+
         else:
             logger.warning(f"[API-SCAN] No api_calls rule for language: {language}")
         
