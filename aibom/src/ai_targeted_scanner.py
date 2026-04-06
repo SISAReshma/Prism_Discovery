@@ -655,13 +655,13 @@ def _process_finding(finding: Dict, checkout_dir: Path, rule_category: str) -> D
         "code_snippet": snippet,
         "model_value": extract_model_value(finding),
     }
-    # Only include SDK-enriched fields when they have real values
+    # SDK-level enrichment (separate from raw HTTP API fields)
     if sdk.get("api_method"):
-        result["api_method"] = sdk["api_method"]
+        result["sdk_method"] = sdk["api_method"]
     if sdk.get("http_method"):
-        result["http_method"] = sdk["http_method"]
+        result["sdk_http_verb"] = sdk["http_method"]
     if sdk.get("request_body"):
-        result["request_body"] = sdk["request_body"]
+        result["sdk_params"] = sdk["request_body"]
     return result
 
 
@@ -1424,6 +1424,13 @@ def _process_api_finding(finding: Dict, checkout_dir: Path, rule_category: str) 
         "severity": extra.get("severity", "INFO"),
         "code_snippet": code_lines.strip()[:300] if code_lines else "",
     }
+
+    # Pick up AI endpoint flag from semgrep rule metadata (if set)
+    if metadata.get("is_ai_endpoint"):
+        result["is_ai_endpoint"] = True
+        if metadata.get("provider"):
+            result["ai_provider"] = metadata["provider"]
+
     # Only include enriched fields when they have real values
     if api_type:
         result["api_method"] = api_type
@@ -1438,6 +1445,22 @@ def _process_api_finding(finding: Dict, checkout_dir: Path, rule_category: str) 
         result["url_is_dynamic"] = url_is_dynamic
     if url_raw:
         result["url_raw"] = url_raw
+
+    # ── AI endpoint URL matching ────────────────────────────────────────
+    # Check both literal api_url and dynamic url_raw against known AI
+    # provider endpoint domains (api.openai.com, api.anthropic.com, etc.).
+    from aibom.config import AI_API_ENDPOINT_PATTERNS
+    _urls_to_check = [u for u in (api_url, url_raw) if u]
+    for _candidate in _urls_to_check:
+        _candidate_lower = _candidate.lower()
+        for domain, provider in AI_API_ENDPOINT_PATTERNS.items():
+            if domain.lower() in _candidate_lower:
+                result["is_ai_endpoint"] = True
+                result["ai_provider"] = provider
+                break
+        if result.get("is_ai_endpoint"):
+            break
+
     request_body = _extract_request_body(finding, code_lines)
     if request_body:
         result["request_body"] = request_body

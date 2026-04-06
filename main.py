@@ -3383,31 +3383,57 @@ async def sbom_detect_unused(
     logger.info(f"[SBOM] detect-unused: Languages to scan: {sorted(languages)}")
     
     # ----------------------------------------------------------------
-    # 2. Run Semgrep import scan on the workspace
+    # 2. Run Semgrep import scan (reuse AIBOM results if available)
     # ----------------------------------------------------------------
-    try:
-        semgrep_result = scan_and_dedupe(str(workspace), languages)
-        scan_results = semgrep_result.get("scan_results", {})
-        scan_summary = semgrep_result.get("summary", {})
-        logger.info(
-            f"[SBOM] detect-unused: Semgrep scan complete — "
-            f"{scan_summary.get('total_third_party', 0)} third-party imports found"
-        )
-    except FileNotFoundError:
-        logger.warning("[SBOM] detect-unused: Semgrep not installed — skipping import scan")
-        await mark_step_complete(session_token, "detect_unused")
-        return {
-            "message": "Semgrep not installed — cannot detect unused dependencies",
-            "scan_id": session.scan_id,
-            "languages_scanned": sorted(languages),
-            "total_direct_packages": 0,
-            "used_count": 0,
-            "unused_count": 0,
-            "used_libraries": [],
-            "unused_libraries": [],
-            "skipped_reason": "semgrep_not_installed",
-            "next_step": "GET /sbom/fetch_depsdev"
+    aibom_scan = session.extra.get("semgrep_scan_results")
+    if aibom_scan:
+        logger.info("[SBOM] detect-unused: Reusing AIBOM semgrep scan results from session")
+        scan_results = aibom_scan
+        scan_summary = {
+            "total_third_party": sum(
+                len(scan_results.get(lang, {}).get("third_party", []))
+                for lang in languages
+            ),
+            "total_builtin": sum(
+                len(scan_results.get(lang, {}).get("builtin", []))
+                for lang in languages
+            ),
+            "total_relative": sum(
+                len(scan_results.get(lang, {}).get("relative", []))
+                for lang in languages
+            ),
         }
+    else:
+        try:
+            semgrep_result = scan_and_dedupe(str(workspace), languages)
+            scan_results = semgrep_result.get("scan_results", {})
+            scan_summary = semgrep_result.get("summary", {})
+            logger.info(
+                f"[SBOM] detect-unused: Semgrep scan complete — "
+                f"{scan_summary.get('total_third_party', 0)} third-party imports found"
+            )
+        except FileNotFoundError:
+            logger.warning("[SBOM] detect-unused: Semgrep not installed — skipping import scan")
+            await mark_step_complete(session_token, "detect_unused")
+            return {
+                "message": "Semgrep not installed — cannot detect unused dependencies",
+                "scan_id": session.scan_id,
+                "languages_scanned": sorted(languages),
+                "total_direct_packages": 0,
+                "used_count": 0,
+                "unused_count": 0,
+                "used_libraries": [],
+                "unused_libraries": [],
+                "skipped_reason": "semgrep_not_installed",
+                "next_step": "GET /sbom/fetch_depsdev"
+            }
+    
+    # Filter local/internal imports (same as AIBOM filtered-imports does)
+    code_tokens_set = session.extra.get("code_tokens_set")
+    if code_tokens_set is None:
+        code_tokens_set = set(session.extra.get("code_tokens", []))
+    if code_tokens_set:
+        scan_results = filter_local_imports(scan_results, code_tokens_set)
     
     # ----------------------------------------------------------------
     # 3. Build manifest_packages dict from SBOM packages
@@ -3489,6 +3515,98 @@ async def sbom_detect_unused(
     used_libraries = resolve_result.get("used_libraries", {})
     unused_libraries = resolve_result.get("unused_libraries", {})
     resolution_summary = resolve_result.get("resolution_summary", {})
+    
+    # ----------------------------------------------------------------
+    # 5b. Detect undeclared imports (imported in code but NOT in manifest)
+    #     Filters: stdlib, transitive deps, installed-package internals
+    # ----------------------------------------------------------------
+    from sbom.src.report.remediation_reporter import PYTHON_STDLIB, NODEJS_BUILTINS
+
+    # Supplement stdlib sets with commonly missing modules
+    _py_stdlib = PYTHON_STDLIB | {
+        "zlib", "netrc", "struct", "mmap", "resource", "syslog",
+        "xmlrpc", "html", "mailbox", "mimetypes", "bdb", "pdb",
+        "profile", "cProfile", "timeit", "trace", "ensurepip",
+        "venv", "lib2to3", "distutils", "idlelib", "tkinter",
+        "turtle", "turtledemo", "test", "dbm", "lzma", "bz2",
+        "readline", "rlcompleter", "site", "sysconfig", "zipimport",
+        "compileall", "py_compile", "symtable", "tabnanny",
+        "formatter", "imaplib", "nntplib", "poplib", "telnetlib",
+        "cgi", "cgitb", "chunk", "crypt", "imghdr", "sndhdr",
+        "sunau", "uu", "xdrlib", "aifc", "audioop", "ossaudiodev",
+        "spwd", "nis",
+    }
+
+    manifest_names_lower = set()
+    for lang_pkgs in manifest_packages.values():
+        for pkg in lang_pkgs:
+            manifest_names_lower.add(pkg.lower())
+            manifest_names_lower.add(pkg.lower().replace("-", "_"))
+            manifest_names_lower.add(pkg.lower().replace("_", "-"))
+
+    # ALL package names (direct + transitive) to filter
+    all_pkg_names = set()
+    for p in packages:
+        name = (p.get("name") or "").lower()
+        if name:
+            all_pkg_names.add(name)
+            all_pkg_names.add(name.replace("-", "_"))
+            all_pkg_names.add(name.replace("_", "-"))
+
+    # Known package top-level dirs — imports from inside these dirs are internal
+    _known_pkg_dirs = set(all_pkg_names) | manifest_names_lower
+
+    undeclared_imports = []  # [{package, language, files}]
+    _seen_undeclared = set()
+    for lang in languages:
+        if lang not in scan_results:
+            continue
+        _lang_stdlib = _py_stdlib if lang == "python" else (NODEJS_BUILTINS if lang == "javascript" else set())
+
+        for imp in scan_results[lang].get("third_party", []):
+            imp_pkg = (imp.get("base_package") or imp.get("import_name") or imp.get("module", "")).lower()
+            if not imp_pkg:
+                continue
+
+            # Filter 1: stdlib modules
+            if imp_pkg in _lang_stdlib:
+                continue
+
+            # Filter 2: private/internal Python modules (e.g. _typeshed, __pycache__)
+            if lang == "python" and imp_pkg.startswith("_"):
+                continue
+
+            # Filter 3: already in manifest (direct deps)
+            normalised = imp_pkg.replace("-", "_")
+            if imp_pkg in manifest_names_lower or normalised in manifest_names_lower:
+                continue
+
+            # Filter 4: already in packages list (transitive deps)
+            if imp_pkg in all_pkg_names or normalised in all_pkg_names:
+                continue
+
+            # Filter 5: import comes from inside an installed package directory
+            # e.g. httpx/_api.py → top_dir="httpx" → skip (httpx's internal imports)
+            src_file = imp.get("file", "")
+            if "/" in src_file or "\\" in src_file:
+                top_dir = src_file.replace("\\", "/").split("/")[0].lower().replace("-", "_")
+                if top_dir in _known_pkg_dirs:
+                    continue
+
+            if (imp_pkg, lang) in _seen_undeclared:
+                continue
+            _seen_undeclared.add((imp_pkg, lang))
+            # Gather evidence files
+            ev = evidence_map.get(imp_pkg, [])
+            files = sorted({e["file"] for e in ev if e.get("file")})[:5]
+            undeclared_imports.append({
+                "package": imp_pkg,
+                "language": lang,
+                "imported_in_files": files,
+                "remediation": f"Add '{imp_pkg}' to your manifest/requirements file — it is imported in code but not declared as a dependency."
+            })
+
+    resolution_summary["total_undeclared"] = len(undeclared_imports)
     
     # ----------------------------------------------------------------
     # 6. Tag packages with is_used_in_code + import_evidence
@@ -3613,6 +3731,7 @@ async def sbom_detect_unused(
         unused_detection={
             "used_libraries": used_libraries_list,
             "unused_libraries": unused_libraries_list,
+            "undeclared_imports": undeclared_imports,
             "resolution_summary": resolution_summary,
             "evidence_map": evidence_map,
             "scan_summary": scan_summary,
@@ -3641,8 +3760,10 @@ async def sbom_detect_unused(
         "total_direct_packages": total_direct,
         "used_count": used_count,
         "unused_count": unused_count,
+        "undeclared_count": len(undeclared_imports),
         "used_libraries": used_libraries_list,
         "unused_libraries": unused_libraries_list,
+        "undeclared_imports": undeclared_imports,
         "resolution_summary": resolution_summary,
         "import_scan_summary": {
             "total_third_party_imports": scan_summary.get("total_third_party", 0),
@@ -3990,41 +4111,137 @@ async def sbom_generate_remediation_endpoint(
     
     remediation_sbom = generate_remediation_sbom(catalog, metadata)
     
-    # Include unused detection results if /sbom/detect-unused was called
+    # ── Unused / Used dependency summary (brief listing only) ─────────
+    # Full evidence and details are available at /sbom/detect-unused.
     unused_detection = session.extra.get("unused_detection")
     if unused_detection:
-        unused_libs = unused_detection.get("unused_libraries", [])
-        evidence_map = unused_detection.get("evidence_map", {})
-        
-        # Build by_language from list-of-objects
-        by_language = {}
-        for entry in unused_libs:
+        # Classify unused libraries with per-type remediation advice
+        _CLASSIFICATION_REMEDIATION = {
+            "dev_tool": "This is a dev/build/test tool. Move it to dev-dependencies (e.g. [tool.poetry.group.dev] or devDependencies) so it is excluded from production builds.",
+            "runtime_optional": "This package is invoked via CLI or loaded as a plugin at runtime. Verify it is still needed; if so, document it as a runtime dependency.",
+            "truly_unused": "This dependency is not imported anywhere in code. Remove it from your manifest to reduce attack surface.",
+        }
+        unused_list = []
+        for entry in unused_detection.get("unused_libraries", []):
             lang = entry.get("language")
-            libs = entry.get("libraries", [])
-            if lang and libs:
-                by_language[lang] = [lib.get("package") for lib in libs]
-        
-        remediation_sbom["unused_dependencies"] = {
-            "total_unused": unused_detection.get("resolution_summary", {}).get("total_unused", 0),
+            for lib in entry.get("libraries", []):
+                classification = lib.get("classification", "truly_unused")
+                unused_list.append({
+                    "package": lib.get("package"),
+                    "language": lang,
+                    "classification": classification,
+                    "remediation": _CLASSIFICATION_REMEDIATION.get(classification, _CLASSIFICATION_REMEDIATION["truly_unused"]),
+                })
+        used_list = []
+        for entry in unused_detection.get("used_libraries", []):
+            lang = entry.get("language")
+            for lib in entry.get("libraries", []):
+                used_list.append({"package": lib.get("package"), "language": lang})
+
+        remediation_sbom["dependency_usage"] = {
             "total_used": unused_detection.get("resolution_summary", {}).get("total_used", 0),
-            "by_language": by_language,
-            "used_libraries": unused_detection.get("used_libraries", []),
-            "evidence_map": evidence_map,
-            "note": "These direct dependencies are declared in manifest files but no matching import was found in code."
+            "total_unused": unused_detection.get("resolution_summary", {}).get("total_unused", 0),
+            "total_undeclared": unused_detection.get("resolution_summary", {}).get("total_undeclared", 0),
+            "used_libraries": used_list,
+            "unused_libraries": unused_list,
+            "undeclared_imports": unused_detection.get("undeclared_imports", []),
         }
     
     logger.info(f"[SBOM] generate-remediation: Remediation report generated for scan {scan_id} ({(_time.monotonic()-_t0)*1000:.0f}ms)")
-    
+
     return {
         "message": "Remediation report generated",
         "scan_id": scan_id,
-        "full_report": remediation_sbom
+        "full_report": remediation_sbom,
     }
+
+
+# =============================================================================
+# VEX ENDPOINT
+# =============================================================================
+
+@app.get("/sbom/generate-vex")
+async def sbom_generate_vex_endpoint(
+    session: SessionData = Depends(require_step("generate")),
+    session_token: str = Header(...),
+    format: str = "openvex",
+    download: bool = False,
+):
+    """
+    Generate a VEX (Vulnerability Exploitability eXchange) document.
+
+    **Requires:** /sbom/fetch-osv to be called first.
+
+    **Headers:** `session-token: <token from /sbom/set-repository>`
+
+    **Query params:**
+    - `format`: `openvex` (default) or `cyclonedx`
+    - `download`: if `true`, returns the document as a downloadable `.vex.json` file
+    """
+    from sbom.src.core.vex_generator import (
+        generate_openvex,
+        generate_cyclonedx_vex_statements,
+        generate_vex_summary,
+    )
+    from fastapi.responses import JSONResponse
+    import json as _json
+
+    packages = session.extra.get("packages")
+    if not packages:
+        raise HTTPException(status_code=400, detail={
+            "error": "NO_PACKAGES",
+            "message": "No packages found. Run /sbom/fetch-osv first."
+        })
+
+    scan_id = session.scan_id
+    project_name = session.repo_name or f"project_{scan_id}"
+    manifests = session.extra.get("manifest_files", [])
+
+    catalog = session.extra.get("catalog")
+    if not catalog:
+        catalog = orchestrator.build_catalog(
+            packages=packages,
+            manifests=manifests,
+            project_name=project_name,
+            source=project_name,
+            scan_id=scan_id,
+        )
+
+    fmt = (format or "openvex").lower().strip()
+
+    if fmt == "cyclonedx":
+        cdx_stmts = generate_cyclonedx_vex_statements(catalog)
+        payload = {
+            "message": "CycloneDX VEX statements generated",
+            "scan_id": scan_id,
+            "format": "cyclonedx",
+            "total_statements": len(cdx_stmts),
+            "vulnerabilities": cdx_stmts,
+        }
+    else:
+        vex_summary = generate_vex_summary(catalog, scan_id)
+        payload = {
+            "message": "OpenVEX document generated",
+            "scan_id": scan_id,
+            "format": "openvex",
+            **vex_summary,
+        }
+
+    if download:
+        filename = f"{scan_id}_vex_{fmt}.json"
+        content = _json.dumps(payload, indent=2, ensure_ascii=False)
+        return JSONResponse(
+            content=payload,
+            headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+        )
+
+    return payload
 
 
 # =============================================================================
 # CLOUDWATCH LOG UPLOAD ENDPOINT
 # =============================================================================
+
 
 class CloudWatchUploadRequest(BaseModel):
     """Request model for CloudWatch log upload"""

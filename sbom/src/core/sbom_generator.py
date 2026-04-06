@@ -875,10 +875,27 @@ def generate_remediation_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any])
         version = lib_data["version"]
         language = lib_data["language"]
         
-        # Determine priority based on highest severity
-        if severity_breakdown["critical"] > 0:
+        # Determine priority (CISA KEV → CRITICAL, EPSS > 0.5 → CRITICAL,
+        # EPSS > 0.1 → at least HIGH, then fall back to CVSS severity)
+        _has_kev = False
+        _max_epss = 0.0
+        for _pkg in catalog.get("packages", []):
+            if (_pkg.get("name") or _pkg.get("component_name")) != lib_name:
+                continue
+            for _v in _pkg.get("vulnerabilities", []):
+                if _v.get("in_cisa_kev"):
+                    _has_kev = True
+                _e = _v.get("epss_score") or 0
+                if _e > _max_epss:
+                    _max_epss = _e
+
+        if _has_kev or _max_epss > 0.5:
             priority = "CRITICAL"
             critical_actions += 1
+        elif _max_epss > 0.1 or severity_breakdown["critical"] > 0:
+            priority = "CRITICAL" if severity_breakdown["critical"] > 0 else "HIGH"
+            if severity_breakdown["critical"] > 0:
+                critical_actions += 1
         elif severity_breakdown["high"] > 0:
             priority = "HIGH"
         elif severity_breakdown["medium"] > 0:
@@ -887,22 +904,53 @@ def generate_remediation_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any])
             priority = "LOW"
         
         # Find the best fixed version (highest version that fixes most vulns)
-        fixed_versions = [v["fixed_in"] for v in vulns if v.get("fixed_in") and v["fixed_in"] not in ["Unknown", "N/A", "", None]]
+        # Only consider comma-separated strings from OSV — flatten all versions first
+        raw_fixed = [v["fixed_in"] for v in vulns if v.get("fixed_in") and v["fixed_in"] not in ["Unknown", "N/A", "", None]]
+        fixed_versions = []
+        for raw in raw_fixed:
+            if isinstance(raw, str):
+                fixed_versions.extend([p.strip() for p in raw.split(",") if p.strip()])
+            else:
+                fixed_versions.append(str(raw))
         
         if fixed_versions:
-            # Sort versions and get the highest one
             try:
-                from packaging.version import Version
-                fixed_versions_sorted = sorted(set(fixed_versions), key=lambda x: Version(x) if x else Version("0"), reverse=True)
-                best_fixed_version = fixed_versions_sorted[0]
-            except:
+                from packaging.version import Version as PkgVersion
+                fixed_parsed = sorted({PkgVersion(v) for v in fixed_versions}, reverse=True)
+                best_fixed_version = str(fixed_parsed[0])
+                
+                # ── Already-patched guard ──────────────────────────────────────────
+                # If current version >= every fixed version, the package is NOT
+                # vulnerable to any of these CVEs.  Skip it — do not recommend a
+                # "fix" that would actually be a downgrade (e.g. 6.0.0 → 5.0.3).
+                try:
+                    current_parsed = PkgVersion(version)
+                    if all(current_parsed >= fv for fv in fixed_parsed):
+                        # Already patched — exclude from vulnerable list
+                        continue
+                except Exception:
+                    pass  # If version can't be parsed, fall through and show the entry
+
+            except Exception:
                 best_fixed_version = max(set(fixed_versions), key=fixed_versions.count)
-            
+        
             # Determine fix command based on language
             if language in ["python", "pip"]:
                 fix_command = f"pip install {lib_name}>={best_fixed_version}"
             elif language in ["javascript", "npm", "node"]:
                 fix_command = f"npm install {lib_name}@{best_fixed_version}"
+            elif language in ["dotnet", ".net", "csharp", "nuget", "fsharp"]:
+                fix_command = f"dotnet add package {lib_name} --version {best_fixed_version}"
+            elif language in ["java", "maven", "gradle"]:
+                fix_command = f"Update {lib_name} to {best_fixed_version} in pom.xml / build.gradle"
+            elif language in ["go", "golang"]:
+                fix_command = f"go get {lib_name}@v{best_fixed_version}"
+            elif language in ["rust", "cargo"]:
+                fix_command = f"cargo update -p {lib_name} --precise {best_fixed_version}"
+            elif language in ["ruby", "gem"]:
+                fix_command = f"gem update {lib_name} --version {best_fixed_version}"
+            elif language in ["php", "composer"]:
+                fix_command = f"composer require {lib_name}:{best_fixed_version}"
             else:
                 fix_command = f"Update {lib_name} to version {best_fixed_version}"
             
@@ -929,13 +977,45 @@ def generate_remediation_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any])
             }
             investigate_count += 1
         
-        # Simplified vulnerable library format (without severity_breakdown, used_in_files, severity_level)
+        # ── EPSS / CISA KEV exploit intelligence for this library ─────
+        max_epss = 0.0
+        max_epss_percentile = None
+        in_kev = False
+        kev_due_date = None
+        kev_required_action = None
+        for _pkg in catalog.get("packages", []):
+            if (_pkg.get("name") or _pkg.get("component_name")) != lib_name:
+                continue
+            for _v in _pkg.get("vulnerabilities", []):
+                _epss = _v.get("epss_score") or 0
+                if _epss > max_epss:
+                    max_epss = _epss
+                    max_epss_percentile = _v.get("epss_percentile")
+                if _v.get("in_cisa_kev"):
+                    in_kev = True
+                    kev_due_date = kev_due_date or _v.get("kev_due_date")
+                    kev_required_action = kev_required_action or _v.get("kev_required_action")
+
+        # Always provide exploit_intel with in_cisa_kev yes/no
+        exploit_intel = {
+            "in_cisa_kev": in_kev,
+            "epss_score": max_epss if max_epss > 0 else None,
+            "epss_percentile": max_epss_percentile if max_epss > 0 else None,
+            "epss_probability": f"{max_epss * 100:.1f}%" if max_epss > 0 else "0.0%",
+        }
+        if in_kev:
+            if kev_due_date:
+                exploit_intel["kev_due_date"] = kev_due_date
+            if kev_required_action:
+                exploit_intel["kev_required_action"] = kev_required_action
+
         vulnerable_libraries.append({
             "library": lib_name,
             "current_version": version,
             "vulnerabilities_count": len(vulns),
             "priority": priority,
-            "recommended_action": recommended_action
+            "recommended_action": recommended_action,
+            "exploit_intel": exploit_intel,
         })
     
     # Sort by priority (CRITICAL first, then HIGH, etc.)
@@ -944,20 +1024,6 @@ def generate_remediation_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any])
     
     # Count critical actions
     critical_actions = sum(1 for vl in vulnerable_libraries if vl["priority"] == "CRITICAL")
-    
-    # Group vulnerable libraries by language
-    _LANG_DISPLAY = {
-        "python": "Python", "javascript": "JavaScript", "node": "JavaScript",
-        "go": "Go", "golang": "Go",
-        "java": "Java", "maven": "Java", "gradle": "Java",
-        "dotnet": ".NET", ".net": ".NET", "csharp": ".NET", "nuget": ".NET",
-        "ruby": "Ruby", "rust": "Rust", "php": "PHP",
-    }
-    vulns_by_language = {}
-    for vl in vulnerable_libraries:
-        raw_lang = library_vulns.get(vl["library"], {}).get("language", "unknown")
-        display = _LANG_DISPLAY.get(raw_lang, raw_lang.capitalize() if raw_lang != "unknown" else "Other")
-        vulns_by_language.setdefault(display, []).append(vl)
     
     return {
         "scan_metadata": {
@@ -971,9 +1037,7 @@ def generate_remediation_sbom(catalog: Dict[str, Any], metadata: Dict[str, Any])
             "total_libraries_with_vulnerabilities": len(vulnerable_libraries),
             "total_vulnerabilities": total_vulns,
             "critical_actions": critical_actions,
-            "languages_affected": sorted(vulns_by_language.keys())
         },
-        "vulnerable_libraries_by_language": {lang: libs for lang, libs in sorted(vulns_by_language.items())},
         "vulnerable_libraries": vulnerable_libraries,
         "action_summary": {
             "total_actions_required": len(vulnerable_libraries),
