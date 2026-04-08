@@ -1,0 +1,117 @@
+rules:
+  # OpenAI Java SDK: https://github.com/openai/openai-java
+  # Also covers: com.theokanning.openai-gpt3-java (community SDK)
+
+  - id: openai-client-init-java
+    pattern-either:
+      - pattern: new OpenAIClient($...)
+      - pattern: new OpenAiClient($...)
+      - pattern: OpenAiClient.builder()
+      - pattern: OpenAiService($...)
+      - pattern: new OpenAiService($...)
+      - pattern: OpenAIOkHttpClient.builder()
+      - pattern: OpenAIClientAsync($...)
+    message: "OpenAI client initialization detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # Official OpenAI Java SDK chat completions
+  - id: openai-chat-completion-java
+    pattern-either:
+      - pattern: $CLIENT.chat().completions().create($...)
+      - pattern: $CLIENT.completions().create($...)
+      - pattern: $CLIENT.createChatCompletion($...)
+      - pattern: $SERVICE.createChatCompletion($...)
+    message: "OpenAI chat completion API call detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # ChatCompletionRequest builder pattern (theokanning / community SDK)
+  - id: openai-chat-request-builder-java
+    languages: [java]
+    message: "OpenAI ChatCompletionRequest builder detected"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-regex: 'ChatCompletionRequest\s*\.\s*builder\s*\(\s*\)'
+
+  # Model selection in builder: .model("gpt-4o")
+  - id: openai-model-builder-java
+    languages: [java]
+    message: "OpenAI model selection detected"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-regex: '(?:ChatCompletionRequest|CompletionRequest|EmbeddingRequest|ImageRequest|CreateChatCompletionRequest)\s*\..*\.model\s*\(\s*"([^"]+)"'
+
+  # Embedding calls
+  - id: openai-embedding-java
+    pattern-either:
+      - pattern: $CLIENT.embeddings().create($...)
+      - pattern: $CLIENT.createEmbeddings($...)
+      - pattern: $SERVICE.createEmbeddings($...)
+    message: "OpenAI embedding API call detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # Image generation calls
+  - id: openai-image-java
+    pattern-either:
+      - pattern: $CLIENT.images().generate($...)
+      - pattern: $CLIENT.createImage($...)
+      - pattern: $SERVICE.createImage($...)
+    message: "OpenAI image generation API call detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # Audio / TTS / Whisper calls
+  - id: openai-audio-java
+    pattern-either:
+      - pattern: $CLIENT.audio().transcriptions().create($...)
+      - pattern: $CLIENT.audio().translations().create($...)
+      - pattern: $CLIENT.audio().speech().create($...)
+      - pattern: $CLIENT.createTranscription($...)
+      - pattern: $CLIENT.createTranslation($...)
+    message: "OpenAI audio API call detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # ChatMessage construction
+  - id: openai-chat-message-java
+    pattern-either:
+      - pattern: new ChatMessage($...)
+      - pattern: ChatMessage.builder()
+      - pattern: new ChatCompletionMessage($...)
+    message: "OpenAI chat message construction detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # Model config with known patterns
+  - id: openai-model-config-java
+    languages: [java]
+    message: "OpenAI model configuration detected"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-regex: '\.model\s*\(\s*"(gpt-4|gpt-3\.5|gpt-4o|gpt-4-turbo|o1|o3|davinci|curie|babbage|ada|text-embedding|whisper|tts|dall-e)[^"]*"'

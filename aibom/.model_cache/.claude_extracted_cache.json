@@ -1,0 +1,72 @@
+{
+  "claude-haiku-4-5": {
+    "name": "Claude\n \nHaiku\n \n4.5",
+    "version": "decision  process  7 1.2.1  Overview  7 1.2.2  Decision  7 2  Safeguards  and  harmlessness  8 2.1  Single-turn  evaluations  8 2.1.1  Violative  request  evaluations  8 2.1.2  Benign  request  evaluations  9 2.2  Ambiguous  context  10 2.3  Multi-turn  testing  10 2.4  Child  safety  evaluations  11 2.5  Bias  evaluations  11 2.5.1  Political  bias  11 2.5.2  Bias  Benchmark  for  Question  Answering  13 3  Agentic  safety  15 3.1  Malicious  use  15 3.1.1  Agentic  coding  15 3.1.2  Malicious  use  of  Claude  Code  15 3.2  Prompt  injection  17 3.2.1  Gray  Swan  Agent  Red  Teaming  benchmark  17 3.2.2  Internal  Prompt  Injection  Evaluations  18 4  Alignment  and  welfare  assessments  21 4.1  Automated  behavioral  audits  22 4.1.1  Main  quantitative  assessment  22 4.1.2  Assessment  for  subtle  alignment-related  behavioral  biases  26 4.1.3  Open-ended  exploration  of  model  behavior  27 4.2  Agentic  misalignment  suite  27 4.3  Reinforcement-learning  behavior  review  28 4.4  Sabotage  capabilities  28 4.5  Reasoning  faithfulness  29",
+    "type": "text-generation",
+    "author": "Anthropic",
+    "licenses": [
+      "Anthropic API Terms of Service",
+      "https://www.anthropic.com/legal/aup"
+    ],
+    "source_url": "https://www.anthropic.com/claude",
+    "datasets_name": [],
+    "datasets_source_url": "Not publicly disclosed",
+    "datasets_license": "Proprietary",
+    "input": [
+      "text",
+      "image"
+    ],
+    "output": [
+      "text"
+    ],
+    "intended_use": "General-purpose AI assistant for text generation, analysis, coding, and reasoning tasks.",
+    "out_of_scope_use": "Uses that violate Anthropic's Acceptable Use Policy, including generating harmful content.",
+    "misuse_malicious_use": "d to produce dangerous weapons. Overall, Claude Haiku 4.5 shows large safety improvements compared to its predecessor,",
+    "description": "Claude Haiku 4.5 is a new large language model from Anthropic. It is smaller and faster than",
+    "libraries": [
+      "Anthropic API",
+      "AWS Bedrock SDK",
+      "Google Vertex AI SDK"
+    ],
+    "bom_generation_timestamp": "2026-01-16T07:35:40.691930+00:00",
+    "bom_generation_method": "PDF extraction using pypdf",
+    "bom_generated_by": "ClaudeModelCardExtractor",
+    "other_references": [
+      "https://assets.anthropic.com/m/99128ddd009bdcb/Claude-Haiku-4-5-System-Card.pdf",
+      "https://docs.anthropic.com",
+      "https://www.anthropic.com/contact"
+    ],
+    "tags": [
+      "LLM",
+      "conversational",
+      "AI assistant",
+      "Anthropic",
+      "Claude"
+    ],
+    "architecture": "Transformer",
+    "architecture_family": "Claude",
+    "architecture_details": null,
+    "parameters": "1.2B",
+    "parent_model_name": null,
+    "parent_model_version": null,
+    "parent_model_source_url": null,
+    "base_model_name": null,
+    "base_model_version": null,
+    "base_model_source_url": null,
+    "hardware": [
+      "Cloud TPUs/GPUs (specific hardware not disclosed)"
+    ],
+    "software": [
+      "Proprietary Anthropic training framework"
+    ],
+    "training_data_description": "Claude Haiku 4.5 was trained on a proprietary mix of publicly available information from",
+    "training_cutoff": null,
+    "environmental_impact": {
+      "description": "r use. In the system card, we focus on safety evaluations, including assessments of: the model\u2019s safeguards;"
+    },
+    "ethical_considerations": "evaluations, including assessments of: the model\u2019s safeguards; the model\u2019s safety pro\ufb01le",
+    "attestation": null,
+    "pdf_url": "https://assets.anthropic.com/m/99128ddd009bdcb/Claude-Haiku-4-5-System-Card.pdf",
+    "extraction_date": "2026-01-16T07:35:40.710656+00:00"
+  }
+}

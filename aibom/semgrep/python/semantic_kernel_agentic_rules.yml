@@ -1,0 +1,45 @@
+rules:
+  # =========================================================================
+  # Semantic Kernel
+  # =========================================================================
+  - id: semantic-kernel-chat-completion-agent
+    patterns:
+      - pattern-either:
+          - pattern: ChatCompletionAgent(..., name=$NAME, ...)
+          - pattern: semantic_kernel.agents.ChatCompletionAgent(..., name=$NAME, ...)
+    message: "Semantic Kernel ChatCompletionAgent detected: $NAME"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: semantic-kernel
+      asset_type: agent
+      extract_fields: "name,instructions,kernel"
+
+  - id: semantic-kernel-agent-instructions
+    patterns:
+      - pattern-either:
+          - pattern: ChatCompletionAgent(..., instructions=$INSTR, ...)
+          - pattern: semantic_kernel.agents.ChatCompletionAgent(..., instructions=$INSTR, ...)
+    message: "Semantic Kernel agent instructions: $INSTR"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: semantic-kernel
+      asset_type: agent
+      extract_fields: "name,instructions,kernel"
+
+  - id: semantic-kernel-agent-group-chat
+    patterns:
+      - pattern-either:
+          - pattern: AgentGroupChat(...)
+          - pattern: semantic_kernel.agents.AgentGroupChat(...)
+    message: "Semantic Kernel AgentGroupChat detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: semantic-kernel
+      asset_type: crew
+      extract_fields: "agents"

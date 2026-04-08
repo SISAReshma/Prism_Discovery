@@ -1,0 +1,98 @@
+rules:
+  - id: openai-client-init-go
+    pattern-either:
+      - pattern: openai.NewClient($...)
+      - pattern: openai.NewClientWithConfig($...)
+      - pattern: openai.DefaultConfig($...)
+    message: "OpenAI client initialization detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-completion-go
+    pattern-either:
+      - pattern: $CLIENT.CreateChatCompletion($...)
+      - pattern: $CLIENT.CreateChatCompletionStream($...)
+    message: "OpenAI chat completion API call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-completion-go
+    pattern-either:
+      - pattern: $CLIENT.CreateCompletion($...)
+    message: "OpenAI completion API call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-embedding-go
+    pattern-either:
+      - pattern: $CLIENT.CreateEmbeddings($...)
+    message: "OpenAI embedding API call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-image-go
+    pattern-either:
+      - pattern: $CLIENT.CreateImage($...)
+      - pattern: $CLIENT.CreateEditImage($...)
+      - pattern: $CLIENT.CreateVariImage($...)
+    message: "OpenAI image generation API call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-audio-go
+    pattern-either:
+      - pattern: $CLIENT.CreateTranscription($...)
+      - pattern: $CLIENT.CreateTranslation($...)
+      - pattern: $CLIENT.CreateSpeech($...)
+    message: "OpenAI audio API call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-request-go
+    pattern-either:
+      - pattern: |
+          openai.ChatCompletionRequest{..., Model: $MODEL, ...}
+      - pattern: |
+          openai.CompletionRequest{..., Model: $MODEL, ...}
+      - pattern: |
+          openai.EmbeddingRequest{..., Model: $MODEL, ...}
+    message: "OpenAI request struct with model detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-model-constants-go
+    pattern-either:
+      - pattern: openai.GPT4
+      - pattern: openai.GPT4o
+      - pattern: openai.GPT4oMini
+      - pattern: openai.GPT4Turbo
+      - pattern: openai.GPT3Dot5Turbo
+      - pattern: openai.O1Preview
+      - pattern: openai.O1Mini
+    message: "OpenAI model constant detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai

@@ -1,0 +1,29 @@
+rules:
+  # =========================================================================
+  # Java Import Detection Rules
+  # Metadata is read by semgrep_scanner.py - keep in sync!
+  # =========================================================================
+
+  # Detect: import com.example.ClassName;
+  - id: java-import-statement
+    pattern: |
+      import $MODULE;
+    message: "Java import: $MODULE"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: import
+      is_relative: false
+
+  # Detect: import static com.example.ClassName.method;
+  - id: java-static-import
+    pattern: |
+      import static $MODULE;
+    message: "Java import: $MODULE"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: static-import
+      is_relative: false

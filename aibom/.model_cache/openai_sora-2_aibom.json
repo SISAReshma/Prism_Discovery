@@ -1,0 +1,100 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-sora-2-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "Sora 2",
+      "version": "sora-2",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "Sora is a video generation model capable of generating high-quality videos from text prompts. Sora 2 is the latest version with improved quality and longer video generation."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-sora-2",
+      "name": "Sora 2",
+      "version": "sora-2",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "Sora is a video generation model capable of generating high-quality videos from text prompts. Sora 2 is the latest version with improved quality and longer video generation.",
+      "properties": {
+        "ai_model_type": "Video Generation Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "sora-2",
+        "ai_model_family": "Sora",
+        "ai_architecture": "Diffusion",
+        "ai_context_window": "N/A",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text, image",
+        "ai_output_modalities": "video",
+        "ai_supported_features": "None",
+        "ai_api_endpoints": "videos",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "AI video generation from text prompts, creative video content creation",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_video_per_second": "0.1"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Diffusion",
+          "modelArchitecture": "Video Generation",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "video"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/sora-2"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

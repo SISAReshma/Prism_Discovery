@@ -1,0 +1,93 @@
+rules:
+  # Hugging Face .NET: HuggingFace.NET, Huggingface.Inference
+
+  - id: huggingface-inference-client-dotnet
+    pattern-either:
+      - pattern: new HuggingFaceClient($...)
+      - pattern: new InferenceClient($...)
+      - pattern: new HuggingFaceApiClient($...)
+      - pattern: new InferenceApi($...)
+    message: "Hugging Face Inference client detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-text-generation-dotnet
+    pattern-either:
+      - pattern: $CLIENT.TextGenerationAsync($...)
+      - pattern: $CLIENT.TextGeneration($...)
+      - pattern: $CLIENT.TextGenerationStreamAsync($...)
+      - pattern: $CLIENT.ConversationalAsync($...)
+    message: "Hugging Face text generation detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-embedding-dotnet
+    pattern-either:
+      - pattern: $CLIENT.FeatureExtractionAsync($...)
+      - pattern: $CLIENT.SentenceSimilarityAsync($...)
+      - pattern: $CLIENT.FeatureExtraction($...)
+    message: "Hugging Face embedding detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-image-dotnet
+    pattern-either:
+      - pattern: $CLIENT.TextToImageAsync($...)
+      - pattern: $CLIENT.ImageToTextAsync($...)
+      - pattern: $CLIENT.ImageClassificationAsync($...)
+      - pattern: $CLIENT.ObjectDetectionAsync($...)
+    message: "Hugging Face image processing detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-nlp-dotnet
+    pattern-either:
+      - pattern: $CLIENT.SummarizationAsync($...)
+      - pattern: $CLIENT.TranslationAsync($...)
+      - pattern: $CLIENT.QuestionAnsweringAsync($...)
+      - pattern: $CLIENT.ZeroShotClassificationAsync($...)
+      - pattern: $CLIENT.TokenClassificationAsync($...)
+      - pattern: $CLIENT.FillMaskAsync($...)
+    message: "Hugging Face NLP task detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-semantic-kernel-dotnet
+    pattern-either:
+      - pattern: $BUILDER.AddHuggingFaceTextGeneration($...)
+      - pattern: $BUILDER.AddHuggingFaceTextEmbeddingGeneration($...)
+      - pattern: new HuggingFaceTextGenerationService($...)
+      - pattern: new HuggingFaceTextEmbeddingGenerationService($...)
+    message: "Hugging Face via Semantic Kernel detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-model-download-dotnet
+    pattern-either:
+      - pattern: $CLIENT.DownloadModelAsync($...)
+      - pattern: $CLIENT.ModelInfoAsync($...)
+      - pattern: $CLIENT.ListModelsAsync($...)
+    message: "Hugging Face Hub model access detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface

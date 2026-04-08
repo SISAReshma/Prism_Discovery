@@ -1,0 +1,100 @@
+rules:
+  # =========================================================================
+  # CrewAI Agent Detection
+  # =========================================================================
+  - id: crewai-agent-definition
+    patterns:
+      - pattern: |
+          Agent(..., role=$ROLE, ...)
+    message: "CrewAI Agent definition detected with role: $ROLE"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: agent
+      extract_fields: "role,goal,backstory"
+
+  - id: crewai-agent-goal
+    patterns:
+      - pattern: |
+          Agent(..., goal=$GOAL, ...)
+    message: "CrewAI Agent goal: $GOAL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: agent
+      extract_fields: "role,goal,backstory"
+
+  - id: crewai-agent-backstory
+    patterns:
+      - pattern: |
+          Agent(..., backstory=$BACKSTORY, ...)
+    message: "CrewAI Agent backstory: $BACKSTORY"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: agent
+      extract_fields: "role,goal,backstory"
+
+  # =========================================================================
+  # CrewAI Task Detection
+  # =========================================================================
+  - id: crewai-task-definition
+    patterns:
+      - pattern: |
+          Task(..., description=$DESC, ...)
+    message: "CrewAI Task definition detected with description: $DESC"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: task
+      extract_fields: "description,expected_output,agent"
+
+  - id: crewai-task-expected-output
+    patterns:
+      - pattern: |
+          Task(..., expected_output=$OUTPUT, ...)
+    message: "CrewAI Task expected_output: $OUTPUT"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: task
+      extract_fields: "description,expected_output,agent"
+
+  # =========================================================================
+  # CrewAI Crew Detection
+  # =========================================================================
+  - id: crewai-crew-definition
+    patterns:
+      - pattern: |
+          Crew(..., agents=$AGENTS, ...)
+    message: "CrewAI Crew definition detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: crew
+      extract_fields: "agents,tasks,process,verbose"
+
+  - id: crewai-crew-process
+    patterns:
+      - pattern: |
+          Crew(..., process=$PROCESS, ...)
+    message: "CrewAI Crew process: $PROCESS"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: crewai
+      asset_type: crew
+      extract_fields: "agents,tasks,process,verbose"

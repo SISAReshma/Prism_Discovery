@@ -1,0 +1,97 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-image-1-mini-2026-01-14-10-56-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:56:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT Image 1 Mini",
+      "version": "gpt-image-1-mini",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT Image 1 Mini is a fast, cost-effective image generation model optimized for quick generation with good quality."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-image-1-mini",
+      "name": "GPT Image 1 Mini",
+      "version": "gpt-image-1-mini",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT Image 1 Mini is a fast, cost-effective image generation model optimized for quick generation with good quality.",
+      "properties": {
+        "ai_model_type": "Image Generation Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-image-1-mini",
+        "ai_model_family": "OpenAI",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "N/A",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "image",
+        "ai_supported_features": "None",
+        "ai_api_endpoints": "images/generations",
+        "ai_deprecated": "false",
+        "ai_parent_model": "GPT Image 1",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Fast, affordable image generation for high-volume applications",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "2.5"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Image Generation",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "image"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-image-1-mini"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

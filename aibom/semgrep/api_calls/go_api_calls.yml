@@ -1,0 +1,186 @@
+rules:
+  # =========================================================================
+  # NET/HTTP STANDARD LIBRARY
+  # =========================================================================
+  - id: api-http-get-go
+    pattern-either:
+      - pattern: http.Get($URL)
+      - pattern: http.Head($URL)
+    message: "Go net/http GET/HEAD call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: net_http
+      http_method: GET
+
+  - id: api-http-post-go
+    pattern-either:
+      - pattern: http.Post($URL, $...)
+      - pattern: http.PostForm($URL, $...)
+    message: "Go net/http POST call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: net_http
+      http_method: POST
+
+  - id: api-http-newrequest-go
+    pattern-either:
+      - pattern: http.NewRequest($METHOD, $URL, $...)
+      - pattern: http.NewRequestWithContext($CTX, $METHOD, $URL, $...)
+    message: "Go net/http request construction detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: net_http
+      http_method: ANY
+
+  - id: api-http-client-do-go
+    pattern-either:
+      - pattern: $CLIENT.Do($...)
+      - pattern: http.DefaultClient.Do($...)
+      - pattern: $CLIENT.Get($URL)
+      - pattern: $CLIENT.Post($URL, $...)
+      - pattern: $CLIENT.PostForm($URL, $...)
+      - pattern: $CLIENT.Head($URL)
+    message: "Go HTTP client call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: net_http
+      http_method: ANY
+
+  # =========================================================================
+  # RESTY (popular Go HTTP client)
+  # =========================================================================
+  - id: api-resty-request-go
+    pattern-either:
+      - pattern: resty.New()
+      - pattern: $CLIENT.R().Get($URL)
+      - pattern: $CLIENT.R().Post($URL)
+      - pattern: $CLIENT.R().Put($URL)
+      - pattern: $CLIENT.R().Patch($URL)
+      - pattern: $CLIENT.R().Delete($URL)
+      - pattern: $CLIENT.R().Head($URL)
+      - pattern: $CLIENT.R().SetBody($...).Post($URL)
+      - pattern: $CLIENT.R().SetResult($...).Get($URL)
+    message: "Resty HTTP request detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: resty
+      http_method: ANY
+
+  # =========================================================================
+  # GRPC
+  # =========================================================================
+  - id: api-grpc-dial-go
+    pattern-either:
+      - pattern: grpc.Dial($TARGET, $...)
+      - pattern: grpc.DialContext($CTX, $TARGET, $...)
+      - pattern: grpc.NewClient($TARGET, $...)
+    message: "gRPC dial/connection detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: grpc
+      http_method: GRPC
+
+  - id: api-grpc-call-go
+    pattern-either:
+      - pattern: $CLIENT.Invoke($CTX, $METHOD, $...)
+      - pattern: grpc.NewClientStream($...)
+    message: "gRPC call detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: grpc
+      http_method: GRPC
+
+  # =========================================================================
+  # WEBSOCKET (gorilla/websocket)
+  # =========================================================================
+  - id: api-websocket-go
+    pattern-either:
+      - pattern: websocket.Dial($URL, $...)
+      - pattern: websocket.DefaultDialer.Dial($URL, $...)
+      - pattern: $DIALER.Dial($URL, $...)
+      - pattern: $CONN.WriteMessage($...)
+      - pattern: $CONN.ReadMessage()
+      - pattern: $UPGRADER.Upgrade($...)
+    message: "WebSocket connection detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: websocket
+      http_method: WS
+
+  # =========================================================================
+  # FASTHTTP
+  # =========================================================================
+  - id: api-fasthttp-go
+    pattern-either:
+      - pattern: fasthttp.Do($...)
+      - pattern: fasthttp.Get($...)
+      - pattern: fasthttp.Post($...)
+      - pattern: $CLIENT.Do($...)
+      - pattern: fasthttp.AcquireRequest()
+    message: "Fasthttp request detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: fasthttp
+      http_method: ANY
+
+  # =========================================================================
+  # RETRYABLEHTTP (hashicorp)
+  # =========================================================================
+  - id: api-retryablehttp-go
+    pattern-either:
+      - pattern: retryablehttp.NewClient()
+      - pattern: retryablehttp.Get($URL)
+      - pattern: $CLIENT.Get($URL)
+      - pattern: $CLIENT.Post($URL, $...)
+    message: "Retryable HTTP request detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: retryablehttp
+      http_method: ANY
+
+  # =========================================================================
+  # API URL PATTERNS
+  # =========================================================================
+  - id: api-url-pattern-go
+    pattern-regex: "[\"'](https?:\\/\\/[^\"']+\\/api\\/[^\"']*)[\"']"
+    message: "API URL pattern detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: url_pattern
+      http_method: ANY
+
+  - id: api-env-url-go
+    pattern-either:
+      - pattern: os.Getenv("API_URL")
+      - pattern: os.Getenv("BACKEND_URL")
+      - pattern: os.Getenv("BASE_URL")
+      - pattern: os.Getenv("API_BASE_URL")
+    message: "API URL from environment variable detected"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: api_calls
+      type: env_url
+      http_method: ANY

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-text-embedding-ada-002-2026-01-14-10-47-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:47:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "text-embedding-ada-002",
+      "version": "text-embedding-ada-002",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "text-embedding-ada-002 is our improved, more performant version of our ada embedding model. Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces of text. Embeddings are useful for search, clustering, recommendations, anomaly detection, and classification tasks."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-text-embedding-ada-002",
+      "name": "text-embedding-ada-002",
+      "version": "text-embedding-ada-002",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "text-embedding-ada-002 is our improved, more performant version of our ada embedding model. Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces of text. Embeddings are useful for search, clustering, recommendations, anomaly detection, and classification tasks.",
+      "properties": {
+        "ai_model_type": "Embedding Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "text-embedding-ada-002",
+        "ai_model_family": "Specialized",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "8191",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "None",
+        "ai_api_endpoints": "embeddings, batch",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Legacy embedding applications, cost-effective for existing implementations",
+        "ai_pricing_input_per_million_tokens": "0.1",
+        "ai_pricing_output_per_million_tokens": "N/A",
+        "ai_pricing_currency": "USD",
+        "ai_embedding_dimensions": "1536"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Embedding",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/text-embedding-ada-002"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

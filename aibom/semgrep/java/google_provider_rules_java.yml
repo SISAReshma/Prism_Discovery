@@ -1,0 +1,54 @@
+rules:
+  # Google AI / Vertex AI Java SDKs
+  # google-cloud-vertexai, generative-ai (google-genai)
+
+  - id: google-client-init-java
+    pattern-either:
+      - pattern: new GenerativeModel($...)
+      - pattern: GenerativeModel.builder($...)
+      - pattern: new VertexAI($...)
+      - pattern: VertexAI.builder($...)
+      - pattern: new ChatSession($...)
+      - pattern: GenerativeModelFutures.from($...)
+    message: "Google AI client initialization detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: google
+      provider: google
+
+  - id: google-generate-content-java
+    pattern-either:
+      - pattern: $CLIENT.generateContent($...)
+      - pattern: $CLIENT.generateContentStream($...)
+      - pattern: $CLIENT.countTokens($...)
+      - pattern: $MODEL.generateContent($...)
+      - pattern: $MODEL.generateContentStream($...)
+      - pattern: $SESSION.sendMessage($...)
+    message: "Google AI content generation detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: google
+      provider: google
+
+  - id: google-model-config-java
+    languages: [java]
+    message: "Google AI model configuration detected"
+    severity: WARNING
+    metadata:
+      category: google
+      provider: google
+    pattern-regex: '(?:new\s+GenerativeModel\s*\(\s*"([^"]+)"|setModelName\s*\(\s*"(gemini[^"]*|palm[^"]*)")'
+
+  - id: google-embedding-java
+    pattern-either:
+      - pattern: $CLIENT.embedText($...)
+      - pattern: $CLIENT.batchEmbedText($...)
+      - pattern: $MODEL.embedContent($...)
+    message: "Google AI embedding API call detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: google
+      provider: google

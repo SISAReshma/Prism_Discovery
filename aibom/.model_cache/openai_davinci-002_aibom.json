@@ -1,0 +1,98 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-davinci-002-2026-01-14-10-56-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:56:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "Davinci 002",
+      "version": "davinci-002",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "Davinci 002 is a legacy base model for complex text completion tasks. Replacement for the original GPT-3 davinci model."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-davinci-002",
+      "name": "Davinci 002",
+      "version": "davinci-002",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "Davinci 002 is a legacy base model for complex text completion tasks. Replacement for the original GPT-3 davinci model.",
+      "properties": {
+        "ai_model_type": "Base Completion Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "davinci-002",
+        "ai_model_family": "OpenAI",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "16384",
+        "ai_max_output_tokens": "16384",
+        "ai_knowledge_cutoff": "Sep 01, 2021",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming, fine_tuning",
+        "ai_api_endpoints": "completions, fine_tuning",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Complex text completion, legacy applications, powerful fine-tuning base model",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "2.0",
+        "ai_pricing_output_per_million_tokens": "2.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Base Completion",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/davinci-002"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+rules:
+  # HuggingFace Java / DJL (Deep Java Library)
+  # ai.djl (Amazon DJL), ai.huggingface.hub
+
+  - id: huggingface-djl-init-java
+    pattern-either:
+      - pattern: Criteria.builder()
+      - pattern: ModelZoo.loadModel($...)
+      - pattern: $MODEL.newPredictor($...)
+      - pattern: HfApi($...)
+      - pattern: new HfApi($...)
+      - pattern: HuggingFaceModel($...)
+    message: "HuggingFace / DJL model initialization detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-djl-model-load-java
+    pattern-either:
+      - pattern: $CRITERIA.optModelUrls($...)
+      - pattern: $CRITERIA.optModelPath($...)
+      - pattern: $CRITERIA.optModelName($...)
+      - pattern: $ZOO.loadModel($...)
+    message: "HuggingFace / DJL model loading detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface
+
+  - id: huggingface-model-id-java
+    languages: [java]
+    message: "HuggingFace model ID detected"
+    severity: WARNING
+    metadata:
+      category: huggingface
+      provider: huggingface
+    pattern-regex: '(?:optModelName|optModelUrls|setModelId|modelId|modelName)\s*\(\s*"([a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+)"'
+
+  - id: huggingface-inference-java
+    pattern-either:
+      - pattern: $CLIENT.textGeneration($...)
+      - pattern: $CLIENT.textClassification($...)
+      - pattern: $CLIENT.sentenceSimilarity($...)
+      - pattern: $CLIENT.featureExtraction($...)
+      - pattern: $CLIENT.imageClassification($...)
+    message: "HuggingFace inference API call detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: huggingface
+      provider: huggingface

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-4o-realtime-preview-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-4o Realtime Preview",
+      "version": "gpt-4o-realtime-preview",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4o Realtime Preview is a preview model for real-time audio and text interactions using the Realtime API with WebRTC or WebSocket connections."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-4o-realtime-preview",
+      "name": "GPT-4o Realtime Preview",
+      "version": "gpt-4o-realtime-preview",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4o Realtime Preview is a preview model for real-time audio and text interactions using the Realtime API with WebRTC or WebSocket connections.",
+      "properties": {
+        "ai_model_type": "Large Language Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-4o-realtime-preview",
+        "ai_model_family": "GPT",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "128000",
+        "ai_max_output_tokens": "4096",
+        "ai_knowledge_cutoff": "Oct 01, 2023",
+        "ai_input_modalities": "text, audio",
+        "ai_output_modalities": "text, audio",
+        "ai_supported_features": "streaming, function_calling",
+        "ai_api_endpoints": "realtime",
+        "ai_deprecated": "false",
+        "ai_parent_model": "GPT-4o",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Real-time voice applications, interactive audio agents - preview of gpt-realtime",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "5.0",
+        "ai_pricing_output_per_million_tokens": "20.0",
+        "ai_pricing_audio_input_per_million_tokens": "100.0",
+        "ai_pricing_audio_output_per_million_tokens": "200.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "audio"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "audio"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-4o-realtime-preview"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

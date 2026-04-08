@@ -1,0 +1,101 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-o3-2026-01-14-10-41-59",
+  "metadata": {
+    "timestamp": "2026-01-14T10:41:59Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "o3",
+      "version": "o3",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o3 is our most intelligent reasoning model. It can reason over problems for longer before responding and think more deeply about hard problems."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-o3",
+      "name": "o3",
+      "version": "o3",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "o3 is our most intelligent reasoning model. It can reason over problems for longer before responding and think more deeply about hard problems.",
+      "properties": {
+        "ai_model_type": "Large Language Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "o3",
+        "ai_model_family": "o-series",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "200000",
+        "ai_max_output_tokens": "100000",
+        "ai_knowledge_cutoff": "Jun 01, 2024",
+        "ai_input_modalities": "text, image",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming, function_calling, structured_outputs, distillation",
+        "ai_api_endpoints": "chat_completions, responses, assistants, batch",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "true",
+        "ai_best_for": "Most complex reasoning tasks requiring deep thinking, advanced mathematics, scientific analysis, and strategic planning",
+        "ai_pricing_input_per_million_tokens": "10.0",
+        "ai_pricing_output_per_million_tokens": "40.0",
+        "ai_pricing_currency": "USD"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "o-series",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/o3"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-babbage-002-2026-01-14-10-56-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:56:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "Babbage 002",
+      "version": "babbage-002",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "Babbage 002 is a legacy base model for simple text completion tasks. Replacement for the original GPT-3 babbage model."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-babbage-002",
+      "name": "Babbage 002",
+      "version": "babbage-002",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "Babbage 002 is a legacy base model for simple text completion tasks. Replacement for the original GPT-3 babbage model.",
+      "properties": {
+        "ai_model_type": "Base Completion Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "babbage-002",
+        "ai_model_family": "OpenAI",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "16384",
+        "ai_max_output_tokens": "16384",
+        "ai_knowledge_cutoff": "Sep 01, 2021",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming, fine_tuning",
+        "ai_api_endpoints": "completions, fine_tuning",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Simple text completion, legacy applications, fine-tuning base model",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "0.4",
+        "ai_pricing_output_per_million_tokens": "0.4"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Base Completion",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/babbage-002"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

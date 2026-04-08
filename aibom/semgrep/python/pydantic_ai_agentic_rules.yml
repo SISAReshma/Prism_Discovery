@@ -1,0 +1,31 @@
+rules:
+  # =========================================================================
+  # Pydantic AI
+  # =========================================================================
+  - id: pydantic-ai-agent
+    patterns:
+      - pattern-either:
+          - pattern: Agent($MODEL, ...)
+          - pattern: pydantic_ai.Agent($MODEL, ...)
+    message: "Pydantic AI Agent detected with model: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: pydantic-ai
+      asset_type: agent
+      extract_fields: "model,system_prompt,tools"
+
+  - id: pydantic-ai-agent-system-prompt
+    patterns:
+      - pattern-either:
+          - pattern: Agent(..., system_prompt=$PROMPT, ...)
+          - pattern: pydantic_ai.Agent(..., system_prompt=$PROMPT, ...)
+    message: "Pydantic AI Agent system_prompt: $PROMPT"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: pydantic-ai
+      asset_type: agent
+      extract_fields: "model,system_prompt,tools"

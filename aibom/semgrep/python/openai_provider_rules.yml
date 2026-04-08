@@ -1,0 +1,83 @@
+rules:
+  - id: openai-client-init
+    pattern-either:
+      - pattern: OpenAI(...)
+      - pattern: openai.OpenAI(...)
+      - pattern: AsyncOpenAI(...)
+      - pattern: openai.AsyncOpenAI(...)
+    message: "OpenAI client initialization detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-completion
+    pattern-either:
+      - pattern: $CLIENT.chat.completions.create(...)
+      - pattern: openai.ChatCompletion.create(...)
+    message: "OpenAI chat completion API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-completion
+    pattern-either:
+      - pattern: $CLIENT.completions.create(...)
+      - pattern: openai.Completion.create(...)
+    message: "OpenAI completion API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-embedding
+    pattern-either:
+      - pattern: $CLIENT.embeddings.create(...)
+      - pattern: openai.Embedding.create(...)
+    message: "OpenAI embedding API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-image-generation
+    pattern-either:
+      - pattern: $CLIENT.images.generate(...)
+      - pattern: openai.Image.create(...)
+    message: "OpenAI image generation API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-audio
+    pattern-either:
+      - pattern: $CLIENT.audio.transcriptions.create(...)
+      - pattern: $CLIENT.audio.translations.create(...)
+      - pattern: $CLIENT.audio.speech.create(...)
+    message: "OpenAI audio API call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-model-config
+    patterns:
+      - pattern: |
+          $FUNC(..., model=$MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: "\"(gpt-4|gpt-3.5|gpt-4o|gpt-4-turbo|o1|o3|davinci|curie|babbage|ada|text-embedding|whisper|tts|dall-e).*\""
+    message: "OpenAI model configuration detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai

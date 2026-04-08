@@ -1,0 +1,97 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-image-1-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT Image 1",
+      "version": "gpt-image-1",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT Image 1 is OpenAI's latest image generation model, offering high-quality image generation with better prompt understanding and visual fidelity."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-image-1",
+      "name": "GPT Image 1",
+      "version": "gpt-image-1",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT Image 1 is OpenAI's latest image generation model, offering high-quality image generation with better prompt understanding and visual fidelity.",
+      "properties": {
+        "ai_model_type": "Image Generation Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-image-1",
+        "ai_model_family": "GPT",
+        "ai_architecture": "Diffusion",
+        "ai_context_window": "N/A",
+        "ai_max_output_tokens": "N/A",
+        "ai_knowledge_cutoff": "N/A",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "image",
+        "ai_supported_features": "None",
+        "ai_api_endpoints": "images/generations, images/edits",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "High-quality AI image generation, creative visual content, image editing",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "5.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Diffusion",
+          "modelArchitecture": "Image Generation",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "image"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-image-1"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "provider": "azure-ai-foundry",
+  "model_id": "gpt-4o",
+  "model_card_url": "https://ai.azure.com/catalog/models/gpt-4o",
+  "fetched_at": "2026-01-08T22:26:26.613770",
+  "name": "Direct from Azure models",
+  "description": "Model gpt-4o from Azure AI Foundry",
+  "license": "OverviewBenchmarksBenchmarks",
+  "version": "December 2025",
+  "context_length": "131072",
+  "quality_index": "0.75",
+  "training_data": "September 2023",
+  "input_type": "Text,Image,Audio",
+  "output_type": "Text",
+  "provider_name": "OpenAI",
+  "languages": "27",
+  "tags": [],
+  "task": "text-generation"
+}

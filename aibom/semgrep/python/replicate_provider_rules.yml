@@ -1,0 +1,97 @@
+rules:
+  - id: replicate-client-init
+    pattern-either:
+      - pattern: replicate.Client(...)
+      - pattern: import replicate
+      - pattern: from replicate import $ITEM
+    message: "Replicate client initialization detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-run
+    # Import guard: $REP.run() is too generic — require replicate import context.
+    patterns:
+      - pattern-either:
+          - pattern: replicate.run($MODEL, ...)
+          - pattern: $REP.run($MODEL, ...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
+    message: "Replicate model run detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-predictions
+    patterns:
+      - pattern-either:
+          - pattern: replicate.predictions.create(...)
+          - pattern: replicate.predictions.get(...)
+          - pattern: replicate.predictions.list(...)
+          - pattern: replicate.predictions.cancel(...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
+    message: "Replicate predictions API usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-stream
+    # Import guard: $REP.stream() is too generic — require replicate import context.
+    patterns:
+      - pattern-either:
+          - pattern: replicate.stream($MODEL, ...)
+          - pattern: $REP.stream($MODEL, ...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
+    message: "Replicate streaming detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-models
+    pattern-either:
+      - pattern: replicate.models.get(...)
+      - pattern: replicate.models.list(...)
+      - pattern: replicate.models.create(...)
+    message: "Replicate models API usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-training
+    pattern-either:
+      - pattern: replicate.trainings.create(...)
+      - pattern: replicate.trainings.get(...)
+      - pattern: replicate.trainings.list(...)
+    message: "Replicate training API usage detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate

@@ -1,16 +1,40 @@
 # Python
 __pycache__/
-
+*.pyc
+*.pyo
 
 # Virtual Environment
-
 venv/
+.venv/
 
 # IDEs
 .vscode/
+.idea/
 
-# Temporary files and cloned repositories
+# ── AIBOM runtime caches ──
+# aibom/.cache/
+# aibom/.model_cache/
+# aibom/.deprecation_cache/
+
+# ── AIBOM temp (semgrep clone dirs) ──
+aibom/src/temp/
+
+# ── SBOM runtime caches ──
+sbom/cache/
+
+# ── Temporary files and cloned repositories ──
 temp/
+sbom/temp/
 
+# ── Logs ──
+logs/
+*.log
 
+# ── Semgrep output ──
 semgrep_output.json
+
+# ── Reports ──
+reports/
+report.zip
+report/
+AIBOM_Postman_Collection.json

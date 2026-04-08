@@ -1,0 +1,30 @@
+rules:
+  # =========================================================================
+  # LangGraph
+  # =========================================================================
+  - id: langgraph-state-graph
+    patterns:
+      - pattern-either:
+          - pattern: StateGraph(...)
+          - pattern: langgraph.graph.StateGraph(...)
+    message: "LangGraph StateGraph detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: langgraph
+      asset_type: crew
+      extract_fields: ""
+
+  - id: langgraph-add-node
+    patterns:
+      - pattern: |
+          $GRAPH.add_node($NAME, ...)
+    message: "LangGraph node added: $NAME"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: langgraph
+      asset_type: agent
+      extract_fields: "name"

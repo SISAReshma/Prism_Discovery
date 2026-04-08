@@ -1,0 +1,106 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-audio-2026-01-14-10-41-59",
+  "metadata": {
+    "timestamp": "2026-01-14T10:41:59Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "gpt-audio",
+      "version": "gpt-audio",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "The gpt-audio model is our first generally available audio model. It accepts audio inputs and outputs, and can be used in the Chat Completions REST API."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-audio",
+      "name": "gpt-audio",
+      "version": "gpt-audio",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "The gpt-audio model is our first generally available audio model. It accepts audio inputs and outputs, and can be used in the Chat Completions REST API.",
+      "properties": {
+        "ai_model_type": "Large Language Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-audio",
+        "ai_model_family": "GPT",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "128000",
+        "ai_max_output_tokens": "16384",
+        "ai_knowledge_cutoff": "Oct 01, 2023",
+        "ai_input_modalities": "text, audio",
+        "ai_output_modalities": "text, audio",
+        "ai_supported_features": "function_calling",
+        "ai_api_endpoints": "chat_completions, responses, realtime",
+        "ai_deprecated": "false",
+        "ai_parent_model": "None",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Audio-native applications, voice assistants, audio processing and generation via Chat Completions API",
+        "ai_pricing_input_per_million_tokens": "2.5",
+        "ai_pricing_output_per_million_tokens": "10.0",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_audio_input_per_million_tokens": "32.0",
+        "ai_pricing_audio_output_per_million_tokens": "64.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "GPT",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "audio"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "audio"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-audio"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

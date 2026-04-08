@@ -1,0 +1,17 @@
+rules:
+  # =========================================================================
+  # TaskWeaver
+  # =========================================================================
+  - id: taskweaver-agent
+    patterns:
+      - pattern-either:
+          - pattern: TaskWeaverAgent(..., name=$NAME, ...)
+          - pattern: taskweaver.TaskWeaverAgent(..., name=$NAME, ...)
+    message: "TaskWeaver Agent detected: $NAME"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: taskweaver
+      asset_type: agent
+      extract_fields: "name,role"

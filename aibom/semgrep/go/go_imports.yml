@@ -1,0 +1,61 @@
+rules:
+  # =========================================================================
+  # Go Import Detection Rules
+  # Metadata is read by semgrep_scanner.py - keep in sync!
+  # =========================================================================
+
+  # Detect: import "module"
+  - id: go-single-import
+    pattern: |
+      import "$MODULE"
+    message: "Go import: $MODULE"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: single-import
+      is_relative: false
+
+  # Detect: import alias "module"
+  - id: go-aliased-import
+    pattern: |
+      import $ALIAS "$MODULE"
+    message: "Go import: $MODULE"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: aliased-import
+      is_relative: false
+
+  # Detect: import ( "module" ) grouped imports - each line
+  - id: go-grouped-import
+    pattern: |
+      import (
+        ...
+        "$MODULE"
+        ...
+      )
+    message: "Go import: $MODULE"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: grouped-import
+      is_relative: false
+
+  # Detect: import ( alias "module" ) grouped aliased imports
+  - id: go-grouped-aliased-import
+    pattern: |
+      import (
+        ...
+        $ALIAS "$MODULE"
+        ...
+      )
+    message: "Go import: $MODULE"
+    languages: [go]
+    severity: INFO
+    metadata:
+      category: import-detection
+      import_type: grouped-aliased-import
+      is_relative: false

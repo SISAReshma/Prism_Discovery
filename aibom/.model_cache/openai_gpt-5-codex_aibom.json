@@ -1,0 +1,101 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-5-codex-2026-01-14-10-54-01",
+  "metadata": {
+    "timestamp": "2026-01-14T10:54:01Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-5 Codex",
+      "version": "gpt-5-codex",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-5 Codex is optimized for code generation and understanding, built on the GPT-5 architecture for reliable software development."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-5-codex",
+      "name": "GPT-5 Codex",
+      "version": "gpt-5-codex",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-5 Codex is optimized for code generation and understanding, built on the GPT-5 architecture for reliable software development.",
+      "properties": {
+        "ai_model_type": "Code Generation Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-5-codex",
+        "ai_model_family": "GPT-5",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "256000",
+        "ai_max_output_tokens": "64000",
+        "ai_knowledge_cutoff": "Jun 01, 2024",
+        "ai_input_modalities": "text, image",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming, function_calling, structured_outputs, distillation, predicted_outputs",
+        "ai_api_endpoints": "chat_completions, responses, assistants, batch",
+        "ai_deprecated": "false",
+        "ai_parent_model": "GPT-5",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Reliable code generation, software development tasks, programming assistance",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "2.0",
+        "ai_pricing_output_per_million_tokens": "8.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Code Generation",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-5-codex"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

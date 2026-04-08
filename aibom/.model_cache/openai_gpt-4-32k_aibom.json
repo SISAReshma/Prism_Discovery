@@ -1,0 +1,98 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-4-32k-2026-01-14-10-56-41",
+  "metadata": {
+    "timestamp": "2026-01-14T10:56:41Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "GPT-4 32K",
+      "version": "gpt-4-32k",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4 32K is the extended context version of GPT-4, supporting up to 32,768 tokens for longer documents and conversations."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-4-32k",
+      "name": "GPT-4 32K",
+      "version": "gpt-4-32k",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "GPT-4 32K is the extended context version of GPT-4, supporting up to 32,768 tokens for longer documents and conversations.",
+      "properties": {
+        "ai_model_type": "Large Language Model",
+        "ai_provider": "OpenAI",
+        "ai_model_id": "gpt-4-32k",
+        "ai_model_family": "OpenAI",
+        "ai_architecture": "Transformer",
+        "ai_context_window": "32768",
+        "ai_max_output_tokens": "8192",
+        "ai_knowledge_cutoff": "Sep 01, 2021",
+        "ai_input_modalities": "text",
+        "ai_output_modalities": "text",
+        "ai_supported_features": "streaming, function_calling",
+        "ai_api_endpoints": "chat_completions",
+        "ai_deprecated": "true",
+        "ai_parent_model": "GPT-4",
+        "ai_reasoning_tokens": "false",
+        "ai_best_for": "Long document analysis, extended conversations, legacy applications requiring more context",
+        "ai_pricing_currency": "USD",
+        "ai_pricing_input_per_million_tokens": "60.0",
+        "ai_pricing_output_per_million_tokens": "120.0"
+      },
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-4-32k"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

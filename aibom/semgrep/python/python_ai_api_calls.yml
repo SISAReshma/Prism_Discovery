@@ -1,0 +1,340 @@
+rules:
+  # =========================================================================
+  # AI PROVIDER API ENDPOINT DETECTION
+  # Detects HTTP calls targeting known AI provider domains.
+  # Works with ANY HTTP library (requests, httpx, urllib, aiohttp).
+  # =========================================================================
+
+  # --- OpenAI ---
+  - id: ai-api-openai-endpoint
+    pattern-either:
+      - pattern: requests.post("https://api.openai.com/...", ...)
+      - pattern: requests.get("https://api.openai.com/...", ...)
+      - pattern: requests.post($URL, ...) 
+      - pattern: httpx.post("https://api.openai.com/...", ...)
+      - pattern: httpx.get("https://api.openai.com/...", ...)
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.openai\.com.*
+    message: "HTTP call to OpenAI API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: openai
+      is_ai_endpoint: true
+
+  # --- Anthropic ---
+  - id: ai-api-anthropic-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.anthropic\.com.*
+    message: "HTTP call to Anthropic API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: anthropic
+      is_ai_endpoint: true
+
+  # --- Google AI (Gemini / Vertex AI) ---
+  - id: ai-api-google-gemini-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*(generativelanguage\.googleapis\.com|aiplatform\.googleapis\.com).*
+    message: "HTTP call to Google AI API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: google
+      is_ai_endpoint: true
+
+  # --- Azure OpenAI ---
+  - id: ai-api-azure-openai-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*\.openai\.azure\.com.*
+    message: "HTTP call to Azure OpenAI API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: azure_openai
+      is_ai_endpoint: true
+
+  # --- Cohere ---
+  - id: ai-api-cohere-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.cohere\.(ai|com).*
+    message: "HTTP call to Cohere API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: cohere
+      is_ai_endpoint: true
+
+  # --- HuggingFace Inference ---
+  - id: ai-api-huggingface-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*(api-inference\.huggingface\.co|huggingface\.co/api).*
+    message: "HTTP call to HuggingFace Inference API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: huggingface
+      is_ai_endpoint: true
+
+  # --- Replicate ---
+  - id: ai-api-replicate-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.replicate\.com.*
+    message: "HTTP call to Replicate API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: replicate
+      is_ai_endpoint: true
+
+  # --- Mistral ---
+  - id: ai-api-mistral-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.mistral\.ai.*
+    message: "HTTP call to Mistral API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: mistral
+      is_ai_endpoint: true
+
+  # --- Groq ---
+  - id: ai-api-groq-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.groq\.com.*
+    message: "HTTP call to Groq API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: groq
+      is_ai_endpoint: true
+
+  # --- Together AI ---
+  - id: ai-api-together-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.together\.(xyz|ai).*
+    message: "HTTP call to Together AI API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: together
+      is_ai_endpoint: true
+
+  # --- Perplexity ---
+  - id: ai-api-perplexity-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.perplexity\.ai.*
+    message: "HTTP call to Perplexity API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: perplexity
+      is_ai_endpoint: true
+
+  # --- Fireworks ---
+  - id: ai-api-fireworks-endpoint
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+          - pattern: await $CLIENT.post($URL, ...)
+          - pattern: await $CLIENT.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*api\.fireworks\.ai.*
+    message: "HTTP call to Fireworks AI API endpoint detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: direct_http
+      provider: fireworks
+      is_ai_endpoint: true
+
+  # =========================================================================
+  # LOCAL MODEL SERVERS — detect calls to known local AI inference ports
+  # =========================================================================
+
+  # --- Ollama (localhost:11434) ---
+  - id: ai-api-ollama-local
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*(localhost|127\.0\.0\.1):11434.*
+    message: "HTTP call to local Ollama server detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: local_inference
+      provider: ollama
+      is_ai_endpoint: true
+
+  # --- LM Studio (localhost:1234) ---
+  - id: ai-api-lmstudio-local
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*(localhost|127\.0\.0\.1):1234.*
+    message: "HTTP call to local LM Studio server detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: local_inference
+      provider: lmstudio
+      is_ai_endpoint: true
+
+  # --- vLLM (localhost:8000) ---
+  - id: ai-api-vllm-local
+    patterns:
+      - pattern-either:
+          - pattern: requests.post($URL, ...)
+          - pattern: requests.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.get($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: .*(localhost|127\.0\.0\.1):8000.*
+    message: "HTTP call to local vLLM server detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      api_type: local_inference
+      provider: vllm
+      is_ai_endpoint: true

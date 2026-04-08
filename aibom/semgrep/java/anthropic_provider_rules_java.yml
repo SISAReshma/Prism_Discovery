@@ -1,0 +1,46 @@
+rules:
+  # Anthropic Java SDK: https://github.com/anthropics/anthropic-sdk-java
+
+  - id: anthropic-client-init-java
+    pattern-either:
+      - pattern: AnthropicClient.builder()
+      - pattern: new AnthropicClient($...)
+      - pattern: AnthropicOkHttpClient.builder()
+      - pattern: Anthropic.builder()
+      - pattern: new Anthropic($...)
+    message: "Anthropic client initialization detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-message-create-java
+    pattern-either:
+      - pattern: $CLIENT.messages().create($...)
+      - pattern: $CLIENT.messages().stream($...)
+      - pattern: $CLIENT.complete($...)
+    message: "Anthropic message creation detected"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: anthropic
+      provider: anthropic
+
+  - id: anthropic-message-request-builder-java
+    languages: [java]
+    message: "Anthropic message request builder detected"
+    severity: WARNING
+    metadata:
+      category: anthropic
+      provider: anthropic
+    pattern-regex: 'MessageCreateParams\s*\.\s*builder\s*\(\s*\)'
+
+  - id: anthropic-model-config-java
+    languages: [java]
+    message: "Anthropic model configuration detected"
+    severity: WARNING
+    metadata:
+      category: anthropic
+      provider: anthropic
+    pattern-regex: '\.model\s*\(\s*(?:Model\.)?(?:"(claude-[^"]+)"|CLAUDE[_A-Z0-9]*)'
