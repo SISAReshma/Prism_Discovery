@@ -415,8 +415,21 @@ class ScanFinding(BaseModel):
     code_snippet: str = ""
     model_value: Optional[str] = None
     rule_category: str = ""
-    api_method: Optional[str] = None  # For api_calls findings
-    api_url: Optional[str] = None     # For api_calls findings
+    # --- SDK enrichment (AI provider SDK calls, e.g. client.chat.completions.create) ---
+    sdk_method: Optional[str] = None       # SDK method call (e.g. 'AutoModel.from_pretrained')
+    sdk_http_verb: Optional[str] = None    # Implied HTTP verb (POST for creates, GET for downloads)
+    sdk_params: Optional[Dict] = None      # Key parameters (model, repo_id, etc.)
+    # --- API call fields (populated only for API-call findings) ---
+    api_method: Optional[str] = None       # Library type (requests, axios, etc.)
+    api_url: Optional[str] = None          # Extracted URL (literal strings only)
+    http_method: Optional[str] = None      # GET, POST, PUT, PATCH, DELETE, HEAD, UNKNOWN
+    url_is_dynamic: Optional[bool] = None  # True when URL is a variable/env/f-string
+    url_raw: Optional[str] = None          # Raw variable name or expression when dynamic
+    request_body: Optional[Dict] = None    # {"type": "json"|"form"|"body", "raw": "<var>"}
+    request_headers: Optional[List[str]] = None  # Header key names or ["<variable>"]
+    # --- AI endpoint detection (set when API URL matches known AI provider domains) ---
+    is_ai_endpoint: Optional[bool] = None
+    ai_provider: Optional[str] = None
 
 
 class ModelDetection(BaseModel):
@@ -473,6 +486,8 @@ class APIEndpointDetection(BaseModel):
     library: str = "detected"
     api_type: str = ""
     category: str = ""
+    http_method: Optional[str] = None  # HTTP verb for this call
+    is_dynamic: bool = False            # True when endpoint URL is not a literal string
 
 
 class APILibraryScanResult(BaseModel):

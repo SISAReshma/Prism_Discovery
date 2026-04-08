@@ -3,7 +3,7 @@ rules:
     pattern-either:
       - pattern: replicate.Client(...)
       - pattern: import replicate
-      - pattern: from replicate import ...
+      - pattern: from replicate import $ITEM
     message: "Replicate client initialization detected"
     languages: [python]
     severity: INFO
@@ -12,9 +12,18 @@ rules:
       provider: replicate
 
   - id: replicate-run
-    pattern-either:
-      - pattern: replicate.run($MODEL, ...)
-      - pattern: $REP.run($MODEL, ...)
+    # Import guard: $REP.run() is too generic — require replicate import context.
+    patterns:
+      - pattern-either:
+          - pattern: replicate.run($MODEL, ...)
+          - pattern: $REP.run($MODEL, ...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
     message: "Replicate model run detected"
     languages: [python]
     severity: INFO
@@ -23,11 +32,19 @@ rules:
       provider: replicate
 
   - id: replicate-predictions
-    pattern-either:
-      - pattern: replicate.predictions.create(...)
-      - pattern: replicate.predictions.get(...)
-      - pattern: replicate.predictions.list(...)
-      - pattern: replicate.predictions.cancel(...)
+    patterns:
+      - pattern-either:
+          - pattern: replicate.predictions.create(...)
+          - pattern: replicate.predictions.get(...)
+          - pattern: replicate.predictions.list(...)
+          - pattern: replicate.predictions.cancel(...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
     message: "Replicate predictions API usage detected"
     languages: [python]
     severity: INFO
@@ -36,9 +53,18 @@ rules:
       provider: replicate
 
   - id: replicate-stream
-    pattern-either:
-      - pattern: replicate.stream($MODEL, ...)
-      - pattern: $REP.stream($MODEL, ...)
+    # Import guard: $REP.stream() is too generic — require replicate import context.
+    patterns:
+      - pattern-either:
+          - pattern: replicate.stream($MODEL, ...)
+          - pattern: $REP.stream($MODEL, ...)
+      - pattern-either:
+          - pattern-inside: |
+              import replicate
+              ...
+          - pattern-inside: |
+              from replicate import $ITEM
+              ...
     message: "Replicate streaming detected"
     languages: [python]
     severity: INFO

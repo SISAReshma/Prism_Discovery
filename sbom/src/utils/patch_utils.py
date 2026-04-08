@@ -37,10 +37,23 @@ def determine_patch_status(pkg_version: str, vulnerabilities: List[Dict[str, Any
     no_fixes = 0
     
     for vuln in vulnerabilities:
-        fixed_versions = vuln.get("fixed_in", [])
+        fixed_raw = vuln.get("fixed_in", [])
+        
+        if not fixed_raw or fixed_raw in ["Unknown", "N/A", ""]:
+            # No fix available for this vulnerability
+            no_fixes += 1
+            all_patched = False
+            continue
+        
+        # OSV client returns comma-joined string e.g. "1.0.1, 1.1.0"
+        if isinstance(fixed_raw, str):
+            fixed_versions = [v.strip() for v in fixed_raw.split(",") if v.strip()]
+        elif isinstance(fixed_raw, list):
+            fixed_versions = [str(v).strip() for v in fixed_raw if v]
+        else:
+            fixed_versions = [str(fixed_raw)]
         
         if not fixed_versions:
-            # No fix available for this vulnerability
             no_fixes += 1
             all_patched = False
             continue
@@ -49,7 +62,7 @@ def determine_patch_status(pkg_version: str, vulnerabilities: List[Dict[str, Any
         is_patched = False
         for fixed_ver in fixed_versions:
             try:
-                fixed = version.parse(str(fixed_ver))
+                fixed = version.parse(fixed_ver)
                 if current >= fixed:
                     is_patched = True
                     break
@@ -94,12 +107,21 @@ def get_recommended_version(pkg_version: str, vulnerabilities: List[Dict[str, An
     except Exception:
         return None
     
-    # Collect all fixed versions
+    # Collect all fixed versions (OSV returns comma-joined strings)
     fixed_versions = []
     for vuln in vulnerabilities:
-        for fixed_ver in vuln.get("fixed_in", []):
+        fixed_raw = vuln.get("fixed_in", [])
+        if not fixed_raw or fixed_raw in ["Unknown", "N/A", ""]:
+            continue
+        if isinstance(fixed_raw, str):
+            parts = [v.strip() for v in fixed_raw.split(",") if v.strip()]
+        elif isinstance(fixed_raw, list):
+            parts = [str(v).strip() for v in fixed_raw if v]
+        else:
+            parts = [str(fixed_raw)]
+        for fixed_ver in parts:
             try:
-                fixed_versions.append(version.parse(str(fixed_ver)))
+                fixed_versions.append(version.parse(fixed_ver))
             except Exception:
                 continue
     

@@ -61,11 +61,16 @@ SEMGREP_TIMEOUT_SECONDS: int = 300  # 5 minutespo
 MODEL_CARD_TIMEOUT: int = 30
 README_FETCH_TIMEOUT: int = 15
 
+# PyPI resolution (aggressive timeouts to prevent blocking)
+PYPI_JSON_API_TIMEOUT: int = 5          # PyPI JSON metadata fetch
+PYPI_WHEEL_DOWNLOAD_TIMEOUT: int = 8    # Wheel download timeout
+PYPI_TOTAL_RESOLUTION_TIMEOUT: int = 10 # Total time per package
+
 # =============================================================================
 # CACHE DURATIONS (all cache expiry values - days)
 # =============================================================================
 
-CACHE_DURATION_DAYS: int = 7          # PyPI import name cache
+CACHE_DURATION_DAYS: int = 30          # PyPI import name cache (increased from 7)
 MODEL_CACHE_EXPIRY_DAYS: int = 7      # Model card cache
 
 # =============================================================================
@@ -74,7 +79,7 @@ MODEL_CACHE_EXPIRY_DAYS: int = 7      # Model card cache
 
 MAX_UPLOAD_SIZE_MB: int = 500
 MAX_UPLOAD_SIZE_BYTES: int = MAX_UPLOAD_SIZE_MB * 1024 * 1024  # 500MB
-MAX_WHEEL_DOWNLOAD_SIZE: int = 10 * 1024 * 1024  # 10MB for PyPI wheels
+MAX_WHEEL_DOWNLOAD_SIZE: int = 5 * 1024 * 1024  # 5MB for PyPI wheels (reduced from 10MB)
 SEMGREP_MAX_MEMORY_MB: int = 2048
 
 # =============================================================================
@@ -809,6 +814,91 @@ API_METAVAR_PRIORITY: Tuple[str, ...] = (
     "$PATH",
     "$ENDPOINT",
     "$CONN",
+    "$BODY",    # structured body capture
+    "$HEADERS", # structured headers capture
+    "$PARAMS",  # structured query params capture
+)
+
+# =============================================================================
+# API ENRICHMENT — HTTP METHOD / BODY / HEADER PATTERNS
+# =============================================================================
+
+# Maps HTTP verb → substrings to look for in the code line (checked in order)
+# Used by _extract_http_method() as a last-resort regex fallback.
+HTTP_METHOD_PATTERNS: Dict[str, Tuple[str, ...]] = {
+    "GET":    (".get(", "method: 'get'", 'method: "get"', 'method="GET"', "='GET'",
+               "http.Get(", ".Get(", "http.Head(", ".head("),
+    "POST":   (".post(", "method: 'post'", 'method: "post"', 'method="POST"', "='POST'",
+               "http.Post(", ".Post(", "http.PostForm("),
+    "PUT":    (".put(", 'method="PUT"', "='PUT'"),
+    "PATCH":  (".patch(", 'method="PATCH"', "='PATCH'"),
+    "DELETE": (".delete(", 'method="DELETE"', "='DELETE'"),
+    "HEAD":   (".head(", "http.Head("),
+    "OPTIONS": (".options(",),
+}
+
+# Regex patterns to extract the request body argument and its type.
+# Each pattern must have exactly one capture group containing the raw value.
+REQUEST_BODY_PATTERNS: Tuple[Tuple[str, str], ...] = (
+    (r'\bjson\s*=\s*([^,)\s]+)',      "json"),    # requests.post(url, json=payload)
+    (r'\bdata\s*=\s*([^,)\s]+)',      "form"),    # requests.post(url, data=form)
+    (r'\bbody\s*=\s*([^,)\s]+)',      "body"),    # fetch(url, {body: payload})
+    (r'SetBody\(([^)]+)\)',           "body"),    # Go resty: .SetBody(body)
+    (r'\bcontent\s*=\s*([^,)\s]+)',   "content"), # generic content kwarg
+    (r'\bpayload\s*=\s*([^,)\s]+)',   "json"),    # payload=payload
+)
+
+# Regex patterns to extract request headers.
+# Returns list of header key names when the literal dict is used, or the
+# variable name when a reference is used.
+REQUEST_HEADER_PATTERNS: Tuple[str, ...] = (
+    r'headers\s*=\s*\{([^}]+)\}',           # headers={"Authorization": ...}
+    r'headers\s*=\s*([A-Za-z_][\w.]+)',      # headers=headers_var or self.headers
+    r'SetHeader\(["\']([^"\']+)["\']',       # Go resty: .SetHeader("Authorization", ...)
+    r'header\(["\']([^"\']+)["\']',          # .header("X-Custom", value)
+)
+
+# =============================================================================
+# SDK-LEVEL ENRICHMENT
+# =============================================================================
+# Maps SDK method names → implied HTTP verbs for enrichment.
+SDK_METHOD_HTTP_MAP: Dict[str, str] = {
+    # HuggingFace
+    "from_pretrained":       "GET",
+    "hf_hub_download":       "GET",
+    "push_to_hub":           "POST",
+    "login":                 "POST",
+    "list_repo_files":       "GET",
+    "pipeline":              "GET",
+    # OpenAI / LLM providers
+    "create":                "POST",
+    "completions.create":    "POST",
+    "chat.completions.create": "POST",
+    "images.generate":       "POST",
+    "embeddings.create":     "POST",
+    # General
+    "predict":               "POST",
+    "generate":              "POST",
+    "delete":                "DELETE",
+    "upload":                "POST",
+    "download":              "GET",
+    "list":                  "GET",
+    "run":                   "POST",
+}
+
+# Regex patterns to extract key parameters from SDK call code snippets.
+# Each tuple: (regex_pattern, parameter_label).
+SDK_PARAM_PATTERNS: Tuple[Tuple[str, str], ...] = (
+    (r'model\s*=\s*["\']([^"\']+)["\']',              "model"),
+    (r'from_pretrained\(\s*["\']([^"\']+)["\']',       "model"),
+    (r'from_pretrained\(\s*([A-Za-z_]\w*)',            "model_var"),
+    (r'repo_id\s*=\s*["\']([^"\']+)["\']',             "repo_id"),
+    (r'repo_id\s*=\s*([A-Za-z_]\w*)',                  "repo_id_var"),
+    (r'filename\s*=\s*["\']([^"\']+)["\']',            "filename"),
+    (r'filename\s*=\s*([A-Za-z_]\w*)',                 "filename_var"),
+    (r'model\s*=\s*([A-Za-z_]\w*)',                    "model_var"),
+    (r'pipeline\(\s*["\']([^"\']+)["\']',              "task"),
+    (r'repo\s*=\s*["\']([^"\']+)["\']',                "repo"),
 )
 
 # False positives to filter out during API endpoint extraction

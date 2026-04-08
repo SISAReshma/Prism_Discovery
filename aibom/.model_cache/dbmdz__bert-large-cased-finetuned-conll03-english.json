@@ -1,0 +1,365 @@
+{
+  "model_id": "dbmdz/bert-large-cased-finetuned-conll03-english",
+  "source": "local_aibom_cache_fuzzy",
+  "cached_at": "2026-03-27T14:11:35.614568",
+  "data": {
+    "model_id": "dbmdz/bert-large-cased-finetuned-conll03-english",
+    "source": "huggingface",
+    "cached_at": "2026-03-27T14:11:34.338014",
+    "data": {
+      "model_id": "dbmdz/bert-large-cased-finetuned-conll03-english",
+      "model_name": "dbmdz/bert-large-cased-finetuned-conll03-english",
+      "author": "dbmdz",
+      "pipeline_tag": "token-classification",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "tf",
+        "jax",
+        "rust",
+        "safetensors",
+        "bert",
+        "token-classification",
+        "endpoints_compatible",
+        "deploy:azure",
+        "region:us"
+      ],
+      "library_name": "transformers",
+      "license": null,
+      "downloads": 1248029,
+      "likes": 95,
+      "created_at": "2022-03-02T23:29:05.000Z",
+      "last_modified": "2023-09-06T22:17:56.000Z",
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "flax_model.msgpack"
+        },
+        {
+          "rfilename": "model.safetensors"
+        },
+        {
+          "rfilename": "pytorch_model.bin"
+        },
+        {
+          "rfilename": "rust_model.ot"
+        },
+        {
+          "rfilename": "tf_model.h5"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "vocab.txt"
+        }
+      ],
+      "card_data": {},
+      "spaces": [
+        "zjunlp/KGEditor",
+        "UjjwalVIT/Text_analysis_and_metadata_app",
+        "DevBM/QGen",
+        "Eddevs/brian-challenge",
+        "kparkhade/nlp-genius",
+        "gauravbox/TalentLensAI",
+        "Manojajj/dbmdz-bert-large-cased-finetuned",
+        "sandeepmajumdar/nlp-sorcery",
+        "LampOfSocrates/hf-nlp-cw-group27",
+        "imenayadi/Smart-inbox",
+        "DevBM/MCQ-Generator-from-PDFs",
+        "Ranadani/Web_Application_Resume",
+        "dwb2023/toy-intelligence",
+        "Zoe911/Transformers-NER",
+        "AhmedKElsayed/YouTubeChecker",
+        "svp13/whisper_wizard",
+        "samithcs/chainlit-supplychain-app",
+        "green/TopicDig",
+        "HamidBekam/Text_NER_HFMs_Streamlit",
+        "koalsky/koal",
+        "JaCrispy35/financial_sentiment_analysis_advisor",
+        "blasblues/nlpproyect",
+        "ganeshkamath89/NamedEntityRecognition",
+        "LegendaryToe/SqlParser",
+        "zeimoto/voicelead",
+        "iShare/hf-pipeline-API",
+        "liewchooichin/ner_from_pretrained",
+        "cm0805/ResuMate_NVIDIA",
+        "LampOfSocrates/hf_streamlit_plodcw_group27",
+        "LampOfSocrates/hf_gradio_plodcw_group27",
+        "Artteiv/arxiv_chatbot",
+        "ArxivBot/arxiv_chatbot",
+        "hrguarinv/fastlane",
+        "achink/tcbProductFlavors",
+        "nafees369/NER",
+        "antoniorached/Named-Entity-Recognition",
+        "BabiesAlexander/ppp",
+        "thewall0308/scoutingservice2",
+        "tchans123/resume_enhancement_tool",
+        "huimanho/Customer-Feedback-Analysis",
+        "Guilianno/Reservoir-properties-calculator",
+        "saifeddinemk/cv_job",
+        "Appendage5203/for_distilbert_squad",
+        "DreamStream-1/HR-New",
+        "enotkrutoy/teststore",
+        "DreamStream-1/HR-Test",
+        "Manojajj/bert-base-cased-resume_parser",
+        "Manojajj/Resume_parser_excel_to_excel",
+        "CephasAldrich/Post_Disaster_AidCenter",
+        "CephasAldrich/Post_Disaster_Relief",
+        "kltn20133118/demo_obsei",
+        "AR14020/Invoice_creation",
+        "EngrNarmeen/Environmental_Compliance_Checker",
+        "fmohsen22/chatbot_cosmeticshop",
+        "AskarBekB/Mr_Translater",
+        "sam6309/text_to_video",
+        "Zainajabroh/Discussion_Buddy",
+        "Gopi9177/NLP",
+        "KrishanRao/URL",
+        "muqeet1234/Named-Entity-Recognition",
+        "Felguk/Simple-test-apps",
+        "jdasic/TrainTravelGradio",
+        "Jagadeesh2411/Nlp",
+        "raz-1412/chat-dynamics-analysis",
+        "svsaurav95/Moderation_bot",
+        "gauravprakashh/SentinelBot",
+        "kohlin/nlp-project",
+        "thlinhares/docling",
+        "Mummia-99/Nlp_pipelines",
+        "elikwame/climate_disclosure",
+        "kanneboinakumar/transformers-pipeline",
+        "Tzetha/Midterm_Project",
+        "EGYADMIN/Wahbi-AI",
+        "Sowmya-19/email-classifier-api",
+        "Satejkamble12/Business_Analysis_Suite",
+        "YAMITECHNOLOGIES/Nlp_pipelines",
+        "YAMITEK/Nlp_Pipeling",
+        "milorable/g3-nlp-textanalysis",
+        "danishshahzad786/text-to-speech-and-image-demo",
+        "balaji4991512/Named_Entity_Recognition_App",
+        "Bharatmali999/AI-BasedResumeScreeningApp",
+        "jesusmiguelgarcia/testNER",
+        "sksameermujahid/propertyai",
+        "sksameermujahid/testpropertyai",
+        "Phoenixak99/car-reviews-analyzer",
+        "Ajeerithic/policecallanalyzer",
+        "zlulz/qa",
+        "MagicMeWizard/AI_Powered_Web_Scraper",
+        "Venkateswarlu-A/Drug-analysis-main",
+        "iamshukla/Advance_nlp",
+        "HenriqueBraz/AiiTServices",
+        "koulsahil/youtube-speech-extraction",
+        "khiloni/nlp",
+        "Tiksha/environmental-ai-tool",
+        "Dev1286/Try",
+        "ShivMehta/Environmental-AI-Assistant",
+        "Param56/Environmental_Ass",
+        "nehabisht/Environmental-NLP-Gradio-App",
+        "Param56/EnvAss",
+        "reshamp/env_edunet"
+      ],
+      "gated": false,
+      "disabled": false,
+      "_lookup_source": "huggingface",
+      "_raw_response": {
+        "_id": "621ffdc136468d709f17a4a5",
+        "id": "dbmdz/bert-large-cased-finetuned-conll03-english",
+        "private": false,
+        "pipeline_tag": "token-classification",
+        "library_name": "transformers",
+        "tags": [
+          "transformers",
+          "pytorch",
+          "tf",
+          "jax",
+          "rust",
+          "safetensors",
+          "bert",
+          "token-classification",
+          "endpoints_compatible",
+          "deploy:azure",
+          "region:us"
+        ],
+        "downloads": 1248029,
+        "likes": 95,
+        "modelId": "dbmdz/bert-large-cased-finetuned-conll03-english",
+        "author": "dbmdz",
+        "sha": "4c534963167c08d4b8ff1f88733cf2930f86add0",
+        "lastModified": "2023-09-06T22:17:56.000Z",
+        "gated": false,
+        "disabled": false,
+        "mask_token": "[MASK]",
+        "widgetData": [
+          {
+            "text": "My name is Wolfgang and I live in Berlin"
+          },
+          {
+            "text": "My name is Sarah and I live in London"
+          },
+          {
+            "text": "My name is Clara and I live in Berkeley, California."
+          }
+        ],
+        "config": {
+          "architectures": [
+            "BertForTokenClassification"
+          ],
+          "model_type": "bert",
+          "tokenizer_config": {}
+        },
+        "transformersInfo": {
+          "auto_model": "AutoModelForTokenClassification",
+          "pipeline_tag": "token-classification",
+          "processor": "AutoTokenizer"
+        },
+        "siblings": [
+          {
+            "rfilename": ".gitattributes"
+          },
+          {
+            "rfilename": "config.json"
+          },
+          {
+            "rfilename": "flax_model.msgpack"
+          },
+          {
+            "rfilename": "model.safetensors"
+          },
+          {
+            "rfilename": "pytorch_model.bin"
+          },
+          {
+            "rfilename": "rust_model.ot"
+          },
+          {
+            "rfilename": "tf_model.h5"
+          },
+          {
+            "rfilename": "tokenizer_config.json"
+          },
+          {
+            "rfilename": "vocab.txt"
+          }
+        ],
+        "spaces": [
+          "zjunlp/KGEditor",
+          "UjjwalVIT/Text_analysis_and_metadata_app",
+          "DevBM/QGen",
+          "Eddevs/brian-challenge",
+          "kparkhade/nlp-genius",
+          "gauravbox/TalentLensAI",
+          "Manojajj/dbmdz-bert-large-cased-finetuned",
+          "sandeepmajumdar/nlp-sorcery",
+          "LampOfSocrates/hf-nlp-cw-group27",
+          "imenayadi/Smart-inbox",
+          "DevBM/MCQ-Generator-from-PDFs",
+          "Ranadani/Web_Application_Resume",
+          "dwb2023/toy-intelligence",
+          "Zoe911/Transformers-NER",
+          "AhmedKElsayed/YouTubeChecker",
+          "svp13/whisper_wizard",
+          "samithcs/chainlit-supplychain-app",
+          "green/TopicDig",
+          "HamidBekam/Text_NER_HFMs_Streamlit",
+          "koalsky/koal",
+          "JaCrispy35/financial_sentiment_analysis_advisor",
+          "blasblues/nlpproyect",
+          "ganeshkamath89/NamedEntityRecognition",
+          "LegendaryToe/SqlParser",
+          "zeimoto/voicelead",
+          "iShare/hf-pipeline-API",
+          "liewchooichin/ner_from_pretrained",
+          "cm0805/ResuMate_NVIDIA",
+          "LampOfSocrates/hf_streamlit_plodcw_group27",
+          "LampOfSocrates/hf_gradio_plodcw_group27",
+          "Artteiv/arxiv_chatbot",
+          "ArxivBot/arxiv_chatbot",
+          "hrguarinv/fastlane",
+          "achink/tcbProductFlavors",
+          "nafees369/NER",
+          "antoniorached/Named-Entity-Recognition",
+          "BabiesAlexander/ppp",
+          "thewall0308/scoutingservice2",
+          "tchans123/resume_enhancement_tool",
+          "huimanho/Customer-Feedback-Analysis",
+          "Guilianno/Reservoir-properties-calculator",
+          "saifeddinemk/cv_job",
+          "Appendage5203/for_distilbert_squad",
+          "DreamStream-1/HR-New",
+          "enotkrutoy/teststore",
+          "DreamStream-1/HR-Test",
+          "Manojajj/bert-base-cased-resume_parser",
+          "Manojajj/Resume_parser_excel_to_excel",
+          "CephasAldrich/Post_Disaster_AidCenter",
+          "CephasAldrich/Post_Disaster_Relief",
+          "kltn20133118/demo_obsei",
+          "AR14020/Invoice_creation",
+          "EngrNarmeen/Environmental_Compliance_Checker",
+          "fmohsen22/chatbot_cosmeticshop",
+          "AskarBekB/Mr_Translater",
+          "sam6309/text_to_video",
+          "Zainajabroh/Discussion_Buddy",
+          "Gopi9177/NLP",
+          "KrishanRao/URL",
+          "muqeet1234/Named-Entity-Recognition",
+          "Felguk/Simple-test-apps",
+          "jdasic/TrainTravelGradio",
+          "Jagadeesh2411/Nlp",
+          "raz-1412/chat-dynamics-analysis",
+          "svsaurav95/Moderation_bot",
+          "gauravprakashh/SentinelBot",
+          "kohlin/nlp-project",
+          "thlinhares/docling",
+          "Mummia-99/Nlp_pipelines",
+          "elikwame/climate_disclosure",
+          "kanneboinakumar/transformers-pipeline",
+          "Tzetha/Midterm_Project",
+          "EGYADMIN/Wahbi-AI",
+          "Sowmya-19/email-classifier-api",
+          "Satejkamble12/Business_Analysis_Suite",
+          "YAMITECHNOLOGIES/Nlp_pipelines",
+          "YAMITEK/Nlp_Pipeling",
+          "milorable/g3-nlp-textanalysis",
+          "danishshahzad786/text-to-speech-and-image-demo",
+          "balaji4991512/Named_Entity_Recognition_App",
+          "Bharatmali999/AI-BasedResumeScreeningApp",
+          "jesusmiguelgarcia/testNER",
+          "sksameermujahid/propertyai",
+          "sksameermujahid/testpropertyai",
+          "Phoenixak99/car-reviews-analyzer",
+          "Ajeerithic/policecallanalyzer",
+          "zlulz/qa",
+          "MagicMeWizard/AI_Powered_Web_Scraper",
+          "Venkateswarlu-A/Drug-analysis-main",
+          "iamshukla/Advance_nlp",
+          "HenriqueBraz/AiiTServices",
+          "koulsahil/youtube-speech-extraction",
+          "khiloni/nlp",
+          "Tiksha/environmental-ai-tool",
+          "Dev1286/Try",
+          "ShivMehta/Environmental-AI-Assistant",
+          "Param56/Environmental_Ass",
+          "nehabisht/Environmental-NLP-Gradio-App",
+          "Param56/EnvAss",
+          "reshamp/env_edunet"
+        ],
+        "createdAt": "2022-03-02T23:29:05.000Z",
+        "safetensors": {
+          "parameters": {
+            "F32": 333588489
+          },
+          "total": 333588489
+        },
+        "inference": "warm",
+        "usedStorage": 6668556323
+      },
+      "has_model_card": false
+    },
+    "_lookup_source": "local_aibom_cache_fuzzy",
+    "_cache_file": "dbmdz__bert-large-cased-finetuned-conll03-english.json"
+  }
+}

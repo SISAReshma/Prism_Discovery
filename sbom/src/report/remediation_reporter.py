@@ -11,17 +11,17 @@ from typing import Dict, List, Optional
 import logging
 from sbom.src.config.config import TOOL_NAME
 
-# V2 TODO: Import exploit intelligence for EPSS and CISA KEV
-# try:
-#     from sbom.src.utils.exploit_intel import (
-#         check_cisa_kev,
-#         fetch_epss_score,
-#         fetch_epss_batch
-#     )
-#     EXPLOIT_INTEL_AVAILABLE = True
-# except ImportError:
-#     EXPLOIT_INTEL_AVAILABLE = False
-EXPLOIT_INTEL_AVAILABLE = False  # V2 feature
+# Exploit Intelligence: EPSS and CISA KEV
+try:
+    from sbom.src.clients.exploit_intel_client import (
+        check_cisa_kev,
+        fetch_epss_score,
+        fetch_epss_batch,
+    )
+    EXPLOIT_INTEL_AVAILABLE = True
+except ImportError:
+    EXPLOIT_INTEL_AVAILABLE = False
+
 
 logger = logging.getLogger(__name__)
 
@@ -144,16 +144,20 @@ class RemediationReporter:
             # Get recommended action
             action = self._get_recommended_action(pkg, vulns)
             
-            # NOTE: exploit_intel (EPSS/KEV) removed - V2 feature
-            
+            # ── Exploit Intelligence ─────────────────────────────────────────
+            # EPSS and CISA KEV are stamped onto each vuln by vulnerability_provider.
+            # _extract_exploit_intel() reads those fields — no extra API call here.
+            exploit_intel = self._extract_exploit_intel(vulns)
+
             vulnerable_libs.append({
                 "library": lib_name,
                 "current_version": pkg.get("version"),
                 "vulnerabilities_count": len(vulns),
                 "severity_breakdown": severity_breakdown,
-                "used_in_files": files_using[:10],  # Limit to 10 files for readability
+                "used_in_files": files_using[:10],
                 "priority": priority,
-                "recommended_action": action
+                "recommended_action": action,
+                "exploit_intel": exploit_intel,
             })
         
         # ========================================
@@ -176,15 +180,32 @@ class RemediationReporter:
         #         undeclared_deps.append({...})
 
         
-        # Sort by priority (severity-based, exploit_intel removed - V2 feature)
-        priority_order = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}
-        
-        vulnerable_libs.sort(key=lambda x: priority_order.get(x["priority"], 4))
+        # Sort: KEV first, then CRITICAL, then EPSS descending, then CVSS priority
+        def _sort_key(lib):
+            ei = lib.get("exploit_intel", {})
+            in_kev = any(
+                v.get("in_cisa_kev") for v in
+                next((p.get("vulnerabilities", []) for p in catalog.get("packages", [])
+                      if p.get("name") == lib["library"]), [])
+            )
+            return (
+                0 if in_kev else 1,
+                priority_order.get(lib["priority"], 4),
+                -(ei.get("max_epss_score") or 0),
+            )
+        vulnerable_libs.sort(key=_sort_key)
         undeclared_deps.sort(key=lambda x: len(x["used_in_files"]), reverse=True)
+
+        # Compute KEV + EPSS summary stats
+        kev_libraries = sum(
+            1 for lib in vulnerable_libs
+            if lib.get("exploit_intel", {}).get("in_cisa_kev")
+        )
+        high_epss_libraries = sum(
+            1 for lib in vulnerable_libs
+            if (lib.get("exploit_intel", {}).get("max_epss_score") or 0) >= 0.1
+        )
         
-        # NOTE: EPSS/KEV stats removed - V2 feature
-        
-        # Generate report (undeclared deps removed - was tracking local files, not packages)
         report = {
             "scan_metadata": {
                 "scan_id": self.scan_id,
@@ -198,8 +219,10 @@ class RemediationReporter:
                 "total_vulnerabilities": sum(lib["vulnerabilities_count"] for lib in vulnerable_libs),
                 "critical_actions": sum(
                     1 for lib in vulnerable_libs if lib["priority"] == "CRITICAL"
-                )
-                # NOTE: high_epss_vulns removed - V2 feature
+                ),
+                "kev_affected_libraries": kev_libraries,
+                "high_epss_libraries": high_epss_libraries,
+                "exploit_intel_available": EXPLOIT_INTEL_AVAILABLE,
             },
             "vulnerable_libraries": vulnerable_libs,
             "action_summary": self._generate_action_summary(vulnerable_libs, [])  # Empty undeclared list
@@ -254,38 +277,54 @@ class RemediationReporter:
 
     def _extract_exploit_intel(self, vulns: List[Dict]) -> Dict:
         """
-        Extract EPSS information from vulnerabilities.
-        Returns summary of exploit intelligence for the package.
-        NOTE: CISA KEV support removed - V2 feature.
+        Summarise EPSS + CISA KEV data already stamped on each vulnerability.
+        Data is stamped by exploit_intel_client via vulnerability_provider — 
+        this method just aggregates it into a per-library summary.
         """
         high_epss_vulns = []
         max_epss = 0.0
-        
+        in_kev = False
+        kev_date_added = None
+        kev_due_date = None
+        kev_required_action = None
+        known_ransomware = "Unknown"
+
         for vuln in vulns:
             vuln_id = vuln.get("id", "Unknown")
-            
-            # Check EPSS score
-            epss = vuln.get("epss_score", 0) or 0
+
+            # CISA KEV
+            if vuln.get("in_cisa_kev"):
+                in_kev = True
+                kev_date_added = kev_date_added or vuln.get("kev_date_added")
+                kev_due_date = kev_due_date or vuln.get("kev_due_date")
+                kev_required_action = kev_required_action or vuln.get("kev_required_action")
+                known_ransomware = vuln.get("known_ransomware", "Unknown")
+
+            # EPSS
+            epss = vuln.get("epss_score") or 0
             if epss > max_epss:
                 max_epss = epss
-            
-            if epss > 0.1:  # 10% or higher exploitation probability
+            if epss >= 0.1:
                 high_epss_vulns.append({
                     "id": vuln_id,
                     "epss_score": epss,
                     "epss_percentile": vuln.get("epss_percentile"),
-                    "probability": f"{epss * 100:.1f}%"
+                    "probability": f"{epss * 100:.1f}%",
                 })
-        
-        # Sort high EPSS by score descending
+
         high_epss_vulns.sort(key=lambda x: x.get("epss_score", 0), reverse=True)
-        
+
         return {
             "max_epss_score": max_epss,
             "max_epss_percentage": f"{max_epss * 100:.1f}%",
             "high_epss_count": len(high_epss_vulns),
-            "high_epss_vulns": high_epss_vulns[:5],  # Top 5
-            "urgency": self._determine_urgency(max_epss)
+            "high_epss_vulns": high_epss_vulns[:5],
+            "urgency": self._determine_urgency(max_epss),
+            "in_cisa_kev": in_kev,
+            "kev_date_added": kev_date_added,
+            "kev_due_date": kev_due_date,
+            "kev_required_action": kev_required_action,
+            "known_ransomware": known_ransomware,
         }
     
     def _determine_urgency(self, max_epss: float) -> str:
@@ -300,18 +339,36 @@ class RemediationReporter:
 
     def _calculate_priority(self, severity_breakdown: Dict[str, int], vulns: List[Dict] = None) -> str:
         """
-        Calculate priority based on vulnerability severity distribution.
-        Also considers EPSS scores.
-        NOTE: CISA KEV support removed - V2 feature.
+        Calculate remediation priority.
+
+        Priority rules (first match wins):
+          1. CISA KEV — actively exploited RIGHT NOW → always CRITICAL
+          2. EPSS > 0.5 — 50%+ exploitation probability in 30 days → CRITICAL
+          3. EPSS > 0.1 — 10%+ exploitation probability → HIGH minimum
+          4. CVSS CRITICAL count → CRITICAL
+          5. CVSS HIGH ≥ 3 → CRITICAL
+          6. CVSS HIGH > 0 → HIGH
+          7. CVSS MEDIUM → MEDIUM
+          8. Default → LOW
         """
-        # Check for high EPSS score (>50% chance of exploitation)
         if vulns:
             for vuln in vulns:
-                epss = vuln.get("epss_score", 0)
-                if epss and epss > 0.5:
+                # Rule 1: CISA KEV always forces CRITICAL
+                if vuln.get("in_cisa_kev"):
                     return "CRITICAL"
-        
-        # Traditional severity-based priority
+                # Rule 2: High EPSS forces CRITICAL
+                epss = vuln.get("epss_score") or 0
+                if epss > 0.5:
+                    return "CRITICAL"
+
+            # Rule 3: Notable EPSS → floor at HIGH
+            for vuln in vulns:
+                if (vuln.get("epss_score") or 0) > 0.1:
+                    # Still allow CRITICAL from CVSS below; just raise floor
+                    if severity_breakdown["critical"] == 0 and severity_breakdown["high"] < 3:
+                        return "HIGH"
+
+        # Rules 4-8: traditional CVSS-based priority
         if severity_breakdown["critical"] > 0:
             return "CRITICAL"
         if severity_breakdown["high"] >= 3:

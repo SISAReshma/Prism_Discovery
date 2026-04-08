@@ -12,6 +12,7 @@ rules:
     metadata:
       category: api_calls
       type: net_http
+      http_method: GET
 
   - id: api-http-post-go
     pattern-either:
@@ -23,6 +24,7 @@ rules:
     metadata:
       category: api_calls
       type: net_http
+      http_method: POST
 
   - id: api-http-newrequest-go
     pattern-either:
@@ -34,6 +36,7 @@ rules:
     metadata:
       category: api_calls
       type: net_http
+      http_method: ANY
 
   - id: api-http-client-do-go
     pattern-either:
@@ -49,6 +52,7 @@ rules:
     metadata:
       category: api_calls
       type: net_http
+      http_method: ANY
 
   # =========================================================================
   # RESTY (popular Go HTTP client)
@@ -70,6 +74,7 @@ rules:
     metadata:
       category: api_calls
       type: resty
+      http_method: ANY
 
   # =========================================================================
   # GRPC
@@ -85,6 +90,7 @@ rules:
     metadata:
       category: api_calls
       type: grpc
+      http_method: GRPC
 
   - id: api-grpc-call-go
     pattern-either:
@@ -96,6 +102,7 @@ rules:
     metadata:
       category: api_calls
       type: grpc
+      http_method: GRPC
 
   # =========================================================================
   # WEBSOCKET (gorilla/websocket)
@@ -114,6 +121,7 @@ rules:
     metadata:
       category: api_calls
       type: websocket
+      http_method: WS
 
   # =========================================================================
   # FASTHTTP
@@ -131,6 +139,7 @@ rules:
     metadata:
       category: api_calls
       type: fasthttp
+      http_method: ANY
 
   # =========================================================================
   # RETRYABLEHTTP (hashicorp)
@@ -147,6 +156,7 @@ rules:
     metadata:
       category: api_calls
       type: retryablehttp
+      http_method: ANY
 
   # =========================================================================
   # API URL PATTERNS
@@ -159,6 +169,7 @@ rules:
     metadata:
       category: api_calls
       type: url_pattern
+      http_method: ANY
 
   - id: api-env-url-go
     pattern-either:
@@ -172,3 +183,4 @@ rules:
     metadata:
       category: api_calls
       type: env_url
+      http_method: ANY

@@ -1,0 +1,31 @@
+rules:
+  # =========================================================================
+  # OpenAI Agents SDK
+  # =========================================================================
+  - id: openai-agents-agent-name
+    patterns:
+      - pattern-either:
+          - pattern: Agent(..., name=$NAME, ...)
+          - pattern: agents.Agent(..., name=$NAME, ...)
+    message: "OpenAI Agents SDK Agent detected: $NAME"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: openai-agents-sdk
+      asset_type: agent
+      extract_fields: "name,instructions,model,tools"
+
+  - id: openai-agents-agent-instructions
+    patterns:
+      - pattern-either:
+          - pattern: Agent(..., instructions=$INSTR, ...)
+          - pattern: agents.Agent(..., instructions=$INSTR, ...)
+    message: "OpenAI Agents SDK Agent instructions: $INSTR"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: agentic_framework
+      framework: openai-agents-sdk
+      asset_type: agent
+      extract_fields: "name,instructions,model,tools"

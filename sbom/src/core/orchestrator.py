@@ -352,18 +352,24 @@ class ScanOrchestrator:
     
     def add_exploit_intel(self, packages: List[Dict]) -> Tuple[List[Dict], int]:
         """
-        Step 6: Add EPSS scores (CISA KEV disabled - V2 feature).
-        
-        NOTE: CISA KEV support removed. This method is kept for API compatibility.
-        
+        Step 6: Enrich vulnerabilities with EPSS scores and CISA KEV status.
+
+        Delegates to exploit_intel_client which handles batching, caching
+        (in-memory + file-based), and graceful degradation if the APIs are
+        unreachable.
+
         Args:
             packages: List of package dictionaries with vulnerabilities
-            
+
         Returns:
-            Tuple of (packages unchanged, 0)
+            Tuple of (enriched packages, kev_vuln_count)
         """
-        # V2 TODO: Re-enable exploit intelligence
-        return packages, 0
+        try:
+            from sbom.src.clients.exploit_intel_client import enrich_packages_with_exploit_intel
+            return enrich_packages_with_exploit_intel(packages)
+        except Exception as exc:
+            logger.warning(f"[EXPLOIT-INTEL] add_exploit_intel failed (non-fatal): {exc}")
+            return packages, 0
     
     def build_catalog(
         self,
@@ -830,12 +836,17 @@ class ScanOrchestrator:
             logger.info(f"[STEP 5/10] Found {vuln_count} vulnerabilities")
             
             # ================================================================
-            # STEP 6: Build Catalog (KEV/EPSS removed - V2 feature)
+            # STEP 6: Exploit Intelligence (EPSS + CISA KEV)
             # ================================================================
-            self._update_progress(progress, ScanStatus.REPORTS, "Building catalog...", 6)
+            self._update_progress(progress, ScanStatus.ENRICHING, "Adding exploit intelligence (EPSS + CISA KEV)...", 6)
             
-            # NOTE: CISA KEV and EPSS exploit intelligence is disabled (V2 feature)
-            logger.info(f"[STEP 6/10] Exploit intelligence skipped (V2 feature)")
+            try:
+                from sbom.src.clients.exploit_intel_client import enrich_packages_with_exploit_intel
+                packages, kev_count = enrich_packages_with_exploit_intel(packages)
+                logger.info(f"[STEP 6/10] Exploit intelligence complete — {kev_count} CVEs in CISA KEV")
+            except Exception as ei_exc:
+                logger.warning(f"[STEP 6/10] Exploit intelligence failed (non-fatal): {ei_exc}")
+                kev_count = 0
             
             # ================================================================
             # STEP 7: Build Catalog
@@ -1880,7 +1891,7 @@ class ScanOrchestrator:
         
         return catalog["packages"], vuln_count
     
-    # NOTE: _add_exploit_intel method removed - CISA KEV/EPSS is a V2 feature
+    # Exploit intelligence (EPSS + CISA KEV) is now handled inline in run_scan() Step 6
     
     def _build_catalog(
         self,
