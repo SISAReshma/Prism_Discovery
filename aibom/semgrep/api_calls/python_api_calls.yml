@@ -22,12 +22,16 @@ rules:
       http_method: ANY
 
   - id: api-requests-session
-    pattern-either:
-      - pattern: $SESSION.get($URL, ...)
-      - pattern: $SESSION.post($URL, ...)
-      - pattern: $SESSION.put($URL, ...)
-      - pattern: $SESSION.patch($URL, ...)
-      - pattern: $SESSION.delete($URL, ...)
+    patterns:
+      - pattern-inside: |
+          import requests
+          ...
+      - pattern-either:
+          - pattern: $SESSION.get($URL, ...)
+          - pattern: $SESSION.post($URL, ...)
+          - pattern: $SESSION.put($URL, ...)
+          - pattern: $SESSION.patch($URL, ...)
+          - pattern: $SESSION.delete($URL, ...)
     message: "Python requests session call detected"
     languages: [python]
     severity: INFO
@@ -189,14 +193,37 @@ rules:
   # AIOHTTP
   # =========================================================================
   - id: api-aiohttp-call
-    pattern-either:
-      - pattern: $SESSION.get($URL, ...)
-      - pattern: $SESSION.post($URL, ...)
-      - pattern: $SESSION.put($URL, ...)
-      - pattern: $SESSION.patch($URL, ...)
-      - pattern: $SESSION.delete($URL, ...)
-      - pattern: aiohttp.ClientSession(...)
+    patterns:
+      - pattern-inside: |
+          import aiohttp
+          ...
+      - pattern-either:
+          - pattern: $SESSION.get($URL, ...)
+          - pattern: $SESSION.post($URL, ...)
+          - pattern: $SESSION.put($URL, ...)
+          - pattern: $SESSION.patch($URL, ...)
+          - pattern: $SESSION.delete($URL, ...)
+          - pattern: aiohttp.ClientSession(...)
     message: "Python aiohttp call detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: HTTP_CLIENT
+      type: aiohttp
+      http_method: ANY
+
+  - id: api-aiohttp-session-call
+    patterns:
+      - pattern-inside: |
+          async with aiohttp.ClientSession(...) as $SESSION:
+              ...
+      - pattern-either:
+          - pattern: await $SESSION.get($URL, ...)
+          - pattern: await $SESSION.post($URL, ...)
+          - pattern: await $SESSION.put($URL, ...)
+          - pattern: await $SESSION.patch($URL, ...)
+          - pattern: await $SESSION.delete($URL, ...)
+    message: "Python aiohttp session call detected"
     languages: [python]
     severity: INFO
     metadata:
@@ -227,7 +254,11 @@ rules:
     pattern-either:
       - pattern: http.client.HTTPConnection(...)
       - pattern: http.client.HTTPSConnection(...)
-      - pattern: $CONN.request($METHOD, $URL, ...)
+      - patterns:
+          - pattern-inside: |
+              import http.client
+              ...
+          - pattern: $CONN.request($METHOD, $URL, ...)
     message: "Python http.client call detected"
     languages: [python]
     severity: INFO
@@ -321,11 +352,25 @@ rules:
   # FASTAPI CLIENT / TESTCLIENT
   # =========================================================================
   - id: api-fastapi-testclient
-    pattern-either:
-      - pattern: TestClient($APP)
-      - pattern: $CLIENT.get($URL, ...)
-      - pattern: $CLIENT.post($URL, ...)
-      - pattern: $CLIENT.put($URL, ...)
+    patterns:
+      - pattern-either:
+          - pattern: TestClient($APP)
+          - patterns:
+              - pattern-inside: |
+                  from starlette.testclient import TestClient
+                  ...
+              - pattern-either:
+                  - pattern: $CLIENT.get($URL, ...)
+                  - pattern: $CLIENT.post($URL, ...)
+                  - pattern: $CLIENT.put($URL, ...)
+          - patterns:
+              - pattern-inside: |
+                  from fastapi.testclient import TestClient
+                  ...
+              - pattern-either:
+                  - pattern: $CLIENT.get($URL, ...)
+                  - pattern: $CLIENT.post($URL, ...)
+                  - pattern: $CLIENT.put($URL, ...)
     message: "FastAPI TestClient call detected"
     languages: [python]
     severity: INFO

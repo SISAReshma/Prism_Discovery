@@ -130,6 +130,10 @@ TEMP_DIR_PREFIX: str = "aibom_"
 SKIP_DIRECTORIES: FrozenSet[str] = frozenset({
     'node_modules', '__pycache__', 'venv', '.venv', 'dist', 'build', '.git',
     'target', '.gradle', '.mvn',
+    # Installed-package directories — never scan package internals
+    'site-packages', 'dist-packages', 'Lib', 'lib64',
+    # Test directories — test code findings are not actionable
+    'tests', 'test', '__tests__', 'spec', 'test_data', 'testdata',
 })
 
 # =============================================================================

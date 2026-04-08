@@ -196,6 +196,9 @@ def _get_all_language_files(checkout_path: Path, language: str) -> List[str]:
             continue
         if any(part.startswith(".") for part in parts):
             continue
+        # Skip installed-package metadata dirs (.dist-info, .egg-info, .egg)
+        if any(part.endswith((".dist-info", ".egg-info", ".egg")) for part in parts):
+            continue
         results.append(str(p))
     return results
 
@@ -379,6 +382,9 @@ def _build_file_cache(checkout_dir: Path) -> Dict[str, str]:
         # Fast skip check: convert parts to set for O(1) intersection
         parts = found_file.parts
         if SKIP_DIRECTORIES.intersection(parts) or any(p.startswith(".") for p in parts):
+            continue
+        # Skip installed-package metadata dirs (.dist-info, .egg-info, .egg)
+        if any(part.endswith((".dist-info", ".egg-info", ".egg")) for part in parts):
             continue
         
         file_str = str(found_file)
@@ -900,6 +906,7 @@ def scan_ai_branches(
     logger.info("[PASS3] Starting AI API call detection pass")
     
     ai_api_findings: List[Dict] = []
+    _seen_ai_api_file_line: Set[Tuple[str, int]] = set()  # dedup same file+line
     ai_api_rule = get_ai_api_calls_rule(primary_language)
     
     if ai_api_rule:
@@ -922,6 +929,14 @@ def scan_ai_branches(
             elif findings:
                 for f in findings:
                     processed = _process_api_finding(f, checkout_path, "ai_api_call")
+                    # FP filter: skip obvious non-HTTP findings
+                    if _is_false_positive_api_finding(processed.get("code_snippet", ""), processed.get("rule_id", "")):
+                        continue
+                    # Dedup: skip if same file+line already seen from another rule
+                    sig = (processed["file"], processed["line"])
+                    if sig in _seen_ai_api_file_line:
+                        continue
+                    _seen_ai_api_file_line.add(sig)
                     ai_api_findings.append(processed)
                     
                     # If the finding has AI provider info, enrich with it
@@ -1071,6 +1086,9 @@ def _run_model_detection_only(
         elif ai_findings_raw:
             for f in ai_findings_raw:
                 processed = _process_api_finding(f, checkout_path, "ai_api_call")
+                # FP filter: skip obvious non-HTTP findings
+                if _is_false_positive_api_finding(processed.get("code_snippet", ""), processed.get("rule_id", "")):
+                    continue
                 metadata = f.get("extra", {}).get("metadata", {})
                 provider = metadata.get("provider", "")
                 api_type = metadata.get("api_type", "")
@@ -1383,6 +1401,43 @@ def _extract_api_value(finding: Dict) -> Optional[str]:
 
 
 
+# FP patterns: code snippets that look like API calls but are actually
+# dict/object attribute access, not outbound HTTP calls.
+import re as _re_fp  # module-level alias to avoid clashes with local imports
+
+_FP_CODE_PATTERNS: re.Pattern = _re_fp.compile(
+    r"""(?x)
+      \.get\(\s*["'][^"']+["']\s*[,)]         # dict.get("key"), headers.get("Content-Type")
+    | os\.environ\.get\(                        # os.environ.get(...)
+    | \.getenv\(                                # os.getenv(...)
+    | params\.get\(                             # params.get(...)
+    | kwargs\.get\(                             # kwargs.get(...)
+    | error_types\.get\(                        # error_types.get(...)
+    | header_dict\.get\(                        # header_dict.get(...)
+    | chardet\.detect\(                         # chardet.detect(...)
+    | message\.get\(                            # ASGI message.get(...)
+    | event_hooks\.get\(                        # event_hooks.get(...)
+    | proxy_info\.get\(                         # proxy_info.get(...)
+    | self\.get\(                               # self.get(...) on non-HTTP objects
+    | scope\.get\(                              # ASGI scope.get(...)
+    | url_dict\[                                # url_dict["scheme"]
+    | authority_dict\[                          # authority_dict["host"]
+    | assert\s+.*\.get\(                        # assert cookies.get(...) in tests
+    """,
+    _re_fp.IGNORECASE,
+)
+
+def _is_false_positive_api_finding(code_snippet: str, rule_id: str) -> bool:
+    """Return True if the code snippet is clearly NOT an outbound HTTP call."""
+    if not code_snippet:
+        return False
+    snippet = code_snippet.strip()
+    # Obvious dict/object .get() calls matched by overly-broad rules
+    if _FP_CODE_PATTERNS.search(snippet):
+        return True
+    return False
+
+
 def _process_api_finding(finding: Dict, checkout_dir: Path, rule_category: str) -> Dict:
     """Process a single API finding into standardized format."""
     file_path = finding.get("path", "")
@@ -1532,6 +1587,7 @@ def scan_api_branches(
     
     # State tracking
     scanned_pairs: Set[Tuple[str, str]] = set()  # (file, rule_name) — for .py-traced files only
+    _seen_file_line: Set[Tuple[str, int]] = set()  # (file, line) — dedup same-line multi-rule matches
     _fallback_findings_cache: Optional[List[Dict]] = None  # shared findings from fallback scan
     _fallback_scan_done: bool = False
     api_scan_results: Dict[str, Dict] = {}
@@ -1596,10 +1652,18 @@ def scan_api_branches(
                         lib_api_category = find_api_category_for_library(lib_name)
                         for f in findings:
                             processed = _process_api_finding(f, checkout_path, "api_calls")
+                            # FP filter: skip obvious non-HTTP findings
+                            if _is_false_positive_api_finding(processed.get("code_snippet", ""), processed.get("rule_id", "")):
+                                continue
                             if api_category and api_category != "UNKNOWN":
                                 processed["rule_category"] = api_category
                             finding_category = processed.get("rule_category", "")
                             if not lib_api_category or finding_category == lib_api_category or api_category == "UNKNOWN":
+                                # Dedup: skip if same file+line already seen from another rule
+                                sig = (processed["file"], processed["line"])
+                                if sig in _seen_file_line:
+                                    continue
+                                _seen_file_line.add(sig)
                                 library_findings.append(processed)
             else:
                 # Fallback case: all traced files are non-.py (e.g. requirements.txt)
@@ -1609,10 +1673,18 @@ def scan_api_branches(
                 lib_api_category = find_api_category_for_library(lib_name)
                 for f in all_fallback:
                     processed = _process_api_finding(f, checkout_path, "api_calls")
+                    # FP filter: skip obvious non-HTTP findings
+                    if _is_false_positive_api_finding(processed.get("code_snippet", ""), processed.get("rule_id", "")):
+                        continue
                     if api_category and api_category != "UNKNOWN":
                         processed["rule_category"] = api_category
                     finding_category = processed.get("rule_category", "")
                     if not lib_api_category or finding_category == lib_api_category or api_category == "UNKNOWN":
+                        # Dedup: skip if same file+line already seen from another rule
+                        sig = (processed["file"], processed["line"])
+                        if sig in _seen_file_line:
+                            continue
+                        _seen_file_line.add(sig)
                         library_findings.append(processed)
 
         else:
