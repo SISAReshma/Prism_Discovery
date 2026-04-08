@@ -120,13 +120,14 @@ ENDPOINT_SEQUENCE = [
     {"name": "AI Targeted Scan",          "url": "/aibom/ai-targeted-scan",       "method": "GET",  "status_code": 13},
     {"name": "Model Card Handler",        "url": "/aibom/model-card-handler",     "method": "GET",  "status_code": 14},
     {"name": "Model Deprecation Check",   "url": "/aibom/model-deprecation-check","method": "GET",  "status_code": 15},
+    {"name": "AIBOM Connector",            "url": "/aibom/aibom-connector",         "method": "GET",  "status_code": 16},
     # SBOM
-    {"name": "Start Scan",                "url": "/sbom/start-scan",              "method": "GET",  "status_code": 16},
-    {"name": "Discover and Parse",        "url": "/sbom/discover-and-parse",      "method": "GET",  "status_code": 17},
-    {"name": "Fetch Depsdev",             "url": "/sbom/fetch-depsdev",           "method": "GET",  "status_code": 18},
-    {"name": "Registry Enrich",           "url": "/sbom/registry-enrich",         "method": "GET",  "status_code": 19},
-    {"name": "Fetch OSV",                 "url": "/sbom/fetch-osv",              "method": "GET",  "status_code": 20},
-    {"name": "Generate SBOM",             "url": "/sbom/generate-sbom",           "method": "GET",  "status_code": 21},
+    {"name": "Start Scan",                "url": "/sbom/start-scan",              "method": "GET",  "status_code": 17},
+    {"name": "Discover and Parse",        "url": "/sbom/discover-and-parse",      "method": "GET",  "status_code": 18},
+    {"name": "Fetch Depsdev",             "url": "/sbom/fetch-depsdev",           "method": "GET",  "status_code": 19},
+    {"name": "Registry Enrich",           "url": "/sbom/registry-enrich",         "method": "GET",  "status_code": 20},
+    {"name": "Fetch OSV",                 "url": "/sbom/fetch-osv",              "method": "GET",  "status_code": 21},
+    {"name": "Generate SBOM",             "url": "/sbom/generate-sbom",           "method": "GET",  "status_code": 22},
     # Final cleanup
     {"name": "Clean Resources",           "url": "/cleanresources",               "method": "POST", "status_code": 30},
 ]
@@ -136,6 +137,7 @@ ENDPOINTS_TO_STORE = {
     "/aibom/model-card-handler",
     "/aibom/ai-targeted-scan",
     "/aibom/model-deprecation-check",
+    "/aibom/aibom-connector",
     "/aibom/packages",
     "/aibom/llm-validate",
     "/aibom/semgrep-imports-scan",

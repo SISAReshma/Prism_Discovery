@@ -10,7 +10,7 @@ Organization:
 """
 import os
 from pathlib import Path as _Path
-from typing import Dict, FrozenSet, List, Tuple
+from typing import Any, Dict, FrozenSet, List, Tuple
 
 # =============================================================================
 # PATH UTILITIES (computed once at import)
@@ -637,6 +637,174 @@ MODEL_PROVIDER_PREFIXES_PATTERNS: Dict[str, Tuple[str, ...]] = {
     "groq": ("llama-", "mixtral-", "gemma-"),
     "together": ("togethercomputer/",),
     "perplexity": ("pplx-",),
+}
+
+# ── Provider → Canonical HuggingFace Org Mapping ────────────────────────────
+# Maps hosting-provider model prefixes to canonical HuggingFace org/model.
+# Used by ConnectorRegistry to remap e.g. "groq/llama-3.3-70b-versatile"
+# → "meta-llama/Llama-3.3-70B-Instruct" so HF API returns full metadata.
+# Format: { "provider_prefix": { "model_pattern": "canonical_hf_id", ... } }
+# Patterns are matched case-insensitively against the model portion after stripping provider prefix.
+PROVIDER_CANONICAL_MAP: Dict[str, Dict[str, str]] = {
+    "groq": {
+        # Groq serves these models via their API; metadata lives on HF
+        "llama-3.3-70b-versatile": "meta-llama/Llama-3.3-70B-Instruct",
+        "llama-3.3-70b-specdec": "meta-llama/Llama-3.3-70B-Instruct",
+        "llama-3.1-70b-versatile": "meta-llama/Llama-3.1-70B-Instruct",
+        "llama-3.1-8b-instant": "meta-llama/Llama-3.1-8B-Instruct",
+        "llama-3-70b-8192": "meta-llama/Meta-Llama-3-70B-Instruct",
+        "llama-3-8b-8192": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "llama3-70b-8192": "meta-llama/Meta-Llama-3-70B-Instruct",
+        "llama3-8b-8192": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "llama-guard-3-8b": "meta-llama/Llama-Guard-3-8B",
+        "mixtral-8x7b-32768": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "gemma-7b-it": "google/gemma-7b-it",
+        "gemma2-9b-it": "google/gemma-2-9b-it",
+    },
+    "together": {
+        "llama-3.3-70b": "meta-llama/Llama-3.3-70B-Instruct",
+        "llama-3.1-70b": "meta-llama/Llama-3.1-70B-Instruct",
+        "llama-3.1-8b": "meta-llama/Llama-3.1-8B-Instruct",
+        "mixtral-8x7b": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "mistral-7b": "mistralai/Mistral-7B-Instruct-v0.3",
+    },
+    "fireworks": {
+        "llama-v3p3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
+        "llama-v3p1-70b-instruct": "meta-llama/Llama-3.1-70B-Instruct",
+        "llama-v3p1-8b-instruct": "meta-llama/Llama-3.1-8B-Instruct",
+        "mixtral-8x7b-instruct": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    },
+    "deepinfra": {
+        "llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
+        "llama-3.1-70b-instruct": "meta-llama/Llama-3.1-70B-Instruct",
+        "llama-3.1-8b-instruct": "meta-llama/Llama-3.1-8B-Instruct",
+        "mixtral-8x7b-instruct": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    },
+    "ollama": {
+        "llama3.3": "meta-llama/Llama-3.3-70B-Instruct",
+        "llama3.1": "meta-llama/Llama-3.1-8B-Instruct",
+        "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "llama2": "meta-llama/Llama-2-7b-chat-hf",
+        "mistral": "mistralai/Mistral-7B-Instruct-v0.3",
+        "mixtral": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "gemma2": "google/gemma-2-9b-it",
+        "gemma": "google/gemma-7b-it",
+        "phi3": "microsoft/Phi-3-mini-4k-instruct",
+        "qwen2.5": "Qwen/Qwen2.5-7B-Instruct",
+    },
+    "perplexity": {
+        "llama-3.1-sonar-large-128k-online": "meta-llama/Llama-3.1-70B-Instruct",
+        "llama-3.1-sonar-small-128k-online": "meta-llama/Llama-3.1-8B-Instruct",
+    },
+}
+
+# Fuzzy prefix-to-HF-org fallback (when model not found in exact map above,
+# strip the provider prefix and try these HF orgs)
+PROVIDER_HF_ORG_FALLBACK: Dict[str, List[str]] = {
+    "groq": ["meta-llama", "mistralai", "google"],
+    "together": ["meta-llama", "mistralai", "google", "Qwen"],
+    "fireworks": ["meta-llama", "mistralai", "google"],
+    "deepinfra": ["meta-llama", "mistralai", "google"],
+    "ollama": ["meta-llama", "mistralai", "google", "microsoft", "Qwen"],
+    "perplexity": ["meta-llama"],
+    "anyscale": ["meta-llama", "mistralai"],
+    "replicate": ["meta-llama", "mistralai", "stability-ai"],
+}
+
+# ── Provider API configuration (dynamic model metadata lookup) ──────────────
+# Each provider entry defines how to reach its models API so metadata can be
+# fetched at runtime instead of being hardcoded per-model.
+# Most inference providers expose an OpenAI-compatible GET /v1/models/{id}
+# endpoint that returns context_window, owned_by, created, active, etc.
+#
+# Fields:
+#   api_base     – base URL (before /models/{id})
+#   auth_env     – environment variable holding the API key
+#   docs_url     – human-facing model catalogue page
+#   models_path  – URL path template; {model_id} is substituted at runtime
+#   extra_headers– any additional headers the provider requires
+PROVIDER_API_CONFIG: Dict[str, Dict[str, Any]] = {
+    "groq": {
+        "api_base": "https://api.groq.com/openai/v1",
+        "auth_env": "GROQ_API_KEY",
+        "docs_url": "https://console.groq.com/docs/models",
+        "model_docs_url": "https://console.groq.com/docs/model/{model_id}",
+        "models_path": "/models/{model_id}",
+    },
+    "together": {
+        "api_base": "https://api.together.xyz/v1",
+        "auth_env": "TOGETHER_API_KEY",
+        "docs_url": "https://docs.together.ai/docs/inference-models",
+        "model_docs_url": "https://api.together.xyz/v1/models/{model_id}",
+        "models_path": "/models/{model_id}",
+    },
+    "openrouter": {
+        "api_base": "https://openrouter.ai/api/v1",
+        "auth_env": "OPENROUTER_API_KEY",
+        "docs_url": "https://openrouter.ai/models",
+        "model_docs_url": "https://openrouter.ai/models/{model_id}",
+        "models_path": "/models/{model_id}",
+    },
+    "fireworks": {
+        "api_base": "https://api.fireworks.ai/inference/v1",
+        "auth_env": "FIREWORKS_API_KEY",
+        "docs_url": "https://fireworks.ai/models",
+        "model_docs_url": "https://fireworks.ai/models/{model_id}",
+        "models_path": "/models/{model_id}",
+    },
+    "deepinfra": {
+        "api_base": "https://api.deepinfra.com/v1/openai",
+        "auth_env": "DEEPINFRA_API_KEY",
+        "docs_url": "https://deepinfra.com/models",
+        "model_docs_url": "https://deepinfra.com/{model_id}",
+        "models_path": "/models/{model_id}",
+    },
+    "perplexity": {
+        "api_base": "https://api.perplexity.ai",
+        "auth_env": "PERPLEXITY_API_KEY",
+        "docs_url": "https://docs.perplexity.ai/docs/model-cards",
+        "model_docs_url": "https://docs.perplexity.ai/docs/model-cards/{model_id}",
+        "models_path": "/models/{model_id}",
+    },
+}
+
+# ── Upstream Model Card sources (GitHub raw MODEL_CARD / README for base models) ─
+# Maps HuggingFace org → GitHub raw URL template.
+# {model_family} is replaced with the model family key (e.g. "llama3_3").
+# Used to fetch the rich upstream MODEL_CARD.md when HF README is gated.
+UPSTREAM_MODEL_CARD_SOURCES: Dict[str, Dict[str, str]] = {
+    "meta-llama": {
+        "repo": "meta-llama/llama-models",
+        "branch": "main",
+        "path_template": "models/{model_family}/MODEL_CARD.md",
+        "base_url": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/{model_family}/MODEL_CARD.md",
+        # Mapping from HF model ID patterns to model_family directory names
+        "family_map": {
+            "llama-3.3": "llama3_3",
+            "llama-3.2": "llama3_2",
+            "llama-3.1": "llama3_1",
+            "meta-llama-3": "llama3",
+            "llama-3-": "llama3",
+            "llama-2": "llama2",
+            "llama-guard": "llama_guard",
+        },
+    },
+    "mistralai": {
+        "repo": "mistralai/mistral-common",
+        "branch": "main",
+        "base_url": "",  # Mistral doesn't have a public MODEL_CARD in a Git repo
+        "family_map": {},
+    },
+    "google": {
+        "repo": "google/gemma",
+        "branch": "main",
+        "base_url": "https://raw.githubusercontent.com/google/gemma/main/{model_family}/MODEL_CARD.md",
+        "family_map": {
+            "gemma-2": "gemma2",
+            "gemma-7b": "gemma",
+            "gemma-2b": "gemma",
+        },
+    },
 }
 
 # Rule ID keywords to provider mapping (for semgrep rule matching)

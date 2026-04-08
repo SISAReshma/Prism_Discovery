@@ -578,6 +578,50 @@ class ErrorDetail(BaseModel):
     hint: Optional[str] = None
 
 
+# =============================================================================
+# AGENTIC ASSET MODELS
+# =============================================================================
+
+class AgenticAsset(BaseModel):
+    """A single agentic asset (Agent, Task, Crew, etc.) extracted from source code."""
+    asset_type: str                     # "agent" | "task" | "crew" | "other"
+    class_name: str                     # e.g. "Agent", "Task", "Crew"
+    function: Optional[str] = None      # enclosing def name, e.g. "create_research_agent"
+    file: str                           # relative file path
+    line: int                           # start line
+    end_line: int = 0                   # end line
+    fields: Dict[str, Any] = {}         # extracted kwargs (role, goal, backstory, etc.)
+    framework: str = ""                 # e.g. "crewai"
+    code_snippet: str = ""              # source code excerpt
+
+
+class AgenticFrameworkAssets(BaseModel):
+    """Assets grouped by agentic framework."""
+    framework: str
+    agents: List[AgenticAsset] = []
+    tasks: List[AgenticAsset] = []
+    crews: List[AgenticAsset] = []
+    other: List[AgenticAsset] = []
+
+
+class AgenticAssetSummary(BaseModel):
+    """Summary of the agentic asset scan."""
+    total_assets: int
+    total_agents: int
+    total_tasks: int
+    total_crews: int
+    frameworks_scanned: List[str] = []
+    files_scanned: int = 0
+    errors: List[str] = []
+
+
+class AgenticAssetsResponse(BaseModel):
+    """Response for /aibom/agentic-assets endpoint."""
+    agentic_assets: List[AgenticFrameworkAssets] = []
+    all_assets: List[AgenticAsset] = []
+    summary: AgenticAssetSummary
+
+
 class EndpointLockedError(BaseModel):
     """Error response when endpoint is locked"""
     error: str = "ENDPOINT_LOCKED"
@@ -735,4 +779,62 @@ class FrameworksDetectedResponse(BaseModel):
     api_frameworks: List[DetectedFramework] = []
     agentic_frameworks: List[DetectedFramework] = []
     summary: FrameworksSummary
+
+
+# =============================================================================
+# AIBOM CONNECTOR MODELS
+# =============================================================================
+
+class ConnectorModelResult(BaseModel):
+    """Per-model result from the AIBOM connector"""
+    model_name: str
+    base_model_name: str = ""
+    model_card_found: bool = False
+    lookup_source: str = ""
+    stripped_suffixes: List[str] = []
+    suffix_info: List[Dict[str, Any]] = []
+    connector_used: str = ""
+
+
+class ConnectorDeprecationSummary(BaseModel):
+    """Deprecation summary within the connector response"""
+    models_checked: int = 0
+    deprecated_count: int = 0
+    shutdown_count: int = 0
+    active_count: int = 0
+    severity_breakdown: Dict[str, int] = {}
+
+
+class ConnectorMeta(BaseModel):
+    """Internal metadata about the connector run"""
+    models_processed: int = 0
+    models_found: int = 0
+    models_not_found: int = 0
+    model_results: List[ConnectorModelResult] = []
+    source_breakdown: Dict[str, int] = {}
+    success_rate: str = "0%"
+    connectors_available: List[Dict[str, Any]] = []
+    deprecation_summary: ConnectorDeprecationSummary = ConnectorDeprecationSummary()
+
+
+class AIBOMConnectorResponse(BaseModel):
+    """Response for /aibom/aibom-connector endpoint.
+
+    Returns a CycloneDX-ready structure with model components,
+    deprecation-based vulnerabilities, agentic frameworks, and metadata.
+    """
+    bomFormat: str = "CycloneDX"
+    specVersion: str = "1.5"
+    version: int = 1
+    serialNumber: str = ""
+    metadata: Dict[str, Any] = {}
+    components: List[Dict[str, Any]] = []
+    dependencies: List[Dict[str, Any]] = []
+    compositions: List[Dict[str, Any]] = []
+    vulnerabilities: List[Dict[str, Any]] = []
+    agentic_frameworks: Dict[str, Any] = {}
+    connector_meta: Optional[ConnectorMeta] = None
+
+    class Config:
+        pass
 

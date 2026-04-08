@@ -39,6 +39,12 @@ import os
 import json
 import base64
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env from aibom/src so HF / provider tokens are available
+_env_path = Path(__file__).resolve().parent / "aibom" / "src" / ".env"
+if _env_path.exists():
+    load_dotenv(_env_path, override=False)
 from contextlib import asynccontextmanager
 from typing import List, Set
 from collections import defaultdict
@@ -77,7 +83,9 @@ from aibom.src.models import (
     ModelCardHandlerResponse, ModelCardResult, SuffixInfo,
     ModelDeprecationResponse, ModelDeprecationResult, DeprecationInfo, DeprecationSummary,
     CategoryAPIFindings, APICallSegregationSummary, APICallSegregationResponse,
-    FrameworksDetectedResponse, DetectedFramework, SubImport, FrameworksSummary
+    FrameworksDetectedResponse, DetectedFramework, SubImport, FrameworksSummary,
+    AgenticAssetsResponse, AgenticFrameworkAssets, AgenticAsset, AgenticAssetSummary,
+    AIBOMConnectorResponse, ConnectorMeta, ConnectorModelResult, ConnectorDeprecationSummary,
 )
 from core.session import (
     SessionData,
@@ -116,8 +124,10 @@ from aibom.src.llm_categorizer import run_categorization
 from aibom.src.framework_detector import detect_frameworks
 from aibom.src.ai_branch_tracer import trace_ai_branches, format_branch_summary
 from aibom.src.ai_targeted_scanner import scan_ai_branches, scan_api_branches
+from aibom.src.agentic_asset_scanner import scan_agentic_assets
 from aibom.src.model_card_handler import process_models_for_cards
 from aibom.src.model_deprecation_checker import check_models_deprecation
+from aibom.src.aibom_connector import build_aibom, connector_registry
 
 # =============================================================================
 # SBOM IMPORTS
@@ -672,7 +682,7 @@ app.add_middleware(
 MAX_REQUEST_BODY_SIZE = 500 * 1024 * 1024  # 500 MB
 
 # Airflow network subnet (Docker network airflow-docker_default)
-ALLOWED_NETWORK_PREFIXES = ("172.18.,172.19.,172.20.,172.21.,172.22.,127.0.0.1,10.0.").split(",")
+ALLOWED_NETWORK_PREFIXES = ("172.18.,172.19.,172.20.,172.21.,172.22.,127.0.0.1,::1,10.0.,192.168.").split(",")
 
 # Paths accessible without network restriction
 UNRESTRICTED_PATHS = {"/", "/health", "/api/jobs"}
@@ -1389,35 +1399,65 @@ async def aibom_resolve_packages(
         for imp in scan_results["python"].get("third_party", []):
             import_packages["python_imports"].append({
                 "package": imp.get("base_package") or imp.get("import_name") or imp.get("module", ""),
-                "source_files": [imp.get("file", "")]
+                "source_files": [imp.get("file", "")],
+                "import_details": [{
+                    "module": imp.get("module", ""),
+                    "imported_item": imp.get("imported_item") or None,
+                    "file": imp.get("file", ""),
+                    "line": imp.get("line", 0),
+                }]
             })
     
     if "javascript" in scan_results:
         for imp in scan_results["javascript"].get("third_party", []):
             import_packages["javascript_imports"].append({
                 "package": imp.get("base_package") or imp.get("import_name") or imp.get("module", ""),
-                "source_files": [imp.get("file", "")]
+                "source_files": [imp.get("file", "")],
+                "import_details": [{
+                    "module": imp.get("module", ""),
+                    "imported_item": imp.get("imported_item") or None,
+                    "file": imp.get("file", ""),
+                    "line": imp.get("line", 0),
+                }]
             })
     
     if "go" in scan_results:
         for imp in scan_results["go"].get("third_party", []):
             import_packages["go_imports"].append({
                 "package": imp.get("base_package") or imp.get("import_name") or imp.get("module", ""),
-                "source_files": [imp.get("file", "")]
+                "source_files": [imp.get("file", "")],
+                "import_details": [{
+                    "module": imp.get("module", ""),
+                    "imported_item": imp.get("imported_item") or None,
+                    "file": imp.get("file", ""),
+                    "line": imp.get("line", 0),
+                }]
             })
     
     if "dotnet" in scan_results:
         for imp in scan_results["dotnet"].get("third_party", []):
             import_packages["dotnet_imports"].append({
                 "package": imp.get("base_package") or imp.get("import_name") or imp.get("module", ""),
-                "source_files": [imp.get("file", "")]
+                "source_files": [imp.get("file", "")],
+                "import_details": [{
+                    "module": imp.get("module", ""),
+                    "imported_item": imp.get("imported_item") or None,
+                    "file": imp.get("file", ""),
+                    "line": imp.get("line", 0),
+                }]
             })
     
     if "java" in scan_results:
         for imp in scan_results["java"].get("third_party", []):
             import_packages["java_imports"].append({
                 "package": imp.get("base_package") or imp.get("import_name") or imp.get("module", ""),
-                "source_files": [imp.get("file", "")]
+                "source_files": [imp.get("file", "")],
+                "import_details": [{
+                    "module": imp.get("module", ""),
+                    "imported_item": imp.get("imported_item") or None,
+                    "file": imp.get("file", ""),
+                    "line": imp.get("line", 0),
+                }]
             })
     
     result = resolve_and_compare(
@@ -1961,6 +2001,73 @@ async def aibom_ai_targeted_scan(
     )
 
 
+@app.get("/aibom/agentic-assets", response_model=AgenticAssetsResponse)
+async def aibom_agentic_assets(
+    session: SessionData = Depends(require_validated_session()),
+    session_token: str = Header(...)
+):
+    """
+    Scan traced files for agentic asset definitions (Agents, Tasks, Crews).
+
+    Uses Python AST parsing to extract instantiation details from agentic
+    framework code (CrewAI, AutoGen, OpenAI Agents SDK, etc.):
+    - **Agents:** role, goal, backstory, name, instructions, etc.
+    - **Tasks:** description, expected_output, agent assignment
+    - **Crews:** agent/task composition, process type
+
+    Each asset includes the enclosing function name and source location.
+
+    **Requires:** /aibom/ai-branch-trace and /aibom/frameworks-detected must be called first.
+
+    **Headers:** `session-token: <token from /aibom/set-repository>`
+    """
+    logger.info("[AIBOM] agentic-assets: Scanning for agentic asset definitions")
+    _t0 = _time.monotonic()
+
+    if "ai_branch_trace" not in session.extra:
+        logger.warning("[AIBOM] agentic-assets: AI branch trace not found")
+        raise_error(
+            "AI_BRANCH_TRACE_NOT_FOUND",
+            "AI branch trace not found",
+            hint="Call /aibom/ai-branch-trace first",
+        )
+
+    branch_trace = session.extra["ai_branch_trace"]
+    frameworks_detected = session.extra.get("frameworks_detected")
+    source_path = get_source_path_aibom(session)
+
+    result = scan_agentic_assets(
+        checkout_dir=source_path,
+        branch_trace=branch_trace,
+        frameworks_detected=frameworks_detected,
+    )
+
+    summary = result.get("summary", {})
+    logger.info(
+        f"[AIBOM] agentic-assets: {summary.get('total_agents', 0)} agents, "
+        f"{summary.get('total_tasks', 0)} tasks, "
+        f"{summary.get('total_crews', 0)} crews "
+        f"({(_time.monotonic()-_t0)*1000:.0f}ms)"
+    )
+
+    await update_session(session_token, agentic_assets=result)
+
+    return AgenticAssetsResponse(
+        agentic_assets=[
+            AgenticFrameworkAssets(
+                framework=fw.get("framework", ""),
+                agents=[AgenticAsset(**a) for a in fw.get("agents", [])],
+                tasks=[AgenticAsset(**a) for a in fw.get("tasks", [])],
+                crews=[AgenticAsset(**a) for a in fw.get("crews", [])],
+                other=[AgenticAsset(**a) for a in fw.get("other", [])],
+            )
+            for fw in result.get("agentic_assets", [])
+        ],
+        all_assets=[AgenticAsset(**a) for a in result.get("all_assets", [])],
+        summary=AgenticAssetSummary(**summary),
+    )
+
+
 @app.get("/aibom/api-call-segregation", response_model=APICallSegregationResponse, response_model_exclude_none=True)
 async def aibom_api_call_segregation(
     session: SessionData = Depends(require_validated_session()),
@@ -2189,7 +2296,7 @@ async def aibom_model_card_handler(
     
     result = process_models_for_cards(
         model_names=distinct_models,
-        hf_token=os.environ.get("HF_TOKEN"),
+        hf_token=os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_TOKEN"),
         try_stripping=True,
         try_azure=True
     )
@@ -2304,6 +2411,71 @@ async def aibom_model_deprecation_check(
             not_found_count=not_found_count,
             severity_breakdown=sev_breakdown
         )
+    )
+
+
+# =============================================================================
+# AIBOM CONNECTOR
+# =============================================================================
+
+@app.get("/aibom/aibom-connector", response_model=AIBOMConnectorResponse)
+async def aibom_connector(
+    session: SessionData = Depends(require_validated_session())
+):
+    """
+    Pluggable multi-source AI BOM connector.
+
+    Aggregates model metadata from multiple registries (HuggingFace, Azure,
+    Replicate, TF Hub, ONNX Zoo, local cache, etc.), checks deprecation,
+    pulls agentic framework assets from session, and assembles a
+    CycloneDX-ready AI BOM structure.
+
+    **Requires:** /aibom/ai-targeted-scan must be called first.
+    Optionally enriched by /aibom/agentic-assets and /aibom/frameworks-detected.
+
+    **Headers:** `session-token: <token from /aibom/set-repository>`
+    """
+    logger.info("[AIBOM] aibom-connector: Building AI BOM from multiple sources")
+    _t0 = _time.monotonic()
+
+    if "ai_targeted_scan" not in session.extra:
+        logger.warning("[AIBOM] aibom-connector: AI targeted scan not found")
+        raise_error(
+            "AI_TARGETED_SCAN_NOT_FOUND",
+            "AI targeted scan not found",
+            hint="Call /aibom/ai-targeted-scan first",
+        )
+
+    hf_token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_TOKEN")
+
+    result = build_aibom(
+        session_extra=session.extra,
+        hf_token=hf_token,
+    )
+
+    elapsed = (_time.monotonic() - _t0) * 1000
+    meta = result.get("_connector_meta", {})
+    logger.info(
+        f"[AIBOM] aibom-connector: {meta.get('models_processed', 0)} models, "
+        f"{meta.get('models_found', 0)} found, "
+        f"{meta.get('deprecation_summary', {}).get('deprecated_count', 0)} deprecated "
+        f"({elapsed:.0f}ms)"
+    )
+
+    session.extra["aibom_connector"] = result
+
+    return AIBOMConnectorResponse(
+        bomFormat=result.get("bomFormat", "CycloneDX"),
+        specVersion=result.get("specVersion", "1.5"),
+        version=result.get("version", 1),
+        serialNumber=result.get("serialNumber", ""),
+        metadata=result.get("metadata", {}),
+        components=result.get("components", []),
+        dependencies=result.get("dependencies", []),
+        compositions=result.get("compositions", []),
+        vulnerabilities=result.get("vulnerabilities", []),
+        agentic_frameworks=result.get("agentic_frameworks", {}),
+        connector_meta=result.get("_connector_meta"),
     )
 
 
