@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_httpx_0.28.1",
+  "cached_at": "2026-02-03T07:59:40.979745Z",
+  "data": {
+    "name": "httpx",
+    "version": "0.28.1",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/encode/httpx",
+    "description": ""
+  }
+}

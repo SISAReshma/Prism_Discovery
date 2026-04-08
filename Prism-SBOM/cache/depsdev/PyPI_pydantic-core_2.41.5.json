@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_pydantic-core_2.41.5",
+  "cached_at": "2026-02-03T07:59:46.633704Z",
+  "data": {
+    "name": "pydantic-core",
+    "version": "2.41.5",
+    "license": "MIT",
+    "homepage": "https://github.com/pydantic/pydantic-core",
+    "description": ""
+  }
+}

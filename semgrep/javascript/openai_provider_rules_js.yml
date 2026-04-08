@@ -1,0 +1,81 @@
+rules:
+  - id: openai-client-init-js
+    pattern-either:
+      - pattern: new OpenAI($...)
+      - pattern: OpenAI($...)
+      - pattern: new OpenAI.OpenAI($...)
+    message: "OpenAI client initialization detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-completion-js
+    pattern-either:
+      - pattern: $CLIENT.chat.completions.create($...)
+      - pattern: openai.chat.completions.create($...)
+    message: "OpenAI chat completion API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-completion-js
+    pattern-either:
+      - pattern: $CLIENT.completions.create($...)
+    message: "OpenAI completion API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-embedding-js
+    pattern-either:
+      - pattern: $CLIENT.embeddings.create($...)
+    message: "OpenAI embedding API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-image-js
+    pattern-either:
+      - pattern: $CLIENT.images.generate($...)
+      - pattern: $CLIENT.images.edit($...)
+      - pattern: $CLIENT.images.createVariation($...)
+    message: "OpenAI image API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-audio-js
+    pattern-either:
+      - pattern: $CLIENT.audio.transcriptions.create($...)
+      - pattern: $CLIENT.audio.translations.create($...)
+      - pattern: $CLIENT.audio.speech.create($...)
+    message: "OpenAI audio API call detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-model-config-js
+    patterns:
+      - pattern: |
+          { ..., model: $MODEL, ... }
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: "[\"'](gpt-4|gpt-3.5|gpt-4o|gpt-4-turbo|o1|o3|davinci|curie|text-embedding|whisper|tts|dall-e).*[\"']"
+    message: "OpenAI model configuration detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai

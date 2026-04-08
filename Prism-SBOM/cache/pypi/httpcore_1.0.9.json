@@ -1,0 +1,22 @@
+{
+  "key": "httpcore_1.0.9",
+  "cached_at": "2026-02-03T08:03:02.919071Z",
+  "data": {
+    "name": "httpcore",
+    "version": "1.0.9",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "A minimal low-level HTTP client.",
+    "release_date": "2025-04-24T22:06:20.566605Z",
+    "homepage": "https://pypi.org/project/httpcore/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

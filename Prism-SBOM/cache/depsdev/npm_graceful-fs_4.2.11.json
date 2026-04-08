@@ -1,0 +1,11 @@
+{
+  "key": "npm_graceful-fs_4.2.11",
+  "cached_at": "2026-02-03T04:52:04.317081Z",
+  "data": {
+    "name": "graceful-fs",
+    "version": "4.2.11",
+    "license": "ISC",
+    "homepage": "https://github.com/isaacs/node-graceful-fs#readme",
+    "description": ""
+  }
+}

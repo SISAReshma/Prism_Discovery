@@ -1,0 +1,11 @@
+{
+  "key": "npm_unpipe_1.0.0",
+  "cached_at": "2026-02-03T04:51:48.548610Z",
+  "data": {
+    "name": "unpipe",
+    "version": "1.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/stream-utils/unpipe",
+    "description": ""
+  }
+}

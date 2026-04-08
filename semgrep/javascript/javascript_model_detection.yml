@@ -1,0 +1,277 @@
+rules:
+  # ============================================
+  # Generic JavaScript/TypeScript Model Detection
+  # Cross-provider patterns for model name capture
+  # ============================================
+  
+  - id: js-model-in-object-literal
+    patterns:
+      - pattern-either:
+          - pattern: |
+              {
+                ...,
+                model: "$MODEL",
+                ...
+              }
+          - pattern: |
+              {
+                ...,
+                "model": "$MODEL",
+                ...
+              }
+          - pattern: |
+              {
+                ...,
+                modelName: "$MODEL",
+                ...
+              }
+          - pattern: |
+              {
+                ...,
+                modelId: "$MODEL",
+                ...
+              }
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-).*$
+    message: "AI model detected in object: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      confidence: "0.90"
+
+  - id: js-chat-completions-create
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $CLIENT.chat.completions.create({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              $CLIENT.completions.create({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              $CLIENT.messages.create({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^[a-zA-Z0-9\-\.]+$
+    message: "AI model detected in API call: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      api: completions
+      confidence: "0.95"
+
+  - id: js-model-string-variable
+    patterns:
+      - pattern-either:
+          - pattern: |
+              const $VAR = "$MODEL"
+          - pattern: |
+              let $VAR = "$MODEL"
+          - pattern: |
+              var $VAR = "$MODEL"
+          - pattern: |
+              export const $VAR = "$MODEL"
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-).*$
+    message: "AI model name in variable: $MODEL"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: model_detection
+      confidence: "0.85"
+
+  - id: js-get-generative-model
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $CLIENT.getGenerativeModel({ model: "$MODEL", ... })
+          - pattern: |
+              $CLIENT.getGenerativeModel({ "model": "$MODEL", ... })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^[a-zA-Z0-9\-\.]+$
+    message: "Generative model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      api: generative-model
+      confidence: "0.90"
+
+  - id: js-model-constructor-call
+    patterns:
+      - pattern-either:
+          - pattern: |
+              new $CLASS({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              new $CLASS({
+                ...,
+                modelName: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|phi-|qwen-|deepseek-|o[0-9]-|text-embedding-).*$
+    message: "AI model in constructor: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      confidence: "0.90"
+
+  - id: js-ai-sdk-model-call
+    patterns:
+      - pattern-either:
+          - pattern: $PROVIDER("$MODEL", ...)
+          - pattern: $PROVIDER('$MODEL', ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|o[0-9]-|text-embedding-).*$
+    message: "AI SDK model call detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      confidence: "0.85"
+
+  - id: js-fetch-api-with-model
+    patterns:
+      - pattern-either:
+          - pattern: |
+              fetch($URL, {
+                ...,
+                body: JSON.stringify({
+                  ...,
+                  model: "$MODEL",
+                  ...
+                }),
+                ...
+              })
+          - pattern: |
+              axios.post($URL, {
+                ...,
+                model: "$MODEL",
+                ...
+              }, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(gpt-|claude-|gemini-|llama-|mistral-|text-embedding-).*$
+    message: "AI model in HTTP request: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      api: http-request
+      confidence: "0.85"
+
+  # ============================================
+  # Common AI Framework Patterns
+  # ============================================
+
+  - id: js-langchain-model-instantiation
+    patterns:
+      - pattern-either:
+          - pattern: |
+              new Chat$PROVIDER({
+                ...,
+                modelName: "$MODEL",
+                ...
+              })
+          - pattern: |
+              new $PROVIDERChat({
+                ...,
+                modelName: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^[a-zA-Z0-9\-\.]+$
+    message: "LangChain model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      framework: langchain
+      confidence: "0.90"
+
+  - id: js-ollama-model-call
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $CLIENT.chat({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+          - pattern: |
+              ollama.chat({
+                ...,
+                model: "$MODEL",
+                ...
+              })
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: ^(llama|mistral|phi|qwen|deepseek|gemma).*$
+    message: "Ollama model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      provider: ollama
+      confidence: "0.90"
+
+  # ============================================
+  # Replicate Model Detection
+  # Format: owner/model:version (e.g., stability-ai/stable-diffusion:abc123)
+  # ============================================
+
+  - id: js-replicate-run-model
+    patterns:
+      - pattern-either:
+          - pattern: $REP.run($MODEL, ...)
+          - pattern: await $REP.run($MODEL, ...)
+          - pattern: replicate.run($MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: .*[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+.*
+    message: "Replicate model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      provider: replicate
+      confidence: "0.95"
+
+  - id: js-replicate-stream-model
+    patterns:
+      - pattern-either:
+          - pattern: $REP.stream($MODEL, ...)
+          - pattern: await $REP.stream($MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: .*[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+.*
+    message: "Replicate streaming model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: model_detection
+      provider: replicate
+      confidence: "0.95"

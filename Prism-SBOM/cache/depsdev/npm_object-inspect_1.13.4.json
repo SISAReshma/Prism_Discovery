@@ -1,0 +1,11 @@
+{
+  "key": "npm_object-inspect_1.13.4",
+  "cached_at": "2026-02-03T04:51:42.972190Z",
+  "data": {
+    "name": "object-inspect",
+    "version": "1.13.4",
+    "license": "MIT",
+    "homepage": "https://github.com/inspect-js/object-inspect",
+    "description": ""
+  }
+}

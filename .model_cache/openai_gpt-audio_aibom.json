@@ -1,0 +1,169 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-gpt-audio-2026-01-14-10-41-59",
+  "metadata": {
+    "timestamp": "2026-01-14T10:41:59Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "gpt-audio",
+      "version": "gpt-audio",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "The gpt-audio model is our first generally available audio model. It accepts audio inputs and outputs, and can be used in the Chat Completions REST API."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-gpt-audio",
+      "name": "gpt-audio",
+      "version": "gpt-audio",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "The gpt-audio model is our first generally available audio model. It accepts audio inputs and outputs, and can be used in the Chat Completions REST API.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "gpt-audio"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "GPT"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "128000"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "16384"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Oct 01, 2023"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, audio"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text, audio"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "function_calling"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "chat_completions, responses, realtime"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "None"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "false"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Audio-native applications, voice assistants, audio processing and generation via Chat Completions API"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "2.5"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "10.0"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        },
+        {
+          "name": "ai:pricing:audio_input_per_million_tokens",
+          "value": "32.0"
+        },
+        {
+          "name": "ai:pricing:audio_output_per_million_tokens",
+          "value": "64.0"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "GPT",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "audio"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "audio"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/gpt-audio"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

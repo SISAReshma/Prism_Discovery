@@ -1,0 +1,11 @@
+{
+  "key": "npm_brace-expansion_1.1.12",
+  "cached_at": "2026-02-03T04:54:27.750714Z",
+  "data": {
+    "name": "brace-expansion",
+    "version": "1.1.12",
+    "license": "MIT",
+    "homepage": "https://github.com/juliangruber/brace-expansion",
+    "description": ""
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "provider": "Google",
+  "source_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+  "last_updated": "2026-01-20",
+  "schema_version": "1.0",
+  "lifecycle_definitions": {
+    "active": {
+      "description": "The model is fully supported and recommended for use.",
+      "api_available": true,
+      "receives_updates": true
+    },
+    "preview": {
+      "description": "Preview/experimental model with limited support and potential changes.",
+      "api_available": true,
+      "receives_updates": true,
+      "stability": "experimental"
+    },
+    "deprecated": {
+      "description": "The model has an announced shutdown date and should be replaced.",
+      "api_available": true,
+      "receives_updates": false,
+      "shutdown_announced": true
+    },
+    "shutdown": {
+      "description": "The model is completely turned off and the endpoint is no longer available.",
+      "api_available": false,
+      "receives_updates": false
+    }
+  },
+  "deprecation_policy": {
+    "minimum_notice_days": 180,
+    "notification_method": ["release_notes", "documentation"],
+    "shutdown_definition": "Model endpoint completely unavailable"
+  },
+  "model_status": [
+    {
+      "model_id": "gemini-3-pro-preview",
+      "display_name": "Gemini 3 Pro Preview",
+      "model_family": "gemini-3",
+      "tier": "pro",
+      "lifecycle_state": "preview",
+      "release_date": "2025-11-18",
+      "shutdown_date": null,
+      "shutdown_date_type": "not_announced",
+      "recommended_replacement": null,
+      "notes": "Latest Gemini 3 preview model [default]"
+    },
+    {
+      "model_id": "gemini-3-pro-image-preview",
+      "display_name": "Gemini 3 Pro Image Preview",
+      "model_family": "gemini-3",
+      "tier": "pro",
+      "lifecycle_state": "preview",
+      "release_date": "2025-11-20",
+      "shutdown_date": null,
+      "shutdown_date_type": "not_announced",
+      "recommended_replacement": null,
+      "notes": "Gemini 3 with image generation capabilities [default]"
+    },
+    {
+      "model_id": "gemini-3-flash-preview",
+      "display_name": "Gemini 3 Flash Preview",
+      "model_family": "gemini-3",
+      "tier": "flash",
+      "lifecycle_state": "preview",
+      "release_date": "2025-12-17",
+      "shutdown_date": null,
+      "shutdown_date_type": "not_announced",
+      "recommended_replacement": null,
+      "notes": "Fastest Gemini 3 model [default]"
+    },
+    {
+      "model_id": "gemini-2.5-pro",
+      "display_name": "Gemini 2.5 Pro",
+      "model_family": "gemini-2.5",
+      "tier": "pro",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-17",
+      "deprecated_date": "2025-11-18",
+      "shutdown_date": "2026-06-17",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-3-pro-preview",
+      "notes": "Deprecated in favor of Gemini 3 Pro [default]"
+    },
+    {
+      "model_id": "gemini-2.5-flash",
+      "display_name": "Gemini 2.5 Flash",
+      "model_family": "gemini-2.5",
+      "tier": "flash",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-17",
+      "deprecated_date": "2025-11-18",
+      "shutdown_date": "2026-06-17",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-3-flash-preview",
+      "notes": "Deprecated in favor of Gemini 3 Flash [default]"
+    },
+    {
+      "model_id": "gemini-2.5-flash-image",
+      "display_name": "Gemini 2.5 Flash Image",
+      "model_family": "gemini-2.5",
+      "tier": "flash",
+      "lifecycle_state": "active",
+      "release_date": "2025-10-02",
+      "shutdown_date": "2026-10-02",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": null,
+      "notes": "Flash model with image generation [default]"
+    },
+    {
+      "model_id": "gemini-2.5-flash-lite",
+      "display_name": "Gemini 2.5 Flash Lite",
+      "model_family": "gemini-2.5",
+      "tier": "flash-lite",
+      "lifecycle_state": "active",
+      "release_date": "2025-07-22",
+      "shutdown_date": "2026-07-22",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": null,
+      "notes": "Lightweight flash model [default]"
+    },
+    {
+      "model_id": "gemini-2.0-flash",
+      "display_name": "Gemini 2.0 Flash",
+      "model_family": "gemini-2.0",
+      "tier": "flash",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-02-05",
+      "deprecated_date": "2025-06-17",
+      "shutdown_date": "2026-02-05",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-2.5-flash",
+      "notes": "Superseded by Gemini 2.5 Flash [default]"
+    },
+    {
+      "model_id": "gemini-2.0-flash-001",
+      "display_name": "Gemini 2.0 Flash (001)",
+      "model_family": "gemini-2.0",
+      "tier": "flash",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-02-05",
+      "deprecated_date": "2025-06-17",
+      "shutdown_date": "2026-02-05",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-2.5-flash",
+      "notes": "Versioned release of Gemini 2.0 Flash [default]"
+    },
+    {
+      "model_id": "gemini-2.0-flash-lite",
+      "display_name": "Gemini 2.0 Flash Lite",
+      "model_family": "gemini-2.0",
+      "tier": "flash-lite",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-02-25",
+      "deprecated_date": "2025-07-22",
+      "shutdown_date": "2026-02-25",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-2.5-flash-lite",
+      "notes": "Superseded by Gemini 2.5 Flash Lite [default]"
+    },
+    {
+      "model_id": "gemini-2.0-flash-lite-001",
+      "display_name": "Gemini 2.0 Flash Lite (001)",
+      "model_family": "gemini-2.0",
+      "tier": "flash-lite",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-02-25",
+      "deprecated_date": "2025-07-22",
+      "shutdown_date": "2026-02-25",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-2.5-flash-lite",
+      "notes": "Versioned release of Gemini 2.0 Flash Lite [default]"
+    },
+    {
+      "model_id": "text-embedding-004",
+      "display_name": "Text Embedding 004",
+      "model_family": "text-embedding",
+      "tier": "embedding",
+      "lifecycle_state": "deprecated",
+      "release_date": "2024-04-09",
+      "deprecated_date": "2025-07-14",
+      "shutdown_date": "2026-01-14",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-embedding-001",
+      "notes": "Legacy embedding model [default]"
+    },
+    {
+      "model_id": "gemini-embedding-001",
+      "display_name": "Gemini Embedding 001",
+      "model_family": "gemini-embedding",
+      "tier": "embedding",
+      "lifecycle_state": "active",
+      "release_date": "2025-07-14",
+      "shutdown_date": null,
+      "shutdown_date_type": "not_announced",
+      "recommended_replacement": null,
+      "notes": "Latest embedding model [default]"
+    },
+    {
+      "model_id": "imagen-4.0-generate-001",
+      "display_name": "Imagen 4.0",
+      "model_family": "imagen-4.0",
+      "tier": "standard",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-24",
+      "deprecated_date": "2025-11-18",
+      "shutdown_date": "2026-06-24",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-3-pro-image-preview",
+      "notes": "Image generation model, replaced by Gemini 3 [default]"
+    },
+    {
+      "model_id": "imagen-4.0-ultra-generate-001",
+      "display_name": "Imagen 4.0 Ultra",
+      "model_family": "imagen-4.0",
+      "tier": "ultra",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-24",
+      "deprecated_date": "2025-11-18",
+      "shutdown_date": "2026-06-24",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-3-pro-image-preview",
+      "notes": "High quality image generation [default]"
+    },
+    {
+      "model_id": "imagen-4.0-fast-generate-001",
+      "display_name": "Imagen 4.0 Fast",
+      "model_family": "imagen-4.0",
+      "tier": "fast",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-24",
+      "deprecated_date": "2025-11-18",
+      "shutdown_date": "2026-06-24",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-2.5-flash-image",
+      "notes": "Fast image generation [default]"
+    }
+  ],
+  "retired_models": [
+    {
+      "model_id": "gemini-2.5-pro-preview-03-25",
+      "display_name": "Gemini 2.5 Pro Preview (March)",
+      "model_family": "gemini-2.5",
+      "tier": "pro",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-03-03",
+      "deprecated_date": "2025-08-02",
+      "shutdown_date": "2025-12-02",
+      "recommended_replacement": "gemini-3-pro-preview"
+    },
+    {
+      "model_id": "gemini-2.5-pro-preview-05-06",
+      "display_name": "Gemini 2.5 Pro Preview (May)",
+      "model_family": "gemini-2.5",
+      "tier": "pro",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-05-06",
+      "deprecated_date": "2025-08-02",
+      "shutdown_date": "2025-12-02",
+      "recommended_replacement": "gemini-3-pro-preview"
+    },
+    {
+      "model_id": "gemini-2.5-pro-preview-06-05",
+      "display_name": "Gemini 2.5 Pro Preview (June)",
+      "model_family": "gemini-2.5",
+      "tier": "pro",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-06-05",
+      "deprecated_date": "2025-08-02",
+      "shutdown_date": "2025-12-02",
+      "recommended_replacement": "gemini-3-pro-preview"
+    },
+    {
+      "model_id": "gemini-2.5-flash-preview-05-20",
+      "display_name": "Gemini 2.5 Flash Preview (May)",
+      "model_family": "gemini-2.5",
+      "tier": "flash",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-05-20",
+      "deprecated_date": "2025-07-18",
+      "shutdown_date": "2025-11-18",
+      "recommended_replacement": "gemini-3-flash-preview"
+    },
+    {
+      "model_id": "gemini-2.5-flash-image-preview",
+      "display_name": "Gemini 2.5 Flash Image Preview",
+      "model_family": "gemini-2.5",
+      "tier": "flash",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-05-07",
+      "deprecated_date": "2025-09-15",
+      "shutdown_date": "2026-01-15",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-2.5-flash-image"
+    },
+    {
+      "model_id": "gemini-2.5-flash-preview-09-25",
+      "display_name": "Gemini 2.5 Flash Preview (September)",
+      "model_family": "gemini-2.5",
+      "tier": "flash",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-09-25",
+      "deprecated_date": "2025-11-17",
+      "shutdown_date": "2026-02-17",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "gemini-3-flash-preview"
+    },
+    {
+      "model_id": "gemini-2.0-flash-preview-image-generation",
+      "display_name": "Gemini 2.0 Flash Image Preview",
+      "model_family": "gemini-2.0",
+      "tier": "flash",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-05-07",
+      "deprecated_date": "2025-07-14",
+      "shutdown_date": "2025-11-14",
+      "recommended_replacement": "gemini-2.5-flash-image"
+    },
+    {
+      "model_id": "gemini-2.0-flash-lite-preview",
+      "display_name": "Gemini 2.0 Flash Lite Preview",
+      "model_family": "gemini-2.0",
+      "tier": "flash-lite",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-02-05",
+      "deprecated_date": "2025-08-09",
+      "shutdown_date": "2025-12-09",
+      "recommended_replacement": "gemini-2.5-flash-lite"
+    },
+    {
+      "model_id": "gemini-2.0-flash-lite-preview-02-05",
+      "display_name": "Gemini 2.0 Flash Lite Preview (02-05)",
+      "model_family": "gemini-2.0",
+      "tier": "flash-lite",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-02-05",
+      "deprecated_date": "2025-08-09",
+      "shutdown_date": "2025-12-09",
+      "recommended_replacement": "gemini-2.5-flash-lite"
+    },
+    {
+      "model_id": "gemini-2.0-flash-live-001",
+      "display_name": "Gemini 2.0 Flash Live",
+      "model_family": "gemini-2.0-live",
+      "tier": "live",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-04-09",
+      "deprecated_date": "2025-08-09",
+      "shutdown_date": "2025-12-09",
+      "recommended_replacement": "gemini-2.5-flash-native-audio-preview-12-2025"
+    },
+    {
+      "model_id": "gemini-live-2.5-flash-preview",
+      "display_name": "Gemini Live 2.5 Flash Preview",
+      "model_family": "gemini-2.5-live",
+      "tier": "live",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-06-17",
+      "deprecated_date": "2025-08-09",
+      "shutdown_date": "2025-12-09",
+      "recommended_replacement": "gemini-2.5-flash-native-audio-preview-12-2025"
+    },
+    {
+      "model_id": "imagen-3.0-generate-002",
+      "display_name": "Imagen 3.0",
+      "model_family": "imagen-3.0",
+      "tier": "standard",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-02-06",
+      "deprecated_date": "2025-07-10",
+      "shutdown_date": "2025-11-10",
+      "recommended_replacement": "imagen-4.0-generate-001"
+    },
+    {
+      "model_id": "imagen-4.0-generate-preview-06-06",
+      "display_name": "Imagen 4.0 Preview",
+      "model_family": "imagen-4.0",
+      "tier": "standard",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-24",
+      "deprecated_date": "2025-11-17",
+      "shutdown_date": "2026-02-17",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "imagen-4.0-generate-001"
+    },
+    {
+      "model_id": "imagen-4.0-ultra-generate-preview-06-06",
+      "display_name": "Imagen 4.0 Ultra Preview",
+      "model_family": "imagen-4.0",
+      "tier": "ultra",
+      "lifecycle_state": "deprecated",
+      "release_date": "2025-06-24",
+      "deprecated_date": "2025-11-17",
+      "shutdown_date": "2026-02-17",
+      "shutdown_date_type": "scheduled",
+      "recommended_replacement": "imagen-4.0-ultra-generate-001"
+    },
+    {
+      "model_id": "veo-3.0-generate-preview",
+      "display_name": "Veo 3.0 Preview",
+      "model_family": "veo-3.0",
+      "tier": "video",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-07-31",
+      "deprecated_date": "2025-09-12",
+      "shutdown_date": "2025-11-12",
+      "recommended_replacement": "veo-3.1-generate-preview"
+    },
+    {
+      "model_id": "veo-3.0-fast-generate-preview",
+      "display_name": "Veo 3.0 Fast Preview",
+      "model_family": "veo-3.0",
+      "tier": "video-fast",
+      "lifecycle_state": "shutdown",
+      "release_date": "2025-07-31",
+      "deprecated_date": "2025-09-12",
+      "shutdown_date": "2025-11-12",
+      "recommended_replacement": "veo-3.1-fast-generate-preview"
+    }
+  ],
+  "model_tiers": {
+    "pro": {
+      "description": "Most capable model for complex tasks [default]",
+      "use_cases": ["Complex reasoning [default]", "Long context [default]", "Multimodal [default]"]
+    },
+    "flash": {
+      "description": "Fast and efficient model for most tasks [default]",
+      "use_cases": ["General purpose [default]", "Quick responses [default]", "Cost-effective [default]"]
+    },
+    "flash-lite": {
+      "description": "Lightweight model for simple tasks [default]",
+      "use_cases": ["Simple queries [default]", "High volume [default]", "Ultra-fast [default]"]
+    },
+    "embedding": {
+      "description": "Text embedding models [default]",
+      "use_cases": ["Semantic search [default]", "Similarity [default]", "Clustering [default]"]
+    },
+    "live": {
+      "description": "Real-time audio/video interaction [default]",
+      "use_cases": ["Voice chat [default]", "Real-time [default]"]
+    },
+    "video": {
+      "description": "Video generation models [default]",
+      "use_cases": ["Video synthesis [default]", "Animation [default]"]
+    }
+  },
+  "summary": {
+    "total_models_tracked": 31,
+    "active_models": 3,
+    "preview_models": 3,
+    "deprecated_models": 14,
+    "shutdown_models": 11,
+    "next_shutdown_date": "2026-01-14",
+    "models_shutting_soon": ["text-embedding-004", "gemini-2.5-flash-image-preview"]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "npm_semver_6.3.1",
+  "cached_at": "2026-02-03T04:53:38.788590Z",
+  "data": {
+    "name": "semver",
+    "version": "6.3.1",
+    "license": "ISC",
+    "homepage": "https://github.com/npm/node-semver#readme",
+    "description": ""
+  }
+}

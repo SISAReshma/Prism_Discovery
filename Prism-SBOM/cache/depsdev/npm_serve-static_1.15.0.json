@@ -1,0 +1,11 @@
+{
+  "key": "npm_serve-static_1.15.0",
+  "cached_at": "2026-02-03T04:51:17.774481Z",
+  "data": {
+    "name": "serve-static",
+    "version": "1.15.0",
+    "license": "MIT",
+    "homepage": "https://github.com/expressjs/serve-static#readme",
+    "description": ""
+  }
+}

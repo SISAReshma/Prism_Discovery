@@ -1,0 +1,158 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-chatgpt-4o-latest-2026-01-14-10-44-15",
+  "metadata": {
+    "timestamp": "2026-01-14T10:44:15Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "ChatGPT-4o",
+      "version": "chatgpt-4o-latest",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "ChatGPT-4o points to the GPT-4o snapshot currently used in ChatGPT. We recommend using an API model like GPT-5 or GPT-4o for most API integrations, but feel free to use this ChatGPT-4o model to test our latest improvements for chat use cases."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-chatgpt-4o-latest",
+      "name": "ChatGPT-4o",
+      "version": "chatgpt-4o-latest",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "ChatGPT-4o points to the GPT-4o snapshot currently used in ChatGPT. We recommend using an API model like GPT-5 or GPT-4o for most API integrations, but feel free to use this ChatGPT-4o model to test our latest improvements for chat use cases.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "chatgpt-4o-latest"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "GPT"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "128000"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "16384"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Oct 01, 2023"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "streaming, predicted_outputs"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "chat_completions, responses, assistants, batch"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "false"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "GPT-4o"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "false"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Testing ChatGPT's latest improvements, chat-focused applications matching ChatGPT behavior"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "5.0"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "15.0"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "GPT",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/chatgpt-4o-latest"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

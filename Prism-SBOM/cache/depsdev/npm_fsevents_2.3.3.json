@@ -1,0 +1,11 @@
+{
+  "key": "npm_fsevents_2.3.3",
+  "cached_at": "2026-02-03T04:52:46.932655Z",
+  "data": {
+    "name": "fsevents",
+    "version": "2.3.3",
+    "license": "MIT",
+    "homepage": "https://github.com/fsevents/fsevents",
+    "description": ""
+  }
+}

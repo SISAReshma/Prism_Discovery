@@ -1,0 +1,155 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:openai-dall-e-3-2026-01-14-10-50-34",
+  "metadata": {
+    "timestamp": "2026-01-14T10:50:34Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "DALL-E 3",
+      "version": "dall-e-3",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "DALL-E 3 understands significantly more nuance and detail than our previous systems, allowing you to easily translate your ideas into exceptionally accurate images."
+    },
+    "tools": [
+      {
+        "vendor": "OpenAI",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "openai-dall-e-3",
+      "name": "DALL-E 3",
+      "version": "dall-e-3",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "description": "DALL-E 3 understands significantly more nuance and detail than our previous systems, allowing you to easily translate your ideas into exceptionally accurate images.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Image Generation Model"
+        },
+        {
+          "name": "ai:provider",
+          "value": "OpenAI"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "dall-e-3"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "DALL-E"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Diffusion"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "N/A"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "N/A"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "N/A"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "image"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "None"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "images/generations"
+        },
+        {
+          "name": "ai:deprecated",
+          "value": "true"
+        },
+        {
+          "name": "ai:parent_model",
+          "value": "None"
+        },
+        {
+          "name": "ai:reasoning_tokens",
+          "value": "false"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Creative image generation with nuanced prompt understanding, artistic content"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD"
+        },
+        {
+          "name": "ai:pricing:image_standard",
+          "value": "0.04"
+        },
+        {
+          "name": "ai:pricing:image_hd",
+          "value": "0.08"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Diffusion",
+          "modelArchitecture": "Image Generation",
+          "inputs": [
+            {
+              "format": "text"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "image"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://platform.openai.com/docs/models/dall-e-3"
+        },
+        {
+          "type": "website",
+          "url": "https://openai.com"
+        },
+        {
+          "type": "license",
+          "url": "https://openai.com/policies/terms-of-use"
+        }
+      ]
+    }
+  ]
+}

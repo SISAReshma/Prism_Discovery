@@ -1,0 +1,11 @@
+{
+  "key": "npm_express_4.18.0",
+  "cached_at": "2026-02-03T04:50:51.322149Z",
+  "data": {
+    "name": "express",
+    "version": "4.18.0",
+    "license": "MIT",
+    "homepage": "http://expressjs.com/",
+    "description": ""
+  }
+}

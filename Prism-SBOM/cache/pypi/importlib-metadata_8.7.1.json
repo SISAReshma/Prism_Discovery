@@ -1,0 +1,22 @@
+{
+  "key": "importlib-metadata_8.7.1",
+  "cached_at": "2026-02-03T08:02:59.168866Z",
+  "data": {
+    "name": "importlib-metadata",
+    "version": "8.7.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Read metadata from Python packages",
+    "release_date": "2025-12-21T10:00:18.329610Z",
+    "homepage": "https://pypi.org/project/importlib-metadata/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5a1f80bf1daa489495071efbb095d75a634cf28a8bc299581244063b53176151"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

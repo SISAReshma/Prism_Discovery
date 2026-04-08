@@ -1,0 +1,11 @@
+{
+  "key": "npm_depd_2.0.0",
+  "cached_at": "2026-02-03T04:51:05.853538Z",
+  "data": {
+    "name": "depd",
+    "version": "2.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/dougwilson/nodejs-depd#readme",
+    "description": ""
+  }
+}

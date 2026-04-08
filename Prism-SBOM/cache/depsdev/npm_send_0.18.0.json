@@ -1,0 +1,11 @@
+{
+  "key": "npm_send_0.18.0",
+  "cached_at": "2026-02-03T04:51:17.076975Z",
+  "data": {
+    "name": "send",
+    "version": "0.18.0",
+    "license": "MIT",
+    "homepage": "https://github.com/pillarjs/send#readme",
+    "description": ""
+  }
+}

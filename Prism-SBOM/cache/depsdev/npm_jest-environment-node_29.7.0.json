@@ -1,0 +1,11 @@
+{
+  "key": "npm_jest-environment-node_29.7.0",
+  "cached_at": "2026-02-03T04:52:42.044868Z",
+  "data": {
+    "name": "jest-environment-node",
+    "version": "29.7.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jestjs/jest#readme",
+    "description": ""
+  }
+}

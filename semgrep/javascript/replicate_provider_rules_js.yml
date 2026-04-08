@@ -1,0 +1,96 @@
+rules:
+  - id: replicate-client-init-js
+    pattern-either:
+      - pattern: new Replicate($...)
+      - pattern: Replicate($...)
+    message: "Replicate client initialization detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  # ============================================
+  # Replicate Model Detection - captures model name
+  # ============================================
+
+  - id: replicate-run-with-model-js
+    patterns:
+      - pattern-either:
+          - pattern: $REP.run($MODEL, ...)
+          - pattern: await $REP.run($MODEL, ...)
+          - pattern: replicate.run($MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: .*[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+.*
+    message: "Replicate model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: replicate
+      provider: replicate
+      model_detection: true
+
+  - id: replicate-stream-with-model-js
+    patterns:
+      - pattern-either:
+          - pattern: $REP.stream($MODEL, ...)
+          - pattern: await $REP.stream($MODEL, ...)
+      - metavariable-regex:
+          metavariable: $MODEL
+          regex: .*[a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-]+.*
+    message: "Replicate streaming model detected: $MODEL"
+    languages: [javascript, typescript]
+    severity: WARNING
+    metadata:
+      category: replicate
+      provider: replicate
+      model_detection: true
+
+  - id: replicate-run-js
+    pattern-either:
+      - pattern: $REP.run($MODEL, ...)
+      - pattern: await $REP.run($MODEL, ...)
+      - pattern: replicate.run($MODEL, ...)
+    message: "Replicate model run detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-predictions-js
+    pattern-either:
+      - pattern: $REP.predictions.create(...)
+      - pattern: $REP.predictions.get(...)
+      - pattern: $REP.predictions.list(...)
+      - pattern: $REP.predictions.cancel(...)
+    message: "Replicate predictions API usage detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-stream-js
+    pattern-either:
+      - pattern: $REP.stream($MODEL, ...)
+      - pattern: await $REP.stream($MODEL, ...)
+    message: "Replicate streaming detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate
+
+  - id: replicate-deployments-js
+    pattern-either:
+      - pattern: $REP.deployments.get(...)
+      - pattern: $REP.deployments.create(...)
+      - pattern: $REP.deployments.predictions.create(...)
+    message: "Replicate deployments API usage detected"
+    languages: [javascript, typescript]
+    severity: INFO
+    metadata:
+      category: replicate
+      provider: replicate

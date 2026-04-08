@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_click_8.3.1",
+  "cached_at": "2026-02-03T07:59:31.091734Z",
+  "data": {
+    "name": "click",
+    "version": "8.3.1",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/pallets/click",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "openai_1.0.0",
+  "cached_at": "2026-02-03T08:02:58.400992Z",
+  "data": {
+    "name": "openai",
+    "version": "1.0.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Client library for the openai API",
+    "release_date": "2023-11-06T16:20:35.146493Z",
+    "homepage": "https://pypi.org/project/openai/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e9220abf3f0332ddfcbcef3e13f70e71459618637d2e7e87b82241aaca1147f4"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7.1"
+  }
+}

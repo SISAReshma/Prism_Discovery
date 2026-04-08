@@ -1,0 +1,22 @@
+{
+  "key": "certifi_2026.1.4",
+  "cached_at": "2026-02-03T08:03:00.501175Z",
+  "data": {
+    "name": "certifi",
+    "version": "2026.1.4",
+    "license": "MPL-2.0",
+    "supplier": "Kenneth Reitz",
+    "description": "Python package for providing Mozilla's CA Bundle.",
+    "release_date": "2026-01-04T02:42:40.150433Z",
+    "homepage": "https://github.com/certifi/python-certifi",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9943707519e4add1115f44c2bc244f782c0249876bf51b6599fee1ffbedd685c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_importlib-metadata_8.7.1",
+  "cached_at": "2026-02-03T07:59:31.790988Z",
+  "data": {
+    "name": "importlib-metadata",
+    "version": "8.7.1",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python/importlib_metadata",
+    "description": ""
+  }
+}

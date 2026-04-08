@@ -1,0 +1,118 @@
+{
+  "provider": "Azure",
+  "last_updated": "2026-01-20",
+  "models": [
+    {
+      "model_id": "DeepSeek-V3.2-Speciale",
+      "display_name": "DeepSeek-V3.2 Speciale",
+      "version": "1",
+      "model_provider": "DeepSeek",
+      "model_family": "deepseek-v3",
+      "deployment_type": "direct_from_azure",
+      "last_updated": "December 2025",
+      "release_date": "2025-12-01",
+      "status": "active",
+      "capabilities": {
+        "context_length": 128000,
+        "input_formats": ["text"],
+        "output_formats": ["text"],
+        "supports_streaming": true,
+        "supports_tool_calling": true,
+        "supports_reasoning": true,
+        "supports_agents": true,
+        "long_context": true,
+        "key_capabilities": [
+          "DeepSeek Sparse Attention (DSA) - efficient attention mechanism for long-context scenarios",
+          "Scalable Reinforcement Learning Framework - comparable to GPT-5",
+          "Large-Scale Agentic Task Synthesis Pipeline - improved tool-use compliance",
+          "Superior reasoning and agent performance",
+          "High computational efficiency"
+        ]
+      },
+      "pricing": {
+        "pricing_model": ["pay_as_you_go", "ptu"],
+        "input_price_per_mtok": null,
+        "output_price_per_mtok": null,
+        "ptu_portability": true,
+        "unified_billing": true,
+        "pricing_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
+      },
+      "azure_integration": {
+        "deployment_regions": [],
+        "api_version": null,
+        "content_filtering": true,
+        "content_filtering_config": "default",
+        "managed_by_microsoft": true,
+        "enterprise_support": true,
+        "encoding_folder": "encoding/ - Python scripts for OpenAI-compatible format conversion"
+      },
+      "technical_specs": {
+        "model_architecture": null,
+        "training_cutoff_date": null,
+        "training_time": null,
+        "supported_languages": [
+          "English",
+          "Chinese"
+        ],
+        "sample_json_response": null,
+        "additional_assets": []
+      },
+      "model_card": {
+        "overview": "DeepSeek-V3.2 Speciale, a model that harmonizes high computational efficiency with superior reasoning and agent performance. Built upon three key technical breakthroughs: DeepSeek Sparse Attention (DSA), Scalable Reinforcement Learning Framework, and Large-Scale Agentic Task Synthesis Pipeline.",
+        "use_cases": [
+          "Coding tasks",
+          "Complex reasoning scenarios",
+          "Agent-based applications with tool use",
+          "Long-context processing",
+          "Interactive environments requiring compliance and generalization"
+        ],
+        "out_of_scope_use_cases": [
+          "Microsoft and external researchers have found Deepseek V3.2 Speciale to be less aligned than other models -- meaning the model appears to have undergone less refinement designed to make its behavior and outputs more safe and appropriate for users",
+          "Higher risks that the model will produce potentially harmful content",
+          "Lower scores on safety and jailbreak benchmarks",
+          "Use Azure AI Content Safety in conjunction with this model",
+          "Conduct your own evaluations on production systems"
+        ],
+        "benchmarks": {
+          "reasoning_performance": "On par with Gemini-3.0-Pro",
+          "compared_to_gpt5": "High-compute variant surpasses GPT-5",
+          "note": "Provider has not supplied detailed benchmark scores"
+        },
+        "training_disclosure": "Provider has not supplied training, testing and validation information",
+        "distribution_channels": [
+          "Azure AI Foundry",
+          "Direct from Azure models"
+        ]
+      },
+      "responsible_ai": {
+        "safety_techniques": [],
+        "safety_evaluations": "Microsoft and external researchers have found Deepseek V3.2 Speciale to be less aligned than other models -- meaning the model appears to have undergone less refinement designed to make its behavior and outputs more safe and appropriate for users -- resulting in (i) higher risks that the model will produce potentially harmful content and (ii) lower scores on safety and jailbreak benchmarks.",
+        "known_limitations": [
+          "Less aligned than other models",
+          "Higher risk of harmful content generation",
+          "Lower scores on safety benchmarks",
+          "Lower scores on jailbreak resistance"
+        ],
+        "acceptable_use_policy": null,
+        "alignment_status": "less_aligned",
+        "recommended_safety_measures": [
+          "Use Azure AI Content Safety in conjunction with this model",
+          "Conduct your own evaluations on production systems",
+          "Implement additional content filtering",
+          "Monitor outputs for harmful content"
+        ]
+      },
+      "license": "Custom",
+      "metadata": {
+        "original_announcement_url": null,
+        "documentation_url": null,
+        "model_card_url": "https://ai.azure.com/explore/models/DeepSeek-V3.2-Speciale",
+        "azure_catalog_url": "https://ai.azure.com/explore/models/DeepSeek-V3.2-Speciale",
+        "created_at": "2026-01-20T00:00:00Z",
+        "updated_at": "2026-01-20T00:00:00Z",
+        "cache_source": "azure_catalog",
+        "notes": "Direct from Azure model. Significant updates to chat template with revised tool calling format and 'thinking with tools' capability. Encoding folder provided for OpenAI-compatible format conversion."
+      }
+    }
+  ]
+}

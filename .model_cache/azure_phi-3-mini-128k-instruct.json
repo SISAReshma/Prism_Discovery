@@ -1,0 +1,19 @@
+{
+  "provider": "azure-ai-foundry",
+  "model_id": "phi-3-mini-128k-instruct",
+  "model_card_url": "https://ai.azure.com/catalog/models/Phi-3-mini-128k-instruct",
+  "fetched_at": "2025-12-24T15:17:05.290907",
+  "name": "phi-3-mini-128k-instruct",
+  "description": "Model phi-3-mini-128k-instruct from Azure AI Foundry",
+  "license": "OverviewBenchmarksBenchmarks",
+  "version": "June 2025",
+  "context_length": "131072",
+  "quality_index": "",
+  "training_data": "Oct 2023",
+  "input_type": "Text",
+  "output_type": "Text",
+  "provider_name": "Microsoft",
+  "languages": "1 Language",
+  "tags": [],
+  "task": "text-generation"
+}

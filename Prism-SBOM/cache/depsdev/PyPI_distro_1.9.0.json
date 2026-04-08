@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_distro_1.9.0",
+  "cached_at": "2026-02-03T07:59:40.280278Z",
+  "data": {
+    "name": "distro",
+    "version": "1.9.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python-distro/distro",
+    "description": ""
+  }
+}

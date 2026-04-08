@@ -1,0 +1,178 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:anthropic-claude-sonnet-4-5-20250929-2026-01-16-07-48-37",
+  "metadata": {
+    "timestamp": "2026-01-16T07:48:37Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "Claude Sonnet 4.5",
+      "version": "claude-sonnet-4-5-20250929",
+      "supplier": {
+        "name": "Anthropic",
+        "url": [
+          "https://anthropic.com"
+        ]
+      },
+      "description": "Our smart model for complex agents and coding. Claude Sonnet 4.5 offers the best balance of intelligence, speed, and cost for most use cases, with exceptional performance in coding and agentic tasks."
+    },
+    "tools": [
+      {
+        "vendor": "Anthropic",
+        "name": "AIBOM Generator",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "anthropic-claude-sonnet-4-5-20250929",
+      "name": "Claude Sonnet 4.5",
+      "version": "claude-sonnet-4-5-20250929",
+      "supplier": {
+        "name": "Anthropic",
+        "url": [
+          "https://anthropic.com"
+        ]
+      },
+      "description": "Our smart model for complex agents and coding. Claude Sonnet 4.5 offers the best balance of intelligence, speed, and cost for most use cases, with exceptional performance in coding and agentic tasks.",
+      "properties": [
+        {
+          "name": "ai:model_type",
+          "value": "Large Language Model [default]"
+        },
+        {
+          "name": "ai:provider",
+          "value": "Anthropic [default]"
+        },
+        {
+          "name": "ai:model_id",
+          "value": "claude-sonnet-4-5-20250929"
+        },
+        {
+          "name": "ai:api_alias",
+          "value": "claude-sonnet-4-5"
+        },
+        {
+          "name": "ai:aws_bedrock_id",
+          "value": "anthropic.claude-sonnet-4-5-20250929-v1:0"
+        },
+        {
+          "name": "ai:gcp_vertex_id",
+          "value": "claude-sonnet-4-5@20250929"
+        },
+        {
+          "name": "ai:model_family",
+          "value": "Claude 4.5 [default]"
+        },
+        {
+          "name": "ai:architecture",
+          "value": "Transformer [default]"
+        },
+        {
+          "name": "ai:context_window",
+          "value": "200000"
+        },
+        {
+          "name": "ai:context_window_beta",
+          "value": "1000000"
+        },
+        {
+          "name": "ai:max_output_tokens",
+          "value": "64000"
+        },
+        {
+          "name": "ai:knowledge_cutoff",
+          "value": "Jan 2025"
+        },
+        {
+          "name": "ai:training_cutoff",
+          "value": "Jul 2025"
+        },
+        {
+          "name": "ai:input_modalities",
+          "value": "text, image"
+        },
+        {
+          "name": "ai:output_modalities",
+          "value": "text"
+        },
+        {
+          "name": "ai:supported_features",
+          "value": "extended_thinking, priority_tier, vision, multilingual, streaming, function_calling, structured_outputs"
+        },
+        {
+          "name": "ai:comparative_latency",
+          "value": "Fast"
+        },
+        {
+          "name": "ai:platforms",
+          "value": "Anthropic API, AWS Bedrock, GCP Vertex AI"
+        },
+        {
+          "name": "ai:api_endpoints",
+          "value": "messages, batch"
+        },
+        {
+          "name": "ai:status",
+          "value": "current"
+        },
+        {
+          "name": "ai:best_for",
+          "value": "Complex agents and coding, best balance of intelligence/speed/cost, agentic tasks"
+        },
+        {
+          "name": "ai:pricing:currency",
+          "value": "USD [default]"
+        },
+        {
+          "name": "ai:pricing:input_per_million_tokens",
+          "value": "3.0"
+        },
+        {
+          "name": "ai:pricing:output_per_million_tokens",
+          "value": "15.0"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "architectureFamily": "Transformer",
+          "modelArchitecture": "Large Language Model",
+          "inputs": [
+            {
+              "format": "text"
+            },
+            {
+              "format": "image"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": []
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "documentation",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "type": "website",
+          "url": "https://anthropic.com"
+        },
+        {
+          "type": "license",
+          "url": "https://www.anthropic.com/legal/aup"
+        }
+      ]
+    }
+  ]
+}

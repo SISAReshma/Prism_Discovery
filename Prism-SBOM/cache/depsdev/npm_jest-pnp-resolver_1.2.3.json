@@ -1,0 +1,11 @@
+{
+  "key": "npm_jest-pnp-resolver_1.2.3",
+  "cached_at": "2026-02-03T04:52:50.402452Z",
+  "data": {
+    "name": "jest-pnp-resolver",
+    "version": "1.2.3",
+    "license": "MIT",
+    "homepage": "https://github.com/arcanis/jest-pnp-resolver",
+    "description": ""
+  }
+}

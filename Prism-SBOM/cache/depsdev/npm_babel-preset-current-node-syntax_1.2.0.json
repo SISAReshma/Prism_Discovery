@@ -1,0 +1,11 @@
+{
+  "key": "npm_babel-preset-current-node-syntax_1.2.0",
+  "cached_at": "2026-02-03T04:53:03.641016Z",
+  "data": {
+    "name": "babel-preset-current-node-syntax",
+    "version": "1.2.0",
+    "license": "MIT",
+    "homepage": "https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax#readme",
+    "description": ""
+  }
+}

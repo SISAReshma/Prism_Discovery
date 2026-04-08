@@ -1,0 +1,11 @@
+{
+  "key": "npm_fb-watchman_2.0.2",
+  "cached_at": "2026-02-03T04:52:46.236107Z",
+  "data": {
+    "name": "fb-watchman",
+    "version": "2.0.2",
+    "license": "Apache-2.0",
+    "homepage": "https://facebook.github.io/watchman/",
+    "description": ""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "npm_resolve_1.22.11",
+  "cached_at": "2026-02-03T04:52:51.097672Z",
+  "data": {
+    "name": "resolve",
+    "version": "1.22.11",
+    "license": "MIT",
+    "homepage": "https://github.com/browserify/resolve#readme",
+    "description": ""
+  }
+}

@@ -1,0 +1,72 @@
+rules:
+  - id: pinecone-client-init
+    pattern-either:
+      - pattern: Pinecone($...)
+      - pattern: pinecone.init($...)
+      - pattern: pinecone.Pinecone($...)
+    message: "Pinecone client initialization detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-index
+    pattern-either:
+      - pattern: $PINECONE.Index($...)
+      - pattern: pinecone.Index($...)
+      - pattern: $PINECONE.create_index($...)
+    message: "Pinecone index access detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-upsert
+    pattern-either:
+      - pattern: $INDEX.upsert($...)
+      - pattern: $INDEX.upsert_from_dataframe($...)
+    message: "Pinecone upsert operation detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-query
+    pattern-either:
+      - pattern: $INDEX.query($...)
+      - pattern: $INDEX.fetch($...)
+      - pattern: $INDEX.describe_index_stats($...)
+    message: "Pinecone query operation detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-langchain
+    pattern-either:
+      - pattern: PineconeVectorStore($...)
+      - pattern: PineconeVectorStore.from_documents($...)
+      - pattern: PineconeVectorStore.from_texts($...)
+      - pattern: Pinecone.from_documents($...)
+      - pattern: Pinecone.from_texts($...)
+    message: "Pinecone LangChain integration detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone
+
+  - id: pinecone-delete
+    pattern-either:
+      - pattern: $INDEX.delete($...)
+      - pattern: $PINECONE.delete_index($...)
+    message: "Pinecone delete operation detected"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: pinecone
+      provider: pinecone

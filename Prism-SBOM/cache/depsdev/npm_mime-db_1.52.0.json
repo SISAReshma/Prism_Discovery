@@ -1,0 +1,11 @@
+{
+  "key": "npm_mime-db_1.52.0",
+  "cached_at": "2026-02-03T04:51:39.497301Z",
+  "data": {
+    "name": "mime-db",
+    "version": "1.52.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jshttp/mime-db#readme",
+    "description": ""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_h11_0.16.0",
+  "cached_at": "2026-02-03T07:59:45.203279Z",
+  "data": {
+    "name": "h11",
+    "version": "0.16.0",
+    "license": "MIT",
+    "homepage": "https://github.com/python-hyper/h11",
+    "description": ""
+  }
+}

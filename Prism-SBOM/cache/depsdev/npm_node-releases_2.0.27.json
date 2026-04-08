@@ -1,0 +1,11 @@
+{
+  "key": "npm_node-releases_2.0.27",
+  "cached_at": "2026-02-03T04:54:49.255349Z",
+  "data": {
+    "name": "node-releases",
+    "version": "2.0.27",
+    "license": "MIT",
+    "homepage": "https://github.com/chicoxyzzy/node-releases#readme",
+    "description": ""
+  }
+}

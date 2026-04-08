@@ -1,0 +1,22 @@
+{
+  "key": "setuptools_80.10.2",
+  "cached_at": "2026-02-03T08:03:04.048044Z",
+  "data": {
+    "name": "setuptools",
+    "version": "80.10.2",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Easily download, build, install, upgrade, and uninstall Python packages",
+    "release_date": "2026-01-25T22:38:15.216865Z",
+    "homepage": "https://pypi.org/project/setuptools/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "95b30ddfb717250edb492926c92b5221f7ef3fbcc2b07579bcd4a27da21d0173"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

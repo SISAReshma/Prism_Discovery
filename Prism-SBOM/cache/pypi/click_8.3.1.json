@@ -1,0 +1,22 @@
+{
+  "key": "click_8.3.1",
+  "cached_at": "2026-02-03T08:02:58.978817Z",
+  "data": {
+    "name": "click",
+    "version": "8.3.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Composable command line interface toolkit",
+    "release_date": "2025-11-15T20:45:41.139301Z",
+    "homepage": "https://pypi.org/project/click/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

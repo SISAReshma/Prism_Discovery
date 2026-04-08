@@ -1,0 +1,11 @@
+{
+  "key": "npm_jest-regex-util_29.6.3",
+  "cached_at": "2026-02-03T04:52:07.798144Z",
+  "data": {
+    "name": "jest-regex-util",
+    "version": "29.6.3",
+    "license": "MIT",
+    "homepage": "https://github.com/jestjs/jest#readme",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pydantic_2.12.5",
+  "cached_at": "2026-02-03T08:03:01.817219Z",
+  "data": {
+    "name": "pydantic",
+    "version": "2.12.5",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Data validation using Python type hints",
+    "release_date": "2025-11-26T15:11:44.605145Z",
+    "homepage": "https://pypi.org/project/pydantic/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e561593fccf61e8a20fc46dfc2dfe075b8be7d0188df33f221ad1f0139180f9d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}
