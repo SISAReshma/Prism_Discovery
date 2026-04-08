@@ -682,7 +682,7 @@ app.add_middleware(
 MAX_REQUEST_BODY_SIZE = 500 * 1024 * 1024  # 500 MB
 
 # Airflow network subnet (Docker network airflow-docker_default)
-ALLOWED_NETWORK_PREFIXES = ("172.18.,172.19.,172.20.,172.21.,172.22.,127.0.0.1,::1,10.0.,192.168.").split(",")
+ALLOWED_NETWORK_PREFIXES = ("172.18.,172.19.,172.20.,172.21.,172.22.,127.0.0.1,10.0.").split(",")
 
 # Paths accessible without network restriction
 UNRESTRICTED_PATHS = {"/", "/health", "/api/jobs"}
