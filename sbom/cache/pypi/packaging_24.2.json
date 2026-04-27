@@ -1,0 +1,22 @@
+{
+  "key": "packaging_24.2",
+  "cached_at": "2026-04-09T09:30:33.610303Z",
+  "data": {
+    "name": "packaging",
+    "version": "24.2",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "Core utilities for Python packages",
+    "release_date": "2024-11-08T09:47:44.722583Z",
+    "homepage": "https://pypi.org/project/packaging/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_httplib2_0.22.0",
+  "cached_at": "2026-04-09T09:15:25.278743Z",
+  "data": {
+    "direct": [
+      {
+        "name": "pyparsing",
+        "version": "3.3.2"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "pyparsing": {
+        "version": "3.3.2",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

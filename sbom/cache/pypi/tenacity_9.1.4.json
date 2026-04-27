@@ -1,0 +1,22 @@
+{
+  "key": "tenacity_9.1.4",
+  "cached_at": "2026-04-09T09:31:43.338758Z",
+  "data": {
+    "name": "tenacity",
+    "version": "9.1.4",
+    "license": "Apache 2.0",
+    "supplier": "Julien Danjou",
+    "description": "Retry code until it succeeds",
+    "release_date": "2026-02-07T10:45:32.240169Z",
+    "homepage": "https://github.com/jd/tenacity",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "6095a360c919085f28c6527de529e76a06ad89b23659fa881ae0649b867a9d55"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

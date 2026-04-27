@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_types-urllib3_1.26.25.14",
+  "cached_at": "2026-04-09T09:23:36.691670Z",
+  "data": {
+    "name": "types-urllib3",
+    "version": "1.26.25.14",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python/typeshed",
+    "description": "",
+    "release_date": "2023-07-20T15:19:30Z"
+  }
+}

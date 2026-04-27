@@ -1,0 +1,22 @@
+{
+  "key": "portalocker_3.2.0",
+  "cached_at": "2026-04-09T09:30:35.715209Z",
+  "data": {
+    "name": "portalocker",
+    "version": "3.2.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Wraps the portalocker recipe for easy usage",
+    "release_date": "2025-06-14T13:20:38.083996Z",
+    "homepage": "https://pypi.org/project/portalocker/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3cdc5f565312224bc570c49337bd21428bba0ef363bbcf58b9ef4a9f11779968"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

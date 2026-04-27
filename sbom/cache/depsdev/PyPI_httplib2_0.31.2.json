@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_httplib2_0.31.2",
+  "cached_at": "2026-04-09T09:23:16.127091Z",
+  "data": {
+    "name": "httplib2",
+    "version": "0.31.2",
+    "license": "MIT",
+    "homepage": "https://github.com/httplib2/httplib2",
+    "description": "",
+    "release_date": "2026-01-23T11:04:42Z"
+  }
+}

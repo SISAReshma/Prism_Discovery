@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_toml_0.10.2",
+  "cached_at": "2026-04-09T09:21:28.348334Z",
+  "data": {
+    "name": "toml",
+    "version": "0.10.2",
+    "license": "MIT",
+    "homepage": "https://github.com/uiri/toml",
+    "description": "",
+    "release_date": "2020-11-01T01:40:20Z"
+  }
+}

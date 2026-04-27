@@ -1,0 +1,22 @@
+{
+  "key": "jsonpath-python_1.0.6",
+  "cached_at": "2026-04-09T09:30:15.557853Z",
+  "data": {
+    "name": "jsonpath-python",
+    "version": "1.0.6",
+    "license": "MIT License",
+    "supplier": "zhangxianbing",
+    "description": "A more powerful JSONPath implementation in modern python",
+    "release_date": "2022-03-14T02:34:59.754916Z",
+    "homepage": "https://github.com/zhangxianbing/jsonpath-python",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1e3b78df579f5efc23565293612decee04214609208a2335884b3ee3f786b575"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

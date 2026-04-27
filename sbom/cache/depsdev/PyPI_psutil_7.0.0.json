@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_psutil_7.0.0",
+  "cached_at": "2026-04-09T09:20:33.367517Z",
+  "data": {
+    "name": "psutil",
+    "version": "7.0.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/giampaolo/psutil",
+    "description": "",
+    "release_date": "2025-02-13T21:54:21Z"
+  }
+}

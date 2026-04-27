@@ -1,0 +1,22 @@
+{
+  "key": "termcolor_3.3.0",
+  "cached_at": "2026-04-09T09:32:15.496642Z",
+  "data": {
+    "name": "termcolor",
+    "version": "3.3.0",
+    "license": "NOASSERTION",
+    "supplier": "Hugo van Kemenade",
+    "description": "ANSI color formatting for output in terminal",
+    "release_date": "2025-12-29T12:55:20.718586Z",
+    "homepage": "https://pypi.org/project/termcolor/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "cf642efadaf0a8ebbbf4bc7a31cec2f9b5f21a9f726f4ccbb08192c9c26f43a5"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

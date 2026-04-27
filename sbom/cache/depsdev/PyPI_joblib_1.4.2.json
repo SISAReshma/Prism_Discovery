@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_joblib_1.4.2",
+  "cached_at": "2026-04-09T09:19:31.000526Z",
+  "data": {
+    "name": "joblib",
+    "version": "1.4.2",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/joblib/joblib",
+    "description": "",
+    "release_date": "2024-05-02T12:15:00Z"
+  }
+}

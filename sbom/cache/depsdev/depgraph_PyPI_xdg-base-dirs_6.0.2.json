@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_xdg-base-dirs_6.0.2",
+  "cached_at": "2026-04-09T09:18:14.256828Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

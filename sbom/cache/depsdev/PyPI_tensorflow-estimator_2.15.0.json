@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tensorflow-estimator_2.15.0",
+  "cached_at": "2026-04-09T09:21:23.305476Z",
+  "data": {
+    "name": "tensorflow-estimator",
+    "version": "2.15.0",
+    "license": "Apache-2.0",
+    "homepage": "",
+    "description": "",
+    "release_date": "2023-11-07T01:10:10Z"
+  }
+}

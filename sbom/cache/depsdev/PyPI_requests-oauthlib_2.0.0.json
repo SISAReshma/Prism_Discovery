@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_requests-oauthlib_2.0.0",
+  "cached_at": "2026-04-09T09:20:56.274359Z",
+  "data": {
+    "name": "requests-oauthlib",
+    "version": "2.0.0",
+    "license": "ISC",
+    "homepage": "https://github.com/requests/requests-oauthlib",
+    "description": "",
+    "release_date": "2024-03-22T20:32:28Z"
+  }
+}

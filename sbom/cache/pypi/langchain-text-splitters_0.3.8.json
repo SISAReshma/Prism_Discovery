@@ -1,0 +1,22 @@
+{
+  "key": "langchain-text-splitters_0.3.8",
+  "cached_at": "2026-04-09T09:30:18.715961Z",
+  "data": {
+    "name": "langchain-text-splitters",
+    "version": "0.3.8",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "LangChain text splitting utilities",
+    "release_date": "2025-04-04T14:03:50.600255Z",
+    "homepage": "https://pypi.org/project/langchain-text-splitters/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e75cc0f4ae58dcf07d9f18776400cf8ade27fadd4ff6d264df6278bb302f6f02"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.9"
+  }
+}

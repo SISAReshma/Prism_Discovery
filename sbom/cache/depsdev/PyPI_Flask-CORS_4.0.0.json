@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_Flask-CORS_4.0.0",
+  "cached_at": "2026-04-27T07:14:30.499538Z",
+  "data": {
+    "name": "Flask-CORS",
+    "version": "4.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/corydolphin/flask-cors",
+    "description": "",
+    "release_date": "2023-06-26T05:38:44Z"
+  }
+}

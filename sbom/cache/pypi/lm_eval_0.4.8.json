@@ -1,0 +1,22 @@
+{
+  "key": "lm_eval_0.4.8",
+  "cached_at": "2026-04-09T09:30:20.424085Z",
+  "data": {
+    "name": "lm-eval",
+    "version": "0.4.8",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "A framework for evaluating language models",
+    "release_date": "2025-03-05T03:04:12.109155Z",
+    "homepage": "https://pypi.org/project/lm-eval/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2ba377e067affcfcd27b73d6c045f8ce9ff88accd56176d9a86af3c12b0e01f6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

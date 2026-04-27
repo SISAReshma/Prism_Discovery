@@ -1,0 +1,38 @@
+{
+  "key": "depgraph_PyPI_soundfile_0.13.1",
+  "cached_at": "2026-04-09T09:17:30.128665Z",
+  "data": {
+    "direct": [
+      {
+        "name": "cffi",
+        "version": "2.0.0"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "pycparser",
+        "version": "3.0.0"
+      }
+    ],
+    "graph": {
+      "cffi": {
+        "version": "2.0.0",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "pycparser": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 3,
+    "source": "deps.dev"
+  }
+}

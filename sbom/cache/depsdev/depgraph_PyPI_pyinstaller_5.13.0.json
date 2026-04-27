@@ -1,0 +1,62 @@
+{
+  "key": "depgraph_PyPI_pyinstaller_5.13.0",
+  "cached_at": "2026-04-27T07:14:29.706084Z",
+  "data": {
+    "direct": [
+      {
+        "name": "altgraph",
+        "version": "0.17.5"
+      },
+      {
+        "name": "pyinstaller-hooks-contrib",
+        "version": "2026.4.0"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "importlib-metadata",
+        "version": "9.0.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.2.0"
+      },
+      {
+        "name": "zipp",
+        "version": "3.23.1"
+      }
+    ],
+    "graph": {
+      "altgraph": {
+        "version": "0.17.5",
+        "relation": "DIRECT"
+      },
+      "importlib-metadata": {
+        "version": "9.0.0",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "26.2.0",
+        "relation": "INDIRECT"
+      },
+      "pyinstaller-hooks-contrib": {
+        "version": "2026.4.0",
+        "relation": "DIRECT"
+      },
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "DIRECT"
+      },
+      "zipp": {
+        "version": "3.23.1",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 6,
+    "source": "deps.dev"
+  }
+}

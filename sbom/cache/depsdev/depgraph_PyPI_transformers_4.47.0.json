@@ -1,0 +1,150 @@
+{
+  "key": "depgraph_PyPI_transformers_4.47.0",
+  "cached_at": "2026-02-20T05:01:52.210154Z",
+  "data": {
+    "direct": [
+      {
+        "name": "filelock",
+        "version": "3.20.3"
+      },
+      {
+        "name": "huggingface-hub",
+        "version": "0.36.1"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.2"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "regex",
+        "version": "2026.1.15"
+      },
+      {
+        "name": "requests",
+        "version": "2.32.5"
+      },
+      {
+        "name": "safetensors",
+        "version": "0.7.0"
+      },
+      {
+        "name": "tokenizers",
+        "version": "0.21.4"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.2"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.1.4"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.4"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.1.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.2.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.1.4",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.4",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.20.3",
+        "relation": "DIRECT"
+      },
+      "fsspec": {
+        "version": "2026.1.0",
+        "relation": "INDIRECT"
+      },
+      "hf-xet": {
+        "version": "1.2.1",
+        "relation": "INDIRECT"
+      },
+      "huggingface-hub": {
+        "version": "0.36.1",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.2",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "regex": {
+        "version": "2026.1.15",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.32.5",
+        "relation": "DIRECT"
+      },
+      "safetensors": {
+        "version": "0.7.0",
+        "relation": "DIRECT"
+      },
+      "tokenizers": {
+        "version": "0.21.4",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.2",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 17,
+    "source": "deps.dev"
+  }
+}

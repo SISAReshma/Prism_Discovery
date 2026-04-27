@@ -1,0 +1,22 @@
+{
+  "key": "lxml_6.0.2",
+  "cached_at": "2026-04-09T09:32:04.135179Z",
+  "data": {
+    "name": "lxml",
+    "version": "6.0.2",
+    "license": "BSD-3-Clause",
+    "supplier": "lxml dev team",
+    "description": "Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API.",
+    "release_date": "2025-09-22T04:00:10.510844Z",
+    "homepage": "https://lxml.de/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e77dd455b9a16bbd2a5036a63ddbd479c19572af81b624e79ef422f929eef388"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

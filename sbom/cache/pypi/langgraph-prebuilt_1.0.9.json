@@ -1,0 +1,22 @@
+{
+  "key": "langgraph-prebuilt_1.0.9",
+  "cached_at": "2026-04-09T09:31:39.666394Z",
+  "data": {
+    "name": "langgraph-prebuilt",
+    "version": "1.0.9",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Library with high-level APIs for creating and executing LangGraph agents and tools.",
+    "release_date": "2026-04-03T14:06:36.580357Z",
+    "homepage": "https://pypi.org/project/langgraph-prebuilt/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "776c8e3154a5aef5ad0e5bf3f263f2dcaab3983786cc20014b7f955d99d2d1b2"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_aiohttp_3.12.13",
+  "cached_at": "2026-04-09T09:18:22.735202Z",
+  "data": {
+    "name": "aiohttp",
+    "version": "3.12.13",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/aio-libs/aiohttp",
+    "description": "",
+    "release_date": "2025-06-14T15:15:18Z"
+  }
+}

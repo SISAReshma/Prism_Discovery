@@ -1,0 +1,22 @@
+{
+  "key": "mkdocs-material_9.6.18",
+  "cached_at": "2026-04-08T07:29:10.215654Z",
+  "data": {
+    "name": "mkdocs-material",
+    "version": "9.6.18",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Documentation that simply works",
+    "release_date": "2025-08-22T08:21:44.520139Z",
+    "homepage": "https://pypi.org/project/mkdocs-material/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "dbc1e146a0ecce951a4d84f97b816a54936cdc9e1edd1667fc6868878ac06701"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

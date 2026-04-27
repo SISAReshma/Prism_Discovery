@@ -1,0 +1,22 @@
+{
+  "key": "PyPDF2_3.0.1",
+  "cached_at": "2026-04-09T09:30:40.741309Z",
+  "data": {
+    "name": "PyPDF2",
+    "version": "3.0.1",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files",
+    "release_date": "2022-12-31T10:36:10.327589Z",
+    "homepage": "https://pypi.org/project/PyPDF2/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d16e4205cfee272fbdc0568b68d82be796540b1537508cef59388f839c191928"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_smmap_5.0.2",
+  "cached_at": "2026-04-09T09:21:10.586777Z",
+  "data": {
+    "name": "smmap",
+    "version": "5.0.2",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/gitpython-developers/smmap",
+    "description": "",
+    "release_date": "2025-01-02T07:14:38Z"
+  }
+}

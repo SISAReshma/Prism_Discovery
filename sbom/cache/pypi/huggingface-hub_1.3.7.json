@@ -1,0 +1,22 @@
+{
+  "key": "huggingface-hub_1.3.7",
+  "cached_at": "2026-02-20T05:22:55.238365Z",
+  "data": {
+    "name": "huggingface-hub",
+    "version": "1.3.7",
+    "license": "Apache",
+    "supplier": "Hugging Face, Inc.",
+    "description": "Client library to download and publish models, datasets and other repos on the huggingface.co hub",
+    "release_date": "2026-02-02T10:40:08.274212Z",
+    "homepage": "https://github.com/huggingface/huggingface_hub",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8155ce937038fa3d0cb4347d752708079bc85e6d9eb441afb44c84bcf48620d2"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9.0"
+  }
+}

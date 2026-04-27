@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pycparser_3.0.0",
+  "cached_at": "2026-04-09T09:22:34.146481Z",
+  "data": {
+    "name": "pycparser",
+    "version": "3.0.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/eliben/pycparser",
+    "description": "",
+    "release_date": "2026-01-21T14:26:50Z"
+  }
+}

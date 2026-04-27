@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_tqdm-multiprocess_0.0.11",
+  "cached_at": "2026-04-09T09:17:57.267343Z",
+  "data": {
+    "direct": [
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "colorama": {
+        "version": "0.4.6",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

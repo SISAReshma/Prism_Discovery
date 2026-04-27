@@ -1,0 +1,22 @@
+{
+  "key": "pycparser_3.0.0",
+  "cached_at": "2026-04-09T09:31:20.568509Z",
+  "data": {
+    "name": "pycparser",
+    "version": "3.0.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "C parser in Python",
+    "release_date": "2026-01-21T14:26:50.693739Z",
+    "homepage": "https://pypi.org/project/pycparser/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

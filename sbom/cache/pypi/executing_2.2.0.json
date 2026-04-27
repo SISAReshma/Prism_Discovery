@@ -1,0 +1,22 @@
+{
+  "key": "executing_2.2.0",
+  "cached_at": "2026-04-09T09:30:01.883840Z",
+  "data": {
+    "name": "executing",
+    "version": "2.2.0",
+    "license": "MIT",
+    "supplier": "Alex Hall",
+    "description": "Get the currently executing AST node of a frame, and other information",
+    "release_date": "2025-01-22T15:41:25.929371Z",
+    "homepage": "https://github.com/alexmojaki/executing",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "11387150cad388d62750327a53d3339fad4888b39a6fe233c3afbb54ecffd3aa"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

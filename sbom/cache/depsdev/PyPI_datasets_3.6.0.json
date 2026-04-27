@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_datasets_3.6.0",
+  "cached_at": "2026-04-09T09:18:48.305836Z",
+  "data": {
+    "name": "datasets",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/huggingface/datasets",
+    "description": "",
+    "release_date": "2025-05-07T15:14:59Z"
+  }
+}

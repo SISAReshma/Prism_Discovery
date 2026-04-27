@@ -1,0 +1,22 @@
+{
+  "key": "exceptiongroup_1.2.2",
+  "cached_at": "2026-04-09T09:30:01.687450Z",
+  "data": {
+    "name": "exceptiongroup",
+    "version": "1.2.2",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Backport of PEP 654 (exception groups)",
+    "release_date": "2024-07-12T22:25:58.476848Z",
+    "homepage": "https://pypi.org/project/exceptiongroup/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3111b9d131c238bec2f8f516e123e14ba243563fb135d3fe885990585aa7795b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

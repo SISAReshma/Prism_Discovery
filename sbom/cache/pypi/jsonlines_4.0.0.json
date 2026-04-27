@@ -1,0 +1,22 @@
+{
+  "key": "jsonlines_4.0.0",
+  "cached_at": "2026-04-09T09:30:13.592939Z",
+  "data": {
+    "name": "jsonlines",
+    "version": "4.0.0",
+    "license": "BSD",
+    "supplier": "wouter bolsterlee",
+    "description": "Library with helpers for the jsonlines file format",
+    "release_date": "2023-09-01T12:34:42.563112Z",
+    "homepage": "https://github.com/wbolster/jsonlines",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "185b334ff2ca5a91362993f42e83588a360cf95ce4b71a73548502bda52a7c55"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

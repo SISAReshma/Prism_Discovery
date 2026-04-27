@@ -1,0 +1,22 @@
+{
+  "key": "uuid-utils_0.14.1",
+  "cached_at": "2026-04-09T09:31:44.687145Z",
+  "data": {
+    "name": "uuid_utils",
+    "version": "0.14.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Fast, drop-in replacement for Python's uuid module, powered by Rust.",
+    "release_date": "2026-02-20T22:50:27.469665Z",
+    "homepage": "https://pypi.org/project/uuid_utils/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "93a3b5dc798a54a1feb693f2d1cb4cf08258c32ff05ae4929b5f0a2ca624a4f0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_mypy_extensions_1.1.0",
+  "cached_at": "2026-04-09T09:19:58.320124Z",
+  "data": {
+    "name": "mypy_extensions",
+    "version": "1.1.0",
+    "license": "MIT",
+    "homepage": "https://github.com/python/mypy_extensions",
+    "description": "",
+    "release_date": "2025-04-22T14:54:22Z"
+  }
+}

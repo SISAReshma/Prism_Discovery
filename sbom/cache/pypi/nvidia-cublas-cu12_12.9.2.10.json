@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cublas-cu12_12.9.2.10",
+  "cached_at": "2026-04-09T09:32:07.802229Z",
+  "data": {
+    "name": "nvidia-cublas-cu12",
+    "version": "12.9.2.10",
+    "license": "NOASSERTION",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUBLAS native runtime libraries",
+    "release_date": "2026-04-08T18:51:47.303750Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5572131a59c3eebeeb1c4c8144f772d49372c20124916e072a0e3fc30df421d5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

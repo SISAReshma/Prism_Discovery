@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_scipy_1.13.1",
+  "cached_at": "2026-04-09T09:17:22.563577Z",
+  "data": {
+    "direct": [
+      {
+        "name": "numpy",
+        "version": "2.2.6"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "numpy": {
+        "version": "2.2.6",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "key": "depgraph_PyPI_seaborn_0.13.2",
+  "cached_at": "2026-04-09T09:17:23.278464Z",
+  "data": {
+    "direct": [
+      {
+        "name": "matplotlib",
+        "version": "3.10.8"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "pandas",
+        "version": "3.0.2"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "contourpy",
+        "version": "1.3.3"
+      },
+      {
+        "name": "cycler",
+        "version": "0.12.1"
+      },
+      {
+        "name": "fonttools",
+        "version": "4.62.1"
+      },
+      {
+        "name": "kiwisolver",
+        "version": "1.5.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pillow",
+        "version": "12.2.0"
+      },
+      {
+        "name": "pyparsing",
+        "version": "3.3.2"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "graph": {
+      "contourpy": {
+        "version": "1.3.3",
+        "relation": "INDIRECT"
+      },
+      "cycler": {
+        "version": "0.12.1",
+        "relation": "INDIRECT"
+      },
+      "fonttools": {
+        "version": "4.62.1",
+        "relation": "INDIRECT"
+      },
+      "kiwisolver": {
+        "version": "1.5.0",
+        "relation": "INDIRECT"
+      },
+      "matplotlib": {
+        "version": "3.10.8",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "INDIRECT"
+      },
+      "pandas": {
+        "version": "3.0.2",
+        "relation": "DIRECT"
+      },
+      "pillow": {
+        "version": "12.2.0",
+        "relation": "INDIRECT"
+      },
+      "pyparsing": {
+        "version": "3.3.2",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 12,
+    "source": "deps.dev"
+  }
+}

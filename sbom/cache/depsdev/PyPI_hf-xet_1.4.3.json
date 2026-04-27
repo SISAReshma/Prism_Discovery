@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_hf-xet_1.4.3",
+  "cached_at": "2026-04-09T09:22:06.023532Z",
+  "data": {
+    "name": "hf-xet",
+    "version": "1.4.3",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/huggingface/xet-core",
+    "description": "",
+    "release_date": "2026-03-31T22:39:42Z"
+  }
+}

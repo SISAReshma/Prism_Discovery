@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_groq_0.4.0",
+  "cached_at": "2026-02-20T05:03:21.561144Z",
+  "data": {
+    "name": "groq",
+    "version": "0.4.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/groq/groq-python",
+    "description": ""
+  }
+}

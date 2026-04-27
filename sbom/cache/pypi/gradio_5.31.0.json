@@ -1,0 +1,22 @@
+{
+  "key": "gradio_5.31.0",
+  "cached_at": "2026-04-09T09:30:06.976155Z",
+  "data": {
+    "name": "gradio",
+    "version": "5.31.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Python library for easily interacting with trained machine learning models",
+    "release_date": "2025-05-22T19:44:47.607953Z",
+    "homepage": "https://pypi.org/project/gradio/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4a31956c7290ce1277db07f15f197b602df2e7be147083136265d52e7887b156"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

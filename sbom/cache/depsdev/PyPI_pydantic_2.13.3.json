@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pydantic_2.13.3",
+  "cached_at": "2026-04-27T07:14:44.433073Z",
+  "data": {
+    "name": "pydantic",
+    "version": "2.13.3",
+    "license": "MIT",
+    "homepage": "https://github.com/pydantic/pydantic",
+    "description": "",
+    "release_date": "2026-04-20T14:46:41Z"
+  }
+}

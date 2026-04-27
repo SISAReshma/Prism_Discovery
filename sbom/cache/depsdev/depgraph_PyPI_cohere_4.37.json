@@ -1,0 +1,166 @@
+{
+  "key": "depgraph_PyPI_cohere_4.37",
+  "cached_at": "2026-02-20T05:02:42.471906Z",
+  "data": {
+    "direct": [
+      {
+        "name": "aiohttp",
+        "version": "3.13.3"
+      },
+      {
+        "name": "backoff",
+        "version": "2.2.1"
+      },
+      {
+        "name": "fastavro",
+        "version": "1.12.1"
+      },
+      {
+        "name": "importlib-metadata",
+        "version": "6.11.0"
+      },
+      {
+        "name": "requests",
+        "version": "2.32.5"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.6.1"
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.4.0"
+      },
+      {
+        "name": "async-timeout",
+        "version": "5.0.1"
+      },
+      {
+        "name": "attrs",
+        "version": "25.4.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.1.4"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.4"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "propcache",
+        "version": "0.4.1"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "yarl",
+        "version": "1.22.0"
+      },
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "graph": {
+      "aiohappyeyeballs": {
+        "version": "2.6.1",
+        "relation": "INDIRECT"
+      },
+      "aiohttp": {
+        "version": "3.13.3",
+        "relation": "DIRECT"
+      },
+      "aiosignal": {
+        "version": "1.4.0",
+        "relation": "INDIRECT"
+      },
+      "async-timeout": {
+        "version": "5.0.1",
+        "relation": "INDIRECT"
+      },
+      "attrs": {
+        "version": "25.4.0",
+        "relation": "INDIRECT"
+      },
+      "backoff": {
+        "version": "2.2.1",
+        "relation": "DIRECT"
+      },
+      "certifi": {
+        "version": "2026.1.4",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.4",
+        "relation": "INDIRECT"
+      },
+      "fastavro": {
+        "version": "1.12.1",
+        "relation": "DIRECT"
+      },
+      "frozenlist": {
+        "version": "1.8.0",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "importlib-metadata": {
+        "version": "6.11.0",
+        "relation": "DIRECT"
+      },
+      "multidict": {
+        "version": "6.7.1",
+        "relation": "INDIRECT"
+      },
+      "propcache": {
+        "version": "0.4.1",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.32.5",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "DIRECT"
+      },
+      "yarl": {
+        "version": "1.22.0",
+        "relation": "INDIRECT"
+      },
+      "zipp": {
+        "version": "3.23.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 19,
+    "source": "deps.dev"
+  }
+}

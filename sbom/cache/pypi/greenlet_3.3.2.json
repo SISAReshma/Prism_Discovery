@@ -1,0 +1,22 @@
+{
+  "key": "greenlet_3.3.2",
+  "cached_at": "2026-04-09T09:31:57.077152Z",
+  "data": {
+    "name": "greenlet",
+    "version": "3.3.2",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Lightweight in-process concurrent programming",
+    "release_date": "2026-02-20T20:16:21.325387Z",
+    "homepage": "https://pypi.org/project/greenlet/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9bc885b89709d901859cf95179ec9f6bb67a3d2bb1f0e88456461bd4b7f8fd0d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

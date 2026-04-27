@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-riva-client_2.16.0",
+  "cached_at": "2026-04-09T09:30:31.167691Z",
+  "data": {
+    "name": "nvidia-riva-client",
+    "version": "2.16.0",
+    "license": "MIT",
+    "supplier": "Anton Peganov",
+    "description": "Python implementation of the Riva Client API",
+    "release_date": "2024-07-02T14:54:22.630381Z",
+    "homepage": "https://github.com/nvidia-riva/python-clients",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "99ef37b8f487d75a70c053736848221e09b728e5c910fb476333d375bd4347a3"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "tzdata_2026.1.0",
+  "cached_at": "2026-04-09T09:31:48.693777Z",
+  "data": {
+    "name": "tzdata",
+    "version": "2026.1.0",
+    "license": "Apache-2.0",
+    "supplier": "Python Software Foundation",
+    "description": "Provider of IANA time zone data",
+    "release_date": "2026-04-03T11:25:20.313603Z",
+    "homepage": "https://github.com/python/tzdata",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4b1d2be7ac37ceafd7327b961aa3a54e467efbdb563a23655fbfe0d39cfc42a9"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=2"
+  }
+}

@@ -25,6 +25,7 @@ else:
 import httpx
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse, Response
+from aibom.src.combined_report import build_combined_report
 
 logger = logging.getLogger("orchestrator")
 
@@ -118,9 +119,8 @@ ENDPOINT_SEQUENCE = [
     {"name": "LLM Categorize",            "url": "/aibom/llm-categorize",         "method": "GET",  "status_code": 11},
     {"name": "AI Branch Trace",           "url": "/aibom/ai-branch-trace",        "method": "GET",  "status_code": 12},
     {"name": "AI Targeted Scan",          "url": "/aibom/ai-targeted-scan",       "method": "GET",  "status_code": 13},
-    {"name": "Model Card Handler",        "url": "/aibom/model-card-handler",     "method": "GET",  "status_code": 14},
-    {"name": "Model Deprecation Check",   "url": "/aibom/model-deprecation-check","method": "GET",  "status_code": 15},
-    {"name": "AIBOM Connector",            "url": "/aibom/aibom-connector",         "method": "GET",  "status_code": 16},
+    {"name": "Model Deprecation Check",   "url": "/aibom/model-deprecation-check","method": "GET",  "status_code": 14},
+    {"name": "AIBOM Connector",            "url": "/aibom/aibom-connector",         "method": "GET",  "status_code": 15},
     # SBOM
     {"name": "Start Scan",                "url": "/sbom/start-scan",              "method": "GET",  "status_code": 17},
     {"name": "Discover and Parse",        "url": "/sbom/discover-and-parse",      "method": "GET",  "status_code": 18},
@@ -128,13 +128,14 @@ ENDPOINT_SEQUENCE = [
     {"name": "Registry Enrich",           "url": "/sbom/registry-enrich",         "method": "GET",  "status_code": 20},
     {"name": "Fetch OSV",                 "url": "/sbom/fetch-osv",              "method": "GET",  "status_code": 21},
     {"name": "Generate SBOM",             "url": "/sbom/generate-sbom",           "method": "GET",  "status_code": 22},
+    # Combined
+    {"name": "Combined Report",            "url": "/combined-report",              "method": "GET",  "status_code": 23},
     # Final cleanup
     {"name": "Clean Resources",           "url": "/cleanresources",               "method": "POST", "status_code": 30},
 ]
 
 ENDPOINTS_TO_STORE = {
     "/aibom/ai-branch-trace",
-    "/aibom/model-card-handler",
     "/aibom/ai-targeted-scan",
     "/aibom/model-deprecation-check",
     "/aibom/aibom-connector",
@@ -142,6 +143,7 @@ ENDPOINTS_TO_STORE = {
     "/aibom/llm-validate",
     "/aibom/semgrep-imports-scan",
     "/sbom/generate-sbom",
+    "/combined-report",
 }
 
 
@@ -931,10 +933,27 @@ def _run_job_sync(job_id: str, job: Dict[str, Any]):
             _jobs.put(job_id, job)
 
     # ── Success: write result file ──────────────────────────────────
+    # Build combined report from AIBOM connector + SBOM generate-sbom responses
+    aibom_resp = responses.get("aibom_aibom-connector", {}).get("response")
+    sbom_resp = responses.get("sbom_generate-sbom", {}).get("response")
+
+    # The SBOM endpoint wraps CycloneDX inside reports.cyclonedx
+    sbom_cdx = None
+    if isinstance(sbom_resp, dict):
+        sbom_cdx = sbom_resp.get("reports", {}).get("cyclonedx")
+
+    combined = build_combined_report(
+        aibom_data=aibom_resp if isinstance(aibom_resp, dict) else None,
+        sbom_data=sbom_cdx if isinstance(sbom_cdx, dict) else None,
+        scan_id=scan_id,
+        project_name=repo_path.rstrip("/").split("/")[-1].replace(".git", ""),
+    )
+
     result_data = {
         "scan_id": scan_id,
         "job_id": job_id,
         "status": 1,
+        "combined_report": combined,
         "responses": responses,
         "Scanstarttime": job["created_at"],
         "endtime": datetime.now().isoformat(),

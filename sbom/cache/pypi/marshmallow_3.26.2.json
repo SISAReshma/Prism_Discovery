@@ -1,0 +1,22 @@
+{
+  "key": "marshmallow_3.26.2",
+  "cached_at": "2026-02-20T05:25:05.814704Z",
+  "data": {
+    "name": "marshmallow",
+    "version": "3.26.2",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A lightweight library for converting complex datatypes to and from native Python datatypes.",
+    "release_date": "2025-12-22T06:53:51.801503Z",
+    "homepage": "https://pypi.org/project/marshmallow/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "013fa8a3c4c276c24d26d84ce934dc964e2aa794345a0f8c7e5a7191482c8a73"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

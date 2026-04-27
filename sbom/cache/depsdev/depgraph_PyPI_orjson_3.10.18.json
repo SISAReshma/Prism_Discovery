@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_orjson_3.10.18",
+  "cached_at": "2026-04-09T09:16:37.852371Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "charset-normalizer_3.4.1",
+  "cached_at": "2026-04-09T09:29:55.755649Z",
+  "data": {
+    "name": "charset-normalizer",
+    "version": "3.4.1",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet.",
+    "release_date": "2024-12-24T18:09:43.671371Z",
+    "homepage": "https://pypi.org/project/charset-normalizer/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "91b36a978b5ae0ee86c394f5a54d6ef44db1de0815eb43de826d41d21e4af3de"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

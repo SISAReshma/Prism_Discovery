@@ -1,0 +1,262 @@
+{
+  "key": "depgraph_PyPI_peft_0.15.2",
+  "cached_at": "2026-04-09T09:16:41.412988Z",
+  "data": {
+    "direct": [
+      {
+        "name": "accelerate",
+        "version": "1.13.0"
+      },
+      {
+        "name": "huggingface-hub",
+        "version": "1.8.0"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "psutil",
+        "version": "7.2.2"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "safetensors",
+        "version": "0.7.0"
+      },
+      {
+        "name": "torch",
+        "version": "2.11.0"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "transformers",
+        "version": "5.4.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "annotated-doc",
+        "version": "0.0.4"
+      },
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.4.3"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "regex",
+        "version": "2026.3.32"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "tokenizers",
+        "version": "0.22.2"
+      },
+      {
+        "name": "typer",
+        "version": "0.24.1"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "accelerate": {
+        "version": "1.13.0",
+        "relation": "DIRECT"
+      },
+      "annotated-doc": {
+        "version": "0.0.4",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.13.0",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "click": {
+        "version": "8.3.1",
+        "relation": "INDIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.25.2",
+        "relation": "INDIRECT"
+      },
+      "fsspec": {
+        "version": "2026.3.0",
+        "relation": "INDIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "hf-xet": {
+        "version": "1.4.3",
+        "relation": "INDIRECT"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "relation": "INDIRECT"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "relation": "INDIRECT"
+      },
+      "huggingface-hub": {
+        "version": "1.8.0",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "psutil": {
+        "version": "7.2.2",
+        "relation": "DIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "regex": {
+        "version": "2026.3.32",
+        "relation": "INDIRECT"
+      },
+      "rich": {
+        "version": "14.3.3",
+        "relation": "INDIRECT"
+      },
+      "safetensors": {
+        "version": "0.7.0",
+        "relation": "DIRECT"
+      },
+      "shellingham": {
+        "version": "1.5.4",
+        "relation": "INDIRECT"
+      },
+      "tokenizers": {
+        "version": "0.22.2",
+        "relation": "INDIRECT"
+      },
+      "torch": {
+        "version": "2.11.0",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "DIRECT"
+      },
+      "transformers": {
+        "version": "5.4.0",
+        "relation": "DIRECT"
+      },
+      "typer": {
+        "version": "0.24.1",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 31,
+    "source": "deps.dev"
+  }
+}

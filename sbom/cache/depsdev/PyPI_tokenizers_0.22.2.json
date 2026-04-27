@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tokenizers_0.22.2",
+  "cached_at": "2026-04-09T09:23:33.904522Z",
+  "data": {
+    "name": "tokenizers",
+    "version": "0.22.2",
+    "license": "non-standard",
+    "homepage": "https://github.com/huggingface/tokenizers",
+    "description": "",
+    "release_date": "2026-01-05T10:40:58Z"
+  }
+}

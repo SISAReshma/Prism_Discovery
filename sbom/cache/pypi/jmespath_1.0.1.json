@@ -1,0 +1,22 @@
+{
+  "key": "jmespath_1.0.1",
+  "cached_at": "2026-04-09T09:30:12.876796Z",
+  "data": {
+    "name": "jmespath",
+    "version": "1.0.1",
+    "license": "MIT",
+    "supplier": "James Saryerwinnie",
+    "description": "JSON Matching Expressions",
+    "release_date": "2022-06-17T18:00:10.251235Z",
+    "homepage": "https://github.com/jmespath/jmespath.py",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

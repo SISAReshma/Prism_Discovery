@@ -1,0 +1,22 @@
+{
+  "key": "accelerate_1.13.0",
+  "cached_at": "2026-04-09T09:31:31.008992Z",
+  "data": {
+    "name": "accelerate",
+    "version": "1.13.0",
+    "license": "Apache",
+    "supplier": "The Hugging Face team",
+    "description": "Accelerate",
+    "release_date": "2026-03-04T19:34:10.313448Z",
+    "homepage": "https://github.com/huggingface/accelerate",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "cf1a3efb96c18f7b152eb0fa7490f3710b19c3f395699358f08decca2b8b62e0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10.0"
+  }
+}

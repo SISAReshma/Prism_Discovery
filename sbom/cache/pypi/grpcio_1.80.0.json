@@ -1,0 +1,22 @@
+{
+  "key": "grpcio_1.80.0",
+  "cached_at": "2026-04-09T09:31:36.903692Z",
+  "data": {
+    "name": "grpcio",
+    "version": "1.80.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "HTTP/2-based RPC framework",
+    "release_date": "2026-03-30T08:46:20.894367Z",
+    "homepage": "https://pypi.org/project/grpcio/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "886457a7768e408cdce226ad1ca67d2958917d306523a0e21e1a2fdaa75c9c9c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

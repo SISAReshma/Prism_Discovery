@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_zope.interface_7.2",
+  "cached_at": "2026-04-09T09:18:18.667537Z",
+  "data": {
+    "direct": [
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

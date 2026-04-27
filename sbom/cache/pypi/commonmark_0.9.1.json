@@ -1,0 +1,22 @@
+{
+  "key": "commonmark_0.9.1",
+  "cached_at": "2026-02-20T05:25:39.898203Z",
+  "data": {
+    "name": "commonmark",
+    "version": "0.9.1",
+    "license": "BSD-3-Clause",
+    "supplier": "Bibek Kafle <bkafle662@gmail.com>, Roland Shoemaker <rolandshoemaker@gmail.com>",
+    "description": "Python parser for the CommonMark Markdown spec",
+    "release_date": "2019-10-04T15:37:37.674968Z",
+    "homepage": "https://github.com/rtfd/commonmark.py",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

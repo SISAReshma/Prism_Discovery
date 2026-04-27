@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_watchdog_6.0.0",
+  "cached_at": "2026-04-09T09:21:44.662030Z",
+  "data": {
+    "name": "watchdog",
+    "version": "6.0.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/gorakhargosh/watchdog",
+    "description": "",
+    "release_date": "2024-11-01T14:07:07Z"
+  }
+}

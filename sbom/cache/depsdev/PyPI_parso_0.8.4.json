@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_parso_0.8.4",
+  "cached_at": "2026-04-09T09:20:24.296327Z",
+  "data": {
+    "name": "parso",
+    "version": "0.8.4",
+    "license": "MIT",
+    "homepage": "https://github.com/davidhalter/parso",
+    "description": "",
+    "release_date": "2024-04-05T09:43:53Z"
+  }
+}

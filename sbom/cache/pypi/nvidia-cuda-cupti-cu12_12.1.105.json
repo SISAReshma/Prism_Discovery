@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cuda-cupti-cu12_12.1.105",
+  "cached_at": "2026-02-20T05:21:50.155549Z",
+  "data": {
+    "name": "nvidia-cuda-cupti-cu12",
+    "version": "12.1.105",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUDA profiling tools runtime libs.",
+    "release_date": "2023-04-19T15:47:32.502317Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e54fde3983165c624cb79254ae9818a456eb6e87a7fd4d56a2352c24ee542d7e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

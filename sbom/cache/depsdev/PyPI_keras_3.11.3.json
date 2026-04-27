@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_keras_3.11.3",
+  "cached_at": "2026-04-09T09:19:38.152510Z",
+  "data": {
+    "name": "keras",
+    "version": "3.11.3",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/keras-team/keras",
+    "description": "",
+    "release_date": "2025-08-21T22:08:55Z"
+  }
+}

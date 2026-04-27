@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_outcome_1.3.0.post0",
+  "cached_at": "2026-04-08T07:28:06.389610Z",
+  "data": {
+    "name": "outcome",
+    "version": "1.3.0.post0",
+    "license": "Apache-2.0 OR MIT",
+    "homepage": "https://github.com/python-trio/outcome",
+    "description": "",
+    "release_date": "2023-10-26T04:26:02Z"
+  }
+}

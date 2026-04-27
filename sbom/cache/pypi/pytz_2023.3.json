@@ -1,0 +1,22 @@
+{
+  "key": "pytz_2023.3",
+  "cached_at": "2026-02-20T05:18:42.037328Z",
+  "data": {
+    "name": "pytz",
+    "version": "2023.3",
+    "license": "MIT",
+    "supplier": "Stuart Bishop",
+    "description": "World timezone definitions, modern and historical",
+    "release_date": "2023-03-29T04:23:25.307301Z",
+    "homepage": "http://pythonhosted.org/pytz",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a151b3abb88eda1d4e34a9814df37de2a80e301e68ba0fd856fb9b46bfbbbffb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_keyring_25.7.0",
+  "cached_at": "2026-04-08T07:27:48.663085Z",
+  "data": {
+    "name": "keyring",
+    "version": "25.7.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jaraco/keyring",
+    "description": "",
+    "release_date": "2025-11-16T16:26:08Z"
+  }
+}

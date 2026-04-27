@@ -1,0 +1,22 @@
+{
+  "key": "deepl_1.17.0",
+  "cached_at": "2026-04-09T09:29:59.574164Z",
+  "data": {
+    "name": "deepl",
+    "version": "1.17.0",
+    "license": "MIT",
+    "supplier": "DeepL SE",
+    "description": "Python library for the DeepL API.",
+    "release_date": "2024-02-07T10:56:56.774131Z",
+    "homepage": "https://github.com/DeepLcom/deepl-python",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2fb51fa8d9c04a081123c1f17c5bc3dd9c4711acd59687a71c470a345ab9b70c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6.2,<4"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_importlib-metadata_6.11.0",
+  "cached_at": "2026-04-09T09:15:28.392252Z",
+  "data": {
+    "direct": [
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "zipp": {
+        "version": "3.23.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

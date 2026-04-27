@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_zalgolib_0.2.2",
+  "cached_at": "2026-04-09T09:18:17.256868Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

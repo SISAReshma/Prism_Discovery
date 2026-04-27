@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_platformdirs_4.3.7",
+  "cached_at": "2026-04-09T09:16:43.552142Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "ghp-import_2.1.0",
+  "cached_at": "2026-04-08T07:29:12.823195Z",
+  "data": {
+    "name": "ghp-import",
+    "version": "2.1.0",
+    "license": "Apache Software License",
+    "supplier": "Paul Joseph Davis",
+    "description": "Copy your docs directly to the gh-pages branch.",
+    "release_date": "2022-05-02T15:47:14.552377Z",
+    "homepage": "https://github.com/c-w/ghp-import",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8337dd7b50877f163d4c0289bc1f1c7f127550241988d568c1db512c4324a619"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

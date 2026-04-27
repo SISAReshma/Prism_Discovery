@@ -1,0 +1,22 @@
+{
+  "key": "pygments_2.20.0",
+  "cached_at": "2026-04-09T09:31:10.173084Z",
+  "data": {
+    "name": "Pygments",
+    "version": "2.20.0",
+    "license": "NOASSERTION",
+    "supplier": "Matth\u00e4us G. Chajdas",
+    "description": "Pygments is a syntax highlighting package written in Python.",
+    "release_date": "2026-03-29T13:29:30.038266Z",
+    "homepage": "https://pypi.org/project/Pygments/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "81a9e26dd42fd28a23a2d169d86d7ac03b46e2f8b59ed4698fb4785f946d0176"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

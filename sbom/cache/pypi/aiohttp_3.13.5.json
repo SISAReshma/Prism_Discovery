@@ -1,0 +1,22 @@
+{
+  "key": "aiohttp_3.13.5",
+  "cached_at": "2026-04-09T09:31:22.240458Z",
+  "data": {
+    "name": "aiohttp",
+    "version": "3.13.5",
+    "license": "Apache-2.0 AND MIT",
+    "supplier": "Unknown",
+    "description": "Async http client/server framework (asyncio)",
+    "release_date": "2026-03-31T21:56:30.024763Z",
+    "homepage": "https://pypi.org/project/aiohttp/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "02222e7e233295f40e011c1b00e3b0bd451f22cf853a0304c3595633ee47da4b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

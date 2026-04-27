@@ -1,0 +1,22 @@
+{
+  "key": "backoff_2.2.1",
+  "cached_at": "2026-04-09T09:29:52.243655Z",
+  "data": {
+    "name": "backoff",
+    "version": "2.2.1",
+    "license": "MIT",
+    "supplier": "Bob Green",
+    "description": "Function decoration for backoff and retry",
+    "release_date": "2022-10-05T19:19:30.546686Z",
+    "homepage": "https://github.com/litl/backoff",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "63579f9a0628e06278f7e47b7d7d5b6ce20dc65c5e96a6f3ca99a6adca0396e8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7,<4.0"
+  }
+}

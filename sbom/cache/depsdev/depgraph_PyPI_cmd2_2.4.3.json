@@ -1,0 +1,37 @@
+{
+  "key": "depgraph_PyPI_cmd2_2.4.3",
+  "cached_at": "2026-04-09T09:14:30.295274Z",
+  "data": {
+    "direct": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "pyperclip",
+        "version": "1.11.0"
+      },
+      {
+        "name": "wcwidth",
+        "version": "0.6.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "DIRECT"
+      },
+      "pyperclip": {
+        "version": "1.11.0",
+        "relation": "DIRECT"
+      },
+      "wcwidth": {
+        "version": "0.6.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 3,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "uvicorn_0.35.0",
+  "cached_at": "2026-04-08T07:29:12.375069Z",
+  "data": {
+    "name": "uvicorn",
+    "version": "0.35.0",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "The lightning-fast ASGI server.",
+    "release_date": "2025-06-28T16:15:44.816841Z",
+    "homepage": "https://pypi.org/project/uvicorn/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "197535216b25ff9b785e29a0b79199f55222193d47f820816e7da751e9bc8d4a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

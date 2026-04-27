@@ -1,0 +1,22 @@
+{
+  "key": "rapidfuzz_3.14.5",
+  "cached_at": "2026-04-09T09:31:33.468569Z",
+  "data": {
+    "name": "RapidFuzz",
+    "version": "3.14.5",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "rapid fuzzy string matching",
+    "release_date": "2026-04-07T11:13:37.733795Z",
+    "homepage": "https://pypi.org/project/RapidFuzz/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "071d96b957a33b9296b9284b6350a0fb6d030b154a04efd7c15e56b98b79a517"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

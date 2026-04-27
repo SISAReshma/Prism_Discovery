@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_torchaudio_2.8.0",
+  "cached_at": "2026-04-09T09:21:31.283833Z",
+  "data": {
+    "name": "torchaudio",
+    "version": "2.8.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/pytorch/audio",
+    "description": "",
+    "release_date": "2025-08-06T14:58:53Z"
+  }
+}

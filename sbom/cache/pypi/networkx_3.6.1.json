@@ -1,0 +1,22 @@
+{
+  "key": "networkx_3.6.1",
+  "cached_at": "2026-04-09T09:32:16.371716Z",
+  "data": {
+    "name": "networkx",
+    "version": "3.6.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Python package for creating and manipulating graphs and networks",
+    "release_date": "2025-12-08T17:02:38.159362Z",
+    "homepage": "https://pypi.org/project/networkx/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python !=3.14.1,>=3.11"
+  }
+}

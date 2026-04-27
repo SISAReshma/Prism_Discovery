@@ -19,21 +19,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("prismaibom")
 
-# Install transparent decryption hooks before anything reads data files
-try:
-    import _file_vault
-    _file_vault.install()
-    logger.info("[VAULT] In-memory decryption hooks installed")
-except ImportError:
-    pass
 
-# Enforce runtime security (anti-debug, anti-ptrace, disable core dumps)
-try:
-    import _runtime_guard
-    _runtime_guard.enforce()
-    logger.info("[GUARD] Runtime security protections active")
-except ImportError:
-    pass
 
 import os
 import json
@@ -41,8 +27,8 @@ import base64
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env from aibom/src so HF / provider tokens are available
-_env_path = Path(__file__).resolve().parent / "aibom" / "src" / ".env"
+# Load .env so HF / provider tokens are available
+_env_path = Path(__file__).resolve().parent / ".env"
 if _env_path.exists():
     load_dotenv(_env_path, override=False)
 from contextlib import asynccontextmanager
@@ -80,11 +66,8 @@ from aibom.src.models import (
     AITargetedScanResponse, LibraryScanResult, ScanFinding, ScanSummary,
     ModelDetection,
     APILibraryScanResult, APIScanSummary,
-    ModelCardHandlerResponse, ModelCardResult, SuffixInfo,
+
     ModelDeprecationResponse, ModelDeprecationResult, DeprecationInfo, DeprecationSummary,
-    CategoryAPIFindings, APICallSegregationSummary, APICallSegregationResponse,
-    FrameworksDetectedResponse, DetectedFramework, SubImport, FrameworksSummary,
-    AgenticAssetsResponse, AgenticFrameworkAssets, AgenticAsset, AgenticAssetSummary,
     AIBOMConnectorResponse, ConnectorMeta, ConnectorModelResult, ConnectorDeprecationSummary,
 )
 from core.session import (
@@ -121,13 +104,12 @@ from aibom.src.package_resolver import resolve_and_compare
 from aibom.src.dependency_graph import build_dependency_graph
 from aibom.src.llm_validator import validate_libraries
 from aibom.src.llm_categorizer import run_categorization
-from aibom.src.framework_detector import detect_frameworks
 from aibom.src.ai_branch_tracer import trace_ai_branches, format_branch_summary
 from aibom.src.ai_targeted_scanner import scan_ai_branches, scan_api_branches
-from aibom.src.agentic_asset_scanner import scan_agentic_assets
-from aibom.src.model_card_handler import process_models_for_cards
+
 from aibom.src.model_deprecation_checker import check_models_deprecation
 from aibom.src.aibom_connector import build_aibom, connector_registry
+from aibom.src.combined_report import build_combined_report
 
 # =============================================================================
 # SBOM IMPORTS
@@ -1741,83 +1723,6 @@ async def aibom_llm_categorize(
     )
 
 
-@app.get("/aibom/frameworks-detected", response_model=FrameworksDetectedResponse)
-async def aibom_frameworks_detected(
-    session: SessionData = Depends(require_validated_session()),
-    session_token: str = Header(...)
-):
-    """
-    Detect and group all frameworks by type: AI, API, and Agentic.
-    
-    Each framework includes its base package, category, sub-imports
-    (e.g. from openai import OpenAIError → OpenAIError mapped to openai),
-    and the source files where it is used.
-    
-    **Requires:** /aibom/llm-categorize and /aibom/filtered-imports must be called first.
-    
-    **Headers:** `session-token: <token from /aibom/set-repository>`
-    
-    **Framework Types:**
-    - **ai**: AI_PROVIDER, ML_ALGORITHM, DL_ALGORITHM, AI_ORCHESTRATION, VECTOR_DB, DATA_PROCESSING
-    - **api**: HTTP_CLIENT, API_FRAMEWORK, GRAPHQL, GRPC, WEBSOCKET, CLOUD_SDK, API_WRAPPER
-    - **agentic**: AGENTIC_FRAMEWORK (crewai, autogen, langgraph, semantic-kernel, etc.)
-    """
-    logger.info("[AIBOM] frameworks-detected: Detecting framework types")
-    _t0 = _time.monotonic()
-
-    if "llm_categorization" not in session.extra:
-        logger.warning("[AIBOM] frameworks-detected: LLM categorization not found")
-        raise_error(
-            "LLM_CATEGORIZATION_NOT_FOUND",
-            "LLM categorization not found",
-            hint="Call /aibom/llm-categorize first",
-        )
-
-    import_packages = session.extra.get("import_packages")
-    if not import_packages:
-        logger.warning("[AIBOM] frameworks-detected: Import packages not found")
-        raise HTTPException(
-            status_code=400,
-            detail="Import packages not found. Run /aibom/filtered-imports first.",
-        )
-
-    result = detect_frameworks(
-        categorization_data=session.extra["llm_categorization"],
-        import_packages=import_packages,
-    )
-
-    logger.info(
-        f"[AIBOM] frameworks-detected: "
-        f"{result['summary']['total_ai']} AI, "
-        f"{result['summary']['total_api']} API, "
-        f"{result['summary']['total_agentic']} agentic "
-        f"({(_time.monotonic()-_t0)*1000:.0f}ms)"
-    )
-    await update_session(session_token, frameworks_detected=result)
-
-    return FrameworksDetectedResponse(
-        ai_frameworks=[
-            DetectedFramework(
-                **{**fw, "sub_imports": [SubImport(**si) for si in fw.get("sub_imports", [])]}
-            )
-            for fw in result["ai_frameworks"]
-        ],
-        api_frameworks=[
-            DetectedFramework(
-                **{**fw, "sub_imports": [SubImport(**si) for si in fw.get("sub_imports", [])]}
-            )
-            for fw in result["api_frameworks"]
-        ],
-        agentic_frameworks=[
-            DetectedFramework(
-                **{**fw, "sub_imports": [SubImport(**si) for si in fw.get("sub_imports", [])]}
-            )
-            for fw in result["agentic_frameworks"]
-        ],
-        summary=FrameworksSummary(**result["summary"]),
-    )
-
-
 @app.get("/aibom/ai-branch-trace", response_model=AIBranchTraceResponse, response_model_exclude_none=True)
 async def aibom_ai_branch_trace(
     session: SessionData = Depends(require_validated_session()),
@@ -2001,338 +1906,6 @@ async def aibom_ai_targeted_scan(
     )
 
 
-@app.get("/aibom/agentic-assets", response_model=AgenticAssetsResponse)
-async def aibom_agentic_assets(
-    session: SessionData = Depends(require_validated_session()),
-    session_token: str = Header(...)
-):
-    """
-    Scan traced files for agentic asset definitions (Agents, Tasks, Crews).
-
-    Uses Python AST parsing to extract instantiation details from agentic
-    framework code (CrewAI, AutoGen, OpenAI Agents SDK, etc.):
-    - **Agents:** role, goal, backstory, name, instructions, etc.
-    - **Tasks:** description, expected_output, agent assignment
-    - **Crews:** agent/task composition, process type
-
-    Each asset includes the enclosing function name and source location.
-
-    **Requires:** /aibom/ai-branch-trace and /aibom/frameworks-detected must be called first.
-
-    **Headers:** `session-token: <token from /aibom/set-repository>`
-    """
-    logger.info("[AIBOM] agentic-assets: Scanning for agentic asset definitions")
-    _t0 = _time.monotonic()
-
-    if "ai_branch_trace" not in session.extra:
-        logger.warning("[AIBOM] agentic-assets: AI branch trace not found")
-        raise_error(
-            "AI_BRANCH_TRACE_NOT_FOUND",
-            "AI branch trace not found",
-            hint="Call /aibom/ai-branch-trace first",
-        )
-
-    branch_trace = session.extra["ai_branch_trace"]
-    frameworks_detected = session.extra.get("frameworks_detected")
-    source_path = get_source_path_aibom(session)
-
-    result = scan_agentic_assets(
-        checkout_dir=source_path,
-        branch_trace=branch_trace,
-        frameworks_detected=frameworks_detected,
-    )
-
-    summary = result.get("summary", {})
-    logger.info(
-        f"[AIBOM] agentic-assets: {summary.get('total_agents', 0)} agents, "
-        f"{summary.get('total_tasks', 0)} tasks, "
-        f"{summary.get('total_crews', 0)} crews "
-        f"({(_time.monotonic()-_t0)*1000:.0f}ms)"
-    )
-
-    await update_session(session_token, agentic_assets=result)
-
-    return AgenticAssetsResponse(
-        agentic_assets=[
-            AgenticFrameworkAssets(
-                framework=fw.get("framework", ""),
-                agents=[AgenticAsset(**a) for a in fw.get("agents", [])],
-                tasks=[AgenticAsset(**a) for a in fw.get("tasks", [])],
-                crews=[AgenticAsset(**a) for a in fw.get("crews", [])],
-                other=[AgenticAsset(**a) for a in fw.get("other", [])],
-            )
-            for fw in result.get("agentic_assets", [])
-        ],
-        all_assets=[AgenticAsset(**a) for a in result.get("all_assets", [])],
-        summary=AgenticAssetSummary(**summary),
-    )
-
-
-@app.get("/aibom/api-call-segregation", response_model=APICallSegregationResponse, response_model_exclude_none=True)
-async def aibom_api_call_segregation(
-    session: SessionData = Depends(require_validated_session()),
-    session_token: str = Header(...)
-):
-    """
-    Segregate detected API calls by category and identify AI-related API calls.
-    
-    Groups all API findings from the targeted scan into their categories
-    (HTTP_CLIENT, API_FRAMEWORK, GRAPHQL, GRPC, WEBSOCKET, CLOUD_SDK, API_WRAPPER)
-    and separates findings from AI libraries (BOTH type) vs pure API libraries.
-    
-    **Requires:** /aibom/ai-targeted-scan must be called first.
-    
-    **Headers:** `session-token: <token from /aibom/set-repository>`
-    """
-    logger.info("[AIBOM] api-call-segregation: Segregating API calls by category")
-    _t0 = _time.monotonic()
-
-    if "ai_targeted_scan" not in session.extra:
-        logger.warning("[AIBOM] api-call-segregation: AI targeted scan not found")
-        raise_error("AI_TARGETED_SCAN_NOT_FOUND", "AI targeted scan not found", hint="Call /aibom/ai-targeted-scan first")
-
-    targeted_data = session.extra["ai_targeted_scan"]
-    api_scan_results = targeted_data.get("api_scan_results", [])
-    api_endpoints_detected = targeted_data.get("api_endpoints_detected", [])
-
-    # ── Identify AI libraries (libraries that are also AI-positive / BOTH) ──
-    ai_lib_names: set[str] = set()
-    llm_validation = session.extra.get("llm_validation", {})
-    for lib in llm_validation.get("ai_libraries", []):
-        ai_lib_names.add(lib.get("library", "").lower())
-
-    # Only mark AI libraries that are ALSO in api_scan_results as AI-API libs
-    # (true BOTH-type libraries). Pure-AI-only libraries should NOT be in ai_lib_names.
-    api_lib_names_set = {
-        d.get("library", "").lower() for d in api_scan_results
-    }
-    ai_scan_results = targeted_data.get("scan_results", [])
-    for lib_data in ai_scan_results:
-        lib_lower = lib_data.get("library", "").lower()
-        if lib_lower in api_lib_names_set:
-            ai_lib_names.add(lib_lower)
-
-    # ── Group API results by category ──
-    categories: dict[str, dict] = {}
-
-    for lib_data in api_scan_results:
-        lib_name = lib_data.get("library", "")
-        category = (lib_data.get("category") or "unknown").upper()
-        is_ai_lib = lib_name.lower() in ai_lib_names
-
-        if category not in categories:
-            categories[category] = {
-                "libraries": [],
-                "ai_api_libraries": [],
-                "other_api_libraries": [],
-                "ai_api_findings": [],
-                "other_api_findings": [],
-                "endpoints": set(),
-            }
-
-        cat = categories[category]
-        cat["libraries"].append(lib_name)
-
-        if is_ai_lib:
-            cat["ai_api_libraries"].append(lib_name)
-        else:
-            cat["other_api_libraries"].append(lib_name)
-
-        # Segregate findings
-        for f in lib_data.get("findings", []):
-            finding = ScanFinding(**f) if isinstance(f, dict) else f
-            if is_ai_lib:
-                cat["ai_api_findings"].append(finding)
-            else:
-                cat["other_api_findings"].append(finding)
-
-        # Collect endpoints
-        for ep in lib_data.get("endpoints_detected", []):
-            cat["endpoints"].add(ep if isinstance(ep, str) else str(ep))
-
-    # ── Include AI scan findings for BOTH libraries (e.g. chat.completions.create) ──
-    # These are captured by AI provider rules (Pass A), not API call rules (Pass B).
-    # Map them to the library's API category so they appear as ai_api_findings.
-    # Build API category lookup from api_scan_results + llm_categorization
-    lib_api_category: dict[str, str] = {}
-    for lib_data in api_scan_results:
-        ln = lib_data.get("library", "").lower()
-        lib_api_category[ln] = (lib_data.get("category") or "unknown").upper()
-    llm_cat_data = session.extra.get("llm_categorization", {})
-    for cat_name, cat_group in llm_cat_data.get("api_categories", {}).items():
-        for lib_entry in cat_group.get("libraries", []):
-            ln = (lib_entry.get("library") or "").lower()
-            if ln and ln not in lib_api_category:
-                lib_api_category[ln] = cat_name.upper()
-
-    for lib_data in ai_scan_results:
-        lib_name = lib_data.get("library", "")
-        if lib_name.lower() not in ai_lib_names:
-            continue
-        ai_findings = lib_data.get("findings", [])
-        if not ai_findings:
-            continue
-        # Determine API category for this AI library
-        api_cat = lib_api_category.get(lib_name.lower(), (lib_data.get("category") or "AI_PROVIDER").upper())
-        if api_cat not in categories:
-            categories[api_cat] = {
-                "libraries": [],
-                "ai_api_libraries": [],
-                "other_api_libraries": [],
-                "ai_api_findings": [],
-                "other_api_findings": [],
-                "endpoints": set(),
-            }
-        cat = categories[api_cat]
-        if lib_name not in cat["libraries"]:
-            cat["libraries"].append(lib_name)
-        if lib_name not in cat["ai_api_libraries"]:
-            cat["ai_api_libraries"].append(lib_name)
-        # Dedupe: collect existing finding signatures to avoid duplicates with Pass B
-        existing_sigs = {
-            (f.file if hasattr(f, 'file') else f.get('file', ''),
-             f.line if hasattr(f, 'line') else f.get('line', 0))
-            for f in cat["ai_api_findings"]
-        }
-        for f in ai_findings:
-            finding = ScanFinding(**f) if isinstance(f, dict) else f
-            sig = (finding.file, finding.line)
-            if sig not in existing_sigs:
-                cat["ai_api_findings"].append(finding)
-                existing_sigs.add(sig)
-
-    # Also fold in endpoints from api_endpoints_detected (may carry extra context)
-    for ep in api_endpoints_detected:
-        ep_category = (ep.get("category") or "unknown").upper() if isinstance(ep, dict) else "UNKNOWN"
-        ep_str = ep.get("endpoint", "") if isinstance(ep, dict) else str(ep)
-        if ep_category in categories and ep_str:
-            categories[ep_category]["endpoints"].add(ep_str)
-
-    # ── Build response models ──
-    category_models: dict[str, CategoryAPIFindings] = {}
-    total_ai_api = 0
-    total_other_api = 0
-    total_endpoints = 0
-    cats_breakdown: dict[str, int] = {}
-
-    for cat_name, cat_data in sorted(categories.items()):
-        ai_count = len(cat_data["ai_api_findings"])
-        other_count = len(cat_data["other_api_findings"])
-        eps = sorted(cat_data["endpoints"])
-
-        total_ai_api += ai_count
-        total_other_api += other_count
-        total_endpoints += len(eps)
-        cats_breakdown[cat_name] = ai_count + other_count
-
-        category_models[cat_name] = CategoryAPIFindings(
-            category=cat_name,
-            total_findings=ai_count + other_count,
-            ai_api_count=ai_count,
-            other_api_count=other_count,
-            libraries=cat_data["libraries"],
-            ai_api_libraries=cat_data["ai_api_libraries"],
-            other_api_libraries=cat_data["other_api_libraries"],
-            ai_api_findings=cat_data["ai_api_findings"],
-            other_api_findings=cat_data["other_api_findings"],
-            endpoints=eps,
-        )
-
-    both_libs = sorted({
-        lib for cat_data in categories.values()
-        for lib in cat_data["ai_api_libraries"]
-    })
-
-    total_findings = total_ai_api + total_other_api
-    logger.info(
-        f"[AIBOM] api-call-segregation: {len(categories)} categories, "
-        f"{total_findings} findings ({total_ai_api} AI-API, {total_other_api} other), "
-        f"{len(both_libs)} AI-API libs ({(_time.monotonic()-_t0)*1000:.0f}ms)"
-    )
-
-    return APICallSegregationResponse(
-        categories=category_models,
-        ai_api_libraries=both_libs,
-        summary=APICallSegregationSummary(
-            total_categories_found=len(categories),
-            total_api_findings=total_findings,
-            total_ai_api_findings=total_ai_api,
-            total_other_api_findings=total_other_api,
-            total_endpoints=total_endpoints,
-            ai_api_libraries=both_libs,
-            categories_breakdown=cats_breakdown,
-        ),
-    )
-
-
-@app.get("/aibom/model-card-handler", response_model=ModelCardHandlerResponse)
-async def aibom_model_card_handler(
-    session: SessionData = Depends(require_validated_session())
-):
-    """
-    Fetch model cards for detected models with iterative suffix stripping.
-    
-    **Requires:** /aibom/ai-targeted-scan must be called first.
-    
-    **Headers:** `session-token: <token from /aibom/set-repository>`
-    """
-    logger.info("[AIBOM] model-card-handler: Fetching model cards for detected models")
-    _t0 = _time.monotonic()
-
-    if "ai_targeted_scan" not in session.extra:
-        logger.warning("[AIBOM] model-card-handler: AI targeted scan not found")
-        raise_error("AI_TARGETED_SCAN_NOT_FOUND", "AI targeted scan not found", hint="Call /aibom/ai-targeted-scan first")
-    
-    distinct_models = session.extra["ai_targeted_scan"].get("distinct_models", [])
-    
-    if not distinct_models:
-        logger.info("[AIBOM] model-card-handler: No models detected to fetch cards for")
-        return ModelCardHandlerResponse(
-            models_processed=0,
-            found_count=0,
-            not_found_count=0,
-            results=[]
-        )
-    
-    result = process_models_for_cards(
-        model_names=distinct_models,
-        hf_token=os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_TOKEN"),
-        try_stripping=True,
-        try_azure=True
-    )
-    
-    logger.info(f"[AIBOM] model-card-handler: {result.get('models_processed', 0)} processed, {result.get('found_count', 0)} cards found ({(_time.monotonic()-_t0)*1000:.0f}ms)")
-    session.extra["model_card_results"] = result
-    
-    results = [
-        ModelCardResult(
-            model_card_found=r.get("model_card_found", False),
-            original_model_name=r.get("original_model_name", ""),
-            base_model_name=r.get("base_model_name", ""),
-            stripped_suffixes=r.get("stripped_suffixes", []),
-            suffix_info=[
-                SuffixInfo(
-                    suffix=s.get("suffix", ""), 
-                    type=s.get("type", "unknown"),
-                    meaning=s.get("meaning", ""), 
-                    token_count=s.get("token_count"),
-                    parameter_count=s.get("parameter_count")
-                ) for s in r.get("suffix_info", [])
-            ],
-            model_card=r.get("model_card"),
-            lookup_source=r.get("lookup_source"),
-            iterations_required=r.get("iterations_required", 0)
-        )
-        for r in result.get("results", [])
-    ]
-    
-    summary_data = result.get("summary", {})
-    return ModelCardHandlerResponse(
-        models_processed=result.get("models_processed", 0),
-        found_count=result.get("found_count", 0),
-        not_found_count=result.get("not_found_count", 0),
-        results=results
-    )
 
 
 @app.get("/aibom/model-deprecation-check", response_model=ModelDeprecationResponse)
@@ -2377,9 +1950,8 @@ async def aibom_model_deprecation_check(
     logger.info(f"[AIBOM] model-deprecation-check: {result.get('models_checked', 0)} checked, {result.get('deprecated_count', 0)} deprecated ({(_time.monotonic()-_t0)*1000:.0f}ms)")
     session.extra["model_deprecation_results"] = result
     
-    # Get model card results to check which models have cards
-    model_card_results = session.extra.get("model_card_results", {}).get("results", [])
-    model_cards_found = {r.get("model_name"): r.get("card_found", False) for r in model_card_results}
+    # Model card data is now resolved internally by /aibom/aibom-connector
+    model_cards_found: dict = {}
     
     results = [
         ModelDeprecationResult(
@@ -2474,7 +2046,6 @@ async def aibom_connector(
         dependencies=result.get("dependencies", []),
         compositions=result.get("compositions", []),
         vulnerabilities=result.get("vulnerabilities", []),
-        agentic_frameworks=result.get("agentic_frameworks", {}),
         connector_meta=result.get("_connector_meta"),
     )
 
@@ -4032,7 +3603,7 @@ async def sbom_generate_sbom(
     session_token: str = Header(...)
 ):
     """
-    Step 6: Generate all SBOM reports (JSON, SPDX, CycloneDX).
+    Step 6: Generate CycloneDX SBOM report.
     
     **Requires:** /sbom/fetch-osv to be called first.
     
@@ -4040,7 +3611,7 @@ async def sbom_generate_sbom(
     """
     logger.info("[SBOM] generate-sbom: Generating all SBOM formats")
     _t0 = _time.monotonic()
-    from sbom.src.core.sbom_generator import generate_json_sbom, generate_spdx_sbom, generate_cyclonedx_sbom, generate_remediation_sbom
+    from sbom.src.core.sbom_generator import generate_cyclonedx_sbom
     
     packages = session.extra.get("packages")
     if not packages:
@@ -4075,180 +3646,72 @@ async def sbom_generate_sbom(
         "scan_id": scan_id
     }
     
-    json_sbom = generate_json_sbom(catalog, metadata)
-    spdx_sbom = generate_spdx_sbom(catalog, metadata)
     cyclonedx_sbom = generate_cyclonedx_sbom(catalog, metadata)
-    remediation_sbom = generate_remediation_sbom(catalog, metadata)
     
     stats = orchestrator.calculate_statistics(packages)
     
-    logger.info(f"[SBOM] generate-sbom: Generated all formats for '{project_name}' — {stats['scan_summary']['total_components']} components ({(_time.monotonic()-_t0)*1000:.0f}ms)")
+    logger.info(f"[SBOM] generate-sbom: Generated CycloneDX SBOM for '{project_name}' — {stats['scan_summary']['total_components']} components ({(_time.monotonic()-_t0)*1000:.0f}ms)")
     
-    # Build components preview with vulnerability counts by severity
-    components_preview = build_component_preview_with_vulns(packages)
-
-    # Include unused detection results if /sbom/detect-unused was called
-    unused_detection = session.extra.get("unused_detection")
-    unused_summary = None
-    if unused_detection:
-        evidence_map = unused_detection.get("evidence_map", {})
-        unused_summary = {
-            "used_count": unused_detection.get("resolution_summary", {}).get("total_used", 0),
-            "unused_count": unused_detection.get("resolution_summary", {}).get("total_unused", 0),
-            "used_libraries": unused_detection.get("used_libraries", []),
-            "unused_libraries": unused_detection.get("unused_libraries", []),
-            "evidence_map": evidence_map,
-        }
-
     response = {
         "message": "SBOM generation complete",
         "scan_id": scan_id,
         "project_name": project_name,
         "vulnerability_summary": stats["vulnerability_summary"],
         "license_summary": stats["license_summary"],
-        "components_preview": components_preview,
         "reports": {
-            "json": json_sbom,
-            "spdx": spdx_sbom,
-            "cyclonedx": cyclonedx_sbom,
-            "remediation": remediation_sbom
+            "cyclonedx": cyclonedx_sbom
         }
     }
-    if unused_summary:
-        response["unused_detection"] = unused_summary
+    # Store CycloneDX SBOM in session for combined report
+    session.extra["sbom_cyclonedx"] = cyclonedx_sbom
+
     return response
 
 
-@app.get("/sbom/generate-json")
-async def sbom_generate_json_endpoint(
-    session: SessionData = Depends(require_step("generate")),
-    session_token: str = Header(...)
+@app.get("/combined-report")
+async def combined_report_endpoint(
+    session: SessionData = Depends(require_validated_session()),
 ):
     """
-    Generate JSON SBOM format only.
-    
-    **Requires:** /sbom/fetch_osv to be called first.
-    
-    **Headers:** `session-token: <token from /sbom/set_repository>`
+    Generate a combined AIBOM + SBOM report.
+
+    Merges AI Bill of Materials and Software Bill of Materials into a single
+    unified JSON report with summary statistics.
+
+    **Requires:** Both `/aibom/aibom-connector` and `/sbom/generate-sbom`
+    should be called first for a complete report. The endpoint will still
+    work if only one BOM is available.
+
+    **Headers:** `session-token: <token from /set-repository or /set-localpath>`
     """
-    logger.info("[SBOM] generate-json: Generating JSON SBOM format")
+    logger.info("[COMBINED] Generating combined AIBOM + SBOM report")
     _t0 = _time.monotonic()
-    from sbom.src.core.sbom_generator import generate_json_sbom
-    
-    packages = session.extra.get("packages")
-    if not packages:
-        logger.warning("[SBOM] generate-json: No packages found")
+
+    aibom_data = session.extra.get("aibom_connector")
+    sbom_data = session.extra.get("sbom_cyclonedx")
+
+    if not aibom_data and not sbom_data:
         raise HTTPException(status_code=400, detail={
-            "error": "NO_PACKAGES",
-            "message": "No packages found."
+            "error": "NO_BOM_DATA",
+            "message": "No AIBOM or SBOM data found. Run /aibom/aibom-connector and/or /sbom/generate-sbom first."
         })
-    
+
     scan_id = session.scan_id
     project_name = session.repo_name or f"project_{scan_id}"
-    manifests = session.extra.get("manifest_files", [])
-    
-    catalog = session.extra.get("catalog")
-    if not catalog:
-        catalog = orchestrator.build_catalog(
-            packages=packages,
-            manifests=manifests,
-            project_name=project_name,
-            source=project_name,
-            scan_id=scan_id
-        )
-    
-    license_detection = session.extra.get("repo_license")
-    if license_detection and "license_detection" not in catalog:
-        catalog["license_detection"] = license_detection
-    
-    metadata = {
-        "timestamp": catalog.get("timestamp"),
-        "tool": catalog.get("tool", {}),
-        "source": catalog.get("source"),
-        "scan_id": scan_id
-    }
-    
-    json_sbom = generate_json_sbom(catalog, metadata)
-    stats = orchestrator.calculate_statistics(packages)
-    
-    # Build components preview with vulnerability counts by severity
-    components_preview = build_component_preview_with_vulns(packages)
-    
-    logger.info(f"[SBOM] generate-json: JSON SBOM generated for scan {scan_id} ({(_time.monotonic()-_t0)*1000:.0f}ms)")
-    
-    return {
-        "message": "JSON SBOM generated",
-        "scan_id": scan_id,
-        "scan_summary": stats["scan_summary"],
-        "vulnerability_summary": stats["vulnerability_summary"],
-        "license_summary": stats["license_summary"],
-        "components_preview": components_preview,
-        "full_report": json_sbom
-    }
 
+    combined = build_combined_report(
+        aibom_data=aibom_data,
+        sbom_data=sbom_data,
+        scan_id=scan_id,
+        project_name=project_name,
+    )
 
-@app.get("/sbom/generate-spdx")
-async def sbom_generate_spdx_endpoint(
-    session: SessionData = Depends(require_step("generate")),
-    session_token: str = Header(...)
-):
-    """
-    Generate SPDX SBOM format only.
-    
-    **Requires:** /sbom/fetch_osv to be called first.
-    
-    **Headers:** `session-token: <token from /sbom/set_repository>`
-    """
-    logger.info("[SBOM] generate-spdx: Generating SPDX SBOM format")
-    _t0 = _time.monotonic()
-    from sbom.src.core.sbom_generator import generate_spdx_sbom
-    
-    packages = session.extra.get("packages")
-    if not packages:
-        logger.warning("[SBOM] generate-spdx: No packages found")
-        raise HTTPException(status_code=400, detail={
-            "error": "NO_PACKAGES",
-            "message": "No packages found."
-        })
-    
-    scan_id = session.scan_id
-    project_name = session.repo_name or f"project_{scan_id}"
-    manifests = session.extra.get("manifest_files", [])
-    
-    catalog = session.extra.get("catalog")
-    if not catalog:
-        catalog = orchestrator.build_catalog(
-            packages=packages,
-            manifests=manifests,
-            project_name=project_name,
-            source=project_name,
-            scan_id=scan_id
-        )
-    
-    license_detection = session.extra.get("repo_license")
-    if license_detection and "license_detection" not in catalog:
-        catalog["license_detection"] = license_detection
-    
-    metadata = {
-        "timestamp": catalog.get("timestamp"),
-        "tool": catalog.get("tool", {}),
-        "source": catalog.get("source"),
-        "scan_id": scan_id
-    }
-    
-    spdx_sbom = generate_spdx_sbom(catalog, metadata)
-    stats = orchestrator.calculate_statistics(packages)
-    
-    logger.info(f"[SBOM] generate-spdx: SPDX SBOM generated for scan {scan_id} ({(_time.monotonic()-_t0)*1000:.0f}ms)")
-    
-    return {
-        "message": "SPDX SBOM generated",
-        "scan_id": scan_id,
-        "scan_summary": stats["scan_summary"],
-        "vulnerability_summary": stats["vulnerability_summary"],
-        "license_summary": stats["license_summary"],
-        "full_report": spdx_sbom
-    }
+    elapsed = (_time.monotonic() - _t0) * 1000
+    has_aibom = "yes" if aibom_data else "no"
+    has_sbom = "yes" if sbom_data else "no"
+    logger.info(f"[COMBINED] Report generated (AIBOM={has_aibom}, SBOM={has_sbom}) ({elapsed:.0f}ms)")
+
+    return combined
 
 
 @app.get("/sbom/generate-cyclonedx")
@@ -4313,180 +3776,6 @@ async def sbom_generate_cyclonedx_endpoint(
         "license_summary": stats["license_summary"],
         "full_report": cyclonedx_sbom
     }
-
-
-@app.get("/sbom/generate-remediation")
-async def sbom_generate_remediation_endpoint(
-    session: SessionData = Depends(require_step("generate")),
-    session_token: str = Header(...)
-):
-    """
-    Generate remediation report only.
-    
-    **Requires:** /sbom/fetch-osv to be called first.
-    
-    **Headers:** `session-token: <token from /sbom/set-repository>`
-    """
-    logger.info("[SBOM] generate-remediation: Generating remediation report")
-    _t0 = _time.monotonic()
-    from sbom.src.core.sbom_generator import generate_remediation_sbom
-    
-    packages = session.extra.get("packages")
-    if not packages:
-        logger.warning("[SBOM] generate-remediation: No packages found")
-        raise HTTPException(status_code=400, detail={
-            "error": "NO_PACKAGES",
-            "message": "No packages found."
-        })
-    
-    scan_id = session.scan_id
-    project_name = session.repo_name or f"project_{scan_id}"
-    manifests = session.extra.get("manifest_files", [])
-    
-    catalog = session.extra.get("catalog")
-    if not catalog:
-        catalog = orchestrator.build_catalog(
-            packages=packages,
-            manifests=manifests,
-            project_name=project_name,
-            source=project_name,
-            scan_id=scan_id
-        )
-    
-    metadata = {
-        "timestamp": catalog.get("timestamp"),
-        "tool": catalog.get("tool", {}),
-        "source": catalog.get("source"),
-        "scan_id": scan_id
-    }
-    
-    remediation_sbom = generate_remediation_sbom(catalog, metadata)
-    
-    # ── Unused / Used dependency summary (brief listing only) ─────────
-    # Full evidence and details are available at /sbom/detect-unused.
-    unused_detection = session.extra.get("unused_detection")
-    if unused_detection:
-        # Classify unused libraries with per-type remediation advice
-        _CLASSIFICATION_REMEDIATION = {
-            "dev_tool": "This is a dev/build/test tool. Move it to dev-dependencies (e.g. [tool.poetry.group.dev] or devDependencies) so it is excluded from production builds.",
-            "runtime_optional": "This package is invoked via CLI or loaded as a plugin at runtime. Verify it is still needed; if so, document it as a runtime dependency.",
-            "truly_unused": "This dependency is not imported anywhere in code. Remove it from your manifest to reduce attack surface.",
-        }
-        unused_list = []
-        for entry in unused_detection.get("unused_libraries", []):
-            lang = entry.get("language")
-            for lib in entry.get("libraries", []):
-                classification = lib.get("classification", "truly_unused")
-                unused_list.append({
-                    "package": lib.get("package"),
-                    "language": lang,
-                    "classification": classification,
-                    "remediation": _CLASSIFICATION_REMEDIATION.get(classification, _CLASSIFICATION_REMEDIATION["truly_unused"]),
-                })
-        used_list = []
-        for entry in unused_detection.get("used_libraries", []):
-            lang = entry.get("language")
-            for lib in entry.get("libraries", []):
-                used_list.append({"package": lib.get("package"), "language": lang})
-
-        remediation_sbom["dependency_usage"] = {
-            "total_used": unused_detection.get("resolution_summary", {}).get("total_used", 0),
-            "total_unused": unused_detection.get("resolution_summary", {}).get("total_unused", 0),
-            "total_undeclared": unused_detection.get("resolution_summary", {}).get("total_undeclared", 0),
-            "used_libraries": used_list,
-            "unused_libraries": unused_list,
-            "undeclared_imports": unused_detection.get("undeclared_imports", []),
-        }
-    
-    logger.info(f"[SBOM] generate-remediation: Remediation report generated for scan {scan_id} ({(_time.monotonic()-_t0)*1000:.0f}ms)")
-
-    return {
-        "message": "Remediation report generated",
-        "scan_id": scan_id,
-        "full_report": remediation_sbom,
-    }
-
-
-# =============================================================================
-# VEX ENDPOINT
-# =============================================================================
-
-@app.get("/sbom/generate-vex")
-async def sbom_generate_vex_endpoint(
-    session: SessionData = Depends(require_step("generate")),
-    session_token: str = Header(...),
-    format: str = "openvex",
-    download: bool = False,
-):
-    """
-    Generate a VEX (Vulnerability Exploitability eXchange) document.
-
-    **Requires:** /sbom/fetch-osv to be called first.
-
-    **Headers:** `session-token: <token from /sbom/set-repository>`
-
-    **Query params:**
-    - `format`: `openvex` (default) or `cyclonedx`
-    - `download`: if `true`, returns the document as a downloadable `.vex.json` file
-    """
-    from sbom.src.core.vex_generator import (
-        generate_openvex,
-        generate_cyclonedx_vex_statements,
-        generate_vex_summary,
-    )
-    from fastapi.responses import JSONResponse
-    import json as _json
-
-    packages = session.extra.get("packages")
-    if not packages:
-        raise HTTPException(status_code=400, detail={
-            "error": "NO_PACKAGES",
-            "message": "No packages found. Run /sbom/fetch-osv first."
-        })
-
-    scan_id = session.scan_id
-    project_name = session.repo_name or f"project_{scan_id}"
-    manifests = session.extra.get("manifest_files", [])
-
-    catalog = session.extra.get("catalog")
-    if not catalog:
-        catalog = orchestrator.build_catalog(
-            packages=packages,
-            manifests=manifests,
-            project_name=project_name,
-            source=project_name,
-            scan_id=scan_id,
-        )
-
-    fmt = (format or "openvex").lower().strip()
-
-    if fmt == "cyclonedx":
-        cdx_stmts = generate_cyclonedx_vex_statements(catalog)
-        payload = {
-            "message": "CycloneDX VEX statements generated",
-            "scan_id": scan_id,
-            "format": "cyclonedx",
-            "total_statements": len(cdx_stmts),
-            "vulnerabilities": cdx_stmts,
-        }
-    else:
-        vex_summary = generate_vex_summary(catalog, scan_id)
-        payload = {
-            "message": "OpenVEX document generated",
-            "scan_id": scan_id,
-            "format": "openvex",
-            **vex_summary,
-        }
-
-    if download:
-        filename = f"{scan_id}_vex_{fmt}.json"
-        content = _json.dumps(payload, indent=2, ensure_ascii=False)
-        return JSONResponse(
-            content=payload,
-            headers={"Content-Disposition": f'attachment; filename="{filename}"'},
-        )
-
-    return payload
 
 
 # =============================================================================

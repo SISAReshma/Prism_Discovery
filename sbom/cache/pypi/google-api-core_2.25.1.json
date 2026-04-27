@@ -1,0 +1,22 @@
+{
+  "key": "google-api-core_2.25.1",
+  "cached_at": "2026-04-09T09:30:05.341477Z",
+  "data": {
+    "name": "google-api-core",
+    "version": "2.25.1",
+    "license": "Apache 2.0",
+    "supplier": "Unknown",
+    "description": "Google API client core library",
+    "release_date": "2025-06-12T20:52:19.334335Z",
+    "homepage": "https://pypi.org/project/google-api-core/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8a2a56c1fef82987a524371f99f3bd0143702fecc670c72e600c1cda6bf8dbb7"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

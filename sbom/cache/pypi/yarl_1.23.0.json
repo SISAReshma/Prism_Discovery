@@ -1,0 +1,22 @@
+{
+  "key": "yarl_1.23.0",
+  "cached_at": "2026-04-09T09:31:12.969552Z",
+  "data": {
+    "name": "yarl",
+    "version": "1.23.0",
+    "license": "Apache-2.0",
+    "supplier": "Andrew Svetlov",
+    "description": "Yet another URL library",
+    "release_date": "2026-03-01T22:04:09.700926Z",
+    "homepage": "https://github.com/aio-libs/yarl",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "cff6d44cb13d39db2663a22b22305d10855efa0fa8015ddeacc40bc59b9d8107"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

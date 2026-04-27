@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_datetime_6.0.0",
+  "cached_at": "2026-04-09T09:22:24.304700Z",
+  "data": {
+    "name": "datetime",
+    "version": "6.0.0",
+    "license": "ZPL-2.1",
+    "homepage": "https://github.com/zopefoundation/DateTime",
+    "description": "",
+    "release_date": "2025-11-25T08:00:33Z"
+  }
+}

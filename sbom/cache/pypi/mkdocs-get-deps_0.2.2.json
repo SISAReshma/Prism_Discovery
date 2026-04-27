@@ -1,0 +1,22 @@
+{
+  "key": "mkdocs-get-deps_0.2.2",
+  "cached_at": "2026-04-08T07:29:14.020985Z",
+  "data": {
+    "name": "mkdocs-get-deps",
+    "version": "0.2.2",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "An extra command for MkDocs that infers required PyPI packages from `plugins` in mkdocs.yml",
+    "release_date": "2026-03-10T02:46:32.256471Z",
+    "homepage": "https://pypi.org/project/mkdocs-get-deps/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e7878cbeac04860b8b5e0ca31d3abad3df9411a75a32cde82f8e44b6c16ff650"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tzdata_2025.2",
+  "cached_at": "2026-04-09T09:21:41.861484Z",
+  "data": {
+    "name": "tzdata",
+    "version": "2025.2",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python/tzdata",
+    "description": "",
+    "release_date": "2025-03-23T13:54:41Z"
+  }
+}

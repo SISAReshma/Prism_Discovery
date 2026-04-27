@@ -1,0 +1,22 @@
+{
+  "key": "matplotlib-inline_0.2.1",
+  "cached_at": "2026-04-09T09:31:50.137170Z",
+  "data": {
+    "name": "matplotlib-inline",
+    "version": "0.2.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Inline Matplotlib backend for Jupyter",
+    "release_date": "2025-10-23T09:00:20.675980Z",
+    "homepage": "https://pypi.org/project/matplotlib-inline/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d56ce5156ba6085e00a9d54fead6ed29a9c47e215cd1bba2e976ef39f5710a76"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

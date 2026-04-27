@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_jupyter_core_5.7.2",
+  "cached_at": "2026-04-09T09:15:44.817520Z",
+  "data": {
+    "direct": [
+      {
+        "name": "platformdirs",
+        "version": "4.9.4"
+      },
+      {
+        "name": "traitlets",
+        "version": "5.14.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "platformdirs": {
+        "version": "4.9.4",
+        "relation": "DIRECT"
+      },
+      "traitlets": {
+        "version": "5.14.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "threadpoolctl_3.6.0",
+  "cached_at": "2026-04-09T09:30:55.072900Z",
+  "data": {
+    "name": "threadpoolctl",
+    "version": "3.6.0",
+    "license": "BSD-3-Clause",
+    "supplier": "Thomas Moreau",
+    "description": "threadpoolctl",
+    "release_date": "2025-03-13T13:49:21.846456Z",
+    "homepage": "https://github.com/joblib/threadpoolctl",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "43a0b8fd5a2928500110039e43a5eed8480b918967083ea48dc3ab9f13c4a7fb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

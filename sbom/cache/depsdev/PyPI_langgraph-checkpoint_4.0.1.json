@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langgraph-checkpoint_4.0.1",
+  "cached_at": "2026-04-09T09:23:21.796259Z",
+  "data": {
+    "name": "langgraph-checkpoint",
+    "version": "4.0.1",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langgraph",
+    "description": "",
+    "release_date": "2026-02-27T21:06:14Z"
+  }
+}

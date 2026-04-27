@@ -1,0 +1,54 @@
+{
+  "key": "depgraph_PyPI_s3transfer_0.13.0",
+  "cached_at": "2026-04-09T09:17:18.978813Z",
+  "data": {
+    "direct": [
+      {
+        "name": "botocore",
+        "version": "1.42.84"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "jmespath",
+        "version": "1.1.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "1.26.20"
+      }
+    ],
+    "graph": {
+      "botocore": {
+        "version": "1.42.84",
+        "relation": "DIRECT"
+      },
+      "jmespath": {
+        "version": "1.1.0",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "1.26.20",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 5,
+    "source": "deps.dev"
+  }
+}

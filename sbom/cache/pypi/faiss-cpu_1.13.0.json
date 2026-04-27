@@ -1,0 +1,22 @@
+{
+  "key": "faiss-cpu_1.13.0",
+  "cached_at": "2026-04-09T09:30:02.116183Z",
+  "data": {
+    "name": "faiss-cpu",
+    "version": "1.13.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "A library for efficient similarity search and clustering of dense vectors.",
+    "release_date": "2025-11-17T02:59:35.365580Z",
+    "homepage": "https://pypi.org/project/faiss-cpu/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0ccd33708f71607b6859c6d7a5a9e7f0f59f1741ccf6b70597f2276769886768"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <3.15,>=3.9"
+  }
+}

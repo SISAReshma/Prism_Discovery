@@ -1,0 +1,22 @@
+{
+  "key": "tcolorpy_0.1.7",
+  "cached_at": "2026-04-09T09:30:52.555542Z",
+  "data": {
+    "name": "tcolorpy",
+    "version": "0.1.7",
+    "license": "MIT License",
+    "supplier": "Tsuyoshi Hombashi",
+    "description": "tcolopy is a Python library to apply true color for terminal text.",
+    "release_date": "2024-12-29T15:24:21.330957Z",
+    "homepage": "https://github.com/thombashi/tcolorpy",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "26a59d52027e175a37e0aba72efc99dda43f074db71f55b316d3de37d3251378"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

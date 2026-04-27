@@ -1,0 +1,22 @@
+{
+  "key": "openpyxl_3.1.5",
+  "cached_at": "2026-04-09T09:30:32.717763Z",
+  "data": {
+    "name": "openpyxl",
+    "version": "3.1.5",
+    "license": "MIT",
+    "supplier": "See AUTHORS",
+    "description": "A Python library to read/write Excel 2010 xlsx/xlsm files",
+    "release_date": "2024-06-28T14:03:41.161372Z",
+    "homepage": "https://openpyxl.readthedocs.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

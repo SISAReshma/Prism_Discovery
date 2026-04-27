@@ -1,0 +1,22 @@
+{
+  "key": "httpx_0.25.2",
+  "cached_at": "2026-02-20T05:20:22.198818Z",
+  "data": {
+    "name": "httpx",
+    "version": "0.25.2",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "The next generation HTTP client.",
+    "release_date": "2023-11-24T12:36:31.403560Z",
+    "homepage": "https://pypi.org/project/httpx/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a05d3d052d9b2dfce0e3896636467f8a5342fb2b902c819428e1ac65413ca118"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

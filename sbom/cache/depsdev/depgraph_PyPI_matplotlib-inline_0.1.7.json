@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_matplotlib-inline_0.1.7",
+  "cached_at": "2026-04-09T09:16:06.059471Z",
+  "data": {
+    "direct": [
+      {
+        "name": "traitlets",
+        "version": "5.14.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "traitlets": {
+        "version": "5.14.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

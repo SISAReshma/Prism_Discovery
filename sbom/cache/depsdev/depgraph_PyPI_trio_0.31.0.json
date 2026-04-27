@@ -1,0 +1,70 @@
+{
+  "key": "depgraph_PyPI_trio_0.31.0",
+  "cached_at": "2026-04-08T07:27:12.386299Z",
+  "data": {
+    "direct": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "outcome",
+        "version": "1.3.0.post0"
+      },
+      {
+        "name": "sniffio",
+        "version": "1.3.1"
+      },
+      {
+        "name": "sortedcontainers",
+        "version": "2.4.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "DIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "DIRECT"
+      },
+      "outcome": {
+        "version": "1.3.0.post0",
+        "relation": "DIRECT"
+      },
+      "sniffio": {
+        "version": "1.3.1",
+        "relation": "DIRECT"
+      },
+      "sortedcontainers": {
+        "version": "2.4.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 7,
+    "source": "deps.dev"
+  }
+}

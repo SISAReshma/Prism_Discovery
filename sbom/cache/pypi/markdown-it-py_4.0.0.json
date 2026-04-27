@@ -1,0 +1,22 @@
+{
+  "key": "markdown-it-py_4.0.0",
+  "cached_at": "2026-04-09T09:31:09.961226Z",
+  "data": {
+    "name": "markdown-it-py",
+    "version": "4.0.0",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Python port of markdown-it. Markdown parsing, done right!",
+    "release_date": "2025-08-11T12:57:51.923875Z",
+    "homepage": "https://pypi.org/project/markdown-it-py/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "87327c59b172c5011896038353a81343b6754500a08cd7a4973bb48c6d578147"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "dill_0.4.1",
+  "cached_at": "2026-04-09T09:31:24.301862Z",
+  "data": {
+    "name": "dill",
+    "version": "0.4.1",
+    "license": "BSD-3-Clause",
+    "supplier": "Mike McKerns",
+    "description": "serialize all of Python",
+    "release_date": "2026-01-19T02:36:55.663313Z",
+    "homepage": "https://github.com/uqfoundation/dill",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1e1ce33e978ae97fcfcff5638477032b801c46c7c65cf717f95fbc2248f79a9d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

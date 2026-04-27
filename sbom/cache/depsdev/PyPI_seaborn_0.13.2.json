@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_seaborn_0.13.2",
+  "cached_at": "2026-04-09T09:21:05.609313Z",
+  "data": {
+    "name": "seaborn",
+    "version": "0.13.2",
+    "license": "non-standard",
+    "homepage": "https://github.com/mwaskom/seaborn",
+    "description": "",
+    "release_date": "2024-01-25T13:21:49Z"
+  }
+}

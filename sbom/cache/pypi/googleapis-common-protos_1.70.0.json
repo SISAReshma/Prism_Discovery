@@ -1,0 +1,22 @@
+{
+  "key": "googleapis-common-protos_1.70.0",
+  "cached_at": "2026-04-09T09:30:06.738857Z",
+  "data": {
+    "name": "googleapis-common-protos",
+    "version": "1.70.0",
+    "license": "Apache 2.0",
+    "supplier": "Unknown",
+    "description": "Common protobufs used in Google APIs",
+    "release_date": "2025-04-14T10:17:01.271231Z",
+    "homepage": "https://pypi.org/project/googleapis-common-protos/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b8bfcca8c25a2bb253e0e0b0adaf8c00773e5e6af6fd92397576680b807e0fd8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

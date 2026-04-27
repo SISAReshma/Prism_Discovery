@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_rpds-py_0.25.1",
+  "cached_at": "2026-04-09T09:17:16.853392Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

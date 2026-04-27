@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_wrapt_2.1.2",
+  "cached_at": "2026-04-09T09:24:45.945218Z",
+  "data": {
+    "name": "wrapt",
+    "version": "2.1.2",
+    "license": "BSD-2-Clause",
+    "homepage": "https://github.com/GrahamDumpleton/wrapt",
+    "description": "",
+    "release_date": "2026-03-06T02:54:44Z"
+  }
+}

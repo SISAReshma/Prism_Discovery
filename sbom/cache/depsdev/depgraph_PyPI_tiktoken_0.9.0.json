@@ -1,0 +1,62 @@
+{
+  "key": "depgraph_PyPI_tiktoken_0.9.0",
+  "cached_at": "2026-04-09T09:17:48.356795Z",
+  "data": {
+    "direct": [
+      {
+        "name": "regex",
+        "version": "2026.3.32"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.6"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.6",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "regex": {
+        "version": "2026.3.32",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 6,
+    "source": "deps.dev"
+  }
+}

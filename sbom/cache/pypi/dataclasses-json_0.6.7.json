@@ -1,0 +1,22 @@
+{
+  "key": "dataclasses-json_0.6.7",
+  "cached_at": "2026-02-20T05:24:16.980576Z",
+  "data": {
+    "name": "dataclasses-json",
+    "version": "0.6.7",
+    "license": "MIT",
+    "supplier": "Charles Li",
+    "description": "Easily serialize dataclasses to and from JSON.",
+    "release_date": "2024-06-09T16:20:16.715051Z",
+    "homepage": "https://github.com/lidatong/dataclasses-json",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0dbf33f26c8d5305befd61b39d2b3414e8a407bedc2834dea9b8d642666fb40a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.7"
+  }
+}

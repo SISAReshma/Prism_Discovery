@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_faiss-cpu_1.13.0",
+  "cached_at": "2026-04-09T09:18:58.899403Z",
+  "data": {
+    "name": "faiss-cpu",
+    "version": "1.13.0",
+    "license": "BSD-3-Clause AND MIT",
+    "homepage": "https://github.com/kyamagu/faiss-wheels",
+    "description": "",
+    "release_date": "2025-11-17T03:00:08Z"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_s3transfer_0.13.0",
+  "cached_at": "2026-04-09T09:21:01.231307Z",
+  "data": {
+    "name": "s3transfer",
+    "version": "0.13.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/boto/s3transfer",
+    "description": "",
+    "release_date": "2025-05-22T19:24:48Z"
+  }
+}

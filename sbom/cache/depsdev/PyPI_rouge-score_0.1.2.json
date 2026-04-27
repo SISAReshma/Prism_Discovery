@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_rouge-score_0.1.2",
+  "cached_at": "2026-04-09T09:20:58.391986Z",
+  "data": {
+    "name": "rouge-score",
+    "version": "0.1.2",
+    "license": "non-standard",
+    "homepage": "https://github.com/google-research/google-research",
+    "description": "",
+    "release_date": "2022-07-22T22:46:22Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "prettytable_3.16.0",
+  "cached_at": "2026-04-09T09:30:35.915920Z",
+  "data": {
+    "name": "prettytable",
+    "version": "3.16.0",
+    "license": "NOASSERTION",
+    "supplier": "Hugo van Kemenade",
+    "description": "A simple Python library for easily displaying tabular data in a visually appealing ASCII table format",
+    "release_date": "2025-03-24T19:39:02.359006Z",
+    "homepage": "https://pypi.org/project/prettytable/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b5eccfabb82222f5aa46b798ff02a8452cf530a352c31bddfa29be41242863aa"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

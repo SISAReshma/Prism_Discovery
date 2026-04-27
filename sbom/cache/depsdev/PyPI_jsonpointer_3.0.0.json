@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jsonpointer_3.0.0",
+  "cached_at": "2026-04-09T09:19:34.522963Z",
+  "data": {
+    "name": "jsonpointer",
+    "version": "3.0.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/stefankoegl/python-json-pointer",
+    "description": "",
+    "release_date": "2024-06-10T19:24:40Z"
+  }
+}

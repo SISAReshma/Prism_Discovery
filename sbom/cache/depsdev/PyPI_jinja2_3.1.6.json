@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jinja2_3.1.6",
+  "cached_at": "2026-04-27T07:14:36.129744Z",
+  "data": {
+    "name": "jinja2",
+    "version": "3.1.6",
+    "license": "non-standard",
+    "homepage": "https://github.com/pallets/jinja",
+    "description": "",
+    "release_date": "2025-03-05T20:05:00Z"
+  }
+}

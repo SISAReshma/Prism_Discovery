@@ -1,0 +1,22 @@
+{
+  "key": "markdown2_2.5.3",
+  "cached_at": "2026-04-09T09:30:21.542767Z",
+  "data": {
+    "name": "markdown2",
+    "version": "2.5.3",
+    "license": "MIT",
+    "supplier": "Trent Mick",
+    "description": "A fast and complete Python implementation of Markdown",
+    "release_date": "2025-01-24T21:13:49.937000Z",
+    "homepage": "https://github.com/trentm/python-markdown2",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a8ebb7e84b8519c37bf7382b3db600f1798a22c245bfd754a1f87ca8d7ea63b3"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4,>=3.9"
+  }
+}

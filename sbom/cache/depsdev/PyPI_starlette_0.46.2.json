@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_starlette_0.46.2",
+  "cached_at": "2026-04-09T09:21:14.778748Z",
+  "data": {
+    "name": "starlette",
+    "version": "0.46.2",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/encode/starlette",
+    "description": "",
+    "release_date": "2025-04-13T13:56:16Z"
+  }
+}

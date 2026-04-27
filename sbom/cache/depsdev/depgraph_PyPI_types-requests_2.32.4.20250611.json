@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_types-requests_2.32.4.20250611",
+  "cached_at": "2026-04-09T09:18:02.417320Z",
+  "data": {
+    "direct": [
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

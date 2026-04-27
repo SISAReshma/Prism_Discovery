@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cudnn-cu12_9.1.0.70",
+  "cached_at": "2026-02-20T05:22:01.649287Z",
+  "data": {
+    "name": "nvidia-cudnn-cu12",
+    "version": "9.1.0.70",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "cuDNN runtime libraries",
+    "release_date": "2024-04-22T15:24:15.253927Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "165764f44ef8c61fcdfdfdbe769d687e06374059fbb388b6c89ecb0e28793a6f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

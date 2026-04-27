@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_python-multipart_0.0.20",
+  "cached_at": "2026-04-09T09:17:05.090456Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

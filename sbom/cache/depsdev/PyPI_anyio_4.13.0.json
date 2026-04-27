@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_anyio_4.13.0",
+  "cached_at": "2026-04-09T09:22:01.766930Z",
+  "data": {
+    "name": "anyio",
+    "version": "4.13.0",
+    "license": "MIT",
+    "homepage": "https://github.com/agronholm/anyio",
+    "description": "",
+    "release_date": "2026-03-24T12:59:08Z"
+  }
+}

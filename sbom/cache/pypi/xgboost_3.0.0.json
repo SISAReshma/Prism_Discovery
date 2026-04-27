@@ -1,0 +1,22 @@
+{
+  "key": "xgboost_3.0.0",
+  "cached_at": "2026-04-09T09:31:03.853618Z",
+  "data": {
+    "name": "xgboost",
+    "version": "3.0.0",
+    "license": "Apache-2.0",
+    "supplier": "Unknown",
+    "description": "XGBoost Python Package",
+    "release_date": "2025-03-15T13:46:14.653994Z",
+    "homepage": "https://pypi.org/project/xgboost/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ed8cffd7998bd9431c3b0287a70bec8e45c09b43c9474d9dfd261627713bd890"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

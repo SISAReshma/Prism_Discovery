@@ -1,0 +1,22 @@
+{
+  "key": "keyring_25.7.0",
+  "cached_at": "2026-04-08T07:29:19.409413Z",
+  "data": {
+    "name": "keyring",
+    "version": "25.7.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Store and access your passwords safely.",
+    "release_date": "2025-11-16T16:26:08.402146Z",
+    "homepage": "https://pypi.org/project/keyring/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "be4a0b195f149690c166e850609a477c532ddbfbaed96a404d4e43f8d5e2689f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

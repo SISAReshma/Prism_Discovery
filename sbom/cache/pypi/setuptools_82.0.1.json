@@ -1,0 +1,22 @@
+{
+  "key": "setuptools_82.0.1",
+  "cached_at": "2026-04-27T07:15:06.702446Z",
+  "data": {
+    "name": "setuptools",
+    "version": "82.0.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Most extensible Python build backend with support for C/C++ extension modules",
+    "release_date": "2026-03-09T12:47:15.026245Z",
+    "homepage": "https://pypi.org/project/setuptools/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

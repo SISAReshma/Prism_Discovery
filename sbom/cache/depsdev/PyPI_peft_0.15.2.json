@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_peft_0.15.2",
+  "cached_at": "2026-04-09T09:20:25.680934Z",
+  "data": {
+    "name": "peft",
+    "version": "0.15.2",
+    "license": "non-standard",
+    "homepage": "https://github.com/huggingface/peft",
+    "description": "",
+    "release_date": "2025-04-15T15:27:50Z"
+  }
+}

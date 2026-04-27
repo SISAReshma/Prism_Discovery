@@ -1,0 +1,22 @@
+{
+  "key": "cohere_4.37",
+  "cached_at": "2026-02-20T05:20:16.327919Z",
+  "data": {
+    "name": "cohere",
+    "version": "4.37",
+    "license": "NOASSERTION",
+    "supplier": "Cohere",
+    "description": "Python SDK for the Cohere API",
+    "release_date": "2023-11-27T12:37:28.437105Z",
+    "homepage": "https://pypi.org/project/cohere/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f3fad3a0f8d86761d4de851dfd2233a1e5c7634a024102212d850bde9c9bb031"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8,<4.0"
+  }
+}

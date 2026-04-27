@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langgraph-prebuilt_1.0.9",
+  "cached_at": "2026-04-09T09:23:22.490285Z",
+  "data": {
+    "name": "langgraph-prebuilt",
+    "version": "1.0.9",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langgraph",
+    "description": "",
+    "release_date": "2026-04-03T14:06:36Z"
+  }
+}

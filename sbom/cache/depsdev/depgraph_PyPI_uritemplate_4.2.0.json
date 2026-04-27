@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_uritemplate_4.2.0",
+  "cached_at": "2026-04-09T09:18:06.051633Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

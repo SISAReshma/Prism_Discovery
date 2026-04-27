@@ -1,0 +1,22 @@
+{
+  "key": "python-dotenv_1.0.0",
+  "cached_at": "2026-02-23T03:38:11.827987Z",
+  "data": {
+    "name": "python-dotenv",
+    "version": "1.0.0",
+    "license": "BSD-3-Clause",
+    "supplier": "Saurabh Kumar",
+    "description": "Read key-value pairs from a .env file and set them as environment variables",
+    "release_date": "2023-02-24T06:46:36.009474Z",
+    "homepage": "https://github.com/theskumar/python-dotenv",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

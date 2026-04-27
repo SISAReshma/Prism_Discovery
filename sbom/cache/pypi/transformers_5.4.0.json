@@ -1,0 +1,22 @@
+{
+  "key": "transformers_5.4.0",
+  "cached_at": "2026-04-09T09:32:10.183732Z",
+  "data": {
+    "name": "transformers",
+    "version": "5.4.0",
+    "license": "Apache 2.0 License",
+    "supplier": "The Hugging Face team (past and future) with the help of all our contributors (https://github.com/huggingface/transformers/graphs/contributors)",
+    "description": "Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.",
+    "release_date": "2026-03-27T00:24:21.735512Z",
+    "homepage": "https://github.com/huggingface/transformers",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9fbe50602d2a4e6d0aa8a35a605433dfac72d595ee2192eae192590a6cc2df86"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10.0"
+  }
+}

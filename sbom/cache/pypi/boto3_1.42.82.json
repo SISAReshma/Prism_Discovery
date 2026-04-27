@@ -1,0 +1,22 @@
+{
+  "key": "boto3_1.42.82",
+  "cached_at": "2026-04-09T09:32:08.813788Z",
+  "data": {
+    "name": "boto3",
+    "version": "1.42.82",
+    "license": "Apache-2.0",
+    "supplier": "Amazon Web Services",
+    "description": "The AWS SDK for Python",
+    "release_date": "2026-04-02T19:40:07.225702Z",
+    "homepage": "https://github.com/boto/boto3",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "804341c8197c556e8e7ceb82388ee120f319a4efbb9dc368f6059760a11cfc7d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

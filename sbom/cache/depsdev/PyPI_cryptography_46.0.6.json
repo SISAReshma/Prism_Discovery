@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_cryptography_46.0.6",
+  "cached_at": "2026-04-09T09:23:39.521992Z",
+  "data": {
+    "name": "cryptography",
+    "version": "46.0.6",
+    "license": "Apache-2.0 OR BSD-3-Clause",
+    "homepage": "https://github.com/pyca/cryptography",
+    "description": "",
+    "release_date": "2026-03-25T23:34:22Z"
+  }
+}

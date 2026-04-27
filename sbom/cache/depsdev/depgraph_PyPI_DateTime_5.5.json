@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_DateTime_5.5",
+  "cached_at": "2026-04-09T09:14:37.625200Z",
+  "data": {
+    "direct": [
+      {
+        "name": "pytz",
+        "version": "2026.1.0.post1"
+      },
+      {
+        "name": "zope-interface",
+        "version": "8.2.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "pytz": {
+        "version": "2026.1.0.post1",
+        "relation": "DIRECT"
+      },
+      "zope-interface": {
+        "version": "8.2.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

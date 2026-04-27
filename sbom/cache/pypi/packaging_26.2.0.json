@@ -1,0 +1,22 @@
+{
+  "key": "packaging_26.2.0",
+  "cached_at": "2026-04-27T07:15:06.924204Z",
+  "data": {
+    "name": "packaging",
+    "version": "26.2.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Core utilities for Python packages",
+    "release_date": "2026-04-24T20:15:22.081511Z",
+    "homepage": "https://pypi.org/project/packaging/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

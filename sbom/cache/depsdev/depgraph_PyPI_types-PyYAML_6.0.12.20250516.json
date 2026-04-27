@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_types-PyYAML_6.0.12.20250516",
+  "cached_at": "2026-04-09T09:18:01.714913Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

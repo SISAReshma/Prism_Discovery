@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_cycler_0.12.1",
+  "cached_at": "2026-04-09T09:14:35.184673Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

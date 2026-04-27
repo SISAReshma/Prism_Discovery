@@ -1,0 +1,22 @@
+{
+  "key": "trio_0.31.0",
+  "cached_at": "2026-04-08T07:29:11.769010Z",
+  "data": {
+    "name": "trio",
+    "version": "0.31.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "A friendly Python library for async concurrency and I/O",
+    "release_date": "2025-09-09T15:17:13.821764Z",
+    "homepage": "https://pypi.org/project/trio/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b5d14cd6293d79298b49c3485ffd9c07e3ce03a6da8c7dfbe0cb3dd7dc9a4774"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

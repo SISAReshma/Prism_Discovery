@@ -1,0 +1,22 @@
+{
+  "key": "pycparser_2.22",
+  "cached_at": "2026-04-09T09:30:38.952670Z",
+  "data": {
+    "name": "pycparser",
+    "version": "2.22",
+    "license": "BSD-3-Clause",
+    "supplier": "Eli Bendersky",
+    "description": "C parser in Python",
+    "release_date": "2024-03-30T13:22:20.476234Z",
+    "homepage": "https://github.com/eliben/pycparser",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

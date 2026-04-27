@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_wheel_0.46.3",
+  "cached_at": "2026-04-09T09:22:21.478900Z",
+  "data": {
+    "name": "wheel",
+    "version": "0.46.3",
+    "license": "MIT",
+    "homepage": "https://github.com/pypa/wheel",
+    "description": "",
+    "release_date": "2026-01-22T12:39:48Z"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_filelock_3.25.2",
+  "cached_at": "2026-04-09T09:22:04.620344Z",
+  "data": {
+    "name": "filelock",
+    "version": "3.25.2",
+    "license": "MIT",
+    "homepage": "https://github.com/tox-dev/py-filelock",
+    "description": "",
+    "release_date": "2026-03-11T20:45:37Z"
+  }
+}

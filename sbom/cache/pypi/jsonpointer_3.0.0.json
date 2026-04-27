@@ -1,0 +1,22 @@
+{
+  "key": "jsonpointer_3.0.0",
+  "cached_at": "2026-04-09T09:30:15.854751Z",
+  "data": {
+    "name": "jsonpointer",
+    "version": "3.0.0",
+    "license": "Modified BSD License",
+    "supplier": "Stefan K\u00f6gl",
+    "description": "Identify specific nodes in a JSON document (RFC 6901)",
+    "release_date": "2024-06-10T19:24:40.698307Z",
+    "homepage": "https://github.com/stefankoegl/python-json-pointer",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "13e088adc14fca8b6aa8177c044e12701e6ad4b28ff10e65f2267a90109c9942"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

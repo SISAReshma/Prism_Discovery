@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_trustme_1.2.1",
+  "cached_at": "2026-04-08T07:27:23.858072Z",
+  "data": {
+    "name": "trustme",
+    "version": "1.2.1",
+    "license": "Apache-2.0 OR MIT",
+    "homepage": "https://github.com/python-trio/trustme",
+    "description": "",
+    "release_date": "2025-01-02T01:55:30Z"
+  }
+}

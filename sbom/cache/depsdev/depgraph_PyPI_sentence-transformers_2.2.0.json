@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_sentence-transformers_2.2.0",
+  "cached_at": "2026-02-20T05:02:08.982038Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

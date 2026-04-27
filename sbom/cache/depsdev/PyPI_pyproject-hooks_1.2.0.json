@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pyproject-hooks_1.2.0",
+  "cached_at": "2026-04-08T07:27:46.549025Z",
+  "data": {
+    "name": "pyproject-hooks",
+    "version": "1.2.0",
+    "license": "MIT",
+    "homepage": "https://github.com/pypa/pyproject-hooks",
+    "description": "",
+    "release_date": "2024-09-29T09:24:11Z"
+  }
+}

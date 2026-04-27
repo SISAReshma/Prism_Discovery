@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_nvidia-nccl-cu12_2.27.3",
+  "cached_at": "2026-04-09T09:16:29.809891Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

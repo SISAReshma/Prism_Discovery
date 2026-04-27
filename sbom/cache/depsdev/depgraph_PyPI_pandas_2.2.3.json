@@ -1,0 +1,54 @@
+{
+  "key": "depgraph_PyPI_pandas_2.2.3",
+  "cached_at": "2026-04-09T09:16:39.268850Z",
+  "data": {
+    "direct": [
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "pytz",
+        "version": "2026.1.0.post1"
+      },
+      {
+        "name": "tzdata",
+        "version": "2025.3.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "graph": {
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "DIRECT"
+      },
+      "pytz": {
+        "version": "2026.1.0.post1",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "tzdata": {
+        "version": "2025.3.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 5,
+    "source": "deps.dev"
+  }
+}

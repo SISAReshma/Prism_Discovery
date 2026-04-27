@@ -1,0 +1,22 @@
+{
+  "key": "narwhals_1.41.0",
+  "cached_at": "2026-04-09T09:30:25.395341Z",
+  "data": {
+    "name": "narwhals",
+    "version": "1.41.0",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Extremely lightweight compatibility layer between dataframe libraries",
+    "release_date": "2025-05-26T12:46:05.207977Z",
+    "homepage": "https://pypi.org/project/narwhals/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d958336b40952e4c4b7aeef259a7074851da0800cf902186a58f2faeff97be02"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

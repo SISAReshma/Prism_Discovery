@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_accelerate_1.10.1",
+  "cached_at": "2026-04-09T09:18:20.396859Z",
+  "data": {
+    "name": "accelerate",
+    "version": "1.10.1",
+    "license": "non-standard",
+    "homepage": "https://github.com/huggingface/accelerate",
+    "description": "",
+    "release_date": "2025-08-25T13:57:04Z"
+  }
+}

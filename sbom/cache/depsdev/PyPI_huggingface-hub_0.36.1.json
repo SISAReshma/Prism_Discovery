@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_huggingface-hub_0.36.1",
+  "cached_at": "2026-02-20T05:04:21.611187Z",
+  "data": {
+    "name": "huggingface-hub",
+    "version": "0.36.1",
+    "license": "non-standard",
+    "homepage": "https://github.com/huggingface/huggingface_hub",
+    "description": ""
+  }
+}

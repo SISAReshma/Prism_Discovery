@@ -1,0 +1,70 @@
+{
+  "key": "depgraph_PyPI_DataProperty_1.1.0",
+  "cached_at": "2026-04-09T09:14:35.990001Z",
+  "data": {
+    "direct": [
+      {
+        "name": "mbstrdecoder",
+        "version": "1.1.4"
+      },
+      {
+        "name": "typepy",
+        "version": "1.3.4"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "chardet",
+        "version": "5.2.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "pytz",
+        "version": "2026.1.0.post1"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "graph": {
+      "chardet": {
+        "version": "5.2.0",
+        "relation": "INDIRECT"
+      },
+      "mbstrdecoder": {
+        "version": "1.1.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "pytz": {
+        "version": "2026.1.0.post1",
+        "relation": "INDIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "typepy": {
+        "version": "1.3.4",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 7,
+    "source": "deps.dev"
+  }
+}

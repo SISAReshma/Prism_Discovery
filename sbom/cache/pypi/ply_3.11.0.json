@@ -1,0 +1,22 @@
+{
+  "key": "ply_3.11.0",
+  "cached_at": "2026-04-09T09:31:54.991922Z",
+  "data": {
+    "name": "ply",
+    "version": "3.11.0",
+    "license": "BSD",
+    "supplier": "David Beazley",
+    "description": "Python Lex & Yacc",
+    "release_date": "2018-02-15T19:01:27.172483Z",
+    "homepage": "http://www.dabeaz.com/ply/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "096f9b8350b65ebd2fd1346b12452efe5b9607f7482813ffca50c22722a807ce"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

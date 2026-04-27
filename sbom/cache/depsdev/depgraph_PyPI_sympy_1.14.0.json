@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_sympy_1.14.0",
+  "cached_at": "2026-04-09T09:17:37.238048Z",
+  "data": {
+    "direct": [
+      {
+        "name": "mpmath",
+        "version": "1.3.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "mpmath": {
+        "version": "1.3.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

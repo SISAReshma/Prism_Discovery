@@ -1,0 +1,22 @@
+{
+  "key": "regex_2026.3.32",
+  "cached_at": "2026-04-09T09:32:04.559329Z",
+  "data": {
+    "name": "regex",
+    "version": "2026.3.32",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Alternative regular expression module, to replace re.",
+    "release_date": "2026-03-28T21:45:27.167941Z",
+    "homepage": "https://pypi.org/project/regex/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "462a041d2160090553572f6bb0be417ab9bb912a08de54cb692829c871ee88c1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

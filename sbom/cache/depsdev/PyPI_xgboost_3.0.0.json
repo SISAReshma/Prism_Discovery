@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_xgboost_3.0.0",
+  "cached_at": "2026-04-09T09:21:51.001795Z",
+  "data": {
+    "name": "xgboost",
+    "version": "3.0.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/dmlc/xgboost",
+    "description": "",
+    "release_date": "2025-03-15T13:51:01Z"
+  }
+}

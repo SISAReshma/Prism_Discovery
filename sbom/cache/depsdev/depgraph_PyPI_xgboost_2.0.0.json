@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_xgboost_2.0.0",
+  "cached_at": "2026-02-20T05:02:15.754642Z",
+  "data": {
+    "direct": [
+      {
+        "name": "numpy",
+        "version": "2.4.2"
+      },
+      {
+        "name": "scipy",
+        "version": "1.17.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "numpy": {
+        "version": "2.4.2",
+        "relation": "DIRECT"
+      },
+      "scipy": {
+        "version": "1.17.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

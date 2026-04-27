@@ -1,0 +1,22 @@
+{
+  "key": "packaging_23.2.0",
+  "cached_at": "2026-02-20T05:23:48.996568Z",
+  "data": {
+    "name": "packaging",
+    "version": "23.2.0",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "Core utilities for Python packages",
+    "release_date": "2023-10-01T13:50:03.745708Z",
+    "homepage": "https://pypi.org/project/packaging/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

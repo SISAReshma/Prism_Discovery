@@ -1,0 +1,22 @@
+{
+  "key": "sacrebleu_2.6.0",
+  "cached_at": "2026-04-09T09:32:02.752620Z",
+  "data": {
+    "name": "sacrebleu",
+    "version": "2.6.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Hassle-free computation of shareable, comparable, and reproducible BLEU, chrF, and TER scores",
+    "release_date": "2026-01-12T17:17:18.868894Z",
+    "homepage": "https://pypi.org/project/sacrebleu/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3edc1531575cfe4ad04ce53491a9307e234af1c3f805a1f491cbec844229a8a8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_joblib_1.3.0",
+  "cached_at": "2026-02-20T05:03:04.032239Z",
+  "data": {
+    "name": "joblib",
+    "version": "1.3.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://joblib.readthedocs.io",
+    "description": ""
+  }
+}

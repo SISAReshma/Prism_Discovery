@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_asyncio-throttle_1.0.0",
+  "cached_at": "2026-02-20T05:02:46.293854Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

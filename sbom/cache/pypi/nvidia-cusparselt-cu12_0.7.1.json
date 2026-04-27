@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cusparselt-cu12_0.7.1",
+  "cached_at": "2026-04-09T09:30:30.144885Z",
+  "data": {
+    "name": "nvidia-cusparselt-cu12",
+    "version": "0.7.1",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "NVIDIA Corporation",
+    "description": "NVIDIA cuSPARSELt",
+    "release_date": "2025-02-26T00:16:54.265006Z",
+    "homepage": "https://developer.nvidia.com/cusparselt",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8878dce784d0fac90131b6817b607e803c36e629ba34dc5b433471382196b6a5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "propcache_0.3.2",
+  "cached_at": "2026-04-09T09:30:36.335087Z",
+  "data": {
+    "name": "propcache",
+    "version": "0.3.2",
+    "license": "Apache-2.0",
+    "supplier": "Andrew Svetlov",
+    "description": "Accelerated property cache",
+    "release_date": "2025-06-09T22:53:40.126424Z",
+    "homepage": "https://github.com/aio-libs/propcache",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "22d9962a358aedbb7a2e36187ff273adeaab9743373a272976d2e348d08c7770"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

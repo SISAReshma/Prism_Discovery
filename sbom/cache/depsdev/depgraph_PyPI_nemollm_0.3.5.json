@@ -1,0 +1,102 @@
+{
+  "key": "depgraph_PyPI_nemollm_0.3.5",
+  "cached_at": "2026-04-09T09:16:15.323341Z",
+  "data": {
+    "direct": [
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "requests-futures",
+        "version": "1.0.2"
+      },
+      {
+        "name": "requests-toolbelt",
+        "version": "1.0.0"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "INDIRECT"
+      },
+      "requests-futures": {
+        "version": "1.0.2",
+        "relation": "DIRECT"
+      },
+      "requests-toolbelt": {
+        "version": "1.0.0",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 11,
+    "source": "deps.dev"
+  }
+}

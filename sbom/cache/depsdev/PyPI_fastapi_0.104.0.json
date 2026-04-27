@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_fastapi_0.104.0",
+  "cached_at": "2026-02-20T05:02:52.466306Z",
+  "data": {
+    "name": "fastapi",
+    "version": "0.104.0",
+    "license": "MIT",
+    "homepage": "https://github.com/tiangolo/fastapi",
+    "description": ""
+  }
+}

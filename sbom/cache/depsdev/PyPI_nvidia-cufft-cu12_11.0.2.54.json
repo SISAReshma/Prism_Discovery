@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_nvidia-cufft-cu12_11.0.2.54",
+  "cached_at": "2026-02-20T05:04:07.275728Z",
+  "data": {
+    "name": "nvidia-cufft-cu12",
+    "version": "11.0.2.54",
+    "license": "non-standard",
+    "homepage": "",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "iniconfig_2.3.0",
+  "cached_at": "2026-04-08T07:29:23.929201Z",
+  "data": {
+    "name": "iniconfig",
+    "version": "2.3.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "brain-dead simple config-ini parsing",
+    "release_date": "2025-10-18T21:55:41.639305Z",
+    "homepage": "https://pypi.org/project/iniconfig/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

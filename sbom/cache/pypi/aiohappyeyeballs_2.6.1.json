@@ -1,0 +1,22 @@
+{
+  "key": "aiohappyeyeballs_2.6.1",
+  "cached_at": "2026-04-09T09:29:49.663630Z",
+  "data": {
+    "name": "aiohappyeyeballs",
+    "version": "2.6.1",
+    "license": "PSF-2.0",
+    "supplier": "J. Nick Koston",
+    "description": "Happy Eyeballs for asyncio",
+    "release_date": "2025-03-12T01:42:47.083035Z",
+    "homepage": "https://pypi.org/project/aiohappyeyeballs/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f349ba8f4b75cb25c99c5c2d84e997e485204d2902a9597802b0371f09331fb8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

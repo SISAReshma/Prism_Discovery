@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_langdetect_1.0.9",
+  "cached_at": "2026-04-09T09:15:50.323391Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

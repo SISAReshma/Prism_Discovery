@@ -1,0 +1,454 @@
+{
+  "key": "depgraph_PyPI_litellm_1.73.0",
+  "cached_at": "2026-04-09T09:15:57.335568Z",
+  "data": {
+    "direct": [
+      {
+        "name": "aiohttp",
+        "version": "3.13.5"
+      },
+      {
+        "name": "click",
+        "version": "8.3.2"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "importlib-metadata",
+        "version": "9.0.0"
+      },
+      {
+        "name": "jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.26.0"
+      },
+      {
+        "name": "openai",
+        "version": "2.30.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "python-dotenv",
+        "version": "1.2.2"
+      },
+      {
+        "name": "tiktoken",
+        "version": "0.12.0"
+      },
+      {
+        "name": "tokenizers",
+        "version": "0.22.2"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.6.1"
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.4.0"
+      },
+      {
+        "name": "annotated-doc",
+        "version": "0.0.4"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "async-timeout",
+        "version": "5.0.1"
+      },
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "distro",
+        "version": "1.9.0"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.4.3"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "huggingface-hub",
+        "version": "1.9.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "jiter",
+        "version": "0.13.0"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "propcache",
+        "version": "0.4.1"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "regex",
+        "version": "2026.4.4"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "rpds-py",
+        "version": "0.30.0"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "sniffio",
+        "version": "1.3.1"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "typer",
+        "version": "0.24.1"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "yarl",
+        "version": "1.23.0"
+      },
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "graph": {
+      "aiohappyeyeballs": {
+        "version": "2.6.1",
+        "relation": "INDIRECT"
+      },
+      "aiohttp": {
+        "version": "3.13.5",
+        "relation": "DIRECT"
+      },
+      "aiosignal": {
+        "version": "1.4.0",
+        "relation": "INDIRECT"
+      },
+      "annotated-doc": {
+        "version": "0.0.4",
+        "relation": "INDIRECT"
+      },
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.13.0",
+        "relation": "INDIRECT"
+      },
+      "async-timeout": {
+        "version": "5.0.1",
+        "relation": "INDIRECT"
+      },
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "click": {
+        "version": "8.3.2",
+        "relation": "DIRECT"
+      },
+      "distro": {
+        "version": "1.9.0",
+        "relation": "INDIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.25.2",
+        "relation": "INDIRECT"
+      },
+      "frozenlist": {
+        "version": "1.8.0",
+        "relation": "INDIRECT"
+      },
+      "fsspec": {
+        "version": "2026.3.0",
+        "relation": "INDIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "hf-xet": {
+        "version": "1.4.3",
+        "relation": "INDIRECT"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "relation": "INDIRECT"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "relation": "DIRECT"
+      },
+      "huggingface-hub": {
+        "version": "1.9.1",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "importlib-metadata": {
+        "version": "9.0.0",
+        "relation": "DIRECT"
+      },
+      "jinja2": {
+        "version": "3.1.6",
+        "relation": "DIRECT"
+      },
+      "jiter": {
+        "version": "0.13.0",
+        "relation": "INDIRECT"
+      },
+      "jsonschema": {
+        "version": "4.26.0",
+        "relation": "DIRECT"
+      },
+      "jsonschema-specifications": {
+        "version": "2025.9.1",
+        "relation": "INDIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "multidict": {
+        "version": "6.7.1",
+        "relation": "INDIRECT"
+      },
+      "openai": {
+        "version": "2.30.0",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "INDIRECT"
+      },
+      "propcache": {
+        "version": "0.4.1",
+        "relation": "INDIRECT"
+      },
+      "pydantic": {
+        "version": "2.12.5",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.41.5",
+        "relation": "INDIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "python-dotenv": {
+        "version": "1.2.2",
+        "relation": "DIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "INDIRECT"
+      },
+      "referencing": {
+        "version": "0.37.0",
+        "relation": "INDIRECT"
+      },
+      "regex": {
+        "version": "2026.4.4",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "INDIRECT"
+      },
+      "rich": {
+        "version": "14.3.3",
+        "relation": "INDIRECT"
+      },
+      "rpds-py": {
+        "version": "0.30.0",
+        "relation": "INDIRECT"
+      },
+      "shellingham": {
+        "version": "1.5.4",
+        "relation": "INDIRECT"
+      },
+      "sniffio": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "tiktoken": {
+        "version": "0.12.0",
+        "relation": "DIRECT"
+      },
+      "tokenizers": {
+        "version": "0.22.2",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "INDIRECT"
+      },
+      "typer": {
+        "version": "0.24.1",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "yarl": {
+        "version": "1.23.0",
+        "relation": "INDIRECT"
+      },
+      "zipp": {
+        "version": "3.23.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 55,
+    "source": "deps.dev"
+  }
+}

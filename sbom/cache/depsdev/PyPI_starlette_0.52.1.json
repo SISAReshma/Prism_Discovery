@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_starlette_0.52.1",
+  "cached_at": "2026-04-09T09:23:47.642534Z",
+  "data": {
+    "name": "starlette",
+    "version": "0.52.1",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/Kludex/starlette",
+    "description": "",
+    "release_date": "2026-01-18T13:34:09Z"
+  }
+}

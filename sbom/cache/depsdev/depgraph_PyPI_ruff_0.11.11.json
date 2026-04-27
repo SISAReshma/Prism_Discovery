@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_ruff_0.11.11",
+  "cached_at": "2026-04-09T09:17:18.271905Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "key": "depgraph_PyPI_nvidia-cusolver-cu12_11.7.3.90",
+  "cached_at": "2026-04-09T09:16:27.598063Z",
+  "data": {
+    "direct": [
+      {
+        "name": "nvidia-cublas-cu12",
+        "version": "12.9.2.10"
+      },
+      {
+        "name": "nvidia-cusparse-cu12",
+        "version": "12.5.10.65"
+      },
+      {
+        "name": "nvidia-nvjitlink-cu12",
+        "version": "12.9.86"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "nvidia-cuda-nvrtc-cu12",
+        "version": "12.9.86"
+      }
+    ],
+    "graph": {
+      "nvidia-cublas-cu12": {
+        "version": "12.9.2.10",
+        "relation": "DIRECT"
+      },
+      "nvidia-cuda-nvrtc-cu12": {
+        "version": "12.9.86",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cusparse-cu12": {
+        "version": "12.5.10.65",
+        "relation": "DIRECT"
+      },
+      "nvidia-nvjitlink-cu12": {
+        "version": "12.9.86",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

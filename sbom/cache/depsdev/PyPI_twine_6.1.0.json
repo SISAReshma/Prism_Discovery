@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_twine_6.1.0",
+  "cached_at": "2026-04-08T07:27:18.929224Z",
+  "data": {
+    "name": "twine",
+    "version": "6.1.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/pypa/twine",
+    "description": "",
+    "release_date": "2025-01-21T18:45:24Z"
+  }
+}

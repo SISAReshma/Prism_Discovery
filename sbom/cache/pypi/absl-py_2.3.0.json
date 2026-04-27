@@ -1,0 +1,22 @@
+{
+  "key": "absl-py_2.3.0",
+  "cached_at": "2026-04-09T09:29:48.956011Z",
+  "data": {
+    "name": "absl-py",
+    "version": "2.3.0",
+    "license": "Apache Software License",
+    "supplier": "The Abseil Authors",
+    "description": "Abseil Python Common Libraries, see https://github.com/abseil/abseil-py.",
+    "release_date": "2025-05-27T09:15:48.742287Z",
+    "homepage": "https://pypi.org/project/absl-py/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9824a48b654a306168f63e0d97714665f8490b8d89ec7bf2efc24bf67cf579b3"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

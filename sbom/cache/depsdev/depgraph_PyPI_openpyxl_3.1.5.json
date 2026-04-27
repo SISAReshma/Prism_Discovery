@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_openpyxl_3.1.5",
+  "cached_at": "2026-04-09T09:16:35.613993Z",
+  "data": {
+    "direct": [
+      {
+        "name": "et-xmlfile",
+        "version": "2.0.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "et-xmlfile": {
+        "version": "2.0.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

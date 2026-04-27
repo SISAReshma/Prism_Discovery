@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_protobuf_5.29.5",
+  "cached_at": "2026-02-20T05:05:52.235882Z",
+  "data": {
+    "name": "protobuf",
+    "version": "5.29.5",
+    "license": "BSD-3-Clause",
+    "homepage": "",
+    "description": ""
+  }
+}

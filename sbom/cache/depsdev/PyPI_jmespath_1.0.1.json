@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jmespath_1.0.1",
+  "cached_at": "2026-04-09T09:19:30.302796Z",
+  "data": {
+    "name": "jmespath",
+    "version": "1.0.1",
+    "license": "MIT",
+    "homepage": "https://github.com/jmespath/jmespath.py",
+    "description": "",
+    "release_date": "2022-06-17T18:00:10Z"
+  }
+}

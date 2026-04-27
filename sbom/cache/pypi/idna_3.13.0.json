@@ -1,0 +1,22 @@
+{
+  "key": "idna_3.13.0",
+  "cached_at": "2026-04-27T07:15:03.007880Z",
+  "data": {
+    "name": "idna",
+    "version": "3.13.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Internationalized Domain Names in Applications (IDNA)",
+    "release_date": "2026-04-22T16:42:40.909342Z",
+    "homepage": "https://pypi.org/project/idna/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

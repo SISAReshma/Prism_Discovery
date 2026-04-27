@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_stdlibs_2026.2.26",
+  "cached_at": "2026-04-09T09:23:05.967947Z",
+  "data": {
+    "name": "stdlibs",
+    "version": "2026.2.26",
+    "license": "MIT",
+    "homepage": "https://stdlibs.omnilib.dev",
+    "description": "",
+    "release_date": "2026-02-26T23:30:03Z"
+  }
+}

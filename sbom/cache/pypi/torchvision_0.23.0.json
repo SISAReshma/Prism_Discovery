@@ -1,0 +1,22 @@
+{
+  "key": "torchvision_0.23.0",
+  "cached_at": "2026-04-09T09:30:56.860749Z",
+  "data": {
+    "name": "torchvision",
+    "version": "0.23.0",
+    "license": "BSD",
+    "supplier": "PyTorch Core Team",
+    "description": "image and video datasets and models for torch deep learning",
+    "release_date": "2025-08-06T14:57:55.024694Z",
+    "homepage": "https://github.com/pytorch/vision",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7266871daca00ad46d1c073e55d972179d12a58fa5c9adec9a3db9bbed71284a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

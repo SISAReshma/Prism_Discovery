@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_ipython_9.12.0",
+  "cached_at": "2026-04-09T09:23:52.198601Z",
+  "data": {
+    "name": "ipython",
+    "version": "9.12.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://ipython.org",
+    "description": "",
+    "release_date": "2026-03-27T09:42:42Z"
+  }
+}

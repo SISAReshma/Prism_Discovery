@@ -1,0 +1,22 @@
+{
+  "key": "aiofiles_24.1.0",
+  "cached_at": "2026-04-09T09:29:49.431338Z",
+  "data": {
+    "name": "aiofiles",
+    "version": "24.1.0",
+    "license": "Apache-2.0",
+    "supplier": "Unknown",
+    "description": "File support for asyncio.",
+    "release_date": "2024-06-24T11:02:01.529179Z",
+    "homepage": "https://pypi.org/project/aiofiles/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b4ec55f4195e3eb5d7abd1bf7e061763e864dd4954231fb8539a0ef8bb8260e5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

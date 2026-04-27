@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_ecoji_0.1.1",
+  "cached_at": "2026-04-09T09:14:43.510249Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

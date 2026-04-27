@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_proto-plus_1.27.2",
+  "cached_at": "2026-04-09T09:23:26.781941Z",
+  "data": {
+    "name": "proto-plus",
+    "version": "1.27.2",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/googleapis/google-cloud-python/tree/main/packages/proto-plus",
+    "description": "",
+    "release_date": "2026-03-26T22:13:42Z"
+  }
+}

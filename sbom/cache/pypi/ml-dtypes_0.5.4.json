@@ -1,0 +1,22 @@
+{
+  "key": "ml-dtypes_0.5.4",
+  "cached_at": "2026-04-09T09:31:53.618233Z",
+  "data": {
+    "name": "ml-dtypes",
+    "version": "0.5.4",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "ml_dtypes is a stand-alone implementation of several NumPy dtype extensions used in machine learning.",
+    "release_date": "2025-11-17T22:31:31.367673Z",
+    "homepage": "https://pypi.org/project/ml-dtypes/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b95e97e470fe60ed493fd9ae3911d8da4ebac16bd21f87ffa2b7c588bf22ea2c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

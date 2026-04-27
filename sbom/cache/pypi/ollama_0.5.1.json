@@ -1,0 +1,22 @@
+{
+  "key": "ollama_0.5.1",
+  "cached_at": "2026-04-09T09:30:32.184999Z",
+  "data": {
+    "name": "ollama",
+    "version": "0.5.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "The official Python client for Ollama.",
+    "release_date": "2025-05-30T21:32:47.429197Z",
+    "homepage": "https://pypi.org/project/ollama/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4c8839f35bc173c7057b1eb2cbe7f498c1a7e134eafc9192824c8aecb3617506"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

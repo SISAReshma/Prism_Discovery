@@ -1,0 +1,22 @@
+{
+  "key": "rfc3986_2.0.0",
+  "cached_at": "2026-04-08T07:29:20.010768Z",
+  "data": {
+    "name": "rfc3986",
+    "version": "2.0.0",
+    "license": "Apache 2.0",
+    "supplier": "Ian Stapleton Cordasco",
+    "description": "Validating URI References per RFC 3986",
+    "release_date": "2022-01-10T00:52:29.594625Z",
+    "homepage": "http://rfc3986.readthedocs.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "50b1502b60e289cb37883f3dfd34532b8873c7de9f49bb546641ce9cbd256ebd"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

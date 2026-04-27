@@ -1,0 +1,22 @@
+{
+  "key": "mkautodoc_0.2.0",
+  "cached_at": "2026-04-08T07:29:10.002559Z",
+  "data": {
+    "name": "mkautodoc",
+    "version": "0.2.0",
+    "license": "BSD",
+    "supplier": "Tom Christie",
+    "description": "AutoDoc for MarkDown",
+    "release_date": "2022-08-03T09:10:37.084913Z",
+    "homepage": "https://github.com/tomchristie/mkautodoc",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b6e0c89804ba39d453ce5795eb040e5615756f90438ac04f47e97893a86a10cd"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

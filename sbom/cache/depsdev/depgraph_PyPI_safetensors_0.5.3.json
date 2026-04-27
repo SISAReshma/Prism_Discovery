@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_safetensors_0.5.3",
+  "cached_at": "2026-04-09T09:17:21.125866Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

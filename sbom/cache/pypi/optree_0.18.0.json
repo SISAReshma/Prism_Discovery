@@ -1,0 +1,22 @@
+{
+  "key": "optree_0.18.0",
+  "cached_at": "2026-02-20T05:27:58.321098Z",
+  "data": {
+    "name": "optree",
+    "version": "0.18.0",
+    "license": "NOASSERTION",
+    "supplier": "OpTree Contributors",
+    "description": "Optimized PyTree Utilities.",
+    "release_date": "2025-11-14T08:56:31.887793Z",
+    "homepage": "https://pypi.org/project/optree/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1f19867b02a547fc9f11d27c0413e7483cef89699e16f3b9e8af73a9b25e6061"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

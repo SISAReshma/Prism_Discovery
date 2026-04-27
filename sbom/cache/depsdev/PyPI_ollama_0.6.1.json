@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_ollama_0.6.1",
+  "cached_at": "2026-04-09T09:23:03.158849Z",
+  "data": {
+    "name": "ollama",
+    "version": "0.6.1",
+    "license": "MIT",
+    "homepage": "https://ollama.com",
+    "description": "",
+    "release_date": "2025-11-13T23:02:16Z"
+  }
+}

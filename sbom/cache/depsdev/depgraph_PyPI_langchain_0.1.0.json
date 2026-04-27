@@ -1,0 +1,302 @@
+{
+  "key": "depgraph_PyPI_langchain_0.1.0",
+  "cached_at": "2026-02-20T05:02:30.270254Z",
+  "data": {
+    "direct": [
+      {
+        "name": "aiohttp",
+        "version": "3.13.3"
+      },
+      {
+        "name": "async-timeout",
+        "version": "4.0.3"
+      },
+      {
+        "name": "dataclasses-json",
+        "version": "0.6.7"
+      },
+      {
+        "name": "jsonpatch",
+        "version": "1.33.0"
+      },
+      {
+        "name": "langchain-community",
+        "version": "0.0.20"
+      },
+      {
+        "name": "langchain-core",
+        "version": "0.1.23"
+      },
+      {
+        "name": "langsmith",
+        "version": "0.0.87"
+      },
+      {
+        "name": "numpy",
+        "version": "1.26.4"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "requests",
+        "version": "2.32.5"
+      },
+      {
+        "name": "sqlalchemy",
+        "version": "2.0.46"
+      },
+      {
+        "name": "tenacity",
+        "version": "8.5.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.6.1"
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.4.0"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.12.1"
+      },
+      {
+        "name": "attrs",
+        "version": "25.4.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.1.4"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.4"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "greenlet",
+        "version": "3.3.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "jsonpointer",
+        "version": "3.0.0"
+      },
+      {
+        "name": "marshmallow",
+        "version": "3.26.2"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "mypy-extensions",
+        "version": "1.1.0"
+      },
+      {
+        "name": "packaging",
+        "version": "23.2.0"
+      },
+      {
+        "name": "propcache",
+        "version": "0.4.1"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "typing-inspect",
+        "version": "0.9.0"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "yarl",
+        "version": "1.22.0"
+      }
+    ],
+    "graph": {
+      "aiohappyeyeballs": {
+        "version": "2.6.1",
+        "relation": "INDIRECT"
+      },
+      "aiohttp": {
+        "version": "3.13.3",
+        "relation": "DIRECT"
+      },
+      "aiosignal": {
+        "version": "1.4.0",
+        "relation": "INDIRECT"
+      },
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.12.1",
+        "relation": "INDIRECT"
+      },
+      "async-timeout": {
+        "version": "4.0.3",
+        "relation": "DIRECT"
+      },
+      "attrs": {
+        "version": "25.4.0",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.1.4",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.4",
+        "relation": "INDIRECT"
+      },
+      "dataclasses-json": {
+        "version": "0.6.7",
+        "relation": "DIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "frozenlist": {
+        "version": "1.8.0",
+        "relation": "INDIRECT"
+      },
+      "greenlet": {
+        "version": "3.3.1",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "jsonpatch": {
+        "version": "1.33.0",
+        "relation": "DIRECT"
+      },
+      "jsonpointer": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      },
+      "langchain-community": {
+        "version": "0.0.20",
+        "relation": "DIRECT"
+      },
+      "langchain-core": {
+        "version": "0.1.23",
+        "relation": "DIRECT"
+      },
+      "langsmith": {
+        "version": "0.0.87",
+        "relation": "DIRECT"
+      },
+      "marshmallow": {
+        "version": "3.26.2",
+        "relation": "INDIRECT"
+      },
+      "multidict": {
+        "version": "6.7.1",
+        "relation": "INDIRECT"
+      },
+      "mypy-extensions": {
+        "version": "1.1.0",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "1.26.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "23.2.0",
+        "relation": "INDIRECT"
+      },
+      "propcache": {
+        "version": "0.4.1",
+        "relation": "INDIRECT"
+      },
+      "pydantic": {
+        "version": "2.12.5",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.41.5",
+        "relation": "INDIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.32.5",
+        "relation": "DIRECT"
+      },
+      "sqlalchemy": {
+        "version": "2.0.46",
+        "relation": "DIRECT"
+      },
+      "tenacity": {
+        "version": "8.5.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "typing-inspect": {
+        "version": "0.9.0",
+        "relation": "INDIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "yarl": {
+        "version": "1.22.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 36,
+    "source": "deps.dev"
+  }
+}

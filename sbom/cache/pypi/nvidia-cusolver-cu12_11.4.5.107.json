@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cusolver-cu12_11.4.5.107",
+  "cached_at": "2026-02-20T05:22:09.998094Z",
+  "data": {
+    "name": "nvidia-cusolver-cu12",
+    "version": "11.4.5.107",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUDA solver native runtime libraries",
+    "release_date": "2023-04-19T15:51:25.781292Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8a7ec542f0412294b15072fa7dab71d31334014a69f953004ea7a118206fe0dd"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

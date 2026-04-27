@@ -1,0 +1,78 @@
+{
+  "key": "depgraph_PyPI_modelscan_0.8.6",
+  "cached_at": "2026-04-09T09:16:09.606801Z",
+  "data": {
+    "direct": [
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "setuptools",
+        "version": "80.9.0"
+      },
+      {
+        "name": "tomlkit",
+        "version": "0.13.3"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      }
+    ],
+    "graph": {
+      "click": {
+        "version": "8.3.1",
+        "relation": "DIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "rich": {
+        "version": "14.3.3",
+        "relation": "DIRECT"
+      },
+      "setuptools": {
+        "version": "80.9.0",
+        "relation": "DIRECT"
+      },
+      "tomlkit": {
+        "version": "0.13.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 8,
+    "source": "deps.dev"
+  }
+}

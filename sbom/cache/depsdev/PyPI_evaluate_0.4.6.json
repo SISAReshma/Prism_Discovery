@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_evaluate_0.4.6",
+  "cached_at": "2026-04-09T09:24:12.984485Z",
+  "data": {
+    "name": "evaluate",
+    "version": "0.4.6",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/huggingface/evaluate",
+    "description": "",
+    "release_date": "2025-09-18T13:06:29Z"
+  }
+}

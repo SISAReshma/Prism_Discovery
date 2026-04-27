@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_jedi_0.19.2",
+  "cached_at": "2026-04-09T09:15:33.237132Z",
+  "data": {
+    "direct": [
+      {
+        "name": "parso",
+        "version": "0.8.6"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "parso": {
+        "version": "0.8.6",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

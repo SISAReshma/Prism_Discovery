@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_aiosignal_1.3.2",
+  "cached_at": "2026-04-09T09:18:23.592436Z",
+  "data": {
+    "name": "aiosignal",
+    "version": "1.3.2",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/aio-libs/aiosignal",
+    "description": "",
+    "release_date": "2024-12-13T17:10:38Z"
+  }
+}

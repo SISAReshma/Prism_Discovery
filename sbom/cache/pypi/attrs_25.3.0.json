@@ -1,0 +1,22 @@
+{
+  "key": "attrs_25.3.0",
+  "cached_at": "2026-04-09T09:29:51.828510Z",
+  "data": {
+    "name": "attrs",
+    "version": "25.3.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Classes Without Boilerplate",
+    "release_date": "2025-03-13T11:10:21.140999Z",
+    "homepage": "https://pypi.org/project/attrs/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "427318ce031701fea540783410126f03899a97ffc6f61596ad581ac2e40e3bc3"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

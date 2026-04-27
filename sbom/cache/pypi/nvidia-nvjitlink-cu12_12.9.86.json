@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-nvjitlink-cu12_12.9.86",
+  "cached_at": "2026-04-09T09:32:08.293607Z",
+  "data": {
+    "name": "nvidia-nvjitlink-cu12",
+    "version": "12.9.86",
+    "license": "LicenseRef-NVIDIA-Proprietary",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "Nvidia JIT LTO Library",
+    "release_date": "2025-06-05T20:10:25.613163Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e3f1171dbdc83c5932a45f0f4c99180a70de9bd2718c1ab77d14104f6d7147f9"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

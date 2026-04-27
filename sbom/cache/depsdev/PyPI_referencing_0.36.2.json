@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_referencing_0.36.2",
+  "cached_at": "2026-04-09T09:20:52.667752Z",
+  "data": {
+    "name": "referencing",
+    "version": "0.36.2",
+    "license": "MIT",
+    "homepage": "https://github.com/python-jsonschema/referencing",
+    "description": "",
+    "release_date": "2025-01-25T08:48:14Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "keras_3.8.0",
+  "cached_at": "2026-02-20T05:19:57.546597Z",
+  "data": {
+    "name": "keras",
+    "version": "3.8.0",
+    "license": "Apache License 2.0",
+    "supplier": "Unknown",
+    "description": "Multi-backend Keras",
+    "release_date": "2025-01-07T18:27:14.726420Z",
+    "homepage": "https://pypi.org/project/keras/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b65d125976b0f8bf8ad1e93311a98e7dfb334ff6023627a59a52b35499165ec3"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

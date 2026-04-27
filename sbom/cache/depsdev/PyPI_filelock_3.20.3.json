@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_filelock_3.20.3",
+  "cached_at": "2026-02-20T05:03:55.695699Z",
+  "data": {
+    "name": "filelock",
+    "version": "3.20.3",
+    "license": "Unlicense",
+    "homepage": "https://github.com/tox-dev/py-filelock",
+    "description": ""
+  }
+}

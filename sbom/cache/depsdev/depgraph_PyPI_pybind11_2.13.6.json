@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_pybind11_2.13.6",
+  "cached_at": "2026-04-09T09:16:54.086217Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

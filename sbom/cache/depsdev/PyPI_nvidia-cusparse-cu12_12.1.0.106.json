@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_nvidia-cusparse-cu12_12.1.0.106",
+  "cached_at": "2026-02-20T05:04:11.169223Z",
+  "data": {
+    "name": "nvidia-cusparse-cu12",
+    "version": "12.1.0.106",
+    "license": "non-standard",
+    "homepage": "",
+    "description": ""
+  }
+}

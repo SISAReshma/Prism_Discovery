@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_sacrebleu_2.5.1",
+  "cached_at": "2026-04-09T09:21:01.954902Z",
+  "data": {
+    "name": "sacrebleu",
+    "version": "2.5.1",
+    "license": "non-standard",
+    "homepage": "https://github.com/mjpost/sacrebleu",
+    "description": "",
+    "release_date": "2025-01-03T20:15:14Z"
+  }
+}

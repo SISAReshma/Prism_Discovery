@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_numpy_2.4.4",
+  "cached_at": "2026-04-09T09:21:56.849712Z",
+  "data": {
+    "name": "numpy",
+    "version": "2.4.4",
+    "license": "0BSD AND BSD-3-Clause AND CC0-1.0 AND MIT AND Zlib",
+    "homepage": "https://numpy.org",
+    "description": "",
+    "release_date": "2026-03-29T13:22:01Z"
+  }
+}

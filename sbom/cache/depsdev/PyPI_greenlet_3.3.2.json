@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_greenlet_3.3.2",
+  "cached_at": "2026-04-09T09:24:09.467102Z",
+  "data": {
+    "name": "greenlet",
+    "version": "3.3.2",
+    "license": "MIT AND PSF-2.0",
+    "homepage": "https://greenlet.readthedocs.io",
+    "description": "",
+    "release_date": "2026-02-20T20:54:15Z"
+  }
+}

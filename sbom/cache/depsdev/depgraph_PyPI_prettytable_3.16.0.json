@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_prettytable_3.16.0",
+  "cached_at": "2026-04-09T09:16:45.718500Z",
+  "data": {
+    "direct": [
+      {
+        "name": "wcwidth",
+        "version": "0.6.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "wcwidth": {
+        "version": "0.6.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_idna_3.10",
+  "cached_at": "2026-04-09T09:15:27.601264Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

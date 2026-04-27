@@ -1,0 +1,158 @@
+{
+  "key": "depgraph_PyPI_langchain-core_0.1.0",
+  "cached_at": "2026-02-20T05:02:29.146718Z",
+  "data": {
+    "direct": [
+      {
+        "name": "anyio",
+        "version": "4.12.1"
+      },
+      {
+        "name": "jsonpatch",
+        "version": "1.33.0"
+      },
+      {
+        "name": "langsmith",
+        "version": "0.0.92"
+      },
+      {
+        "name": "packaging",
+        "version": "23.2.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "requests",
+        "version": "2.32.5"
+      },
+      {
+        "name": "tenacity",
+        "version": "8.5.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.1.4"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.4"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "jsonpointer",
+        "version": "3.0.0"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.12.1",
+        "relation": "DIRECT"
+      },
+      "certifi": {
+        "version": "2026.1.4",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.4",
+        "relation": "INDIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "jsonpatch": {
+        "version": "1.33.0",
+        "relation": "DIRECT"
+      },
+      "jsonpointer": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      },
+      "langsmith": {
+        "version": "0.0.92",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "23.2.0",
+        "relation": "DIRECT"
+      },
+      "pydantic": {
+        "version": "2.12.5",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.41.5",
+        "relation": "INDIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.32.5",
+        "relation": "DIRECT"
+      },
+      "tenacity": {
+        "version": "8.5.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 18,
+    "source": "deps.dev"
+  }
+}

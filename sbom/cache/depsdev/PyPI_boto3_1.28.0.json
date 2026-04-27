@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_boto3_1.28.0",
+  "cached_at": "2026-02-20T05:03:27.046123Z",
+  "data": {
+    "name": "boto3",
+    "version": "1.28.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/boto/boto3",
+    "description": ""
+  }
+}

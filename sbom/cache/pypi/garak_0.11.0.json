@@ -1,0 +1,22 @@
+{
+  "key": "garak_0.11.0",
+  "cached_at": "2026-04-09T09:30:04.441887Z",
+  "data": {
+    "name": "garak",
+    "version": "0.11.0",
+    "license": "Apache Software License",
+    "supplier": "nv052193, Mads Kongsbak, Tianhao Li, Phyllis Poh, Razvan Dinu, Zander Mackie, Greg Stephens, Ahsan Ayub, Jonathan Liberman, Gustav Fredrikson, Oh Tien Cheng, Brain John, Naman Mishra, Soumili Nandi, Arjun Krishna, Mihailo Milenkovic, Kai Greshake, Martin Borup-Larsen, Emmanuel Ferdman, Eric Therond, Zoe Nolan, Harsh Raj, Shine-afk, Rafael Sandroni, Eric Hacker, Blessed Uyo, Ikko Eltociear Ashimine, iamnotcj, Dwight Temple, Shane Rosse, Masaya Ogushi, Viktor T. Zetterberg, Erwan Roussel, Matthew Rowe, Aishwarya Padmakumar, Marco Rosa, Ian Chu",
+    "description": "LLM vulnerability scanner",
+    "release_date": "2025-05-28T01:04:17.994179Z",
+    "homepage": "https://pypi.org/project/garak/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9d737ff348c13db2df2ffb8360f04ced3fa077b4dfd211ee14c2028e8787f92c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

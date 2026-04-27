@@ -1,0 +1,22 @@
+{
+  "key": "jsonpath-ng_1.8.0",
+  "cached_at": "2026-04-09T09:31:31.761387Z",
+  "data": {
+    "name": "jsonpath-ng",
+    "version": "1.8.0",
+    "license": "Apache 2.0",
+    "supplier": "Tomas Aparicio",
+    "description": "A final implementation of JSONPath for Python that aims to be standard compliant, including arithmetic and binary comparison operators and providing clear AST for metaprogramming.",
+    "release_date": "2026-02-28T00:53:19.637261Z",
+    "homepage": "https://github.com/h2non/jsonpath-ng",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b8dde192f8af58d646fc031fac9c99fe4d00326afc4148f1f043c601a8cfe138"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

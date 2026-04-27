@@ -1,0 +1,22 @@
+{
+  "key": "starlette_0.52.1",
+  "cached_at": "2026-04-09T09:31:47.976065Z",
+  "data": {
+    "name": "starlette",
+    "version": "0.52.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "The little ASGI library that shines.",
+    "release_date": "2026-01-18T13:34:09.188742Z",
+    "homepage": "https://pypi.org/project/starlette/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0029d43eb3d273bc4f83a08720b4912ea4b071087a3b48db01b7c839f7954d74"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

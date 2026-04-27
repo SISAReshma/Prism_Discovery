@@ -1,0 +1,22 @@
+{
+  "key": "typer_0.24.1",
+  "cached_at": "2026-04-09T09:31:10.974885Z",
+  "data": {
+    "name": "typer",
+    "version": "0.24.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Typer, build great CLIs. Easy to code. Based on Python type hints.",
+    "release_date": "2026-02-21T16:54:41.616711Z",
+    "homepage": "https://pypi.org/project/typer/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "112c1f0ce578bfb4cab9ffdabc68f031416ebcc216536611ba21f04e9aa84c9e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

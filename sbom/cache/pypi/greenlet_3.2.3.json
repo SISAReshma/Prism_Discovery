@@ -1,0 +1,22 @@
+{
+  "key": "greenlet_3.2.3",
+  "cached_at": "2026-04-09T09:30:07.437756Z",
+  "data": {
+    "name": "greenlet",
+    "version": "3.2.3",
+    "license": "MIT AND Python-2.0",
+    "supplier": "Alexey Borzenkov",
+    "description": "Lightweight in-process concurrent programming",
+    "release_date": "2025-06-05T16:10:24.001085Z",
+    "homepage": "https://greenlet.readthedocs.io/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1afd685acd5597349ee6d7a88a8bec83ce13c106ac78c196ee9dde7c04fe87be"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

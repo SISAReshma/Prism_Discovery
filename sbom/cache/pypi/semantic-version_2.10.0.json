@@ -1,0 +1,22 @@
+{
+  "key": "semantic-version_2.10.0",
+  "cached_at": "2026-04-09T09:30:48.115996Z",
+  "data": {
+    "name": "semantic-version",
+    "version": "2.10.0",
+    "license": "BSD",
+    "supplier": "Rapha\u00ebl Barrois",
+    "description": "A library implementing the 'SemVer' scheme.",
+    "release_date": "2022-05-26T13:35:21.206388Z",
+    "homepage": "https://github.com/rbarrois/python-semanticversion",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "de78a3b8e0feda74cabc54aab2da702113e33ac9d9eb9d2389bcf1f58b7d9177"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=2.7"
+  }
+}

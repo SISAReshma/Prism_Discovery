@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_transformers_4.57.6",
+  "cached_at": "2026-04-09T09:24:39.500802Z",
+  "data": {
+    "name": "transformers",
+    "version": "4.57.6",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/huggingface/transformers",
+    "description": "",
+    "release_date": "2026-01-16T10:38:31Z"
+  }
+}

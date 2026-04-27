@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_toml_0.10.2",
+  "cached_at": "2026-04-09T09:17:49.761669Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

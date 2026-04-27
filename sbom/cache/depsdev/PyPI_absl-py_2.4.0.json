@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_absl-py_2.4.0",
+  "cached_at": "2026-04-09T09:24:04.278759Z",
+  "data": {
+    "name": "absl-py",
+    "version": "2.4.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/abseil/abseil-py",
+    "description": "",
+    "release_date": "2026-01-28T10:17:04Z"
+  }
+}

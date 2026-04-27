@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_h5py_3.15.1",
+  "cached_at": "2026-02-20T05:05:42.749111Z",
+  "data": {
+    "name": "h5py",
+    "version": "3.15.1",
+    "license": "BSD-3-Clause",
+    "homepage": "https://www.h5py.org/",
+    "description": ""
+  }
+}

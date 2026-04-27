@@ -1,0 +1,22 @@
+{
+  "key": "pybind11_2.13.6",
+  "cached_at": "2026-04-09T09:30:38.734705Z",
+  "data": {
+    "name": "pybind11",
+    "version": "2.13.6",
+    "license": "BSD",
+    "supplier": "Wenzel Jakob",
+    "description": "Seamless operability between C++11 and Python",
+    "release_date": "2024-09-14T00:35:20.361937Z",
+    "homepage": "https://github.com/pybind/pybind11",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "237c41e29157b962835d356b370ededd57594a26d5894a795960f0047cb5caf5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

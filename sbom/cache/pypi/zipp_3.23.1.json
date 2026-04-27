@@ -1,0 +1,22 @@
+{
+  "key": "zipp_3.23.1",
+  "cached_at": "2026-04-27T07:15:02.159732Z",
+  "data": {
+    "name": "zipp",
+    "version": "3.23.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Backport of pathlib-compatible object wrapper for zip files",
+    "release_date": "2026-04-13T23:21:45.386171Z",
+    "homepage": "https://pypi.org/project/zipp/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0b3596c50a5c700c9cb40ba8d86d9f2cc4807e9bedb06bcdf7fac85633e444dc"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

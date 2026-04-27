@@ -1,0 +1,22 @@
+{
+  "key": "fonttools_4.62.1",
+  "cached_at": "2026-04-09T09:32:06.206208Z",
+  "data": {
+    "name": "fonttools",
+    "version": "4.62.1",
+    "license": "MIT",
+    "supplier": "Just van Rossum",
+    "description": "Tools to manipulate font files",
+    "release_date": "2026-03-13T13:52:11.822617Z",
+    "homepage": "http://github.com/fonttools/fonttools",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ad5cca75776cd453b1b035b530e943334957ae152a36a88a320e779d61fc980c"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "asttokens_3.0.0",
+  "cached_at": "2026-04-09T09:29:51.188466Z",
+  "data": {
+    "name": "asttokens",
+    "version": "3.0.0",
+    "license": "Apache 2.0",
+    "supplier": "Dmitry Sagalovskiy, Grist Labs",
+    "description": "Annotate AST trees with source code positions",
+    "release_date": "2024-11-30T04:30:10.946600Z",
+    "homepage": "https://github.com/gristlabs/asttokens",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e3078351a059199dd5138cb1c706e6430c05eff2ff136af5eb4790f9d28932e2"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

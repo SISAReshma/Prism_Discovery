@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_cffi_1.17.1",
+  "cached_at": "2026-04-09T09:14:25.701479Z",
+  "data": {
+    "direct": [
+      {
+        "name": "pycparser",
+        "version": "3.0.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "pycparser": {
+        "version": "3.0.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "dnspython_2.7.0",
+  "cached_at": "2026-04-09T09:30:00.233918Z",
+  "data": {
+    "name": "dnspython",
+    "version": "2.7.0",
+    "license": "ISC",
+    "supplier": "Unknown",
+    "description": "DNS toolkit",
+    "release_date": "2024-10-05T20:14:57.687883Z",
+    "homepage": "https://pypi.org/project/dnspython/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b4c34b7d10b51bcc3a5071e7b8dee77939f1e878477eeecc965e9835f63c6c86"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

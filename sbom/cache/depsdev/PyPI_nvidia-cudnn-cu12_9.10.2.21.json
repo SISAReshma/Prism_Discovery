@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_nvidia-cudnn-cu12_9.10.2.21",
+  "cached_at": "2026-04-09T09:20:09.249611Z",
+  "data": {
+    "name": "nvidia-cudnn-cu12",
+    "version": "9.10.2.21",
+    "license": "non-standard",
+    "homepage": "",
+    "description": "",
+    "release_date": "2025-06-06T21:54:08Z"
+  }
+}

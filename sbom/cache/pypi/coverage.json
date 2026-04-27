@@ -1,0 +1,22 @@
+{
+  "key": "coverage",
+  "cached_at": "2026-04-07T05:58:58.361419Z",
+  "data": {
+    "name": "coverage",
+    "version": "7.13.5",
+    "license": "Apache-2.0",
+    "supplier": "Ned Batchelder and 253 others",
+    "description": "Code coverage measurement for Python",
+    "release_date": "2026-03-17T10:29:51.081819Z",
+    "homepage": "https://github.com/coveragepy/coveragepy",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e0723d2c96324561b9aa76fb982406e11d93cdb388a7a7da2b16e04719cf7ca5"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "source tarball (.tar.gz) / wheel (.whl)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

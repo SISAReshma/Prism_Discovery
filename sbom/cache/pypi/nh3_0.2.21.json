@@ -1,0 +1,22 @@
+{
+  "key": "nh3_0.2.21",
+  "cached_at": "2026-04-09T09:30:26.468738Z",
+  "data": {
+    "name": "nh3",
+    "version": "0.2.21",
+    "license": "MIT",
+    "supplier": "messense <messense@icloud.com>",
+    "description": "Python binding to Ammonia HTML sanitizer Rust crate",
+    "release_date": "2025-02-25T13:37:56.063197Z",
+    "homepage": "https://pypi.org/project/nh3/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "fcff321bd60c6c5c9cb4ddf2554e22772bb41ebd93ad88171bbbb6f271255286"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

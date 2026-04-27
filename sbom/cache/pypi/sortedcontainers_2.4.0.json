@@ -1,0 +1,22 @@
+{
+  "key": "sortedcontainers_2.4.0",
+  "cached_at": "2026-04-08T07:29:25.236269Z",
+  "data": {
+    "name": "sortedcontainers",
+    "version": "2.4.0",
+    "license": "Apache 2.0",
+    "supplier": "Grant Jenks",
+    "description": "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set",
+    "release_date": "2021-05-16T22:03:41.177807Z",
+    "homepage": "http://www.grantjenks.com/docs/sortedcontainers/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_ipykernel_6.29.5",
+  "cached_at": "2026-04-09T09:19:25.363071Z",
+  "data": {
+    "name": "ipykernel",
+    "version": "6.29.5",
+    "license": "non-standard",
+    "homepage": "https://ipython.org",
+    "description": "",
+    "release_date": "2024-07-01T14:07:19Z"
+  }
+}

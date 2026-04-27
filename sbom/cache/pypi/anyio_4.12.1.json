@@ -1,0 +1,22 @@
+{
+  "key": "anyio_4.12.1",
+  "cached_at": "2026-02-20T05:22:58.147978Z",
+  "data": {
+    "name": "anyio",
+    "version": "4.12.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "High-level concurrency and networking framework on top of asyncio or Trio",
+    "release_date": "2026-01-06T11:45:19.497480Z",
+    "homepage": "https://pypi.org/project/anyio/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d405828884fc140aa80a3c667b8beed277f1dfedec42ba031bd6ac3db606ab6c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

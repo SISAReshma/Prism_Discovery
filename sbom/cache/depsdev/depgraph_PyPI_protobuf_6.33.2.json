@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_protobuf_6.33.2",
+  "cached_at": "2026-04-09T09:16:48.930116Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_attrs_25.3.0",
+  "cached_at": "2026-04-09T09:14:11.908969Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "svgwrite_1.4.3",
+  "cached_at": "2026-04-09T09:30:51.662555Z",
+  "data": {
+    "name": "svgwrite",
+    "version": "1.4.3",
+    "license": "MIT License",
+    "supplier": "Manfred Moitzi",
+    "description": "A Python library to create SVG drawings.",
+    "release_date": "2022-07-14T14:05:24.459057Z",
+    "homepage": "http://github.com/mozman/svgwrite.git",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "bb6b2b5450f1edbfa597d924f9ac2dd099e625562e492021d7dd614f65f8a22d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

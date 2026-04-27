@@ -1,0 +1,22 @@
+{
+  "key": "torchaudio_2.8.0",
+  "cached_at": "2026-04-09T09:30:56.622872Z",
+  "data": {
+    "name": "torchaudio",
+    "version": "2.8.0",
+    "license": "BSD License",
+    "supplier": "Soumith Chintala, David Pollack, Sean Naren, Peter Goldsborough, Moto Hira, Caroline Chen, Jeff Hwang, Zhaoheng Ni, Xiaohui Zhang",
+    "description": "An audio package for PyTorch",
+    "release_date": "2025-08-06T14:58:32.640275Z",
+    "homepage": "https://github.com/pytorch/audio",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c2f44cf279f673cfcdd8f576c349eee8bedf8caab351a5dd78b32970cc34a212"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

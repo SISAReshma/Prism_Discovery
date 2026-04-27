@@ -832,7 +832,6 @@ class AIBOMConnectorResponse(BaseModel):
     dependencies: List[Dict[str, Any]] = []
     compositions: List[Dict[str, Any]] = []
     vulnerabilities: List[Dict[str, Any]] = []
-    agentic_frameworks: Dict[str, Any] = {}
     connector_meta: Optional[ConnectorMeta] = None
 
     class Config:

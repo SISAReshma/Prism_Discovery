@@ -1,0 +1,22 @@
+{
+  "key": "langsmith_0.7.25",
+  "cached_at": "2026-04-09T09:31:56.583865Z",
+  "data": {
+    "name": "langsmith",
+    "version": "0.7.25",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Client library to connect to the LangSmith Observability and Evaluation Platform.",
+    "release_date": "2026-04-03T13:11:40.729316Z",
+    "homepage": "https://pypi.org/project/langsmith/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "55ecc24c547f6c79b5a684ff8685c669eec34e52fcac5d2c0af7d613aef5a632"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

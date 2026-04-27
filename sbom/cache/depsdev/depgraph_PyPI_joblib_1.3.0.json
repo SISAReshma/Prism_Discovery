@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_joblib_1.3.0",
+  "cached_at": "2026-02-20T05:02:02.448832Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

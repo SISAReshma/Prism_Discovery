@@ -1,0 +1,22 @@
+{
+  "key": "sentencepiece_0.1.99",
+  "cached_at": "2026-02-20T05:19:15.239915Z",
+  "data": {
+    "name": "sentencepiece",
+    "version": "0.1.99",
+    "license": "Apache",
+    "supplier": "Taku Kudo",
+    "description": "SentencePiece python wrapper",
+    "release_date": "2023-05-02T04:25:57.387776Z",
+    "homepage": "https://github.com/google/sentencepiece",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0eb528e70571b7c02723e5804322469b82fe7ea418c96051d0286c0fa028db73"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

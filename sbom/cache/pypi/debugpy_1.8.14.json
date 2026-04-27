@@ -1,0 +1,22 @@
+{
+  "key": "debugpy_1.8.14",
+  "cached_at": "2026-04-09T09:29:58.922613Z",
+  "data": {
+    "name": "debugpy",
+    "version": "1.8.14",
+    "license": "MIT",
+    "supplier": "Microsoft Corporation",
+    "description": "An implementation of the Debug Adapter Protocol for Python",
+    "release_date": "2025-04-10T19:46:13.315695Z",
+    "homepage": "https://aka.ms/debugpy",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "93fee753097e85623cab1c0e6a68c76308cd9f13ffdf44127e6fab4fbf024339"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

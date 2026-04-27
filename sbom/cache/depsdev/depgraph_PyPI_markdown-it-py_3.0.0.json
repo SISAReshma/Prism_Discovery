@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_markdown-it-py_3.0.0",
+  "cached_at": "2026-04-09T09:16:02.783762Z",
+  "data": {
+    "direct": [
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

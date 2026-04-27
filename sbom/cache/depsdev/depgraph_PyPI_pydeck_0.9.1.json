@@ -1,0 +1,38 @@
+{
+  "key": "depgraph_PyPI_pydeck_0.9.1",
+  "cached_at": "2026-04-09T09:16:57.140921Z",
+  "data": {
+    "direct": [
+      {
+        "name": "jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      }
+    ],
+    "graph": {
+      "jinja2": {
+        "version": "3.1.6",
+        "relation": "DIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 3,
+    "source": "deps.dev"
+  }
+}

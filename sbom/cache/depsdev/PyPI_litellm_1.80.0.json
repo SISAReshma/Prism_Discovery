@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_litellm_1.80.0",
+  "cached_at": "2026-04-09T09:23:01.035182Z",
+  "data": {
+    "name": "litellm",
+    "version": "1.80.0",
+    "license": "MIT",
+    "homepage": "https://litellm.ai",
+    "description": "",
+    "release_date": "2025-11-16T00:03:49Z"
+  }
+}

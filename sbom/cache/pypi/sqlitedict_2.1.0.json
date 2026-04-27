@@ -1,0 +1,22 @@
+{
+  "key": "sqlitedict_2.1.0",
+  "cached_at": "2026-04-09T09:30:50.449738Z",
+  "data": {
+    "name": "sqlitedict",
+    "version": "2.1.0",
+    "license": "Apache 2.0",
+    "supplier": "Radim Rehurek, Victor R. Escobar, Andrey Usov, Prasanna Swaminathan, Jeff Quast",
+    "description": "Persistent dict in Python, backed up by sqlite3 and pickle, multithread-safe.",
+    "release_date": "2022-12-03T13:39:13.102648Z",
+    "homepage": "https://github.com/piskvorky/sqlitedict",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "03d9cfb96d602996f1d4c2db2856f1224b96a9c431bdd16e78032a72940f9e8c"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

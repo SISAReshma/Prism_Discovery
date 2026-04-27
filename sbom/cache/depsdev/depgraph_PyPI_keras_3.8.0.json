@@ -1,0 +1,110 @@
+{
+  "key": "depgraph_PyPI_keras_3.8.0",
+  "cached_at": "2026-02-20T05:02:34.480321Z",
+  "data": {
+    "direct": [
+      {
+        "name": "absl-py",
+        "version": "2.4.0"
+      },
+      {
+        "name": "h5py",
+        "version": "3.15.1"
+      },
+      {
+        "name": "ml-dtypes",
+        "version": "0.5.4"
+      },
+      {
+        "name": "namex",
+        "version": "0.1.0"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.2"
+      },
+      {
+        "name": "optree",
+        "version": "0.18.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.2"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "pygments",
+        "version": "2.19.2"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "absl-py": {
+        "version": "2.4.0",
+        "relation": "DIRECT"
+      },
+      "h5py": {
+        "version": "3.15.1",
+        "relation": "DIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "ml-dtypes": {
+        "version": "0.5.4",
+        "relation": "DIRECT"
+      },
+      "namex": {
+        "version": "0.1.0",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.2",
+        "relation": "DIRECT"
+      },
+      "optree": {
+        "version": "0.18.0",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pygments": {
+        "version": "2.19.2",
+        "relation": "INDIRECT"
+      },
+      "rich": {
+        "version": "14.3.2",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 12,
+    "source": "deps.dev"
+  }
+}

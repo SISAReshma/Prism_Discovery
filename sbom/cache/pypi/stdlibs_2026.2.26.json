@@ -1,0 +1,22 @@
+{
+  "key": "stdlibs_2026.2.26",
+  "cached_at": "2026-04-09T09:31:33.940240Z",
+  "data": {
+    "name": "stdlibs",
+    "version": "2026.2.26",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "List of packages in the stdlib",
+    "release_date": "2026-02-26T23:30:03.597787Z",
+    "homepage": "https://pypi.org/project/stdlibs/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3257486216eac5ac627a3a4c5665802aca72fe7fc9e4ab1f232b1fb47bfd3db6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

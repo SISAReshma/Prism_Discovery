@@ -1,0 +1,22 @@
+{
+  "key": "groovy_0.1.2",
+  "cached_at": "2026-04-09T09:30:07.657594Z",
+  "data": {
+    "name": "groovy",
+    "version": "0.1.2",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A small Python library created to help developers protect their applications from Server Side Request Forgery (SSRF) attacks.",
+    "release_date": "2025-02-28T20:24:55.152168Z",
+    "homepage": "https://pypi.org/project/groovy/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7f7975bab18c729a257a8b1ae9dcd70b7cafb1720481beae47719af57c35fa64"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >3.9"
+  }
+}

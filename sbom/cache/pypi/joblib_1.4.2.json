@@ -1,0 +1,22 @@
+{
+  "key": "joblib_1.4.2",
+  "cached_at": "2026-04-09T09:30:13.279803Z",
+  "data": {
+    "name": "joblib",
+    "version": "1.4.2",
+    "license": "BSD 3-Clause",
+    "supplier": "Unknown",
+    "description": "Lightweight pipelining with Python functions",
+    "release_date": "2024-05-02T12:15:00.765677Z",
+    "homepage": "https://pypi.org/project/joblib/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

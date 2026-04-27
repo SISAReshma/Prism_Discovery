@@ -1,0 +1,22 @@
+{
+  "key": "peft_0.18.1",
+  "cached_at": "2026-04-09T09:32:02.261883Z",
+  "data": {
+    "name": "peft",
+    "version": "0.18.1",
+    "license": "Apache",
+    "supplier": "The HuggingFace team",
+    "description": "Parameter-Efficient Fine-Tuning (PEFT)",
+    "release_date": "2026-01-09T13:07:55.865058Z",
+    "homepage": "https://github.com/huggingface/peft",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0bf06847a3551e3019fc58c440cffc9a6b73e6e2962c95b52e224f77bbdb50f1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10.0"
+  }
+}

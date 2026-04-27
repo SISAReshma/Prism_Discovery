@@ -1,0 +1,22 @@
+{
+  "key": "smmap_5.0.2",
+  "cached_at": "2026-04-09T09:30:49.495850Z",
+  "data": {
+    "name": "smmap",
+    "version": "5.0.2",
+    "license": "BSD-3-Clause",
+    "supplier": "Sebastian Thiel",
+    "description": "A pure Python implementation of a sliding window memory map manager",
+    "release_date": "2025-01-02T07:14:38.724480Z",
+    "homepage": "https://github.com/gitpython-developers/smmap",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b30115f0def7d7531d22a0fb6502488d879e75b260a9db4d0819cfb25403af5e"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

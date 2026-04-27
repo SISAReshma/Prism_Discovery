@@ -1,0 +1,22 @@
+{
+  "key": "xxhash_3.5.0",
+  "cached_at": "2026-04-09T09:31:04.094037Z",
+  "data": {
+    "name": "xxhash",
+    "version": "3.5.0",
+    "license": "BSD",
+    "supplier": "Yue Du",
+    "description": "Python binding for xxHash",
+    "release_date": "2024-08-17T09:17:35.675495Z",
+    "homepage": "https://github.com/ifduyue/python-xxhash",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ece616532c499ee9afbb83078b1b952beffef121d989841f7f4b3dc5ac0fd212"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pydantic-core_2.10.0",
+  "cached_at": "2026-02-20T05:21:16.962805Z",
+  "data": {
+    "name": "pydantic_core",
+    "version": "2.10.0",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "",
+    "release_date": "2023-09-21T17:06:41.309276Z",
+    "homepage": "https://github.com/pydantic/pydantic-core",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "daea90360d99ad06a3f686b3e628222ac3aa953b1982f13be5b69b2648c5e6bb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

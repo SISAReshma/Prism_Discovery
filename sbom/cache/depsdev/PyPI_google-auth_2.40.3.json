@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_google-auth_2.40.3",
+  "cached_at": "2026-04-09T09:19:10.295786Z",
+  "data": {
+    "name": "google-auth",
+    "version": "2.40.3",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/googleapis/google-auth-library-python",
+    "description": "",
+    "release_date": "2025-06-04T18:04:55Z"
+  }
+}

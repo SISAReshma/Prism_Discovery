@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_tensorflow-estimator_2.15.0",
+  "cached_at": "2026-04-09T09:17:43.946457Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

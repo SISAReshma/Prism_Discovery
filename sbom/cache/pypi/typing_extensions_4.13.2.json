@@ -1,0 +1,22 @@
+{
+  "key": "typing_extensions_4.13.2",
+  "cached_at": "2026-04-09T09:31:00.192043Z",
+  "data": {
+    "name": "typing-extensions",
+    "version": "4.13.2",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Backported and Experimental Type Hints for Python 3.8+",
+    "release_date": "2025-04-10T14:19:03.967482Z",
+    "homepage": "https://pypi.org/project/typing-extensions/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

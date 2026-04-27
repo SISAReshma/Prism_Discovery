@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_scipy_1.11.0",
+  "cached_at": "2026-02-20T05:03:08.529363Z",
+  "data": {
+    "name": "scipy",
+    "version": "1.11.0",
+    "license": "non-standard",
+    "homepage": "https://scipy.org/",
+    "description": ""
+  }
+}

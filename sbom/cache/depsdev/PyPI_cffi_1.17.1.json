@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_cffi_1.17.1",
+  "cached_at": "2026-04-09T09:18:39.662622Z",
+  "data": {
+    "name": "cffi",
+    "version": "1.17.1",
+    "license": "MIT",
+    "homepage": "https://github.com/python-cffi/cffi",
+    "description": "",
+    "release_date": "2024-09-04T20:45:12Z"
+  }
+}

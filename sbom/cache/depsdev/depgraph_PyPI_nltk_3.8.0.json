@@ -1,0 +1,45 @@
+{
+  "key": "depgraph_PyPI_nltk_3.8.0",
+  "cached_at": "2026-02-20T05:02:19.315018Z",
+  "data": {
+    "direct": [
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "joblib",
+        "version": "1.5.3"
+      },
+      {
+        "name": "regex",
+        "version": "2026.1.15"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.2"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "click": {
+        "version": "8.3.1",
+        "relation": "DIRECT"
+      },
+      "joblib": {
+        "version": "1.5.3",
+        "relation": "DIRECT"
+      },
+      "regex": {
+        "version": "2026.1.15",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.2",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

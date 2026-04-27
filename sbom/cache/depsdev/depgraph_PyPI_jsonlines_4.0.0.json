@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_jsonlines_4.0.0",
+  "cached_at": "2026-04-09T09:15:37.531800Z",
+  "data": {
+    "direct": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

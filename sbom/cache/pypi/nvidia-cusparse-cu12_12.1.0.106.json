@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cusparse-cu12_12.1.0.106",
+  "cached_at": "2026-02-20T05:22:12.506800Z",
+  "data": {
+    "name": "nvidia-cusparse-cu12",
+    "version": "12.1.0.106",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUSPARSE native runtime libraries",
+    "release_date": "2023-04-19T15:51:49.939678Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f3b50f42cf363f86ab21f720998517a659a48131e8d538dc02f8768237bd884c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

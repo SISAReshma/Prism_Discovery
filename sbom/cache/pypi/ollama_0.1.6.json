@@ -1,0 +1,22 @@
+{
+  "key": "ollama_0.1.6",
+  "cached_at": "2026-02-20T05:20:07.639105Z",
+  "data": {
+    "name": "ollama",
+    "version": "0.1.6",
+    "license": "MIT",
+    "supplier": "Ollama",
+    "description": "The official Python client for Ollama.",
+    "release_date": "2024-02-02T16:53:12.670689Z",
+    "homepage": "https://ollama.ai",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e37f0455025ed5846879551ca2030ec93a71a823395d3517c14d71479ccbdd11"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8,<4.0"
+  }
+}

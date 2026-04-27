@@ -1,0 +1,22 @@
+{
+  "key": "base2048_0.1.3",
+  "cached_at": "2026-04-09T09:29:52.506907Z",
+  "data": {
+    "name": "base2048",
+    "version": "0.1.3",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Binary encoding with Base2048 in Rust.",
+    "release_date": "2022-09-26T21:50:11.200035Z",
+    "homepage": "https://pypi.org/project/base2048/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a99289d9594300e55f04fa95a009f24d25d101160818c0be13e56edd9e4ca5c5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "langchain-core_1.2.27",
+  "cached_at": "2026-04-09T09:31:38.951515Z",
+  "data": {
+    "name": "langchain-core",
+    "version": "1.2.27",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Building applications with LLMs through composability",
+    "release_date": "2026-04-07T14:56:30.930972Z",
+    "homepage": "https://pypi.org/project/langchain-core/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9ecd6b0393b969fe88f6b9b309367134080ab095946d79e6937dd3911aa42bd5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0.0,>=3.10.0"
+  }
+}

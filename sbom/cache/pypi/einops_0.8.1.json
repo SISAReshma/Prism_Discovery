@@ -1,0 +1,22 @@
+{
+  "key": "einops_0.8.1",
+  "cached_at": "2026-04-09T09:30:00.651603Z",
+  "data": {
+    "name": "einops",
+    "version": "0.8.1",
+    "license": "MIT",
+    "supplier": "Alex Rogozhnikov",
+    "description": "A new flavour of deep learning operations",
+    "release_date": "2025-02-09T03:17:01.998293Z",
+    "homepage": "https://pypi.org/project/einops/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "919387eb55330f5757c6bea9165c5ff5cfe63a642682ea788a6d472576d81737"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

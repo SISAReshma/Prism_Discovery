@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_googleapis-common-protos_1.70.0",
+  "cached_at": "2026-04-09T09:15:14.985340Z",
+  "data": {
+    "direct": [
+      {
+        "name": "protobuf",
+        "version": "6.33.6"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "protobuf": {
+        "version": "6.33.6",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

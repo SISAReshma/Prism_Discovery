@@ -1,0 +1,22 @@
+{
+  "key": "rouge-score_0.1.2",
+  "cached_at": "2026-04-09T09:30:45.357857Z",
+  "data": {
+    "name": "rouge-score",
+    "version": "0.1.2",
+    "license": "Apache Software License",
+    "supplier": "Google LLC",
+    "description": "Pure python implementation of ROUGE-1.5.5.",
+    "release_date": "2022-07-22T22:46:22.909600Z",
+    "homepage": "https://github.com/google-research/google-research/tree/master/rouge",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c7d4da2683e68c9abf0135ef915d63a46643666f848e558a1b9f7ead17ff0f04"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "annotated-doc_0.0.4",
+  "cached_at": "2026-04-09T09:31:07.134574Z",
+  "data": {
+    "name": "annotated-doc",
+    "version": "0.0.4",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Document parameters, class attributes, return types, and variables inline, with Annotated.",
+    "release_date": "2025-11-10T22:07:40.673400Z",
+    "homepage": "https://pypi.org/project/annotated-doc/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "571ac1dc6991c450b25a9c2d84a3705e2ae7a53467b5d111c24fa8baabbed320"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_nvidia-nccl-cu12_2.20.5",
+  "cached_at": "2026-02-20T05:04:12.238126Z",
+  "data": {
+    "name": "nvidia-nccl-cu12",
+    "version": "2.20.5",
+    "license": "non-standard",
+    "homepage": "",
+    "description": ""
+  }
+}

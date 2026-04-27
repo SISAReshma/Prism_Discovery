@@ -1,0 +1,22 @@
+{
+  "key": "et-xmlfile_2.0.0",
+  "cached_at": "2026-04-09T09:32:09.684673Z",
+  "data": {
+    "name": "et-xmlfile",
+    "version": "2.0.0",
+    "license": "MIT",
+    "supplier": "See AUTHORS.txt",
+    "description": "An implementation of lxml.xmlfile for the standard library",
+    "release_date": "2024-10-25T17:25:39.051783Z",
+    "homepage": "https://foss.heptapod.net/openpyxl/et_xmlfile",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

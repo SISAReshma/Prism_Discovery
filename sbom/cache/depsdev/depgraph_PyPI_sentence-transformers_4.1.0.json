@@ -1,0 +1,206 @@
+{
+  "key": "depgraph_PyPI_sentence-transformers_4.1.0",
+  "cached_at": "2026-04-09T09:17:24.803207Z",
+  "data": {
+    "direct": [
+      {
+        "name": "huggingface-hub",
+        "version": "0.36.2"
+      },
+      {
+        "name": "pillow",
+        "version": "12.2.0"
+      },
+      {
+        "name": "scikit-learn",
+        "version": "1.8.0"
+      },
+      {
+        "name": "scipy",
+        "version": "1.17.1"
+      },
+      {
+        "name": "torch",
+        "version": "2.11.0"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "transformers",
+        "version": "4.57.6"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.4.3"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "joblib",
+        "version": "1.5.3"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "regex",
+        "version": "2026.4.4"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "safetensors",
+        "version": "0.7.0"
+      },
+      {
+        "name": "threadpoolctl",
+        "version": "3.6.0"
+      },
+      {
+        "name": "tokenizers",
+        "version": "0.22.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.25.2",
+        "relation": "INDIRECT"
+      },
+      "fsspec": {
+        "version": "2026.3.0",
+        "relation": "INDIRECT"
+      },
+      "hf-xet": {
+        "version": "1.4.3",
+        "relation": "INDIRECT"
+      },
+      "huggingface-hub": {
+        "version": "0.36.2",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "joblib": {
+        "version": "1.5.3",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "INDIRECT"
+      },
+      "pillow": {
+        "version": "12.2.0",
+        "relation": "DIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "INDIRECT"
+      },
+      "regex": {
+        "version": "2026.4.4",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "INDIRECT"
+      },
+      "safetensors": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "scikit-learn": {
+        "version": "1.8.0",
+        "relation": "DIRECT"
+      },
+      "scipy": {
+        "version": "1.17.1",
+        "relation": "DIRECT"
+      },
+      "threadpoolctl": {
+        "version": "3.6.0",
+        "relation": "INDIRECT"
+      },
+      "tokenizers": {
+        "version": "0.22.2",
+        "relation": "INDIRECT"
+      },
+      "torch": {
+        "version": "2.11.0",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "DIRECT"
+      },
+      "transformers": {
+        "version": "4.57.6",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 24,
+    "source": "deps.dev"
+  }
+}

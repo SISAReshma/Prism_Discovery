@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_bcrypt_4.3.0",
+  "cached_at": "2026-04-09T09:18:33.931541Z",
+  "data": {
+    "name": "bcrypt",
+    "version": "4.3.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/pyca/bcrypt/",
+    "description": "",
+    "release_date": "2025-02-28T01:23:40Z"
+  }
+}

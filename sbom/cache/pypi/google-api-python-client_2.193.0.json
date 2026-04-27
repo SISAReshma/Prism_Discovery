@@ -1,0 +1,22 @@
+{
+  "key": "google-api-python-client_2.193.0",
+  "cached_at": "2026-04-09T09:31:31.524873Z",
+  "data": {
+    "name": "google-api-python-client",
+    "version": "2.193.0",
+    "license": "Apache 2.0",
+    "supplier": "Google LLC",
+    "description": "Google API Client Library for Python",
+    "release_date": "2026-03-17T18:25:26.608878Z",
+    "homepage": "https://github.com/googleapis/google-api-python-client/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c42aa324b822109901cfecab5dc4fc3915d35a7b376835233c916c70610322db"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

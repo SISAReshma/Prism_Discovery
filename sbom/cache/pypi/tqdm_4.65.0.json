@@ -1,0 +1,22 @@
+{
+  "key": "tqdm_4.65.0",
+  "cached_at": "2026-02-20T05:19:40.724925Z",
+  "data": {
+    "name": "tqdm",
+    "version": "4.65.0",
+    "license": "MPLv2.0, MIT Licences",
+    "supplier": "tqdm developers",
+    "description": "Fast, Extensible Progress Meter",
+    "release_date": "2023-03-03T21:17:26.348320Z",
+    "homepage": "https://tqdm.github.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c4f53a17fe37e132815abceec022631be8ffe1b9381c2e6e30aa70edc99e9671"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

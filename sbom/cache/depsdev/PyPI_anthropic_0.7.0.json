@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_anthropic_0.7.0",
+  "cached_at": "2026-02-20T05:03:23.698139Z",
+  "data": {
+    "name": "anthropic",
+    "version": "0.7.0",
+    "license": "MIT",
+    "homepage": "https://github.com/anthropics/anthropic-sdk-python",
+    "description": ""
+  }
+}

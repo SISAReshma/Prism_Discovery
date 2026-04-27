@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_nvidia-cuda-nvrtc-cu12_12.8.93",
+  "cached_at": "2026-04-09T09:16:22.590460Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

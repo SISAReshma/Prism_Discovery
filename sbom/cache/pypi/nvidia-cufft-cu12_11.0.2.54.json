@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cufft-cu12_11.0.2.54",
+  "cached_at": "2026-02-20T05:22:03.820686Z",
+  "data": {
+    "name": "nvidia-cufft-cu12",
+    "version": "11.0.2.54",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUFFT native runtime libraries",
+    "release_date": "2023-04-19T15:50:46.000809Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "794e3948a1aa71fd817c3775866943936774d1c14e7628c74f6f7417224cdf56"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

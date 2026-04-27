@@ -1,0 +1,22 @@
+{
+  "key": "mypy_extensions_1.1.0",
+  "cached_at": "2026-04-09T09:30:24.861312Z",
+  "data": {
+    "name": "mypy-extensions",
+    "version": "1.1.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Type system extensions for programs checked with the mypy type checker.",
+    "release_date": "2025-04-22T14:54:22.983092Z",
+    "homepage": "https://pypi.org/project/mypy-extensions/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

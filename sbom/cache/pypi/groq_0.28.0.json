@@ -1,0 +1,22 @@
+{
+  "key": "groq_0.28.0",
+  "cached_at": "2026-04-09T09:30:07.905769Z",
+  "data": {
+    "name": "groq",
+    "version": "0.28.0",
+    "license": "Apache-2.0",
+    "supplier": "Unknown",
+    "description": "The official Python library for the groq API",
+    "release_date": "2025-06-12T16:22:47.970270Z",
+    "homepage": "https://pypi.org/project/groq/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c6f86638371c2cba2ca337232e76c8d412e75965ed7e3058d30c9aa5dfe84303"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

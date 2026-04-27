@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_dill_0.3.8",
+  "cached_at": "2026-04-09T09:14:41.113478Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

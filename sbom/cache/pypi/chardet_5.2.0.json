@@ -1,0 +1,22 @@
+{
+  "key": "chardet_5.2.0",
+  "cached_at": "2026-04-09T09:29:55.196026Z",
+  "data": {
+    "name": "chardet",
+    "version": "5.2.0",
+    "license": "LGPL",
+    "supplier": "Mark Pilgrim",
+    "description": "Universal encoding detector for Python 3",
+    "release_date": "2023-08-01T19:23:00.661021Z",
+    "homepage": "https://github.com/chardet/chardet",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e1cf59446890a00105fe7b7912492ea04b6e6f06d4b742b2c788469e34c82970"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

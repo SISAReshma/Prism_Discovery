@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pillow_10.4.0",
+  "cached_at": "2026-04-09T09:20:27.078853Z",
+  "data": {
+    "name": "pillow",
+    "version": "10.4.0",
+    "license": "HPND",
+    "homepage": "https://github.com/python-pillow/Pillow",
+    "description": "",
+    "release_date": "2024-07-01T09:47:48Z"
+  }
+}

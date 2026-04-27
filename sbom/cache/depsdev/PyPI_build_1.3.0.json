@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_build_1.3.0",
+  "cached_at": "2026-04-08T07:27:18.212019Z",
+  "data": {
+    "name": "build",
+    "version": "1.3.0",
+    "license": "MIT",
+    "homepage": "https://github.com/pypa/build",
+    "description": "",
+    "release_date": "2025-08-01T21:27:07Z"
+  }
+}

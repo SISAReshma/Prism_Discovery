@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_xxhash_3.5.0",
+  "cached_at": "2026-04-09T09:21:51.706033Z",
+  "data": {
+    "name": "xxhash",
+    "version": "3.5.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/ifduyue/python-xxhash",
+    "description": "",
+    "release_date": "2024-08-17T09:19:55Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "key": "depgraph_PyPI_requests_2.32.3",
+  "cached_at": "2026-04-09T09:17:11.709641Z",
+  "data": {
+    "direct": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "DIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

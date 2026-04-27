@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_typer_0.16.0",
+  "cached_at": "2026-04-09T09:21:37.643359Z",
+  "data": {
+    "name": "typer",
+    "version": "0.16.0",
+    "license": "MIT",
+    "homepage": "https://github.com/fastapi/typer",
+    "description": "",
+    "release_date": "2025-05-26T14:30:30Z"
+  }
+}

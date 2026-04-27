@@ -1,0 +1,22 @@
+{
+  "key": "six_1.17.0",
+  "cached_at": "2026-04-09T09:30:49.253503Z",
+  "data": {
+    "name": "six",
+    "version": "1.17.0",
+    "license": "MIT",
+    "supplier": "Benjamin Peterson",
+    "description": "Python 2 and 3 compatibility utilities",
+    "release_date": "2024-12-04T17:35:26.475808Z",
+    "homepage": "https://github.com/benjaminp/six",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python !=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+  }
+}

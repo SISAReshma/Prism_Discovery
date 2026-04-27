@@ -1,0 +1,54 @@
+{
+  "key": "depgraph_PyPI_nvidia-riva-client_2.16.0",
+  "cached_at": "2026-04-09T09:16:31.944150Z",
+  "data": {
+    "direct": [
+      {
+        "name": "grpcio-tools",
+        "version": "1.80.0"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "grpcio",
+        "version": "1.80.0"
+      },
+      {
+        "name": "protobuf",
+        "version": "6.33.6"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "grpcio": {
+        "version": "1.80.0",
+        "relation": "INDIRECT"
+      },
+      "grpcio-tools": {
+        "version": "1.80.0",
+        "relation": "DIRECT"
+      },
+      "protobuf": {
+        "version": "6.33.6",
+        "relation": "INDIRECT"
+      },
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 5,
+    "source": "deps.dev"
+  }
+}

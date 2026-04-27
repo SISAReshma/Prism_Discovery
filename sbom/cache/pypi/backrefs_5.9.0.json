@@ -1,0 +1,22 @@
+{
+  "key": "backrefs_5.9.0",
+  "cached_at": "2026-04-08T07:29:16.245579Z",
+  "data": {
+    "name": "backrefs",
+    "version": "5.9.0",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A wrapper around re and regex that adds additional back references.",
+    "release_date": "2025-06-22T19:34:05.252207Z",
+    "homepage": "https://pypi.org/project/backrefs/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "db8e8ba0e9de81fcd635f440deab5ae5f2591b54ac1ebe0550a2ca063488cd9f"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

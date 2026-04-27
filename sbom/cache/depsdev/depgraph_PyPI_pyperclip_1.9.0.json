@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_pyperclip_1.9.0",
+  "cached_at": "2026-04-09T09:17:01.486423Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

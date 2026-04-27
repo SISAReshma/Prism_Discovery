@@ -1,0 +1,22 @@
+{
+  "key": "langgraph-sdk_0.3.13",
+  "cached_at": "2026-04-09T09:31:39.876412Z",
+  "data": {
+    "name": "langgraph-sdk",
+    "version": "0.3.13",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "SDK for interacting with LangGraph API",
+    "release_date": "2026-04-07T20:34:17.866285Z",
+    "homepage": "https://pypi.org/project/langgraph-sdk/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "aee09e345c90775f6de9d6f4c7b847cfc652e49055c27a2aed0d981af2af3bd0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

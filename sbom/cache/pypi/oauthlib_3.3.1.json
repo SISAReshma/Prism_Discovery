@@ -1,0 +1,22 @@
+{
+  "key": "oauthlib_3.3.1",
+  "cached_at": "2026-04-09T09:30:31.602086Z",
+  "data": {
+    "name": "oauthlib",
+    "version": "3.3.1",
+    "license": "BSD-3-Clause",
+    "supplier": "The OAuthlib Community",
+    "description": "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic",
+    "release_date": "2025-06-19T22:48:06.508410Z",
+    "homepage": "https://github.com/oauthlib/oauthlib",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "88119c938d2b8fb88561af5f6ee0eec8cc8d552b7bb1f712743136eb7523b7a1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

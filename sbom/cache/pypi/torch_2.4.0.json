@@ -1,0 +1,22 @@
+{
+  "key": "torch_2.4.0",
+  "cached_at": "2026-02-20T05:18:56.538122Z",
+  "data": {
+    "name": "torch",
+    "version": "2.4.0",
+    "license": "BSD-3",
+    "supplier": "PyTorch Team",
+    "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+    "release_date": "2024-07-24T15:27:17.851270Z",
+    "homepage": "https://pytorch.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4ed94583e244af51d6a8d28701ca5a9e02d1219e782f5a01dd401f90af17d8ac"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8.0"
+  }
+}

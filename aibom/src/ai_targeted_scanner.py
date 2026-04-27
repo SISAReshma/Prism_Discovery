@@ -1199,7 +1199,47 @@ def _build_scan_response(
         + len(unique_findings)
         + len(unique_ai_api)
     )
-    
+
+    # ── Provider-level fallback ────────────────────────────────────────────
+    # When the scanner detected AI provider SDK calls (PASS 1 findings) but
+    # could NOT extract a concrete model name (the model= param is a variable
+    # like self.model_name rather than a string literal), infer a provider-level
+    # placeholder so the repo still appears in the AIBOM output.
+    if not unique_models:
+        for lib_result in scan_results_list:
+            if not lib_result.get("scanned") or not lib_result.get("provider_rule_found"):
+                continue
+            findings_count = lib_result.get("findings_count", 0)
+            if findings_count == 0:
+                continue
+            # This library had provider SDK findings but zero model extractions
+            lib_name = lib_result.get("library", "unknown")
+            category = lib_result.get("category", "AI_PROVIDER")
+            tag = _category_to_tag(category)
+            fallback_model = f"{lib_name}/unknown-model"
+
+            # Find the first finding file/line for context
+            lib_findings = lib_result.get("findings", [])
+            first_file = lib_findings[0]["file"] if lib_findings else "unknown"
+            first_line = lib_findings[0]["line"] if lib_findings else 0
+
+            unique_models.append({
+                "model": fallback_model,
+                "file": first_file,
+                "line": first_line,
+                "library": lib_name,
+                "tag": tag,
+                "inferred": True,
+            })
+            distinct_model_names.append(fallback_model)
+            all_models_with_tags.append({"model_name": fallback_model, "tag": tag})
+            logger.info(
+                f"[FALLBACK] Inferred provider-level model '{fallback_model}' "
+                f"for library '{lib_name}' ({findings_count} SDK findings, 0 model strings)"
+            )
+
+        distinct_model_names = sorted(set(distinct_model_names))
+
     return {
         "scan_results": scan_results_list,
         "models_detected": unique_models,

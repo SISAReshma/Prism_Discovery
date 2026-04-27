@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tensorflow-io-gcs-filesystem_0.37.1",
+  "cached_at": "2026-04-09T09:21:24.015439Z",
+  "data": {
+    "name": "tensorflow-io-gcs-filesystem",
+    "version": "0.37.1",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/tensorflow/io",
+    "description": "",
+    "release_date": "2024-07-01T23:44:43Z"
+  }
+}

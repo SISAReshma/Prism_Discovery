@@ -1,0 +1,22 @@
+{
+  "key": "pyperclip_1.9.0",
+  "cached_at": "2026-04-09T09:30:40.968379Z",
+  "data": {
+    "name": "pyperclip",
+    "version": "1.9.0",
+    "license": "BSD",
+    "supplier": "Al Sweigart",
+    "description": "A cross-platform clipboard module for Python. (Only handles plain text for now.)",
+    "release_date": "2024-06-18T20:38:48.401895Z",
+    "homepage": "https://github.com/asweigart/pyperclip",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b7de0142ddc81bfc5c7507eea19da920b92252b548b96186caf94a5e2527d310"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

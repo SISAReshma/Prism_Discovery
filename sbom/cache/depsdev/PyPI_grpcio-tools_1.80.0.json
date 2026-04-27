@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_grpcio-tools_1.80.0",
+  "cached_at": "2026-04-09T09:23:15.434251Z",
+  "data": {
+    "name": "grpcio-tools",
+    "version": "1.80.0",
+    "license": "Apache-2.0",
+    "homepage": "https://grpc.io",
+    "description": "",
+    "release_date": "2026-03-30T08:52:22Z"
+  }
+}

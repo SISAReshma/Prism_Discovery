@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_packaging_26.2.0",
+  "cached_at": "2026-04-27T07:14:53.450374Z",
+  "data": {
+    "name": "packaging",
+    "version": "26.2.0",
+    "license": "Apache-2.0 OR BSD-2-Clause",
+    "homepage": "https://github.com/pypa/packaging",
+    "description": "",
+    "release_date": "2026-04-24T20:15:22Z"
+  }
+}

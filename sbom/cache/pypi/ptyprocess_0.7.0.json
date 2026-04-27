@@ -1,0 +1,22 @@
+{
+  "key": "ptyprocess_0.7.0",
+  "cached_at": "2026-04-09T09:30:37.393896Z",
+  "data": {
+    "name": "ptyprocess",
+    "version": "0.7.0",
+    "license": "ISC License (ISCL)",
+    "supplier": "Thomas Kluyver",
+    "description": "Run a subprocess in a pseudo terminal",
+    "release_date": "2020-12-28T15:15:28.350375Z",
+    "homepage": "https://github.com/pexpect/ptyprocess",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

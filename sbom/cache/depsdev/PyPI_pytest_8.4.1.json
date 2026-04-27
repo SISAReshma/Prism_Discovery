@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pytest_8.4.1",
+  "cached_at": "2026-04-08T07:27:21.051848Z",
+  "data": {
+    "name": "pytest",
+    "version": "8.4.1",
+    "license": "MIT",
+    "homepage": "https://docs.pytest.org/en/latest/",
+    "description": "",
+    "release_date": "2025-06-18T05:48:03Z"
+  }
+}

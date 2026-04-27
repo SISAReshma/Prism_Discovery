@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_typer-slim_0.21.1",
+  "cached_at": "2026-02-20T05:04:46.365010Z",
+  "data": {
+    "name": "typer-slim",
+    "version": "0.21.1",
+    "license": "MIT",
+    "homepage": "https://github.com/fastapi/typer",
+    "description": ""
+  }
+}

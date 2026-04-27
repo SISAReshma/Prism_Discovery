@@ -1,0 +1,30 @@
+{
+  "key": "depgraph_PyPI_GitPython_3.1.44",
+  "cached_at": "2026-04-09T09:15:08.672509Z",
+  "data": {
+    "direct": [
+      {
+        "name": "gitdb",
+        "version": "4.0.12"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "smmap",
+        "version": "5.0.3"
+      }
+    ],
+    "graph": {
+      "gitdb": {
+        "version": "4.0.12",
+        "relation": "DIRECT"
+      },
+      "smmap": {
+        "version": "5.0.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

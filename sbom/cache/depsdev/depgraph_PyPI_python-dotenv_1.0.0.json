@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_python-dotenv_1.0.0",
+  "cached_at": "2026-02-23T03:17:55.152419Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

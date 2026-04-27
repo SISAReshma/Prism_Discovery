@@ -1,0 +1,22 @@
+{
+  "key": "pybind11_3.0.3",
+  "cached_at": "2026-04-09T09:32:02.514231Z",
+  "data": {
+    "name": "pybind11",
+    "version": "3.0.3",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Seamless operability between C++11 and Python",
+    "release_date": "2026-03-31T23:42:04.814891Z",
+    "homepage": "https://pypi.org/project/pybind11/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "fb5f8e4a64946b4dcc0451c83a8c384f803bc0a62dd1ba02f199e97dbc9aad4c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

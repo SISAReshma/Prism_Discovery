@@ -1,0 +1,22 @@
+{
+  "key": "importlib-metadata_9.0.0",
+  "cached_at": "2026-04-27T07:15:01.043839Z",
+  "data": {
+    "name": "importlib-metadata",
+    "version": "9.0.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Read metadata from Python packages",
+    "release_date": "2026-03-20T06:42:55.665400Z",
+    "homepage": "https://pypi.org/project/importlib-metadata/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2d21d1cc5a017bd0559e36150c21c830ab1dc304dedd1b7ea85d20f45ef3edd7"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

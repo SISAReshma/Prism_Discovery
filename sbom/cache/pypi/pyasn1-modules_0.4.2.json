@@ -1,0 +1,22 @@
+{
+  "key": "pyasn1-modules_0.4.2",
+  "cached_at": "2026-04-09T09:31:41.659264Z",
+  "data": {
+    "name": "pyasn1-modules",
+    "version": "0.4.2",
+    "license": "BSD",
+    "supplier": "Ilya Etingof",
+    "description": "A collection of ASN.1-based protocols modules",
+    "release_date": "2025-03-28T02:41:19.028683Z",
+    "homepage": "https://github.com/pyasn1/pyasn1-modules",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "29253a9207ce32b64c3ac6600edc75368f98473906e8fd1043bd6b5b1de2c14a"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

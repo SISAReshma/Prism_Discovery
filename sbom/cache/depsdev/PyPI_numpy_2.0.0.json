@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_numpy_2.0.0",
+  "cached_at": "2026-02-20T05:02:57.566884Z",
+  "data": {
+    "name": "numpy",
+    "version": "2.0.0",
+    "license": "non-standard",
+    "homepage": "https://numpy.org",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pyparsing_3.2.3",
+  "cached_at": "2026-04-09T09:30:40.506878Z",
+  "data": {
+    "name": "pyparsing",
+    "version": "3.2.3",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "pyparsing module - Classes and methods to define and execute parsing grammars",
+    "release_date": "2025-03-25T05:01:24.908117Z",
+    "homepage": "https://pypi.org/project/pyparsing/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a749938e02d6fd0b59b356ca504a24982314bb090c383e3cf201c95ef7e2bfcf"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

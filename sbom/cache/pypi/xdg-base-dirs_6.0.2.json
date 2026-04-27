@@ -1,0 +1,22 @@
+{
+  "key": "xdg-base-dirs_6.0.2",
+  "cached_at": "2026-04-09T09:31:03.634513Z",
+  "data": {
+    "name": "xdg-base-dirs",
+    "version": "6.0.2",
+    "license": "ISC",
+    "supplier": "Scott Stevenson",
+    "description": "Variables defined by the XDG Base Directory Specification",
+    "release_date": "2024-10-19T14:35:05.931407Z",
+    "homepage": "https://github.com/srstevenson/xdg-base-dirs",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3c01d1b758ed4ace150ac960ac0bd13ce4542b9e2cdf01312dcda5012cfebabe"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.10"
+  }
+}

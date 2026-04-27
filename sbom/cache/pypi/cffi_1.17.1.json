@@ -1,0 +1,22 @@
+{
+  "key": "cffi_1.17.1",
+  "cached_at": "2026-04-09T09:29:54.904635Z",
+  "data": {
+    "name": "cffi",
+    "version": "1.17.1",
+    "license": "MIT",
+    "supplier": "Armin Rigo, Maciej Fijalkowski",
+    "description": "Foreign Function Interface for Python calling C code.",
+    "release_date": "2024-09-04T20:43:30.027633Z",
+    "homepage": "http://cffi.readthedocs.org",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "df8b1c11f177bc2313ec4b2d46baec87a5f3e71fc8b45dab2ee7cae86d9aba14"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

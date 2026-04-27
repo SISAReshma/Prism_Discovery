@@ -1,0 +1,22 @@
+{
+  "key": "flatbuffers_25.12.19",
+  "cached_at": "2026-04-09T09:32:14.840502Z",
+  "data": {
+    "name": "flatbuffers",
+    "version": "25.12.19",
+    "license": "Apache 2.0",
+    "supplier": "Derek Bailey",
+    "description": "The FlatBuffers serialization format for Python",
+    "release_date": "2025-12-19T23:16:13.622515Z",
+    "homepage": "https://google.github.io/flatbuffers/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

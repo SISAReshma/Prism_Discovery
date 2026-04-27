@@ -1,0 +1,22 @@
+{
+  "key": "multiprocess_0.70.19",
+  "cached_at": "2026-04-09T09:31:25.027274Z",
+  "data": {
+    "name": "multiprocess",
+    "version": "0.70.19",
+    "license": "BSD-3-Clause",
+    "supplier": "Mike McKerns",
+    "description": "better multiprocessing and multithreading in Python",
+    "release_date": "2026-01-19T06:47:20.479316Z",
+    "homepage": "https://github.com/uqfoundation/multiprocess",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "02e5c35d7d6cd2bdc89c1858867f7bde4012837411023a4696c148c1bdd7c80e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

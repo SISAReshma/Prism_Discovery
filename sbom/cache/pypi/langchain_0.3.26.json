@@ -1,0 +1,22 @@
+{
+  "key": "langchain_0.3.26",
+  "cached_at": "2026-04-09T09:30:18.163929Z",
+  "data": {
+    "name": "langchain",
+    "version": "0.3.26",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Building applications with LLMs through composability",
+    "release_date": "2025-06-20T22:22:58.874943Z",
+    "homepage": "https://pypi.org/project/langchain/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "361bb2e61371024a8c473da9f9c55f4ee50f269c5ab43afdb2b1309cb7ac36cf"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

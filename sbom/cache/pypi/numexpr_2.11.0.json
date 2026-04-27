@@ -1,0 +1,22 @@
+{
+  "key": "numexpr_2.11.0",
+  "cached_at": "2026-04-09T09:30:27.068932Z",
+  "data": {
+    "name": "numexpr",
+    "version": "2.11.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Fast numerical expression evaluator for NumPy",
+    "release_date": "2025-06-09T11:04:59.605955Z",
+    "homepage": "https://pypi.org/project/numexpr/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7f471fd055a9e13cf5f4337ee12379b30b4dcda1ae0d85018d4649e841578c02"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

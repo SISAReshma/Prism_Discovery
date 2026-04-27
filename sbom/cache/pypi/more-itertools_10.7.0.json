@@ -1,0 +1,22 @@
+{
+  "key": "more-itertools_10.7.0",
+  "cached_at": "2026-04-09T09:30:23.853544Z",
+  "data": {
+    "name": "more-itertools",
+    "version": "10.7.0",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "More routines for operating on iterables, beyond itertools",
+    "release_date": "2025-04-22T14:17:40.490282Z",
+    "homepage": "https://pypi.org/project/more-itertools/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d43980384673cb07d2f7d2d918c616b30c659c089ee23953f601d6609c67510e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

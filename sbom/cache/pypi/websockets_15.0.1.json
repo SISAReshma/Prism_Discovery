@@ -1,0 +1,22 @@
+{
+  "key": "websockets_15.0.1",
+  "cached_at": "2026-04-09T09:31:02.383963Z",
+  "data": {
+    "name": "websockets",
+    "version": "15.0.1",
+    "license": "BSD-3-Clause",
+    "supplier": "Unknown",
+    "description": "An implementation of the WebSocket Protocol (RFC 6455 & 7692)",
+    "release_date": "2025-03-05T20:01:35.363776Z",
+    "homepage": "https://pypi.org/project/websockets/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d63efaa0cd96cf0c5fe4d581521d9fa87744540d4bc999ae6e08595a1014b45b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

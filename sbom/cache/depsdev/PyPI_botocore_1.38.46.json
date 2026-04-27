@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_botocore_1.38.46",
+  "cached_at": "2026-04-09T09:22:31.329941Z",
+  "data": {
+    "name": "botocore",
+    "version": "1.38.46",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/boto/botocore",
+    "description": "",
+    "release_date": "2025-06-27T20:18:00Z"
+  }
+}

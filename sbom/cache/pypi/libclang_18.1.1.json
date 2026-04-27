@@ -1,0 +1,22 @@
+{
+  "key": "libclang_18.1.1",
+  "cached_at": "2026-04-09T09:30:19.812683Z",
+  "data": {
+    "name": "libclang",
+    "version": "18.1.1",
+    "license": "Apache License 2.0",
+    "supplier": "Tao He",
+    "description": "Clang Python Bindings, mirrored from the official LLVM repo: https://github.com/llvm/llvm-project/tree/main/clang/bindings/python, to make the installation process easier.",
+    "release_date": "2024-06-30T17:40:31.646240Z",
+    "homepage": "https://github.com/sighingnow/libclang",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0b2e143f0fac830156feb56f9231ff8338c20aecfe72b4ffe96f19e5a1dbb69a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

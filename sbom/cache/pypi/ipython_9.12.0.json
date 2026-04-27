@@ -1,0 +1,22 @@
+{
+  "key": "ipython_9.12.0",
+  "cached_at": "2026-04-09T09:31:49.445954Z",
+  "data": {
+    "name": "ipython",
+    "version": "9.12.0",
+    "license": "NOASSERTION",
+    "supplier": "The IPython Development Team",
+    "description": "IPython: Productive Interactive Computing",
+    "release_date": "2026-03-27T09:42:42.831525Z",
+    "homepage": "https://pypi.org/project/ipython/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0f2701e8ee86e117e37f50563205d36feaa259d2e08d4a6bc6b6d74b18ce128d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.12"
+  }
+}

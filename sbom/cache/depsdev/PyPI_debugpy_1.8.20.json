@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_debugpy_1.8.20",
+  "cached_at": "2026-04-09T09:23:51.493719Z",
+  "data": {
+    "name": "debugpy",
+    "version": "1.8.20",
+    "license": "MIT",
+    "homepage": "https://github.com/microsoft/debugpy",
+    "description": "",
+    "release_date": "2026-01-29T23:04:17Z"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pyarrow_20.0.0",
+  "cached_at": "2026-04-09T09:20:35.497855Z",
+  "data": {
+    "name": "pyarrow",
+    "version": "20.0.0",
+    "license": "non-standard",
+    "homepage": "https://arrow.apache.org/",
+    "description": "",
+    "release_date": "2025-04-27T12:33:55Z"
+  }
+}

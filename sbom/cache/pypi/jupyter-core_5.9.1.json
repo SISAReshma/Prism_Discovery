@@ -1,0 +1,22 @@
+{
+  "key": "jupyter-core_5.9.1",
+  "cached_at": "2026-04-09T09:31:49.924839Z",
+  "data": {
+    "name": "jupyter-core",
+    "version": "5.9.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Jupyter core package. A base package on which Jupyter projects rely.",
+    "release_date": "2025-10-16T19:19:16.783401Z",
+    "homepage": "https://pypi.org/project/jupyter-core/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ebf87fdc6073d142e114c72c9e29a9d7ca03fad818c5d300ce2adc1fb0743407"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

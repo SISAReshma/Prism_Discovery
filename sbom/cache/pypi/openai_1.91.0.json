@@ -1,0 +1,22 @@
+{
+  "key": "openai_1.91.0",
+  "cached_at": "2026-04-09T09:30:32.487518Z",
+  "data": {
+    "name": "openai",
+    "version": "1.91.0",
+    "license": "Apache-2.0",
+    "supplier": "Unknown",
+    "description": "The official Python library for the openai API",
+    "release_date": "2025-06-23T18:27:08.913806Z",
+    "homepage": "https://pypi.org/project/openai/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "207f87aa3bc49365e014fac2f7e291b99929f4fe126c4654143440e0ad446a5f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

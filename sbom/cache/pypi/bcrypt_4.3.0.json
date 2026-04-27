@@ -1,0 +1,22 @@
+{
+  "key": "bcrypt_4.3.0",
+  "cached_at": "2026-04-09T09:29:52.735645Z",
+  "data": {
+    "name": "bcrypt",
+    "version": "4.3.0",
+    "license": "Apache-2.0",
+    "supplier": "Unknown",
+    "description": "Modern password hashing for your software and your servers",
+    "release_date": "2025-02-28T01:22:34.539674Z",
+    "homepage": "https://pypi.org/project/bcrypt/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f01e060f14b6b57bbb72fc5b4a83ac21c443c9a2ee708e04a10e9192f90a6281"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

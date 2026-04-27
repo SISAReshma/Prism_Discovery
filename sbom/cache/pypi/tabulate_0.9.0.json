@@ -1,0 +1,22 @@
+{
+  "key": "tabulate_0.9.0",
+  "cached_at": "2026-04-09T09:30:52.336045Z",
+  "data": {
+    "name": "tabulate",
+    "version": "0.9.0",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Pretty-print tabular data",
+    "release_date": "2022-10-06T17:21:44.262497Z",
+    "homepage": "https://pypi.org/project/tabulate/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

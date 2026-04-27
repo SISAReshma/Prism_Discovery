@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_marshmallow_3.26.2",
+  "cached_at": "2026-02-20T05:05:21.737890Z",
+  "data": {
+    "name": "marshmallow",
+    "version": "3.26.2",
+    "license": "MIT",
+    "homepage": "https://github.com/marshmallow-code/marshmallow",
+    "description": ""
+  }
+}

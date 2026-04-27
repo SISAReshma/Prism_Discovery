@@ -1,0 +1,22 @@
+{
+  "key": "build_1.3.0",
+  "cached_at": "2026-04-08T07:29:10.436658Z",
+  "data": {
+    "name": "build",
+    "version": "1.3.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "A simple, correct Python build frontend",
+    "release_date": "2025-08-01T21:27:07.844276Z",
+    "homepage": "https://pypi.org/project/build/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7145f0b5061ba90a1500d60bd1b13ca0a8a4cebdd0cc16ed8adf1c0e739f43b4"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

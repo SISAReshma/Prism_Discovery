@@ -1,0 +1,22 @@
+{
+  "key": "GitPython_3.1.44",
+  "cached_at": "2026-04-09T09:30:05.112603Z",
+  "data": {
+    "name": "GitPython",
+    "version": "3.1.44",
+    "license": "BSD-3-Clause",
+    "supplier": "Sebastian Thiel, Michael Trier",
+    "description": "GitPython is a Python library used to interact with Git repositories",
+    "release_date": "2025-01-02T07:32:40.731126Z",
+    "homepage": "https://github.com/gitpython-developers/GitPython",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9e0e10cda9bed1ee64bc9a6de50e7e38a9c9943241cd7f585f6df3ed28011110"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

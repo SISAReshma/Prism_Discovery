@@ -1,0 +1,22 @@
+{
+  "key": "shortuuid_1.0.13",
+  "cached_at": "2026-04-09T09:30:48.990273Z",
+  "data": {
+    "name": "shortuuid",
+    "version": "1.0.13",
+    "license": "BSD-3-Clause",
+    "supplier": "Stavros Korokithakis",
+    "description": "A generator library for concise, unambiguous and URL-safe UUIDs.",
+    "release_date": "2024-03-11T20:11:04.807576Z",
+    "homepage": "https://github.com/skorokithakis/shortuuid/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a482a497300b49b4953e15108a7913244e1bb0d41f9d332f5e9925dba33a3c5a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "cachetools_5.5.2",
+  "cached_at": "2026-04-09T09:29:54.387471Z",
+  "data": {
+    "name": "cachetools",
+    "version": "5.5.2",
+    "license": "MIT",
+    "supplier": "Thomas Kemmer",
+    "description": "Extensible memoizing collections and decorators",
+    "release_date": "2025-02-20T21:01:16.647938Z",
+    "homepage": "https://github.com/tkem/cachetools/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d26a22bcc62eb95c3beabd9f1ee5e820d3d2704fe2967cbe350e20c8ffcd3f0a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

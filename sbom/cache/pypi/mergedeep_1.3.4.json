@@ -1,0 +1,22 @@
+{
+  "key": "mergedeep_1.3.4",
+  "cached_at": "2026-04-08T07:29:13.834005Z",
+  "data": {
+    "name": "mergedeep",
+    "version": "1.3.4",
+    "license": "MIT License",
+    "supplier": "Travis Clarke",
+    "description": "A deep merge function for \ud83d\udc0d.",
+    "release_date": "2021-02-05T18:55:29.583731Z",
+    "homepage": "https://github.com/clarketm/mergedeep",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "70775750742b25c0d8f36c55aed03d24c3384d17c951b3175d898bd778ef0307"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

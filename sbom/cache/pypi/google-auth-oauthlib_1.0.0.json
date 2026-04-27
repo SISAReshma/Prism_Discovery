@@ -1,0 +1,22 @@
+{
+  "key": "google-auth-oauthlib_1.0.0",
+  "cached_at": "2026-04-09T09:30:06.306838Z",
+  "data": {
+    "name": "google-auth-oauthlib",
+    "version": "1.0.0",
+    "license": "Apache 2.0",
+    "supplier": "Google Cloud Platform",
+    "description": "Google Authentication Library",
+    "release_date": "2023-02-07T20:53:18.837313Z",
+    "homepage": "https://github.com/GoogleCloudPlatform/google-auth-library-python-oauthlib",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "95880ca704928c300f48194d1770cf5b1462835b6e49db61445a520f793fd5fb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

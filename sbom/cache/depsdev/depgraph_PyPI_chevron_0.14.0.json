@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_chevron_0.14.0",
+  "cached_at": "2026-04-09T09:14:28.777053Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

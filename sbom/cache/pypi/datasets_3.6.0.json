@@ -1,0 +1,22 @@
+{
+  "key": "datasets_3.6.0",
+  "cached_at": "2026-04-09T09:29:58.357558Z",
+  "data": {
+    "name": "datasets",
+    "version": "3.6.0",
+    "license": "Apache 2.0",
+    "supplier": "HuggingFace Inc.",
+    "description": "HuggingFace community-driven open-source library of datasets",
+    "release_date": "2025-05-07T15:14:59.742801Z",
+    "homepage": "https://github.com/huggingface/datasets",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "25000c4a2c0873a710df127d08a202a06eab7bf42441a6bc278b499c2f72cd1b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9.0"
+  }
+}

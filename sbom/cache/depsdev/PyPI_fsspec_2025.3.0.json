@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_fsspec_2025.3.0",
+  "cached_at": "2026-04-09T09:19:05.284587Z",
+  "data": {
+    "name": "fsspec",
+    "version": "2025.3.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/fsspec/filesystem_spec",
+    "description": "",
+    "release_date": "2025-03-07T21:47:54Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "watchdog_6.0.0",
+  "cached_at": "2026-04-09T09:31:01.642419Z",
+  "data": {
+    "name": "watchdog",
+    "version": "6.0.0",
+    "license": "Apache-2.0",
+    "supplier": "Micka\u00ebl Schoentgen",
+    "description": "Filesystem events monitoring",
+    "release_date": "2024-11-01T14:06:24.793551Z",
+    "homepage": "https://github.com/gorakhargosh/watchdog",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d1cdb490583ebd691c012b3d6dae011000fe42edb7a82ece80965b42abd61f26"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

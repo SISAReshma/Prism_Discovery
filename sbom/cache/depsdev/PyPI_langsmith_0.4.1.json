@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langsmith_0.4.1",
+  "cached_at": "2026-04-09T09:19:42.401386Z",
+  "data": {
+    "name": "langsmith",
+    "version": "0.4.1",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langsmith-sdk",
+    "description": "",
+    "release_date": "2025-06-10T19:01:42Z"
+  }
+}

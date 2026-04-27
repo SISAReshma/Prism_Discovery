@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_greenlet_3.2.3",
+  "cached_at": "2026-04-09T09:15:17.338793Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

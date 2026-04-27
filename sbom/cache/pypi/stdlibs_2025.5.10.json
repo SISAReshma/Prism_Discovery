@@ -1,0 +1,22 @@
+{
+  "key": "stdlibs_2025.5.10",
+  "cached_at": "2026-04-09T09:30:51.153685Z",
+  "data": {
+    "name": "stdlibs",
+    "version": "2025.5.10",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "List of packages in the stdlib",
+    "release_date": "2025-05-11T03:46:41.633611Z",
+    "homepage": "https://pypi.org/project/stdlibs/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "25178d9c2b45d2680292413bf59a20293355d45056ec92d32ea6ed349ce9e2a1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

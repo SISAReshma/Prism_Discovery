@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_fsspec_2026.1.0",
+  "cached_at": "2026-02-20T05:03:57.180886Z",
+  "data": {
+    "name": "fsspec",
+    "version": "2026.1.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/fsspec/filesystem_spec",
+    "description": ""
+  }
+}

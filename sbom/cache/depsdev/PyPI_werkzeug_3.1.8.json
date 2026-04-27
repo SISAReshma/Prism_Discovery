@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_werkzeug_3.1.8",
+  "cached_at": "2026-04-27T07:14:36.828688Z",
+  "data": {
+    "name": "werkzeug",
+    "version": "3.1.8",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/pallets/werkzeug",
+    "description": "",
+    "release_date": "2026-04-02T18:49:12Z"
+  }
+}

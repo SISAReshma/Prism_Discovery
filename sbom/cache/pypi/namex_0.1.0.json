@@ -1,0 +1,22 @@
+{
+  "key": "namex_0.1.0",
+  "cached_at": "2026-04-09T09:30:25.096111Z",
+  "data": {
+    "name": "namex",
+    "version": "0.1.0",
+    "license": "NOASSERTION",
+    "supplier": "Francois Chollet",
+    "description": "A simple utility to separate the implementation of your Python package and its public API surface.",
+    "release_date": "2025-05-26T23:17:37.695304Z",
+    "homepage": "https://pypi.org/project/namex/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e2012a474502f1e2251267062aae3114611f07df4224b6e06334c57b0f2ce87c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

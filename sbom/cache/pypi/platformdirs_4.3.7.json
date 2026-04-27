@@ -1,0 +1,22 @@
+{
+  "key": "platformdirs_4.3.7",
+  "cached_at": "2026-04-09T09:30:35.277644Z",
+  "data": {
+    "name": "platformdirs",
+    "version": "4.3.7",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`.",
+    "release_date": "2025-03-19T20:36:09.038372Z",
+    "homepage": "https://pypi.org/project/platformdirs/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a03875334331946f13c549dbd8f4bac7a13a50a895a0eb1e8c6a8ace80d40a94"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

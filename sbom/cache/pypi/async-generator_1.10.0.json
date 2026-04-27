@@ -1,0 +1,22 @@
+{
+  "key": "async-generator_1.10.0",
+  "cached_at": "2026-04-08T07:29:25.460024Z",
+  "data": {
+    "name": "async_generator",
+    "version": "1.10.0",
+    "license": "MIT -or- Apache License 2.0",
+    "supplier": "Nathaniel J. Smith",
+    "description": "Async generators and context managers for Python 3.5+",
+    "release_date": "2018-08-01T03:36:20.029960Z",
+    "homepage": "https://github.com/python-trio/async_generator",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.5"
+  }
+}

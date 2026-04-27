@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langchain-core_1.2.27",
+  "cached_at": "2026-04-09T09:23:20.406337Z",
+  "data": {
+    "name": "langchain-core",
+    "version": "1.2.27",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "description": "",
+    "release_date": "2026-04-07T14:56:30Z"
+  }
+}

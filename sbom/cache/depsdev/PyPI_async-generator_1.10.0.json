@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_async-generator_1.10.0",
+  "cached_at": "2026-04-08T07:28:08.499854Z",
+  "data": {
+    "name": "async-generator",
+    "version": "1.10.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/python-trio/async_generator",
+    "description": "",
+    "release_date": "2018-08-01T03:36:20Z"
+  }
+}

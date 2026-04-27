@@ -1,0 +1,22 @@
+{
+  "key": "tomli_2.4.1",
+  "cached_at": "2026-04-09T09:31:43.791900Z",
+  "data": {
+    "name": "tomli",
+    "version": "2.4.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "A lil' TOML parser",
+    "release_date": "2026-03-25T20:21:10.473841Z",
+    "homepage": "https://pypi.org/project/tomli/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f8f0fc26ec2cc2b965b7a3b87cd19c5c6b8c5e5f436b984e85f486d652285c30"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pyyaml_6.0.3",
+  "cached_at": "2026-04-09T09:31:06.453461Z",
+  "data": {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "license": "MIT",
+    "supplier": "Kirill Simonov",
+    "description": "YAML parser and emitter for Python",
+    "release_date": "2025-09-25T21:31:46.040932Z",
+    "homepage": "https://pyyaml.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "214ed4befebe12df36bcc8bc2b64b396ca31be9304b8f59e25c11cf94a4c033b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

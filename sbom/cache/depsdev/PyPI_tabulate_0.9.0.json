@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tabulate_0.9.0",
+  "cached_at": "2026-04-09T09:21:19.081307Z",
+  "data": {
+    "name": "tabulate",
+    "version": "0.9.0",
+    "license": "MIT",
+    "homepage": "https://github.com/astanin/python-tabulate",
+    "description": "",
+    "release_date": "2022-10-06T17:21:44Z"
+  }
+}

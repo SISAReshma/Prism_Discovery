@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_regex_2026.3.32",
+  "cached_at": "2026-04-09T09:24:19.322275Z",
+  "data": {
+    "name": "regex",
+    "version": "2026.3.32",
+    "license": "Apache-2.0 AND CNRI-Python",
+    "homepage": "https://github.com/mrabarnett/mrab-regex",
+    "description": "",
+    "release_date": "2026-03-28T21:49:22Z"
+  }
+}

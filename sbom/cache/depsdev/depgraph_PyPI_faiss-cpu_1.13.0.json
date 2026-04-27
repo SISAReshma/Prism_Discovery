@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_faiss-cpu_1.13.0",
+  "cached_at": "2026-04-09T09:14:51.000143Z",
+  "data": {
+    "direct": [
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

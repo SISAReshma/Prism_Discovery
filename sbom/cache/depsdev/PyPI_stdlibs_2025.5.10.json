@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_stdlibs_2025.5.10",
+  "cached_at": "2026-04-09T09:21:15.484437Z",
+  "data": {
+    "name": "stdlibs",
+    "version": "2025.5.10",
+    "license": "MIT",
+    "homepage": "https://github.com/omnilib/stdlibs",
+    "description": "",
+    "release_date": "2025-05-11T03:46:41Z"
+  }
+}

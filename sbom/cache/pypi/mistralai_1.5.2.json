@@ -1,0 +1,22 @@
+{
+  "key": "mistralai_1.5.2",
+  "cached_at": "2026-04-09T09:30:23.192342Z",
+  "data": {
+    "name": "mistralai",
+    "version": "1.5.2",
+    "license": "NOASSERTION",
+    "supplier": "Mistral",
+    "description": "Python Client SDK for the Mistral AI API.",
+    "release_date": "2025-03-19T18:40:28.232767Z",
+    "homepage": "https://github.com/mistralai/client-python.git",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5b1112acebbcad1afd7732ce0bd60614975b64999801c555c54768ac41f506ae"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

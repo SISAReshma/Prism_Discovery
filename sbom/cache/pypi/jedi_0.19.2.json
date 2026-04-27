@@ -1,0 +1,22 @@
+{
+  "key": "jedi_0.19.2",
+  "cached_at": "2026-04-09T09:30:11.976239Z",
+  "data": {
+    "name": "jedi",
+    "version": "0.19.2",
+    "license": "MIT",
+    "supplier": "David Halter",
+    "description": "An autocompletion tool for Python that can be used for text editors.",
+    "release_date": "2024-11-11T01:41:40.175144Z",
+    "homepage": "https://github.com/davidhalter/jedi",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a8ef22bde8490f57fe5c7681a3c83cb58874daf72b4784de3cce5b6ef6edb5b9"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "grpcio-tools_1.80.0",
+  "cached_at": "2026-04-09T09:31:37.138167Z",
+  "data": {
+    "name": "grpcio-tools",
+    "version": "1.80.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Protobuf code generator for gRPC",
+    "release_date": "2026-03-30T08:50:09.498212Z",
+    "homepage": "https://pypi.org/project/grpcio-tools/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "727477b9afa4b53f5ec70cafb41c3965d893835e0d4ea9b542fe3d0d005602bf"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

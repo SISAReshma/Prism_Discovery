@@ -1,0 +1,22 @@
+{
+  "key": "types-PyYAML_6.0.12.20250516",
+  "cached_at": "2026-04-09T09:30:59.096989Z",
+  "data": {
+    "name": "types-PyYAML",
+    "version": "6.0.12.20250516",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Typing stubs for PyYAML",
+    "release_date": "2025-05-16T03:08:04.019215Z",
+    "homepage": "https://pypi.org/project/types-PyYAML/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8478208feaeb53a34cb5d970c56a7cd76b72659442e733e268a94dc72b2d0530"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

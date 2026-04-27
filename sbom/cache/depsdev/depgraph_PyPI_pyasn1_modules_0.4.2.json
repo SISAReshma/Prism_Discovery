@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_pyasn1_modules_0.4.2",
+  "cached_at": "2026-04-09T09:16:53.368399Z",
+  "data": {
+    "direct": [
+      {
+        "name": "pyasn1",
+        "version": "0.6.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "pyasn1": {
+        "version": "0.6.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

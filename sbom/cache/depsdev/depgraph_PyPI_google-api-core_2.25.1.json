@@ -1,0 +1,134 @@
+{
+  "key": "depgraph_PyPI_google-api-core_2.25.1",
+  "cached_at": "2026-04-09T09:15:09.965652Z",
+  "data": {
+    "direct": [
+      {
+        "name": "google-auth",
+        "version": "2.49.1"
+      },
+      {
+        "name": "googleapis-common-protos",
+        "version": "1.74.0"
+      },
+      {
+        "name": "proto-plus",
+        "version": "1.27.2"
+      },
+      {
+        "name": "protobuf",
+        "version": "6.33.6"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "cffi",
+        "version": "2.0.0"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "cryptography",
+        "version": "46.0.6"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "pyasn1",
+        "version": "0.6.3"
+      },
+      {
+        "name": "pyasn1-modules",
+        "version": "0.4.2"
+      },
+      {
+        "name": "pycparser",
+        "version": "3.0.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "cffi": {
+        "version": "2.0.0",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "cryptography": {
+        "version": "46.0.6",
+        "relation": "INDIRECT"
+      },
+      "google-auth": {
+        "version": "2.49.1",
+        "relation": "DIRECT"
+      },
+      "googleapis-common-protos": {
+        "version": "1.74.0",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "proto-plus": {
+        "version": "1.27.2",
+        "relation": "DIRECT"
+      },
+      "protobuf": {
+        "version": "6.33.6",
+        "relation": "DIRECT"
+      },
+      "pyasn1": {
+        "version": "0.6.3",
+        "relation": "INDIRECT"
+      },
+      "pyasn1-modules": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "pycparser": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 15,
+    "source": "deps.dev"
+  }
+}

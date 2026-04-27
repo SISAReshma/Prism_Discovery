@@ -1,0 +1,22 @@
+{
+  "key": "distro_1.9.0",
+  "cached_at": "2026-04-27T07:15:03.652629Z",
+  "data": {
+    "name": "distro",
+    "version": "1.9.0",
+    "license": "Apache License, Version 2.0",
+    "supplier": "Nir Cohen",
+    "description": "Distro - an OS platform information API",
+    "release_date": "2023-12-24T09:54:30.421191Z",
+    "homepage": "https://github.com/python-distro/distro",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "key": "depgraph_PyPI_pydantic_2.4.0",
+  "cached_at": "2026-02-20T05:01:39.255965Z",
+  "data": {
+    "direct": [
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.10.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.10.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 3,
+    "source": "deps.dev"
+  }
+}

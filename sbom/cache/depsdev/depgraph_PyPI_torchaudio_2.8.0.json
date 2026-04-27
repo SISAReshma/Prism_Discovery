@@ -1,0 +1,230 @@
+{
+  "key": "depgraph_PyPI_torchaudio_2.8.0",
+  "cached_at": "2026-04-09T09:17:53.813789Z",
+  "data": {
+    "direct": [
+      {
+        "name": "torch",
+        "version": "2.8.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "importlib-metadata",
+        "version": "9.0.0"
+      },
+      {
+        "name": "jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "mpmath",
+        "version": "1.3.0"
+      },
+      {
+        "name": "networkx",
+        "version": "3.6.1"
+      },
+      {
+        "name": "nvidia-cublas-cu12",
+        "version": "12.8.4.1"
+      },
+      {
+        "name": "nvidia-cuda-cupti-cu12",
+        "version": "12.8.90"
+      },
+      {
+        "name": "nvidia-cuda-nvrtc-cu12",
+        "version": "12.8.93"
+      },
+      {
+        "name": "nvidia-cuda-runtime-cu12",
+        "version": "12.8.90"
+      },
+      {
+        "name": "nvidia-cudnn-cu12",
+        "version": "9.10.2.21"
+      },
+      {
+        "name": "nvidia-cufft-cu12",
+        "version": "11.3.3.83"
+      },
+      {
+        "name": "nvidia-cufile-cu12",
+        "version": "1.13.1.3"
+      },
+      {
+        "name": "nvidia-curand-cu12",
+        "version": "10.3.9.90"
+      },
+      {
+        "name": "nvidia-cusolver-cu12",
+        "version": "11.7.3.90"
+      },
+      {
+        "name": "nvidia-cusparse-cu12",
+        "version": "12.5.8.93"
+      },
+      {
+        "name": "nvidia-cusparselt-cu12",
+        "version": "0.7.1"
+      },
+      {
+        "name": "nvidia-nccl-cu12",
+        "version": "2.27.3"
+      },
+      {
+        "name": "nvidia-nvjitlink-cu12",
+        "version": "12.8.93"
+      },
+      {
+        "name": "nvidia-nvtx-cu12",
+        "version": "12.8.90"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      },
+      {
+        "name": "sympy",
+        "version": "1.14.0"
+      },
+      {
+        "name": "triton",
+        "version": "3.4.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "graph": {
+      "filelock": {
+        "version": "3.25.2",
+        "relation": "INDIRECT"
+      },
+      "fsspec": {
+        "version": "2026.3.0",
+        "relation": "INDIRECT"
+      },
+      "importlib-metadata": {
+        "version": "9.0.0",
+        "relation": "INDIRECT"
+      },
+      "jinja2": {
+        "version": "3.1.6",
+        "relation": "INDIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "mpmath": {
+        "version": "1.3.0",
+        "relation": "INDIRECT"
+      },
+      "networkx": {
+        "version": "3.6.1",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cublas-cu12": {
+        "version": "12.8.4.1",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cuda-cupti-cu12": {
+        "version": "12.8.90",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cuda-nvrtc-cu12": {
+        "version": "12.8.93",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cuda-runtime-cu12": {
+        "version": "12.8.90",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cudnn-cu12": {
+        "version": "9.10.2.21",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cufft-cu12": {
+        "version": "11.3.3.83",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cufile-cu12": {
+        "version": "1.13.1.3",
+        "relation": "INDIRECT"
+      },
+      "nvidia-curand-cu12": {
+        "version": "10.3.9.90",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cusolver-cu12": {
+        "version": "11.7.3.90",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cusparse-cu12": {
+        "version": "12.5.8.93",
+        "relation": "INDIRECT"
+      },
+      "nvidia-cusparselt-cu12": {
+        "version": "0.7.1",
+        "relation": "INDIRECT"
+      },
+      "nvidia-nccl-cu12": {
+        "version": "2.27.3",
+        "relation": "INDIRECT"
+      },
+      "nvidia-nvjitlink-cu12": {
+        "version": "12.8.93",
+        "relation": "INDIRECT"
+      },
+      "nvidia-nvtx-cu12": {
+        "version": "12.8.90",
+        "relation": "INDIRECT"
+      },
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "INDIRECT"
+      },
+      "sympy": {
+        "version": "1.14.0",
+        "relation": "INDIRECT"
+      },
+      "torch": {
+        "version": "2.8.0",
+        "relation": "DIRECT"
+      },
+      "triton": {
+        "version": "3.4.0",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "zipp": {
+        "version": "3.23.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 27,
+    "source": "deps.dev"
+  }
+}

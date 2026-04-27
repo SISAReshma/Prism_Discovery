@@ -330,6 +330,7 @@ def _build_components(catalog: Dict[str, Any], meta: Dict[str, Any]) -> List[Dic
             "name": norm.get("component_name"),
             "version": norm.get("component_version"),
             "scope": scope,  # required/optional
+            "is_direct_dependency": norm.get("is_direct_dependency", False),  # Track declared vs undeclared
             "licenses": [
                 {"license": {"id": norm.get("component_license", "NOASSERTION")}}
             ],
@@ -355,9 +356,14 @@ def _build_components(catalog: Dict[str, Any], meta: Dict[str, Any]) -> List[Dic
 def _mk_cyclonedx_dict(catalog: Dict[str, Any], meta: Dict[str, Any]) -> Dict[str, Any]:
     """
     Return CycloneDX document as dict (not serialized string).
+    Includes declared (direct) vs undeclared (transitive) dependency classification.
     """
     comps = _build_components(catalog, meta)
-    
+
+    # Count declared (direct) vs undeclared (transitive) dependencies
+    declared_count = sum(1 for comp in comps if comp.get("scope") == "required" and comp.get("is_direct_dependency", False))
+    undeclared_count = sum(1 for comp in comps if not comp.get("is_direct_dependency", False))
+
     # Extract vulnerabilities for root-level list
     vulns_list = []
     for comp in comps:
@@ -457,7 +463,12 @@ def _mk_cyclonedx_dict(catalog: Dict[str, Any], meta: Dict[str, Any]) -> Dict[st
         "metadata": {
             "timestamp": meta["timestamp"],
             "tools": [meta["tool"]],
-            "component": {"type": "application", "name": meta.get("source", "")}
+            "component": {"type": "application", "name": meta.get("source", "")},
+            "summary": {
+                "total_components": len(comps),
+                "declared_dependencies": declared_count,
+                "undeclared_dependencies": undeclared_count
+            }
         },
         "components": components_map,
         "dependencies": dependencies,

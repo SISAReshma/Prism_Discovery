@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_frozenlist_1.8.0",
+  "cached_at": "2026-04-09T09:22:13.698860Z",
+  "data": {
+    "name": "frozenlist",
+    "version": "1.8.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/aio-libs/frozenlist",
+    "description": "",
+    "release_date": "2025-10-06T05:37:59Z"
+  }
+}

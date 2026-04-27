@@ -1,0 +1,37 @@
+{
+  "key": "depgraph_PyPI_stack-data_0.6.3",
+  "cached_at": "2026-04-09T09:17:32.314378Z",
+  "data": {
+    "direct": [
+      {
+        "name": "asttokens",
+        "version": "3.0.1"
+      },
+      {
+        "name": "executing",
+        "version": "2.2.1"
+      },
+      {
+        "name": "pure-eval",
+        "version": "0.2.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "asttokens": {
+        "version": "3.0.1",
+        "relation": "DIRECT"
+      },
+      "executing": {
+        "version": "2.2.1",
+        "relation": "DIRECT"
+      },
+      "pure-eval": {
+        "version": "0.2.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 3,
+    "source": "deps.dev"
+  }
+}

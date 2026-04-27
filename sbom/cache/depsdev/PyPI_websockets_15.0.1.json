@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_websockets_15.0.1",
+  "cached_at": "2026-04-09T09:21:46.780173Z",
+  "data": {
+    "name": "websockets",
+    "version": "15.0.1",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/python-websockets/websockets",
+    "description": "",
+    "release_date": "2025-03-05T20:03:04Z"
+  }
+}

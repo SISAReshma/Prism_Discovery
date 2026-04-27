@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_ollama_0.1.6",
+  "cached_at": "2026-02-20T05:03:22.687755Z",
+  "data": {
+    "name": "ollama",
+    "version": "0.1.6",
+    "license": "MIT",
+    "homepage": "https://github.com/jmorganca/ollama-python",
+    "description": ""
+  }
+}

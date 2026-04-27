@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_google-api-core_2.30.2",
+  "cached_at": "2026-04-09T09:23:11.927091Z",
+  "data": {
+    "name": "google-api-core",
+    "version": "2.30.2",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/googleapis/google-cloud-python/tree/main/packages/google-api-core",
+    "description": "",
+    "release_date": "2026-04-02T21:23:06Z"
+  }
+}

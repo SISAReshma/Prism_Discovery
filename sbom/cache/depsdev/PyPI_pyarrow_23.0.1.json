@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pyarrow_23.0.1",
+  "cached_at": "2026-04-09T09:22:40.480074Z",
+  "data": {
+    "name": "pyarrow",
+    "version": "23.0.1",
+    "license": "Apache-2.0",
+    "homepage": "https://arrow.apache.org/",
+    "description": "",
+    "release_date": "2026-02-16T10:14:12Z"
+  }
+}

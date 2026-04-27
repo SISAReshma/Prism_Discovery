@@ -1,0 +1,22 @@
+{
+  "key": "itsdangerous_2.2.0",
+  "cached_at": "2026-04-27T07:15:01.262293Z",
+  "data": {
+    "name": "itsdangerous",
+    "version": "2.2.0",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "Safely pass data to untrusted environments and back.",
+    "release_date": "2024-04-16T21:28:14.499616Z",
+    "homepage": "https://pypi.org/project/itsdangerous/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "key": "depgraph_PyPI_rich_14.0.0",
+  "cached_at": "2026-04-09T09:17:15.294271Z",
+  "data": {
+    "direct": [
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      }
+    ],
+    "graph": {
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "DIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

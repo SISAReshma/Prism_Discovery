@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pyinstaller_5.13.0",
+  "cached_at": "2026-04-27T07:14:32.620804Z",
+  "data": {
+    "name": "pyinstaller",
+    "version": "5.13.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/pyinstaller/pyinstaller",
+    "description": "",
+    "release_date": "2023-06-24T23:21:32Z"
+  }
+}

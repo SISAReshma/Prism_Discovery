@@ -1,0 +1,22 @@
+{
+  "key": "h5py_3.15.1",
+  "cached_at": "2026-02-20T05:26:19.728436Z",
+  "data": {
+    "name": "h5py",
+    "version": "3.15.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Read and write HDF5 files from Python",
+    "release_date": "2025-10-16T10:33:24.201207Z",
+    "homepage": "https://pypi.org/project/h5py/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "67e59f6c2f19a32973a40f43d9a088ae324fe228c8366e25ebc57ceebf093a6b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

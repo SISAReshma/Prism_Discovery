@@ -1,0 +1,54 @@
+{
+  "key": "depgraph_PyPI_build_1.3.0",
+  "cached_at": "2026-04-08T07:27:07.407973Z",
+  "data": {
+    "direct": [
+      {
+        "name": "importlib-metadata",
+        "version": "9.0.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pyproject-hooks",
+        "version": "1.2.0"
+      },
+      {
+        "name": "tomli",
+        "version": "2.4.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "graph": {
+      "importlib-metadata": {
+        "version": "9.0.0",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pyproject-hooks": {
+        "version": "1.2.0",
+        "relation": "DIRECT"
+      },
+      "tomli": {
+        "version": "2.4.1",
+        "relation": "DIRECT"
+      },
+      "zipp": {
+        "version": "3.23.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 5,
+    "source": "deps.dev"
+  }
+}

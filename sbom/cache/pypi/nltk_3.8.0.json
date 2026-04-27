@@ -1,0 +1,22 @@
+{
+  "key": "nltk_3.8.0",
+  "cached_at": "2026-02-20T05:19:37.375969Z",
+  "data": {
+    "name": "nltk",
+    "version": "3.8.0",
+    "license": "Apache License, Version 2.0",
+    "supplier": "NLTK Team",
+    "description": "Natural Language Toolkit",
+    "release_date": "2022-12-12T17:15:17.099380Z",
+    "homepage": "https://www.nltk.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3306502f487aa9fb0566e23443fa287a85a8d8d0821e2ef1655b4e3f0ea4aeee"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

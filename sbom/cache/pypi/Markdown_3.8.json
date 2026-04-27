@@ -1,0 +1,22 @@
+{
+  "key": "Markdown_3.8",
+  "cached_at": "2026-04-09T09:30:21.116316Z",
+  "data": {
+    "name": "Markdown",
+    "version": "3.8",
+    "license": "NOASSERTION",
+    "supplier": "Manfred Stienstra, Yuri Takhteyev",
+    "description": "Python implementation of John Gruber's Markdown.",
+    "release_date": "2025-04-11T14:42:49.178103Z",
+    "homepage": "https://pypi.org/project/Markdown/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "794a929b79c5af141ef5ab0f2f642d0f7b1872981250230e72682346f7cc90dc"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

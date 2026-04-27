@@ -1,0 +1,22 @@
+{
+  "key": "decorator_5.2.1",
+  "cached_at": "2026-04-09T09:29:59.217918Z",
+  "data": {
+    "name": "decorator",
+    "version": "5.2.1",
+    "license": "BSD-2-Clause",
+    "supplier": "Unknown",
+    "description": "Decorators for Humans",
+    "release_date": "2025-02-24T04:41:32.565879Z",
+    "homepage": "https://pypi.org/project/decorator/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d316bb415a2d9e2d2b3abcc4084c6502fc09240e292cd76a76afc106a1c8e04a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "key": "depgraph_PyPI_langchain-text-splitters_0.3.8",
+  "cached_at": "2026-04-09T09:15:49.590430Z",
+  "data": {
+    "direct": [
+      {
+        "name": "langchain-core",
+        "version": "0.3.83"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "jsonpatch",
+        "version": "1.33.0"
+      },
+      {
+        "name": "jsonpointer",
+        "version": "3.1.1"
+      },
+      {
+        "name": "langsmith",
+        "version": "0.7.26"
+      },
+      {
+        "name": "orjson",
+        "version": "3.11.8"
+      },
+      {
+        "name": "packaging",
+        "version": "25.0.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "requests-toolbelt",
+        "version": "1.0.0"
+      },
+      {
+        "name": "tenacity",
+        "version": "9.1.4"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "uuid-utils",
+        "version": "0.14.1"
+      },
+      {
+        "name": "xxhash",
+        "version": "3.6.0"
+      },
+      {
+        "name": "zstandard",
+        "version": "0.25.0"
+      }
+    ],
+    "graph": {
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.13.0",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "relation": "INDIRECT"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "jsonpatch": {
+        "version": "1.33.0",
+        "relation": "INDIRECT"
+      },
+      "jsonpointer": {
+        "version": "3.1.1",
+        "relation": "INDIRECT"
+      },
+      "langchain-core": {
+        "version": "0.3.83",
+        "relation": "DIRECT"
+      },
+      "langsmith": {
+        "version": "0.7.26",
+        "relation": "INDIRECT"
+      },
+      "orjson": {
+        "version": "3.11.8",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "25.0.0",
+        "relation": "INDIRECT"
+      },
+      "pydantic": {
+        "version": "2.12.5",
+        "relation": "INDIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.41.5",
+        "relation": "INDIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "INDIRECT"
+      },
+      "requests-toolbelt": {
+        "version": "1.0.0",
+        "relation": "INDIRECT"
+      },
+      "tenacity": {
+        "version": "9.1.4",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "uuid-utils": {
+        "version": "0.14.1",
+        "relation": "INDIRECT"
+      },
+      "xxhash": {
+        "version": "3.6.0",
+        "relation": "INDIRECT"
+      },
+      "zstandard": {
+        "version": "0.25.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 27,
+    "source": "deps.dev"
+  }
+}

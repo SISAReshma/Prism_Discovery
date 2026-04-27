@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_zstandard_0.23.0",
+  "cached_at": "2026-04-09T09:21:55.447930Z",
+  "data": {
+    "name": "zstandard",
+    "version": "0.23.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/indygreg/python-zstandard",
+    "description": "",
+    "release_date": "2024-07-15T00:17:42Z"
+  }
+}

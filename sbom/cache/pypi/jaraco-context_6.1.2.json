@@ -1,0 +1,22 @@
+{
+  "key": "jaraco-context_6.1.2",
+  "cached_at": "2026-04-08T07:29:21.638047Z",
+  "data": {
+    "name": "jaraco.context",
+    "version": "6.1.2",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Useful decorators and context managers",
+    "release_date": "2026-03-20T22:13:32.808832Z",
+    "homepage": "https://pypi.org/project/jaraco.context/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "bf8150b79a2d5d91ae48629d8b427a8f7ba0e1097dd6202a9059f29a36379535"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

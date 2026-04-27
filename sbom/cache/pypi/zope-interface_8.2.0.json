@@ -1,0 +1,22 @@
+{
+  "key": "zope-interface_8.2.0",
+  "cached_at": "2026-04-09T09:31:19.343872Z",
+  "data": {
+    "name": "zope.interface",
+    "version": "8.2.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Interfaces for Python",
+    "release_date": "2026-01-09T08:04:55.378967Z",
+    "homepage": "https://pypi.org/project/zope.interface/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "788c293f3165964ec6527b2d861072c68eef53425213f36d3893ebee89a89623"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_sentencepiece_0.1.99",
+  "cached_at": "2026-02-20T05:01:57.860979Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

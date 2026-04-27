@@ -1,0 +1,102 @@
+{
+  "key": "depgraph_PyPI_huggingface-hub_0.26.0",
+  "cached_at": "2026-02-20T05:01:53.967915Z",
+  "data": {
+    "direct": [
+      {
+        "name": "filelock",
+        "version": "3.20.3"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.1.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "requests",
+        "version": "2.32.5"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.2"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.1.4"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.4"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.1.4",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.4",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.20.3",
+        "relation": "DIRECT"
+      },
+      "fsspec": {
+        "version": "2026.1.0",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.32.5",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.2",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 11,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "latex2mathml_3.79.0",
+  "cached_at": "2026-04-09T09:31:30.351526Z",
+  "data": {
+    "name": "latex2mathml",
+    "version": "3.79.0",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Pure Python library for LaTeX to MathML conversion",
+    "release_date": "2026-03-12T23:25:09.466749Z",
+    "homepage": "https://pypi.org/project/latex2mathml/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9f10720d4fcf6b22d1b81f6628237832419a7a29783c13aa92fa8d680165e63d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

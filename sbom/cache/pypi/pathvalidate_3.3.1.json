@@ -1,0 +1,22 @@
+{
+  "key": "pathvalidate_3.3.1",
+  "cached_at": "2026-04-09T09:30:34.304862Z",
+  "data": {
+    "name": "pathvalidate",
+    "version": "3.3.1",
+    "license": "MIT License",
+    "supplier": "Tsuyoshi Hombashi",
+    "description": "pathvalidate is a Python library to sanitize/validate a string such as filenames/file-paths/etc.",
+    "release_date": "2025-06-15T09:07:19.117163Z",
+    "homepage": "https://github.com/thombashi/pathvalidate",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5263baab691f8e1af96092fa5137ee17df5bdfbd6cff1fcac4d6ef4bc2e1735f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

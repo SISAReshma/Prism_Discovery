@@ -1,0 +1,22 @@
+{
+  "key": "stack-data_0.6.3",
+  "cached_at": "2026-04-09T09:30:50.684240Z",
+  "data": {
+    "name": "stack-data",
+    "version": "0.6.3",
+    "license": "MIT",
+    "supplier": "Alex Hall",
+    "description": "Extract data from python stack frames and tracebacks for informative displays",
+    "release_date": "2023-09-30T13:58:03.530734Z",
+    "homepage": "http://github.com/alexmojaki/stack_data",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

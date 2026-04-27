@@ -1,0 +1,358 @@
+{
+  "key": "depgraph_PyPI_datasets_3.6.0",
+  "cached_at": "2026-04-09T09:14:36.713393Z",
+  "data": {
+    "direct": [
+      {
+        "name": "dill",
+        "version": "0.3.8"
+      },
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "fsspec",
+        "version": "2025.3.0"
+      },
+      {
+        "name": "huggingface-hub",
+        "version": "1.9.1"
+      },
+      {
+        "name": "multiprocess",
+        "version": "0.70.16"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pandas",
+        "version": "3.0.2"
+      },
+      {
+        "name": "pyarrow",
+        "version": "23.0.1"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "xxhash",
+        "version": "3.6.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.6.1"
+      },
+      {
+        "name": "aiohttp",
+        "version": "3.13.5"
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.4.0"
+      },
+      {
+        "name": "annotated-doc",
+        "version": "0.0.4"
+      },
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "async-timeout",
+        "version": "5.0.1"
+      },
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "click",
+        "version": "8.3.2"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.4.3"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "propcache",
+        "version": "0.4.1"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "typer",
+        "version": "0.24.1"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "yarl",
+        "version": "1.23.0"
+      }
+    ],
+    "graph": {
+      "aiohappyeyeballs": {
+        "version": "2.6.1",
+        "relation": "INDIRECT"
+      },
+      "aiohttp": {
+        "version": "3.13.5",
+        "relation": "INDIRECT"
+      },
+      "aiosignal": {
+        "version": "1.4.0",
+        "relation": "INDIRECT"
+      },
+      "annotated-doc": {
+        "version": "0.0.4",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.13.0",
+        "relation": "INDIRECT"
+      },
+      "async-timeout": {
+        "version": "5.0.1",
+        "relation": "INDIRECT"
+      },
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "click": {
+        "version": "8.3.2",
+        "relation": "INDIRECT"
+      },
+      "dill": {
+        "version": "0.3.8",
+        "relation": "DIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.25.2",
+        "relation": "DIRECT"
+      },
+      "frozenlist": {
+        "version": "1.8.0",
+        "relation": "INDIRECT"
+      },
+      "fsspec": {
+        "version": "2025.3.0",
+        "relation": "DIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "hf-xet": {
+        "version": "1.4.3",
+        "relation": "INDIRECT"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "relation": "INDIRECT"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "relation": "INDIRECT"
+      },
+      "huggingface-hub": {
+        "version": "1.9.1",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "multidict": {
+        "version": "6.7.1",
+        "relation": "INDIRECT"
+      },
+      "multiprocess": {
+        "version": "0.70.16",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pandas": {
+        "version": "3.0.2",
+        "relation": "DIRECT"
+      },
+      "propcache": {
+        "version": "0.4.1",
+        "relation": "INDIRECT"
+      },
+      "pyarrow": {
+        "version": "23.0.1",
+        "relation": "DIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "DIRECT"
+      },
+      "rich": {
+        "version": "14.3.3",
+        "relation": "INDIRECT"
+      },
+      "shellingham": {
+        "version": "1.5.4",
+        "relation": "INDIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "DIRECT"
+      },
+      "typer": {
+        "version": "0.24.1",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "xxhash": {
+        "version": "3.6.0",
+        "relation": "DIRECT"
+      },
+      "yarl": {
+        "version": "1.23.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 43,
+    "source": "deps.dev"
+  }
+}

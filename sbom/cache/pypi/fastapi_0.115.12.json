@@ -1,0 +1,22 @@
+{
+  "key": "fastapi_0.115.12",
+  "cached_at": "2026-04-09T09:30:02.313240Z",
+  "data": {
+    "name": "fastapi",
+    "version": "0.115.12",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
+    "release_date": "2025-03-23T22:55:42.101023Z",
+    "homepage": "https://pypi.org/project/fastapi/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e94613d6c05e27be7ffebdd6ea5f388112e5e430c8f7d6494a9d1d88d43e814d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_einops_0.8.1",
+  "cached_at": "2026-04-09T09:14:44.594625Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

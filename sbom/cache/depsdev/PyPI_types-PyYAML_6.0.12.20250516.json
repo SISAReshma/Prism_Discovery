@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_types-PyYAML_6.0.12.20250516",
+  "cached_at": "2026-04-09T09:21:38.355871Z",
+  "data": {
+    "name": "types-PyYAML",
+    "version": "6.0.12.20250516",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python/typeshed",
+    "description": "",
+    "release_date": "2025-05-16T03:08:04Z"
+  }
+}

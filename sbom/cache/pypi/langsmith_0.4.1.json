@@ -1,0 +1,22 @@
+{
+  "key": "langsmith_0.4.1",
+  "cached_at": "2026-04-09T09:30:19.273113Z",
+  "data": {
+    "name": "langsmith",
+    "version": "0.4.1",
+    "license": "MIT",
+    "supplier": "LangChain",
+    "description": "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform.",
+    "release_date": "2025-06-10T19:01:42.433883Z",
+    "homepage": "https://smith.langchain.com/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "19c4c40bbb6735cb1136c453b2edcde265ca5ba1b108b7e0e3583ec4bda28625"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

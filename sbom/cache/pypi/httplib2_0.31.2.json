@@ -1,0 +1,22 @@
+{
+  "key": "httplib2_0.31.2",
+  "cached_at": "2026-04-09T09:31:37.351777Z",
+  "data": {
+    "name": "httplib2",
+    "version": "0.31.2",
+    "license": "MIT",
+    "supplier": "Joe Gregorio",
+    "description": "A comprehensive HTTP client library.",
+    "release_date": "2026-01-23T11:04:42.780129Z",
+    "homepage": "https://github.com/httplib2/httplib2",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "dbf0c2fa3862acf3c55c078ea9c0bc4481d7dc5117cae71be9514912cf9f8349"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "referencing_0.37.0",
+  "cached_at": "2026-04-09T09:31:14.149305Z",
+  "data": {
+    "name": "referencing",
+    "version": "0.37.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "JSON Referencing + Python",
+    "release_date": "2025-10-13T15:30:47.625937Z",
+    "homepage": "https://pypi.org/project/referencing/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

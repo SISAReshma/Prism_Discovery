@@ -1,0 +1,22 @@
+{
+  "key": "fastavro_1.12.1",
+  "cached_at": "2026-04-09T09:31:22.460465Z",
+  "data": {
+    "name": "fastavro",
+    "version": "1.12.1",
+    "license": "MIT",
+    "supplier": "Miki Tebeka",
+    "description": "Fast read/write of AVRO files",
+    "release_date": "2025-10-10T15:40:59.834365Z",
+    "homepage": "https://github.com/fastavro/fastavro",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "00650ca533907361edda22e6ffe8cf87ab2091c5d8aee5c8000b0f2dcdda7ed3"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_pexpect_4.9.0",
+  "cached_at": "2026-04-09T09:16:42.127650Z",
+  "data": {
+    "direct": [
+      {
+        "name": "ptyprocess",
+        "version": "0.7.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "ptyprocess": {
+        "version": "0.7.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_langchain-community_0.0.20",
+  "cached_at": "2026-02-20T05:05:10.762905Z",
+  "data": {
+    "name": "langchain-community",
+    "version": "0.0.20",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "description": ""
+  }
+}

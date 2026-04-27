@@ -1,0 +1,54 @@
+{
+  "key": "depgraph_PyPI_jsonschema_4.24.0",
+  "cached_at": "2026-04-09T09:15:42.518691Z",
+  "data": {
+    "direct": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "rpds-py",
+        "version": "0.30.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "DIRECT"
+      },
+      "jsonschema-specifications": {
+        "version": "2025.9.1",
+        "relation": "DIRECT"
+      },
+      "referencing": {
+        "version": "0.37.0",
+        "relation": "DIRECT"
+      },
+      "rpds-py": {
+        "version": "0.30.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 5,
+    "source": "deps.dev"
+  }
+}

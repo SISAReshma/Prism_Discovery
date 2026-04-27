@@ -1,0 +1,37 @@
+{
+  "key": "depgraph_PyPI_uvicorn_0.34.2",
+  "cached_at": "2026-04-09T09:18:07.489817Z",
+  "data": {
+    "direct": [
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "click": {
+        "version": "8.3.1",
+        "relation": "DIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 3,
+    "source": "deps.dev"
+  }
+}

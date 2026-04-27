@@ -1,0 +1,22 @@
+{
+  "key": "numpy_2.4.4",
+  "cached_at": "2026-04-09T09:31:05.763905Z",
+  "data": {
+    "name": "numpy",
+    "version": "2.4.4",
+    "license": "NOASSERTION",
+    "supplier": "Travis E. Oliphant et al.",
+    "description": "Fundamental package for array computing in Python",
+    "release_date": "2026-03-29T13:18:15.438035Z",
+    "homepage": "https://pypi.org/project/numpy/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f983334aea213c99992053ede6168500e5f086ce74fbc4acc3f2b00f5762e9db"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.11"
+  }
+}

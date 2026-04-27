@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jupyter_client_8.6.3",
+  "cached_at": "2026-04-09T09:19:36.753379Z",
+  "data": {
+    "name": "jupyter_client",
+    "version": "8.6.3",
+    "license": "non-standard",
+    "homepage": "https://jupyter.org",
+    "description": "",
+    "release_date": "2024-09-17T10:44:15Z"
+  }
+}

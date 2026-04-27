@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_astunparse_1.6.3",
+  "cached_at": "2026-04-09T09:18:28.487754Z",
+  "data": {
+    "name": "astunparse",
+    "version": "1.6.3",
+    "license": "non-standard",
+    "homepage": "https://github.com/simonpercivall/astunparse",
+    "description": "",
+    "release_date": "2019-12-22T18:12:11Z"
+  }
+}

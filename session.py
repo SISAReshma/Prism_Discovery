@@ -8,7 +8,7 @@ from typing import Optional, Dict, Any
 from dataclasses import dataclass, field
 from fastapi import Header, HTTPException
 
-from config import ENDPOINT_MAP
+from aibom.config import ENDPOINT_MAP
 
 
 # =============================================================================

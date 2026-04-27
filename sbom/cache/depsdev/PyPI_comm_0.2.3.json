@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_comm_0.2.3",
+  "cached_at": "2026-04-09T09:23:50.463751Z",
+  "data": {
+    "name": "comm",
+    "version": "0.2.3",
+    "license": "non-standard",
+    "homepage": "https://github.com/ipython/comm",
+    "description": "",
+    "release_date": "2025-07-25T14:02:02Z"
+  }
+}

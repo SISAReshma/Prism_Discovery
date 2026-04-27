@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tqdm-multiprocess_0.0.11",
+  "cached_at": "2026-04-09T09:21:34.139224Z",
+  "data": {
+    "name": "tqdm-multiprocess",
+    "version": "0.0.11",
+    "license": "MIT",
+    "homepage": "https://github.com/EleutherAI/tqdm-multiprocess",
+    "description": "",
+    "release_date": "2020-10-27T06:57:53Z"
+  }
+}

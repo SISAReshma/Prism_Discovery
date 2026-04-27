@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_bitsandbytes_0.46.0",
+  "cached_at": "2026-04-09T09:14:18.365849Z",
+  "data": {
+    "direct": [
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "torch",
+        "version": "2.11.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "torch": {
+        "version": "2.11.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

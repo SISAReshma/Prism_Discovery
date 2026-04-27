@@ -1,0 +1,62 @@
+{
+  "key": "depgraph_PyPI_boto3_1.38.42",
+  "cached_at": "2026-04-09T09:14:20.298838Z",
+  "data": {
+    "direct": [
+      {
+        "name": "botocore",
+        "version": "1.38.46"
+      },
+      {
+        "name": "jmespath",
+        "version": "1.1.0"
+      },
+      {
+        "name": "s3transfer",
+        "version": "0.13.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "1.26.20"
+      }
+    ],
+    "graph": {
+      "botocore": {
+        "version": "1.38.46",
+        "relation": "DIRECT"
+      },
+      "jmespath": {
+        "version": "1.1.0",
+        "relation": "DIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "s3transfer": {
+        "version": "0.13.1",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "1.26.20",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 6,
+    "source": "deps.dev"
+  }
+}

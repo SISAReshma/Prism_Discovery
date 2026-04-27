@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_ruff_0.12.11",
+  "cached_at": "2026-04-08T07:27:21.746683Z",
+  "data": {
+    "name": "ruff",
+    "version": "0.12.11",
+    "license": "MIT",
+    "homepage": "https://github.com/astral-sh/ruff",
+    "description": "",
+    "release_date": "2025-08-28T13:58:49Z"
+  }
+}

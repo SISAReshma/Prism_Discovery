@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_rich_13.0.0",
+  "cached_at": "2026-02-20T05:02:31.313278Z",
+  "data": {
+    "direct": [
+      {
+        "name": "commonmark",
+        "version": "0.9.1"
+      },
+      {
+        "name": "pygments",
+        "version": "2.19.2"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "commonmark": {
+        "version": "0.9.1",
+        "relation": "DIRECT"
+      },
+      "pygments": {
+        "version": "2.19.2",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

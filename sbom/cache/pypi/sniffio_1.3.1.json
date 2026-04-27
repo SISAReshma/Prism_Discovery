@@ -1,0 +1,22 @@
+{
+  "key": "sniffio_1.3.1",
+  "cached_at": "2026-04-27T07:15:05.868319Z",
+  "data": {
+    "name": "sniffio",
+    "version": "1.3.1",
+    "license": "MIT OR Apache-2.0",
+    "supplier": "Unknown",
+    "description": "Sniff out which async library your code is running under",
+    "release_date": "2024-02-25T23:20:01.196159Z",
+    "homepage": "https://pypi.org/project/sniffio/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_trio_0.31.0",
+  "cached_at": "2026-04-08T07:27:22.462890Z",
+  "data": {
+    "name": "trio",
+    "version": "0.31.0",
+    "license": "Apache-2.0 OR MIT",
+    "homepage": "https://github.com/python-trio/trio",
+    "description": "",
+    "release_date": "2025-09-09T15:17:13Z"
+  }
+}

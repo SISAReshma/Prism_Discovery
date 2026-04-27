@@ -1,0 +1,22 @@
+{
+  "key": "urllib3_2.4.0",
+  "cached_at": "2026-04-09T09:31:00.878626Z",
+  "data": {
+    "name": "urllib3",
+    "version": "2.4.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "HTTP library with thread-safe connection pooling, file post, and more.",
+    "release_date": "2025-04-10T15:23:37.377011Z",
+    "homepage": "https://pypi.org/project/urllib3/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

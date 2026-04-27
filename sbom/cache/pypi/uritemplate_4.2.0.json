@@ -1,0 +1,22 @@
+{
+  "key": "uritemplate_4.2.0",
+  "cached_at": "2026-04-09T09:31:00.658829Z",
+  "data": {
+    "name": "uritemplate",
+    "version": "4.2.0",
+    "license": "BSD 3-Clause OR Apache-2.0",
+    "supplier": "Ian Stapleton Cordasco",
+    "description": "Implementation of RFC 6570 URI Templates",
+    "release_date": "2025-06-02T15:12:03.405548Z",
+    "homepage": "https://uritemplate.readthedocs.org",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "962201ba1c4edcab02e60f9a0d3821e82dfc5d2d6662a21abd533879bdb8a686"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

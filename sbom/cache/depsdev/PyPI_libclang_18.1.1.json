@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_libclang_18.1.1",
+  "cached_at": "2026-04-09T09:19:43.830839Z",
+  "data": {
+    "name": "libclang",
+    "version": "18.1.1",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/sighingnow/libclang",
+    "description": "",
+    "release_date": "2024-03-17T16:03:45Z"
+  }
+}

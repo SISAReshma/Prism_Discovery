@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pydeck_0.9.1",
+  "cached_at": "2026-04-09T09:20:40.535896Z",
+  "data": {
+    "name": "pydeck",
+    "version": "0.9.1",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/visgl/deck.gl",
+    "description": "",
+    "release_date": "2024-05-10T15:36:17Z"
+  }
+}

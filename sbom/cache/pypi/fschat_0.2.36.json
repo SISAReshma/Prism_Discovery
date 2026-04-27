@@ -1,0 +1,22 @@
+{
+  "key": "fschat_0.2.36",
+  "cached_at": "2026-04-09T09:30:04.006175Z",
+  "data": {
+    "name": "fschat",
+    "version": "0.2.36",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "An open platform for training, serving, and evaluating large language model based chatbots.",
+    "release_date": "2024-02-11T15:42:24.819121Z",
+    "homepage": "https://pypi.org/project/fschat/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a66ecf1e90f6db1d015096f6aa8a305d20d0a13e067951285aecdb56a33e9cb1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

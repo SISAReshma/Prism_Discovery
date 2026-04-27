@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langgraph_1.1.6",
+  "cached_at": "2026-04-09T09:23:21.099417Z",
+  "data": {
+    "name": "langgraph",
+    "version": "1.1.6",
+    "license": "MIT",
+    "homepage": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "description": "",
+    "release_date": "2026-04-03T19:01:30Z"
+  }
+}

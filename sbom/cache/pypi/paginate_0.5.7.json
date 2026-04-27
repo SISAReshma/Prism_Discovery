@@ -1,0 +1,22 @@
+{
+  "key": "paginate_0.5.7",
+  "cached_at": "2026-04-08T07:29:17.214048Z",
+  "data": {
+    "name": "paginate",
+    "version": "0.5.7",
+    "license": "MIT",
+    "supplier": "Christoph Haas",
+    "description": "Divides large result sets into pages for easier browsing",
+    "release_date": "2024-08-25T14:17:22.550766Z",
+    "homepage": "https://github.com/Signum/paginate",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b885e2af73abcf01d9559fd5216b57ef722f8c42affbb63942377668e35c7591"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

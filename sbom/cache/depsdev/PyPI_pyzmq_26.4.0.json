@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_pyzmq_26.4.0",
+  "cached_at": "2026-04-09T09:20:51.259527Z",
+  "data": {
+    "name": "pyzmq",
+    "version": "26.4.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/zeromq/pyzmq",
+    "description": "",
+    "release_date": "2025-04-04T12:04:51Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_packaging_23.2.0",
+  "cached_at": "2026-02-20T05:05:03.325313Z",
+  "data": {
+    "name": "packaging",
+    "version": "23.2.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/pypa/packaging",
+    "description": ""
+  }
+}

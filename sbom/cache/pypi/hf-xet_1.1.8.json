@@ -1,0 +1,22 @@
+{
+  "key": "hf-xet_1.1.8",
+  "cached_at": "2026-04-09T09:30:09.112141Z",
+  "data": {
+    "name": "hf-xet",
+    "version": "1.1.8",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Fast transfer of large files with the Hugging Face Hub.",
+    "release_date": "2025-08-18T22:00:58.777501Z",
+    "homepage": "https://pypi.org/project/hf-xet/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3d5f82e533fc51c7daad0f9b655d9c7811b5308e5890236828bd1dd3ed8fea74"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pillow_11.3.0",
+  "cached_at": "2026-04-09T09:31:47.052165Z",
+  "data": {
+    "name": "pillow",
+    "version": "11.3.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Python Imaging Library (Fork)",
+    "release_date": "2025-07-01T09:13:39.342120Z",
+    "homepage": "https://pypi.org/project/pillow/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1b9c17fd4ace828b3003dfd1e30bff24863e0eb59b535e8f80194d9cc7ecf860"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

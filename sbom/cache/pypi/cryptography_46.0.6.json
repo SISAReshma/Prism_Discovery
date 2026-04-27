@@ -1,0 +1,22 @@
+{
+  "key": "cryptography_46.0.6",
+  "cached_at": "2026-04-09T09:31:45.420379Z",
+  "data": {
+    "name": "cryptography",
+    "version": "46.0.6",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "cryptography is a package which provides cryptographic recipes and primitives to Python developers.",
+    "release_date": "2026-03-25T23:33:22.096827Z",
+    "homepage": "https://pypi.org/project/cryptography/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "64235194bad039a10bb6d2d930ab3323baaec67e2ce36215fd0952fad0930ca8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python !=3.9.0,!=3.9.1,>=3.8"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_google-auth-oauthlib_1.0.0",
+  "cached_at": "2026-04-09T09:19:11.759996Z",
+  "data": {
+    "name": "google-auth-oauthlib",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/GoogleCloudPlatform/google-auth-library-python-oauthlib",
+    "description": "",
+    "release_date": "2023-02-07T20:53:18Z"
+  }
+}

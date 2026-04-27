@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_typing_extensions_4.13.2",
+  "cached_at": "2026-04-09T09:18:04.637183Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

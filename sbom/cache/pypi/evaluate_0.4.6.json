@@ -1,0 +1,22 @@
+{
+  "key": "evaluate_0.4.6",
+  "cached_at": "2026-04-09T09:32:01.549536Z",
+  "data": {
+    "name": "evaluate",
+    "version": "0.4.6",
+    "license": "Apache 2.0",
+    "supplier": "HuggingFace Inc.",
+    "description": "HuggingFace community-driven open-source library of evaluation",
+    "release_date": "2025-09-18T13:06:29.265659Z",
+    "homepage": "https://github.com/huggingface/evaluate",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "bca85bc294f338377b7ac2f861e21c308b11b2a285f510d7d5394d5df437db29"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8.0"
+  }
+}

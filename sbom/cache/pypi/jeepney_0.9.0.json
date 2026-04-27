@@ -1,0 +1,22 @@
+{
+  "key": "jeepney_0.9.0",
+  "cached_at": "2026-04-08T07:29:22.038896Z",
+  "data": {
+    "name": "jeepney",
+    "version": "0.9.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Low-level, pure Python DBus protocol wrapper.",
+    "release_date": "2025-02-27T18:51:00.104279Z",
+    "homepage": "https://pypi.org/project/jeepney/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

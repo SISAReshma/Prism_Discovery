@@ -1,0 +1,22 @@
+{
+  "key": "litellm_1.80.0",
+  "cached_at": "2026-04-09T09:31:32.276134Z",
+  "data": {
+    "name": "litellm",
+    "version": "1.80.0",
+    "license": "MIT",
+    "supplier": "BerriAI",
+    "description": "Library to easily interface with LLM API providers",
+    "release_date": "2025-11-16T00:03:49.182797Z",
+    "homepage": "https://pypi.org/project/litellm/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "fd0009758f4772257048d74bf79bb64318859adb4ea49a8b66fdbc718cd80b6e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python !=2.7.*,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,!=3.7.*,>=3.8"
+  }
+}

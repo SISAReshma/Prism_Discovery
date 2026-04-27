@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_httpcore_1.0.9",
+  "cached_at": "2026-04-09T09:15:24.443804Z",
+  "data": {
+    "direct": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "DIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

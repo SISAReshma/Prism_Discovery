@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_mistralai_1.5.2",
+  "cached_at": "2026-04-09T09:19:53.217173Z",
+  "data": {
+    "name": "mistralai",
+    "version": "1.5.2",
+    "license": "NOASSERTION",
+    "homepage": "https://github.com/mistralai/client-python.git",
+    "description": "",
+    "release_date": "2025-03-19T18:40:28Z"
+  }
+}

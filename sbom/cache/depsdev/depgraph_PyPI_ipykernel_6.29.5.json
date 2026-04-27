@@ -1,0 +1,238 @@
+{
+  "key": "depgraph_PyPI_ipykernel_6.29.5",
+  "cached_at": "2026-04-09T09:15:29.740608Z",
+  "data": {
+    "direct": [
+      {
+        "name": "comm",
+        "version": "0.2.3"
+      },
+      {
+        "name": "debugpy",
+        "version": "1.8.20"
+      },
+      {
+        "name": "ipython",
+        "version": "9.12.0"
+      },
+      {
+        "name": "jupyter-client",
+        "version": "8.8.0"
+      },
+      {
+        "name": "jupyter-core",
+        "version": "5.9.1"
+      },
+      {
+        "name": "matplotlib-inline",
+        "version": "0.2.1"
+      },
+      {
+        "name": "nest-asyncio",
+        "version": "1.6.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "psutil",
+        "version": "7.2.2"
+      },
+      {
+        "name": "pyzmq",
+        "version": "27.1.0"
+      },
+      {
+        "name": "tornado",
+        "version": "6.5.5"
+      },
+      {
+        "name": "traitlets",
+        "version": "5.14.3"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "asttokens",
+        "version": "3.0.1"
+      },
+      {
+        "name": "decorator",
+        "version": "5.2.1"
+      },
+      {
+        "name": "executing",
+        "version": "2.2.1"
+      },
+      {
+        "name": "ipython-pygments-lexers",
+        "version": "1.1.1"
+      },
+      {
+        "name": "jedi",
+        "version": "0.19.2"
+      },
+      {
+        "name": "parso",
+        "version": "0.8.6"
+      },
+      {
+        "name": "pexpect",
+        "version": "4.9.0"
+      },
+      {
+        "name": "platformdirs",
+        "version": "4.9.4"
+      },
+      {
+        "name": "prompt-toolkit",
+        "version": "3.0.52"
+      },
+      {
+        "name": "ptyprocess",
+        "version": "0.7.0"
+      },
+      {
+        "name": "pure-eval",
+        "version": "0.2.3"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "stack-data",
+        "version": "0.6.3"
+      },
+      {
+        "name": "wcwidth",
+        "version": "0.6.0"
+      }
+    ],
+    "graph": {
+      "asttokens": {
+        "version": "3.0.1",
+        "relation": "INDIRECT"
+      },
+      "comm": {
+        "version": "0.2.3",
+        "relation": "DIRECT"
+      },
+      "debugpy": {
+        "version": "1.8.20",
+        "relation": "DIRECT"
+      },
+      "decorator": {
+        "version": "5.2.1",
+        "relation": "INDIRECT"
+      },
+      "executing": {
+        "version": "2.2.1",
+        "relation": "INDIRECT"
+      },
+      "ipython": {
+        "version": "9.12.0",
+        "relation": "DIRECT"
+      },
+      "ipython-pygments-lexers": {
+        "version": "1.1.1",
+        "relation": "INDIRECT"
+      },
+      "jedi": {
+        "version": "0.19.2",
+        "relation": "INDIRECT"
+      },
+      "jupyter-client": {
+        "version": "8.8.0",
+        "relation": "DIRECT"
+      },
+      "jupyter-core": {
+        "version": "5.9.1",
+        "relation": "DIRECT"
+      },
+      "matplotlib-inline": {
+        "version": "0.2.1",
+        "relation": "DIRECT"
+      },
+      "nest-asyncio": {
+        "version": "1.6.0",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "parso": {
+        "version": "0.8.6",
+        "relation": "INDIRECT"
+      },
+      "pexpect": {
+        "version": "4.9.0",
+        "relation": "INDIRECT"
+      },
+      "platformdirs": {
+        "version": "4.9.4",
+        "relation": "INDIRECT"
+      },
+      "prompt-toolkit": {
+        "version": "3.0.52",
+        "relation": "INDIRECT"
+      },
+      "psutil": {
+        "version": "7.2.2",
+        "relation": "DIRECT"
+      },
+      "ptyprocess": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "pure-eval": {
+        "version": "0.2.3",
+        "relation": "INDIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "pyzmq": {
+        "version": "27.1.0",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "stack-data": {
+        "version": "0.6.3",
+        "relation": "INDIRECT"
+      },
+      "tornado": {
+        "version": "6.5.5",
+        "relation": "DIRECT"
+      },
+      "traitlets": {
+        "version": "5.14.3",
+        "relation": "DIRECT"
+      },
+      "wcwidth": {
+        "version": "0.6.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 28,
+    "source": "deps.dev"
+  }
+}

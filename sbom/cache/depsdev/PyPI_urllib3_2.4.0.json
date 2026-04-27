@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_urllib3_2.4.0",
+  "cached_at": "2026-04-09T09:21:43.267049Z",
+  "data": {
+    "name": "urllib3",
+    "version": "2.4.0",
+    "license": "MIT",
+    "homepage": "https://github.com/urllib3/urllib3",
+    "description": "",
+    "release_date": "2025-04-10T15:23:37Z"
+  }
+}

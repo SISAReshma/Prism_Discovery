@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_lm_eval_0.4.8",
+  "cached_at": "2026-04-09T09:19:45.242135Z",
+  "data": {
+    "name": "lm_eval",
+    "version": "0.4.8",
+    "license": "MIT",
+    "homepage": "https://github.com/EleutherAI/lm-evaluation-harness",
+    "description": "",
+    "release_date": "2025-03-05T03:04:12Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "grpcio-tools_1.73.0",
+  "cached_at": "2026-04-09T09:30:08.398395Z",
+  "data": {
+    "name": "grpcio-tools",
+    "version": "1.73.0",
+    "license": "Apache License 2.0",
+    "supplier": "The gRPC Authors",
+    "description": "Protobuf code generator for gRPC",
+    "release_date": "2025-06-09T10:06:19.158335Z",
+    "homepage": "https://grpc.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "6071270c1f223f951a1169e3619d254b6d66708c737a529c931a34ef6b702295"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

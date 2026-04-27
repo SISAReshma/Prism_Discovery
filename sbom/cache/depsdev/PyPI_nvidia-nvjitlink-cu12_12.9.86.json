@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_nvidia-nvjitlink-cu12_12.9.86",
+  "cached_at": "2026-04-09T09:24:27.074175Z",
+  "data": {
+    "name": "nvidia-nvjitlink-cu12",
+    "version": "12.9.86",
+    "license": "non-standard",
+    "homepage": "",
+    "description": "",
+    "release_date": "2025-06-05T20:10:25Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "psutil_7.2.2",
+  "cached_at": "2026-04-09T09:31:06.225967Z",
+  "data": {
+    "name": "psutil",
+    "version": "7.2.2",
+    "license": "BSD-3-Clause",
+    "supplier": "Giampaolo Rodola",
+    "description": "Cross-platform lib for process and system monitoring.",
+    "release_date": "2026-01-28T18:14:57.293384Z",
+    "homepage": "https://github.com/giampaolo/psutil",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2edccc433cbfa046b980b0df0171cd25bcaeb3a68fe9022db0979e7aa74a826b"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

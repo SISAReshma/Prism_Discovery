@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_multidict_6.7.1",
+  "cached_at": "2026-04-09T09:22:14.396094Z",
+  "data": {
+    "name": "multidict",
+    "version": "6.7.1",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/aio-libs/multidict",
+    "description": "",
+    "release_date": "2026-01-26T02:46:25Z"
+  }
+}

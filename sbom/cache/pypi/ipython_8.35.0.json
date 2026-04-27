@@ -1,0 +1,22 @@
+{
+  "key": "ipython_8.35.0",
+  "cached_at": "2026-04-09T09:30:10.990578Z",
+  "data": {
+    "name": "ipython",
+    "version": "8.35.0",
+    "license": "BSD-3-Clause",
+    "supplier": "The IPython Development Team",
+    "description": "IPython: Productive Interactive Computing",
+    "release_date": "2025-04-07T12:38:49.109712Z",
+    "homepage": "https://pypi.org/project/ipython/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e6b7470468ba6f1f0a7b116bb688a3ece2f13e2f94138e508201fad677a788ba"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

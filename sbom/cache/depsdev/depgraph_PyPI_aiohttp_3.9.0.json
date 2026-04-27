@@ -1,0 +1,86 @@
+{
+  "key": "depgraph_PyPI_aiohttp_3.9.0",
+  "cached_at": "2026-02-20T05:02:49.919822Z",
+  "data": {
+    "direct": [
+      {
+        "name": "aiosignal",
+        "version": "1.4.0"
+      },
+      {
+        "name": "async-timeout",
+        "version": "4.0.3"
+      },
+      {
+        "name": "attrs",
+        "version": "25.4.0"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "yarl",
+        "version": "1.22.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "propcache",
+        "version": "0.4.1"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "aiosignal": {
+        "version": "1.4.0",
+        "relation": "DIRECT"
+      },
+      "async-timeout": {
+        "version": "4.0.3",
+        "relation": "DIRECT"
+      },
+      "attrs": {
+        "version": "25.4.0",
+        "relation": "DIRECT"
+      },
+      "frozenlist": {
+        "version": "1.8.0",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "multidict": {
+        "version": "6.7.1",
+        "relation": "DIRECT"
+      },
+      "propcache": {
+        "version": "0.4.1",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "yarl": {
+        "version": "1.22.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 9,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_nvidia-curand-cu12_10.3.9.90",
+  "cached_at": "2026-04-09T09:16:26.885004Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

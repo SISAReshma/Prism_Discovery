@@ -1,0 +1,22 @@
+{
+  "key": "s3transfer_0.13.0",
+  "cached_at": "2026-04-09T09:30:46.343817Z",
+  "data": {
+    "name": "s3transfer",
+    "version": "0.13.0",
+    "license": "Apache License 2.0",
+    "supplier": "Amazon Web Services",
+    "description": "An Amazon S3 Transfer Manager",
+    "release_date": "2025-05-22T19:24:48.703931Z",
+    "homepage": "https://github.com/boto/s3transfer",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0148ef34d6dd964d0d8cf4311b2b21c474693e57c2e069ec708ce043d2b527be"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_zope-interface_8.2.0",
+  "cached_at": "2026-04-09T09:22:30.630093Z",
+  "data": {
+    "name": "zope-interface",
+    "version": "8.2.0",
+    "license": "ZPL-2.1",
+    "homepage": "https://github.com/zopefoundation/zope.interface",
+    "description": "",
+    "release_date": "2026-01-09T07:51:07Z"
+  }
+}

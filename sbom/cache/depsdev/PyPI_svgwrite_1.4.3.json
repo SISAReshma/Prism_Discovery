@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_svgwrite_1.4.3",
+  "cached_at": "2026-04-09T09:21:16.992839Z",
+  "data": {
+    "name": "svgwrite",
+    "version": "1.4.3",
+    "license": "MIT",
+    "homepage": "http://github.com/mozman/svgwrite.git",
+    "description": "",
+    "release_date": "2022-07-14T14:05:24Z"
+  }
+}

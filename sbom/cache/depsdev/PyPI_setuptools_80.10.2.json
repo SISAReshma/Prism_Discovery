@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_setuptools_80.10.2",
+  "cached_at": "2026-02-20T05:05:53.540033Z",
+  "data": {
+    "name": "setuptools",
+    "version": "80.10.2",
+    "license": "MIT",
+    "homepage": "https://github.com/pypa/setuptools",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "prompt-toolkit_3.0.52",
+  "cached_at": "2026-04-09T09:31:29.651818Z",
+  "data": {
+    "name": "prompt-toolkit",
+    "version": "3.0.52",
+    "license": "BSD License",
+    "supplier": "Jonathan Slenders",
+    "description": "Library for building powerful interactive command lines in Python",
+    "release_date": "2025-08-27T15:23:59.498379Z",
+    "homepage": "https://pypi.org/project/prompt-toolkit/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9aac639a3bbd33284347de5ad8d68ecc044b91a762dc39b7c21095fcd6a19955"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

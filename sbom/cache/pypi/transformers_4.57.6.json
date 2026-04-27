@@ -1,0 +1,22 @@
+{
+  "key": "transformers_4.57.6",
+  "cached_at": "2026-04-09T09:32:13.607643Z",
+  "data": {
+    "name": "transformers",
+    "version": "4.57.6",
+    "license": "Apache 2.0 License",
+    "supplier": "The Hugging Face team (past and future) with the help of all our contributors (https://github.com/huggingface/transformers/graphs/contributors)",
+    "description": "State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow",
+    "release_date": "2026-01-16T10:38:31.289337Z",
+    "homepage": "https://github.com/huggingface/transformers",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4c9e9de11333ddfe5114bc872c9f370509198acf0b87a832a0ab9458e2bd0550"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9.0"
+  }
+}

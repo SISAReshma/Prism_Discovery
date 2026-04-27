@@ -181,6 +181,7 @@ class RemediationReporter:
 
         
         # Sort: KEV first, then CRITICAL, then EPSS descending, then CVSS priority
+        priority_order = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}
         def _sort_key(lib):
             ei = lib.get("exploit_intel", {})
             in_kev = any(

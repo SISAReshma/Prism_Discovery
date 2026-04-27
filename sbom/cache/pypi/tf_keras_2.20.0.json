@@ -1,0 +1,22 @@
+{
+  "key": "tf_keras_2.20.0",
+  "cached_at": "2026-04-09T09:30:54.812894Z",
+  "data": {
+    "name": "tf-keras",
+    "version": "2.20.0",
+    "license": "Apache 2.0",
+    "supplier": "Keras team",
+    "description": "Deep learning for humans.",
+    "release_date": "2025-03-03T19:28:29.961407Z",
+    "homepage": "https://keras.io/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "73c547664679ed82da5b89466b9ea70da84dfe5a3a623ab59cd93ee5647165ee"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

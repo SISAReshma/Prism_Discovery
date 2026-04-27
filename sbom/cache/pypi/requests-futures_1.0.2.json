@@ -1,0 +1,22 @@
+{
+  "key": "requests-futures_1.0.2",
+  "cached_at": "2026-04-09T09:30:44.462662Z",
+  "data": {
+    "name": "requests-futures",
+    "version": "1.0.2",
+    "license": "Apache License v2",
+    "supplier": "Ross McFarland",
+    "description": "Asynchronous Python HTTP for Humans.",
+    "release_date": "2024-11-15T22:14:50.255267Z",
+    "homepage": "https://github.com/ross/requests-futures",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a3534af7c2bf670cd7aa730716e9e7d4386497554f87792be7514063b8912897"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

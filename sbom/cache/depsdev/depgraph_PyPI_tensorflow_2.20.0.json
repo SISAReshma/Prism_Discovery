@@ -1,0 +1,310 @@
+{
+  "key": "depgraph_PyPI_tensorflow_2.20.0",
+  "cached_at": "2026-04-09T09:17:43.192435Z",
+  "data": {
+    "direct": [
+      {
+        "name": "absl-py",
+        "version": "2.4.0"
+      },
+      {
+        "name": "astunparse",
+        "version": "1.6.3"
+      },
+      {
+        "name": "flatbuffers",
+        "version": "25.12.19"
+      },
+      {
+        "name": "gast",
+        "version": "0.7.0"
+      },
+      {
+        "name": "google-pasta",
+        "version": "0.2.0"
+      },
+      {
+        "name": "grpcio",
+        "version": "1.80.0"
+      },
+      {
+        "name": "h5py",
+        "version": "3.16.0"
+      },
+      {
+        "name": "keras",
+        "version": "3.13.2"
+      },
+      {
+        "name": "libclang",
+        "version": "18.1.1"
+      },
+      {
+        "name": "ml-dtypes",
+        "version": "0.5.4"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "opt-einsum",
+        "version": "3.4.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "protobuf",
+        "version": "7.34.1"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "tensorboard",
+        "version": "2.20.0"
+      },
+      {
+        "name": "termcolor",
+        "version": "3.3.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "wrapt",
+        "version": "2.1.2"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.6"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "markdown",
+        "version": "3.10.2"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "namex",
+        "version": "0.1.0"
+      },
+      {
+        "name": "optree",
+        "version": "0.19.0"
+      },
+      {
+        "name": "pillow",
+        "version": "12.2.0"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "tensorboard-data-server",
+        "version": "0.7.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "werkzeug",
+        "version": "3.1.7"
+      },
+      {
+        "name": "wheel",
+        "version": "0.46.3"
+      }
+    ],
+    "graph": {
+      "absl-py": {
+        "version": "2.4.0",
+        "relation": "DIRECT"
+      },
+      "astunparse": {
+        "version": "1.6.3",
+        "relation": "DIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.6",
+        "relation": "INDIRECT"
+      },
+      "flatbuffers": {
+        "version": "25.12.19",
+        "relation": "DIRECT"
+      },
+      "gast": {
+        "version": "0.7.0",
+        "relation": "DIRECT"
+      },
+      "google-pasta": {
+        "version": "0.2.0",
+        "relation": "DIRECT"
+      },
+      "grpcio": {
+        "version": "1.80.0",
+        "relation": "DIRECT"
+      },
+      "h5py": {
+        "version": "3.16.0",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "keras": {
+        "version": "3.13.2",
+        "relation": "DIRECT"
+      },
+      "libclang": {
+        "version": "18.1.1",
+        "relation": "DIRECT"
+      },
+      "markdown": {
+        "version": "3.10.2",
+        "relation": "INDIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "ml-dtypes": {
+        "version": "0.5.4",
+        "relation": "DIRECT"
+      },
+      "namex": {
+        "version": "0.1.0",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "opt-einsum": {
+        "version": "3.4.0",
+        "relation": "DIRECT"
+      },
+      "optree": {
+        "version": "0.19.0",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pillow": {
+        "version": "12.2.0",
+        "relation": "INDIRECT"
+      },
+      "protobuf": {
+        "version": "7.34.1",
+        "relation": "DIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "DIRECT"
+      },
+      "rich": {
+        "version": "14.3.3",
+        "relation": "INDIRECT"
+      },
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "DIRECT"
+      },
+      "tensorboard": {
+        "version": "2.20.0",
+        "relation": "DIRECT"
+      },
+      "tensorboard-data-server": {
+        "version": "0.7.2",
+        "relation": "INDIRECT"
+      },
+      "termcolor": {
+        "version": "3.3.0",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "werkzeug": {
+        "version": "3.1.7",
+        "relation": "INDIRECT"
+      },
+      "wheel": {
+        "version": "0.46.3",
+        "relation": "INDIRECT"
+      },
+      "wrapt": {
+        "version": "2.1.2",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 37,
+    "source": "deps.dev"
+  }
+}

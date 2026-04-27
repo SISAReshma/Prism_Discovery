@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_gitdb_4.0.12",
+  "cached_at": "2026-04-09T09:19:07.467597Z",
+  "data": {
+    "name": "gitdb",
+    "version": "4.0.12",
+    "license": "non-standard",
+    "homepage": "https://github.com/gitpython-developers/gitdb",
+    "description": "",
+    "release_date": "2025-01-02T07:20:43Z"
+  }
+}

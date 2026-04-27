@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_nvidia-cublas-cu12_12.8.4.1",
+  "cached_at": "2026-04-09T09:16:21.022033Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

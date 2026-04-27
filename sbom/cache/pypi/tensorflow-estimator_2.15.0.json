@@ -1,0 +1,22 @@
+{
+  "key": "tensorflow-estimator_2.15.0",
+  "cached_at": "2026-04-09T09:30:53.601045Z",
+  "data": {
+    "name": "tensorflow-estimator",
+    "version": "2.15.0",
+    "license": "Apache 2.0",
+    "supplier": "Google Inc.",
+    "description": "TensorFlow Estimator.",
+    "release_date": "2023-11-07T01:10:10.812366Z",
+    "homepage": "https://www.tensorflow.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "aedf21eec7fb2dc91150fc91a1ce12bc44dbb72278a08b58e79ff87c9e28f153"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

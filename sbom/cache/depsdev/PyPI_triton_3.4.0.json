@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_triton_3.4.0",
+  "cached_at": "2026-04-09T09:24:48.800470Z",
+  "data": {
+    "name": "triton",
+    "version": "3.4.0",
+    "license": "MIT",
+    "homepage": "https://github.com/triton-lang/triton",
+    "description": "",
+    "release_date": "2025-07-30T19:58:57Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_word2number_1.1",
+  "cached_at": "2026-04-09T09:18:12.816563Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

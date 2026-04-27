@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cuda-nvrtc-cu12_12.1.105",
+  "cached_at": "2026-02-20T05:21:56.343646Z",
+  "data": {
+    "name": "nvidia-cuda-nvrtc-cu12",
+    "version": "12.1.105",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "NVRTC native runtime libraries",
+    "release_date": "2023-04-19T15:48:32.420832Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "339b385f50c309763ca65456ec75e17bbefcbbf2893f462cb8b90584cd27a1c2"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

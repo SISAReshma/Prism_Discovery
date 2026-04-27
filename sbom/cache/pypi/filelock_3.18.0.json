@@ -1,0 +1,22 @@
+{
+  "key": "filelock_3.18.0",
+  "cached_at": "2026-04-09T09:30:03.024774Z",
+  "data": {
+    "name": "filelock",
+    "version": "3.18.0",
+    "license": "The Unlicense (Unlicense)",
+    "supplier": "Unknown",
+    "description": "A platform independent file lock.",
+    "release_date": "2025-03-14T07:11:39.145590Z",
+    "homepage": "https://pypi.org/project/filelock/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c401f4f8377c4464e6db25fff06205fd89bdd83b65eb0488ed1b160f780e21de"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

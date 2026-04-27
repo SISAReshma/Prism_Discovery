@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tensorboard-data-server_0.7.2",
+  "cached_at": "2026-04-09T09:21:21.901376Z",
+  "data": {
+    "name": "tensorboard-data-server",
+    "version": "0.7.2",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/tensorflow/tensorboard",
+    "description": "",
+    "release_date": "2023-10-23T21:23:35Z"
+  }
+}

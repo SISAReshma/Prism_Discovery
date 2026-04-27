@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_certifi_2025.1.31",
+  "cached_at": "2026-04-09T09:14:23.965584Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

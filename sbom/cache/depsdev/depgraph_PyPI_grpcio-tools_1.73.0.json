@@ -1,0 +1,46 @@
+{
+  "key": "depgraph_PyPI_grpcio-tools_1.73.0",
+  "cached_at": "2026-04-09T09:15:21.028610Z",
+  "data": {
+    "direct": [
+      {
+        "name": "grpcio",
+        "version": "1.80.0"
+      },
+      {
+        "name": "protobuf",
+        "version": "6.33.6"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "grpcio": {
+        "version": "1.80.0",
+        "relation": "DIRECT"
+      },
+      "protobuf": {
+        "version": "6.33.6",
+        "relation": "DIRECT"
+      },
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

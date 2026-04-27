@@ -1,0 +1,22 @@
+{
+  "key": "langgraph-checkpoint_4.0.1",
+  "cached_at": "2026-04-09T09:31:39.392358Z",
+  "data": {
+    "name": "langgraph-checkpoint",
+    "version": "4.0.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Library with base interfaces for LangGraph checkpoint savers.",
+    "release_date": "2026-02-27T21:06:14.293078Z",
+    "homepage": "https://pypi.org/project/langgraph-checkpoint/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e3adcd7a0e0166f3b48b8cf508ce0ea366e7420b5a73aa81289888727769b034"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

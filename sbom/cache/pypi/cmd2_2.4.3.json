@@ -1,0 +1,22 @@
+{
+  "key": "cmd2_2.4.3",
+  "cached_at": "2026-04-09T09:29:56.491452Z",
+  "data": {
+    "name": "cmd2",
+    "version": "2.4.3",
+    "license": "MIT",
+    "supplier": "Catherine Devlin",
+    "description": "cmd2 - quickly build feature-rich and user-friendly interactive command line applications in Python",
+    "release_date": "2023-01-28T00:50:14.575225Z",
+    "homepage": "https://github.com/python-cmd2/cmd2",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f1988ff2fff0ed812a2d25218a081b0fa0108d45b48ba2a9272bb98091b654e6"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

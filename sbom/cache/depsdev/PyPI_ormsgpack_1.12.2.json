@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_ormsgpack_1.12.2",
+  "cached_at": "2026-04-09T09:23:26.083846Z",
+  "data": {
+    "name": "ormsgpack",
+    "version": "1.12.2",
+    "license": "Apache-2.0 OR MIT",
+    "homepage": "https://github.com/ormsgpack/ormsgpack",
+    "description": "",
+    "release_date": "2026-01-18T20:55:28Z"
+  }
+}

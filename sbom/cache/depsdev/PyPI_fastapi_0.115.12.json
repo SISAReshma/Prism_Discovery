@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_fastapi_0.115.12",
+  "cached_at": "2026-04-09T09:18:59.604639Z",
+  "data": {
+    "name": "fastapi",
+    "version": "0.115.12",
+    "license": "MIT",
+    "homepage": "https://github.com/fastapi/fastapi",
+    "description": "",
+    "release_date": "2025-03-23T22:55:42Z"
+  }
+}

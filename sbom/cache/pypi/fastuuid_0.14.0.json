@@ -1,0 +1,22 @@
+{
+  "key": "fastuuid_0.14.0",
+  "cached_at": "2026-04-09T09:31:35.791780Z",
+  "data": {
+    "name": "fastuuid",
+    "version": "0.14.0",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "Python bindings to Rust's UUID library.",
+    "release_date": "2025-10-19T22:25:21.509182Z",
+    "homepage": "https://pypi.org/project/fastuuid/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "6e6243d40f6c793c3e2ee14c13769e341b90be5ef0c23c82fa6515a96145181a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

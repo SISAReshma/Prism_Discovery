@@ -1,0 +1,22 @@
+{
+  "key": "pluggy_1.6.0",
+  "cached_at": "2026-04-08T07:29:24.140945Z",
+  "data": {
+    "name": "pluggy",
+    "version": "1.6.0",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "plugin and hook calling mechanisms for python",
+    "release_date": "2025-05-15T12:30:06.134003Z",
+    "homepage": "https://pypi.org/project/pluggy/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

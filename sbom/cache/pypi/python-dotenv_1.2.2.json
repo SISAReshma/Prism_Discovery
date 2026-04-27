@@ -1,0 +1,22 @@
+{
+  "key": "python-dotenv_1.2.2",
+  "cached_at": "2026-04-09T09:31:42.129757Z",
+  "data": {
+    "name": "python-dotenv",
+    "version": "1.2.2",
+    "license": "BSD-3-Clause",
+    "supplier": "Unknown",
+    "description": "Read key-value pairs from a .env file and set them as environment variables",
+    "release_date": "2026-03-01T16:00:25.090725Z",
+    "homepage": "https://pypi.org/project/python-dotenv/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

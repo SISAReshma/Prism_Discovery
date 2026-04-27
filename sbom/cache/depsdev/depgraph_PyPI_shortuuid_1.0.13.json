@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_shortuuid_1.0.13",
+  "cached_at": "2026-04-09T09:17:27.283579Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

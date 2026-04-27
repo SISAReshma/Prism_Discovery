@@ -1,0 +1,22 @@
+{
+  "key": "tokenizers_0.21.4",
+  "cached_at": "2026-02-20T05:22:47.924463Z",
+  "data": {
+    "name": "tokenizers",
+    "version": "0.21.4",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "",
+    "release_date": "2025-07-28T15:48:44.877320Z",
+    "homepage": "https://pypi.org/project/tokenizers/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2ccc10a7c3bcefe0f242867dc914fc1226ee44321eb618cfe3019b5df3400133"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

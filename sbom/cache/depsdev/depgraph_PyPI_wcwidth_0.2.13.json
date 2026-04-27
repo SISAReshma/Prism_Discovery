@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_wcwidth_0.2.13",
+  "cached_at": "2026-04-09T09:18:09.734384Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

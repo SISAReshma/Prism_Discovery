@@ -1,0 +1,22 @@
+{
+  "key": "networkx_3.4.2",
+  "cached_at": "2026-04-09T09:30:26.160020Z",
+  "data": {
+    "name": "networkx",
+    "version": "3.4.2",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "Python package for creating and manipulating graphs and networks",
+    "release_date": "2024-10-21T12:39:36.247424Z",
+    "homepage": "https://pypi.org/project/networkx/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "multidict_6.4.4",
+  "cached_at": "2026-04-09T09:30:24.354500Z",
+  "data": {
+    "name": "multidict",
+    "version": "6.4.4",
+    "license": "Apache 2",
+    "supplier": "Andrew Svetlov",
+    "description": "multidict implementation",
+    "release_date": "2025-05-19T14:13:49.944226Z",
+    "homepage": "https://github.com/aio-libs/multidict",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8adee3ac041145ffe4488ea73fa0a622b464cc25340d98be76924d0cda8545ff"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

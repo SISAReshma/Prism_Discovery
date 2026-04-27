@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_sentencepiece_0.2.0",
+  "cached_at": "2026-04-09T09:21:07.740355Z",
+  "data": {
+    "name": "sentencepiece",
+    "version": "0.2.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/google/sentencepiece",
+    "description": "",
+    "release_date": "2024-02-19T17:05:24Z"
+  }
+}

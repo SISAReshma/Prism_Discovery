@@ -1,0 +1,29 @@
+{
+  "key": "depgraph_PyPI_SQLAlchemy_2.0.41",
+  "cached_at": "2026-04-09T09:17:30.833515Z",
+  "data": {
+    "direct": [
+      {
+        "name": "greenlet",
+        "version": "3.3.2"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "greenlet": {
+        "version": "3.3.2",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

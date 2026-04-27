@@ -1,0 +1,22 @@
+{
+  "key": "importlib-metadata_6.11.0",
+  "cached_at": "2026-04-09T09:30:10.524411Z",
+  "data": {
+    "name": "importlib-metadata",
+    "version": "6.11.0",
+    "license": "Apache Software License",
+    "supplier": "Jason R. Coombs",
+    "description": "Read metadata from Python packages",
+    "release_date": "2023-12-03T17:33:08.965354Z",
+    "homepage": "https://github.com/python/importlib_metadata",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f0afba6205ad8f8947c7d338b5342d5db2afbfd82f9cbef7879a9539cc12eb9b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

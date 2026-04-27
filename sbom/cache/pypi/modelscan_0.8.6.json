@@ -1,0 +1,22 @@
+{
+  "key": "modelscan_0.8.6",
+  "cached_at": "2026-04-09T09:30:23.635270Z",
+  "data": {
+    "name": "modelscan",
+    "version": "0.8.6",
+    "license": "Apache-2.0",
+    "supplier": "ProtectAI",
+    "description": "The modelscan package is a cli tool for detecting unsafe operations in model files across various model serialization formats.",
+    "release_date": "2025-07-02T16:59:21.300376Z",
+    "homepage": "https://pypi.org/project/modelscan/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "93b877c24b9d5544a60e0527e92cd429d8c048eaeea57a20604f3d592cda4d7c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <3.13,>=3.9"
+  }
+}

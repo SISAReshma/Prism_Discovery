@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_fschat_0.2.36",
+  "cached_at": "2026-04-09T09:19:04.561466Z",
+  "data": {
+    "name": "fschat",
+    "version": "0.2.36",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/lm-sys/fastchat",
+    "description": "",
+    "release_date": "2024-02-11T15:42:24Z"
+  }
+}

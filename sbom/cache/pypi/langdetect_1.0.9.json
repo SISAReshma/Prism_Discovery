@@ -1,0 +1,22 @@
+{
+  "key": "langdetect_1.0.9",
+  "cached_at": "2026-04-09T09:30:19.020295Z",
+  "data": {
+    "name": "langdetect",
+    "version": "1.0.9",
+    "license": "MIT",
+    "supplier": "Michal Mimino Danilak",
+    "description": "Language detection library ported from Google's language-detection.",
+    "release_date": "2021-05-07T07:54:10.843555Z",
+    "homepage": "https://github.com/Mimino666/langdetect",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7cbc0746252f19e76f77c0b1690aadf01963be835ef0cd4b56dddf2a8f1dfc2a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

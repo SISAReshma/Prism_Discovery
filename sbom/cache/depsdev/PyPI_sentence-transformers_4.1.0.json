@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_sentence-transformers_4.1.0",
+  "cached_at": "2026-04-09T09:21:07.040537Z",
+  "data": {
+    "name": "sentence-transformers",
+    "version": "4.1.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/UKPLab/sentence-transformers",
+    "description": "",
+    "release_date": "2025-04-15T13:46:12Z"
+  }
+}

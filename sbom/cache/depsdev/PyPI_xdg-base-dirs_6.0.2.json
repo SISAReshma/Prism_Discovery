@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_xdg-base-dirs_6.0.2",
+  "cached_at": "2026-04-09T09:21:50.298880Z",
+  "data": {
+    "name": "xdg-base-dirs",
+    "version": "6.0.2",
+    "license": "ISC",
+    "homepage": "https://github.com/srstevenson/xdg-base-dirs",
+    "description": "",
+    "release_date": "2024-10-19T14:35:05Z"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_pymongo_4.13.1",
+  "cached_at": "2026-04-09T09:16:59.316672Z",
+  "data": {
+    "direct": [
+      {
+        "name": "dnspython",
+        "version": "2.8.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "dnspython": {
+        "version": "2.8.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

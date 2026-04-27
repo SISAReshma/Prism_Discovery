@@ -1,0 +1,22 @@
+{
+  "key": "ipython-pygments-lexers_1.1.1",
+  "cached_at": "2026-04-09T09:31:51.289491Z",
+  "data": {
+    "name": "ipython-pygments-lexers",
+    "version": "1.1.1",
+    "license": "BSD License",
+    "supplier": "Unknown",
+    "description": "Defines a variety of Pygments lexers for highlighting IPython code.",
+    "release_date": "2025-01-17T11:24:33.271103Z",
+    "homepage": "https://pypi.org/project/ipython-pygments-lexers/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a9462224a505ade19a605f71f8fa63c2048833ce50abc86768a0d81d876dc81c"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

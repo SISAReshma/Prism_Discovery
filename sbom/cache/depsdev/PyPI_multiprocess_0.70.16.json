@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_multiprocess_0.70.16",
+  "cached_at": "2026-04-09T09:19:57.498285Z",
+  "data": {
+    "name": "multiprocess",
+    "version": "0.70.16",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/uqfoundation/multiprocess",
+    "description": "",
+    "release_date": "2024-01-28T18:52:31Z"
+  }
+}

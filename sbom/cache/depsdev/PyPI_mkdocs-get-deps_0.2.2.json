@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_mkdocs-get-deps_0.2.2",
+  "cached_at": "2026-04-08T07:27:30.169481Z",
+  "data": {
+    "name": "mkdocs-get-deps",
+    "version": "0.2.2",
+    "license": "MIT",
+    "homepage": "https://github.com/mkdocs/get-deps",
+    "description": "",
+    "release_date": "2026-03-10T02:46:32Z"
+  }
+}

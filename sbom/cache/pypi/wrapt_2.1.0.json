@@ -1,0 +1,22 @@
+{
+  "key": "wrapt_2.1.0",
+  "cached_at": "2026-02-20T05:27:24.978859Z",
+  "data": {
+    "name": "wrapt",
+    "version": "2.1.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Module for decorators, wrappers and monkey patching.",
+    "release_date": "2026-01-31T23:26:51.314824Z",
+    "homepage": "https://pypi.org/project/wrapt/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ba00229045bc0ec808f12f7d2fd02166631657c56d5b7acbbb8f03ea70fc1cd6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

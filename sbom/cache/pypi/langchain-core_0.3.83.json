@@ -1,0 +1,22 @@
+{
+  "key": "langchain-core_0.3.83",
+  "cached_at": "2026-04-09T09:31:56.151224Z",
+  "data": {
+    "name": "langchain-core",
+    "version": "0.3.83",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Building applications with LLMs through composability",
+    "release_date": "2026-01-13T01:19:21.748035Z",
+    "homepage": "https://pypi.org/project/langchain-core/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8c92506f8b53fc1958b1c07447f58c5783eb8833dd3cb6dc75607c80891ab1ae"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0.0,>=3.9.0"
+  }
+}

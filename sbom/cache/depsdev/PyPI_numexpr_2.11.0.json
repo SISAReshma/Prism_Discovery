@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_numexpr_2.11.0",
+  "cached_at": "2026-04-09T09:20:04.208293Z",
+  "data": {
+    "name": "numexpr",
+    "version": "2.11.0",
+    "license": "MIT",
+    "homepage": "https://github.com/pydata/numexpr",
+    "description": "",
+    "release_date": "2025-06-09T11:05:56Z"
+  }
+}

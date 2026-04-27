@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jedi_0.19.2",
+  "cached_at": "2026-04-09T09:19:28.169416Z",
+  "data": {
+    "name": "jedi",
+    "version": "0.19.2",
+    "license": "MIT",
+    "homepage": "https://github.com/davidhalter/jedi",
+    "description": "",
+    "release_date": "2024-11-11T01:41:40Z"
+  }
+}

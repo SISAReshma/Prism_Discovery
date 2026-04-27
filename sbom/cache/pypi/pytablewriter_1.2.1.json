@@ -1,0 +1,22 @@
+{
+  "key": "pytablewriter_1.2.1",
+  "cached_at": "2026-04-09T09:30:41.173328Z",
+  "data": {
+    "name": "pytablewriter",
+    "version": "1.2.1",
+    "license": "MIT License",
+    "supplier": "Tsuyoshi Hombashi",
+    "description": "pytablewriter is a Python library to write a table in various formats: AsciiDoc / CSV / Elasticsearch / HTML / JavaScript / JSON / LaTeX / LDJSON / LTSV / Markdown / MediaWiki / NumPy / Excel / Pandas / Python / reStructuredText / SQLite / TOML / TSV / YAML.",
+    "release_date": "2025-01-01T15:36:55.630888Z",
+    "homepage": "https://github.com/thombashi/pytablewriter",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e906ff7ff5151d70a5f66e0f7b75642a7f2dce8d893c265b79cc9cf6bc04ddb4"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

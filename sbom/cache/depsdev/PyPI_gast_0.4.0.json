@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_gast_0.4.0",
+  "cached_at": "2026-04-09T09:19:06.766205Z",
+  "data": {
+    "name": "gast",
+    "version": "0.4.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/serge-sans-paille/gast",
+    "description": "",
+    "release_date": "2020-08-07T21:45:21Z"
+  }
+}

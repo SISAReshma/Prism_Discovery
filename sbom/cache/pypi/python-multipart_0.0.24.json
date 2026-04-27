@@ -1,0 +1,22 @@
+{
+  "key": "python-multipart_0.0.24",
+  "cached_at": "2026-04-09T09:31:42.347497Z",
+  "data": {
+    "name": "python-multipart",
+    "version": "0.0.24",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "A streaming multipart parser for Python",
+    "release_date": "2026-04-05T20:49:12.555066Z",
+    "homepage": "https://pypi.org/project/python-multipart/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9b110a98db707df01a53c194f0af075e736a770dc5058089650d70b4a182f950"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

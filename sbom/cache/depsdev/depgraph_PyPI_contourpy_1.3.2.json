@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_contourpy_1.3.2",
+  "cached_at": "2026-04-09T09:14:34.290393Z",
+  "data": {
+    "direct": [
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

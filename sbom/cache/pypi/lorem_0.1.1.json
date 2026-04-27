@@ -1,0 +1,22 @@
+{
+  "key": "lorem_0.1.1",
+  "cached_at": "2026-04-09T09:30:20.650231Z",
+  "data": {
+    "name": "lorem",
+    "version": "0.1.1",
+    "license": "MIT",
+    "supplier": "Stefan Fischer",
+    "description": "Generator for random text that looks like Latin.",
+    "release_date": "2016-06-18T21:15:50.562620Z",
+    "homepage": "https://github.com/sfischer13/python-lorem",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c9c2914b5a772022417c398bd74b7bbd712e73ff029ba82720855e458f13ae42"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

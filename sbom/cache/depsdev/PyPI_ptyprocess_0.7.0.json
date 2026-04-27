@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_ptyprocess_0.7.0",
+  "cached_at": "2026-04-09T09:20:34.059221Z",
+  "data": {
+    "name": "ptyprocess",
+    "version": "0.7.0",
+    "license": "ISC",
+    "homepage": "https://github.com/pexpect/ptyprocess",
+    "description": "",
+    "release_date": "2020-12-28T15:15:28Z"
+  }
+}

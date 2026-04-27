@@ -1,0 +1,22 @@
+{
+  "key": "aiohttp_3.12.13",
+  "cached_at": "2026-04-09T09:29:49.997929Z",
+  "data": {
+    "name": "aiohttp",
+    "version": "3.12.13",
+    "license": "Apache-2.0",
+    "supplier": "aiohttp team <team@aiohttp.org>",
+    "description": "Async http client/server framework (asyncio)",
+    "release_date": "2025-06-14T15:12:58.938800Z",
+    "homepage": "https://github.com/aio-libs/aiohttp",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5421af8f22a98f640261ee48aae3a37f0c41371e99412d55eaf2f8a46d5dad29"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

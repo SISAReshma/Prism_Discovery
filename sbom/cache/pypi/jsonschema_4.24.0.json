@@ -1,0 +1,22 @@
+{
+  "key": "jsonschema_4.24.0",
+  "cached_at": "2026-04-09T09:30:16.119891Z",
+  "data": {
+    "name": "jsonschema",
+    "version": "4.24.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "An implementation of JSON Schema validation for Python",
+    "release_date": "2025-05-26T18:48:08.417478Z",
+    "homepage": "https://pypi.org/project/jsonschema/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a462455f19f5faf404a7902952b6f0e3ce868f3ee09a359b05eca6673bd8412d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "jaraco-classes_3.4.0",
+  "cached_at": "2026-04-08T07:29:21.457018Z",
+  "data": {
+    "name": "jaraco.classes",
+    "version": "3.4.0",
+    "license": "MIT License",
+    "supplier": "Jason R. Coombs",
+    "description": "Utility functions for Python class constructs",
+    "release_date": "2024-03-31T07:27:34.792832Z",
+    "homepage": "https://github.com/jaraco/jaraco.classes",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "f662826b6bed8cace05e7ff873ce0f9283b5c924470fe664fff1c2f00f581790"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

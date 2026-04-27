@@ -1,0 +1,70 @@
+{
+  "key": "depgraph_PyPI_typer_0.16.0",
+  "cached_at": "2026-04-09T09:18:01.012182Z",
+  "data": {
+    "direct": [
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      }
+    ],
+    "graph": {
+      "click": {
+        "version": "8.3.1",
+        "relation": "DIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "rich": {
+        "version": "14.3.3",
+        "relation": "DIRECT"
+      },
+      "shellingham": {
+        "version": "1.5.4",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 7,
+    "source": "deps.dev"
+  }
+}

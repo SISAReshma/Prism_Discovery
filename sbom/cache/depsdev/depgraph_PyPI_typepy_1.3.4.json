@@ -1,0 +1,30 @@
+{
+  "key": "depgraph_PyPI_typepy_1.3.4",
+  "cached_at": "2026-04-09T09:18:00.158321Z",
+  "data": {
+    "direct": [
+      {
+        "name": "mbstrdecoder",
+        "version": "1.1.4"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "chardet",
+        "version": "5.2.0"
+      }
+    ],
+    "graph": {
+      "chardet": {
+        "version": "5.2.0",
+        "relation": "INDIRECT"
+      },
+      "mbstrdecoder": {
+        "version": "1.1.4",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

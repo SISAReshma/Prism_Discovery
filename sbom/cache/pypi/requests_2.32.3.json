@@ -1,0 +1,22 @@
+{
+  "key": "requests_2.32.3",
+  "cached_at": "2026-04-09T09:30:44.258726Z",
+  "data": {
+    "name": "requests",
+    "version": "2.32.3",
+    "license": "Apache-2.0",
+    "supplier": "Kenneth Reitz",
+    "description": "Python HTTP for Humans.",
+    "release_date": "2024-05-29T15:37:47.027275Z",
+    "homepage": "https://requests.readthedocs.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "key": "depgraph_PyPI_botocore_1.38.42",
+  "cached_at": "2026-04-09T09:14:21.019394Z",
+  "data": {
+    "direct": [
+      {
+        "name": "jmespath",
+        "version": "1.1.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "urllib3",
+        "version": "1.26.20"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "graph": {
+      "jmespath": {
+        "version": "1.1.0",
+        "relation": "DIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "1.26.20",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

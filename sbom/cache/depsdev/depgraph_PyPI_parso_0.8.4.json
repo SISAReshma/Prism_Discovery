@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_parso_0.8.4",
+  "cached_at": "2026-04-09T09:16:39.975330Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

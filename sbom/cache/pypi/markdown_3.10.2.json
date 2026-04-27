@@ -1,0 +1,22 @@
+{
+  "key": "markdown_3.10.2",
+  "cached_at": "2026-04-09T09:31:32.606103Z",
+  "data": {
+    "name": "Markdown",
+    "version": "3.10.2",
+    "license": "NOASSERTION",
+    "supplier": "Manfred Stienstra, Yuri Takhteyev",
+    "description": "Python implementation of John Gruber's Markdown.",
+    "release_date": "2026-02-09T14:57:25.787117Z",
+    "homepage": "https://pypi.org/project/Markdown/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e91464b71ae3ee7afd3017d9f358ef0baf158fd9a298db92f1d4761133824c36"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "types-requests_2.32.4.20250611",
+  "cached_at": "2026-04-09T09:30:59.351565Z",
+  "data": {
+    "name": "types-requests",
+    "version": "2.32.4.20250611",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Typing stubs for requests",
+    "release_date": "2025-06-11T03:11:40.186622Z",
+    "homepage": "https://pypi.org/project/types-requests/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ad2fe5d3b0cb3c2c902c8815a70e7fb2302c4b8c1f77bdcd738192cdb3878072"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

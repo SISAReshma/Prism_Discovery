@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_google-pasta_0.2.0",
+  "cached_at": "2026-04-09T09:15:14.148737Z",
+  "data": {
+    "direct": [
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "six": {
+        "version": "1.17.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

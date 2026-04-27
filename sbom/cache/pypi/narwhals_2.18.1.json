@@ -1,0 +1,22 @@
+{
+  "key": "narwhals_2.18.1",
+  "cached_at": "2026-04-09T09:31:13.454783Z",
+  "data": {
+    "name": "narwhals",
+    "version": "2.18.1",
+    "license": "MIT License\n        \n        Copyright (c) 2024 to present, Marco Gorelli\n        \n        Permission is hereby granted, free of charge, to any person obtaining a copy\n        of this software and associated documentation files (the \"Software\"), to deal\n        in the Software without restriction, including without limitation the rights\n        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n        copies of the Software, and to permit persons to whom the Software is\n        furnished to do so, subject to the following conditions:\n        \n        The above copyright notice and this permission notice shall be included in all\n        copies or substantial portions of the Software.\n        \n        THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n        SOFTWARE.",
+    "supplier": "Unknown",
+    "description": "Extremely lightweight compatibility layer between dataframe libraries",
+    "release_date": "2026-03-24T15:11:23.801699Z",
+    "homepage": "https://pypi.org/project/narwhals/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a0a8bb80205323851338888ba3a12b4f65d352362c8a94be591244faf36504ad"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

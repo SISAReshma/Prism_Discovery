@@ -1,0 +1,22 @@
+{
+  "key": "pyasn1_0.6.1",
+  "cached_at": "2026-04-09T09:30:38.143807Z",
+  "data": {
+    "name": "pyasn1",
+    "version": "0.6.1",
+    "license": "BSD-2-Clause",
+    "supplier": "Ilya Etingof",
+    "description": "Pure-Python implementation of ASN.1 types and DER/BER/CER codecs (X.208)",
+    "release_date": "2024-09-11T16:00:36.122570Z",
+    "homepage": "https://github.com/pyasn1/pyasn1",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0d632f46f2ba09143da3a8afe9e33fb6f92fa2320ab7e886e2d0f7672af84629"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

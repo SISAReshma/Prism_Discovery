@@ -1,0 +1,22 @@
+{
+  "key": "werkzeug_3.1.5",
+  "cached_at": "2026-02-20T05:28:26.031660Z",
+  "data": {
+    "name": "Werkzeug",
+    "version": "3.1.5",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "The comprehensive WSGI web application library.",
+    "release_date": "2026-01-08T17:49:21.859775Z",
+    "homepage": "https://pypi.org/project/Werkzeug/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5111e36e91086ece91f93268bb39b4a35c1e6f1feac762c9c822ded0a4e322dc"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

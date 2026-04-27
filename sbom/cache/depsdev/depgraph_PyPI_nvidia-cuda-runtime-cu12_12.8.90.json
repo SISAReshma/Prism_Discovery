@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_nvidia-cuda-runtime-cu12_12.8.90",
+  "cached_at": "2026-04-09T09:16:23.937095Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

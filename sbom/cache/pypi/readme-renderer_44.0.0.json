@@ -1,0 +1,22 @@
+{
+  "key": "readme-renderer_44.0.0",
+  "cached_at": "2026-04-08T07:29:19.614217Z",
+  "data": {
+    "name": "readme-renderer",
+    "version": "44.0.0",
+    "license": "Apache License, Version 2.0",
+    "supplier": "Unknown",
+    "description": "readme_renderer is a library for rendering readme descriptions for Warehouse",
+    "release_date": "2024-07-08T15:00:56.577790Z",
+    "homepage": "https://pypi.org/project/readme-renderer/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2fbca89b81a08526aadf1357a8c2ae889ec05fb03f5da67f9769c9a592166151"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

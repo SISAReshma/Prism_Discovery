@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_types-pyyaml_6.0.12.20250915",
+  "cached_at": "2026-04-09T09:23:35.292962Z",
+  "data": {
+    "name": "types-pyyaml",
+    "version": "6.0.12.20250915",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python/typeshed",
+    "description": "",
+    "release_date": "2025-09-15T03:00:59Z"
+  }
+}

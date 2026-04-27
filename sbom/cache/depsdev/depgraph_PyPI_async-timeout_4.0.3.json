@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_async-timeout_4.0.3",
+  "cached_at": "2026-04-09T09:14:10.985973Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

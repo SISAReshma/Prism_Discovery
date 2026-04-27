@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_aiosignal_1.3.2",
+  "cached_at": "2026-04-09T09:14:05.810652Z",
+  "data": {
+    "direct": [
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "frozenlist": {
+        "version": "1.8.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

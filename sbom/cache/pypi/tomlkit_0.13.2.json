@@ -1,0 +1,22 @@
+{
+  "key": "tomlkit_0.13.2",
+  "cached_at": "2026-04-09T09:30:56.190445Z",
+  "data": {
+    "name": "tomlkit",
+    "version": "0.13.2",
+    "license": "MIT",
+    "supplier": "S\u00e9bastien Eustace",
+    "description": "Style preserving TOML library",
+    "release_date": "2024-08-14T08:19:40.050886Z",
+    "homepage": "https://github.com/sdispater/tomlkit",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

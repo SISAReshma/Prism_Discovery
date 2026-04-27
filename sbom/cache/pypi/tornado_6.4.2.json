@@ -1,0 +1,22 @@
+{
+  "key": "tornado_6.4.2",
+  "cached_at": "2026-04-09T09:30:57.166800Z",
+  "data": {
+    "name": "tornado",
+    "version": "6.4.2",
+    "license": "Apache-2.0",
+    "supplier": "Facebook",
+    "description": "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed.",
+    "release_date": "2024-11-22T03:06:20.162711Z",
+    "homepage": "http://www.tornadoweb.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e828cce1123e9e44ae2a50a9de3055497ab1d0aeb440c5ac23064d9e44880da1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

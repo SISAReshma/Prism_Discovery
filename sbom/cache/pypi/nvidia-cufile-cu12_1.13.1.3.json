@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cufile-cu12_1.13.1.3",
+  "cached_at": "2026-04-09T09:30:29.260525Z",
+  "data": {
+    "name": "nvidia-cufile-cu12",
+    "version": "1.13.1.3",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "cuFile GPUDirect libraries",
+    "release_date": "2025-03-07T01:45:50.723879Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1d069003be650e131b21c932ec3d8969c1715379251f8d23a1860554b1cb24fc"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

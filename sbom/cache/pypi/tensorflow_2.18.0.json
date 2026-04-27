@@ -1,0 +1,22 @@
+{
+  "key": "tensorflow_2.18.0",
+  "cached_at": "2026-02-20T05:19:55.081765Z",
+  "data": {
+    "name": "tensorflow",
+    "version": "2.18.0",
+    "license": "Apache 2.0",
+    "supplier": "Google Inc.",
+    "description": "TensorFlow is an open source machine learning framework for everyone.",
+    "release_date": "2024-10-25T00:14:11.549846Z",
+    "homepage": "https://www.tensorflow.org/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "8da90a9388a1f6dd00d626590d2b5810faffbb3e7367f9783d80efff882340ee"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

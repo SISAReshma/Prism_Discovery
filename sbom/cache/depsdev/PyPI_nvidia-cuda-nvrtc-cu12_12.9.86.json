@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_nvidia-cuda-nvrtc-cu12_12.9.86",
+  "cached_at": "2026-04-09T09:24:26.376871Z",
+  "data": {
+    "name": "nvidia-cuda-nvrtc-cu12",
+    "version": "12.9.86",
+    "license": "non-standard",
+    "homepage": "",
+    "description": "",
+    "release_date": "2025-06-05T20:02:41Z"
+  }
+}

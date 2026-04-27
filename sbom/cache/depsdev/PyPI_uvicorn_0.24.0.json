@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_uvicorn_0.24.0",
+  "cached_at": "2026-02-20T05:02:53.708196Z",
+  "data": {
+    "name": "uvicorn",
+    "version": "0.24.0",
+    "license": "BSD-3-Clause",
+    "homepage": "https://www.uvicorn.org/",
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "pyperclip_1.11.0",
+  "cached_at": "2026-04-09T09:31:21.790407Z",
+  "data": {
+    "name": "pyperclip",
+    "version": "1.11.0",
+    "license": "BSD",
+    "supplier": "Unknown",
+    "description": "A cross-platform clipboard module for Python. (Only handles plain text for now.)",
+    "release_date": "2025-09-26T14:40:36.069557Z",
+    "homepage": "https://pypi.org/project/pyperclip/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "299403e9ff44581cb9ba2ffeed69c7aa96a008622ad0c46cb575ca75b5b84273"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

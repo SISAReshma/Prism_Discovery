@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jax_0.4.30",
+  "cached_at": "2026-04-09T09:19:26.766135Z",
+  "data": {
+    "name": "jax",
+    "version": "0.4.30",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/google/jax",
+    "description": "",
+    "release_date": "2024-06-18T14:47:10Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "fsspec_2026.2.0",
+  "cached_at": "2026-04-09T09:31:24.567944Z",
+  "data": {
+    "name": "fsspec",
+    "version": "2026.2.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "File-system specification",
+    "release_date": "2026-02-05T21:50:51.819307Z",
+    "homepage": "https://pypi.org/project/fsspec/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "98de475b5cb3bd66bedd5c4679e87b4fdfe1a3bf4d707b151b3c07e58c9a2437"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

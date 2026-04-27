@@ -1,0 +1,22 @@
+{
+  "key": "keras_3.13.2",
+  "cached_at": "2026-04-09T09:32:15.243573Z",
+  "data": {
+    "name": "keras",
+    "version": "3.13.2",
+    "license": "Apache License 2.0",
+    "supplier": "Unknown",
+    "description": "Multi-backend Keras",
+    "release_date": "2026-01-30T00:35:09.664752Z",
+    "homepage": "https://pypi.org/project/keras/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "14b2afc0f9c636cc295d28efc36aae42fc52e7b892c950eec33f3befe4d22fb5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.11"
+  }
+}

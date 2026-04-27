@@ -1,0 +1,22 @@
+{
+  "key": "pydantic_2.4.0",
+  "cached_at": "2026-02-20T05:18:47.320215Z",
+  "data": {
+    "name": "pydantic",
+    "version": "2.4.0",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Data validation using Python type hints",
+    "release_date": "2023-09-25T13:59:58.122512Z",
+    "homepage": "https://pypi.org/project/pydantic/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "909b2b7d7be775a890631218e8c4b6b5418c9b6c57074ae153e5c09b73bf06a3"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "packaging_25.0.0",
+  "cached_at": "2026-04-09T09:31:57.327355Z",
+  "data": {
+    "name": "packaging",
+    "version": "25.0.0",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "Core utilities for Python packages",
+    "release_date": "2025-04-19T11:48:57.875608Z",
+    "homepage": "https://pypi.org/project/packaging/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

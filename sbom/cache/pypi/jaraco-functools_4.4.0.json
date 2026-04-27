@@ -1,0 +1,22 @@
+{
+  "key": "jaraco-functools_4.4.0",
+  "cached_at": "2026-04-08T07:29:21.833257Z",
+  "data": {
+    "name": "jaraco.functools",
+    "version": "4.4.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Functools like those found in stdlib",
+    "release_date": "2025-12-21T09:29:42.270937Z",
+    "homepage": "https://pypi.org/project/jaraco.functools/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9eec1e36f45c818d9bf307c8948eb03b2b56cd44087b3cdc989abca1f20b9176"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

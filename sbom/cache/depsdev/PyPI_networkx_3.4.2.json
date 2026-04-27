@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_networkx_3.4.2",
+  "cached_at": "2026-04-09T09:20:02.078613Z",
+  "data": {
+    "name": "networkx",
+    "version": "3.4.2",
+    "license": "BSD-3-Clause",
+    "homepage": "https://networkx.org/",
+    "description": "",
+    "release_date": "2024-10-21T12:39:36Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "tensorflow-io-gcs-filesystem_0.37.1",
+  "cached_at": "2026-04-09T09:30:53.801615Z",
+  "data": {
+    "name": "tensorflow-io-gcs-filesystem",
+    "version": "0.37.1",
+    "license": "Apache Software License",
+    "supplier": "Google Inc.",
+    "description": "TensorFlow IO",
+    "release_date": "2024-07-01T23:44:15.341657Z",
+    "homepage": "https://github.com/tensorflow/io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "249c12b830165841411ba71e08215d0e94277a49c551e6dd5d72aab54fe5491b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <3.13,>=3.7"
+  }
+}

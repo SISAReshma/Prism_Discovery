@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_pure_eval_0.2.3",
+  "cached_at": "2026-04-09T09:16:51.090150Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

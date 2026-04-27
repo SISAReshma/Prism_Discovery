@@ -1,0 +1,22 @@
+{
+  "key": "orjson_3.11.8",
+  "cached_at": "2026-04-09T09:31:40.569795Z",
+  "data": {
+    "name": "orjson",
+    "version": "3.11.8",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy",
+    "release_date": "2026-03-31T16:14:30.708332Z",
+    "homepage": "https://pypi.org/project/orjson/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e6693ff90018600c72fd18d3d22fa438be26076cd3c823da5f63f7bab28c11cb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

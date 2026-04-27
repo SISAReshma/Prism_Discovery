@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-curand-cu12_10.3.2.106",
+  "cached_at": "2026-02-20T05:22:06.022224Z",
+  "data": {
+    "name": "nvidia-curand-cu12",
+    "version": "10.3.2.106",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CURAND native runtime libraries",
+    "release_date": "2023-04-19T15:51:04.804662Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9d264c5036dde4e64f1de8c50ae753237c12e0b1348738169cd0f8a536c0e1e0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

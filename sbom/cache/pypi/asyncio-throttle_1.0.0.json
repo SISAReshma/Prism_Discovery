@@ -1,0 +1,22 @@
+{
+  "key": "asyncio-throttle_1.0.0",
+  "cached_at": "2026-02-20T05:20:25.709552Z",
+  "data": {
+    "name": "asyncio-throttle",
+    "version": "1.0.0",
+    "license": "MIT",
+    "supplier": "Hanjun Kim",
+    "description": "Simple, easy-to-use throttler for asyncio",
+    "release_date": "2020-04-01T15:30:44.453268Z",
+    "homepage": "https://github.com/hallazzang/asyncio-throttle",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ac284c65e6d595687f8b4025bdb6f81a012fbc640eb76258f65d39fadcb5dc8b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.5"
+  }
+}

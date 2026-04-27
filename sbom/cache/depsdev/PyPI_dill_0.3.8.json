@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_dill_0.3.8",
+  "cached_at": "2026-04-09T09:18:51.817375Z",
+  "data": {
+    "name": "dill",
+    "version": "0.3.8",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/uqfoundation/dill",
+    "description": "",
+    "release_date": "2024-01-27T23:42:14Z"
+  }
+}

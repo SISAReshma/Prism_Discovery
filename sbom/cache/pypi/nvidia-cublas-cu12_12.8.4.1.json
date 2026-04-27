@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cublas-cu12_12.8.4.1",
+  "cached_at": "2026-04-09T09:30:27.790565Z",
+  "data": {
+    "name": "nvidia-cublas-cu12",
+    "version": "12.8.4.1",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUBLAS native runtime libraries",
+    "release_date": "2025-03-07T01:43:53.556914Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b86f6dd8935884615a0683b663891d43781b819ac4f2ba2b0c9604676af346d0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

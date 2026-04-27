@@ -1,0 +1,22 @@
+{
+  "key": "google-auth_2.49.1",
+  "cached_at": "2026-04-09T09:31:36.226423Z",
+  "data": {
+    "name": "google-auth",
+    "version": "2.49.1",
+    "license": "Apache 2.0",
+    "supplier": "Google Cloud Platform",
+    "description": "Google Authentication Library",
+    "release_date": "2026-03-12T19:30:53.159472Z",
+    "homepage": "https://github.com/googleapis/google-auth-library-python",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "195ebe3dca18eddd1b3db5edc5189b76c13e96f29e73043b923ebcf3f1a860f7"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

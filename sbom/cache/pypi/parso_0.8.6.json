@@ -1,0 +1,22 @@
+{
+  "key": "parso_0.8.6",
+  "cached_at": "2026-04-09T09:31:51.527214Z",
+  "data": {
+    "name": "parso",
+    "version": "0.8.6",
+    "license": "MIT",
+    "supplier": "David Halter",
+    "description": "A Python Parser",
+    "release_date": "2026-02-09T15:45:21.391761Z",
+    "homepage": "https://github.com/davidhalter/parso",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2c549f800b70a5c4952197248825584cb00f033b29c692671d3bf08bf380baff"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

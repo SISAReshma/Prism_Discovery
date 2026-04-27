@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jsonpatch_1.33.0",
+  "cached_at": "2026-04-09T09:23:18.301357Z",
+  "data": {
+    "name": "jsonpatch",
+    "version": "1.33.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/stefankoegl/python-json-patch",
+    "description": "",
+    "release_date": "2023-06-16T21:01:28Z"
+  }
+}

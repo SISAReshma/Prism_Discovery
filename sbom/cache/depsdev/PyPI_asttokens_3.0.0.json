@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_asttokens_3.0.0",
+  "cached_at": "2026-04-09T09:18:27.302128Z",
+  "data": {
+    "name": "asttokens",
+    "version": "3.0.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/gristlabs/asttokens",
+    "description": "",
+    "release_date": "2024-11-30T04:30:10Z"
+  }
+}

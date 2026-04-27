@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_googleapis-common-protos_1.73.1",
+  "cached_at": "2026-04-09T09:23:41.638499Z",
+  "data": {
+    "name": "googleapis-common-protos",
+    "version": "1.73.1",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/googleapis/google-cloud-python",
+    "description": "",
+    "release_date": "2026-03-26T22:15:58Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "scikit-learn_1.8.0",
+  "cached_at": "2026-04-09T09:32:03.163270Z",
+  "data": {
+    "name": "scikit-learn",
+    "version": "1.8.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "A set of python modules for machine learning and data mining",
+    "release_date": "2025-12-10T07:07:39.385321Z",
+    "homepage": "https://pypi.org/project/scikit-learn/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "146b4d36f800c013d267b29168813f7a03a43ecd2895d04861f1240b564421da"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.11"
+  }
+}

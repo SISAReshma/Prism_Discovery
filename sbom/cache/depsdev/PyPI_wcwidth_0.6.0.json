@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_wcwidth_0.6.0",
+  "cached_at": "2026-04-09T09:22:36.934815Z",
+  "data": {
+    "name": "wcwidth",
+    "version": "0.6.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jquast/wcwidth",
+    "description": "",
+    "release_date": "2026-02-06T19:19:39Z"
+  }
+}

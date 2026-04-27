@@ -1,0 +1,22 @@
+{
+  "key": "safehttpx_0.1.7",
+  "cached_at": "2026-04-09T09:31:47.755527Z",
+  "data": {
+    "name": "safehttpx",
+    "version": "0.1.7",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A small Python library created to help developers protect their applications from Server Side Request Forgery (SSRF) attacks.",
+    "release_date": "2025-10-24T18:30:08.733094Z",
+    "homepage": "https://pypi.org/project/safehttpx/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c4f4a162db6993464d7ca3d7cc4af0ffc6515a606dfd220b9f82c6945d869cde"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >3.9"
+  }
+}

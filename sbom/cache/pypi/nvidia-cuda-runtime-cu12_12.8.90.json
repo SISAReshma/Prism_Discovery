@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-cuda-runtime-cu12_12.8.90",
+  "cached_at": "2026-04-09T09:30:28.501406Z",
+  "data": {
+    "name": "nvidia-cuda-runtime-cu12",
+    "version": "12.8.90",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "CUDA Runtime native Libraries",
+    "release_date": "2025-03-07T01:39:43.533013Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "52bf7bbee900262ffefe5e9d5a2a69a30d97e2bc5bb6cc866688caa976966e3d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

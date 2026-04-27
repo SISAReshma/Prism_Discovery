@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_nvidia-cusparse-cu12_12.5.8.93",
+  "cached_at": "2026-04-09T09:16:28.392581Z",
+  "data": {
+    "direct": [
+      {
+        "name": "nvidia-nvjitlink-cu12",
+        "version": "12.9.86"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "nvidia-nvjitlink-cu12": {
+        "version": "12.9.86",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

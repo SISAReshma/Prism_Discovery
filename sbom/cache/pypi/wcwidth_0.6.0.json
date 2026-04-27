@@ -1,0 +1,22 @@
+{
+  "key": "wcwidth_0.6.0",
+  "cached_at": "2026-04-09T09:31:21.999947Z",
+  "data": {
+    "name": "wcwidth",
+    "version": "0.6.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Measures the displayed width of unicode strings in a terminal",
+    "release_date": "2026-02-06T19:19:39.646772Z",
+    "homepage": "https://pypi.org/project/wcwidth/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1a3a1e510b553315f8e146c54764f4fb6264ffad731b3d78088cdb1478ffbdad"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

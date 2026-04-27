@@ -1,0 +1,22 @@
+{
+  "key": "jsonpatch_1.33.0",
+  "cached_at": "2026-04-09T09:31:38.191196Z",
+  "data": {
+    "name": "jsonpatch",
+    "version": "1.33.0",
+    "license": "Modified BSD License",
+    "supplier": "Stefan K\u00f6gl",
+    "description": "Apply JSON-Patches (RFC 6902)",
+    "release_date": "2023-06-16T21:01:28.466546Z",
+    "homepage": "https://github.com/stefankoegl/python-json-patch",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0ae28c0cd062bbd8b8ecc26d7d164fbbea9652a1a3693f3b956c1eae5145dade"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*"
+  }
+}

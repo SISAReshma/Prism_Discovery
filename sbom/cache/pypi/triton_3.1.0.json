@@ -1,0 +1,22 @@
+{
+  "key": "triton_3.1.0",
+  "cached_at": "2026-04-09T09:30:58.346557Z",
+  "data": {
+    "name": "triton",
+    "version": "3.1.0",
+    "license": "MIT License",
+    "supplier": "Philippe Tillet",
+    "description": "A language and compiler for custom Deep Learning operations",
+    "release_date": "2024-10-14T16:05:32.106954Z",
+    "homepage": "https://github.com/triton-lang/triton/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "6b0dd10a925263abbe9fa37dcde67a5e9b2383fc269fdf59f5657cac38c5d1d8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

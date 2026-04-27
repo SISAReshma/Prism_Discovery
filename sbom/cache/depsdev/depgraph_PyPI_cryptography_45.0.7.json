@@ -1,0 +1,30 @@
+{
+  "key": "depgraph_PyPI_cryptography_45.0.7",
+  "cached_at": "2026-04-08T07:27:09.524058Z",
+  "data": {
+    "direct": [
+      {
+        "name": "cffi",
+        "version": "2.0.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "pycparser",
+        "version": "3.0.0"
+      }
+    ],
+    "graph": {
+      "cffi": {
+        "version": "2.0.0",
+        "relation": "DIRECT"
+      },
+      "pycparser": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

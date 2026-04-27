@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_narwhals_1.41.0",
+  "cached_at": "2026-04-09T09:16:14.608952Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

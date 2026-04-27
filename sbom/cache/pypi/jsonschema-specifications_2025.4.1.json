@@ -1,0 +1,22 @@
+{
+  "key": "jsonschema-specifications_2025.4.1",
+  "cached_at": "2026-04-09T09:30:16.536412Z",
+  "data": {
+    "name": "jsonschema-specifications",
+    "version": "2025.4.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "The JSON Schema meta-schemas and vocabularies, exposed as a Registry",
+    "release_date": "2025-04-23T12:34:05.422313Z",
+    "homepage": "https://pypi.org/project/jsonschema-specifications/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "4653bffbd6584f7de83a67e0d620ef16900b390ddc7939d56684d6c81e33f1af"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

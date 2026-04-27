@@ -1,0 +1,22 @@
+{
+  "key": "tensorboard_2.20.0",
+  "cached_at": "2026-04-09T09:30:52.982704Z",
+  "data": {
+    "name": "tensorboard",
+    "version": "2.20.0",
+    "license": "Apache 2.0",
+    "supplier": "Google Inc.",
+    "description": "TensorBoard lets you watch Tensors Flow",
+    "release_date": "2025-07-17T19:20:49.638114Z",
+    "homepage": "https://github.com/tensorflow/tensorboard",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9dc9f978cb84c0723acf9a345d96c184f0293d18f166bb8d59ee098e6cfaaba6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

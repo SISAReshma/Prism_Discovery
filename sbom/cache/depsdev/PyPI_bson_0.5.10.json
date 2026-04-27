@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_bson_0.5.10",
+  "cached_at": "2026-04-09T09:18:37.470174Z",
+  "data": {
+    "name": "bson",
+    "version": "0.5.10",
+    "license": "non-standard",
+    "homepage": "http://github.com/py-bson/bson",
+    "description": "",
+    "release_date": "2020-05-26T11:13:47Z"
+  }
+}

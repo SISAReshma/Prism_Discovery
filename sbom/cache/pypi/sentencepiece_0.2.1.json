@@ -1,0 +1,22 @@
+{
+  "key": "sentencepiece_0.2.1",
+  "cached_at": "2026-04-09T09:31:33.718294Z",
+  "data": {
+    "name": "sentencepiece",
+    "version": "0.2.1",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Unsupervised text tokenizer and detokenizer.",
+    "release_date": "2025-08-12T06:59:12.379210Z",
+    "homepage": "https://pypi.org/project/sentencepiece/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e10fa50bdbaa5e2445dbd387979980d391760faf0ec99a09bd7780ff37eaec44"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

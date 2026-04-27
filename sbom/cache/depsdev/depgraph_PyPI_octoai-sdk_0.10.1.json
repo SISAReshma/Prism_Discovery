@@ -1,0 +1,294 @@
+{
+  "key": "depgraph_PyPI_octoai-sdk_0.10.1",
+  "cached_at": "2026-04-09T09:16:33.472965Z",
+  "data": {
+    "direct": [
+      {
+        "name": "boto3",
+        "version": "1.42.82"
+      },
+      {
+        "name": "chevron",
+        "version": "0.14.0"
+      },
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "fastapi",
+        "version": "0.135.3"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "numpy",
+        "version": "1.26.4"
+      },
+      {
+        "name": "pillow",
+        "version": "10.4.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "python-multipart",
+        "version": "0.0.22"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "soundfile",
+        "version": "0.13.1"
+      },
+      {
+        "name": "types-pyyaml",
+        "version": "6.0.12.20250915"
+      },
+      {
+        "name": "types-requests",
+        "version": "2.31.0.6"
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.42.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "annotated-doc",
+        "version": "0.0.4"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "botocore",
+        "version": "1.42.82"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "cffi",
+        "version": "2.0.0"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "jmespath",
+        "version": "1.1.0"
+      },
+      {
+        "name": "pycparser",
+        "version": "3.0.0"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "s3transfer",
+        "version": "0.16.0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "starlette",
+        "version": "1.0.0"
+      },
+      {
+        "name": "types-urllib3",
+        "version": "1.26.25.14"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "1.26.20"
+      }
+    ],
+    "graph": {
+      "annotated-doc": {
+        "version": "0.0.4",
+        "relation": "INDIRECT"
+      },
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.13.0",
+        "relation": "INDIRECT"
+      },
+      "boto3": {
+        "version": "1.42.82",
+        "relation": "DIRECT"
+      },
+      "botocore": {
+        "version": "1.42.82",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "cffi": {
+        "version": "2.0.0",
+        "relation": "INDIRECT"
+      },
+      "chevron": {
+        "version": "0.14.0",
+        "relation": "DIRECT"
+      },
+      "click": {
+        "version": "8.3.1",
+        "relation": "DIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "fastapi": {
+        "version": "0.135.3",
+        "relation": "DIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "relation": "INDIRECT"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "jmespath": {
+        "version": "1.1.0",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "1.26.4",
+        "relation": "DIRECT"
+      },
+      "pillow": {
+        "version": "10.4.0",
+        "relation": "DIRECT"
+      },
+      "pycparser": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      },
+      "pydantic": {
+        "version": "2.12.5",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.41.5",
+        "relation": "INDIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "DIRECT"
+      },
+      "python-multipart": {
+        "version": "0.0.22",
+        "relation": "DIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "s3transfer": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "soundfile": {
+        "version": "0.13.1",
+        "relation": "DIRECT"
+      },
+      "starlette": {
+        "version": "1.0.0",
+        "relation": "INDIRECT"
+      },
+      "types-pyyaml": {
+        "version": "6.0.12.20250915",
+        "relation": "DIRECT"
+      },
+      "types-requests": {
+        "version": "2.31.0.6",
+        "relation": "DIRECT"
+      },
+      "types-urllib3": {
+        "version": "1.26.25.14",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "1.26.20",
+        "relation": "INDIRECT"
+      },
+      "uvicorn": {
+        "version": "0.42.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 35,
+    "source": "deps.dev"
+  }
+}

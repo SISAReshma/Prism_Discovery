@@ -1,0 +1,22 @@
+{
+  "key": "sqlalchemy_2.0.48",
+  "cached_at": "2026-04-09T09:31:56.798003Z",
+  "data": {
+    "name": "SQLAlchemy",
+    "version": "2.0.48",
+    "license": "MIT",
+    "supplier": "Mike Bayer",
+    "description": "Database Abstraction Library",
+    "release_date": "2026-03-02T15:38:26.781336Z",
+    "homepage": "https://www.sqlalchemy.org",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7001dc9d5f6bb4deb756d5928eaefe1930f6f4179da3924cbd95ee0e9f4dce89"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

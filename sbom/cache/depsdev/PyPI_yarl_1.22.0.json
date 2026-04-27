@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_yarl_1.22.0",
+  "cached_at": "2026-02-20T05:05:29.952575Z",
+  "data": {
+    "name": "yarl",
+    "version": "1.22.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/aio-libs/yarl",
+    "description": ""
+  }
+}

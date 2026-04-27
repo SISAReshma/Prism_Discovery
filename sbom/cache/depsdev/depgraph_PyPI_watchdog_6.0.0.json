@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_watchdog_6.0.0",
+  "cached_at": "2026-04-09T09:18:08.271768Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

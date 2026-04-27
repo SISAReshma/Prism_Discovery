@@ -1,0 +1,22 @@
+{
+  "key": "sentence-transformers_2.2.0",
+  "cached_at": "2026-02-20T05:19:28.958616Z",
+  "data": {
+    "name": "sentence-transformers",
+    "version": "2.2.0",
+    "license": "Apache License 2.0",
+    "supplier": "Nils Reimers",
+    "description": "Multilingual text embeddings",
+    "release_date": "2022-02-10T13:03:50.887341Z",
+    "homepage": "https://github.com/UKPLab/sentence-transformers",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c7365228b6d24e4d73cf49d409421820887ca43c86d49f264b68cfa00d761f96"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

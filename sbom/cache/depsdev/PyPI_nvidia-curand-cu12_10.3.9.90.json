@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_nvidia-curand-cu12_10.3.9.90",
+  "cached_at": "2026-04-09T09:20:11.373500Z",
+  "data": {
+    "name": "nvidia-curand-cu12",
+    "version": "10.3.9.90",
+    "license": "non-standard",
+    "homepage": "",
+    "description": "",
+    "release_date": "2025-03-07T01:46:23Z"
+  }
+}

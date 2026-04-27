@@ -1,0 +1,110 @@
+{
+  "key": "depgraph_PyPI_huggingface-hub_0.34.4",
+  "cached_at": "2026-04-09T09:15:26.833620Z",
+  "data": {
+    "direct": [
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.4.3"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.25.2",
+        "relation": "DIRECT"
+      },
+      "fsspec": {
+        "version": "2026.3.0",
+        "relation": "DIRECT"
+      },
+      "hf-xet": {
+        "version": "1.4.3",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "DIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 12,
+    "source": "deps.dev"
+  }
+}

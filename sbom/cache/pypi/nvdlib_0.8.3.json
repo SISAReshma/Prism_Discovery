@@ -1,0 +1,22 @@
+{
+  "key": "nvdlib_0.8.3",
+  "cached_at": "2026-04-09T09:31:17.470057Z",
+  "data": {
+    "name": "nvdlib",
+    "version": "0.8.3",
+    "license": "MIT",
+    "supplier": "Vehemont",
+    "description": "National Vulnerability Database CPE/CVE API Library for Python",
+    "release_date": "2025-08-06T21:16:14.662515Z",
+    "homepage": "https://github.com/Vehemont/nvdlib/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ba9df19942351353da5f3aa9ae9e106bbacd505a89d72d15c49f94d822690128"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.11.0"
+  }
+}

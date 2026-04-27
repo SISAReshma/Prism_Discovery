@@ -1,0 +1,22 @@
+{
+  "key": "wn_0.9.5",
+  "cached_at": "2026-04-09T09:31:02.827529Z",
+  "data": {
+    "name": "wn",
+    "version": "0.9.5",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Wordnet interface library",
+    "release_date": "2023-12-06T06:07:03.383594Z",
+    "homepage": "https://pypi.org/project/wn/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "fa17477bd39bcb8417a11aa8e08c67b9ea72e0c0557cd6f4de26fe9c93e60e39"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "botocore_1.31.85",
+  "cached_at": "2026-02-20T05:30:05.956120Z",
+  "data": {
+    "name": "botocore",
+    "version": "1.31.85",
+    "license": "Apache License 2.0",
+    "supplier": "Amazon Web Services",
+    "description": "Low-level, data-driven core of boto 3.",
+    "release_date": "2023-11-13T20:26:38.151594Z",
+    "homepage": "https://github.com/boto/botocore",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b8f35d65f2b45af50c36fc25cc1844d6bd61d38d2148b2ef133b8f10e198555d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >= 3.7"
+  }
+}

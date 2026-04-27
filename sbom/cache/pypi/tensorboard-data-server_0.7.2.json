@@ -1,0 +1,22 @@
+{
+  "key": "tensorboard-data-server_0.7.2",
+  "cached_at": "2026-04-09T09:30:53.191847Z",
+  "data": {
+    "name": "tensorboard-data-server",
+    "version": "0.7.2",
+    "license": "Apache 2.0",
+    "supplier": "Google Inc.",
+    "description": "Fast data loading for TensorBoard",
+    "release_date": "2023-10-23T21:23:32.160814Z",
+    "homepage": "https://github.com/tensorflow/tensorboard/tree/master/tensorboard/data/server",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7e0610d205889588983836ec05dc098e80f97b7e7bbff7e994ebb78f578d0ddb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

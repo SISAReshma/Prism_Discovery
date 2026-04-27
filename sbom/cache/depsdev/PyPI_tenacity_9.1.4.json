@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tenacity_9.1.4",
+  "cached_at": "2026-04-09T09:23:33.198911Z",
+  "data": {
+    "name": "tenacity",
+    "version": "9.1.4",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/jd/tenacity",
+    "description": "",
+    "release_date": "2026-02-07T10:45:32Z"
+  }
+}

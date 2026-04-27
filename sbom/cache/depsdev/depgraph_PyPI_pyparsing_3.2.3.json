@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_pyparsing_3.2.3",
+  "cached_at": "2026-04-09T09:17:00.031261Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

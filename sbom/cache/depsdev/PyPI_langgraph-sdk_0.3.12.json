@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langgraph-sdk_0.3.12",
+  "cached_at": "2026-04-08T09:17:06.305414Z",
+  "data": {
+    "name": "langgraph-sdk",
+    "version": "0.3.12",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langgraph",
+    "description": "",
+    "release_date": "2026-03-18T22:15:53Z"
+  }
+}

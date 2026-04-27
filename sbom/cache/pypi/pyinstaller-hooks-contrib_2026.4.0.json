@@ -1,0 +1,22 @@
+{
+  "key": "pyinstaller-hooks-contrib_2026.4.0",
+  "cached_at": "2026-04-27T07:15:06.468378Z",
+  "data": {
+    "name": "pyinstaller-hooks-contrib",
+    "version": "2026.4.0",
+    "license": "Apache Software License",
+    "supplier": "Legorooj",
+    "description": "Community maintained hooks for PyInstaller",
+    "release_date": "2026-03-31T14:10:49.867553Z",
+    "homepage": "https://github.com/pyinstaller/pyinstaller-hooks-contrib",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1de1a5e49a878122010b88c7e295502bc69776c157c4a4dc78741a4e6178b00f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "DataProperty_1.1.0",
+  "cached_at": "2026-04-09T09:29:58.095038Z",
+  "data": {
+    "name": "DataProperty",
+    "version": "1.1.0",
+    "license": "MIT License",
+    "supplier": "Tsuyoshi Hombashi",
+    "description": "Python library for extract property from data.",
+    "release_date": "2024-12-31T14:37:22.657247Z",
+    "homepage": "https://github.com/thombashi/DataProperty",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c61fcb2e2deca35e6d1eb1f251a7f22f0dcde63e80e61f0cc18c19f42abfd25b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

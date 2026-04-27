@@ -1,0 +1,22 @@
+{
+  "key": "pydeck_0.9.1",
+  "cached_at": "2026-04-09T09:30:39.637305Z",
+  "data": {
+    "name": "pydeck",
+    "version": "0.9.1",
+    "license": "Apache License 2.0",
+    "supplier": "Andrew Duberstein",
+    "description": "Widget for deck.gl maps",
+    "release_date": "2024-05-10T15:36:17.360098Z",
+    "homepage": "https://github.com/visgl/deck.gl/tree/master/bindings/pydeck",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b3f75ba0d273fc917094fa61224f3f6076ca8752b93d46faf3bcfd9f9d59b038"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

@@ -24,7 +24,9 @@ from aibom.config import (
 )
 
 # Load environment variables once at module load
-load_dotenv(Path(__file__).resolve().parent / ".env")
+# Walk up to app/ directory to find .env
+_app_root = Path(__file__).resolve().parent.parent.parent
+load_dotenv(_app_root / ".env")
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 LLM_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")

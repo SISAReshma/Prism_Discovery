@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_requests-futures_1.0.2",
+  "cached_at": "2026-04-09T09:20:55.572536Z",
+  "data": {
+    "name": "requests-futures",
+    "version": "1.0.2",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/ross/requests-futures",
+    "description": "",
+    "release_date": "2024-11-15T22:14:50Z"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "key": "depgraph_PyPI_tensorboard_2.20.0",
+  "cached_at": "2026-04-09T09:17:41.623411Z",
+  "data": {
+    "direct": [
+      {
+        "name": "absl-py",
+        "version": "2.4.0"
+      },
+      {
+        "name": "grpcio",
+        "version": "1.80.0"
+      },
+      {
+        "name": "markdown",
+        "version": "3.10.2"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "pillow",
+        "version": "12.2.0"
+      },
+      {
+        "name": "protobuf",
+        "version": "7.34.1"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      },
+      {
+        "name": "tensorboard-data-server",
+        "version": "0.7.2"
+      },
+      {
+        "name": "werkzeug",
+        "version": "3.1.8"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "absl-py": {
+        "version": "2.4.0",
+        "relation": "DIRECT"
+      },
+      "grpcio": {
+        "version": "1.80.0",
+        "relation": "DIRECT"
+      },
+      "markdown": {
+        "version": "3.10.2",
+        "relation": "DIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "pillow": {
+        "version": "12.2.0",
+        "relation": "DIRECT"
+      },
+      "protobuf": {
+        "version": "7.34.1",
+        "relation": "DIRECT"
+      },
+      "setuptools": {
+        "version": "82.0.1",
+        "relation": "DIRECT"
+      },
+      "tensorboard-data-server": {
+        "version": "0.7.2",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      },
+      "werkzeug": {
+        "version": "3.1.8",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 12,
+    "source": "deps.dev"
+  }
+}

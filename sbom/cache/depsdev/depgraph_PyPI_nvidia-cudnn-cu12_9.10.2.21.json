@@ -1,0 +1,30 @@
+{
+  "key": "depgraph_PyPI_nvidia-cudnn-cu12_9.10.2.21",
+  "cached_at": "2026-04-09T09:16:24.651260Z",
+  "data": {
+    "direct": [
+      {
+        "name": "nvidia-cublas-cu12",
+        "version": "12.9.2.10"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "nvidia-cuda-nvrtc-cu12",
+        "version": "12.9.86"
+      }
+    ],
+    "graph": {
+      "nvidia-cublas-cu12": {
+        "version": "12.9.2.10",
+        "relation": "DIRECT"
+      },
+      "nvidia-cuda-nvrtc-cu12": {
+        "version": "12.9.86",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

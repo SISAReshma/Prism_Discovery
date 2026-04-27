@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-nvtx-cu12_12.1.105",
+  "cached_at": "2026-02-20T05:22:16.845012Z",
+  "data": {
+    "name": "nvidia-nvtx-cu12",
+    "version": "12.1.105",
+    "license": "NVIDIA Proprietary Software",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "NVIDIA Tools Extension",
+    "release_date": "2023-04-19T15:48:43.556196Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "dc21cf308ca5691e7c04d962e213f8a4aa9bbfa23d95412f452254c2caeb09e5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

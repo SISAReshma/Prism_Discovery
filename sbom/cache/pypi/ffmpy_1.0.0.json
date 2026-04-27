@@ -1,0 +1,22 @@
+{
+  "key": "ffmpy_1.0.0",
+  "cached_at": "2026-04-09T09:31:46.339898Z",
+  "data": {
+    "name": "ffmpy",
+    "version": "1.0.0",
+    "license": "MIT License",
+    "supplier": "Andrii Yurchuk",
+    "description": "A simple Python wrapper for FFmpeg",
+    "release_date": "2025-11-11T06:24:22.818094Z",
+    "homepage": "https://pypi.org/project/ffmpy/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "5640e5f0fd03fb6236d0e119b16ccf6522db1c826fdf35dcb87087b60fd7504f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

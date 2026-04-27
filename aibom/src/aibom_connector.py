@@ -157,6 +157,7 @@ class NormalizedModelData:
     # ── Considerations ──────────────────────────────────────────────────────
     intended_users: List[str] = field(default_factory=list)
     use_cases: List[str] = field(default_factory=list)
+    out_of_scope_use: List[str] = field(default_factory=list)
     technical_limitations: List[str] = field(default_factory=list)
     ethical_considerations: List[Dict[str, str]] = field(default_factory=list)
     fairness_assessments: List[Dict[str, str]] = field(default_factory=list)
@@ -190,7 +191,8 @@ class NormalizedModelData:
 
     # ── Source tracking ─────────────────────────────────────────────────────
     lookup_source: str = ""
-    source_url: str = ""
+    source_url: str = ""                # website URL
+    source_repo_url: str = ""           # VCS / source repository URL
 
     # ── Raw / extra ─────────────────────────────────────────────────────────
     raw_metadata: Dict[str, Any] = field(default_factory=dict)
@@ -595,6 +597,8 @@ def _merge_upstream_into_nd(
         nd.training_hardware = considerations["training_hardware"]
     if not nd.inference_hardware and considerations.get("inference_hardware"):
         nd.inference_hardware = considerations["inference_hardware"]
+    if not nd.out_of_scope_use and considerations.get("out_of_scope_use"):
+        nd.out_of_scope_use = considerations["out_of_scope_use"]
 
     # 2. Description (first paragraph after "## Model Information")
     if not nd.description:
@@ -1193,8 +1197,10 @@ class HuggingFaceConnector(BaseModelConnector):
             last_modified=data.get("lastModified", ""),
             lookup_source="huggingface",
             source_url=f"https://huggingface.co/{model_id}",
+            source_repo_url=f"https://huggingface.co/{model_id}",
             intended_users=considerations.get("users", []),
             use_cases=considerations.get("use_cases", []),
+            out_of_scope_use=considerations.get("out_of_scope_use", []),
             technical_limitations=considerations.get("limitations", []),
             ethical_considerations=considerations.get("ethical", []),
             fairness_assessments=considerations.get("fairness", []),
@@ -1311,8 +1317,10 @@ class HuggingFaceConnector(BaseModelConnector):
                 last_modified=data.get("lastModified", ""),
                 lookup_source="huggingface_gated",
                 source_url=f"https://huggingface.co/{model_hf_id}",
+                source_repo_url=f"https://huggingface.co/{model_hf_id}",
                 intended_users=considerations.get("users", []),
                 use_cases=considerations.get("use_cases", []),
+                out_of_scope_use=considerations.get("out_of_scope_use", []),
                 technical_limitations=considerations.get("limitations", []),
                 ethical_considerations=considerations.get("ethical", []),
                 fairness_assessments=considerations.get("fairness", []),
@@ -1879,6 +1887,7 @@ def _extract_hf_considerations(readme: str) -> Dict[str, Any]:
     sections: Dict[str, Any] = {
         "users": [],
         "use_cases": [],
+        "out_of_scope_use": [],
         "limitations": [],
         "ethical": [],
         "fairness": [],
@@ -1899,8 +1908,10 @@ def _extract_hf_considerations(readme: str) -> Dict[str, Any]:
         "limitations": "limitations",
         "technical limitations": "limitations",
         "known limitations": "limitations",
-        "out of scope": "limitations",
-        "out-of-scope": "limitations",
+        "out of scope": "out_of_scope_use",
+        "out-of-scope": "out_of_scope_use",
+        "out of scope use": "out_of_scope_use",
+        "misuse": "out_of_scope_use",
         "ethical considerations": "ethical",
         "bias": "ethical",
         "risks": "ethical",
@@ -1950,7 +1961,7 @@ def _extract_hf_considerations(readme: str) -> Dict[str, Any]:
                         sections["fairness"].append({"name": item, "mitigationStrategy": ""})
                     elif current_section in ("performance_tradeoffs",):
                         sections["performance_tradeoffs"].append(item)
-                    elif current_section in ("users", "use_cases", "limitations"):
+                    elif current_section in ("users", "use_cases", "limitations", "out_of_scope_use"):
                         sections[current_section].append(item)
 
     # For list-type sections that got no bullet items, fall back to
@@ -1969,7 +1980,7 @@ def _extract_hf_considerations(readme: str) -> Dict[str, Any]:
             return []
         return [text]
 
-    for key in ("users", "use_cases", "limitations"):
+    for key in ("users", "use_cases", "limitations", "out_of_scope_use"):
         if not sections[key] and key in _section_lines:
             sections[key] = _paragraphs_from_lines(_section_lines[key])
     if not sections["ethical"] and "ethical" in _section_lines:
@@ -2134,23 +2145,128 @@ def _infer_modalities_from_pipeline(
 
 
 def _raw_to_normalized(raw: Dict) -> NormalizedModelData:
-    """Convert a raw cache / API dict into ``NormalizedModelData``."""
+    """Convert a raw cache / API dict into ``NormalizedModelData``.
+
+    This handles both:
+      - Direct HF API responses (top-level keys: modelId, pipeline_tag, etc.)
+      - Cached entries that may wrap the raw response inside a ``data`` key
+        with rich nested ``card_data`` / ``config`` sub-objects.
+    """
+    # card_data may live at top-level or inside raw_metadata / _raw_response
+    card_data = raw.get("cardData", raw.get("card_data", {})) or {}
+    _raw_response = raw.get("_raw_response", raw)
+
+    # Model identity
+    model_id = raw.get("model_id", raw.get("id", raw.get("modelId", "")))
+    model_name = raw.get("model_name", raw.get("modelId", raw.get("name", "")))
+
+    # License — check top-level first, then card_data
+    license_id = raw.get("license", "") or card_data.get("license", "")
+
+    # Pipeline tag
+    pipeline_tag = raw.get("pipeline_tag", raw.get("task", "")) or ""
+
+    # Author / publisher
+    author = raw.get("author", raw.get("publisher", ""))
+    publisher = raw.get("publisher", raw.get("author", ""))
+
+    # Description — try card_data if top-level is empty
+    description = raw.get("description", "") or card_data.get("description", "")
+
+    # Tags
+    tags = raw.get("tags", []) or []
+
+    # Base model
+    base_model_raw = card_data.get("base_model", "")
+    base_model = (
+        base_model_raw[0] if isinstance(base_model_raw, list) and base_model_raw
+        else base_model_raw or ""
+    )
+
+    # Datasets — extract from card_data
+    datasets = _extract_hf_datasets(card_data) if card_data else []
+
+    # Metrics
+    metrics = _extract_hf_metrics(card_data) if card_data else []
+
+    # Modalities from card_data or inferred from pipeline_tag
+    input_modalities = card_data.get("input_modalities", [])
+    output_modalities = card_data.get("output_modalities", [])
+    if not input_modalities or not output_modalities:
+        _in, _out = _infer_modalities_from_pipeline(pipeline_tag)
+        if not input_modalities:
+            input_modalities = _in
+        if not output_modalities:
+            output_modalities = _out
+
+    # Architecture inference
+    merged_card = {**card_data, "config": raw.get("config", _raw_response.get("config", {}))}
+    architecture_family = _infer_architecture_family(tags, merged_card)
+    model_architecture = _infer_model_architecture(model_id, tags, merged_card)
+    approach_type = _infer_approach_type(pipeline_tag, tags)
+
+    # Considerations from README (if available in cache)
+    readme = raw.get("readme_content", "")
+    considerations = _extract_hf_considerations(readme) if readme else {}
+
+    # Source URLs
+    source_url = ""
+    source_repo_url = ""
+    if model_id and "/" in model_id:
+        source_url = f"https://huggingface.co/{model_id}"
+        source_repo_url = source_url
+
+    # License URL
+    license_url = f"https://huggingface.co/{model_id}/blob/main/LICENSE" if license_id else ""
+
+    # Parameter count from safetensors
+    safetensors = raw.get("safetensors", _raw_response.get("safetensors", {})) or {}
+    parameter_count = int(safetensors["total"]) if safetensors.get("total") else 0
+    parameter_dtype = ""
+    if parameter_count:
+        params = safetensors.get("parameters", {})
+        if isinstance(params, dict) and params:
+            parameter_dtype = next(iter(params))
+
     return NormalizedModelData(
-        model_id=raw.get("model_id", raw.get("id", "")),
-        model_name=raw.get("model_name", raw.get("modelId", raw.get("name", ""))),
+        model_id=model_id,
+        model_name=model_name,
         version=raw.get("version", raw.get("sha", "")),
-        author=raw.get("author", raw.get("publisher", "")),
-        publisher=raw.get("publisher", raw.get("author", "")),
-        description=raw.get("description", ""),
-        pipeline_tag=raw.get("pipeline_tag", raw.get("task", "")),
+        author=author,
+        publisher=publisher,
+        description=description,
+        pipeline_tag=pipeline_tag,
         library_name=raw.get("library_name", ""),
-        tags=raw.get("tags", []),
-        license_id=raw.get("license", ""),
+        tags=tags,
+        license_id=license_id,
+        license_url=license_url,
+        base_model=base_model,
+        datasets=datasets,
+        metrics=metrics,
+        input_modalities=input_modalities,
+        output_modalities=output_modalities,
+        architecture_family=architecture_family,
+        model_architecture=model_architecture,
+        approach_type=approach_type,
         downloads=raw.get("downloads", 0),
         likes=raw.get("likes", 0),
         created_at=raw.get("created_at", raw.get("createdAt", "")),
         last_modified=raw.get("last_modified", raw.get("lastModified", "")),
         lookup_source=raw.get("_lookup_source", "cache"),
+        source_url=source_url,
+        source_repo_url=source_repo_url,
+        parameter_count=parameter_count,
+        parameter_dtype=parameter_dtype,
+        intended_users=considerations.get("users", []),
+        use_cases=considerations.get("use_cases", []),
+        out_of_scope_use=considerations.get("out_of_scope_use", []),
+        technical_limitations=considerations.get("limitations", []),
+        ethical_considerations=considerations.get("ethical", []),
+        fairness_assessments=considerations.get("fairness", []),
+        performance_tradeoffs=considerations.get("performance_tradeoffs", []),
+        environmental_considerations=considerations.get("environmental", {}),
+        training_hardware=considerations.get("training_hardware", ""),
+        inference_hardware=considerations.get("inference_hardware", ""),
         raw_metadata=raw,
     )
 
@@ -2355,92 +2471,6 @@ def _get_deprecation_engine() -> _DeprecationEngine:
     return _DeprecationEngine()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# AGENTIC FRAMEWORKS BUILDER
-# ═══════════════════════════════════════════════════════════════════════════════
-
-
-def _build_agentic_frameworks(session_extra: Dict) -> Dict[str, Any]:
-    """
-    Build the ``agentic-frameworks`` section of the AIBOM.
-
-    Pulls results from ``session.extra["agentic_assets"]`` and
-    ``session.extra["frameworks_detected"]``.
-
-    Schema::
-
-        {
-          "detected": true,
-          "frameworks": [
-            {
-              "id": "uuid",
-              "base_pkg": "crewai",
-              "support_pkgs": ["langchain", ...],
-              "assets": [
-                { "asset_type": "agent", "role": "...", "task_goals": "...",
-                  "system_prompts": "..." }
-              ]
-            }
-          ]
-        }
-    """
-    agentic_data = session_extra.get("agentic_assets")
-    if not agentic_data:
-        return {"detected": False}
-
-    all_assets = agentic_data.get("all_assets", [])
-    agentic_frameworks_list = agentic_data.get("agentic_assets", [])
-
-    if not all_assets and not agentic_frameworks_list:
-        return {"detected": False}
-
-    # Collect framework-detected info for support packages
-    frameworks_detected = session_extra.get("frameworks_detected", {})
-    agentic_fw_info = frameworks_detected.get("agentic_frameworks", [])
-    # Build base_pkg → support_pkgs mapping
-    support_map: Dict[str, List[str]] = {}
-    if isinstance(agentic_fw_info, list):
-        for fw in agentic_fw_info:
-            pkg = fw.get("package", fw.get("name", ""))
-            subs = fw.get("sub_imports", [])
-            if pkg:
-                support_map[pkg.lower()] = subs
-
-    frameworks: List[Dict] = []
-    for fw_group in agentic_frameworks_list:
-        fw_name = fw_group.get("framework", "")
-        assets_raw = fw_group.get("assets", [])
-
-        assets_out: List[Dict[str, Any]] = []
-        for asset in assets_raw:
-            fields = asset.get("fields", {})
-            assets_out.append({
-                "asset_type": asset.get("asset_type", "other"),
-                "class_name": asset.get("class_name", ""),
-                "function": asset.get("function", ""),
-                "file": asset.get("file", ""),
-                "line": asset.get("line"),
-                "role": fields.get("role", ""),
-                "task_goals": fields.get("goal", fields.get("expected_output", "")),
-                "system_prompts": fields.get(
-                    "system_prompt",
-                    fields.get("system_message", fields.get("instructions", "")),
-                ),
-                "backstory": fields.get("backstory", ""),
-                "description": fields.get("description", ""),
-                "model": fields.get("model", fields.get("llm", "")),
-                "tools": fields.get("tools", ""),
-            })
-
-        frameworks.append({
-            "id": str(uuid.uuid4()),
-            "base_pkg": fw_name,
-            "support_pkgs": support_map.get(fw_name.lower(), []),
-            "assets": assets_out,
-        })
-
-    return {"detected": True, "frameworks": frameworks}
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # AIBOM ASSEMBLY — MAIN ENTRY POINT
@@ -2452,38 +2482,38 @@ connector_registry = ConnectorRegistry()
 
 
 def _register_default_connectors() -> None:
-    """Register all built-in connectors."""
+    """Register built-in connectors.
+
+    Only ModelCache (local O(1) lookups) and HuggingFace Hub are active.
+    For models not found on HuggingFace, a note is added directing users
+    to the respective model provider's page for model card details.
+    """
     connector_registry.register(ModelCacheConnector())
     connector_registry.register(HuggingFaceConnector())
-    connector_registry.register(ReplicateConnector())
-    connector_registry.register(AzureAICatalogConnector())
-    connector_registry.register(TFHubConnector())
-    connector_registry.register(ONNXModelZooConnector())
-    connector_registry.register(GitRepoConnector())
-    # Stubs — only active when env vars are set
-    connector_registry.register(PyTorchHubConnector())
-    connector_registry.register(KaggleConnector())
-    connector_registry.register(MLflowConnector())
-    connector_registry.register(SageMakerConnector())
-    connector_registry.register(AzureMLConnector())
-    connector_registry.register(VertexAIConnector())
-    connector_registry.register(WandBConnector())
-    connector_registry.register(OCIRegistryConnector())
 
 
 _register_default_connectors()
 
 
 def _build_cdx_model_component(
-    model_name: str, nd: NormalizedModelData, dep: Optional[DeprecationResult]
+    model_name: str, nd: NormalizedModelData, dep: Optional[DeprecationResult],
+    ai_tag: str = "",
 ) -> Dict[str, Any]:
     """
     Build a single CycloneDX-ready component dict for one model.
 
-    Follows CycloneDX 1.5+ ``machine-learning-model`` component schema
-    with ``modelCard`` sub-object, plus extended fields for hardware,
-    provenance/pedigree, lifecycle, and deprecation.
+    Follows CycloneDX 1.5+ component schema with ``modelCard`` sub-object,
+    plus extended fields for hardware, lifecycle, and deprecation.
+    The component ``type`` is derived dynamically from the AI scan tag.
     """
+    # Map AI scan tags to descriptive component types
+    TAG_TO_CDX_TYPE = {
+        "LLM": "large-language-model",
+        "DL":  "deep-learning-model",
+        "ML":  "machine-learning-model",
+        "AI":  "ai-model",
+    }
+    _component_type = TAG_TO_CDX_TYPE.get(ai_tag.upper(), "machine-learning-model") if ai_tag else "machine-learning-model"
     # Determine purl scheme based on model origin
     purl = ""
     if nd.model_id:
@@ -2494,12 +2524,20 @@ def _build_cdx_model_component(
         else:
             purl = f"pkg:huggingface/{nd.model_id}"
 
+    # Build description — use tag-based fallback when connector found nothing
+    _desc = nd.description
+    if not _desc and ai_tag:
+        _desc = f"{ai_tag} model detected in codebase"
+    elif not _desc:
+        _desc = "AI model detected in codebase"
+
     component: Dict[str, Any] = {
-        "type": "machine-learning-model",
+        "type": _component_type,
         "bom-ref": f"model-{uuid.uuid4()}",
+        "author": nd.author or nd.publisher or "",
         "name": nd.model_name or model_name,
         "version": nd.version,
-        "description": nd.description,
+        "description": _desc,
         "publisher": nd.publisher or nd.author,
         "purl": purl,
     }
@@ -2508,12 +2546,23 @@ def _build_cdx_model_component(
     if nd.license_id:
         component["licenses"] = [{"license": {"id": nd.license_id}}]
 
-    # External references
+    # External references (with comment field per CycloneDX AIBOM spec)
     ext_refs: List[Dict] = []
     if nd.source_url:
-        ext_refs.append({"type": "website", "url": nd.source_url})
+        ext_refs.append({"comment": "Source URL", "type": "website", "url": nd.source_url})
+    if nd.source_repo_url:
+        ext_refs.append({"comment": "Source Repository", "type": "vcs", "url": nd.source_repo_url})
     if nd.license_url:
-        ext_refs.append({"type": "license", "url": nd.license_url})
+        ext_refs.append({"comment": "License", "type": "license", "url": nd.license_url})
+    # Extract contact email from raw_metadata if available
+    _contact = (nd.raw_metadata or {}).get("contact_email", "")
+    if not _contact:
+        # Try card_data for common contact patterns
+        _card = (nd.raw_metadata or {}).get("card_data", {})
+        if isinstance(_card, dict):
+            _contact = _card.get("contact", _card.get("email", ""))
+    if _contact:
+        ext_refs.append({"comment": "Contact", "type": "email", "url": _contact})
     if ext_refs:
         component["externalReferences"] = ext_refs
 
@@ -2521,8 +2570,33 @@ def _build_cdx_model_component(
     if nd.tags:
         component["tags"] = nd.tags[:50]
 
-    # Properties (extra metadata not in CycloneDX schema)
+    # Properties (extra metadata as CycloneDX key-value pairs)
     properties: List[Dict[str, str]] = []
+    # AI scan tag — preserves the classification from ai-targeted-scan
+    # (LLM / ML / DL / AI) alongside the CycloneDX-required type
+    if ai_tag:
+        properties.append({"name": "ai:model:tag", "value": ai_tag})
+    # Data source — shows where model card data was fetched from
+    if nd.lookup_source:
+        properties.append({"name": "ai:lookup:source", "value": nd.lookup_source})
+    # Core AIBOM properties matching sample format
+    if nd.pipeline_tag:
+        properties.append({"name": "category", "value": nd.pipeline_tag})
+    if nd.base_model:
+        properties.append({"name": "baseModel", "value": nd.base_model})
+        # Derive base model source URL
+        _base_source = ""
+        if "/" in nd.base_model:
+            _base_source = f"https://huggingface.co/{nd.base_model}"
+        elif nd.base_model:
+            _base_source = f"https://huggingface.co/{nd.base_model}"
+        if _base_source:
+            properties.append({"name": "baseModelSource", "value": _base_source})
+    if nd.use_cases:
+        properties.append({"name": "intendedUse", "value": "; ".join(nd.use_cases)})
+    if nd.out_of_scope_use:
+        properties.append({"name": "outOfScopeUse", "value": "; ".join(nd.out_of_scope_use)})
+    # Extended properties
     if nd.library_name:
         properties.append({"name": "library_name", "value": nd.library_name})
     if nd.context_window:
@@ -2551,16 +2625,6 @@ def _build_cdx_model_component(
     if properties:
         component["properties"] = properties
 
-    # ── Pedigree / Provenance ───────────────────────────────────────────────
-    pedigree: Dict[str, Any] = {}
-    if nd.base_model:
-        pedigree["ancestors"] = [{"name": nd.base_model, "type": "machine-learning-model"}]
-    if nd.parent_model and nd.parent_model != nd.base_model:
-        ancestors = pedigree.get("ancestors", [])
-        ancestors.append({"name": nd.parent_model, "type": "machine-learning-model"})
-        pedigree["ancestors"] = ancestors
-    if pedigree:
-        component["pedigree"] = pedigree
 
     # ── modelCard ───────────────────────────────────────────────────────────
     model_card: Dict[str, Any] = {}
@@ -2595,19 +2659,6 @@ def _build_cdx_model_component(
     if model_params:
         model_card["modelParameters"] = model_params
 
-    # quantitativeAnalysis
-    if nd.metrics:
-        model_card["quantitativeAnalysis"] = {
-            "performanceMetrics": [
-                {
-                    "type": m.metric_type,
-                    "value": m.value,
-                    **({"slice": m.slice_label} if m.slice_label else {}),
-                    **({"confidenceInterval": m.confidence_interval} if m.confidence_interval else {}),
-                }
-                for m in nd.metrics
-            ]
-        }
 
     # considerations
     considerations: Dict[str, Any] = {}
@@ -2816,6 +2867,11 @@ def build_aibom(
                 model_id=model_name,
                 model_name=model_name,
                 lookup_source="not_found",
+                description=(
+                    f"Model card not found on HuggingFace. "
+                    f"For model card details, please refer to the respective "
+                    f"model provider's page for '{model_name}'."
+                ),
             )
 
         # 2a-extra. Apply provider-specific overlay for hosted variants
@@ -2863,8 +2919,15 @@ def build_aibom(
         if dep_result:
             all_deprecations.append(dep_result)
 
-        # 2d. Build CycloneDX component
-        component = _build_cdx_model_component(model_name, nd, dep_result)
+        # 2d. Build CycloneDX component — pass AI tag from scan results
+        _all_models_tags = ai_scan.get("all_models", [])
+        _model_tag = ""
+        for _mt in _all_models_tags:
+            _mname = _mt.get("model_name", _mt.get("model", ""))
+            if _mname == model_name:
+                _model_tag = _mt.get("tag", "AI")
+                break
+        component = _build_cdx_model_component(model_name, nd, dep_result, ai_tag=_model_tag)
         components.append(component)
 
         # 2e. Track per-model result
@@ -2899,9 +2962,44 @@ def build_aibom(
     # ── 4. Vulnerabilities from deprecation ─────────────────────────────────
     vulnerabilities = _build_cdx_vulnerabilities(all_deprecations)
 
-    # ── 5. Agentic frameworks ───────────────────────────────────────────────
-    agentic_frameworks = _build_agentic_frameworks(session_extra)
+    # ── 5. Library components from AI categorization ────────────────────────
+    # Inject AI framework libraries (e.g. PyTorch, Transformers) as separate
+    # type:library components and link them via dependsOn to model components.
+    library_components: List[Dict[str, Any]] = []
+    library_bom_refs: List[str] = []
+    llm_cat = session_extra.get("llm_categorization", {})
+    # Also check llm_validation for the raw AI library list
+    llm_val = session_extra.get("llm_validation", {})
+    _seen_libs: set = set()
 
+    # Collect libraries from categorization (ai_categories)
+    for _cat_key, _cat_data in llm_cat.get("ai_categories", {}).items():
+        for _lib in _cat_data.get("libraries", []):
+            _lib_name = _lib.get("library", "") if isinstance(_lib, dict) else str(_lib)
+            if not _lib_name or _lib_name.lower() in _seen_libs:
+                continue
+            _seen_libs.add(_lib_name.lower())
+            _lib_ref = f"lib-{_lib_name.lower().replace(' ', '-').replace('.', '-')}"
+            library_components.append({
+                "type": "library",
+                "bom-ref": _lib_ref,
+                "name": _lib_name,
+            })
+            library_bom_refs.append(_lib_ref)
+
+    # Also add from llm_validation ai_libraries if not already covered
+    for _lib in llm_val.get("ai_libraries", []):
+        _lib_name = _lib.get("library", "") if isinstance(_lib, dict) else str(_lib)
+        if not _lib_name or _lib_name.lower() in _seen_libs:
+            continue
+        _seen_libs.add(_lib_name.lower())
+        _lib_ref = f"lib-{_lib_name.lower().replace(' ', '-').replace('.', '-')}"
+        library_components.append({
+            "type": "library",
+            "bom-ref": _lib_ref,
+            "name": _lib_name,
+        })
+        library_bom_refs.append(_lib_ref)
     # ── 6. Assembly (CycloneDX-ready) ───────────────────────────────────────
     now = datetime.utcnow().isoformat() + "Z"
     source_counts: Dict[str, int] = {}
@@ -2926,28 +3024,83 @@ def build_aibom(
     metadata_block: Dict[str, Any] = {
         "timestamp": now,
         "tools": [{"name": tool_name, "version": tool_version}],
-        "component": {
+    }
+    # metadata.component: describe the primary model if models exist,
+    # otherwise describe the tool itself (per CycloneDX AIBOM spec).
+    # Pick the best model (one with a description/modelCard) instead of
+    # blindly using the first component which may be a not_found model.
+    if components:
+        # Prefer a component that has a modelCard or non-empty description
+        _primary = components[0]
+        for _c in components:
+            # Skip library components
+            if _c.get("type") == "library":
+                continue
+            if _c.get("modelCard") or _c.get("description"):
+                _primary = _c
+                break
+
+        # Build a meaningful description — include the AI tag if available
+        _all_models_tags = ai_scan.get("all_models", [])
+        _tag_map = {}
+        for _mt in _all_models_tags:
+            _mname = _mt.get("model_name", _mt.get("model", ""))
+            _tag = _mt.get("tag", "AI")
+            if _mname:
+                _tag_map[_mname] = _tag
+
+        _prim_name = _primary.get("name", "")
+        _prim_desc = _primary.get("description", "")
+        _prim_tag = _tag_map.get(_prim_name, "")
+
+        # If no description was found, build one from the name + tag
+        if not _prim_desc and _prim_tag:
+            _prim_desc = f"{_prim_tag} model detected in codebase"
+        elif not _prim_desc:
+            _prim_desc = f"AI model detected in codebase"
+
+        _meta_component: Dict[str, Any] = {
+            "type": _primary.get("type", "machine-learning-model"),
+            "name": _prim_name,
+            "description": _prim_desc,
+        }
+        # Carry over author from primary component
+        _prim_author = _primary.get("author", "")
+        if _prim_author:
+            _meta_component["author"] = _prim_author
+        # Carry over licenses from primary component
+        _prim_licenses = _primary.get("licenses", [])
+        if _prim_licenses:
+            _meta_component["licenses"] = _prim_licenses
+        metadata_block["component"] = _meta_component
+    else:
+        metadata_block["component"] = {
             "type": "application",
             "name": tool_name,
             "version": tool_version,
             "description": "AI Bill of Materials generator — CycloneDX 1.5",
-        },
-    }
+        }
     if authors:
         metadata_block["authors"] = authors
         metadata_block["supplier"] = authors[0]  # primary supplier = first author
     if licenses_set:
         metadata_block["licenses"] = [{"license": {"id": lid}} for lid in sorted(licenses_set)]
 
-    # Build dependencies (model → base_model)
+    # Build dependsOn — link model components to library components
+    _model_types = {"machine-learning-model", "large-language-model", "deep-learning-model", "ai-model"}
     dependencies: List[Dict[str, Any]] = []
     for comp in components:
         dep_entry: Dict[str, Any] = {"ref": comp["bom-ref"]}
-        pedigree = comp.get("pedigree", {})
-        ancestors = pedigree.get("ancestors", [])
-        if ancestors:
-            dep_entry["dependsOn"] = [a["name"] for a in ancestors]
+        # Link each model component to all library components via dependsOn
+        if library_bom_refs and comp.get("type") in _model_types:
+            dep_entry["dependsOn"] = list(library_bom_refs)
         dependencies.append(dep_entry)
+    # Add library components themselves (no dependsOn)
+    for lib_comp in library_components:
+        dependencies.append({"ref": lib_comp["bom-ref"]})
+
+    # Merge library components into the main components list
+    all_components = components + library_components
 
     # Compositions
     compositions: List[Dict[str, Any]] = []
@@ -2966,16 +3119,15 @@ def build_aibom(
         "version": 1,
         "serialNumber": f"urn:uuid:{uuid.uuid4()}",
         "metadata": metadata_block,
-        # ── Components (models) ─────────────────────────────────────────────
-        "components": components,
+        # ── Components (models + libraries) ─────────────────────────────────
+        "components": all_components,
         # ── Dependencies ────────────────────────────────────────────────────
         "dependencies": dependencies,
         # ── Compositions ────────────────────────────────────────────────────
         "compositions": compositions,
         # ── Vulnerabilities (deprecation) ───────────────────────────────────
         "vulnerabilities": vulnerabilities,
-        # ── Agentic frameworks ──────────────────────────────────────────────
-        "agentic_frameworks": agentic_frameworks,
+
         # ── Connector metadata (non-CycloneDX, for internal tracking) ──────
         "_connector_meta": {
             "models_processed": len(distinct_models),

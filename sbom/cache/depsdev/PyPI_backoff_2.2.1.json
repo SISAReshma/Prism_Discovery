@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_backoff_2.2.1",
+  "cached_at": "2026-04-09T09:18:32.321564Z",
+  "data": {
+    "name": "backoff",
+    "version": "2.2.1",
+    "license": "MIT",
+    "homepage": "https://github.com/litl/backoff",
+    "description": "",
+    "release_date": "2022-10-05T19:19:30Z"
+  }
+}

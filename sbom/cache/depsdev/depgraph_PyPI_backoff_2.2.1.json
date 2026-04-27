@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_backoff_2.2.1",
+  "cached_at": "2026-04-09T09:14:13.660438Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

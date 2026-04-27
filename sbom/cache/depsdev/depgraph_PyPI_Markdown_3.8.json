@@ -1,0 +1,30 @@
+{
+  "key": "depgraph_PyPI_Markdown_3.8",
+  "cached_at": "2026-04-09T09:16:02.076882Z",
+  "data": {
+    "direct": [
+      {
+        "name": "importlib-metadata",
+        "version": "9.0.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "graph": {
+      "importlib-metadata": {
+        "version": "9.0.0",
+        "relation": "DIRECT"
+      },
+      "zipp": {
+        "version": "3.23.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 2,
+    "source": "deps.dev"
+  }
+}

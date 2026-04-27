@@ -1,0 +1,22 @@
+{
+  "key": "zstandard_0.25.0",
+  "cached_at": "2026-04-09T09:31:44.934427Z",
+  "data": {
+    "name": "zstandard",
+    "version": "0.25.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Zstandard bindings for Python",
+    "release_date": "2025-09-14T22:15:56.415407Z",
+    "homepage": "https://pypi.org/project/zstandard/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e59fdc271772f6686e01e1b3b74537259800f57e24280be3f29c8a0deb1904dd"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

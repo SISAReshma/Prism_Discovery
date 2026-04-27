@@ -1,0 +1,22 @@
+{
+  "key": "DateTime_5.5",
+  "cached_at": "2026-04-09T09:29:58.658471Z",
+  "data": {
+    "name": "DateTime",
+    "version": "5.5",
+    "license": "ZPL 2.1",
+    "supplier": "Zope Foundation and Contributors",
+    "description": "This package provides a DateTime data type, as known from Zope. Unless you need to communicate with Zope APIs, you're probably better off using Python's built-in datetime module.",
+    "release_date": "2024-03-21T07:26:47.849806Z",
+    "homepage": "https://github.com/zopefoundation/DateTime",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0abf6c51cb4ba7cee775ca46ccc727f3afdde463be28dbbe8803631fefd4a120"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

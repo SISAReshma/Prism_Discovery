@@ -1,0 +1,22 @@
+{
+  "key": "types-requests_2.31.0.6",
+  "cached_at": "2026-04-09T09:31:44.237471Z",
+  "data": {
+    "name": "types-requests",
+    "version": "2.31.0.6",
+    "license": "Apache-2.0 license",
+    "supplier": "Unknown",
+    "description": "Typing stubs for requests",
+    "release_date": "2023-09-27T06:19:36.373411Z",
+    "homepage": "https://github.com/python/typeshed",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a2db9cb228a81da8348b49ad6db3f5519452dd20a9c1e1a868c83c5fe88fd1a9"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tomli_2.2.1",
+  "cached_at": "2026-04-09T09:21:29.040876Z",
+  "data": {
+    "name": "tomli",
+    "version": "2.2.1",
+    "license": "MIT",
+    "homepage": "https://github.com/hukkin/tomli",
+    "description": "",
+    "release_date": "2024-11-27T22:38:35Z"
+  }
+}

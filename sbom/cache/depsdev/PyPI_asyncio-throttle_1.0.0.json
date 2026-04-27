@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_asyncio-throttle_1.0.0",
+  "cached_at": "2026-02-20T05:03:29.535413Z",
+  "data": {
+    "name": "asyncio-throttle",
+    "version": "1.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/hallazzang/asyncio-throttle",
+    "description": ""
+  }
+}

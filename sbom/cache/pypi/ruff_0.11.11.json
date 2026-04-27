@@ -1,0 +1,22 @@
+{
+  "key": "ruff_0.11.11",
+  "cached_at": "2026-04-09T09:30:46.074945Z",
+  "data": {
+    "name": "ruff",
+    "version": "0.11.11",
+    "license": "MIT",
+    "supplier": "Charlie Marsh <charlie.r.marsh@gmail.com>",
+    "description": "An extremely fast Python linter and code formatter, written in Rust.",
+    "release_date": "2025-05-22T19:18:45.516563Z",
+    "homepage": "https://docs.astral.sh/ruff",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9924e5ae54125ed8958a4f7de320dab7380f6e9fa3195e3dc3b137c6842a0092"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

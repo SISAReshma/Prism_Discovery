@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_idna_3.10",
+  "cached_at": "2026-04-09T09:19:23.972355Z",
+  "data": {
+    "name": "idna",
+    "version": "3.10",
+    "license": "non-standard",
+    "homepage": "https://github.com/kjd/idna",
+    "description": "",
+    "release_date": "2024-09-15T18:07:37Z"
+  }
+}

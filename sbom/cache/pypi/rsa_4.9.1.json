@@ -1,0 +1,22 @@
+{
+  "key": "rsa_4.9.1",
+  "cached_at": "2026-04-09T09:30:45.809504Z",
+  "data": {
+    "name": "rsa",
+    "version": "4.9.1",
+    "license": "Apache-2.0",
+    "supplier": "Sybren A. St\u00fcvel",
+    "description": "Pure-Python RSA implementation",
+    "release_date": "2025-04-16T09:51:17.142309Z",
+    "homepage": "https://pypi.org/project/rsa/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "68635866661c6836b8d39430f97a996acbd61bfa49406748ea243539fe239762"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4,>=3.6"
+  }
+}

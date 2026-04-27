@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_tabulate_0.9.0",
+  "cached_at": "2026-04-09T09:17:38.827309Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

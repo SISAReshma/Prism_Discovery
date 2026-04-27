@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_flatbuffers_25.2.10",
+  "cached_at": "2026-04-09T09:14:56.657000Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

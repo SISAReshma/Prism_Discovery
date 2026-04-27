@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_typing-inspection_0.4.1",
+  "cached_at": "2026-04-09T09:18:03.873539Z",
+  "data": {
+    "direct": [
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

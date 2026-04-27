@@ -1,0 +1,22 @@
+{
+  "key": "pydub_0.25.1",
+  "cached_at": "2026-04-09T09:30:39.829914Z",
+  "data": {
+    "name": "pydub",
+    "version": "0.25.1",
+    "license": "MIT",
+    "supplier": "James Robert",
+    "description": "Manipulate audio with an simple and easy high level interface",
+    "release_date": "2021-03-10T02:09:53.503020Z",
+    "homepage": "http://pydub.com",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "65617e33033874b59d87db603aa1ed450633288aefead953b30bded59cb599a6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

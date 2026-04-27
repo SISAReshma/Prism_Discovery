@@ -1,0 +1,22 @@
+{
+  "key": "nemollm_0.3.5",
+  "cached_at": "2026-04-09T09:30:25.653614Z",
+  "data": {
+    "name": "nemollm",
+    "version": "0.3.5",
+    "license": "NOASSERTION",
+    "supplier": "NVIDIA NeMo LLM",
+    "description": "Python client library for the NeMo LLM API",
+    "release_date": "2024-01-05T19:46:57.009937Z",
+    "homepage": "https://pypi.org/project/nemollm",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "de3962d82d557ce5f3d773144361b897a181028b8e1bbdf94804eff865eead88"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6"
+  }
+}

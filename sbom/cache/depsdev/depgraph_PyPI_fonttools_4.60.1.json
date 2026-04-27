@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_fonttools_4.60.1",
+  "cached_at": "2026-04-09T09:14:58.726110Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

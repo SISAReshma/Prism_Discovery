@@ -1,0 +1,22 @@
+{
+  "key": "latex2mathml_3.78.0",
+  "cached_at": "2026-04-09T09:30:19.571991Z",
+  "data": {
+    "name": "latex2mathml",
+    "version": "3.78.0",
+    "license": "MIT",
+    "supplier": "Ronie Martinez",
+    "description": "Pure Python library for LaTeX to MathML conversion",
+    "release_date": "2025-05-03T16:51:51.991165Z",
+    "homepage": "https://github.com/roniemartinez/latex2mathml",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1aeca3dc027b3006ad7b301b7f4a15ffbb4c1451e3dc8c3389e97b37b497e1d6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

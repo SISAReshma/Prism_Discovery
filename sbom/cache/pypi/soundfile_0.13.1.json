@@ -1,0 +1,22 @@
+{
+  "key": "soundfile_0.13.1",
+  "cached_at": "2026-04-09T09:30:49.980993Z",
+  "data": {
+    "name": "soundfile",
+    "version": "0.13.1",
+    "license": "BSD 3-Clause License",
+    "supplier": "Bastian Bechtold",
+    "description": "An audio library based on libsndfile, CFFI and NumPy",
+    "release_date": "2025-01-25T09:16:44.235597Z",
+    "homepage": "https://github.com/bastibe/python-soundfile",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a23c717560da2cf4c7b5ae1142514e0fd82d6bbd9dfc93a50423447142f2c445"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

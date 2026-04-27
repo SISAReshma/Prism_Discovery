@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_torchvision_0.23.0",
+  "cached_at": "2026-04-09T09:21:32.015495Z",
+  "data": {
+    "name": "torchvision",
+    "version": "0.23.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/pytorch/vision",
+    "description": "",
+    "release_date": "2025-08-06T14:58:24Z"
+  }
+}

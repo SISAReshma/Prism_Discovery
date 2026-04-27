@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_trio-typing_0.10.0",
+  "cached_at": "2026-04-08T07:27:23.161882Z",
+  "data": {
+    "name": "trio-typing",
+    "version": "0.10.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/python-trio/trio-typing",
+    "description": "",
+    "release_date": "2023-12-01T02:54:54Z"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_nvidia-cusolver-cu12_11.7.3.90",
+  "cached_at": "2026-04-09T09:20:12.069289Z",
+  "data": {
+    "name": "nvidia-cusolver-cu12",
+    "version": "11.7.3.90",
+    "license": "non-standard",
+    "homepage": "",
+    "description": "",
+    "release_date": "2025-03-07T01:47:16Z"
+  }
+}

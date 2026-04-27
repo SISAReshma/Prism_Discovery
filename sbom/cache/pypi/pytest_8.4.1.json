@@ -1,0 +1,22 @@
+{
+  "key": "pytest_8.4.1",
+  "cached_at": "2026-04-08T07:29:11.393327Z",
+  "data": {
+    "name": "pytest",
+    "version": "8.4.1",
+    "license": "MIT",
+    "supplier": "Holger Krekel, Bruno Oliveira, Ronny Pfannschmidt, Floris Bruynooghe, Brianna Laugher, Florian Bruhin, Others (See AUTHORS)",
+    "description": "pytest: simple powerful testing with Python",
+    "release_date": "2025-06-18T05:48:03.955230Z",
+    "homepage": "https://pypi.org/project/pytest/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "539c70ba6fcead8e78eebbf1115e8b589e7565830d7d006a8723f19ac8a0afb7"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

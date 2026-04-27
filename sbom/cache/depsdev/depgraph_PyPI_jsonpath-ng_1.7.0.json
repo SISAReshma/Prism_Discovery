@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_jsonpath-ng_1.7.0",
+  "cached_at": "2026-04-09T09:15:39.478495Z",
+  "data": {
+    "direct": [
+      {
+        "name": "ply",
+        "version": "3.11.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "ply": {
+        "version": "3.11.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "key": "depgraph_PyPI_trustme_1.2.1",
+  "cached_at": "2026-04-08T07:27:13.825178Z",
+  "data": {
+    "direct": [
+      {
+        "name": "cryptography",
+        "version": "46.0.6"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "cffi",
+        "version": "2.0.0"
+      },
+      {
+        "name": "pycparser",
+        "version": "3.0.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "graph": {
+      "cffi": {
+        "version": "2.0.0",
+        "relation": "INDIRECT"
+      },
+      "cryptography": {
+        "version": "46.0.6",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "DIRECT"
+      },
+      "pycparser": {
+        "version": "3.0.0",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 5,
+    "source": "deps.dev"
+  }
+}

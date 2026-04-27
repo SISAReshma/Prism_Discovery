@@ -1,0 +1,22 @@
+{
+  "key": "wcwidth_0.2.13",
+  "cached_at": "2026-04-09T09:31:02.134570Z",
+  "data": {
+    "name": "wcwidth",
+    "version": "0.2.13",
+    "license": "MIT",
+    "supplier": "Jeff Quast",
+    "description": "Measures the displayed width of unicode strings in a terminal",
+    "release_date": "2024-01-06T02:10:55.763669Z",
+    "homepage": "https://github.com/jquast/wcwidth",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3da69048e4540d84af32131829ff948f1e022c1c6bdb8d6102117aac784f6859"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

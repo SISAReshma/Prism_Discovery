@@ -1,0 +1,22 @@
+{
+  "key": "jax_0.4.30",
+  "cached_at": "2026-04-09T09:30:11.220371Z",
+  "data": {
+    "name": "jax",
+    "version": "0.4.30",
+    "license": "Apache-2.0",
+    "supplier": "JAX team",
+    "description": "Differentiate, compile, and transform Numpy code.",
+    "release_date": "2024-06-18T14:47:10.026531Z",
+    "homepage": "https://github.com/google/jax",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "289b30ae03b52f7f4baf6ef082a9f4e3e29c1080e22d13512c5ecf02d5f1a55b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

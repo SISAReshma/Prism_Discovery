@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_deepl_1.17.0",
+  "cached_at": "2026-04-09T09:18:51.112775Z",
+  "data": {
+    "name": "deepl",
+    "version": "1.17.0",
+    "license": "MIT",
+    "homepage": "https://github.com/DeepLcom/deepl-python",
+    "description": "",
+    "release_date": "2024-02-07T10:56:56Z"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "bson_0.5.10",
+  "cached_at": "2026-04-09T09:29:54.178835Z",
+  "data": {
+    "name": "bson",
+    "version": "0.5.10",
+    "license": "BSD",
+    "supplier": "Ayun Park",
+    "description": "BSON codec for Python",
+    "release_date": "2020-05-26T11:13:47.979526Z",
+    "homepage": "http://github.com/py-bson/bson",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d6511b2ab051139a9123c184de1a04227262173ad593429d21e443d6462d6590"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

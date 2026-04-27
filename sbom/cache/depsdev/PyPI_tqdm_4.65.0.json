@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_tqdm_4.65.0",
+  "cached_at": "2026-02-20T05:03:10.911930Z",
+  "data": {
+    "name": "tqdm",
+    "version": "4.65.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/tqdm/tqdm",
+    "description": ""
+  }
+}

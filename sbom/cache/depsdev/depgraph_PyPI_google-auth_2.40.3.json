@@ -1,0 +1,46 @@
+{
+  "key": "depgraph_PyPI_google-auth_2.40.3",
+  "cached_at": "2026-04-09T09:15:11.711961Z",
+  "data": {
+    "direct": [
+      {
+        "name": "cachetools",
+        "version": "5.5.2"
+      },
+      {
+        "name": "pyasn1-modules",
+        "version": "0.4.2"
+      },
+      {
+        "name": "rsa",
+        "version": "4.9.1"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "pyasn1",
+        "version": "0.6.3"
+      }
+    ],
+    "graph": {
+      "cachetools": {
+        "version": "5.5.2",
+        "relation": "DIRECT"
+      },
+      "pyasn1": {
+        "version": "0.6.3",
+        "relation": "INDIRECT"
+      },
+      "pyasn1-modules": {
+        "version": "0.4.2",
+        "relation": "DIRECT"
+      },
+      "rsa": {
+        "version": "4.9.1",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

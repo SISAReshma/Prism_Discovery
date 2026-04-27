@@ -1,0 +1,22 @@
+{
+  "key": "proto-plus_1.26.1",
+  "cached_at": "2026-04-09T09:30:36.573824Z",
+  "data": {
+    "name": "proto-plus",
+    "version": "1.26.1",
+    "license": "Apache 2.0",
+    "supplier": "Unknown",
+    "description": "Beautiful, Pythonic protocol buffers",
+    "release_date": "2025-03-10T15:54:37.335211Z",
+    "homepage": "https://pypi.org/project/proto-plus/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "13285478c2dcf2abb829db158e1047e2f1e8d63a077d94263c2b88b043c75a66"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "google-auth-httplib2_0.2.0",
+  "cached_at": "2026-04-09T09:30:06.059368Z",
+  "data": {
+    "name": "google-auth-httplib2",
+    "version": "0.2.0",
+    "license": "Apache 2.0",
+    "supplier": "Google Cloud Platform",
+    "description": "Google Authentication Library: httplib2 transport",
+    "release_date": "2023-12-12T17:40:13.055900Z",
+    "homepage": "https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b65a0a2123300dd71281a7bf6e64d65a0759287df52729bdd1ae2e47dc311a3d"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

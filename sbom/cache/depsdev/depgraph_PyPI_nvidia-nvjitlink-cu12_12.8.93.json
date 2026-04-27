@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_nvidia-nvjitlink-cu12_12.8.93",
+  "cached_at": "2026-04-09T09:16:30.524023Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

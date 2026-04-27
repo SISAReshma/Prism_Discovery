@@ -1,0 +1,61 @@
+{
+  "key": "depgraph_PyPI_sacrebleu_2.5.1",
+  "cached_at": "2026-04-09T09:17:19.704697Z",
+  "data": {
+    "direct": [
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "lxml",
+        "version": "6.0.2"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "portalocker",
+        "version": "3.2.0"
+      },
+      {
+        "name": "regex",
+        "version": "2026.3.32"
+      },
+      {
+        "name": "tabulate",
+        "version": "0.10.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "colorama": {
+        "version": "0.4.6",
+        "relation": "DIRECT"
+      },
+      "lxml": {
+        "version": "6.0.2",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "portalocker": {
+        "version": "3.2.0",
+        "relation": "DIRECT"
+      },
+      "regex": {
+        "version": "2026.3.32",
+        "relation": "DIRECT"
+      },
+      "tabulate": {
+        "version": "0.10.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 6,
+    "source": "deps.dev"
+  }
+}

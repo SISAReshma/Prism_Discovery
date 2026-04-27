@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_Flask_3.0.0",
+  "cached_at": "2026-04-27T07:14:29.800612Z",
+  "data": {
+    "name": "Flask",
+    "version": "3.0.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/pallets/flask",
+    "description": "",
+    "release_date": "2023-09-30T14:36:10Z"
+  }
+}

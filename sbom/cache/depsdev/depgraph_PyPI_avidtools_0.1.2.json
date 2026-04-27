@@ -1,0 +1,126 @@
+{
+  "key": "depgraph_PyPI_avidtools_0.1.2",
+  "cached_at": "2026-04-09T09:14:12.884038Z",
+  "data": {
+    "direct": [
+      {
+        "name": "datetime",
+        "version": "6.0.0"
+      },
+      {
+        "name": "nvdlib",
+        "version": "0.8.3"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "pytz",
+        "version": "2026.1.0.post1"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "zope-interface",
+        "version": "8.2.0"
+      }
+    ],
+    "graph": {
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "datetime": {
+        "version": "6.0.0",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "nvdlib": {
+        "version": "0.8.3",
+        "relation": "DIRECT"
+      },
+      "pydantic": {
+        "version": "2.12.5",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.41.5",
+        "relation": "INDIRECT"
+      },
+      "pytz": {
+        "version": "2026.1.0.post1",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "zope-interface": {
+        "version": "8.2.0",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 14,
+    "source": "deps.dev"
+  }
+}

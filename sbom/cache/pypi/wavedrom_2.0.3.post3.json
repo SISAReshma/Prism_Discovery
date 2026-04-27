@@ -1,0 +1,22 @@
+{
+  "key": "wavedrom_2.0.3.post3",
+  "cached_at": "2026-04-09T09:31:01.861681Z",
+  "data": {
+    "name": "wavedrom",
+    "version": "2.0.3.post3",
+    "license": "MIT License",
+    "supplier": "Aliaksei Chapyzhenka, BreizhGeek, Kazuki Yamamoto, Stefan Wallentowitz",
+    "description": "WaveDrom compatible python command line",
+    "release_date": "2022-05-27T11:53:09.675681Z",
+    "homepage": "https://github.com/wallento/wavedrompy",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "327b4d5dca593c81257c202fea516f7a908747fb11527c359f034f5b7af7f47b"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

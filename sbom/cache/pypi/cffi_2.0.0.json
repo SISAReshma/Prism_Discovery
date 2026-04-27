@@ -1,0 +1,22 @@
+{
+  "key": "cffi_2.0.0",
+  "cached_at": "2026-04-09T09:31:35.157174Z",
+  "data": {
+    "name": "cffi",
+    "version": "2.0.0",
+    "license": "NOASSERTION",
+    "supplier": "Armin Rigo, Maciej Fijalkowski",
+    "description": "Foreign Function Interface for Python calling C code.",
+    "release_date": "2025-09-08T23:22:08.010640Z",
+    "homepage": "https://pypi.org/project/cffi/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "0cf2d91ecc3fcc0625c2c530fe004f82c110405f101548512cce44322fa8ac44"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

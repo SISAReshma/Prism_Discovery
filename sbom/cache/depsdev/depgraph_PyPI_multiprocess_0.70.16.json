@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_multiprocess_0.70.16",
+  "cached_at": "2026-04-09T09:16:12.438305Z",
+  "data": {
+    "direct": [
+      {
+        "name": "dill",
+        "version": "0.4.1"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "dill": {
+        "version": "0.4.1",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

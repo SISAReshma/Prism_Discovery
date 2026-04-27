@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_distro_1.9.0",
+  "cached_at": "2026-04-09T09:14:42.052169Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

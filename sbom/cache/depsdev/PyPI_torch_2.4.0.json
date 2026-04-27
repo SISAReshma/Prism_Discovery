@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_torch_2.4.0",
+  "cached_at": "2026-02-20T05:02:58.643016Z",
+  "data": {
+    "name": "torch",
+    "version": "2.4.0",
+    "license": "BSD-3-Clause",
+    "homepage": "",
+    "description": ""
+  }
+}

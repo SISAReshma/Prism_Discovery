@@ -1,0 +1,22 @@
+{
+  "key": "langgraph_1.1.6",
+  "cached_at": "2026-04-09T09:31:39.177091Z",
+  "data": {
+    "name": "langgraph",
+    "version": "1.1.6",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Building stateful, multi-actor applications with LLMs",
+    "release_date": "2026-04-03T19:01:30.686180Z",
+    "homepage": "https://pypi.org/project/langgraph/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "fdbf5f54fa5a5a4c4b09b7b5e537f1b2fa283d2f0f610d3457ddeecb479458b9"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

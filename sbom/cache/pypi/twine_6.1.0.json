@@ -1,0 +1,22 @@
+{
+  "key": "twine_6.1.0",
+  "cached_at": "2026-04-08T07:29:10.622706Z",
+  "data": {
+    "name": "twine",
+    "version": "6.1.0",
+    "license": "Apache Software License",
+    "supplier": "Unknown",
+    "description": "Collection of utilities for publishing packages on PyPI",
+    "release_date": "2025-01-21T18:45:24.584471Z",
+    "homepage": "https://pypi.org/project/twine/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a47f973caf122930bf0fbbf17f80b83bc1602c9ce393c7845f289a3001dc5384"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

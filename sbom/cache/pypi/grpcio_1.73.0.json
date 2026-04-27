@@ -1,0 +1,22 @@
+{
+  "key": "grpcio_1.73.0",
+  "cached_at": "2026-04-09T09:30:08.128157Z",
+  "data": {
+    "name": "grpcio",
+    "version": "1.73.0",
+    "license": "Apache License 2.0",
+    "supplier": "The gRPC Authors",
+    "description": "HTTP/2-based RPC framework",
+    "release_date": "2025-06-09T10:02:44.243305Z",
+    "homepage": "https://grpc.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "d050197eeed50f858ef6c51ab09514856f957dba7b1f7812698260fc9cc417f6"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_Jinja2_3.1.6",
+  "cached_at": "2026-04-09T09:15:34.253501Z",
+  "data": {
+    "direct": [
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

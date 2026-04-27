@@ -1,0 +1,45 @@
+{
+  "key": "depgraph_PyPI_scikit-learn_1.6.1",
+  "cached_at": "2026-04-09T09:17:21.845246Z",
+  "data": {
+    "direct": [
+      {
+        "name": "joblib",
+        "version": "1.5.3"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "scipy",
+        "version": "1.17.1"
+      },
+      {
+        "name": "threadpoolctl",
+        "version": "3.6.0"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "joblib": {
+        "version": "1.5.3",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "scipy": {
+        "version": "1.17.1",
+        "relation": "DIRECT"
+      },
+      "threadpoolctl": {
+        "version": "3.6.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 4,
+    "source": "deps.dev"
+  }
+}

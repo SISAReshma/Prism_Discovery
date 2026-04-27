@@ -1,0 +1,22 @@
+{
+  "key": "mypy_1.17.1",
+  "cached_at": "2026-04-08T07:29:11.183367Z",
+  "data": {
+    "name": "mypy",
+    "version": "1.17.1",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Optional static typing for Python",
+    "release_date": "2025-07-31T07:54:06.425979Z",
+    "homepage": "https://pypi.org/project/mypy/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "3fbe6d5555bf608c47203baa3e72dbc6ec9965b3d7c318aa9a4ca76f465bd972"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

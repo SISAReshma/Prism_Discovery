@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_nvidia-cublas-cu12_12.9.2.10",
+  "cached_at": "2026-04-09T09:24:25.620487Z",
+  "data": {
+    "name": "nvidia-cublas-cu12",
+    "version": "12.9.2.10",
+    "license": "non-standard",
+    "homepage": "",
+    "description": "",
+    "release_date": "2026-03-24T04:05:24Z"
+  }
+}

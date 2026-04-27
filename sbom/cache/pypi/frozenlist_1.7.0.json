@@ -1,0 +1,22 @@
+{
+  "key": "frozenlist_1.7.0",
+  "cached_at": "2026-04-09T09:30:03.770044Z",
+  "data": {
+    "name": "frozenlist",
+    "version": "1.7.0",
+    "license": "Apache-2.0",
+    "supplier": "aiohttp team <team@aiohttp.org>",
+    "description": "A list-like structure which implements collections.abc.MutableSequence",
+    "release_date": "2025-06-09T22:59:46.226581Z",
+    "homepage": "https://github.com/aio-libs/frozenlist",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "cc4df77d638aa2ed703b878dd093725b72a824c3c546c076e8fdf276f78ee84a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

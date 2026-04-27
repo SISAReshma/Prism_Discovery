@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_types-requests_2.32.4.20250611",
+  "cached_at": "2026-04-09T09:21:39.051243Z",
+  "data": {
+    "name": "types-requests",
+    "version": "2.32.4.20250611",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/python/typeshed",
+    "description": "",
+    "release_date": "2025-06-11T03:11:40Z"
+  }
+}

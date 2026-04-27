@@ -1,0 +1,22 @@
+{
+  "key": "wrapt_1.14.2",
+  "cached_at": "2026-04-09T09:31:03.397291Z",
+  "data": {
+    "name": "wrapt",
+    "version": "1.14.2",
+    "license": "BSD",
+    "supplier": "Graham Dumpleton",
+    "description": "Module for decorators, wrappers and monkey patching.",
+    "release_date": "2025-08-12T06:58:20.535097Z",
+    "homepage": "https://github.com/GrahamDumpleton/wrapt",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "734de7e0182d15f03eb4f4fce0ff7f07a072119a19cdcc97c40aee96d10fe851"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

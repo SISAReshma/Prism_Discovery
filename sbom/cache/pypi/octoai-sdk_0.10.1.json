@@ -1,0 +1,22 @@
+{
+  "key": "octoai-sdk_0.10.1",
+  "cached_at": "2026-04-09T09:30:31.928247Z",
+  "data": {
+    "name": "octoai-sdk",
+    "version": "0.10.1",
+    "license": "NOASSERTION",
+    "supplier": "OctoML",
+    "description": "A runtime library for OctoAI.",
+    "release_date": "2024-03-08T20:44:54.805944Z",
+    "homepage": "https://pypi.org/project/octoai-sdk/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a573b71d5656fdae8bc6b3461222227c42bab67ea5330fac13143db72ce95363"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8.1,<4.0.0"
+  }
+}

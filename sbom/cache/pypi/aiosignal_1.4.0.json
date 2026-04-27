@@ -1,0 +1,22 @@
+{
+  "key": "aiosignal_1.4.0",
+  "cached_at": "2026-04-09T09:31:11.465968Z",
+  "data": {
+    "name": "aiosignal",
+    "version": "1.4.0",
+    "license": "Apache 2.0",
+    "supplier": "aiohttp team <team@aiohttp.org>",
+    "description": "aiosignal: a list of registered asynchronous callbacks",
+    "release_date": "2025-07-03T22:54:42.156277Z",
+    "homepage": "https://github.com/aio-libs/aiosignal",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

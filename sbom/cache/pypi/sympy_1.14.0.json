@@ -1,0 +1,22 @@
+{
+  "key": "sympy_1.14.0",
+  "cached_at": "2026-04-09T09:30:51.917403Z",
+  "data": {
+    "name": "sympy",
+    "version": "1.14.0",
+    "license": "BSD",
+    "supplier": "SymPy development team",
+    "description": "Computer algebra system (CAS) in Python",
+    "release_date": "2025-04-27T18:04:59.103806Z",
+    "homepage": "https://sympy.org",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

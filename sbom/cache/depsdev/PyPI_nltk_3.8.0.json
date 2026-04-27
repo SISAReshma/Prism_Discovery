@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_nltk_3.8.0",
+  "cached_at": "2026-02-20T05:03:09.852097Z",
+  "data": {
+    "name": "nltk",
+    "version": "3.8.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/nltk/nltk",
+    "description": ""
+  }
+}

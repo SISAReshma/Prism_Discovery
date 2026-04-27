@@ -1,0 +1,22 @@
+{
+  "key": "astunparse_1.6.3",
+  "cached_at": "2026-04-09T09:29:51.393384Z",
+  "data": {
+    "name": "astunparse",
+    "version": "1.6.3",
+    "license": "BSD",
+    "supplier": "Simon Percivall",
+    "description": "An AST unparser for Python",
+    "release_date": "2019-12-22T18:12:11.297519Z",
+    "homepage": "https://github.com/simonpercivall/astunparse",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "c2652417f2c8b5bb325c885ae329bdf3f86424075c4fd1a128674bc6fba4b8e8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

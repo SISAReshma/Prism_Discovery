@@ -1,0 +1,22 @@
+{
+  "key": "async-timeout_4.0.3",
+  "cached_at": "2026-04-09T09:29:51.625439Z",
+  "data": {
+    "name": "async-timeout",
+    "version": "4.0.3",
+    "license": "Apache 2",
+    "supplier": "Andrew Svetlov <andrew.svetlov@gmail.com>",
+    "description": "Timeout context manager for asyncio programs",
+    "release_date": "2023-08-10T16:35:55.203899Z",
+    "homepage": "https://github.com/aio-libs/async-timeout",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7405140ff1230c310e51dc27b3145b9092d659ce68ff733fb0cefe3ee42be028"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

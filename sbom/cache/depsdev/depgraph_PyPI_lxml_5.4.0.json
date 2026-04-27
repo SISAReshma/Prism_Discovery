@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_lxml_5.4.0",
+  "cached_at": "2026-04-09T09:16:01.322951Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

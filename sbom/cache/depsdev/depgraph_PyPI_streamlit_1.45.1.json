@@ -1,0 +1,302 @@
+{
+  "key": "depgraph_PyPI_streamlit_1.45.1",
+  "cached_at": "2026-04-09T09:17:34.557262Z",
+  "data": {
+    "direct": [
+      {
+        "name": "altair",
+        "version": "5.5.0"
+      },
+      {
+        "name": "blinker",
+        "version": "1.9.0"
+      },
+      {
+        "name": "cachetools",
+        "version": "5.5.2"
+      },
+      {
+        "name": "click",
+        "version": "8.3.2"
+      },
+      {
+        "name": "gitpython",
+        "version": "3.1.46"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "24.2.0"
+      },
+      {
+        "name": "pandas",
+        "version": "2.3.3"
+      },
+      {
+        "name": "pillow",
+        "version": "11.3.0"
+      },
+      {
+        "name": "protobuf",
+        "version": "6.33.6"
+      },
+      {
+        "name": "pyarrow",
+        "version": "23.0.1"
+      },
+      {
+        "name": "pydeck",
+        "version": "0.9.1"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "tenacity",
+        "version": "9.1.4"
+      },
+      {
+        "name": "toml",
+        "version": "0.10.2"
+      },
+      {
+        "name": "tornado",
+        "version": "6.5.5"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "watchdog",
+        "version": "6.0.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "gitdb",
+        "version": "4.0.12"
+      },
+      {
+        "name": "idna",
+        "version": "3.11.0"
+      },
+      {
+        "name": "jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.26.0"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "narwhals",
+        "version": "2.19.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "pytz",
+        "version": "2026.1.0.post1"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "rpds-py",
+        "version": "0.30.0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "smmap",
+        "version": "5.0.3"
+      },
+      {
+        "name": "tzdata",
+        "version": "2026.1.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      }
+    ],
+    "graph": {
+      "altair": {
+        "version": "5.5.0",
+        "relation": "DIRECT"
+      },
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "INDIRECT"
+      },
+      "blinker": {
+        "version": "1.9.0",
+        "relation": "DIRECT"
+      },
+      "cachetools": {
+        "version": "5.5.2",
+        "relation": "DIRECT"
+      },
+      "certifi": {
+        "version": "2026.2.25",
+        "relation": "INDIRECT"
+      },
+      "charset-normalizer": {
+        "version": "3.4.7",
+        "relation": "INDIRECT"
+      },
+      "click": {
+        "version": "8.3.2",
+        "relation": "DIRECT"
+      },
+      "gitdb": {
+        "version": "4.0.12",
+        "relation": "INDIRECT"
+      },
+      "gitpython": {
+        "version": "3.1.46",
+        "relation": "DIRECT"
+      },
+      "idna": {
+        "version": "3.11.0",
+        "relation": "INDIRECT"
+      },
+      "jinja2": {
+        "version": "3.1.6",
+        "relation": "INDIRECT"
+      },
+      "jsonschema": {
+        "version": "4.26.0",
+        "relation": "INDIRECT"
+      },
+      "jsonschema-specifications": {
+        "version": "2025.9.1",
+        "relation": "INDIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "narwhals": {
+        "version": "2.19.0",
+        "relation": "INDIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "24.2.0",
+        "relation": "DIRECT"
+      },
+      "pandas": {
+        "version": "2.3.3",
+        "relation": "DIRECT"
+      },
+      "pillow": {
+        "version": "11.3.0",
+        "relation": "DIRECT"
+      },
+      "protobuf": {
+        "version": "6.33.6",
+        "relation": "DIRECT"
+      },
+      "pyarrow": {
+        "version": "23.0.1",
+        "relation": "DIRECT"
+      },
+      "pydeck": {
+        "version": "0.9.1",
+        "relation": "DIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "INDIRECT"
+      },
+      "pytz": {
+        "version": "2026.1.0.post1",
+        "relation": "INDIRECT"
+      },
+      "referencing": {
+        "version": "0.37.0",
+        "relation": "INDIRECT"
+      },
+      "requests": {
+        "version": "2.33.1",
+        "relation": "DIRECT"
+      },
+      "rpds-py": {
+        "version": "0.30.0",
+        "relation": "INDIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "smmap": {
+        "version": "5.0.3",
+        "relation": "INDIRECT"
+      },
+      "tenacity": {
+        "version": "9.1.4",
+        "relation": "DIRECT"
+      },
+      "toml": {
+        "version": "0.10.2",
+        "relation": "DIRECT"
+      },
+      "tornado": {
+        "version": "6.5.5",
+        "relation": "DIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "tzdata": {
+        "version": "2026.1.0",
+        "relation": "INDIRECT"
+      },
+      "urllib3": {
+        "version": "2.6.3",
+        "relation": "INDIRECT"
+      },
+      "watchdog": {
+        "version": "6.0.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 36,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_flatbuffers_25.2.10",
+  "cached_at": "2026-04-09T09:19:02.457574Z",
+  "data": {
+    "name": "flatbuffers",
+    "version": "25.2.10",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/google/flatbuffers",
+    "description": "",
+    "release_date": "2025-02-11T04:26:44Z"
+  }
+}

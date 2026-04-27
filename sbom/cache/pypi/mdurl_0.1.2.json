@@ -1,0 +1,22 @@
+{
+  "key": "mdurl_0.1.2",
+  "cached_at": "2026-04-09T09:30:22.959443Z",
+  "data": {
+    "name": "mdurl",
+    "version": "0.1.2",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Markdown URL utilities",
+    "release_date": "2022-08-14T12:40:09.779676Z",
+    "homepage": "https://pypi.org/project/mdurl/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}

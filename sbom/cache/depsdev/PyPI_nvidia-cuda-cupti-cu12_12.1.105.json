@@ -1,0 +1,11 @@
+{
+  "key": "PyPI_nvidia-cuda-cupti-cu12_12.1.105",
+  "cached_at": "2026-02-20T05:04:01.991537Z",
+  "data": {
+    "name": "nvidia-cuda-cupti-cu12",
+    "version": "12.1.105",
+    "license": "non-standard",
+    "homepage": "",
+    "description": ""
+  }
+}

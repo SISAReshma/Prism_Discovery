@@ -1,0 +1,11 @@
+{
+  "key": "depgraph_PyPI_portalocker_3.2.0",
+  "cached_at": "2026-04-09T09:16:45.010214Z",
+  "data": {
+    "direct": [],
+    "transitive": [],
+    "graph": {},
+    "total_dependencies": 0,
+    "source": "deps.dev"
+  }
+}

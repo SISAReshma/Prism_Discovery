@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_jsonschema-specifications_2025.9.1",
+  "cached_at": "2026-04-09T09:22:17.917751Z",
+  "data": {
+    "name": "jsonschema-specifications",
+    "version": "2025.9.1",
+    "license": "MIT",
+    "homepage": "https://github.com/python-jsonschema/jsonschema-specifications",
+    "description": "",
+    "release_date": "2025-09-08T01:34:57Z"
+  }
+}

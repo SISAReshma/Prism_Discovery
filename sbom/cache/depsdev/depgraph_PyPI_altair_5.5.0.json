@@ -1,0 +1,94 @@
+{
+  "key": "depgraph_PyPI_altair_5.5.0",
+  "cached_at": "2026-04-09T09:14:06.539431Z",
+  "data": {
+    "direct": [
+      {
+        "name": "jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.26.0"
+      },
+      {
+        "name": "narwhals",
+        "version": "2.18.1"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "markupsafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "rpds-py",
+        "version": "0.30.0"
+      }
+    ],
+    "graph": {
+      "attrs": {
+        "version": "26.1.0",
+        "relation": "INDIRECT"
+      },
+      "jinja2": {
+        "version": "3.1.6",
+        "relation": "DIRECT"
+      },
+      "jsonschema": {
+        "version": "4.26.0",
+        "relation": "DIRECT"
+      },
+      "jsonschema-specifications": {
+        "version": "2025.9.1",
+        "relation": "INDIRECT"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "relation": "INDIRECT"
+      },
+      "narwhals": {
+        "version": "2.18.1",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.0.0",
+        "relation": "DIRECT"
+      },
+      "referencing": {
+        "version": "0.37.0",
+        "relation": "INDIRECT"
+      },
+      "rpds-py": {
+        "version": "0.30.0",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 10,
+    "source": "deps.dev"
+  }
+}

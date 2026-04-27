@@ -1,0 +1,22 @@
+{
+  "key": "nvidia-nccl-cu12_2.27.3",
+  "cached_at": "2026-04-09T09:30:30.441689Z",
+  "data": {
+    "name": "nvidia-nccl-cu12",
+    "version": "2.27.3",
+    "license": "BSD-3-Clause",
+    "supplier": "Nvidia CUDA Installer Team",
+    "description": "NVIDIA Collective Communication Library (NCCL) Runtime",
+    "release_date": "2025-06-03T21:57:30.234497Z",
+    "homepage": "https://developer.nvidia.com/cuda-zone",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9ddf1a245abc36c550870f26d537a9b6087fb2e2e3d6e0ef03374c6fd19d984f"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3"
+  }
+}

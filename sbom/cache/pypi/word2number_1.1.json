@@ -1,0 +1,22 @@
+{
+  "key": "word2number_1.1",
+  "cached_at": "2026-04-09T09:31:03.090135Z",
+  "data": {
+    "name": "word2number",
+    "version": "1.1",
+    "license": "The MIT License (MIT)\r\n\r\nCopyright (c) 2016 Akshay Nagpal (https://github.com/akshaynagpal)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the \"Software\"), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be included in all\r\ncopies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\r\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\r\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\r\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\r\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\r\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\r\nSOFTWARE.",
+    "supplier": "Akshay Nagpal",
+    "description": "Convert number words eg. three hundred and forty two to numbers (342).",
+    "release_date": "2017-06-02T15:45:14.488024Z",
+    "homepage": "https://github.com/akshaynagpal/w2n",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "70e27a5d387f67b04c71fbb7621c05930b19bfd26efd6851e6e0f9969dcde7d0"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

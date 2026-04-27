@@ -1,0 +1,22 @@
+{
+  "key": "types-urllib3_1.26.25.14",
+  "cached_at": "2026-04-09T09:31:44.443835Z",
+  "data": {
+    "name": "types-urllib3",
+    "version": "1.26.25.14",
+    "license": "Apache-2.0 license",
+    "supplier": "Unknown",
+    "description": "Typing stubs for urllib3",
+    "release_date": "2023-07-20T15:19:30.379908Z",
+    "homepage": "https://github.com/python/typeshed",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "9683bbb7fb72e32bfe9d2be6e04875fbe1b3eeec3cbb4ea231435aa7fd6b4f0e"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant (pyproject.toml / setup.py)"
+  }
+}

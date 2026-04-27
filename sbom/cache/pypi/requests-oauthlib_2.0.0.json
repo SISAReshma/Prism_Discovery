@@ -1,0 +1,22 @@
+{
+  "key": "requests-oauthlib_2.0.0",
+  "cached_at": "2026-04-09T09:30:44.683777Z",
+  "data": {
+    "name": "requests-oauthlib",
+    "version": "2.0.0",
+    "license": "ISC",
+    "supplier": "Kenneth Reitz",
+    "description": "OAuthlib authentication support for Requests.",
+    "release_date": "2024-03-22T20:32:28.055244Z",
+    "homepage": "https://github.com/requests/requests-oauthlib",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7dd8a5c40426b779b0868c404bdef9768deccf22749cde15852df527e6269b36"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.4"
+  }
+}

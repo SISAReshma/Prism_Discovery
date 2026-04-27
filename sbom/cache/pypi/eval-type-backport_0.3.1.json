@@ -1,0 +1,22 @@
+{
+  "key": "eval-type-backport_0.3.1",
+  "cached_at": "2026-04-09T09:31:35.583636Z",
+  "data": {
+    "name": "eval-type-backport",
+    "version": "0.3.1",
+    "license": "MIT",
+    "supplier": "Alex Hall",
+    "description": "Like `typing._eval_type`, but lets older Python versions use newer typing features.",
+    "release_date": "2025-12-02T11:51:41.665522Z",
+    "homepage": "https://github.com/alexmojaki/eval_type_backport",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "279ab641905e9f11129f56a8a78f493518515b83402b860f6f06dd7c011fdfa8"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7"
+  }
+}
