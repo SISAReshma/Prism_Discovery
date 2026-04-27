@@ -1,6 +1,6 @@
 {
   "key": "PyPI_urllib3_1.26.20",
-  "cached_at": "2026-04-09T09:38:43.601914Z",
+  "cached_at": "2026-04-27T07:39:42.338490Z",
   "data": [
     {
       "id": "GHSA-2xpw-w6gg-jr37",
@@ -15,13 +15,13 @@
         "CGA-3vv3-3897-wc6m"
       ],
       "database_specific": {
-        "github_reviewed_at": "2025-12-05T18:15:54Z",
         "github_reviewed": true,
+        "github_reviewed_at": "2025-12-05T18:15:54Z",
+        "nvd_published_at": "2025-12-05T17:16:04Z",
+        "severity": "HIGH",
         "cwe_ids": [
           "CWE-409"
-        ],
-        "severity": "HIGH",
-        "nvd_published_at": "2025-12-05T17:16:04Z"
+        ]
       },
       "references": [
         {
@@ -187,13 +187,13 @@
         "CGA-xfvm-vv8w-pq2j"
       ],
       "database_specific": {
-        "github_reviewed_at": "2026-01-07T19:18:14Z",
         "github_reviewed": true,
+        "github_reviewed_at": "2026-01-07T19:18:14Z",
+        "nvd_published_at": "2026-01-07T22:15:44Z",
+        "severity": "HIGH",
         "cwe_ids": [
           "CWE-409"
-        ],
-        "severity": "HIGH",
-        "nvd_published_at": "2026-01-07T22:15:44Z"
+        ]
       },
       "references": [
         {
@@ -331,13 +331,13 @@
         "CGA-w59h-375r-3v44"
       ],
       "database_specific": {
-        "github_reviewed_at": "2025-12-05T18:15:19Z",
         "github_reviewed": true,
+        "github_reviewed_at": "2025-12-05T18:15:19Z",
+        "nvd_published_at": "2025-12-05T16:15:51Z",
+        "severity": "HIGH",
         "cwe_ids": [
           "CWE-770"
-        ],
-        "severity": "HIGH",
-        "nvd_published_at": "2025-12-05T16:15:51Z"
+        ]
       },
       "references": [
         {
@@ -462,13 +462,13 @@
         "CGA-gmjc-pjmc-6f5f"
       ],
       "database_specific": {
-        "github_reviewed_at": "2025-06-18T17:50:00Z",
         "github_reviewed": true,
+        "github_reviewed_at": "2025-06-18T17:50:00Z",
+        "nvd_published_at": "2025-06-19T01:15:24Z",
+        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-601"
-        ],
-        "severity": "MODERATE",
-        "nvd_published_at": "2025-06-19T01:15:24Z"
+        ]
       },
       "references": [
         {

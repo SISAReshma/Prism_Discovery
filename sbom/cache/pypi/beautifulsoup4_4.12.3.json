@@ -1,0 +1,22 @@
+{
+  "key": "beautifulsoup4_4.12.3",
+  "cached_at": "2026-04-27T07:38:38.383044Z",
+  "data": {
+    "name": "beautifulsoup4",
+    "version": "4.12.3",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "Screen-scraping library",
+    "release_date": "2024-01-17T16:53:12.779164Z",
+    "homepage": "https://pypi.org/project/beautifulsoup4/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b80878c9f40111313e55da8ba20bdba06d8fa3969fc68304167741bbf9e082ed"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.6.0"
+  }
+}

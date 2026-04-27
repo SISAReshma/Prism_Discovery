@@ -1,0 +1,158 @@
+{
+  "model_id": "gpt-4-turbo",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-27T14:53:33.578728",
+  "data": {
+    "card_data": {
+      "base_model": "florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564",
+      "language": [
+        "en"
+      ],
+      "library_name": "transformers",
+      "quantized_by": "mradermacher"
+    },
+    "config": {},
+    "readme_content": "---\nbase_model: florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564\nlanguage:\n- en\nlibrary_name: transformers\nquantized_by: mradermacher\n---\n## About\n\n<!-- ### quantize_version: 2 -->\n<!-- ### output_tensor_quantised: 1 -->\n<!-- ### convert_type: hf -->\n<!-- ### vocab_type:  -->\n<!-- ### tags:  -->\nstatic quants of https://huggingface.co/florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564\n\n<!-- provided-files -->\nweighted/imatrix quants are available at https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-i1-GGUF\n## Usage\n\nIf you are unsure how to use GGUF files, refer to one of [TheBloke's\nREADMEs](https://huggingface.co/TheBloke/KafkaLM-70B-German-V0.1-GGUF) for\nmore details, including on how to concatenate multi-part files.\n\n## Provided Quants\n\n(sorted by size, not necessarily quality. IQ-quants are often preferable over similar sized non-IQ quants)\n\n| Link | Type | Size/GB | Notes |\n|:-----|:-----|--------:|:------|\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q2_K.gguf) | Q2_K | 0.1 |  |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_S.gguf) | Q3_K_S | 0.1 |  |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_M.gguf) | Q3_K_M | 0.1 | lower quality |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.IQ4_XS.gguf) | IQ4_XS | 0.1 |  |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_L.gguf) | Q3_K_L | 0.1 |  |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q4_K_S.gguf) | Q4_K_S | 0.1 | fast, recommended |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q4_K_M.gguf) | Q4_K_M | 0.1 | fast, recommended |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q5_K_S.gguf) | Q5_K_S | 0.1 |  |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q5_K_M.gguf) | Q5_K_M | 0.1 |  |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q6_K.gguf) | Q6_K | 0.1 | very good quality |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q8_0.gguf) | Q8_0 | 0.1 | fast, best quality |\n| [GGUF](https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF/resolve/main/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.f16.gguf) | f16 | 0.2 | 16 bpw, overkill |\n\nHere is a handy graph by ikawrakow comparing some lower-quality quant\ntypes (lower is better):\n\n![image.png](https://www.nethype.de/huggingface_embed/quantpplgraph.png)\n\nAnd here are Artefact2's thoughts on the matter:\nhttps://gist.github.com/Artefact2/b5f810600771265fc1e39442288e8ec9\n\n## FAQ / Model Request\n\nSee https://huggingface.co/mradermacher/model_requests for some answers to\nquestions you might have and/or if you want some other model quantized.\n\n## Thanks\n\nI thank my company, [nethype GmbH](https://www.nethype.de/), for letting\nme use its servers and providing upgrades to my workstation to enable\nthis work in my free time.\n\n<!-- end -->\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.IQ4_XS.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q2_K.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_L.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_M.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_S.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q6_K.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q8_0.gguf"
+      },
+      {
+        "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.f16.gguf"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModel"
+    },
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "67d6dbf32afc72bb0f4d5cb6",
+      "id": "mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF",
+      "private": false,
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "gguf",
+        "en",
+        "base_model:florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564",
+        "base_model:quantized:florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564",
+        "endpoints_compatible",
+        "region:us",
+        "feature-extraction"
+      ],
+      "downloads": 16,
+      "likes": 0,
+      "modelId": "mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF",
+      "author": "mradermacher",
+      "sha": "b13c834773911e56eaf507983fe84d8fee96a1a5",
+      "lastModified": "2025-03-16T14:12:51.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "cardData": {
+        "base_model": "florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564",
+        "language": [
+          "en"
+        ],
+        "library_name": "transformers",
+        "quantized_by": "mradermacher"
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModel"
+      },
+      "gguf": {
+        "total": 32436224,
+        "architecture": "bert",
+        "context_length": 8192,
+        "causal": false
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.IQ4_XS.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q2_K.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_L.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_M.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q3_K_S.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q6_K.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.Q8_0.gguf"
+        },
+        {
+          "rfilename": "medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564.f16.gguf"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-03-16T14:10:59.000Z",
+      "usedStorage": 498044032
+    }
+  }
+}

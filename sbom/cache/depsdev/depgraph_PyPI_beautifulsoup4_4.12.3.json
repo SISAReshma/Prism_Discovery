@@ -1,0 +1,21 @@
+{
+  "key": "depgraph_PyPI_beautifulsoup4_4.12.3",
+  "cached_at": "2026-04-27T07:37:01.646279Z",
+  "data": {
+    "direct": [
+      {
+        "name": "soupsieve",
+        "version": "2.8.3"
+      }
+    ],
+    "transitive": [],
+    "graph": {
+      "soupsieve": {
+        "version": "2.8.3",
+        "relation": "DIRECT"
+      }
+    },
+    "total_dependencies": 1,
+    "source": "deps.dev"
+  }
+}

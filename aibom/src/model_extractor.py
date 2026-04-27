@@ -111,8 +111,10 @@ _CODE_PATTERNS: List[Tuple[Pattern, str]] = [
     # Known AI model name as a bare quoted string (pattern-regex fallback)
     # Uses prefix matching so versioned variants like gpt-4-32k-0613 are caught
     # Note: character classes include `:` for Ollama format (qwen3:8b)
+    # Matches both single-quoted ('gpt-4') and double-quoted ("gpt-4") strings
     (re.compile(
-        r'"(gpt-4[a-z0-9\-]*'                   # gpt-4, gpt-4o, gpt-4-turbo, gpt-4-32k-0613 …
+        r'["\']('                                 # opening quote (single or double)
+        r'gpt-4[a-z0-9\-]*'                      # gpt-4, gpt-4o, gpt-4-turbo, gpt-4-32k-0613 …
         r'|gpt-3\.5[a-z0-9\-]*'                  # gpt-3.5-turbo, gpt-3.5-turbo-0613 …
         r'|o1-[a-z0-9\-]+|o3-[a-z0-9\-]+'        # o1-preview, o1-mini, o3-mini
         r'|dall-e[a-z0-9\-]*'                     # dall-e-2, dall-e-3
@@ -137,7 +139,7 @@ _CODE_PATTERNS: List[Tuple[Pattern, str]] = [
         r'|deepseek[a-z0-9/:._\-]+'               # deepseek-coder, deepseek-r1:8b
         r'|stable-diffusion[a-z0-9.\-]*'          # stable-diffusion-xl
         r'|command-r[a-z0-9\-]*'                  # command-r, command-r-plus
-        r')"',
+        r')["\']',                                # closing quote (single or double)
         re.IGNORECASE
     ), "generic"),
 ]

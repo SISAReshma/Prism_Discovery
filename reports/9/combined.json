@@ -1,21 +1,23 @@
 {
   "reportFormat": "PrismDiscovery",
   "version": "1.0",
-  "scan_id": "4",
+  "scan_id": "9",
   "project_name": "AITradeGame",
-  "timestamp": "2026-04-27T07:15:37.607636+00:00",
+  "timestamp": "2026-04-27T09:24:50.378423+00:00",
   "tool": {
     "name": "PrismDiscovery",
     "version": "1.0.0"
   },
   "summary": {
-    "ai_models_detected": 1,
-    "ai_models_resolved": 1,
-    "ai_models_not_found": 0,
+    "ai_models_detected": 3,
+    "ai_models_resolved": 2,
+    "ai_models_not_found": 1,
     "ai_models_deprecated": 0,
     "ai_deprecation_vulnerabilities": 0,
     "ai_model_names": [
-      "openai/unknown-model"
+      "gpt-3.5-turbo",
+      "gpt-4",
+      "gpt-4-turbo"
     ],
     "software_components": 35,
     "software_vulnerabilities": 13,
@@ -40,9 +42,9 @@
     "bomFormat": "CycloneDX",
     "specVersion": "1.5",
     "version": 1,
-    "serialNumber": "urn:uuid:5da18080-dc3e-4e5f-982f-251a6caba898",
+    "serialNumber": "urn:uuid:48713297-99cd-4074-91f8-c23ccea2c52f",
     "metadata": {
-      "timestamp": "2026-04-27T07:14:26.273364Z",
+      "timestamp": "2026-04-27T09:23:33.587481Z",
       "tools": [
         {
           "name": "PrismAIBOM",
@@ -51,54 +53,74 @@
       ],
       "component": {
         "type": "machine-learning-model",
-        "name": "openai/unknown-model",
+        "name": "gpt-3.5-turbo",
         "description": "AI model detected in codebase",
-        "author": "ankitruler567"
+        "author": "jondurbin",
+        "licenses": [
+          {
+            "license": {
+              "id": "cc-by-nc-4.0"
+            }
+          }
+        ]
       },
       "authors": [
         {
-          "name": "ankitruler567"
+          "name": "jondurbin"
+        },
+        {
+          "name": "mradermacher"
         }
       ],
       "supplier": {
-        "name": "ankitruler567"
-      }
+        "name": "jondurbin"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "cc-by-nc-4.0"
+          }
+        }
+      ]
     },
     "components": [
       {
         "type": "machine-learning-model",
-        "bom-ref": "model-5544deb3-11a9-40d2-ae73-9db186f18834",
-        "author": "ankitruler567",
-        "name": "openai/unknown-model",
-        "version": "394483b10ef86023367cd417fffa131d22f0e6e0",
+        "bom-ref": "model-829d38bf-119b-4c35-b7ae-ab273de94be2",
+        "author": "jondurbin",
+        "name": "gpt-3.5-turbo",
+        "version": "53887996c0f17f7711d182537505a895fb404542",
         "description": "AI model detected in codebase",
-        "publisher": "ankitruler567",
-        "purl": "pkg:huggingface/openai/unknown-model",
+        "publisher": "jondurbin",
+        "purl": "pkg:huggingface/jondurbin/airoboros-gpt-3.5-turbo-100k-7b",
+        "licenses": [
+          {
+            "license": {
+              "id": "cc-by-nc-4.0"
+            }
+          }
+        ],
         "externalReferences": [
           {
             "comment": "Source URL",
             "type": "website",
-            "url": "https://huggingface.co/ankitruler567/Phi-3.5-Unknown-Model"
+            "url": "https://huggingface.co/jondurbin/airoboros-gpt-3.5-turbo-100k-7b"
           },
           {
             "comment": "Source Repository",
             "type": "vcs",
-            "url": "https://huggingface.co/ankitruler567/Phi-3.5-Unknown-Model"
+            "url": "https://huggingface.co/jondurbin/airoboros-gpt-3.5-turbo-100k-7b"
           }
         ],
         "tags": [
           "transformers",
-          "safetensors",
-          "phi3",
+          "pytorch",
+          "llama",
           "text-generation",
-          "conversational",
-          "custom_code",
-          "arxiv:1910.09700",
+          "license:cc-by-nc-4.0",
           "text-generation-inference",
           "endpoints_compatible",
-          "region:us",
-          "provider:openai",
-          "variant-of:ankitruler567/Phi-3.5-Unknown-Model"
+          "region:us"
         ],
         "properties": [
           {
@@ -110,36 +132,24 @@
             "value": "text-generation"
           },
           {
-            "name": "intendedUse",
-            "value": "<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->"
-          },
-          {
-            "name": "outOfScopeUse",
-            "value": "<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. --> [More Information Needed]"
-          },
-          {
             "name": "library_name",
             "value": "transformers"
           },
           {
-            "name": "parameter_count",
-            "value": "3821079552"
-          },
-          {
-            "name": "parameter_dtype",
-            "value": "F16"
-          },
-          {
             "name": "downloads",
-            "value": "2"
+            "value": "1710"
+          },
+          {
+            "name": "likes",
+            "value": "25"
           },
           {
             "name": "created_at",
-            "value": "2025-01-16T18:24:35.000Z"
+            "value": "2023-05-12T11:24:18.000Z"
           },
           {
             "name": "last_modified",
-            "value": "2025-01-16T18:27:24.000Z"
+            "value": "2023-06-26T09:57:03.000Z"
           }
         ],
         "modelCard": {
@@ -149,7 +159,7 @@
             },
             "task": "text-generation",
             "architectureFamily": "transformer",
-            "modelArchitecture": "Phi3ForCausalLM",
+            "modelArchitecture": "LlamaForCausalLM",
             "inputs": [
               {
                 "format": "text"
@@ -160,20 +170,89 @@
                 "format": "text"
               }
             ]
+          }
+        }
+      },
+      {
+        "type": "machine-learning-model",
+        "bom-ref": "model-589ce6e8-2540-43c6-a78f-8f64ffc459f9",
+        "author": "",
+        "name": "gpt-4",
+        "version": "",
+        "description": "Model card not found on HuggingFace. For model card details, please refer to the respective model provider's page for 'gpt-4'.",
+        "publisher": "",
+        "purl": "pkg:huggingface/gpt-4",
+        "properties": [
+          {
+            "name": "ai:lookup:source",
+            "value": "not_found"
+          }
+        ]
+      },
+      {
+        "type": "machine-learning-model",
+        "bom-ref": "model-31f74a4a-adee-4514-8fcf-ddb112b0c651",
+        "author": "mradermacher",
+        "name": "gpt-4-turbo",
+        "version": "b13c834773911e56eaf507983fe84d8fee96a1a5",
+        "description": "AI model detected in codebase",
+        "publisher": "mradermacher",
+        "purl": "pkg:huggingface/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF",
+        "externalReferences": [
+          {
+            "comment": "Source URL",
+            "type": "website",
+            "url": "https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF"
           },
-          "considerations": {
-            "useCases": [
-              "<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->"
-            ],
-            "technicalLimitations": [
-              "<!-- This section is meant to convey both technical and sociotechnical limitations. --> [More Information Needed]"
-            ],
-            "environmentalConsiderations": {
-              "description": "<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly --> Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700). - Hardware Type: [More Information Needed] - Hours used: [More Information Needed] - Cloud Provider: [More Information Needed] - Compute Region: [More Information Needed] - Carbon Emitted: [More Information Needed]"
-            }
+          {
+            "comment": "Source Repository",
+            "type": "vcs",
+            "url": "https://huggingface.co/mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF"
+          }
+        ],
+        "tags": [
+          "transformers",
+          "gguf",
+          "en",
+          "base_model:florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564",
+          "base_model:quantized:florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564",
+          "endpoints_compatible",
+          "region:us",
+          "feature-extraction"
+        ],
+        "properties": [
+          {
+            "name": "ai:lookup:source",
+            "value": "huggingface_searched"
           },
-          "hardware": {
-            "training": "[More Information Needed]"
+          {
+            "name": "baseModel",
+            "value": "florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564"
+          },
+          {
+            "name": "baseModelSource",
+            "value": "https://huggingface.co/florianhoenicke/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564"
+          },
+          {
+            "name": "library_name",
+            "value": "transformers"
+          },
+          {
+            "name": "downloads",
+            "value": "16"
+          },
+          {
+            "name": "created_at",
+            "value": "2025-03-16T14:10:59.000Z"
+          },
+          {
+            "name": "last_modified",
+            "value": "2025-03-16T14:12:51.000Z"
+          }
+        ],
+        "modelCard": {
+          "modelParameters": {
+            "architectureFamily": "transformer"
           }
         }
       },
@@ -185,7 +264,19 @@
     ],
     "dependencies": [
       {
-        "ref": "model-5544deb3-11a9-40d2-ae73-9db186f18834",
+        "ref": "model-829d38bf-119b-4c35-b7ae-ab273de94be2",
+        "dependsOn": [
+          "lib-openai"
+        ]
+      },
+      {
+        "ref": "model-589ce6e8-2540-43c6-a78f-8f64ffc459f9",
+        "dependsOn": [
+          "lib-openai"
+        ]
+      },
+      {
+        "ref": "model-31f74a4a-adee-4514-8fcf-ddb112b0c651",
         "dependsOn": [
           "lib-openai"
         ]
@@ -198,20 +289,47 @@
       {
         "aggregate": "complete",
         "assemblies": [
-          "model-5544deb3-11a9-40d2-ae73-9db186f18834"
+          "model-829d38bf-119b-4c35-b7ae-ab273de94be2",
+          "model-31f74a4a-adee-4514-8fcf-ddb112b0c651"
+        ]
+      },
+      {
+        "aggregate": "incomplete",
+        "assemblies": [
+          "model-589ce6e8-2540-43c6-a78f-8f64ffc459f9"
         ]
       }
     ],
     "vulnerabilities": [],
     "_connector_meta": {
-      "models_processed": 1,
-      "models_found": 1,
-      "models_not_found": 0,
+      "models_processed": 3,
+      "models_found": 2,
+      "models_not_found": 1,
       "model_results": [
         {
-          "model_name": "openai/unknown-model",
-          "base_model_name": "openai/unknown-model",
-          "remapped_to": "ankitruler567/Phi-3.5-Unknown-Model",
+          "model_name": "gpt-3.5-turbo",
+          "base_model_name": "gpt-3.5-turbo",
+          "remapped_to": "jondurbin/airoboros-gpt-3.5-turbo-100k-7b",
+          "model_card_found": true,
+          "lookup_source": "huggingface_searched",
+          "stripped_suffixes": [],
+          "suffix_info": [],
+          "connector_used": "huggingface"
+        },
+        {
+          "model_name": "gpt-4",
+          "base_model_name": "gpt-4",
+          "remapped_to": "",
+          "model_card_found": false,
+          "lookup_source": "not_found",
+          "stripped_suffixes": [],
+          "suffix_info": [],
+          "connector_used": "not_found"
+        },
+        {
+          "model_name": "gpt-4-turbo",
+          "base_model_name": "gpt-4-turbo",
+          "remapped_to": "mradermacher/medical-20-0-16-jinaai_jina-embeddings-v2-small-en-1000-gpt-4-turbo-01_9062874564-GGUF",
           "model_card_found": true,
           "lookup_source": "huggingface_searched",
           "stripped_suffixes": [],
@@ -220,14 +338,15 @@
         }
       ],
       "source_breakdown": {
-        "huggingface_searched": 1
+        "huggingface_searched": 2,
+        "not_found": 1
       },
-      "success_rate": "100.0%",
+      "success_rate": "66.7%",
       "deprecation_summary": {
-        "models_checked": 1,
+        "models_checked": 3,
         "deprecated_count": 0,
         "shutdown_count": 0,
-        "active_count": 1,
+        "active_count": 3,
         "severity_breakdown": {
           "CRITICAL": 0,
           "HIGH": 0,
@@ -243,7 +362,7 @@
     "specVersion": "1.5",
     "version": 1,
     "metadata": {
-      "timestamp": "2026-04-27T07:15:37.465555+00:00",
+      "timestamp": "2026-04-27T09:24:50.148195+00:00",
       "tools": [
         {
           "name": "SBOM",
@@ -253,7 +372,7 @@
       ],
       "component": {
         "type": "application",
-        "name": "C:\\Users\\SISARE~1\\AppData\\Local\\Temp\\stacksq_aibom\\aibom_6yswv5qv\\chadyi_AITradeGame"
+        "name": "C:\\Users\\SISARE~1\\AppData\\Local\\Temp\\stacksq_aibom\\aibom_ej1uio35\\chadyi_AITradeGame"
       },
       "summary": {
         "total_components": 35,

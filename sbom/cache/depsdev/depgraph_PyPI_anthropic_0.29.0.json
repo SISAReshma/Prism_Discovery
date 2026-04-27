@@ -1,0 +1,262 @@
+{
+  "key": "depgraph_PyPI_anthropic_0.29.0",
+  "cached_at": "2026-04-27T07:37:05.191976Z",
+  "data": {
+    "direct": [
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "distro",
+        "version": "1.9.0"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "jiter",
+        "version": "0.14.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.3"
+      },
+      {
+        "name": "sniffio",
+        "version": "1.3.1"
+      },
+      {
+        "name": "tokenizers",
+        "version": "0.22.2"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "annotated-doc",
+        "version": "0.0.4"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.4.22"
+      },
+      {
+        "name": "click",
+        "version": "8.3.3"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "filelock",
+        "version": "3.29.0"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.4.3"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "huggingface-hub",
+        "version": "1.12.0"
+      },
+      {
+        "name": "idna",
+        "version": "3.13.0"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "packaging",
+        "version": "26.2.0"
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.46.3"
+      },
+      {
+        "name": "pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3"
+      },
+      {
+        "name": "rich",
+        "version": "15.0.0"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "typer",
+        "version": "0.24.2"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      }
+    ],
+    "graph": {
+      "annotated-doc": {
+        "version": "0.0.4",
+        "relation": "INDIRECT"
+      },
+      "annotated-types": {
+        "version": "0.7.0",
+        "relation": "INDIRECT"
+      },
+      "anyio": {
+        "version": "4.13.0",
+        "relation": "DIRECT"
+      },
+      "certifi": {
+        "version": "2026.4.22",
+        "relation": "INDIRECT"
+      },
+      "click": {
+        "version": "8.3.3",
+        "relation": "INDIRECT"
+      },
+      "distro": {
+        "version": "1.9.0",
+        "relation": "DIRECT"
+      },
+      "exceptiongroup": {
+        "version": "1.3.1",
+        "relation": "INDIRECT"
+      },
+      "filelock": {
+        "version": "3.29.0",
+        "relation": "INDIRECT"
+      },
+      "fsspec": {
+        "version": "2026.3.0",
+        "relation": "INDIRECT"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "relation": "INDIRECT"
+      },
+      "hf-xet": {
+        "version": "1.4.3",
+        "relation": "INDIRECT"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "relation": "INDIRECT"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "relation": "DIRECT"
+      },
+      "huggingface-hub": {
+        "version": "1.12.0",
+        "relation": "INDIRECT"
+      },
+      "idna": {
+        "version": "3.13.0",
+        "relation": "INDIRECT"
+      },
+      "jiter": {
+        "version": "0.14.0",
+        "relation": "DIRECT"
+      },
+      "markdown-it-py": {
+        "version": "4.0.0",
+        "relation": "INDIRECT"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "relation": "INDIRECT"
+      },
+      "packaging": {
+        "version": "26.2.0",
+        "relation": "INDIRECT"
+      },
+      "pydantic": {
+        "version": "2.13.3",
+        "relation": "DIRECT"
+      },
+      "pydantic-core": {
+        "version": "2.46.3",
+        "relation": "INDIRECT"
+      },
+      "pygments": {
+        "version": "2.20.0",
+        "relation": "INDIRECT"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "relation": "INDIRECT"
+      },
+      "rich": {
+        "version": "15.0.0",
+        "relation": "INDIRECT"
+      },
+      "shellingham": {
+        "version": "1.5.4",
+        "relation": "INDIRECT"
+      },
+      "sniffio": {
+        "version": "1.3.1",
+        "relation": "DIRECT"
+      },
+      "tokenizers": {
+        "version": "0.22.2",
+        "relation": "DIRECT"
+      },
+      "tqdm": {
+        "version": "4.67.3",
+        "relation": "INDIRECT"
+      },
+      "typer": {
+        "version": "0.24.2",
+        "relation": "INDIRECT"
+      },
+      "typing-extensions": {
+        "version": "4.15.0",
+        "relation": "DIRECT"
+      },
+      "typing-inspection": {
+        "version": "0.4.2",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 31,
+    "source": "deps.dev"
+  }
+}

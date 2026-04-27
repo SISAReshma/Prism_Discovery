@@ -1,0 +1,22 @@
+{
+  "key": "langchain-community_0.2.1",
+  "cached_at": "2026-04-27T07:38:38.623637Z",
+  "data": {
+    "name": "langchain-community",
+    "version": "0.2.1",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Community contributed LangChain integrations.",
+    "release_date": "2024-05-23T17:50:15.776139Z",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "b834e2c5ded6903b839fcaf566eee90a0ffae53405a0f7748202725e701d39cd"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.8.1"
+  }
+}

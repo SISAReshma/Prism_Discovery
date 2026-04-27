@@ -3,7 +3,7 @@
   "specVersion": "1.5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-04-27T07:15:37.465555+00:00",
+    "timestamp": "2026-04-27T09:24:50.148195+00:00",
     "tools": [
       {
         "name": "SBOM",
@@ -13,7 +13,7 @@
     ],
     "component": {
       "type": "application",
-      "name": "C:\\Users\\SISARE~1\\AppData\\Local\\Temp\\stacksq_aibom\\aibom_6yswv5qv\\chadyi_AITradeGame"
+      "name": "C:\\Users\\SISARE~1\\AppData\\Local\\Temp\\stacksq_aibom\\aibom_ej1uio35\\chadyi_AITradeGame"
     },
     "summary": {
       "total_components": 35,

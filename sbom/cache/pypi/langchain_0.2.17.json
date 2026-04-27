@@ -1,0 +1,22 @@
+{
+  "key": "langchain_0.2.17",
+  "cached_at": "2026-04-27T07:38:49.895167Z",
+  "data": {
+    "name": "langchain",
+    "version": "0.2.17",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Building applications with LLMs through composability",
+    "release_date": "2024-11-04T19:14:42.679615Z",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "a97a33e775f8de074370aecab95db148b879c794695d9e443c95457dce5eb525"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.8.1"
+  }
+}

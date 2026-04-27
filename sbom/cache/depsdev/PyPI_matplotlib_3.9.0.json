@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_matplotlib_3.9.0",
+  "cached_at": "2026-04-27T07:37:08.796199Z",
+  "data": {
+    "name": "matplotlib",
+    "version": "3.9.0",
+    "license": "non-standard",
+    "homepage": "https://matplotlib.org",
+    "description": "",
+    "release_date": "2024-05-15T23:37:57Z"
+  }
+}

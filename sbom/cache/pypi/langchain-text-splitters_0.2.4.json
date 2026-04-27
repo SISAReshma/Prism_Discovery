@@ -1,0 +1,22 @@
+{
+  "key": "langchain-text-splitters_0.2.4",
+  "cached_at": "2026-04-27T07:38:53.886728Z",
+  "data": {
+    "name": "langchain-text-splitters",
+    "version": "0.2.4",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "LangChain text splitting utilities",
+    "release_date": "2024-09-03T18:19:02.463512Z",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "2702dee5b7cbdd595ccbe43b8d38d01a34aa8583f4d6a5a68ad2305ae3e7b645"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.8.1"
+  }
+}

@@ -14,6 +14,19 @@ rules:
 
   - id: openai-chat-completion
     pattern-either:
+      - pattern: $CLIENT.chat.completions.create(..., model="$MODEL", ...)
+      - pattern: $CLIENT.chat.completions.create(..., model='$MODEL', ...)
+      - pattern: openai.ChatCompletion.create(..., model="$MODEL", ...)
+      - pattern: openai.ChatCompletion.create(..., model='$MODEL', ...)
+    message: "OpenAI chat completion API call detected with model: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-completion-dynamic
+    pattern-either:
       - pattern: $CLIENT.chat.completions.create(...)
       - pattern: openai.ChatCompletion.create(...)
     message: "OpenAI chat completion API call detected"
@@ -24,6 +37,18 @@ rules:
       provider: openai
 
   - id: openai-completion
+    pattern-either:
+      - pattern: $CLIENT.completions.create(..., model="$MODEL", ...)
+      - pattern: $CLIENT.completions.create(..., model='$MODEL', ...)
+      - pattern: openai.Completion.create(..., model="$MODEL", ...)
+    message: "OpenAI completion API call detected with model: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-completion-dynamic
     pattern-either:
       - pattern: $CLIENT.completions.create(...)
       - pattern: openai.Completion.create(...)
@@ -36,6 +61,18 @@ rules:
 
   - id: openai-embedding
     pattern-either:
+      - pattern: $CLIENT.embeddings.create(..., model="$MODEL", ...)
+      - pattern: $CLIENT.embeddings.create(..., model='$MODEL', ...)
+      - pattern: openai.Embedding.create(..., model="$MODEL", ...)
+    message: "OpenAI embedding API call detected with model: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-embedding-dynamic
+    pattern-either:
       - pattern: $CLIENT.embeddings.create(...)
       - pattern: openai.Embedding.create(...)
     message: "OpenAI embedding API call detected"
@@ -47,7 +84,7 @@ rules:
 
   - id: openai-image-generation
     pattern-either:
-      - pattern: $CLIENT.images.generate(...)
+      - pattern: $CLIENT.images.generate(..., model="$MODEL", ...)
       - pattern: openai.Image.create(...)
     message: "OpenAI image generation API call detected"
     languages: [python]
@@ -75,7 +112,7 @@ rules:
       - metavariable-regex:
           metavariable: $MODEL
           regex: "\"(gpt-4|gpt-3.5|gpt-4o|gpt-4-turbo|o1|o3|davinci|curie|babbage|ada|text-embedding|whisper|tts|dall-e).*\""
-    message: "OpenAI model configuration detected"
+    message: "OpenAI model configuration detected: $MODEL"
     languages: [python]
     severity: INFO
     metadata:

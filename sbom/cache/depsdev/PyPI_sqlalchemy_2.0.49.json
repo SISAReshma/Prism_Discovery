@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_sqlalchemy_2.0.49",
+  "cached_at": "2026-04-27T07:37:44.807575Z",
+  "data": {
+    "name": "sqlalchemy",
+    "version": "2.0.49",
+    "license": "MIT",
+    "homepage": "https://github.com/sqlalchemy/sqlalchemy",
+    "description": "",
+    "release_date": "2026-04-03T17:09:53Z"
+  }
+}

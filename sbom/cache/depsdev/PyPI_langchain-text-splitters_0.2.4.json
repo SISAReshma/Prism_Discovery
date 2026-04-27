@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_langchain-text-splitters_0.2.4",
+  "cached_at": "2026-04-27T07:37:54.684937Z",
+  "data": {
+    "name": "langchain-text-splitters",
+    "version": "0.2.4",
+    "license": "MIT",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "description": "",
+    "release_date": "2024-09-03T18:19:02Z"
+  }
+}

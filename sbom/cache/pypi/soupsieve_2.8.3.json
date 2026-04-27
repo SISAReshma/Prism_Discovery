@@ -1,0 +1,22 @@
+{
+  "key": "soupsieve_2.8.3",
+  "cached_at": "2026-04-27T07:38:49.146574Z",
+  "data": {
+    "name": "soupsieve",
+    "version": "2.8.3",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A modern CSS selector implementation for Beautiful Soup.",
+    "release_date": "2026-01-20T04:27:01.012940Z",
+    "homepage": "https://pypi.org/project/soupsieve/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "ed64f2ba4eebeab06cc4962affce381647455978ffc1e36bb79a545b91f45a95"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

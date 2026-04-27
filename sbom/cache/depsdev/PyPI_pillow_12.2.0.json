@@ -1,11 +1,11 @@
 {
   "key": "PyPI_pillow_12.2.0",
-  "cached_at": "2026-04-09T09:24:23.533640Z",
+  "cached_at": "2026-04-27T07:38:09.007291Z",
   "data": {
     "name": "pillow",
     "version": "12.2.0",
     "license": "MIT-CMU",
-    "homepage": "https://github.com/python-pillow/Pillow",
+    "homepage": "https://python-pillow.github.io",
     "description": "",
     "release_date": "2026-04-01T14:46:17Z"
   }

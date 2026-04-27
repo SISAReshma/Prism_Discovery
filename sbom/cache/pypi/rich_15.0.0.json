@@ -1,0 +1,22 @@
+{
+  "key": "rich_15.0.0",
+  "cached_at": "2026-04-27T07:39:01.660880Z",
+  "data": {
+    "name": "rich",
+    "version": "15.0.0",
+    "license": "MIT",
+    "supplier": "Will McGugan",
+    "description": "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal",
+    "release_date": "2026-04-12T08:24:02.830783Z",
+    "homepage": "https://pypi.org/project/rich/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9.0"
+  }
+}

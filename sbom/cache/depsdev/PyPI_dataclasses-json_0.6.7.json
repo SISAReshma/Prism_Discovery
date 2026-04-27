@@ -1,11 +1,12 @@
 {
   "key": "PyPI_dataclasses-json_0.6.7",
-  "cached_at": "2026-02-20T05:05:09.354574Z",
+  "cached_at": "2026-04-27T07:37:41.283022Z",
   "data": {
     "name": "dataclasses-json",
     "version": "0.6.7",
     "license": "MIT",
     "homepage": "https://github.com/lidatong/dataclasses-json",
-    "description": ""
+    "description": "",
+    "release_date": "2024-06-09T16:20:16Z"
   }
 }

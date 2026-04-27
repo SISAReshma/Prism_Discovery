@@ -1,0 +1,22 @@
+{
+  "key": "importlib-resources_7.1.0",
+  "cached_at": "2026-04-27T07:38:57.583161Z",
+  "data": {
+    "name": "importlib-resources",
+    "version": "7.1.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Read resources from Python packages",
+    "release_date": "2026-04-12T16:36:08.219817Z",
+    "homepage": "https://pypi.org/project/importlib-resources/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

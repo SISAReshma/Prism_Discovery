@@ -1,6 +1,6 @@
 {
   "key": "PyPI_requests_2.31.0",
-  "cached_at": "2026-04-27T07:15:16.590224Z",
+  "cached_at": "2026-04-27T09:24:27.139444Z",
   "data": [
     {
       "id": "GHSA-9hjg-9r4m-mvj7",
@@ -15,13 +15,13 @@
         "CGA-62pf-wv72-jrw9"
       ],
       "database_specific": {
+        "nvd_published_at": "2025-06-09T18:15:24Z",
+        "github_reviewed_at": "2025-06-09T19:06:08Z",
+        "github_reviewed": true,
+        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-522"
-        ],
-        "nvd_published_at": "2025-06-09T18:15:24Z",
-        "severity": "MODERATE",
-        "github_reviewed_at": "2025-06-09T19:06:08Z",
-        "github_reviewed": true
+        ]
       },
       "references": [
         {
@@ -276,13 +276,13 @@
         "CGA-h732-75mv-vfrp"
       ],
       "database_specific": {
+        "nvd_published_at": "2024-05-20T21:15:09Z",
+        "github_reviewed_at": "2024-05-20T20:15:00Z",
+        "github_reviewed": true,
+        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-670"
-        ],
-        "nvd_published_at": "2024-05-20T21:15:09Z",
-        "severity": "MODERATE",
-        "github_reviewed_at": "2024-05-20T20:15:00Z",
-        "github_reviewed": true
+        ]
       },
       "references": [
         {
@@ -513,13 +513,13 @@
         "CGA-xjwq-gmv4-jm7w"
       ],
       "database_specific": {
+        "nvd_published_at": "2026-03-25T17:16:52Z",
+        "github_reviewed_at": "2026-03-25T16:56:28Z",
+        "github_reviewed": true,
+        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-377"
-        ],
-        "nvd_published_at": "2026-03-25T17:16:52Z",
-        "severity": "MODERATE",
-        "github_reviewed_at": "2026-03-25T16:56:28Z",
-        "github_reviewed": true
+        ]
       },
       "references": [
         {

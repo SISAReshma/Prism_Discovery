@@ -1,0 +1,110 @@
+{
+  "key": "depgraph_PyPI_matplotlib_3.9.0",
+  "cached_at": "2026-04-27T07:37:03.777646Z",
+  "data": {
+    "direct": [
+      {
+        "name": "contourpy",
+        "version": "1.3.3"
+      },
+      {
+        "name": "cycler",
+        "version": "0.12.1"
+      },
+      {
+        "name": "fonttools",
+        "version": "4.62.1"
+      },
+      {
+        "name": "importlib-resources",
+        "version": "7.1.0"
+      },
+      {
+        "name": "kiwisolver",
+        "version": "1.5.0"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.4"
+      },
+      {
+        "name": "packaging",
+        "version": "26.2.0"
+      },
+      {
+        "name": "pillow",
+        "version": "12.2.0"
+      },
+      {
+        "name": "pyparsing",
+        "version": "3.3.2"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      }
+    ],
+    "transitive": [
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "zipp",
+        "version": "3.23.1"
+      }
+    ],
+    "graph": {
+      "contourpy": {
+        "version": "1.3.3",
+        "relation": "DIRECT"
+      },
+      "cycler": {
+        "version": "0.12.1",
+        "relation": "DIRECT"
+      },
+      "fonttools": {
+        "version": "4.62.1",
+        "relation": "DIRECT"
+      },
+      "importlib-resources": {
+        "version": "7.1.0",
+        "relation": "DIRECT"
+      },
+      "kiwisolver": {
+        "version": "1.5.0",
+        "relation": "DIRECT"
+      },
+      "numpy": {
+        "version": "2.4.4",
+        "relation": "DIRECT"
+      },
+      "packaging": {
+        "version": "26.2.0",
+        "relation": "DIRECT"
+      },
+      "pillow": {
+        "version": "12.2.0",
+        "relation": "DIRECT"
+      },
+      "pyparsing": {
+        "version": "3.3.2",
+        "relation": "DIRECT"
+      },
+      "python-dateutil": {
+        "version": "2.9.0.post0",
+        "relation": "DIRECT"
+      },
+      "six": {
+        "version": "1.17.0",
+        "relation": "INDIRECT"
+      },
+      "zipp": {
+        "version": "3.23.1",
+        "relation": "INDIRECT"
+      }
+    },
+    "total_dependencies": 12,
+    "source": "deps.dev"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "langchain-core_0.2.43",
+  "cached_at": "2026-04-27T07:38:50.134535Z",
+  "data": {
+    "name": "langchain-core",
+    "version": "0.2.43",
+    "license": "MIT",
+    "supplier": "Unknown",
+    "description": "Building applications with LLMs through composability",
+    "release_date": "2024-10-31T20:30:35.112369Z",
+    "homepage": "https://github.com/langchain-ai/langchain",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "619601235113298ebf8252a349754b7c28d3cf7166c7c922da24944b78a9363a"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python <4.0,>=3.8.1"
+  }
+}

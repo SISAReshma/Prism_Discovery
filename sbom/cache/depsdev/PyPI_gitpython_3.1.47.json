@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_gitpython_3.1.47",
+  "cached_at": "2026-04-27T07:37:13.727490Z",
+  "data": {
+    "name": "gitpython",
+    "version": "3.1.47",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/gitpython-developers/GitPython",
+    "description": "",
+    "release_date": "2026-04-22T02:44:41Z"
+  }
+}

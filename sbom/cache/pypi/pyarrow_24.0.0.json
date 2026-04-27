@@ -1,0 +1,22 @@
+{
+  "key": "pyarrow_24.0.0",
+  "cached_at": "2026-04-27T07:38:42.210193Z",
+  "data": {
+    "name": "pyarrow",
+    "version": "24.0.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Python library for Apache Arrow",
+    "release_date": "2026-04-21T08:51:46.845232Z",
+    "homepage": "https://pypi.org/project/pyarrow/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "7c2b98645d576a0b9616892ead22b64a83a5f043c5e2ca15ebcefcb5b70c80cb"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

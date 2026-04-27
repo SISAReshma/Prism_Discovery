@@ -1,6 +1,6 @@
 {
   "key": "PyPI_Flask-CORS_4.0.0",
-  "cached_at": "2026-04-27T07:15:09.615760Z",
+  "cached_at": "2026-04-27T09:24:20.277712Z",
   "data": [
     {
       "id": "GHSA-43qf-4rqw-9q2g",
@@ -15,13 +15,13 @@
         "CGA-whf4-f4w4-r4wg"
       ],
       "database_specific": {
-        "nvd_published_at": "2025-03-20T10:15:34Z",
-        "github_reviewed": true,
         "github_reviewed_at": "2025-03-21T22:16:04Z",
-        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-178"
-        ]
+        ],
+        "github_reviewed": true,
+        "nvd_published_at": "2025-03-20T10:15:34Z",
+        "severity": "MODERATE"
       },
       "references": [
         {
@@ -148,13 +148,13 @@
         "CGA-rcf5-3qpm-cv2g"
       ],
       "database_specific": {
-        "nvd_published_at": "2025-03-20T10:15:33Z",
-        "github_reviewed": true,
         "github_reviewed_at": "2025-03-22T00:06:34Z",
-        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-41"
-        ]
+        ],
+        "github_reviewed": true,
+        "nvd_published_at": "2025-03-20T10:15:33Z",
+        "severity": "MODERATE"
       },
       "references": [
         {
@@ -281,13 +281,13 @@
         "CGA-jr52-5m9j-gvww"
       ],
       "database_specific": {
-        "nvd_published_at": "2024-04-19T20:15:09Z",
-        "github_reviewed": true,
         "github_reviewed_at": "2024-04-22T14:08:38Z",
-        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-117"
-        ]
+        ],
+        "github_reviewed": true,
+        "nvd_published_at": "2024-04-19T20:15:09Z",
+        "severity": "MODERATE"
       },
       "references": [
         {
@@ -406,13 +406,13 @@
         "CGA-q8vf-4j25-857w"
       ],
       "database_specific": {
-        "nvd_published_at": "2025-03-20T10:15:34Z",
-        "github_reviewed": true,
         "github_reviewed_at": "2025-03-21T22:10:24Z",
-        "severity": "MODERATE",
         "cwe_ids": [
           "CWE-346"
-        ]
+        ],
+        "github_reviewed": true,
+        "nvd_published_at": "2025-03-20T10:15:34Z",
+        "severity": "MODERATE"
       },
       "references": [
         {
@@ -540,13 +540,13 @@
         "CGA-vrrg-23jv-9789"
       ],
       "database_specific": {
-        "nvd_published_at": "2024-08-18T19:15:04Z",
-        "github_reviewed": true,
         "github_reviewed_at": "2024-08-19T18:25:39Z",
-        "severity": "HIGH",
         "cwe_ids": [
           "CWE-284"
-        ]
+        ],
+        "github_reviewed": true,
+        "nvd_published_at": "2024-08-18T19:15:04Z",
+        "severity": "HIGH"
       },
       "references": [
         {

@@ -1,0 +1,22 @@
+{
+  "key": "protobuf_4.25.9",
+  "cached_at": "2026-04-27T07:38:42.002360Z",
+  "data": {
+    "name": "protobuf",
+    "version": "4.25.9",
+    "license": "3-Clause BSD License",
+    "supplier": "protobuf@googlegroups.com",
+    "description": "",
+    "release_date": "2026-03-25T23:09:21.320200Z",
+    "homepage": "https://developers.google.com/protocol-buffers/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "bde396f568b0b46fc8fbfe9f02facf25b6755b2578a3b8ac61e74b9d69499e03"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8"
+  }
+}

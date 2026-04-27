@@ -20,7 +20,7 @@ from functools import lru_cache
 from aibom.config import (
     SEMGREP_DIR, NORMALIZED_PROVIDER_KEYWORDS, SUPPORTED_LANGUAGES,
     SKIP_DIRECTORIES, JS_LANGUAGE_VARIANTS, LANGUAGE_EXTENSIONS,
-    NORMALIZED_API_KEYWORDS, API_METAVAR_PRIORITY, API_FALSE_POSITIVES,
+    NORMALIZED_API_KEYWORDS, API_FALSE_POSITIVES,
     CATEGORY_TO_MODEL_TAG, MODEL_TAG_PATTERNS, MODEL_PROVIDER_PREFIXES_PATTERNS,
     PROVIDER_KEYWORDS, HTTP_METHOD_PATTERNS, REQUEST_BODY_PATTERNS,
     REQUEST_HEADER_PATTERNS, SDK_METHOD_HTTP_MAP, SDK_PARAM_PATTERNS,
@@ -270,17 +270,15 @@ def discover_all_rules() -> Dict[str, Dict[str, List[str]]]:
     result = {
         "provider": {lang: [] for lang in languages},
         "model_detection": {lang: [] for lang in languages},
-        "api_calls": {lang: [] for lang in languages},
-        "ai_api_calls": {lang: [] for lang in languages}
+        "api_calls": {lang: [] for lang in languages}
     }
-    
+
     for lang in languages:
         lang_folder = SEMGREP_DIR / lang
         if lang_folder.exists():
             result["provider"][lang] = [f.name for f in lang_folder.glob("*_provider_rules*.yml")]
             result["model_detection"][lang] = [f.name for f in lang_folder.glob("*_model_detection*.yml")]
             result["api_calls"][lang] = [f.name for f in lang_folder.glob("*_api_calls.yml")]
-            result["ai_api_calls"][lang] = [f.name for f in lang_folder.glob("*_ai_api_calls.yml")]
     
     return result
 
@@ -315,30 +313,6 @@ def get_api_calls_rule(language: str) -> Optional[Path]:
         candidate = lang_folder / f"{language}_api_calls.yml"
         if candidate.exists():
             return candidate
-    
-    return None
-
-
-@lru_cache(maxsize=8)
-def get_ai_api_calls_rule(language: str) -> Optional[Path]:
-    """Get the ai_api_calls rule file for a language (cached).
-    
-    These rules capture AI-specific API calls: chat completions,
-    embeddings, AI provider endpoint URLs, streaming, multi-provider SDKs.
-    """
-    lang_folder = SEMGREP_DIR / language
-    
-    if not lang_folder.exists():
-        return None
-    
-    # Look for *_ai_api_calls.yml
-    for rule_file in lang_folder.glob("*_ai_api_calls.yml"):
-        return rule_file
-    
-    # Fallback to exact name
-    candidate = lang_folder / f"{language}_ai_api_calls.yml"
-    if candidate.exists():
-        return candidate
     
     return None
 
@@ -900,67 +874,12 @@ def scan_ai_branches(
             logger.info(f"[PASS2] Total model findings after regex fallback: {len(model_detection_findings)}")
     
     # ==========================================================================
-    # PASS 3: AI API Call Detection (chat completions, embeddings, AI URLs)
-    # ==========================================================================
-    
-    logger.info("[PASS3] Starting AI API call detection pass")
-    
-    ai_api_findings: List[Dict] = []
-    _seen_ai_api_file_line: Set[Tuple[str, int]] = set()  # dedup same file+line
-    ai_api_rule = get_ai_api_calls_rule(primary_language)
-    
-    if ai_api_rule:
-        rule_name = ai_api_rule.name
-        # Scan ALL language files for AI API calls (they may be in any file)
-        all_lang_files_for_ai = _get_all_language_files(checkout_path, primary_language)
-        if not all_lang_files_for_ai:
-            all_lang_files_for_ai = list(all_traced_files)
-        
-        files_to_scan = [f for f in all_lang_files_for_ai if (f, rule_name) not in scanned_pairs]
-        scanned_pairs.update((f, rule_name) for f in files_to_scan)
-        
-        logger.info(f"[PASS3] AI API call scanning {len(files_to_scan)} {primary_language} files")
-        
-        if files_to_scan:
-            findings, error = run_semgrep(checkout_path, ai_api_rule, files_to_scan, file_cache=file_cache)
-            
-            if error:
-                all_errors.append(f"ai_api_calls: {error}")
-            elif findings:
-                for f in findings:
-                    processed = _process_api_finding(f, checkout_path, "ai_api_call")
-                    # FP filter: skip obvious non-HTTP findings
-                    if _is_false_positive_api_finding(processed.get("code_snippet", ""), processed.get("rule_id", "")):
-                        continue
-                    # Dedup: skip if same file+line already seen from another rule
-                    sig = (processed["file"], processed["line"])
-                    if sig in _seen_ai_api_file_line:
-                        continue
-                    _seen_ai_api_file_line.add(sig)
-                    ai_api_findings.append(processed)
-                    
-                    # If the finding has AI provider info, enrich with it
-                    metadata = f.get("extra", {}).get("metadata", {})
-                    provider = metadata.get("provider", "")
-                    api_type = metadata.get("api_type", "")
-                    
-                    if provider:
-                        processed["ai_provider"] = provider
-                    if api_type:
-                        processed["ai_api_type"] = api_type
-                
-                logger.info(f"[PASS3] Found {len(ai_api_findings)} AI API call findings")
-    else:
-        logger.info(f"[PASS3] No ai_api_calls rule for {primary_language}")
-    
-    # ==========================================================================
     # Build Final Response
     # ==========================================================================
-    
+
     return _build_scan_response(
         scan_results, all_models, model_detection_findings,
-        all_errors, branches, primary_language, model_detection_rule,
-        ai_api_findings=ai_api_findings, ai_api_rule=ai_api_rule
+        all_errors, branches, primary_language, model_detection_rule
     )
 
 
@@ -1075,30 +994,6 @@ def _run_model_detection_only(
 
     logger.info(f"[PASS2-ONLY] Found {len(all_models)} models, {len(model_detection_findings)} findings after regex fallback")
 
-    # Also run AI API call detection on all files
-    ai_api_findings: List[Dict] = []
-    ai_api_rule = get_ai_api_calls_rule(primary_language)
-    if ai_api_rule and all_lang_files:
-        logger.info(f"[PASS3-ONLY] AI API call scanning {len(all_lang_files)} {primary_language} files")
-        ai_findings_raw, ai_error = run_semgrep(checkout_path, ai_api_rule, all_lang_files, file_cache=file_cache)
-        if ai_error:
-            all_errors.append(f"ai_api_calls: {ai_error}")
-        elif ai_findings_raw:
-            for f in ai_findings_raw:
-                processed = _process_api_finding(f, checkout_path, "ai_api_call")
-                # FP filter: skip obvious non-HTTP findings
-                if _is_false_positive_api_finding(processed.get("code_snippet", ""), processed.get("rule_id", "")):
-                    continue
-                metadata = f.get("extra", {}).get("metadata", {})
-                provider = metadata.get("provider", "")
-                api_type = metadata.get("api_type", "")
-                if provider:
-                    processed["ai_provider"] = provider
-                if api_type:
-                    processed["ai_api_type"] = api_type
-                ai_api_findings.append(processed)
-            logger.info(f"[PASS3-ONLY] Found {len(ai_api_findings)} AI API call findings")
-
     return _build_scan_response(
         scan_results={},
         all_models=all_models,
@@ -1107,8 +1002,6 @@ def _run_model_detection_only(
         branches={},
         primary_language=primary_language,
         model_detection_rule=model_detection_rule,
-        ai_api_findings=ai_api_findings,
-        ai_api_rule=ai_api_rule
     )
 
 
@@ -1119,7 +1012,6 @@ def _empty_scan_result() -> Dict:
         "models_detected": [],
         "distinct_models": [],
         "model_detection_findings": [],
-        "ai_api_call_findings": [],
         "summary": {
             "total_libraries": 0,
             "libraries_scanned": 0,
@@ -1127,11 +1019,10 @@ def _empty_scan_result() -> Dict:
             "unique_models_detected": 0,
             "all_models": [],
             "model_detection_findings_count": 0,
-            "ai_api_call_findings_count": 0,
             "errors": [],
             "timestamp": datetime.now().isoformat(),
             "language": "unknown",
-            "rules_used": {"model_detection": None, "ai_api_calls": None}
+            "rules_used": {"model_detection": None}
         }
     }
 
@@ -1144,8 +1035,6 @@ def _build_scan_response(
     branches: Dict,
     primary_language: str,
     model_detection_rule: Optional[Path],
-    ai_api_findings: Optional[List[Dict]] = None,
-    ai_api_rule: Optional[Path] = None
 ) -> Dict:
     """Build final response with deduplication."""
     # Deduplicate models by (model, file, line)
@@ -1181,23 +1070,11 @@ def _build_scan_response(
             seen_findings.add(key)
             unique_findings.append(f)
     
-    # Deduplicate AI API call findings
-    ai_api_findings = ai_api_findings or []
-    seen_ai_api: Set[Tuple[str, int, str]] = set()
-    unique_ai_api: List[Dict] = []
-    
-    for f in ai_api_findings:
-        key = (f["file"], f["line"], f.get("rule_id", ""))
-        if key not in seen_ai_api:
-            seen_ai_api.add(key)
-            unique_ai_api.append(f)
-    
     scan_results_list = list(scan_results.values())
     libraries_scanned = sum(1 for r in scan_results_list if r.get("scanned"))
     total_findings = (
         sum(r.get("findings_count", 0) for r in scan_results_list)
         + len(unique_findings)
-        + len(unique_ai_api)
     )
 
     # ── Provider-level fallback ────────────────────────────────────────────
@@ -1245,7 +1122,6 @@ def _build_scan_response(
         "models_detected": unique_models,
         "distinct_models": distinct_model_names,
         "model_detection_findings": unique_findings,
-        "ai_api_call_findings": unique_ai_api,
         "summary": {
             "total_libraries": len(branches),
             "libraries_scanned": libraries_scanned,
@@ -1253,13 +1129,11 @@ def _build_scan_response(
             "unique_models_detected": len(distinct_model_names),
             "all_models": all_models_with_tags,
             "model_detection_findings_count": len(unique_findings),
-            "ai_api_call_findings_count": len(unique_ai_api),
             "errors": all_errors,
             "timestamp": datetime.now().isoformat(),
             "language": primary_language,
             "rules_used": {
                 "model_detection": model_detection_rule.name if model_detection_rule else None,
-                "ai_api_calls": ai_api_rule.name if ai_api_rule else None
             }
         }
     }
@@ -1897,8 +1771,4 @@ def get_available_categories() -> Dict:
             lang: get_api_calls_rule(lang) is not None
             for lang in SUPPORTED_LANGUAGES
         },
-        "ai_api_rules": {
-            lang: get_ai_api_calls_rule(lang) is not None
-            for lang in SUPPORTED_LANGUAGES
-        }
     }

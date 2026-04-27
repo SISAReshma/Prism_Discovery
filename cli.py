@@ -31,6 +31,7 @@ import json
 import logging
 import os
 import sys
+import tempfile
 import time
 from pathlib import Path
 from typing import Optional, Set, List, Dict, Any
@@ -524,9 +525,13 @@ def run_sbom_pipeline(
 
     Returns a dict with report paths and scan result info.
     """
+    # Use OS temp dir so cloned/extracted workspaces never land inside the
+    # reports folder.  The orchestrator cleans each scan's subdirectory on
+    # completion; the parent dir (prism_sbom_temp) is harmless OS-temp debris.
+    _sbom_temp = Path(tempfile.gettempdir()) / "prism_sbom_temp"
     orchestrator = ScanOrchestrator(
         reports_dir=str(reports_dir),
-        temp_dir=str(reports_dir.parent / "temp")
+        temp_dir=str(_sbom_temp)
     )
 
     result = orchestrator.run_scan(

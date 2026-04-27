@@ -1,0 +1,22 @@
+{
+  "key": "streamlit_1.35.0",
+  "cached_at": "2026-04-27T07:38:37.933008Z",
+  "data": {
+    "name": "streamlit",
+    "version": "1.35.0",
+    "license": "Apache License 2.0",
+    "supplier": "Snowflake Inc",
+    "description": "A faster way to build and share data apps",
+    "release_date": "2024-05-23T17:12:48.909591Z",
+    "homepage": "https://streamlit.io",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "e17d1d86830a0d7687c37faf2fe47bffa752d0c95a306e96d7749bd3faa72a5b"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python !=3.9.7,>=3.8"
+  }
+}

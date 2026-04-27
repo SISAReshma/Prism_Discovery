@@ -1,0 +1,22 @@
+{
+  "key": "rich_13.9.4",
+  "cached_at": "2026-04-27T07:38:42.827618Z",
+  "data": {
+    "name": "rich",
+    "version": "13.9.4",
+    "license": "MIT",
+    "supplier": "Will McGugan",
+    "description": "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal",
+    "release_date": "2024-11-01T16:43:55.817727Z",
+    "homepage": "https://github.com/Textualize/rich",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.8.0"
+  }
+}

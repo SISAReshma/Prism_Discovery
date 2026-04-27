@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_streamlit_1.35.0",
+  "cached_at": "2026-04-27T07:37:05.294156Z",
+  "data": {
+    "name": "streamlit",
+    "version": "1.35.0",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/streamlit/streamlit",
+    "description": "",
+    "release_date": "2024-05-23T17:12:48Z"
+  }
+}

@@ -1,0 +1,102 @@
+rules:
+  # ── String-literal model names in function/method calls ──────────────────
+  - id: model-string-in-call
+    pattern-either:
+      # model="gpt-4o" in any function call
+      - pattern: $FUNC(..., model="$MODEL", ...)
+      - pattern: $FUNC(..., model='$MODEL', ...)
+      # model_name="gpt-4" parameter
+      - pattern: $FUNC(..., model_name="$MODEL", ...)
+      - pattern: $FUNC(..., model_name='$MODEL', ...)
+      # engine="text-davinci-003" (legacy OpenAI)
+      - pattern: $FUNC(..., engine="$MODEL", ...)
+      - pattern: $FUNC(..., engine='$MODEL', ...)
+      # deployment_name="gpt-4" (Azure OpenAI)
+      - pattern: $FUNC(..., deployment_name="$MODEL", ...)
+    message: "AI model name detected: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection
+
+  # ── Model name as standalone assignment ──────────────────────────────────
+  - id: model-name-assignment
+    pattern-either:
+      - pattern: model = "$MODEL"
+      - pattern: model_name = "$MODEL"
+      - pattern: MODEL = "$MODEL"
+      - pattern: MODEL_NAME = "$MODEL"
+      - pattern: model_id = "$MODEL"
+      - pattern: MODEL_ID = "$MODEL"
+      - pattern: engine = "$MODEL"
+      - pattern: deployment_name = "$MODEL"
+      - pattern: DEPLOYMENT_NAME = "$MODEL"
+    message: "AI model name assigned: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection
+
+  # ── Model name in dict/config ────────────────────────────────────────────
+  - id: model-name-in-dict
+    pattern-either:
+      - pattern: |
+          {"model": "$MODEL", ...}
+      - pattern: |
+          {"model_name": "$MODEL", ...}
+      - pattern: |
+          {..., "model": "$MODEL", ...}
+    message: "AI model name in config: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection
+
+  # ── HuggingFace model loading ────────────────────────────────────────────
+  - id: hf-model-loading
+    pattern-either:
+      - pattern: $X.from_pretrained("$MODEL", ...)
+      - pattern: $X.from_pretrained('$MODEL', ...)
+      - pattern: AutoModel.from_pretrained("$MODEL", ...)
+      - pattern: AutoTokenizer.from_pretrained("$MODEL", ...)
+      - pattern: pipeline(..., model="$MODEL", ...)
+      - pattern: pipeline("...", "$MODEL", ...)
+    message: "HuggingFace model loading detected: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection
+
+  # ── Keras / TensorFlow model loading ─────────────────────────────────────
+  - id: keras-model-loading
+    pattern-either:
+      - pattern: load_model("$MODEL")
+      - pattern: tf.keras.models.load_model("$MODEL")
+      - pattern: keras.models.load_model("$MODEL")
+    message: "Keras/TF model loading detected: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection
+
+  # ── PyTorch model loading ────────────────────────────────────────────────
+  - id: pytorch-model-loading
+    pattern-either:
+      - pattern: torch.load("$MODEL")
+      - pattern: torch.load('$MODEL')
+    message: "PyTorch model loading detected: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection
+
+  # ── Ollama model names ───────────────────────────────────────────────────
+  - id: ollama-model-name
+    pattern-either:
+      - pattern: ollama.$METHOD(..., model="$MODEL", ...)
+      - pattern: ollama.$METHOD(..., model='$MODEL', ...)
+    message: "Ollama model detected: $MODEL"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: model_detection

@@ -1,0 +1,22 @@
+{
+  "key": "openai_0.27.10",
+  "cached_at": "2026-04-27T07:38:39.277724Z",
+  "data": {
+    "name": "openai",
+    "version": "0.27.10",
+    "license": "MIT License",
+    "supplier": "OpenAI",
+    "description": "Python client library for the OpenAI API",
+    "release_date": "2023-08-30T00:29:21.966557Z",
+    "homepage": "https://github.com/openai/openai-python",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "beabd1757e3286fa166dde3b70ebb5ad8081af046876b47c14c41e203ed22a14"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.7.1"
+  }
+}

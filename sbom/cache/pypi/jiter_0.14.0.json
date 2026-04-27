@@ -1,0 +1,22 @@
+{
+  "key": "jiter_0.14.0",
+  "cached_at": "2026-04-27T07:38:59.936474Z",
+  "data": {
+    "name": "jiter",
+    "version": "0.14.0",
+    "license": "NOASSERTION",
+    "supplier": "Unknown",
+    "description": "Fast iterable JSON parser.",
+    "release_date": "2026-04-10T14:25:40.753805Z",
+    "homepage": "https://github.com/pydantic/jiter/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "02f36a5c700f105ac04a6556fe664a59037a2c200db3b7e88784fac2ddf02531"
+      }
+    ],
+    "executable": "Yes - Console scripts/CLI present",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.9"
+  }
+}

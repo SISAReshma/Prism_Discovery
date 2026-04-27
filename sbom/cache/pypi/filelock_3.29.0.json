@@ -1,0 +1,22 @@
+{
+  "key": "filelock_3.29.0",
+  "cached_at": "2026-04-27T07:39:00.827728Z",
+  "data": {
+    "name": "filelock",
+    "version": "3.29.0",
+    "license": "MIT License",
+    "supplier": "Unknown",
+    "description": "A platform independent file lock.",
+    "release_date": "2026-04-19T15:39:08.752445Z",
+    "homepage": "https://pypi.org/project/filelock/",
+    "hashes": [
+      {
+        "alg": "SHA-256",
+        "content": "96f5f6344709aa1572bbf631c640e4ebeeb519e08da902c39a001882f30ac258"
+      }
+    ],
+    "executable": "No - Library package (not directly executable)",
+    "archive": "wheel (.whl) / source tarball (.tar.gz)",
+    "structured_properties": "PEP 517/518 compliant, requires Python >=3.10"
+  }
+}

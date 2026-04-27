@@ -357,8 +357,33 @@ def _hf_search_fallback(model_id: str) -> Optional[str]:
     Strips provider prefix, searches HF, scores results by name similarity.
     Returns the best-matching HF model ID, or None.
     """
+    # ── Guard: skip placeholder / generic model names ──────────────────────
+    _model_part = model_id.split("/", 1)[-1] if "/" in model_id else model_id
+    _placeholder_names = {"unknown-model", "unknown_model", "default", "model", "base"}
+    if _model_part.lower().strip() in _placeholder_names:
+        logger.debug(f"[REMAP] Skipping HF search for placeholder name: {model_id!r}")
+        return None
+
+    # ── Guard: skip API-only providers that won't have HF model cards ─────
+    _api_only_providers = {
+        "openai", "anthropic", "cohere", "google", "gemini",
+        "groq", "together", "fireworks", "deepseek", "mistral",
+        "perplexity", "anyscale", "replicate", "bedrock", "azure",
+    }
+    if "/" in model_id:
+        _provider = model_id.split("/")[0].lower()
+        if _provider in _api_only_providers:
+            # Check if this model was already remapped via PROVIDER_CANONICAL_MAP
+            # If not, don't search HF — these are API-hosted models
+            canonical = remap_provider_model(model_id)
+            if not canonical:
+                logger.debug(
+                    f"[REMAP] Skipping HF search for API-only provider: {model_id!r}"
+                )
+                return None
+
     # Strip provider prefix if present
-    search_term = model_id.split("/", 1)[-1] if "/" in model_id else model_id
+    search_term = _model_part
 
     # Clean up common suffixes for better search
     search_clean = re.sub(r"[-_](8192|32768|131072|128k|4k)$", "", search_term, flags=re.IGNORECASE)
@@ -388,6 +413,11 @@ def _hf_search_fallback(model_id: str) -> Optional[str]:
     for result in results:
         hf_id = result.get("id", "")
         hf_name = hf_id.lower().replace("-", "").replace("_", "")
+
+        # ── Strict match: the HF model name must actually contain the
+        #    core search term (not just share a few characters) ──
+        if search_lower not in hf_name:
+            continue
 
         # Base score: character overlap ratio
         score = sum(1 for c in search_lower if c in hf_name) / max(len(search_lower), 1)
@@ -1964,6 +1994,28 @@ def _extract_hf_considerations(readme: str) -> Dict[str, Any]:
                     elif current_section in ("users", "use_cases", "limitations", "out_of_scope_use"):
                         sections[current_section].append(item)
 
+    # ── Strip HTML comments and placeholder text ────────────────────────────
+    # HuggingFace template READMEs have HTML comments like:
+    # <!-- Address questions around how the model is intended to be used -->
+    # These are useless placeholders and must be removed.
+    _placeholder_re = re.compile(r'<!--.*?-->', re.DOTALL)
+    _more_info_re = re.compile(r'\[More Information Needed\]', re.IGNORECASE)
+
+    def _is_placeholder(text: str) -> bool:
+        """Return True if text is just an HTML comment template or placeholder."""
+        cleaned = _placeholder_re.sub('', text).strip()
+        cleaned = _more_info_re.sub('', cleaned).strip()
+        return len(cleaned) < 10
+
+    # Clean each list-type section: remove placeholder entries
+    for key in ('users', 'use_cases', 'limitations', 'out_of_scope_use'):
+        sections[key] = [item for item in sections[key] if not _is_placeholder(item)]
+    sections['ethical'] = [e for e in sections['ethical'] if not _is_placeholder(e.get('name', ''))]
+    sections['fairness'] = [f for f in sections['fairness'] if not _is_placeholder(f.get('name', ''))]
+    sections['performance_tradeoffs'] = [
+        t for t in sections['performance_tradeoffs'] if not _is_placeholder(t)
+    ]
+
     # For list-type sections that got no bullet items, fall back to
     # paragraph text (split on bold `**...**` sub-headings if present).
     def _paragraphs_from_lines(lines: List[str]) -> List[str]:
@@ -2498,6 +2550,7 @@ _register_default_connectors()
 def _build_cdx_model_component(
     model_name: str, nd: NormalizedModelData, dep: Optional[DeprecationResult],
     ai_tag: str = "",
+    evidence: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     """
     Build a single CycloneDX-ready component dict for one model.
@@ -2525,11 +2578,23 @@ def _build_cdx_model_component(
             purl = f"pkg:huggingface/{nd.model_id}"
 
     # Build description — use tag-based fallback when connector found nothing
-    _desc = nd.description
-    if not _desc and ai_tag:
-        _desc = f"{ai_tag} model detected in codebase"
-    elif not _desc:
-        _desc = "AI model detected in codebase"
+    _desc = nd.description or ""
+    # Strip HTML comment placeholders from description
+    _desc = re.sub(r'<!--.*?-->', '', _desc, flags=re.DOTALL).strip()
+    _desc = re.sub(r'\[More Information Needed\]', '', _desc, flags=re.IGNORECASE).strip()
+    if not _desc:
+        if nd.lookup_source == "not_found":
+            # Extract provider prefix for the redirect message
+            _provider = model_name.split('/')[0] if '/' in model_name else 'the model provider'
+            _desc = (
+                f"Model card not found on HuggingFace. "
+                f"For model card details, please refer to the {_provider} website "
+                f"or the respective model provider's page for '{model_name}'."
+            )
+        elif ai_tag:
+            _desc = f"{ai_tag} model detected in codebase"
+        else:
+            _desc = "AI model detected in codebase"
 
     component: Dict[str, Any] = {
         "type": _component_type,
@@ -2592,10 +2657,13 @@ def _build_cdx_model_component(
             _base_source = f"https://huggingface.co/{nd.base_model}"
         if _base_source:
             properties.append({"name": "baseModelSource", "value": _base_source})
-    if nd.use_cases:
-        properties.append({"name": "intendedUse", "value": "; ".join(nd.use_cases)})
-    if nd.out_of_scope_use:
-        properties.append({"name": "outOfScopeUse", "value": "; ".join(nd.out_of_scope_use)})
+    # Filter out placeholder text from use_cases and out_of_scope_use
+    _clean_uses = [u for u in (nd.use_cases or []) if not re.search(r'<!--.*?-->', u) and '[More Information Needed]' not in u]
+    _clean_oos = [u for u in (nd.out_of_scope_use or []) if not re.search(r'<!--.*?-->', u) and '[More Information Needed]' not in u]
+    if _clean_uses:
+        properties.append({"name": "intendedUse", "value": "; ".join(_clean_uses)})
+    if _clean_oos:
+        properties.append({"name": "outOfScopeUse", "value": "; ".join(_clean_oos)})
     # Extended properties
     if nd.library_name:
         properties.append({"name": "library_name", "value": nd.library_name})
@@ -2622,6 +2690,14 @@ def _build_cdx_model_component(
     for key, val in overlay.items():
         if val is not None and not isinstance(val, (dict, list)):
             properties.append({"name": key, "value": str(val)})
+    # Detection evidence — source locations where this model was found in code
+    for ev in (evidence or []):
+        if ev.get("file"):
+            properties.append({"name": "ai:evidence:file", "value": ev["file"]})
+        if ev.get("line"):
+            properties.append({"name": "ai:evidence:line", "value": str(ev["line"])})
+        if ev.get("snippet"):
+            properties.append({"name": "ai:evidence:snippet", "value": ev["snippet"]})
     if properties:
         component["properties"] = properties
 
@@ -2660,31 +2736,76 @@ def _build_cdx_model_component(
         model_card["modelParameters"] = model_params
 
 
-    # considerations
+    # considerations — strip placeholder text before including
+    def _strip_placeholders(text):
+        """Remove HTML comments and [More Information Needed] from text."""
+        if isinstance(text, str):
+            cleaned = re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL).strip()
+            cleaned = re.sub(r'\[More Information Needed\]', '', cleaned, flags=re.IGNORECASE).strip()
+            return cleaned if len(cleaned) > 10 else ""
+        if isinstance(text, dict):
+            if "description" in text:
+                cleaned = _strip_placeholders(text["description"])
+                if cleaned:
+                    return {**text, "description": cleaned}
+                return None
+            if "name" in text:
+                cleaned = _strip_placeholders(text["name"])
+                if cleaned:
+                    return {**text, "name": cleaned}
+                return None
+        return text
+
+    def _clean_list(items):
+        """Filter out placeholder entries from a list."""
+        result = []
+        for item in (items or []):
+            if isinstance(item, str):
+                cleaned = _strip_placeholders(item)
+                if cleaned:
+                    result.append(cleaned)
+            elif isinstance(item, dict):
+                cleaned = _strip_placeholders(item)
+                if cleaned:
+                    result.append(cleaned)
+        return result
+
     considerations: Dict[str, Any] = {}
-    if nd.intended_users:
-        considerations["users"] = nd.intended_users
-    if nd.use_cases:
-        considerations["useCases"] = nd.use_cases
-    if nd.technical_limitations:
-        considerations["technicalLimitations"] = nd.technical_limitations
-    if nd.performance_tradeoffs:
-        considerations["performanceTradeoffs"] = nd.performance_tradeoffs
-    if nd.ethical_considerations:
-        considerations["ethicalConsiderations"] = nd.ethical_considerations
-    if nd.fairness_assessments:
-        considerations["fairnessAssessments"] = nd.fairness_assessments
+    _cleaned_users = _clean_list(nd.intended_users)
+    if _cleaned_users:
+        considerations["users"] = _cleaned_users
+    _cleaned_uses = _clean_list(nd.use_cases)
+    if _cleaned_uses:
+        considerations["useCases"] = _cleaned_uses
+    _cleaned_limits = _clean_list(nd.technical_limitations)
+    if _cleaned_limits:
+        considerations["technicalLimitations"] = _cleaned_limits
+    _cleaned_perf = _clean_list(nd.performance_tradeoffs)
+    if _cleaned_perf:
+        considerations["performanceTradeoffs"] = _cleaned_perf
+    _cleaned_ethical = _clean_list(nd.ethical_considerations)
+    if _cleaned_ethical:
+        considerations["ethicalConsiderations"] = _cleaned_ethical
+    _cleaned_fairness = _clean_list(nd.fairness_assessments)
+    if _cleaned_fairness:
+        considerations["fairnessAssessments"] = _cleaned_fairness
     if nd.environmental_considerations:
-        considerations["environmentalConsiderations"] = nd.environmental_considerations
+        _env_cleaned = _strip_placeholders(nd.environmental_considerations)
+        if _env_cleaned:
+            considerations["environmentalConsiderations"] = _env_cleaned
     if considerations:
         model_card["considerations"] = considerations
 
-    # hardware
+    # hardware — strip placeholder text
     hardware: Dict[str, str] = {}
     if nd.training_hardware:
-        hardware["training"] = nd.training_hardware
+        _hw = _strip_placeholders(nd.training_hardware)
+        if _hw:
+            hardware["training"] = _hw
     if nd.inference_hardware:
-        hardware["inference"] = nd.inference_hardware
+        _hw = _strip_placeholders(nd.inference_hardware)
+        if _hw:
+            hardware["inference"] = _hw
     if hardware:
         model_card["hardware"] = hardware
 
@@ -2775,6 +2896,28 @@ def build_aibom(
     # ── 1. Gather distinct models ───────────────────────────────────────────
     ai_scan = session_extra.get("ai_targeted_scan", {})
     distinct_models: List[str] = ai_scan.get("distinct_models", [])
+
+    # Build evidence map: model_name → list of {file, line, snippet} from scan findings.
+    # Primary source: model_detection_findings (have code_snippet).
+    # Fallback: models_detected (provider-level inferred entries that lack a finding).
+    _evidence_map: Dict[str, List[Dict[str, Any]]] = {}
+    for _f in ai_scan.get("model_detection_findings", []):
+        _mv = _f.get("model_value", "")
+        if not _mv:
+            continue
+        _evidence_map.setdefault(_mv, []).append({
+            "file": _f.get("file", ""),
+            "line": _f.get("line", 0),
+            "snippet": (_f.get("code_snippet") or "").strip(),
+        })
+    for _md in ai_scan.get("models_detected", []):
+        _mv = _md.get("model", "")
+        if _mv and _mv not in _evidence_map and _md.get("file"):
+            _evidence_map[_mv] = [{
+                "file": _md.get("file", ""),
+                "line": _md.get("line", 0),
+                "snippet": "",
+            }]
 
     # ── 2. Resolve each model via connector registry ────────────────────────
     components: List[Dict[str, Any]] = []
@@ -2919,7 +3062,7 @@ def build_aibom(
         if dep_result:
             all_deprecations.append(dep_result)
 
-        # 2d. Build CycloneDX component — pass AI tag from scan results
+        # 2d. Build CycloneDX component — pass AI tag and detection evidence
         _all_models_tags = ai_scan.get("all_models", [])
         _model_tag = ""
         for _mt in _all_models_tags:
@@ -2927,7 +3070,11 @@ def build_aibom(
             if _mname == model_name:
                 _model_tag = _mt.get("tag", "AI")
                 break
-        component = _build_cdx_model_component(model_name, nd, dep_result, ai_tag=_model_tag)
+        component = _build_cdx_model_component(
+            model_name, nd, dep_result,
+            ai_tag=_model_tag,
+            evidence=_evidence_map.get(model_name),
+        )
         components.append(component)
 
         # 2e. Track per-model result

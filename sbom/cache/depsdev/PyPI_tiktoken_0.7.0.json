@@ -1,0 +1,12 @@
+{
+  "key": "PyPI_tiktoken_0.7.0",
+  "cached_at": "2026-04-27T07:37:08.093622Z",
+  "data": {
+    "name": "tiktoken",
+    "version": "0.7.0",
+    "license": "non-standard",
+    "homepage": "https://github.com/openai/tiktoken",
+    "description": "",
+    "release_date": "2024-05-13T18:03:23Z"
+  }
+}
