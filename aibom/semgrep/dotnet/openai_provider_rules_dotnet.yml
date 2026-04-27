@@ -1,0 +1,237 @@
+rules:
+  # OpenAI .NET SDK: https://github.com/openai/openai-dotnet
+  # Azure.AI.OpenAI NuGet package
+
+  - id: openai-client-init-dotnet
+    pattern-either:
+      - pattern: new OpenAIClient($...)
+      - pattern: new ChatClient($...)
+      - pattern: new AzureOpenAIClient($...)
+      - pattern: OpenAIClientOptions($...)
+    message: "OpenAI client initialization detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  # Capture model name from ChatClient / EmbeddingClient / ImageClient constructors
+  # e.g. new ChatClient("gpt-4o", credential) or new ChatClient(model: "gpt-4o", ...)
+  # Uses AST patterns to handle multi-line constructors correctly
+  - id: openai-chat-client-model-dotnet
+    languages: [csharp]
+    message: "OpenAI ChatClient model detected: $MODEL"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-either:
+      - pattern: new ChatClient("$MODEL", ...)
+      - pattern: new ChatClient(model: "$MODEL", ...)
+
+  - id: openai-embedding-client-model-dotnet
+    languages: [csharp]
+    message: "OpenAI EmbeddingClient model detected: $MODEL"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-either:
+      - pattern: new EmbeddingClient("$MODEL", ...)
+      - pattern: new EmbeddingClient(model: "$MODEL", ...)
+
+  - id: openai-image-client-model-dotnet
+    languages: [csharp]
+    message: "OpenAI ImageClient model detected: $MODEL"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-either:
+      - pattern: new ImageClient("$MODEL", ...)
+      - pattern: new ImageClient(model: "$MODEL", ...)
+
+  - id: openai-audio-client-model-dotnet
+    languages: [csharp]
+    message: "OpenAI AudioClient model detected: $MODEL"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-either:
+      - pattern: new AudioClient("$MODEL", ...)
+      - pattern: new AudioClient(model: "$MODEL", ...)
+
+  # GetChatClient / GetEmbeddingClient on AzureOpenAIClient
+  - id: openai-get-client-model-dotnet
+    pattern-either:
+      - pattern: $CLIENT.GetChatClient("$MODEL")
+      - pattern: $CLIENT.GetEmbeddingClient("$MODEL")
+      - pattern: $CLIENT.GetImageClient("$MODEL")
+      - pattern: $CLIENT.GetAudioClient("$MODEL")
+    message: "OpenAI client model parameter detected: $MODEL"
+    languages: [csharp]
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-completion-dotnet
+    pattern-either:
+      - pattern: $CLIENT.CompleteChat($...)
+      - pattern: $CLIENT.CompleteChatAsync($...)
+      - pattern: $CLIENT.CompleteChatStreaming($...)
+      - pattern: $CLIENT.CompleteChatStreamingAsync($...)
+      - pattern: $CLIENT.GetChatCompletions($...)
+      - pattern: $CLIENT.GetChatCompletionsAsync($...)
+      - pattern: $CLIENT.GetChatCompletionsStreaming($...)
+      - pattern: $CLIENT.GetChatCompletionsStreamingAsync($...)
+    message: "OpenAI chat completion API call detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-completion-dotnet
+    pattern-either:
+      - pattern: $CLIENT.GetCompletions($...)
+      - pattern: $CLIENT.GetCompletionsAsync($...)
+    message: "OpenAI completion API call detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-embedding-dotnet
+    pattern-either:
+      - pattern: new EmbeddingClient($...)
+      - pattern: $CLIENT.GenerateEmbeddings($...)
+      - pattern: $CLIENT.GenerateEmbeddingsAsync($...)
+      - pattern: $CLIENT.GetEmbeddings($...)
+      - pattern: $CLIENT.GetEmbeddingsAsync($...)
+    message: "OpenAI embedding API call detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-image-dotnet
+    pattern-either:
+      - pattern: new ImageClient($...)
+      - pattern: $CLIENT.GenerateImage($...)
+      - pattern: $CLIENT.GenerateImageAsync($...)
+      - pattern: $CLIENT.GenerateImages($...)
+      - pattern: $CLIENT.GenerateImagesAsync($...)
+    message: "OpenAI image generation API call detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-audio-dotnet
+    pattern-either:
+      - pattern: new AudioClient($...)
+      - pattern: $CLIENT.TranscribeAudio($...)
+      - pattern: $CLIENT.TranscribeAudioAsync($...)
+      - pattern: $CLIENT.GenerateSpeech($...)
+      - pattern: $CLIENT.GenerateSpeechAsync($...)
+    message: "OpenAI audio API call detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-options-dotnet
+    pattern-either:
+      - pattern: |
+          new ChatCompletionOptions { ... }
+      - pattern: |
+          new CompletionsOptions { ... }
+      - pattern: |
+          new EmbeddingsOptions { ... }
+    message: "OpenAI request options detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-chat-message-dotnet
+    pattern-either:
+      - pattern: ChatMessage.CreateSystemMessage($...)
+      - pattern: ChatMessage.CreateUserMessage($...)
+      - pattern: ChatMessage.CreateAssistantMessage($...)
+      - pattern: new SystemChatMessage($...)
+      - pattern: new UserChatMessage($...)
+      - pattern: new AssistantChatMessage($...)
+      - pattern: new ChatRequestSystemMessage($...)
+      - pattern: new ChatRequestUserMessage($...)
+      - pattern: new ChatRequestAssistantMessage($...)
+    message: "OpenAI chat message construction detected"
+    languages: [csharp]
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+
+  - id: openai-azure-deployment-dotnet
+    languages: [csharp]
+    message: "Azure OpenAI deployment detected"
+    severity: INFO
+    metadata:
+      category: openai
+      provider: openai
+    pattern-regex: '(?:new\s+ChatCompletionsOptions\s*\(\s*"([^"]+)"|DeploymentName\s*=\s*"([^"]+)"|GetChatClient\s*\(\s*"([^"]+)")'
+  # Betalgo.OpenAI / OkGoDoIt.OpenAI_API style: Model = "gpt-3.5-turbo" in request object
+  - id: openai-betalgo-model-property-dotnet
+    languages: [csharp]
+    message: "OpenAI Betalgo model property detected"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+    pattern-regex: '(?:ChatCompletionCreateRequest|CompletionCreateRequest)\s*\{[^}]*Model\s*=\s*(?:"([^"]+)"|Models\.(\w+))'
+
+  # Generic model string assignment on any request object (catch-all for consumers)
+  - id: openai-model-string-assignment-dotnet
+    pattern-either:
+      - pattern: $OBJ.Model = "$MODEL";
+      - pattern: $OBJ.ModelName = "$MODEL";
+      - pattern: $OBJ.DeploymentName = "$MODEL";
+    message: "OpenAI model string assignment detected: $MODEL"
+    languages: [csharp]
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+
+  # -------------------------------------------------------------------------
+  # Raw REST / HTTP calls to OpenAI API (no SDK)
+  # e.g. new RestClient("https://api.openai.com/v1/engines/text-davinci-003/completions")
+  #      new HttpClient { BaseAddress = new Uri("https://api.openai.com/...") }
+  #      HttpClient.GetAsync("https://api.openai.com/...")
+  # -------------------------------------------------------------------------
+  - id: openai-raw-rest-url-dotnet
+    languages: [csharp]
+    message: "Raw REST call to OpenAI API detected"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+      pattern_type: raw_api
+    pattern-regex: '(?:RestClient|HttpClient|WebClient|Uri)\s*\(\s*"https?://api\.openai\.com[^"]*"'
+
+  - id: openai-raw-http-string-dotnet
+    languages: [csharp]
+    message: "OpenAI API URL string detected"
+    severity: WARNING
+    metadata:
+      category: openai
+      provider: openai
+      pattern_type: raw_api
+    pattern-regex: '"https?://api\.openai\.com/v1/[^"]*"'
