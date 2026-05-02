@@ -24,34 +24,14 @@ Prism Discovery is an open-source command-line tool that scans codebases and pro
 | **SBOM** — Software Bill of Materials | All software dependencies with license data, CVE vulnerabilities, EPSS exploitability scores, and CISA KEV status |
 
 Works with **GitHub repositories**, **local directories**, and **ZIP archives**.  
-Supports **Python, JavaScript/TypeScript, Go, .NET, and Java**.
+Supports **Python, JavaScript/TypeScript, Go, .NET, and Java** and many more.
 
 ---
 
 ## Try Prism at prism.sisa.ai
 
-Prism Discovery is the open-source engine behind **[prism.sisa.ai](https://prism.sisa.ai/)** — SISA's hosted security intelligence platform for AI-aware software supply chain management.
+Prism Discovery is the one of the open-sourced product of SISA- AI Prism **[prism.sisa.ai](https://prism.sisa.ai/)** — SISA's hosted security intelligence platform for AI-aware software supply chain management.
 
-```mermaid
-flowchart LR
-    subgraph OSS ["🖥️  Open-Source CLI  (this repo)"]
-        direction TB
-        C1["✅  Full AIBOM + SBOM scanning"]
-        C2["✅  All output formats — CycloneDX · SPDX · JSON"]
-        C3["✅  Self-hosted · no data leaves your machine"]
-        C4["✅  Free to use and extend"]
-    end
-
-    subgraph HP ["☁️  prism.sisa.ai  (hosted platform)"]
-        direction TB
-        H1["🖥️  Web dashboards + full scan history"]
-        H2["👥  Team collaboration + role-based access"]
-        H3["⚙️  CI/CD integrations — GitHub Actions · GitLab CI · Jenkins"]
-        H4["🗓️  Scheduled and bulk scanning"]
-        H5["📄  PDF / CSV export + policy alerting"]
-        H6["🔒  Enterprise SLA and dedicated support"]
-    end
-```
 
 > **[Visit prism.sisa.ai →](https://prism.sisa.ai/)** — Scan directly from your browser. No setup, no API keys to manage.
 
@@ -76,7 +56,6 @@ flowchart LR
 
     PD --> R1["📄 aibom_cyclonedx.json"]
     PD --> R2["📄 sbom_cyclonedx.json"]
-    PD --> R3["📄 sbom_spdx.json"]
     PD --> R4["📋 combined.json"]
 ```
 
@@ -107,7 +86,6 @@ flowchart LR
     subgraph Output ["📊 Output  (reports/<scan_id>/)"]
         O1["📄 aibom_cyclonedx.json"]
         O2["📄 sbom_cyclonedx.json"]
-        O3["📄 sbom_spdx.json"]
         O4["📋 combined.json"]
     end
 
@@ -117,46 +95,6 @@ flowchart LR
     O1 & O2 --> O4
 ```
 
----
-
-### Data Sources & Integrations
-
-```mermaid
-flowchart TB
-    PD(["🔍 Prism Discovery"])
-
-    subgraph AI_M ["🤖 AI Model Intelligence"]
-        HF["🤗 HuggingFace Hub"]
-        REP["Replicate API"]
-        AZ["Azure AI Catalog"]
-        TF["TensorFlow Hub"]
-        ONNX["ONNX Model Zoo"]
-    end
-
-    subgraph SEC ["🛡️ Vulnerability Intelligence"]
-        OSV["OSV.dev  (primary)"]
-        NVD["NIST NVD  (fallback)"]
-        EPSS_S["EPSS  (exploitability scores)"]
-        KEV_S["CISA KEV  (actively exploited)"]
-    end
-
-    subgraph LLM_C ["⚡ LLM Classification"]
-        GROQ_C["Groq API  (Llama 3)"]
-    end
-
-    subgraph REG ["📦 Package Registries"]
-        PYPI["PyPI"]
-        NPM["npm"]
-        MVN["Maven Central"]
-        NUG["NuGet"]
-        GO["pkg.go.dev"]
-    end
-
-    PD <-->|model cards & metadata| AI_M
-    PD <-->|CVEs + scores| SEC
-    PD <-->|AI vs non-AI classify| LLM_C
-    PD <-->|license & versions| REG
-```
 ### AIBOM
 - Detects AI/ML libraries across Python, JavaScript, Go, .NET, and Java
 - Classifies libraries into AI providers, orchestration frameworks, vector DBs, agentic frameworks, and more
