@@ -1,0 +1,219 @@
+{
+  "model_id": "punkt",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:15:06.543543",
+  "data": {
+    "card_data": {
+      "base_model": "unsloth/gemma-3-270m-it",
+      "tags": [
+        "text-generation-inference",
+        "transformers",
+        "unsloth",
+        "gemma3_text"
+      ],
+      "license": "apache-2.0",
+      "language": [
+        "en"
+      ]
+    },
+    "config": {
+      "architectures": [
+        "Gemma3ForCausalLM"
+      ],
+      "model_type": "gemma3_text",
+      "tokenizer_config": {
+        "bos_token": "<bos>",
+        "eos_token": "<end_of_turn>",
+        "pad_token": "<pad>",
+        "unk_token": "<unk>",
+        "use_default_system_prompt": false
+      },
+      "chat_template_jinja": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{ '<start_of_turn>model\n' }}\n{%- endif -%}\n"
+    },
+    "readme_content": "---\nbase_model: unsloth/gemma-3-270m-it\ntags:\n- text-generation-inference\n- transformers\n- unsloth\n- gemma3_text\nlicense: apache-2.0\nlanguage:\n- en\n---\n\n# Uploaded finetuned  model\n\n- **Developed by:** punkt2\n- **License:** apache-2.0\n- **Finetuned from model :** unsloth/gemma-3-270m-it\n\nThis gemma3_text model was trained 2x faster with [Unsloth](https://github.com/unslothai/unsloth) and Huggingface's TRL library.\n\n[<img src=\"https://raw.githubusercontent.com/unslothai/unsloth/main/images/unsloth%20made%20with%20love.png\" width=\"200\"/>](https://github.com/unslothai/unsloth)\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "added_tokens.json"
+      },
+      {
+        "rfilename": "chat_template.jinja"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "generation_config.json"
+      },
+      {
+        "rfilename": "model.safetensors"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer.model"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModelForCausalLM",
+      "pipeline_tag": "text-generation",
+      "processor": "AutoTokenizer"
+    },
+    "safetensors": {
+      "parameters": {
+        "BF16": 268098176
+      },
+      "total": 268098176
+    },
+    "widgetData": [
+      {
+        "text": "Hi, what can you help me with?"
+      },
+      {
+        "text": "What is 84 * 3 / 2?"
+      },
+      {
+        "text": "Tell me an interesting fact about the universe!"
+      },
+      {
+        "text": "Explain quantum computing in simple terms."
+      }
+    ],
+    "_raw_response": {
+      "_id": "68a3908ad17097d0e3075347",
+      "id": "punkt2/foodcalculator-gemma-3-270m-it",
+      "private": false,
+      "pipeline_tag": "text-generation",
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "gemma3_text",
+        "text-generation",
+        "text-generation-inference",
+        "unsloth",
+        "conversational",
+        "en",
+        "base_model:unsloth/gemma-3-270m-it",
+        "base_model:finetune:unsloth/gemma-3-270m-it",
+        "license:apache-2.0",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "downloads": 12,
+      "likes": 0,
+      "modelId": "punkt2/foodcalculator-gemma-3-270m-it",
+      "author": "punkt2",
+      "sha": "b49ad04e6e9d06dee3c79d59317aaab7944f231e",
+      "lastModified": "2025-08-20T22:01:13.000Z",
+      "gated": false,
+      "disabled": false,
+      "widgetData": [
+        {
+          "text": "Hi, what can you help me with?"
+        },
+        {
+          "text": "What is 84 * 3 / 2?"
+        },
+        {
+          "text": "Tell me an interesting fact about the universe!"
+        },
+        {
+          "text": "Explain quantum computing in simple terms."
+        }
+      ],
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "Gemma3ForCausalLM"
+        ],
+        "model_type": "gemma3_text",
+        "tokenizer_config": {
+          "bos_token": "<bos>",
+          "eos_token": "<end_of_turn>",
+          "pad_token": "<pad>",
+          "unk_token": "<unk>",
+          "use_default_system_prompt": false
+        },
+        "chat_template_jinja": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{ '<start_of_turn>model\n' }}\n{%- endif -%}\n"
+      },
+      "cardData": {
+        "base_model": "unsloth/gemma-3-270m-it",
+        "tags": [
+          "text-generation-inference",
+          "transformers",
+          "unsloth",
+          "gemma3_text"
+        ],
+        "license": "apache-2.0",
+        "language": [
+          "en"
+        ]
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForCausalLM",
+        "pipeline_tag": "text-generation",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "added_tokens.json"
+        },
+        {
+          "rfilename": "chat_template.jinja"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "generation_config.json"
+        },
+        {
+          "rfilename": "model.safetensors"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer.model"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-08-18T20:43:54.000Z",
+      "safetensors": {
+        "parameters": {
+          "BF16": 268098176
+        },
+        "total": 268098176
+      },
+      "usedStorage": 1110519754
+    }
+  }
+}

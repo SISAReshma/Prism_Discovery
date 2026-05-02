@@ -1,0 +1,4292 @@
+{
+  "model_id": "name/version",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:14:58.460004",
+  "data": {
+    "card_data": {
+      "language": [
+        "en"
+      ],
+      "license": "apache-2.0",
+      "tags": [
+        "text-to-image",
+        "image-generation",
+        "gguf",
+        "chroma",
+        "not-for-all-audiences"
+      ]
+    },
+    "config": {},
+    "readme_content": "---\nlanguage:\n- en\nlicense: apache-2.0\ntags:\n- text-to-image\n- image-generation\n- gguf\n- chroma\n- not-for-all-audiences\n---\n\nGGUF quantizations of https://huggingface.co/lodestones/Chroma\n\n**Update (July 10, 2025)**: Requantized and re-uploaded v42 because Chroma's author re-uploaded new weights for this version.\n\n**Note**: Q3 and below quants degrade in quality so badly that I skipped creating them.\n\n**Note 2**: About Chroma1-HD, you can read it [here](https://huggingface.co/lodestones/Chroma/discussions/99#6895eb8955603aaa61da9cc4)\n\n## Quality test (v41)\n\nSampler name: Euler\n\nScheduler: beta\n\nSteps: 30\n\n---\n\n### Q4_0\n\n![Q4_0](./images/q4_0.png)\n\n### Q4_1\n\n![Q4_1](./images/q4_1.png)\n\n### Q4_K_M\n\n![Q4_K_M](./images/q4_k_m.png)\n\n### Q4_K_S\n\n![Q4_K_S](./images/q4_k_s.png)\n\n### Q5_0\n\n![Q5_0](./images/q5_0.png)\n\n### Q5_1\n\n![Q5_1](./images/q5_1.png)\n\n### Q5_K_M\n\n![Q5_K_M](./images/q5_k_m.png)\n\n### Q5_K_S\n\n![Q5_K_S](./images/q5_k_s.png)\n\n### Q6_K\n\n![Q6_K](./images/q6_k.png)\n\n### Q8_0\n\n![Q8_0](./images/q8_0.png)",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q8_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_0.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_1.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q6_K.gguf"
+      },
+      {
+        "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q8_0.gguf"
+      },
+      {
+        "rfilename": "images/a.txt"
+      },
+      {
+        "rfilename": "images/q4_0.png"
+      },
+      {
+        "rfilename": "images/q4_1.png"
+      },
+      {
+        "rfilename": "images/q4_k_m.png"
+      },
+      {
+        "rfilename": "images/q4_k_s.png"
+      },
+      {
+        "rfilename": "images/q5_0.png"
+      },
+      {
+        "rfilename": "images/q5_1.png"
+      },
+      {
+        "rfilename": "images/q5_k_m.png"
+      },
+      {
+        "rfilename": "images/q5_k_s.png"
+      },
+      {
+        "rfilename": "images/q6_k.png"
+      },
+      {
+        "rfilename": "images/q8_0.png"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "6868b143dd9016e47dbb006b",
+      "id": "duyntnet/Chroma-GGUF-All-Versions",
+      "private": false,
+      "pipeline_tag": "text-to-image",
+      "tags": [
+        "gguf",
+        "text-to-image",
+        "image-generation",
+        "chroma",
+        "not-for-all-audiences",
+        "en",
+        "license:apache-2.0",
+        "region:us",
+        "provider:name",
+        "variant-of:duyntnet/Chroma-GGUF-All-Versions"
+      ],
+      "downloads": 4494,
+      "likes": 7,
+      "modelId": "duyntnet/Chroma-GGUF-All-Versions",
+      "author": "duyntnet",
+      "sha": "a114427c69b78e8d675560cbf1abbcd1d0c92e56",
+      "lastModified": "2025-08-08T18:05:40.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "cardData": {
+        "language": [
+          "en"
+        ],
+        "license": "apache-2.0",
+        "tags": [
+          "text-to-image",
+          "image-generation",
+          "gguf",
+          "chroma",
+          "not-for-all-audiences"
+        ]
+      },
+      "gguf": {
+        "total": 8899983424,
+        "architecture": "flux"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v1/chroma-unlocked-v1-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v10/chroma-unlocked-v10-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v11/chroma-unlocked-v11-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v12/chroma-unlocked-v12-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v13/chroma-unlocked-v13-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v14/chroma-unlocked-v14-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v15/chroma-unlocked-v15-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v16/chroma-unlocked-v16-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v17/chroma-unlocked-v17-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v18/chroma-unlocked-v18-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v19/chroma-unlocked-v19-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v2/chroma-unlocked-v2-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v20/chroma-unlocked-v20-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v21/chroma-unlocked-v21-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v22/chroma-unlocked-v22-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v23/chroma-unlocked-v23-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v24/chroma-unlocked-v24-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v25/chroma-unlocked-v25-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v26/chroma-unlocked-v26-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v27/chroma-unlocked-v27-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v28/chroma-unlocked-v28-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v29/chroma-unlocked-v29-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v3/chroma-unlocked-v3-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v30/chroma-unlocked-v30-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v31/chroma-unlocked-v31-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v32/chroma-unlocked-v32-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v33/chroma-unlocked-v33-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34-detail-calibrated/chroma-unlocked-v34-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v34/chroma-unlocked-v34-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35-detail-calibrated/chroma-unlocked-v35-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v35/chroma-unlocked-v35-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36-detail-calibrated/chroma-unlocked-v36-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v36/chroma-unlocked-v36-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37-detail-calibrated/chroma-unlocked-v37-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v37/chroma-unlocked-v37-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38-detail-calibrated/chroma-unlocked-v38-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v38/chroma-unlocked-v38-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39-detail-calibrated/chroma-unlocked-v39-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v39/chroma-unlocked-v39-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v4/chroma-unlocked-v4-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40-detail-calibrated/chroma-unlocked-v40-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v40/chroma-unlocked-v40-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-detail-calibrated/chroma-unlocked-v41-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41-few-steps-rl/chroma-unlocked-v41-few-steps-rl-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v41/chroma-unlocked-v41-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42-detail-calibrated/chroma-unlocked-v42-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v42/chroma-unlocked-v42-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43-detail-calibrated/chroma-unlocked-v43-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v43/chroma-unlocked-v43-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44-detail-calibrated/chroma-unlocked-v44-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v44/chroma-unlocked-v44-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45-detail-calibrated/chroma-unlocked-v45-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v45/chroma-unlocked-v45-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-detail-calibrated/chroma-unlocked-v46-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46-flash/chroma-unlocked-v46-flash-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v46/chroma-unlocked-v46-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47-detail-calibrated/chroma-unlocked-v47-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v47/chroma-unlocked-v47-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48-detail-calibrated/chroma-unlocked-v48-detail-calibrated-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v48/chroma-unlocked-v48-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v49/chroma-unlocked-v49-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v5/chroma-unlocked-v5-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-annealed/chroma-unlocked-v50-annealed-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50-flash-heun/chroma-unlocked-v50-flash-heun-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v50/chroma-unlocked-v50-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v6/chroma-unlocked-v6-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v7/chroma-unlocked-v7-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v8/chroma-unlocked-v8-Q8_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_0.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_1.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q6_K.gguf"
+        },
+        {
+          "rfilename": "chroma-unlocked-v9/chroma-unlocked-v9-Q8_0.gguf"
+        },
+        {
+          "rfilename": "images/a.txt"
+        },
+        {
+          "rfilename": "images/q4_0.png"
+        },
+        {
+          "rfilename": "images/q4_1.png"
+        },
+        {
+          "rfilename": "images/q4_k_m.png"
+        },
+        {
+          "rfilename": "images/q4_k_s.png"
+        },
+        {
+          "rfilename": "images/q5_0.png"
+        },
+        {
+          "rfilename": "images/q5_1.png"
+        },
+        {
+          "rfilename": "images/q5_k_m.png"
+        },
+        {
+          "rfilename": "images/q5_k_s.png"
+        },
+        {
+          "rfilename": "images/q6_k.png"
+        },
+        {
+          "rfilename": "images/q8_0.png"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-07-05T04:59:47.000Z",
+      "usedStorage": 4513244172389
+    },
+    "_canonical_id": "duyntnet/Chroma-GGUF-All-Versions"
+  }
+}

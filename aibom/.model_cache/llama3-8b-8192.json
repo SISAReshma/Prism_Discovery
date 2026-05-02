@@ -1,0 +1,106 @@
+{
+  "model_id": "llama3-8b-8192",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:13:59.936713",
+  "data": {
+    "card_data": {
+      "license": "llama3",
+      "datasets": [
+        "lmg-anon/VNTL-v5-1k"
+      ],
+      "language": [
+        "ja",
+        "en"
+      ],
+      "base_model": "rinna/llama-3-youko-8b",
+      "pipeline_tag": "translation"
+    },
+    "config": {},
+    "readme_content": "---\nlicense: llama3\ndatasets:\n- lmg-anon/VNTL-v5-1k\nlanguage:\n- ja\n- en\nbase_model: rinna/llama-3-youko-8b\npipeline_tag: translation\n---\n\n# Summary\n\nThis is a [LLaMA 3 Youko](https://huggingface.co/rinna/llama-3-youko-8b) qlora fine-tune, created using a new version of the VNTL dataset. The purpose of this fine-tune is to improve performance of LLMs at translating Japanese visual novels to English.\n\nUnlike the previous version, this one doesn't includes the \"chat mode\".\n\n## Notes\n\nFor this new version of VNTL 8B, I've rebuilt and expanded VNTL's dataset from the groud up, and I'm happy to say it performs really well, outperforming the previous version when it comes to accuracy and stability, it makes far fewer mistakes than it even when running at high temperatures (though I still recommend temperature 0 for the best accuracy).\n\nSome major changes in this version:\n- **Switched to the default LLaMA3 prompt format since people had trouble with the custom one**\n- **Added proper support for multi-line translations** (the old version only handled single lines)\n- Overall better translation accuracy\n\nOne thing to note: while the translations are more accurate, they tend to be more literal compared to the previous version.\n\n\n## Sampling Recommendations\n\nFor optimal results, it's highly recommended to use neutral sampling parameters (temperature 0 with no repetition penalty) when using this model.\n\n## Training Details\n\nThis fine-tune was done using similar hyperparameters as the [previous version](https://huggingface.co/lmg-anon/vntl-llama3-8b-qlora). The only difference is the dataset, which is a brand-new one.\n\n- Rank: 128\n- Alpha: 32\n- Effective Batch Size: **45**\n- Warmup Ratio: 0.02\n- Learning Rate: **6e-5**\n- Embedding Learning Rate: **1e-5**\n- Optimizer: **grokadamw**\n- LR Schedule: cosine\n- Weight Decay: 0.01\n\n**Train Loss**: 0.42\n\n## Translation Prompt\n\nThis fine-tune uses the LLaMA 3 prompt format, this is an prompt example for translation:\n```\n<|begin_of_text|><|start_header_id|>Metadata<|end_header_id|>\n\n[character] Name: Uryuu Shingo (\u74dc\u751f \u65b0\u543e) | Gender: Male | Aliases: Onii-chan (\u304a\u5144\u3061\u3083\u3093)\n[character] Name: Uryuu Sakuno (\u74dc\u751f \u685c\u4e43) | Gender: Female<|eot_id|><|start_header_id|>Japanese<|end_header_id|>\n\n[\u685c\u4e43]: \u300e\u2026\u2026\u3054\u3081\u3093\u300f<|eot_id|><|start_header_id|>English<|end_header_id|>\n\n[Sakuno]: \u300e... Sorry.\u300f<|eot_id|><|start_header_id|>Japanese<|end_header_id|>\n\n[\u65b0\u543e]: \u300c\u3046\u3046\u3093\u3001\u3053\u3046\u8a00\u3063\u3061\u3083\u306a\u3093\u3060\u3051\u3069\u3001\u8ff7\u5b50\u3067\u3088\u304b\u3063\u305f\u3088\u3002\u685c\u4e43\u306f\u53ef\u611b\u3044\u304b\u3089\u3001\u3044\u308d\u3044\u308d\u5fc3\u914d\u3057\u3061\u3083\u3063\u3066\u305f\u3093\u3060\u305e\u4ffa\u300d<|eot_id|><|start_header_id|>English<|end_header_id|>\n\n[Shingo]: \"Nah, I know it\u2019s weird to say this, but I\u2019m glad you got lost. You\u2019re so cute, Sakuno, so I was really worried about you.\"<|eot_id|>\n```\n\nThe generated translation for that prompt, with temperature 0, is:\n```\n[Shingo]: \"Nah, I know it\u2019s weird to say this, but I\u2019m glad you got lost. You\u2019re so cute, Sakuno, so I was really worried about you.\"\n```\n\n### Trivia\n\nThe Metadata section isn't limited to character information - you can also add trivia and teach the model the correct way to pronounce words it struggles with.\n\nHere's an example:\n```\n<|begin_of_text|><|start_header_id|>Metadata<|end_header_id|>\n\n[character] Name: Uryuu Shingo (\u74dc\u751f \u65b0\u543e) | Gender: Male | Aliases: Onii-chan (\u304a\u5144\u3061\u3083\u3093)\n[character] Name: Uryuu Sakuno (\u74dc\u751f \u685c\u4e43) | Gender: Female\n[element] Name: Murasamemaru (\u53e2\u96e8\u4e38) | Type: Quality<|eot_id|><|start_header_id|>Japanese<|end_header_id|>\n\n[\u685c\u4e43]: \u300e\u2026\u2026\u3054\u3081\u3093\u300f<|eot_id|><|start_header_id|>English<|end_header_id|>\n\n[Sakuno]: \u300e... Sorry.\u300f<|eot_id|><|start_header_id|>Japanese<|end_header_id|>\n\n[\u65b0\u543e]: \u300c\u3046\u3046\u3093\u3001\u3053\u3046\u8a00\u3063\u3061\u3083\u306a\u3093\u3060\u3051\u3069\u3001\u8ff7\u5b50\u3067\u3088\u304b\u3063\u305f\u3088\u3002\u685c\u4e43\u306f\u53e2\u96e8\u4e38\u3044\u304b\u3089\u3001\u3044\u308d\u3044\u308d\u5fc3\u914d\u3057\u3061\u3083\u3063\u3066\u305f\u3093\u3060\u305e\u4ffa\u300d<|eot_id|><|start_header_id|>English<|end_header_id|>\n```\n\nThe generated translation for that prompt, with temperature 0, is:\n```\n[Shingo]: \"Nah, I know it\u2019s not the best thing to say, but I\u2019m glad you got lost. Sakuno\u2019s Murasamemaru, so I was really worried about you, you know?\"\n```",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "vntl-llama3-8b-v2-hf-q5_k_m.gguf"
+      },
+      {
+        "rfilename": "vntl-llama3-8b-v2-hf-q8_0.gguf"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "67767cf3615ea14619859d91",
+      "id": "lmg-anon/vntl-llama3-8b-v2-gguf",
+      "private": false,
+      "pipeline_tag": "translation",
+      "tags": [
+        "gguf",
+        "translation",
+        "ja",
+        "en",
+        "dataset:lmg-anon/VNTL-v5-1k",
+        "base_model:rinna/llama-3-youko-8b",
+        "base_model:quantized:rinna/llama-3-youko-8b",
+        "license:llama3",
+        "endpoints_compatible",
+        "region:us",
+        "conversational"
+      ],
+      "downloads": 2006649,
+      "likes": 14,
+      "modelId": "lmg-anon/vntl-llama3-8b-v2-gguf",
+      "author": "lmg-anon",
+      "sha": "ab7c8285d386fab7cd89e951f62e129085df6372",
+      "lastModified": "2025-01-02T11:59:48.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "cardData": {
+        "license": "llama3",
+        "datasets": [
+          "lmg-anon/VNTL-v5-1k"
+        ],
+        "language": [
+          "ja",
+          "en"
+        ],
+        "base_model": "rinna/llama-3-youko-8b",
+        "pipeline_tag": "translation"
+      },
+      "gguf": {
+        "total": 8030261248,
+        "architecture": "llama",
+        "context_length": 8192,
+        "chat_template": "{{- bos_token }}\n{%- if custom_tools is defined %}\n    {%- set tools = custom_tools %}\n{%- endif %}\n{%- if not tools_in_user_message is defined %}\n    {%- set tools_in_user_message = true %}\n{%- endif %}\n{%- if not date_string is defined %}\n    {%- if strftime_now is defined %}\n        {%- set date_string = strftime_now(\"%d %b %Y\") %}\n    {%- else %}\n        {%- set date_string = \"26 Jul 2024\" %}\n    {%- endif %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = none %}\n{%- endif %}\n\n{#- This block extracts the system message, so we can slot it into the right place. #}\n{%- if messages[0]['role'] == 'system' %}\n    {%- set system_message = messages[0]['content']|trim %}\n    {%- set messages = messages[1:] %}\n{%- else %}\n    {%- set system_message = \"\" %}\n{%- endif %}\n\n{#- System message #}\n{{- \"<|start_header_id|>Metadata<|end_header_id|>\\n\\n\" }}\n{{- system_message }}\n{{- \"<|eot_id|>\" }}\n\n{#- Custom tools are passed in a user message with some extra guidance #}\n{%- if tools_in_user_message and not tools is none %}\n    {#- Extract the first user message so we can plug it in here #}\n    {%- if messages | length != 0 %}\n        {%- set first_user_message = messages[0]['content']|trim %}\n        {%- set messages = messages[1:] %}\n    {%- else %}\n        {{- raise_exception(\"Cannot put tools in the first user message when there's no first user message!\") }}\n{%- endif %}\n    {{- '<|start_header_id|>user<|end_header_id|>\\n\\n' -}}\n    {{- \"Given the following functions, please respond with a JSON for a function call \" }}\n    {{- \"with its proper arguments that best answers the given prompt.\\n\\n\" }}\n    {{- 'Respond in the format {\"name\": function name, \"parameters\": dictionary of argument name and its value}.' }}\n    {{- \"Do not use variables.\\n\\n\" }}\n    {%- for t in tools %}\n        {{- t | tojson(indent=4) }}\n        {{- \"\\n\\n\" }}\n    {%- endfor %}\n    {{- first_user_message + \"<|eot_id|>\"}}\n{%- endif %}\n\n{%- for message in messages %}\n    {%- if not (message.role == 'ipython' or message.role == 'tool' or 'tool_calls' in message) %}\n        {{- '<|start_header_id|>' + message['role'] + '<|end_header_id|>\\n\\n'+ message['content'] | trim + '<|eot_id|>' }}\n    {%- elif 'tool_calls' in message %}\n        {%- if not message.tool_calls|length == 1 %}\n            {{- raise_exception(\"This model only supports single tool-calls at once!\") }}\n        {%- endif %}\n        {%- set tool_call = message.tool_calls[0].function %}\n        {{- '<|start_header_id|>assistant<|end_header_id|>\\n\\n' -}}\n        {{- '{\"name\": \"' + tool_call.name + '\", ' }}\n        {{- '\"parameters\": ' }}\n        {{- tool_call.arguments | tojson }}\n        {{- \"}\" }}\n        {{- \"<|eot_id|>\" }}\n    {%- elif message.role == \"tool\" or message.role == \"ipython\" %}\n        {{- \"<|start_header_id|>ipython<|end_header_id|>\\n\\n\" }}\n        {%- if message.content is mapping or message.content is iterable %}\n            {{- message.content | tojson }}\n        {%- else %}\n            {{- message.content }}\n        {%- endif %}\n        {{- \"<|eot_id|>\" }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|start_header_id|>assistant<|end_header_id|>\\n\\n' }}\n{%- endif %}\n",
+        "bos_token": "<|begin_of_text|>",
+        "eos_token": "<|eot_id|>"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "vntl-llama3-8b-v2-hf-q5_k_m.gguf"
+        },
+        {
+          "rfilename": "vntl-llama3-8b-v2-hf-q8_0.gguf"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-01-02T11:48:03.000Z",
+      "usedStorage": 14273764800
+    }
+  }
+}

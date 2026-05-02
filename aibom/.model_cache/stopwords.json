@@ -1,0 +1,195 @@
+{
+  "model_id": "stopwords",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:15:19.308800",
+  "data": {
+    "card_data": {
+      "license": "mit",
+      "base_model": "microsoft/deberta-base",
+      "tags": [
+        "generated_from_trainer"
+      ],
+      "metrics": [
+        "accuracy"
+      ],
+      "model-index": [
+        {
+          "name": "FakeNews-deberta-base-stopwords",
+          "results": []
+        }
+      ]
+    },
+    "config": {
+      "architectures": [
+        "DebertaForSequenceClassification"
+      ],
+      "model_type": "deberta",
+      "tokenizer_config": {
+        "bos_token": "[CLS]",
+        "cls_token": "[CLS]",
+        "eos_token": "[SEP]",
+        "mask_token": "[MASK]",
+        "pad_token": "[PAD]",
+        "sep_token": "[SEP]",
+        "unk_token": "[UNK]"
+      }
+    },
+    "readme_content": "---\nlicense: mit\nbase_model: microsoft/deberta-base\ntags:\n- generated_from_trainer\nmetrics:\n- accuracy\nmodel-index:\n- name: FakeNews-deberta-base-stopwords\n  results: []\n---\n\n<!-- This model card has been generated automatically according to the information the Trainer had access to. You\nshould probably proofread and complete it, then remove this comment. -->\n\n# FakeNews-deberta-base-stopwords\n\nThis model is a fine-tuned version of [microsoft/deberta-base](https://huggingface.co/microsoft/deberta-base) on an unknown dataset.\nIt achieves the following results on the evaluation set:\n- Loss: 0.2102\n- Accuracy: 0.9612\n\n## Model description\n\nMore information needed\n\n## Intended uses & limitations\n\nMore information needed\n\n## Training and evaluation data\n\nMore information needed\n\n## Training procedure\n\n### Training hyperparameters\n\nThe following hyperparameters were used during training:\n- learning_rate: 5e-05\n- train_batch_size: 4\n- eval_batch_size: 4\n- seed: 42\n- optimizer: Adam with betas=(0.9,0.999) and epsilon=1e-08\n- lr_scheduler_type: linear\n- num_epochs: 5\n\n### Training results\n\n| Training Loss | Epoch | Step | Validation Loss | Accuracy |\n|:-------------:|:-----:|:----:|:---------------:|:--------:|\n| 0.3343        | 1.0   | 1605 | 0.3262          | 0.9196   |\n| 0.3889        | 2.0   | 3210 | 0.3157          | 0.9276   |\n| 0.2327        | 3.0   | 4815 | 0.2983          | 0.9383   |\n| 0.2261        | 4.0   | 6420 | 0.2127          | 0.9528   |\n| 0.1629        | 5.0   | 8025 | 0.2102          | 0.9612   |\n\n\n### Framework versions\n\n- Transformers 4.34.1\n- Pytorch 2.1.0+cu118\n- Datasets 2.14.6\n- Tokenizers 0.14.1\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "merges.txt"
+      },
+      {
+        "rfilename": "pytorch_model.bin"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      },
+      {
+        "rfilename": "training_args.bin"
+      },
+      {
+        "rfilename": "vocab.json"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModelForSequenceClassification",
+      "pipeline_tag": "text-classification",
+      "processor": "AutoTokenizer"
+    },
+    "safetensors": {},
+    "widgetData": [
+      {
+        "text": "I like you. I love you"
+      }
+    ],
+    "_raw_response": {
+      "_id": "653b9fb02fd598c2d0e7ab28",
+      "id": "Denyol/FakeNews-deberta-base-stopwords",
+      "private": false,
+      "pipeline_tag": "text-classification",
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "deberta",
+        "text-classification",
+        "generated_from_trainer",
+        "base_model:microsoft/deberta-base",
+        "base_model:finetune:microsoft/deberta-base",
+        "license:mit",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "downloads": 2,
+      "likes": 0,
+      "modelId": "Denyol/FakeNews-deberta-base-stopwords",
+      "author": "Denyol",
+      "sha": "b9663c6ee2445d5c56d5ae623e2b81f11ee89e4d",
+      "lastModified": "2023-10-27T11:56:12.000Z",
+      "gated": false,
+      "disabled": false,
+      "mask_token": "[MASK]",
+      "widgetData": [
+        {
+          "text": "I like you. I love you"
+        }
+      ],
+      "model-index": [
+        {
+          "name": "FakeNews-deberta-base-stopwords",
+          "results": []
+        }
+      ],
+      "config": {
+        "architectures": [
+          "DebertaForSequenceClassification"
+        ],
+        "model_type": "deberta",
+        "tokenizer_config": {
+          "bos_token": "[CLS]",
+          "cls_token": "[CLS]",
+          "eos_token": "[SEP]",
+          "mask_token": "[MASK]",
+          "pad_token": "[PAD]",
+          "sep_token": "[SEP]",
+          "unk_token": "[UNK]"
+        }
+      },
+      "cardData": {
+        "license": "mit",
+        "base_model": "microsoft/deberta-base",
+        "tags": [
+          "generated_from_trainer"
+        ],
+        "metrics": [
+          "accuracy"
+        ],
+        "model-index": [
+          {
+            "name": "FakeNews-deberta-base-stopwords",
+            "results": []
+          }
+        ]
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForSequenceClassification",
+        "pipeline_tag": "text-classification",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "merges.txt"
+        },
+        {
+          "rfilename": "pytorch_model.bin"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "training_args.bin"
+        },
+        {
+          "rfilename": "vocab.json"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2023-10-27T11:32:00.000Z",
+      "usedStorage": 3341027026
+    }
+  }
+}

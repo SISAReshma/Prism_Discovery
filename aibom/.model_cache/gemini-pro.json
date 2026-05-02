@@ -1,0 +1,185 @@
+{
+  "model_id": "gemini-pro",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:11:45.832945",
+  "data": {
+    "card_data": {
+      "license": "apache-2.0",
+      "language": [
+        "en"
+      ],
+      "tags": [
+        "vision-language",
+        "multimodal",
+        "uncensored",
+        "gguf",
+        "text-generation",
+        "image-understanding"
+      ],
+      "base_model": [
+        "DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking"
+      ],
+      "pipeline_tag": "image-text-to-text"
+    },
+    "config": {},
+    "readme_content": "---\nlicense: apache-2.0\nlanguage:\n- en\ntags:\n- vision-language\n- multimodal\n- uncensored\n- gguf\n- text-generation\n- image-understanding\nbase_model:\n- DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking\npipeline_tag: image-text-to-text\n---\n\n# Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking-GGUF\n\nThis repository contains **Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking-GGUF**, a 4B-parameter **vision-language instruction-tuned model** provided in **GGUF** format for efficient local inference.\nThe model is designed for open-ended reasoning, multimodal understanding, and minimal alignment constraints, making it suitable for experimentation, research, and advanced local deployments.\n\n---\n\n## Model Summary\n\n- **Model ID**: Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking-GGUF  \n- **Architecture**: Gemma 3 (4B parameters)  \n- **Type**: Vision-Language (Text + Image)  \n- **Format**: GGUF  \n- **Publisher**: mradermacher  \n- **License**: Apache 2.0 (inherits from base model)\n\n---\n\n## Key Characteristics\n\n- Multimodal input support (text + images)\n- Instruction-tuned for conversational and reasoning tasks\n- Reduced content filtering and alignment constraints\n- Optimized for local inference runtimes\n- Suitable for research, exploration, and advanced user workflows\n\n> \u26a0\ufe0f This model is **uncensored**. Outputs may include sensitive or unfiltered content. Use responsibly.\n\n---\n\n## Supported Use Cases\n\n### Text-Based\n- Conversational assistants\n- Creative writing and storytelling\n- Summarization and rewriting\n- General reasoning and analysis\n\n### Vision + Text\n- Image captioning\n- Visual question answering\n- Scene and object understanding\n- Multimodal reasoning tasks\n\n---\n\n## GGUF Compatibility\n\nThis model can be used with GGUF-compatible runtimes such as:\n\n- `llama.cpp`\n- Ollama (GGUF-based builds)\n- Other local inference engines supporting GGUF\n\nPerformance and supported features may vary depending on runtime and hardware.\n\n---\n\n## Basic Usage Example\n\n### Command Line (llama.cpp-style)\n\n```bash\n./main \\\n  -m Andycurrent/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_GGUF_F16.gguf \\\n  -p \"Describe the key idea behind multimodal AI models.\"\n````\n\n\n## Usage Notes\n\n- Provide clear, explicit prompts for best results\n- When using images, ensure proper formatting and resolution\n- Add moderation or filtering layers if deploying in public-facing applications\n\n\n## Ethical Considerations\n\nDue to its uncensored nature:\n\n- Not recommended for unrestricted public deployment\n- Should not be used in safety-critical environments\n- Users are responsible for compliance with applicable laws and policies\n\n---\n\n## Acknowledgements\n\n- Gemma base model contributors \n- Open-source inference and quantization communities\n- Tools and runtimes enabling efficient local LLM deployment\n\n---",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_F16.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q2_k.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q3_k_m.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q4_k_m.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q5_k_m.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q6_k.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q8_0.gguf"
+      },
+      {
+        "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_mmproj_f16.gguf"
+      },
+      {
+        "rfilename": "README.md"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [
+      {
+        "text": "Hi, what can you help me with?"
+      },
+      {
+        "text": "What is 84 * 3 / 2?"
+      },
+      {
+        "text": "Tell me an interesting fact about the universe!"
+      },
+      {
+        "text": "Explain quantum computing in simple terms."
+      }
+    ],
+    "_raw_response": {
+      "_id": "6989b47431fb67caad1032cc",
+      "id": "Andycurrent/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_GGUF",
+      "private": false,
+      "pipeline_tag": "image-text-to-text",
+      "tags": [
+        "gguf",
+        "vision-language",
+        "multimodal",
+        "uncensored",
+        "text-generation",
+        "image-understanding",
+        "image-text-to-text",
+        "en",
+        "base_model:DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking",
+        "base_model:quantized:DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking",
+        "license:apache-2.0",
+        "endpoints_compatible",
+        "region:us",
+        "conversational"
+      ],
+      "downloads": 25755,
+      "likes": 60,
+      "modelId": "Andycurrent/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_GGUF",
+      "author": "Andycurrent",
+      "sha": "0231eb901e7c7ea0058e4fc055fe3609c0debe5a",
+      "lastModified": "2026-03-05T12:46:59.000Z",
+      "gated": false,
+      "disabled": false,
+      "widgetData": [
+        {
+          "text": "Hi, what can you help me with?"
+        },
+        {
+          "text": "What is 84 * 3 / 2?"
+        },
+        {
+          "text": "Tell me an interesting fact about the universe!"
+        },
+        {
+          "text": "Explain quantum computing in simple terms."
+        }
+      ],
+      "model-index": null,
+      "config": {},
+      "cardData": {
+        "license": "apache-2.0",
+        "language": [
+          "en"
+        ],
+        "tags": [
+          "vision-language",
+          "multimodal",
+          "uncensored",
+          "gguf",
+          "text-generation",
+          "image-understanding"
+        ],
+        "base_model": [
+          "DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking"
+        ],
+        "pipeline_tag": "image-text-to-text"
+      },
+      "gguf": {
+        "total": 3880263168,
+        "architecture": "gemma3",
+        "context_length": 131072,
+        "chat_template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n",
+        "bos_token": "<bos>",
+        "eos_token": "<eos>"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_F16.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q2_k.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q3_k_m.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q4_k_m.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q5_k_m.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q6_k.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_Q8_0.gguf"
+        },
+        {
+          "rfilename": "Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking_mmproj_f16.gguf"
+        },
+        {
+          "rfilename": "README.md"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2026-02-09T10:18:28.000Z",
+      "usedStorage": 25087422080
+    }
+  }
+}

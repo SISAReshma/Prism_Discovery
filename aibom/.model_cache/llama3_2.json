@@ -1,0 +1,103 @@
+{
+  "model_id": "llama3_2",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:14:16.718479",
+  "data": {
+    "card_data": {},
+    "config": {
+      "architectures": [
+        "Eagle3DraftModel"
+      ],
+      "auto_map": {}
+    },
+    "readme_content": "",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "eagle3.py"
+      },
+      {
+        "rfilename": "generation_config.json"
+      },
+      {
+        "rfilename": "model.safetensors"
+      },
+      {
+        "rfilename": "optimizer_state_dict.pt"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {
+      "parameters": {
+        "I64": 32000,
+        "BF16": 407904256,
+        "BOOL": 128256
+      },
+      "total": 408064512
+    },
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "6917bd81e195942bdfbed365",
+      "id": "nm-testing/Llama3_2_1B_speculator.eagle3",
+      "private": false,
+      "tags": [
+        "safetensors",
+        "custom_code",
+        "region:us"
+      ],
+      "downloads": 49961,
+      "likes": 0,
+      "modelId": "nm-testing/Llama3_2_1B_speculator.eagle3",
+      "author": "nm-testing",
+      "sha": "dff11a20eb459dfc06d0d9f52056a54e01f29a2e",
+      "lastModified": "2025-11-15T00:56:59.000Z",
+      "gated": false,
+      "disabled": false,
+      "config": {
+        "architectures": [
+          "Eagle3DraftModel"
+        ],
+        "auto_map": {}
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "eagle3.py"
+        },
+        {
+          "rfilename": "generation_config.json"
+        },
+        {
+          "rfilename": "model.safetensors"
+        },
+        {
+          "rfilename": "optimizer_state_dict.pt"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-11-14T23:38:41.000Z",
+      "safetensors": {
+        "parameters": {
+          "I64": 32000,
+          "BF16": 407904256,
+          "BOOL": 128256
+        },
+        "total": 408064512
+      },
+      "usedStorage": 4191453885
+    }
+  }
+}

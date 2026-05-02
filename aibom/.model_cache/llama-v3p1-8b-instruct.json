@@ -1,0 +1,185 @@
+{
+  "model_id": "llama-v3p1-8b-instruct",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:13:42.965500",
+  "data": {
+    "card_data": {
+      "base_model": "lukasellinger/homonymy-dpo-llama-v3p1-8b-instruct",
+      "datasets": [
+        "lukasellinger/homonymy-dpo"
+      ],
+      "language": [
+        "en",
+        "fr",
+        "ar",
+        "ru",
+        "zh"
+      ],
+      "library_name": "transformers",
+      "mradermacher": {
+        "readme_rev": 1
+      },
+      "quantized_by": "mradermacher"
+    },
+    "config": {},
+    "readme_content": "---\nbase_model: lukasellinger/homonymy-dpo-llama-v3p1-8b-instruct\ndatasets:\n- lukasellinger/homonymy-dpo\nlanguage:\n- en\n- fr\n- ar\n- ru\n- zh\nlibrary_name: transformers\nmradermacher:\n  readme_rev: 1\nquantized_by: mradermacher\n---\n## About\n\n<!-- ### quantize_version: 2 -->\n<!-- ### output_tensor_quantised: 1 -->\n<!-- ### convert_type: hf -->\n<!-- ### vocab_type:  -->\n<!-- ### tags:  -->\n<!-- ### quants: x-f16 Q4_K_S Q2_K Q8_0 Q6_K Q3_K_M Q3_K_S Q3_K_L Q4_K_M Q5_K_S Q5_K_M IQ4_XS -->\n<!-- ### quants_skip:  -->\n<!-- ### skip_mmproj:  -->\nstatic quants of https://huggingface.co/lukasellinger/homonymy-dpo-llama-v3p1-8b-instruct\n\n<!-- provided-files -->\n\n***For a convenient overview and download list, visit our [model page for this model](https://hf.tst.eu/model#homonymy-dpo-llama-v3p1-8b-instruct-GGUF).***\n\nweighted/imatrix quants seem not to be available (by me) at this time. If they do not show up a week or so after the static ones, I have probably not planned for them. Feel free to request them by opening a Community Discussion.\n## Usage\n\nIf you are unsure how to use GGUF files, refer to one of [TheBloke's\nREADMEs](https://huggingface.co/TheBloke/KafkaLM-70B-German-V0.1-GGUF) for\nmore details, including on how to concatenate multi-part files.\n\n## Provided Quants\n\n(sorted by size, not necessarily quality. IQ-quants are often preferable over similar sized non-IQ quants)\n\n| Link | Type | Size/GB | Notes |\n|:-----|:-----|--------:|:------|\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q2_K.gguf) | Q2_K | 3.3 |  |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_S.gguf) | Q3_K_S | 3.8 |  |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_M.gguf) | Q3_K_M | 4.1 | lower quality |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_L.gguf) | Q3_K_L | 4.4 |  |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.IQ4_XS.gguf) | IQ4_XS | 4.6 |  |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q4_K_S.gguf) | Q4_K_S | 4.8 | fast, recommended |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q4_K_M.gguf) | Q4_K_M | 5.0 | fast, recommended |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q5_K_S.gguf) | Q5_K_S | 5.7 |  |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q5_K_M.gguf) | Q5_K_M | 5.8 |  |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q6_K.gguf) | Q6_K | 6.7 | very good quality |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.Q8_0.gguf) | Q8_0 | 8.6 | fast, best quality |\n| [GGUF](https://huggingface.co/mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF/resolve/main/homonymy-dpo-llama-v3p1-8b-instruct.f16.gguf) | f16 | 16.2 | 16 bpw, overkill |\n\nHere is a handy graph by ikawrakow comparing some lower-quality quant\ntypes (lower is better):\n\n![image.png](https://www.nethype.de/huggingface_embed/quantpplgraph.png)\n\nAnd here are Artefact2's thoughts on the matter:\nhttps://gist.github.com/Artefact2/b5f810600771265fc1e39442288e8ec9\n\n## FAQ / Model Request\n\nSee https://huggingface.co/mradermacher/model_requests for some answers to\nquestions you might have and/or if you want some other model quantized.\n\n## Thanks\n\nI thank my company, [nethype GmbH](https://www.nethype.de/), for letting\nme use its servers and providing upgrades to my workstation to enable\nthis work in my free time.\n\n<!-- end -->\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.IQ4_XS.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q2_K.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_L.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_M.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_S.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q6_K.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q8_0.gguf"
+      },
+      {
+        "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.f16.gguf"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModel"
+    },
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "68bde6042b529d24a7947ec9",
+      "id": "mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF",
+      "private": false,
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "gguf",
+        "en",
+        "fr",
+        "ar",
+        "ru",
+        "zh",
+        "dataset:lukasellinger/homonymy-dpo",
+        "base_model:lukasellinger/homonymy-dpo-llama-v3p1-8b-instruct",
+        "base_model:quantized:lukasellinger/homonymy-dpo-llama-v3p1-8b-instruct",
+        "endpoints_compatible",
+        "region:us",
+        "conversational"
+      ],
+      "downloads": 16,
+      "likes": 0,
+      "modelId": "mradermacher/homonymy-dpo-llama-v3p1-8b-instruct-GGUF",
+      "author": "mradermacher",
+      "sha": "3a2659764551e9e6715b2fa3b03bfdd6180f0eac",
+      "lastModified": "2025-09-07T21:22:43.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "cardData": {
+        "base_model": "lukasellinger/homonymy-dpo-llama-v3p1-8b-instruct",
+        "datasets": [
+          "lukasellinger/homonymy-dpo"
+        ],
+        "language": [
+          "en",
+          "fr",
+          "ar",
+          "ru",
+          "zh"
+        ],
+        "library_name": "transformers",
+        "mradermacher": {
+          "readme_rev": 1
+        },
+        "quantized_by": "mradermacher"
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModel"
+      },
+      "gguf": {
+        "total": 8030261248,
+        "architecture": "llama",
+        "context_length": 8192,
+        "chat_template": "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{% if loop.index0 == 0 %}{% set content = bos_token + content %}{% endif %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}",
+        "bos_token": "<|begin_of_text|>",
+        "eos_token": "<|eot_id|>"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.IQ4_XS.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q2_K.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_L.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_M.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q3_K_S.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q4_K_M.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q4_K_S.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q5_K_M.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q5_K_S.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q6_K.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.Q8_0.gguf"
+        },
+        {
+          "rfilename": "homonymy-dpo-llama-v3p1-8b-instruct.f16.gguf"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-09-07T20:07:32.000Z",
+      "usedStorage": 71820235776
+    }
+  }
+}

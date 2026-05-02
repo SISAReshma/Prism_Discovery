@@ -1,0 +1,622 @@
+{
+  "model_id": "stable-diffusion",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:15:15.622102",
+  "data": {
+    "card_data": {
+      "license": "openrail++",
+      "tags": [
+        "text-to-image",
+        "stable-diffusion"
+      ]
+    },
+    "config": {
+      "diffusers": {
+        "_class_name": "StableDiffusionXLPipeline"
+      }
+    },
+    "readme_content": "---\nlicense: openrail++\ntags:\n- text-to-image\n- stable-diffusion\n---\n# SD-XL 1.0-base Model Card\n![row01](01.png)\n\n## Model\n\n![pipeline](pipeline.png)\n\n[SDXL](https://arxiv.org/abs/2307.01952) consists of an [ensemble of experts](https://arxiv.org/abs/2211.01324) pipeline for latent diffusion: \nIn a first step, the base model is used to generate (noisy) latents, \nwhich are then further processed with a refinement model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/) specialized for the final denoising steps.\nNote that the base model can be used as a standalone module.\n\nAlternatively, we can use a two-stage pipeline as follows: \nFirst, the base model is used to generate latents of the desired output size. \nIn the second step, we use a specialized high-resolution model and apply a technique called SDEdit (https://arxiv.org/abs/2108.01073, also known as \"img2img\") \nto the latents generated in the first step, using the same prompt. This technique is slightly slower than the first one, as it requires more function evaluations.\n\nSource code is available at https://github.com/Stability-AI/generative-models .\n\n### Model Description\n\n- **Developed by:** Stability AI\n- **Model type:** Diffusion-based text-to-image generative model\n- **License:** [CreativeML Open RAIL++-M License](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md)\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses two fixed, pretrained text encoders ([OpenCLIP-ViT/G](https://github.com/mlfoundations/open_clip) and [CLIP-ViT/L](https://github.com/openai/CLIP/tree/main)).\n- **Resources for more information:** Check out our [GitHub Repository](https://github.com/Stability-AI/generative-models) and the [SDXL report on arXiv](https://arxiv.org/abs/2307.01952).\n\n### Model Sources\n\nFor research purposes, we recommend our `generative-models` Github repository (https://github.com/Stability-AI/generative-models), which implements the most popular diffusion frameworks (both training and inference) and for which new functionalities like distillation will be added over time.\n[Clipdrop](https://clipdrop.co/stable-diffusion) provides free SDXL inference.\n\n- **Repository:** https://github.com/Stability-AI/generative-models\n- **Demo:** https://clipdrop.co/stable-diffusion\n\n\n## Evaluation\n![comparison](comparison.png)\nThe chart above evaluates user preference for SDXL (with and without refinement) over SDXL 0.9 and Stable Diffusion 1.5 and 2.1. \nThe SDXL base model performs significantly better than the previous variants, and the model combined with the refinement module achieves the best overall performance.\n\n\n### \ud83e\udde8 Diffusers \n\nMake sure to upgrade diffusers to >= 0.19.0:\n```\npip install diffusers --upgrade\n```\n\nIn addition make sure to install `transformers`, `safetensors`, `accelerate` as well as the invisible watermark:\n```\npip install invisible_watermark transformers accelerate safetensors\n```\n\nTo just use the base model, you can run:\n\n```py\nfrom diffusers import DiffusionPipeline\nimport torch\n\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, use_safetensors=True, variant=\"fp16\")\npipe.to(\"cuda\")\n\n# if using torch < 2.0\n# pipe.enable_xformers_memory_efficient_attention()\n\nprompt = \"An astronaut riding a green horse\"\n\nimages = pipe(prompt=prompt).images[0]\n```\n\nTo use the whole base + refiner pipeline as an ensemble of experts you can run:\n\n```py\nfrom diffusers import DiffusionPipeline\nimport torch\n\n# load both base & refiner\nbase = DiffusionPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\nbase.to(\"cuda\")\nrefiner = DiffusionPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\",\n    text_encoder_2=base.text_encoder_2,\n    vae=base.vae,\n    torch_dtype=torch.float16,\n    use_safetensors=True,\n    variant=\"fp16\",\n)\nrefiner.to(\"cuda\")\n\n# Define how many steps and what % of steps to be run on each experts (80/20) here\nn_steps = 40\nhigh_noise_frac = 0.8\n\nprompt = \"A majestic lion jumping from a big stone at night\"\n\n# run both experts\nimage = base(\n    prompt=prompt,\n    num_inference_steps=n_steps,\n    denoising_end=high_noise_frac,\n    output_type=\"latent\",\n).images\nimage = refiner(\n    prompt=prompt,\n    num_inference_steps=n_steps,\n    denoising_start=high_noise_frac,\n    image=image,\n).images[0]\n```\n\nWhen using `torch >= 2.0`, you can improve the inference speed by 20-30% with torch.compile. Simple wrap the unet with torch compile before running the pipeline:\n```py\npipe.unet = torch.compile(pipe.unet, mode=\"reduce-overhead\", fullgraph=True)\n```\n\nIf you are limited by GPU VRAM, you can enable *cpu offloading* by calling `pipe.enable_model_cpu_offload`\ninstead of `.to(\"cuda\")`:\n\n```diff\n- pipe.to(\"cuda\")\n+ pipe.enable_model_cpu_offload()\n```\n\nFor more information on how to use Stable Diffusion XL with `diffusers`, please have a look at [the Stable Diffusion XL Docs](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_xl).\n\n### Optimum\n[Optimum](https://github.com/huggingface/optimum) provides a Stable Diffusion pipeline compatible with both [OpenVINO](https://docs.openvino.ai/latest/index.html) and [ONNX Runtime](https://onnxruntime.ai/).\n\n#### OpenVINO\n\nTo install Optimum with the dependencies required for OpenVINO :\n\n```bash\npip install optimum[openvino]\n```\n\nTo load an OpenVINO model and run inference with OpenVINO Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `OVStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the OpenVINO format on-the-fly, you can set `export=True`.\n\n```diff\n- from diffusers import StableDiffusionXLPipeline\n+ from optimum.intel import OVStableDiffusionXLPipeline\n\nmodel_id = \"stabilityai/stable-diffusion-xl-base-1.0\"\n- pipeline = StableDiffusionXLPipeline.from_pretrained(model_id)\n+ pipeline = OVStableDiffusionXLPipeline.from_pretrained(model_id)\nprompt = \"A majestic lion jumping from a big stone at night\"\nimage = pipeline(prompt).images[0]\n```\n\nYou can find more examples (such as static reshaping and model compilation) in optimum [documentation](https://huggingface.co/docs/optimum/main/en/intel/inference#stable-diffusion-xl).\n\n\n#### ONNX\n\nTo install Optimum with the dependencies required for ONNX Runtime inference :\n\n```bash\npip install optimum[onnxruntime]\n```\n\nTo load an ONNX model and run inference with ONNX Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `ORTStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the ONNX format on-the-fly, you can set `export=True`.\n\n```diff\n- from diffusers import StableDiffusionXLPipeline\n+ from optimum.onnxruntime import ORTStableDiffusionXLPipeline\n\nmodel_id = \"stabilityai/stable-diffusion-xl-base-1.0\"\n- pipeline = StableDiffusionXLPipeline.from_pretrained(model_id)\n+ pipeline = ORTStableDiffusionXLPipeline.from_pretrained(model_id)\nprompt = \"A majestic lion jumping from a big stone at night\"\nimage = pipeline(prompt).images[0]\n```\n\nYou can find more examples in optimum [documentation](https://huggingface.co/docs/optimum/main/en/onnxruntime/usage_guides/models#stable-diffusion-xl).\n\n\n## Uses\n\n### Direct Use\n\nThe model is intended for research purposes only. Possible research areas and tasks include\n\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n\nExcluded uses are described below.\n\n### Out-of-Scope Use\n\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to \u201cA red cube on top of a blue sphere\u201d\n- Faces and people in general may not be generated properly.\n- The autoencoding part of the model is lossy.\n\n### Bias\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases.\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "01.png"
+      },
+      {
+        "rfilename": "LICENSE.md"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "comparison.png"
+      },
+      {
+        "rfilename": "model_index.json"
+      },
+      {
+        "rfilename": "pipeline.png"
+      },
+      {
+        "rfilename": "scheduler/scheduler_config.json"
+      },
+      {
+        "rfilename": "sd_xl_base_1.0.safetensors"
+      },
+      {
+        "rfilename": "sd_xl_base_1.0_0.9vae.safetensors"
+      },
+      {
+        "rfilename": "sd_xl_offset_example-lora_1.0.safetensors"
+      },
+      {
+        "rfilename": "text_encoder/config.json"
+      },
+      {
+        "rfilename": "text_encoder/flax_model.msgpack"
+      },
+      {
+        "rfilename": "text_encoder/model.fp16.safetensors"
+      },
+      {
+        "rfilename": "text_encoder/model.onnx"
+      },
+      {
+        "rfilename": "text_encoder/model.safetensors"
+      },
+      {
+        "rfilename": "text_encoder/openvino_model.bin"
+      },
+      {
+        "rfilename": "text_encoder/openvino_model.xml"
+      },
+      {
+        "rfilename": "text_encoder_2/config.json"
+      },
+      {
+        "rfilename": "text_encoder_2/flax_model.msgpack"
+      },
+      {
+        "rfilename": "text_encoder_2/model.fp16.safetensors"
+      },
+      {
+        "rfilename": "text_encoder_2/model.onnx"
+      },
+      {
+        "rfilename": "text_encoder_2/model.onnx_data"
+      },
+      {
+        "rfilename": "text_encoder_2/model.safetensors"
+      },
+      {
+        "rfilename": "text_encoder_2/openvino_model.bin"
+      },
+      {
+        "rfilename": "text_encoder_2/openvino_model.xml"
+      },
+      {
+        "rfilename": "tokenizer/merges.txt"
+      },
+      {
+        "rfilename": "tokenizer/special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer/tokenizer_config.json"
+      },
+      {
+        "rfilename": "tokenizer/vocab.json"
+      },
+      {
+        "rfilename": "tokenizer_2/merges.txt"
+      },
+      {
+        "rfilename": "tokenizer_2/special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer_2/tokenizer_config.json"
+      },
+      {
+        "rfilename": "tokenizer_2/vocab.json"
+      },
+      {
+        "rfilename": "unet/config.json"
+      },
+      {
+        "rfilename": "unet/diffusion_flax_model.msgpack"
+      },
+      {
+        "rfilename": "unet/diffusion_pytorch_model.fp16.safetensors"
+      },
+      {
+        "rfilename": "unet/diffusion_pytorch_model.safetensors"
+      },
+      {
+        "rfilename": "unet/model.onnx"
+      },
+      {
+        "rfilename": "unet/model.onnx_data"
+      },
+      {
+        "rfilename": "unet/openvino_model.bin"
+      },
+      {
+        "rfilename": "unet/openvino_model.xml"
+      },
+      {
+        "rfilename": "vae/config.json"
+      },
+      {
+        "rfilename": "vae/diffusion_flax_model.msgpack"
+      },
+      {
+        "rfilename": "vae/diffusion_pytorch_model.fp16.safetensors"
+      },
+      {
+        "rfilename": "vae/diffusion_pytorch_model.safetensors"
+      },
+      {
+        "rfilename": "vae_1_0/config.json"
+      },
+      {
+        "rfilename": "vae_1_0/diffusion_pytorch_model.fp16.safetensors"
+      },
+      {
+        "rfilename": "vae_1_0/diffusion_pytorch_model.safetensors"
+      },
+      {
+        "rfilename": "vae_decoder/config.json"
+      },
+      {
+        "rfilename": "vae_decoder/model.onnx"
+      },
+      {
+        "rfilename": "vae_decoder/openvino_model.bin"
+      },
+      {
+        "rfilename": "vae_decoder/openvino_model.xml"
+      },
+      {
+        "rfilename": "vae_encoder/config.json"
+      },
+      {
+        "rfilename": "vae_encoder/model.onnx"
+      },
+      {
+        "rfilename": "vae_encoder/openvino_model.bin"
+      },
+      {
+        "rfilename": "vae_encoder/openvino_model.xml"
+      }
+    ],
+    "spaces": [
+      "BoobyBoobs/Flux_Lustly_AI_Uncensored_NSFW_V1",
+      "InstantX/InstantID",
+      "frogleo/Image-to-3D",
+      "yisol/IDM-VTON",
+      "VAST-AI/TripoSG",
+      "yanze/PuLID-FLUX",
+      "diffusers/stable-diffusion-xl-inpainting",
+      "jasperai/LBM_relighting",
+      "fffiloni/InstantIR",
+      "jallenjia/Change-Clothes-AI",
+      "Nymbo/Virtual-Try-On",
+      "frogleo/AI-Clothes-Changer",
+      "multimodalart/civitai-to-hf",
+      "bytedance-research/UMO_OmniGen2",
+      "haowu11/Kolors-Controlnet-Pose-Tryon",
+      "eduagarcia/multilingual-tokenizer-leaderboard",
+      "Unity134/my-sdxl-api",
+      "google/sdxl",
+      "lllyasviel/Omost",
+      "radames/Real-Time-Latent-Consistency-Model",
+      "radames/Real-Time-Text-to-Image-SDXL-Lightning",
+      "YupengZhou/StoryDiffusion",
+      "yanze/PuLID",
+      "AP123/SDXL-Lightning",
+      "okaris/omni-zero",
+      "Shopify/background-replacement",
+      "InstantX/InstantStyle",
+      "radames/Enhance-This-HiDiffusion-SDXL",
+      "hysts/SDXL",
+      "multimodalart/lora-ease",
+      "Nymbo/Serverless-ImgGen-Hub",
+      "ByteDance/SDXL-Lightning",
+      "tencent/Hunyuan3D-2mv",
+      "radames/Enhance-This-DemoFusion-SDXL",
+      "TIGER-Lab/GenAI-Arena",
+      "TencentARC/T2I-Adapter-SDXL",
+      "sudo-ai/zero123plus-demo-space",
+      "latentexplorers/latentnavigation-flux",
+      "songweig/rich-text-to-image",
+      "fffiloni/Music-To-Image",
+      "stepfun-ai/Step1X-3D",
+      "ByteDance/Hyper-SDXL-1Step-T2I",
+      "TencentARC/T2I-Adapter-SDXL-Sketch",
+      "tencent/Hunyuan3D-2mini-Turbo",
+      "VAST-AI/MV-Adapter-I2MV-SDXL",
+      "r3gm/DiffuseCraft",
+      "John6666/DiffuseCraftMod",
+      "fffiloni/text-guided-image-colorization",
+      "fffiloni/ZeST",
+      "AP123/Upside-Down-Diffusion",
+      "linoyts/scribble-sdxl-flash",
+      "latent-consistency/lcm-lora-for-sdxl",
+      "radames/Real-Time-Latent-Consistency-Model-Text-To-Image",
+      "artificialguybr/artificialguybr-demo-lora",
+      "PAIR/StreamingT2V",
+      "chansung/co-write-with-llama2",
+      "jasperai/flash-lora",
+      "tonyassi/fashion-try-on",
+      "ChenyangSi/FreeU",
+      "John6666/votepurchase-multiple-model",
+      "multimodalart/one-step-comparison",
+      "ymzhang319/FoleyCrafter",
+      "turboedit/turbo_edit",
+      "xingpng/CSGO",
+      "multimodalart/perturbed-attention-guidance-sdxl",
+      "multimodalart/lora-roulette",
+      "exx8/differential-diffusion",
+      "VAST-AI/MV-Adapter-Img2Texture",
+      "garibida/ReNoise-Inversion",
+      "fffiloni/sdxl-dpo",
+      "radames/Real-Time-SD-Turbo",
+      "Nymbo/Compare-6",
+      "radames/MistoLine-ControlNet-demo",
+      "artificialguybr/JUGGERNAUT-XL-FREE-DEMO",
+      "radames/real-time-pix2pix-turbo",
+      "huanngzh/MV-Adapter-T2MV-Anime",
+      "wangfuyun/Phased-Consistency-Model-PCM",
+      "VAST-AI/MV-Adapter-Text2Texture",
+      "TencentARC/ColorFlow",
+      "Kwai-Kolors/Kolors-FaceID",
+      "fantaxy/flx-pulid",
+      "fffiloni/sdxl-control-loras",
+      "JOY-Huang/InstantIR",
+      "baulab/ConceptSliders",
+      "Collov-Labs/d-edit",
+      "IP-composer/ip-composer",
+      "linoyts/scribble-sdxl",
+      "TIGER-Lab/AnyV2V",
+      "tight-inversion/tight-inversion",
+      "clinteroni/outpainting-with-differential-diffusion-demo",
+      "openfree/ColorRevive",
+      "jeasinema/UltraEdit-SD3",
+      "briaai/BRIA-Eraser-API",
+      "Nymbo/image_gen_supaqueue",
+      "tight-inversion/tight-inversion-pulid-demo",
+      "fffiloni/StyleAligned_Transfer",
+      "wcy1122/MGM",
+      "latent-consistency/Real-Time-LCM-ControlNet-Lora-SD1.5",
+      "ginipick/time-machine",
+      "prs-eth/rollingdepth"
+    ],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "64bfcd5ff462a99a04fd1ec8",
+      "id": "stabilityai/stable-diffusion-xl-base-1.0",
+      "private": false,
+      "pipeline_tag": "text-to-image",
+      "library_name": "diffusers",
+      "tags": [
+        "diffusers",
+        "onnx",
+        "safetensors",
+        "text-to-image",
+        "stable-diffusion",
+        "arxiv:2307.01952",
+        "arxiv:2211.01324",
+        "arxiv:2108.01073",
+        "arxiv:2112.10752",
+        "license:openrail++",
+        "endpoints_compatible",
+        "diffusers:StableDiffusionXLPipeline",
+        "deploy:azure",
+        "region:us"
+      ],
+      "downloads": 2067604,
+      "likes": 7677,
+      "modelId": "stabilityai/stable-diffusion-xl-base-1.0",
+      "author": "stabilityai",
+      "sha": "462165984030d82259a11f4367a4eed129e94a7b",
+      "lastModified": "2023-10-30T16:03:47.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "config": {
+        "diffusers": {
+          "_class_name": "StableDiffusionXLPipeline"
+        }
+      },
+      "cardData": {
+        "license": "openrail++",
+        "tags": [
+          "text-to-image",
+          "stable-diffusion"
+        ]
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "01.png"
+        },
+        {
+          "rfilename": "LICENSE.md"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "comparison.png"
+        },
+        {
+          "rfilename": "model_index.json"
+        },
+        {
+          "rfilename": "pipeline.png"
+        },
+        {
+          "rfilename": "scheduler/scheduler_config.json"
+        },
+        {
+          "rfilename": "sd_xl_base_1.0.safetensors"
+        },
+        {
+          "rfilename": "sd_xl_base_1.0_0.9vae.safetensors"
+        },
+        {
+          "rfilename": "sd_xl_offset_example-lora_1.0.safetensors"
+        },
+        {
+          "rfilename": "text_encoder/config.json"
+        },
+        {
+          "rfilename": "text_encoder/flax_model.msgpack"
+        },
+        {
+          "rfilename": "text_encoder/model.fp16.safetensors"
+        },
+        {
+          "rfilename": "text_encoder/model.onnx"
+        },
+        {
+          "rfilename": "text_encoder/model.safetensors"
+        },
+        {
+          "rfilename": "text_encoder/openvino_model.bin"
+        },
+        {
+          "rfilename": "text_encoder/openvino_model.xml"
+        },
+        {
+          "rfilename": "text_encoder_2/config.json"
+        },
+        {
+          "rfilename": "text_encoder_2/flax_model.msgpack"
+        },
+        {
+          "rfilename": "text_encoder_2/model.fp16.safetensors"
+        },
+        {
+          "rfilename": "text_encoder_2/model.onnx"
+        },
+        {
+          "rfilename": "text_encoder_2/model.onnx_data"
+        },
+        {
+          "rfilename": "text_encoder_2/model.safetensors"
+        },
+        {
+          "rfilename": "text_encoder_2/openvino_model.bin"
+        },
+        {
+          "rfilename": "text_encoder_2/openvino_model.xml"
+        },
+        {
+          "rfilename": "tokenizer/merges.txt"
+        },
+        {
+          "rfilename": "tokenizer/special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer/tokenizer_config.json"
+        },
+        {
+          "rfilename": "tokenizer/vocab.json"
+        },
+        {
+          "rfilename": "tokenizer_2/merges.txt"
+        },
+        {
+          "rfilename": "tokenizer_2/special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer_2/tokenizer_config.json"
+        },
+        {
+          "rfilename": "tokenizer_2/vocab.json"
+        },
+        {
+          "rfilename": "unet/config.json"
+        },
+        {
+          "rfilename": "unet/diffusion_flax_model.msgpack"
+        },
+        {
+          "rfilename": "unet/diffusion_pytorch_model.fp16.safetensors"
+        },
+        {
+          "rfilename": "unet/diffusion_pytorch_model.safetensors"
+        },
+        {
+          "rfilename": "unet/model.onnx"
+        },
+        {
+          "rfilename": "unet/model.onnx_data"
+        },
+        {
+          "rfilename": "unet/openvino_model.bin"
+        },
+        {
+          "rfilename": "unet/openvino_model.xml"
+        },
+        {
+          "rfilename": "vae/config.json"
+        },
+        {
+          "rfilename": "vae/diffusion_flax_model.msgpack"
+        },
+        {
+          "rfilename": "vae/diffusion_pytorch_model.fp16.safetensors"
+        },
+        {
+          "rfilename": "vae/diffusion_pytorch_model.safetensors"
+        },
+        {
+          "rfilename": "vae_1_0/config.json"
+        },
+        {
+          "rfilename": "vae_1_0/diffusion_pytorch_model.fp16.safetensors"
+        },
+        {
+          "rfilename": "vae_1_0/diffusion_pytorch_model.safetensors"
+        },
+        {
+          "rfilename": "vae_decoder/config.json"
+        },
+        {
+          "rfilename": "vae_decoder/model.onnx"
+        },
+        {
+          "rfilename": "vae_decoder/openvino_model.bin"
+        },
+        {
+          "rfilename": "vae_decoder/openvino_model.xml"
+        },
+        {
+          "rfilename": "vae_encoder/config.json"
+        },
+        {
+          "rfilename": "vae_encoder/model.onnx"
+        },
+        {
+          "rfilename": "vae_encoder/openvino_model.bin"
+        },
+        {
+          "rfilename": "vae_encoder/openvino_model.xml"
+        }
+      ],
+      "spaces": [
+        "BoobyBoobs/Flux_Lustly_AI_Uncensored_NSFW_V1",
+        "InstantX/InstantID",
+        "frogleo/Image-to-3D",
+        "yisol/IDM-VTON",
+        "VAST-AI/TripoSG",
+        "yanze/PuLID-FLUX",
+        "diffusers/stable-diffusion-xl-inpainting",
+        "jasperai/LBM_relighting",
+        "fffiloni/InstantIR",
+        "jallenjia/Change-Clothes-AI",
+        "Nymbo/Virtual-Try-On",
+        "frogleo/AI-Clothes-Changer",
+        "multimodalart/civitai-to-hf",
+        "bytedance-research/UMO_OmniGen2",
+        "haowu11/Kolors-Controlnet-Pose-Tryon",
+        "eduagarcia/multilingual-tokenizer-leaderboard",
+        "Unity134/my-sdxl-api",
+        "google/sdxl",
+        "lllyasviel/Omost",
+        "radames/Real-Time-Latent-Consistency-Model",
+        "radames/Real-Time-Text-to-Image-SDXL-Lightning",
+        "YupengZhou/StoryDiffusion",
+        "yanze/PuLID",
+        "AP123/SDXL-Lightning",
+        "okaris/omni-zero",
+        "Shopify/background-replacement",
+        "InstantX/InstantStyle",
+        "radames/Enhance-This-HiDiffusion-SDXL",
+        "hysts/SDXL",
+        "multimodalart/lora-ease",
+        "Nymbo/Serverless-ImgGen-Hub",
+        "ByteDance/SDXL-Lightning",
+        "tencent/Hunyuan3D-2mv",
+        "radames/Enhance-This-DemoFusion-SDXL",
+        "TIGER-Lab/GenAI-Arena",
+        "TencentARC/T2I-Adapter-SDXL",
+        "sudo-ai/zero123plus-demo-space",
+        "latentexplorers/latentnavigation-flux",
+        "songweig/rich-text-to-image",
+        "fffiloni/Music-To-Image",
+        "stepfun-ai/Step1X-3D",
+        "ByteDance/Hyper-SDXL-1Step-T2I",
+        "TencentARC/T2I-Adapter-SDXL-Sketch",
+        "tencent/Hunyuan3D-2mini-Turbo",
+        "VAST-AI/MV-Adapter-I2MV-SDXL",
+        "r3gm/DiffuseCraft",
+        "John6666/DiffuseCraftMod",
+        "fffiloni/text-guided-image-colorization",
+        "fffiloni/ZeST",
+        "AP123/Upside-Down-Diffusion",
+        "linoyts/scribble-sdxl-flash",
+        "latent-consistency/lcm-lora-for-sdxl",
+        "radames/Real-Time-Latent-Consistency-Model-Text-To-Image",
+        "artificialguybr/artificialguybr-demo-lora",
+        "PAIR/StreamingT2V",
+        "chansung/co-write-with-llama2",
+        "jasperai/flash-lora",
+        "tonyassi/fashion-try-on",
+        "ChenyangSi/FreeU",
+        "John6666/votepurchase-multiple-model",
+        "multimodalart/one-step-comparison",
+        "ymzhang319/FoleyCrafter",
+        "turboedit/turbo_edit",
+        "xingpng/CSGO",
+        "multimodalart/perturbed-attention-guidance-sdxl",
+        "multimodalart/lora-roulette",
+        "exx8/differential-diffusion",
+        "VAST-AI/MV-Adapter-Img2Texture",
+        "garibida/ReNoise-Inversion",
+        "fffiloni/sdxl-dpo",
+        "radames/Real-Time-SD-Turbo",
+        "Nymbo/Compare-6",
+        "radames/MistoLine-ControlNet-demo",
+        "artificialguybr/JUGGERNAUT-XL-FREE-DEMO",
+        "radames/real-time-pix2pix-turbo",
+        "huanngzh/MV-Adapter-T2MV-Anime",
+        "wangfuyun/Phased-Consistency-Model-PCM",
+        "VAST-AI/MV-Adapter-Text2Texture",
+        "TencentARC/ColorFlow",
+        "Kwai-Kolors/Kolors-FaceID",
+        "fantaxy/flx-pulid",
+        "fffiloni/sdxl-control-loras",
+        "JOY-Huang/InstantIR",
+        "baulab/ConceptSliders",
+        "Collov-Labs/d-edit",
+        "IP-composer/ip-composer",
+        "linoyts/scribble-sdxl",
+        "TIGER-Lab/AnyV2V",
+        "tight-inversion/tight-inversion",
+        "clinteroni/outpainting-with-differential-diffusion-demo",
+        "openfree/ColorRevive",
+        "jeasinema/UltraEdit-SD3",
+        "briaai/BRIA-Eraser-API",
+        "Nymbo/image_gen_supaqueue",
+        "tight-inversion/tight-inversion-pulid-demo",
+        "fffiloni/StyleAligned_Transfer",
+        "wcy1122/MGM",
+        "latent-consistency/Real-Time-LCM-ControlNet-Lora-SD1.5",
+        "ginipick/time-machine",
+        "prs-eth/rollingdepth"
+      ],
+      "createdAt": "2023-07-25T13:25:51.000Z",
+      "inference": "warm",
+      "usedStorage": 77369456618
+    }
+  }
+}

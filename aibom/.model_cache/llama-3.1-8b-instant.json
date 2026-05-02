@@ -1,0 +1,82 @@
+{
+  "model_id": "llama-3.1-8b-instant",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:12:42.866443",
+  "data": {
+    "card_data": {},
+    "config": {},
+    "readme_content": "---title: Simple Translator Llama 3.1\nemoji: \ud83c\udf0d\ncolorFrom: orange\ncolorTo: red\nsdk: gradio\nsdk_version: 5.0.0\napp_file: app.py\npinned: false\nlicense: mit",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/.github/workflows"
+      },
+      {
+        "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/.gitignore"
+      },
+      {
+        "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/README.md"
+      },
+      {
+        "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/app.py"
+      },
+      {
+        "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/requirements.txt"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "695660d8228127d717f3fa5b",
+      "id": "Sats247/simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend",
+      "private": false,
+      "tags": [
+        "region:us"
+      ],
+      "downloads": 0,
+      "likes": 0,
+      "modelId": "Sats247/simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend",
+      "author": "Sats247",
+      "sha": "aa89625e63dc85cf163ebfcaac09a9b802895365",
+      "lastModified": "2026-01-01T13:49:59.000Z",
+      "gated": false,
+      "disabled": false,
+      "config": {},
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/.github/workflows"
+        },
+        {
+          "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/.gitignore"
+        },
+        {
+          "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/README.md"
+        },
+        {
+          "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/app.py"
+        },
+        {
+          "rfilename": "simple-translator-using-llama-3.1-8b-instant-via-Groq-GradioFrontend-/requirements.txt"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2026-01-01T11:56:08.000Z",
+      "usedStorage": 0
+    }
+  }
+}

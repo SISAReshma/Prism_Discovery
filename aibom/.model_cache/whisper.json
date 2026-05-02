@@ -1,0 +1,3378 @@
+{
+  "model_id": "whisper",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:15:54.072972",
+  "data": {
+    "card_data": {
+      "pretty_name": "WhisperKit",
+      "viewer": false,
+      "library_name": "whisperkit",
+      "tags": [
+        "whisper",
+        "whisperkit",
+        "coreml",
+        "asr",
+        "quantized",
+        "automatic-speech-recognition"
+      ]
+    },
+    "config": {},
+    "readme_content": "\n---\npretty_name: \"WhisperKit\"\nviewer: false\nlibrary_name: whisperkit\ntags:\n- whisper\n- whisperkit\n- coreml\n- asr\n- quantized\n- automatic-speech-recognition\n---\n# WhisperKit\n\n## Repo\nWhisperKit is part of Argmax OSS, an On-device Speech AI SDK for Apple Silicon:\nhttps://github.com/argmaxinc/argmax-oss-swift\n\n## Paper\nCheck out the WhisperKit paper and presentation from ICML 2025:\nhttps://icml.cc/virtual/2025/47854 \n\n## Pro\nFor real-time transcription with speakers and custom vocabulary, check out Argmax Pro SDK: https://www.argmaxinc.com/blog/argmax-sdk-2\n\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": ".gitignore"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3/generation_config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_594MB/generation_config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo/generation_config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/config.json"
+      },
+      {
+        "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-base.en/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-base/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-base/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_949MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v2_turbo_955MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_547MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_626MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_947MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-large-v3_turbo_954MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/AudioEncoder.mlcomputeplan.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlcomputeplan.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/TextDecoder.mlcomputeplan.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium.en/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/AudioEncoder.mlcomputeplan.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/MelSpectrogram.mlcomputeplan.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/TextDecoder.mlcomputeplan.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-medium/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-medium/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small.en_217MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-small_216MB/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlpackage/Data/com.apple.CoreML/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlpackage/Data/com.apple.CoreML/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlpackage/Manifest.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlpackage/Data/com.apple.CoreML/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlpackage/Data/com.apple.CoreML/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlpackage/Manifest.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlpackage/Data/com.apple.CoreML/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlpackage/Data/com.apple.CoreML/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/TextDecoder.mlpackage/Manifest.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny.en/generation_config.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/analytics/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/coremldata.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/metadata.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/model.mil"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/model.mlmodel"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/weights/weight.bin"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/config.json"
+      },
+      {
+        "rfilename": "openai_whisper-tiny/generation_config.json"
+      }
+    ],
+    "spaces": [
+      "argmaxinc/whisperkit-benchmarks"
+    ],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "65dee9413aec0530562b4f09",
+      "id": "argmaxinc/whisperkit-coreml",
+      "private": false,
+      "pipeline_tag": "automatic-speech-recognition",
+      "library_name": "whisperkit",
+      "tags": [
+        "whisperkit",
+        "coreml",
+        "whisper",
+        "asr",
+        "quantized",
+        "automatic-speech-recognition",
+        "region:us"
+      ],
+      "downloads": 9464576,
+      "likes": 170,
+      "modelId": "argmaxinc/whisperkit-coreml",
+      "author": "argmaxinc",
+      "sha": "97a5bf9bbc74c7d9c12c755d04dea59e672e3808",
+      "lastModified": "2026-04-24T20:29:35.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "config": {},
+      "cardData": {
+        "pretty_name": "WhisperKit",
+        "viewer": false,
+        "library_name": "whisperkit",
+        "tags": [
+          "whisper",
+          "whisperkit",
+          "coreml",
+          "asr",
+          "quantized",
+          "automatic-speech-recognition"
+        ]
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": ".gitignore"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3/generation_config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_594MB/generation_config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo/generation_config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/config.json"
+        },
+        {
+          "rfilename": "distil-whisper_distil-large-v3_turbo_600MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-base.en/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-base/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-base/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-base/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-base/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-base/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_949MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v2_turbo_955MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_547MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_626MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3-v20240930_turbo_632MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_947MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/TextDecoderContextPrefill.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-large-v3_turbo_954MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/AudioEncoder.mlcomputeplan.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlcomputeplan.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/TextDecoder.mlcomputeplan.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium.en/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/AudioEncoder.mlcomputeplan.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-medium/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/MelSpectrogram.mlcomputeplan.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-medium/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/TextDecoder.mlcomputeplan.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-medium/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-medium/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-medium/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small.en_217MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-small_216MB/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlpackage/Data/com.apple.CoreML/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlpackage/Data/com.apple.CoreML/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/AudioEncoder.mlpackage/Manifest.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlpackage/Data/com.apple.CoreML/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlpackage/Data/com.apple.CoreML/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/MelSpectrogram.mlpackage/Manifest.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlpackage/Data/com.apple.CoreML/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlpackage/Data/com.apple.CoreML/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/TextDecoder.mlpackage/Manifest.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny.en/generation_config.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/AudioEncoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/MelSpectrogram.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/analytics/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/coremldata.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/metadata.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/model.mil"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/model.mlmodel"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/TextDecoder.mlmodelc/weights/weight.bin"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/config.json"
+        },
+        {
+          "rfilename": "openai_whisper-tiny/generation_config.json"
+        }
+      ],
+      "spaces": [
+        "argmaxinc/whisperkit-benchmarks"
+      ],
+      "createdAt": "2024-02-28T08:05:21.000Z",
+      "usedStorage": 39537025848
+    }
+  }
+}

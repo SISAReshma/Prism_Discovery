@@ -1,0 +1,443 @@
+{
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "source": "huggingface",
+  "cached_at": "2026-04-30T17:11:26.512471",
+  "data": {
+    "card_data": {
+      "license": "apache-2.0",
+      "license_link": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/LICENSE",
+      "language": [
+        "en"
+      ],
+      "pipeline_tag": "text-generation",
+      "base_model": "Qwen/Qwen2.5-7B",
+      "tags": [
+        "chat"
+      ],
+      "library_name": "transformers"
+    },
+    "config": {
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "model_type": "qwen2",
+      "tokenizer_config": {
+        "bos_token": null,
+        "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+        "eos_token": "<|im_end|>",
+        "pad_token": "<|endoftext|>",
+        "unk_token": null
+      }
+    },
+    "readme_content": "---\nlicense: apache-2.0\nlicense_link: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/LICENSE\nlanguage:\n- en\npipeline_tag: text-generation\nbase_model: Qwen/Qwen2.5-7B\ntags:\n- chat\nlibrary_name: transformers\n---\n\n# Qwen2.5-7B-Instruct\n<a href=\"https://chat.qwenlm.ai/\" target=\"_blank\" style=\"margin: 2px;\">\n    <img alt=\"Chat\" src=\"https://img.shields.io/badge/%F0%9F%92%9C%EF%B8%8F%20Qwen%20Chat%20-536af5\" style=\"display: inline-block; vertical-align: middle;\"/>\n</a>\n\n## Introduction\n\nQwen2.5 is the latest series of Qwen large language models. For Qwen2.5, we release a number of base language models and instruction-tuned language models ranging from 0.5 to 72 billion parameters. Qwen2.5 brings the following improvements upon Qwen2:\n\n- Significantly **more knowledge** and has greatly improved capabilities in **coding** and **mathematics**, thanks to our specialized expert models in these domains.\n- Significant improvements in **instruction following**, **generating long texts** (over 8K tokens), **understanding structured data** (e.g, tables), and **generating structured outputs** especially JSON. **More resilient to the diversity of system prompts**, enhancing role-play implementation and condition-setting for chatbots.\n- **Long-context Support** up to 128K tokens and can generate up to 8K tokens.\n- **Multilingual support** for over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more. \n\n**This repo contains the instruction-tuned 7B Qwen2.5 model**, which has the following features:\n- Type: Causal Language Models\n- Training Stage: Pretraining & Post-training\n- Architecture: transformers with RoPE, SwiGLU, RMSNorm, and Attention QKV bias\n- Number of Parameters: 7.61B\n- Number of Paramaters (Non-Embedding): 6.53B\n- Number of Layers: 28\n- Number of Attention Heads (GQA): 28 for Q and 4 for KV\n- Context Length: Full 131,072 tokens and generation 8192 tokens\n  - Please refer to [this section](#processing-long-texts) for detailed instructions on how to deploy Qwen2.5 for handling long texts.\n\nFor more details, please refer to our [blog](https://qwenlm.github.io/blog/qwen2.5/), [GitHub](https://github.com/QwenLM/Qwen2.5), and [Documentation](https://qwen.readthedocs.io/en/latest/).\n\n## Requirements\n\nThe code of Qwen2.5 has been in the latest Hugging face `transformers` and we advise you to use the latest version of `transformers`.\n\nWith `transformers<4.37.0`, you will encounter the following error:\n```\nKeyError: 'qwen2'\n```\n\n## Quickstart\n\nHere provides a code snippet with `apply_chat_template` to show you how to load the tokenizer and model and how to generate contents.\n\n```python\nfrom transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel_name = \"Qwen/Qwen2.5-7B-Instruct\"\n\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    torch_dtype=\"auto\",\n    device_map=\"auto\"\n)\ntokenizer = AutoTokenizer.from_pretrained(model_name)\n\nprompt = \"Give me a short introduction to large language model.\"\nmessages = [\n    {\"role\": \"system\", \"content\": \"You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\"},\n    {\"role\": \"user\", \"content\": prompt}\n]\ntext = tokenizer.apply_chat_template(\n    messages,\n    tokenize=False,\n    add_generation_prompt=True\n)\nmodel_inputs = tokenizer([text], return_tensors=\"pt\").to(model.device)\n\ngenerated_ids = model.generate(\n    **model_inputs,\n    max_new_tokens=512\n)\ngenerated_ids = [\n    output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)\n]\n\nresponse = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]\n```\n\n### Processing Long Texts\n\nThe current `config.json` is set for context length up to 32,768 tokens.\nTo handle extensive inputs exceeding 32,768 tokens, we utilize [YaRN](https://arxiv.org/abs/2309.00071), a technique for enhancing model length extrapolation, ensuring optimal performance on lengthy texts.\n\nFor supported frameworks, you could add the following to `config.json` to enable YaRN:\n```json\n{\n  ...,\n  \"rope_scaling\": {\n    \"factor\": 4.0,\n    \"original_max_position_embeddings\": 32768,\n    \"type\": \"yarn\"\n  }\n}\n```\n\nFor deployment, we recommend using vLLM. \nPlease refer to our [Documentation](https://qwen.readthedocs.io/en/latest/deployment/vllm.html) for usage if you are not familar with vLLM.\nPresently, vLLM only supports static YARN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts**. \nWe advise adding the `rope_scaling` configuration only when processing long contexts is required.\n\n## Evaluation & Performance\n\nDetailed evaluation results are reported in this [\ud83d\udcd1 blog](https://qwenlm.github.io/blog/qwen2.5/).\n\nFor requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html).\n\n## Citation\n\nIf you find our work helpful, feel free to give us a cite.\n\n```\n@misc{qwen2.5,\n    title = {Qwen2.5: A Party of Foundation Models},\n    url = {https://qwenlm.github.io/blog/qwen2.5/},\n    author = {Qwen Team},\n    month = {September},\n    year = {2024}\n}\n\n@article{qwen2,\n      title={Qwen2 Technical Report}, \n      author={An Yang and Baosong Yang and Binyuan Hui and Bo Zheng and Bowen Yu and Chang Zhou and Chengpeng Li and Chengyuan Li and Dayiheng Liu and Fei Huang and Guanting Dong and Haoran Wei and Huan Lin and Jialong Tang and Jialin Wang and Jian Yang and Jianhong Tu and Jianwei Zhang and Jianxin Ma and Jin Xu and Jingren Zhou and Jinze Bai and Jinzheng He and Junyang Lin and Kai Dang and Keming Lu and Keqin Chen and Kexin Yang and Mei Li and Mingfeng Xue and Na Ni and Pei Zhang and Peng Wang and Ru Peng and Rui Men and Ruize Gao and Runji Lin and Shijie Wang and Shuai Bai and Sinan Tan and Tianhang Zhu and Tianhao Li and Tianyu Liu and Wenbin Ge and Xiaodong Deng and Xiaohuan Zhou and Xingzhang Ren and Xinyu Zhang and Xipin Wei and Xuancheng Ren and Yang Fan and Yang Yao and Yichang Zhang and Yu Wan and Yunfei Chu and Yuqiong Liu and Zeyu Cui and Zhenru Zhang and Zhihao Fan},\n      journal={arXiv preprint arXiv:2407.10671},\n      year={2024}\n}\n```",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "LICENSE"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "generation_config.json"
+      },
+      {
+        "rfilename": "merges.txt"
+      },
+      {
+        "rfilename": "model-00001-of-00004.safetensors"
+      },
+      {
+        "rfilename": "model-00002-of-00004.safetensors"
+      },
+      {
+        "rfilename": "model-00003-of-00004.safetensors"
+      },
+      {
+        "rfilename": "model-00004-of-00004.safetensors"
+      },
+      {
+        "rfilename": "model.safetensors.index.json"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      },
+      {
+        "rfilename": "vocab.json"
+      }
+    ],
+    "spaces": [
+      "pliny-the-prompter/obliteratus",
+      "alexnasa/Wan2.2-Animate-ZEROGPU",
+      "Adityahars/Sanskrit-env",
+      "Mihir1107/TheSnitch",
+      "Agnuxo/OpenCLAW-Agent",
+      "Loosebag/SSS-Startup-Survival-Simulator",
+      "glitchfilter/methanol-apc-env",
+      "rohanjain1648/alice-rl-training",
+      "yaswanth169/apishift-env",
+      "neuralninja110/SAGE",
+      "fffiloni/Meigen-MultiTalk",
+      "ruslanmv/convert_to_gguf",
+      "rohanjain1648/alice-rl-environment",
+      "Prajwal782007/Gridmind",
+      "RH29152/IBAhive-RAG",
+      "CPater/nwo-agent-graph",
+      "Shasidharyadavr/netweaver_sre",
+      "Idred/BlastRadius-OpenEnv",
+      "DJ-Goanna-Coding/citadel-agentic-swarm",
+      "LAI-TEQUMSA/TEQUMSA-HOLO-Interface",
+      "akashkathole/reconcile_gst2b_env",
+      "faais-k/ascent-interview-backend",
+      "sergiopaniego/repl-env",
+      "amrmohamedali/Labor_law",
+      "agarwalanu3103/clarify-rl",
+      "anirudw/rveda-rcm-arena",
+      "vinod2005/social-engineer-arena",
+      "pranav-1100/phonepilot",
+      "Dinesh-052/crisis-negotiator-openenv",
+      "Angshuman28/crisis_world",
+      "openfree/LLM_Quantization",
+      "Saiyam0211/polyglot-redteam",
+      "Wan-AI/Wan-2.2-5B",
+      "allenai/reward-bench",
+      "cvachet/pdf-chatbot",
+      "multimodalart/self-forcing",
+      "eduagarcia/open_pt_llm_leaderboard",
+      "Heartsync/VEO3-RealTime",
+      "Heartsync/Wan-2.2-ADULT",
+      "fffiloni/Wan2.1-VACE-1.3B",
+      "flowers-team/StickToYourRoleLeaderboard",
+      "logikon/open_cot_leaderboard",
+      "KBaba7/Quant",
+      "fffiloni/Wan2.1",
+      "Sarath0x8f/Document-QA-bot",
+      "lulavc/Z-Image-Turbo",
+      "IndexTeam/AnisoraV3",
+      "whitecircle-ai/circle-guard-bench",
+      "ginigen/Wan-2.2-Enhanced",
+      "fffiloni/Reward-Forcing",
+      "FallnAI/Quantize-HF-Models",
+      "HPAI-BSC/TuRTLe-Leaderboard",
+      "KwabsHug/GameConfigIdea",
+      "bhaskartripathi/LLM_Quantization",
+      "nvidia/judges-verdict",
+      "herokominato/Wan2.2-Animate-ZEROGPU",
+      "TencentARC/RollingForcing",
+      "KempnerInstituteAI/LVP",
+      "cot-leaderboard/open-cot-dashboard",
+      "MERaLiON/SeaEval_Leaderboard",
+      "lightmate/llm-chatbot",
+      "rubenroy/Zurich-7B",
+      "YinmingHuang/StableAvatar",
+      "Westlake-AGI-Lab/FlowDirector",
+      "Agents-MCP-Hackathon/Aura_AI_Scan",
+      "haodongli/RollingSink",
+      "filbench/filbench-leaderboard",
+      "nyax/PhyloLM",
+      "seawolf2357/LLM_Quantization",
+      "wana14/Wan-2.2-5B",
+      "totolook/Quant",
+      "MCP-1st-Birthday/Round_2",
+      "BaoNhan/MinerU_2.5_plus_Intelligent_Reasoning_and_Knowledge_Explorer",
+      "bscs-27-005/Callbot",
+      "chyams/llm-explorer",
+      "Aniun/semantic_github",
+      "nic00laj/Qwen-Qwen2.5-7B-Instruct",
+      "cstr/PDF-Summarizer",
+      "K00B404/LLM_Quantization",
+      "tsi-org/pixio-video-stream",
+      "TTimur/OpenLLMKyrgyzLeaderboard_v0.1",
+      "MCP-1st-Birthday/Spice_Bae",
+      "marcelo1126/InfiniteTalk",
+      "vaibhavpandeyvpz/wan2.2-text-image-to-video",
+      "ZalzalaKhan/disaster-rag",
+      "Pulkit-exe/Course_Recommendation_System",
+      "pateljee/Qwen-Qwen2.5-7B-Instruct",
+      "UltraRonin/LR2Bench_old",
+      "nuojohnchen/JudgeLRMDemo",
+      "zhwang4ai/GenerativeReasoningBenchmark",
+      "chenzihong/GraphGen",
+      "shmuelamar/igcs-demo",
+      "jbilcke-hf/NON_WORKING_matrix_game_2",
+      "Speedofmastery/orynxml-backend",
+      "vaibhavpandeyvpz/wan2.1-flf2v-image-to-video",
+      "PanchamJ/wan2.1-flf2v-image-to-video",
+      "Zhongzhi1228/synthesis-demo",
+      "LLM-NLOL/CitationHelper",
+      "ahmedsaeed2515/AgriRAG-API",
+      "veeiiinnnnn/Qurio"
+    ],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModelForCausalLM",
+      "pipeline_tag": "text-generation",
+      "processor": "AutoTokenizer"
+    },
+    "safetensors": {
+      "parameters": {
+        "BF16": 7615616512
+      },
+      "total": 7615616512
+    },
+    "widgetData": [
+      {
+        "text": "Hi, what can you help me with?"
+      },
+      {
+        "text": "What is 84 * 3 / 2?"
+      },
+      {
+        "text": "Tell me an interesting fact about the universe!"
+      },
+      {
+        "text": "Explain quantum computing in simple terms."
+      }
+    ],
+    "_raw_response": {
+      "_id": "66e81cbcd683a3f4e5291bbf",
+      "id": "Qwen/Qwen2.5-7B-Instruct",
+      "private": false,
+      "pipeline_tag": "text-generation",
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "qwen2",
+        "text-generation",
+        "chat",
+        "conversational",
+        "en",
+        "arxiv:2309.00071",
+        "arxiv:2407.10671",
+        "base_model:Qwen/Qwen2.5-7B",
+        "base_model:finetune:Qwen/Qwen2.5-7B",
+        "license:apache-2.0",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "deploy:azure",
+        "region:us",
+        "provider:qwen",
+        "variant:Qwen2.5-7B-Instruct"
+      ],
+      "downloads": 13382483,
+      "likes": 1248,
+      "modelId": "Qwen/Qwen2.5-7B-Instruct",
+      "author": "Qwen",
+      "sha": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "lastModified": "2025-01-12T02:10:10.000Z",
+      "gated": false,
+      "disabled": false,
+      "widgetData": [
+        {
+          "text": "Hi, what can you help me with?"
+        },
+        {
+          "text": "What is 84 * 3 / 2?"
+        },
+        {
+          "text": "Tell me an interesting fact about the universe!"
+        },
+        {
+          "text": "Explain quantum computing in simple terms."
+        }
+      ],
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "model_type": "qwen2",
+        "tokenizer_config": {
+          "bos_token": null,
+          "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+          "eos_token": "<|im_end|>",
+          "pad_token": "<|endoftext|>",
+          "unk_token": null
+        }
+      },
+      "cardData": {
+        "license": "apache-2.0",
+        "license_link": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/LICENSE",
+        "language": [
+          "en"
+        ],
+        "pipeline_tag": "text-generation",
+        "base_model": "Qwen/Qwen2.5-7B",
+        "tags": [
+          "chat"
+        ],
+        "library_name": "transformers"
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForCausalLM",
+        "pipeline_tag": "text-generation",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "LICENSE"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "generation_config.json"
+        },
+        {
+          "rfilename": "merges.txt"
+        },
+        {
+          "rfilename": "model-00001-of-00004.safetensors"
+        },
+        {
+          "rfilename": "model-00002-of-00004.safetensors"
+        },
+        {
+          "rfilename": "model-00003-of-00004.safetensors"
+        },
+        {
+          "rfilename": "model-00004-of-00004.safetensors"
+        },
+        {
+          "rfilename": "model.safetensors.index.json"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "vocab.json"
+        }
+      ],
+      "spaces": [
+        "pliny-the-prompter/obliteratus",
+        "alexnasa/Wan2.2-Animate-ZEROGPU",
+        "Adityahars/Sanskrit-env",
+        "Mihir1107/TheSnitch",
+        "Agnuxo/OpenCLAW-Agent",
+        "Loosebag/SSS-Startup-Survival-Simulator",
+        "glitchfilter/methanol-apc-env",
+        "rohanjain1648/alice-rl-training",
+        "yaswanth169/apishift-env",
+        "neuralninja110/SAGE",
+        "fffiloni/Meigen-MultiTalk",
+        "ruslanmv/convert_to_gguf",
+        "rohanjain1648/alice-rl-environment",
+        "Prajwal782007/Gridmind",
+        "RH29152/IBAhive-RAG",
+        "CPater/nwo-agent-graph",
+        "Shasidharyadavr/netweaver_sre",
+        "Idred/BlastRadius-OpenEnv",
+        "DJ-Goanna-Coding/citadel-agentic-swarm",
+        "LAI-TEQUMSA/TEQUMSA-HOLO-Interface",
+        "akashkathole/reconcile_gst2b_env",
+        "faais-k/ascent-interview-backend",
+        "sergiopaniego/repl-env",
+        "amrmohamedali/Labor_law",
+        "agarwalanu3103/clarify-rl",
+        "anirudw/rveda-rcm-arena",
+        "vinod2005/social-engineer-arena",
+        "pranav-1100/phonepilot",
+        "Dinesh-052/crisis-negotiator-openenv",
+        "Angshuman28/crisis_world",
+        "openfree/LLM_Quantization",
+        "Saiyam0211/polyglot-redteam",
+        "Wan-AI/Wan-2.2-5B",
+        "allenai/reward-bench",
+        "cvachet/pdf-chatbot",
+        "multimodalart/self-forcing",
+        "eduagarcia/open_pt_llm_leaderboard",
+        "Heartsync/VEO3-RealTime",
+        "Heartsync/Wan-2.2-ADULT",
+        "fffiloni/Wan2.1-VACE-1.3B",
+        "flowers-team/StickToYourRoleLeaderboard",
+        "logikon/open_cot_leaderboard",
+        "KBaba7/Quant",
+        "fffiloni/Wan2.1",
+        "Sarath0x8f/Document-QA-bot",
+        "lulavc/Z-Image-Turbo",
+        "IndexTeam/AnisoraV3",
+        "whitecircle-ai/circle-guard-bench",
+        "ginigen/Wan-2.2-Enhanced",
+        "fffiloni/Reward-Forcing",
+        "FallnAI/Quantize-HF-Models",
+        "HPAI-BSC/TuRTLe-Leaderboard",
+        "KwabsHug/GameConfigIdea",
+        "bhaskartripathi/LLM_Quantization",
+        "nvidia/judges-verdict",
+        "herokominato/Wan2.2-Animate-ZEROGPU",
+        "TencentARC/RollingForcing",
+        "KempnerInstituteAI/LVP",
+        "cot-leaderboard/open-cot-dashboard",
+        "MERaLiON/SeaEval_Leaderboard",
+        "lightmate/llm-chatbot",
+        "rubenroy/Zurich-7B",
+        "YinmingHuang/StableAvatar",
+        "Westlake-AGI-Lab/FlowDirector",
+        "Agents-MCP-Hackathon/Aura_AI_Scan",
+        "haodongli/RollingSink",
+        "filbench/filbench-leaderboard",
+        "nyax/PhyloLM",
+        "seawolf2357/LLM_Quantization",
+        "wana14/Wan-2.2-5B",
+        "totolook/Quant",
+        "MCP-1st-Birthday/Round_2",
+        "BaoNhan/MinerU_2.5_plus_Intelligent_Reasoning_and_Knowledge_Explorer",
+        "bscs-27-005/Callbot",
+        "chyams/llm-explorer",
+        "Aniun/semantic_github",
+        "nic00laj/Qwen-Qwen2.5-7B-Instruct",
+        "cstr/PDF-Summarizer",
+        "K00B404/LLM_Quantization",
+        "tsi-org/pixio-video-stream",
+        "TTimur/OpenLLMKyrgyzLeaderboard_v0.1",
+        "MCP-1st-Birthday/Spice_Bae",
+        "marcelo1126/InfiniteTalk",
+        "vaibhavpandeyvpz/wan2.2-text-image-to-video",
+        "ZalzalaKhan/disaster-rag",
+        "Pulkit-exe/Course_Recommendation_System",
+        "pateljee/Qwen-Qwen2.5-7B-Instruct",
+        "UltraRonin/LR2Bench_old",
+        "nuojohnchen/JudgeLRMDemo",
+        "zhwang4ai/GenerativeReasoningBenchmark",
+        "chenzihong/GraphGen",
+        "shmuelamar/igcs-demo",
+        "jbilcke-hf/NON_WORKING_matrix_game_2",
+        "Speedofmastery/orynxml-backend",
+        "vaibhavpandeyvpz/wan2.1-flf2v-image-to-video",
+        "PanchamJ/wan2.1-flf2v-image-to-video",
+        "Zhongzhi1228/synthesis-demo",
+        "LLM-NLOL/CitationHelper",
+        "ahmedsaeed2515/AgriRAG-API",
+        "veeiiinnnnn/Qurio"
+      ],
+      "createdAt": "2024-09-16T11:55:40.000Z",
+      "safetensors": {
+        "parameters": {
+          "BF16": 7615616512
+        },
+        "total": 7615616512
+      },
+      "inference": "warm",
+      "usedStorage": 15231271888
+    }
+  }
+}

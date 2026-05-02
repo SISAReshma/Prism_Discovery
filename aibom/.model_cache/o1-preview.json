@@ -1,0 +1,68 @@
+{
+  "model_id": "o1-preview",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:15:02.398404",
+  "data": {
+    "card_data": {},
+    "config": {},
+    "readme_content": "",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "andy-o1-Q2_K.gguf"
+      },
+      {
+        "rfilename": "andy-o1-Q4_K_M.gguf"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "692e831300644dfa0476ae72",
+      "id": "Mindcraft-CE/Andy-o1-preview-GGUF",
+      "private": false,
+      "tags": [
+        "gguf",
+        "endpoints_compatible",
+        "region:us",
+        "conversational"
+      ],
+      "downloads": 7,
+      "likes": 0,
+      "modelId": "Mindcraft-CE/Andy-o1-preview-GGUF",
+      "author": "Mindcraft-CE",
+      "sha": "7fc0342fc55c2e5fe8dc0afb9b8038bfa7ba1f71",
+      "lastModified": "2025-12-02T06:31:09.000Z",
+      "gated": false,
+      "disabled": false,
+      "config": {},
+      "gguf": {
+        "total": 30532122624,
+        "architecture": "qwen3moe",
+        "context_length": 40960,
+        "chat_template": "{% if 'role' in messages[0] %}{% for message in messages %}{% if message['role'] == 'user' %}{{'<|im_start|>user\n' + message['content'] + '<|im_end|>\n'}}{% elif message['role'] == 'assistant' %}{{'<|im_start|>assistant\n' + message['content'] + '<|im_end|>\n' }}{% else %}{{ '<|im_start|>system\n' + message['content'] + '<|im_end|>\n' }}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}{% else %}{% for message in messages %}{% if message['from'] == 'human' %}{{'<|im_start|>user\n' + message['value'] + '<|im_end|>\n'}}{% elif message['from'] == 'gpt' %}{{'<|im_start|>assistant\n' + message['value'] + '<|im_end|>\n' }}{% else %}{{ '<|im_start|>system\n' + message['value'] + '<|im_end|>\n' }}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}{% endif %}",
+        "eos_token": "<|im_end|>"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "andy-o1-Q2_K.gguf"
+        },
+        {
+          "rfilename": "andy-o1-Q4_K_M.gguf"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-12-02T06:11:31.000Z",
+      "usedStorage": 29815288000
+    }
+  }
+}

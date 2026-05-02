@@ -1,0 +1,399 @@
+{
+  "model_id": "mistral_",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:14:41.862392",
+  "data": {
+    "card_data": {
+      "library_name": "vllm",
+      "license": "apache-2.0",
+      "base_model": "mistralai/Mistral-7B-v0.3",
+      "inference": false,
+      "extra_gated_description": "If you want to learn more about how we process your personal data, please read our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>.",
+      "tags": [
+        "vllm",
+        "mistral-common"
+      ]
+    },
+    "config": {
+      "architectures": [
+        "MistralForCausalLM"
+      ],
+      "model_type": "mistral",
+      "tokenizer_config": {
+        "bos_token": "<s>",
+        "chat_template": "{%- if messages[0][\"role\"] == \"system\" %}\n    {%- set system_message = messages[0][\"content\"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = none %}\n{%- endif %}\n{%- set user_messages = loop_messages | selectattr(\"role\", \"equalto\", \"user\") | list %}\n\n{#- This block checks for alternating user/assistant messages, skipping tool calling messages #}\n{%- set ns = namespace() %}\n{%- set ns.index = 0 %}\n{%- for message in loop_messages %}\n    {%- if not (message.role == \"tool\" or message.role == \"tool_results\" or (message.tool_calls is defined and message.tool_calls is not none)) %}\n        {%- if (message[\"role\"] == \"user\") != (ns.index % 2 == 0) %}\n            {{- raise_exception(\"After the optional system message, conversation roles must alternate user/assistant/user/assistant/...\") }}\n        {%- endif %}\n        {%- set ns.index = ns.index + 1 %}\n    {%- endif %}\n{%- endfor %}\n\n{{- bos_token }}\n{%- for message in loop_messages %}\n    {%- if message[\"role\"] == \"user\" %}\n        {%- if tools is not none and (message == user_messages[-1]) %}\n            {{- \"[AVAILABLE_TOOLS] [\" }}\n            {%- for tool in tools %}\n                {%- set tool = tool.function %}\n                {{- '{\"type\": \"function\", \"function\": {' }}\n                {%- for key, val in tool.items() if key != \"return\" %}\n                    {%- if val is string %}\n                        {{- '\"' + key + '\": \"' + val + '\"' }}\n                    {%- else %}\n                        {{- '\"' + key + '\": ' + val|tojson }}\n                    {%- endif %}\n                    {%- if not loop.last %}\n                        {{- \", \" }}\n                    {%- endif %}\n                {%- endfor %}\n                {{- \"}}\" }}\n                {%- if not loop.last %}\n                    {{- \", \" }}\n                {%- else %}\n                    {{- \"]\" }}\n                {%- endif %}\n            {%- endfor %}\n            {{- \"[/AVAILABLE_TOOLS]\" }}\n            {%- endif %}\n        {%- if loop.last and system_message is defined %}\n            {{- \"[INST] \" + system_message + \"\\n\\n\" + message[\"content\"] + \"[/INST]\" }}\n        {%- else %}\n            {{- \"[INST] \" + message[\"content\"] + \"[/INST]\" }}\n        {%- endif %}\n    {%- elif message.tool_calls is defined and message.tool_calls is not none %}\n        {{- \"[TOOL_CALLS] [\" }}\n        {%- for tool_call in message.tool_calls %}\n            {%- set out = tool_call.function|tojson %}\n            {{- out[:-1] }}\n            {%- if not tool_call.id is defined or tool_call.id|length != 9 %}\n                {{- raise_exception(\"Tool call IDs should be alphanumeric strings with length 9!\") }}\n            {%- endif %}\n            {{- ', \"id\": \"' + tool_call.id + '\"}' }}\n            {%- if not loop.last %}\n                {{- \", \" }}\n            {%- else %}\n                {{- \"]\" + eos_token }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif message[\"role\"] == \"assistant\" %}\n        {{- \" \" + message[\"content\"]|trim + eos_token}}\n    {%- elif message[\"role\"] == \"tool_results\" or message[\"role\"] == \"tool\" %}\n        {%- if message.content is defined and message.content.content is defined %}\n            {%- set content = message.content.content %}\n        {%- else %}\n            {%- set content = message.content %}\n        {%- endif %}\n        {{- '[TOOL_RESULTS] {\"content\": ' + content|string + \", \" }}\n        {%- if not message.tool_call_id is defined or message.tool_call_id|length != 9 %}\n            {{- raise_exception(\"Tool call IDs should be alphanumeric strings with length 9!\") }}\n        {%- endif %}\n        {{- '\"call_id\": \"' + message.tool_call_id + '\"}[/TOOL_RESULTS]' }}\n    {%- else %}\n        {{- raise_exception(\"Only user and assistant roles are supported, with the exception of an initial optional system message!\") }}\n    {%- endif %}\n{%- endfor %}\n",
+        "eos_token": "</s>",
+        "pad_token": null,
+        "unk_token": "<unk>",
+        "use_default_system_prompt": false
+      }
+    },
+    "readme_content": "---\nlibrary_name: vllm\nlicense: apache-2.0\nbase_model: mistralai/Mistral-7B-v0.3\ninference: false\nextra_gated_description: >-\n  If you want to learn more about how we process your personal data, please read\n  our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>.\ntags:\n- vllm\n- mistral-common\n---\n\n# Model Card for Mistral-7B-Instruct-v0.3\n\nThe Mistral-7B-Instruct-v0.3 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.3.\n\nMistral-7B-v0.3 has the following changes compared to [Mistral-7B-v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/edit/main/README.md)\n- Extended vocabulary to 32768\n- Supports v3 Tokenizer\n- Supports function calling\n\n## Installation\n\nIt is recommended to use `mistralai/Mistral-7B-Instruct-v0.3` with [mistral-inference](https://github.com/mistralai/mistral-inference). For HF transformers code snippets, please keep scrolling.\n\n```\npip install mistral_inference\n```\n\n## Download\n\n```py\nfrom huggingface_hub import snapshot_download\nfrom pathlib import Path\n\nmistral_models_path = Path.home().joinpath('mistral_models', '7B-Instruct-v0.3')\nmistral_models_path.mkdir(parents=True, exist_ok=True)\n\nsnapshot_download(repo_id=\"mistralai/Mistral-7B-Instruct-v0.3\", allow_patterns=[\"params.json\", \"consolidated.safetensors\", \"tokenizer.model.v3\"], local_dir=mistral_models_path)\n```\n\n### Chat\n\nAfter installing `mistral_inference`, a `mistral-chat` CLI command should be available in your environment. You can chat with the model using\n\n```\nmistral-chat $HOME/mistral_models/7B-Instruct-v0.3 --instruct --max_tokens 256\n```\n\n### Instruct following\n\n```py\nfrom mistral_inference.transformer import Transformer\nfrom mistral_inference.generate import generate\n\nfrom mistral_common.tokens.tokenizers.mistral import MistralTokenizer\nfrom mistral_common.protocol.instruct.messages import UserMessage\nfrom mistral_common.protocol.instruct.request import ChatCompletionRequest\n\n\ntokenizer = MistralTokenizer.from_file(f\"{mistral_models_path}/tokenizer.model.v3\")\nmodel = Transformer.from_folder(mistral_models_path)\n\ncompletion_request = ChatCompletionRequest(messages=[UserMessage(content=\"Explain Machine Learning to me in a nutshell.\")])\n\ntokens = tokenizer.encode_chat_completion(completion_request).tokens\n\nout_tokens, _ = generate([tokens], model, max_tokens=64, temperature=0.0, eos_id=tokenizer.instruct_tokenizer.tokenizer.eos_id)\nresult = tokenizer.instruct_tokenizer.tokenizer.decode(out_tokens[0])\n\nprint(result)\n```\n\n### Function calling\n\n```py\nfrom mistral_common.protocol.instruct.tool_calls import Function, Tool\nfrom mistral_inference.transformer import Transformer\nfrom mistral_inference.generate import generate\n\nfrom mistral_common.tokens.tokenizers.mistral import MistralTokenizer\nfrom mistral_common.protocol.instruct.messages import UserMessage\nfrom mistral_common.protocol.instruct.request import ChatCompletionRequest\n\n\ntokenizer = MistralTokenizer.from_file(f\"{mistral_models_path}/tokenizer.model.v3\")\nmodel = Transformer.from_folder(mistral_models_path)\n\ncompletion_request = ChatCompletionRequest(\n    tools=[\n        Tool(\n            function=Function(\n                name=\"get_current_weather\",\n                description=\"Get the current weather\",\n                parameters={\n                    \"type\": \"object\",\n                    \"properties\": {\n                        \"location\": {\n                            \"type\": \"string\",\n                            \"description\": \"The city and state, e.g. San Francisco, CA\",\n                        },\n                        \"format\": {\n                            \"type\": \"string\",\n                            \"enum\": [\"celsius\", \"fahrenheit\"],\n                            \"description\": \"The temperature unit to use. Infer this from the users location.\",\n                        },\n                    },\n                    \"required\": [\"location\", \"format\"],\n                },\n            )\n        )\n    ],\n    messages=[\n        UserMessage(content=\"What's the weather like today in Paris?\"),\n        ],\n)\n\ntokens = tokenizer.encode_chat_completion(completion_request).tokens\n\nout_tokens, _ = generate([tokens], model, max_tokens=64, temperature=0.0, eos_id=tokenizer.instruct_tokenizer.tokenizer.eos_id)\nresult = tokenizer.instruct_tokenizer.tokenizer.decode(out_tokens[0])\n\nprint(result)\n```\n\n## Generate with `transformers`\n\nIf you want to use Hugging Face `transformers` to generate text, you can do something like this.\n\n```py\nfrom transformers import pipeline\n\nmessages = [\n    {\"role\": \"system\", \"content\": \"You are a pirate chatbot who always responds in pirate speak!\"},\n    {\"role\": \"user\", \"content\": \"Who are you?\"},\n]\nchatbot = pipeline(\"text-generation\", model=\"mistralai/Mistral-7B-Instruct-v0.3\")\nchatbot(messages)\n```\n\n\n## Function calling with `transformers`\n\nTo use this example, you'll need `transformers` version 4.42.0 or higher. Please see the \n[function calling guide](https://huggingface.co/docs/transformers/main/chat_templating#advanced-tool-use--function-calling)\nin the `transformers` docs for more information.\n\n```python\nfrom transformers import AutoModelForCausalLM, AutoTokenizer\nimport torch\n\nmodel_id = \"mistralai/Mistral-7B-Instruct-v0.3\"\ntokenizer = AutoTokenizer.from_pretrained(model_id)\n\ndef get_current_weather(location: str, format: str):\n    \"\"\"\n    Get the current weather\n\n    Args:\n        location: The city and state, e.g. San Francisco, CA\n        format: The temperature unit to use. Infer this from the users location. (choices: [\"celsius\", \"fahrenheit\"])\n    \"\"\"\n    pass\n\nconversation = [{\"role\": \"user\", \"content\": \"What's the weather like in Paris?\"}]\ntools = [get_current_weather]\n\n\n# format and tokenize the tool use prompt \ninputs = tokenizer.apply_chat_template(\n            conversation,\n            tools=tools,\n            add_generation_prompt=True,\n            return_dict=True,\n            return_tensors=\"pt\",\n)\n\nmodel = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.bfloat16, device_map=\"auto\")\n\ninputs.to(model.device)\noutputs = model.generate(**inputs, max_new_tokens=1000)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n```\n\nNote that, for reasons of space, this example does not show a complete cycle of calling a tool and adding the tool call and tool\nresults to the chat history so that the model can use them in its next generation. For a full tool calling example, please\nsee the [function calling guide](https://huggingface.co/docs/transformers/main/chat_templating#advanced-tool-use--function-calling), \nand note that Mistral **does** use tool call IDs, so these must be included in your tool calls and tool results. They should be\nexactly 9 alphanumeric characters.\n\n\n## Limitations\n\nThe Mistral 7B Instruct model is a quick demonstration that the base model can be easily fine-tuned to achieve compelling performance. \nIt does not have any moderation mechanisms. We're looking forward to engaging with the community on ways to\nmake the model finely respect guardrails, allowing for deployment in environments requiring moderated outputs.\n\n## The Mistral AI Team\n\nAlbert Jiang, Alexandre Sablayrolles, Alexis Tacnet, Antoine Roux, Arthur Mensch, Audrey Herblin-Stoop, Baptiste Bout, Baudouin de Monicault, Blanche Savary, Bam4d, Caroline Feldman, Devendra Singh Chaplot, Diego de las Casas, Eleonore Arcelin, Emma Bou Hanna, Etienne Metzger, Gianna Lengyel, Guillaume Bour, Guillaume Lample, Harizo Rajaona, Jean-Malo Delignon, Jia Li, Justus Murke, Louis Martin, Louis Ternon, Lucile Saulnier, L\u00e9lio Renard Lavaud, Margaret Jennings, Marie Pellat, Marie Torelli, Marie-Anne Lachaux, Nicolas Schuhl, Patrick von Platen, Pierre Stock, Sandeep Subramanian, Sophia Yang, Szymon Antoniak, Teven Le Scao, Thibaut Lavril, Timoth\u00e9e Lacroix, Th\u00e9ophile Gervet, Thomas Wang, Valera Nemychnikova, William El Sayed, William Marshall",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "consolidated.safetensors"
+      },
+      {
+        "rfilename": "generation_config.json"
+      },
+      {
+        "rfilename": "model-00001-of-00003.safetensors"
+      },
+      {
+        "rfilename": "model-00002-of-00003.safetensors"
+      },
+      {
+        "rfilename": "model-00003-of-00003.safetensors"
+      },
+      {
+        "rfilename": "model.safetensors.index.json"
+      },
+      {
+        "rfilename": "params.json"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer.model"
+      },
+      {
+        "rfilename": "tokenizer.model.v3"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      }
+    ],
+    "spaces": [
+      "pliny-the-prompter/obliteratus",
+      "Adityahars/Sanskrit-env",
+      "Mihir1107/TheSnitch",
+      "rohanjain1648/alice-rl-training",
+      "JournalistsonHF/huggingface-on-sheets",
+      "ruslanmv/convert_to_gguf",
+      "eduagarcia/multilingual-tokenizer-leaderboard",
+      "CPater/nwo-agent-graph",
+      "LAI-TEQUMSA/TEQUMSA-HOLO-Interface",
+      "Angshuman28/crisis_world",
+      "iam4tt4/agentic-crm-support",
+      "openfree/LLM_Quantization",
+      "gokaygokay/FLUX-Prompt-Generator",
+      "reach-vb/2024-ai-timeline",
+      "cvachet/pdf-chatbot",
+      "eduagarcia/open_pt_llm_leaderboard",
+      "hysts/mistral-7b",
+      "gokaygokay/SD3.5-with-Captioner",
+      "yousef4/mistral-7b-v0.3-chat",
+      "KingNish/OpenCHAT-Mini",
+      "flowers-team/StickToYourRoleLeaderboard",
+      "Nymbo/FLUX-Prompt-Generator",
+      "logikon/open_cot_leaderboard",
+      "KBaba7/Quant",
+      "ysharma/Chat_with_Mistral_V0.3",
+      "gokaygokay/SD3.5-Prompt-Generator",
+      "poscye/ddg-web-search-chat",
+      "Nymbo/Serverless-TextGen-Hub",
+      "NiansuhAI/HFLLMs",
+      "Bhaskar2611/Code_Generator_best",
+      "vilarin/Translation-Agent-WebUI",
+      "KingNish/OpenCHAT-mini2",
+      "poscye/google-go",
+      "CZLC/BenCzechMark",
+      "FINAL-Bench/worldmodel-bench",
+      "AiActivity/AI-Assistant",
+      "Skier8402/mistral-super-fast",
+      "ehristoforu/mistral-7b-v0.3-chat",
+      "bartar/tokenizers",
+      "FallnAI/Quantize-HF-Models",
+      "KwabsHug/GameConfigIdea",
+      "VinayHajare/MistralTalk",
+      "bhaskartripathi/LLM_Quantization",
+      "Ateeqq/Mistral-7B-Instruct-v0.3",
+      "Shreyas094/SearchGPT",
+      "phyloforfun/VoucherVision",
+      "Justinrune/LLaMA-Factory",
+      "Agents-MCP-Hackathon/KarmaCheck",
+      "NiansuhAI/Main",
+      "cot-leaderboard/open-cot-dashboard",
+      "Clone04/mistral-7b-v0.3-chatbpt",
+      "Agents-MCP-Hackathon/TDAgent",
+      "MCP-1st-Birthday/DeepBoner",
+      "Lumpen1/llama-cpp-agent",
+      "Deddy/Smart_Idea_Generator",
+      "responsible-prompting/demo-multiturn",
+      "Aabbhishekk/ChatPdf",
+      "poscye/mistral",
+      "kaleidoskop-hug/StreamlitChat_Test",
+      "Agents-MCP-Hackathon/xhmcp",
+      "Agents-MCP-Hackathon/comic_generator",
+      "infinitymatter/synthdatagen",
+      "seawolf2357/LLM_Quantization",
+      "HathoraResearch/LLM-KV-cache-calculator",
+      "TheStageAI/ANNA-LLM",
+      "awacke1/ChatStreamlitMultiplayer",
+      "John6666/llm-multi-demo",
+      "totolook/Quant",
+      "Lyte/tokenizer-leaderboard",
+      "saikub/chatB",
+      "Akjava/mistral-7b-v0.3-matcha-tts-en",
+      "Jyothikamalesh/Vendor-contract-extractor",
+      "m96tkmok/llama3.2_RAG_PDF_Chatbot",
+      "NithyasriVllB/Chat_flash_sel_model",
+      "cstr/PDF-Summarizer",
+      "Chetan3110/Newsify-AI",
+      "fhudi/textgames",
+      "weoweke23/mistralai-Mistral-7B-Instruct-v0.3",
+      "Alexbbqq/mistral-7b-v0.3-chat",
+      "EthicalMindSet/AI_Argument_Analyzer",
+      "Theartplug/Theartplugchatbot",
+      "K00B404/LLM_Quantization",
+      "keeperballon/multi-llm",
+      "Chinar-Q-AI/Image2Story",
+      "MCP-1st-Birthday/NACC-VM",
+      "Jedi09/voice_to_text_gemini",
+      "ArtelTaleb/hello-3d-world",
+      "exnrt/mistral-7b-v0.3-chatbpt",
+      "rajeshk10/HealthMate-AI",
+      "vilarin/podcast",
+      "killerz3/PodGen",
+      "dwb2023/model_explorer2",
+      "Ahil1991/AI_Space_Public",
+      "aliceblue11/logo_o1-preview",
+      "nbroad/HF-API-monitor",
+      "phamngoctukts/assistant",
+      "Aarvee320/Short-Story-Generator",
+      "pratikshahp/agent-persona",
+      "UltraRonin/LR2Bench_old",
+      "rajapandi2618/fake-product-detection"
+    ],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {
+      "parameters": {
+        "BF16": 7248023552
+      },
+      "total": 7248023552
+    },
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "664dc170474f2283fa5c8659",
+      "id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "private": false,
+      "library_name": "vllm",
+      "tags": [
+        "vllm",
+        "safetensors",
+        "mistral",
+        "mistral-common",
+        "base_model:mistralai/Mistral-7B-v0.3",
+        "base_model:finetune:mistralai/Mistral-7B-v0.3",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "downloads": 3343530,
+      "likes": 2543,
+      "modelId": "mistralai/Mistral-7B-Instruct-v0.3",
+      "author": "mistralai",
+      "sha": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "lastModified": "2025-12-03T12:13:48.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "MistralForCausalLM"
+        ],
+        "model_type": "mistral",
+        "tokenizer_config": {
+          "bos_token": "<s>",
+          "chat_template": "{%- if messages[0][\"role\"] == \"system\" %}\n    {%- set system_message = messages[0][\"content\"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = none %}\n{%- endif %}\n{%- set user_messages = loop_messages | selectattr(\"role\", \"equalto\", \"user\") | list %}\n\n{#- This block checks for alternating user/assistant messages, skipping tool calling messages #}\n{%- set ns = namespace() %}\n{%- set ns.index = 0 %}\n{%- for message in loop_messages %}\n    {%- if not (message.role == \"tool\" or message.role == \"tool_results\" or (message.tool_calls is defined and message.tool_calls is not none)) %}\n        {%- if (message[\"role\"] == \"user\") != (ns.index % 2 == 0) %}\n            {{- raise_exception(\"After the optional system message, conversation roles must alternate user/assistant/user/assistant/...\") }}\n        {%- endif %}\n        {%- set ns.index = ns.index + 1 %}\n    {%- endif %}\n{%- endfor %}\n\n{{- bos_token }}\n{%- for message in loop_messages %}\n    {%- if message[\"role\"] == \"user\" %}\n        {%- if tools is not none and (message == user_messages[-1]) %}\n            {{- \"[AVAILABLE_TOOLS] [\" }}\n            {%- for tool in tools %}\n                {%- set tool = tool.function %}\n                {{- '{\"type\": \"function\", \"function\": {' }}\n                {%- for key, val in tool.items() if key != \"return\" %}\n                    {%- if val is string %}\n                        {{- '\"' + key + '\": \"' + val + '\"' }}\n                    {%- else %}\n                        {{- '\"' + key + '\": ' + val|tojson }}\n                    {%- endif %}\n                    {%- if not loop.last %}\n                        {{- \", \" }}\n                    {%- endif %}\n                {%- endfor %}\n                {{- \"}}\" }}\n                {%- if not loop.last %}\n                    {{- \", \" }}\n                {%- else %}\n                    {{- \"]\" }}\n                {%- endif %}\n            {%- endfor %}\n            {{- \"[/AVAILABLE_TOOLS]\" }}\n            {%- endif %}\n        {%- if loop.last and system_message is defined %}\n            {{- \"[INST] \" + system_message + \"\\n\\n\" + message[\"content\"] + \"[/INST]\" }}\n        {%- else %}\n            {{- \"[INST] \" + message[\"content\"] + \"[/INST]\" }}\n        {%- endif %}\n    {%- elif message.tool_calls is defined and message.tool_calls is not none %}\n        {{- \"[TOOL_CALLS] [\" }}\n        {%- for tool_call in message.tool_calls %}\n            {%- set out = tool_call.function|tojson %}\n            {{- out[:-1] }}\n            {%- if not tool_call.id is defined or tool_call.id|length != 9 %}\n                {{- raise_exception(\"Tool call IDs should be alphanumeric strings with length 9!\") }}\n            {%- endif %}\n            {{- ', \"id\": \"' + tool_call.id + '\"}' }}\n            {%- if not loop.last %}\n                {{- \", \" }}\n            {%- else %}\n                {{- \"]\" + eos_token }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif message[\"role\"] == \"assistant\" %}\n        {{- \" \" + message[\"content\"]|trim + eos_token}}\n    {%- elif message[\"role\"] == \"tool_results\" or message[\"role\"] == \"tool\" %}\n        {%- if message.content is defined and message.content.content is defined %}\n            {%- set content = message.content.content %}\n        {%- else %}\n            {%- set content = message.content %}\n        {%- endif %}\n        {{- '[TOOL_RESULTS] {\"content\": ' + content|string + \", \" }}\n        {%- if not message.tool_call_id is defined or message.tool_call_id|length != 9 %}\n            {{- raise_exception(\"Tool call IDs should be alphanumeric strings with length 9!\") }}\n        {%- endif %}\n        {{- '\"call_id\": \"' + message.tool_call_id + '\"}[/TOOL_RESULTS]' }}\n    {%- else %}\n        {{- raise_exception(\"Only user and assistant roles are supported, with the exception of an initial optional system message!\") }}\n    {%- endif %}\n{%- endfor %}\n",
+          "eos_token": "</s>",
+          "pad_token": null,
+          "unk_token": "<unk>",
+          "use_default_system_prompt": false
+        }
+      },
+      "cardData": {
+        "library_name": "vllm",
+        "license": "apache-2.0",
+        "base_model": "mistralai/Mistral-7B-v0.3",
+        "inference": false,
+        "extra_gated_description": "If you want to learn more about how we process your personal data, please read our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>.",
+        "tags": [
+          "vllm",
+          "mistral-common"
+        ]
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "consolidated.safetensors"
+        },
+        {
+          "rfilename": "generation_config.json"
+        },
+        {
+          "rfilename": "model-00001-of-00003.safetensors"
+        },
+        {
+          "rfilename": "model-00002-of-00003.safetensors"
+        },
+        {
+          "rfilename": "model-00003-of-00003.safetensors"
+        },
+        {
+          "rfilename": "model.safetensors.index.json"
+        },
+        {
+          "rfilename": "params.json"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer.model"
+        },
+        {
+          "rfilename": "tokenizer.model.v3"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        }
+      ],
+      "spaces": [
+        "pliny-the-prompter/obliteratus",
+        "Adityahars/Sanskrit-env",
+        "Mihir1107/TheSnitch",
+        "rohanjain1648/alice-rl-training",
+        "JournalistsonHF/huggingface-on-sheets",
+        "ruslanmv/convert_to_gguf",
+        "eduagarcia/multilingual-tokenizer-leaderboard",
+        "CPater/nwo-agent-graph",
+        "LAI-TEQUMSA/TEQUMSA-HOLO-Interface",
+        "Angshuman28/crisis_world",
+        "iam4tt4/agentic-crm-support",
+        "openfree/LLM_Quantization",
+        "gokaygokay/FLUX-Prompt-Generator",
+        "reach-vb/2024-ai-timeline",
+        "cvachet/pdf-chatbot",
+        "eduagarcia/open_pt_llm_leaderboard",
+        "hysts/mistral-7b",
+        "gokaygokay/SD3.5-with-Captioner",
+        "yousef4/mistral-7b-v0.3-chat",
+        "KingNish/OpenCHAT-Mini",
+        "flowers-team/StickToYourRoleLeaderboard",
+        "Nymbo/FLUX-Prompt-Generator",
+        "logikon/open_cot_leaderboard",
+        "KBaba7/Quant",
+        "ysharma/Chat_with_Mistral_V0.3",
+        "gokaygokay/SD3.5-Prompt-Generator",
+        "poscye/ddg-web-search-chat",
+        "Nymbo/Serverless-TextGen-Hub",
+        "NiansuhAI/HFLLMs",
+        "Bhaskar2611/Code_Generator_best",
+        "vilarin/Translation-Agent-WebUI",
+        "KingNish/OpenCHAT-mini2",
+        "poscye/google-go",
+        "CZLC/BenCzechMark",
+        "FINAL-Bench/worldmodel-bench",
+        "AiActivity/AI-Assistant",
+        "Skier8402/mistral-super-fast",
+        "ehristoforu/mistral-7b-v0.3-chat",
+        "bartar/tokenizers",
+        "FallnAI/Quantize-HF-Models",
+        "KwabsHug/GameConfigIdea",
+        "VinayHajare/MistralTalk",
+        "bhaskartripathi/LLM_Quantization",
+        "Ateeqq/Mistral-7B-Instruct-v0.3",
+        "Shreyas094/SearchGPT",
+        "phyloforfun/VoucherVision",
+        "Justinrune/LLaMA-Factory",
+        "Agents-MCP-Hackathon/KarmaCheck",
+        "NiansuhAI/Main",
+        "cot-leaderboard/open-cot-dashboard",
+        "Clone04/mistral-7b-v0.3-chatbpt",
+        "Agents-MCP-Hackathon/TDAgent",
+        "MCP-1st-Birthday/DeepBoner",
+        "Lumpen1/llama-cpp-agent",
+        "Deddy/Smart_Idea_Generator",
+        "responsible-prompting/demo-multiturn",
+        "Aabbhishekk/ChatPdf",
+        "poscye/mistral",
+        "kaleidoskop-hug/StreamlitChat_Test",
+        "Agents-MCP-Hackathon/xhmcp",
+        "Agents-MCP-Hackathon/comic_generator",
+        "infinitymatter/synthdatagen",
+        "seawolf2357/LLM_Quantization",
+        "HathoraResearch/LLM-KV-cache-calculator",
+        "TheStageAI/ANNA-LLM",
+        "awacke1/ChatStreamlitMultiplayer",
+        "John6666/llm-multi-demo",
+        "totolook/Quant",
+        "Lyte/tokenizer-leaderboard",
+        "saikub/chatB",
+        "Akjava/mistral-7b-v0.3-matcha-tts-en",
+        "Jyothikamalesh/Vendor-contract-extractor",
+        "m96tkmok/llama3.2_RAG_PDF_Chatbot",
+        "NithyasriVllB/Chat_flash_sel_model",
+        "cstr/PDF-Summarizer",
+        "Chetan3110/Newsify-AI",
+        "fhudi/textgames",
+        "weoweke23/mistralai-Mistral-7B-Instruct-v0.3",
+        "Alexbbqq/mistral-7b-v0.3-chat",
+        "EthicalMindSet/AI_Argument_Analyzer",
+        "Theartplug/Theartplugchatbot",
+        "K00B404/LLM_Quantization",
+        "keeperballon/multi-llm",
+        "Chinar-Q-AI/Image2Story",
+        "MCP-1st-Birthday/NACC-VM",
+        "Jedi09/voice_to_text_gemini",
+        "ArtelTaleb/hello-3d-world",
+        "exnrt/mistral-7b-v0.3-chatbpt",
+        "rajeshk10/HealthMate-AI",
+        "vilarin/podcast",
+        "killerz3/PodGen",
+        "dwb2023/model_explorer2",
+        "Ahil1991/AI_Space_Public",
+        "aliceblue11/logo_o1-preview",
+        "nbroad/HF-API-monitor",
+        "phamngoctukts/assistant",
+        "Aarvee320/Short-Story-Generator",
+        "pratikshahp/agent-persona",
+        "UltraRonin/LR2Bench_old",
+        "rajapandi2618/fake-product-detection"
+      ],
+      "createdAt": "2024-05-22T09:57:04.000Z",
+      "safetensors": {
+        "parameters": {
+          "BF16": 7248023552
+        },
+        "total": 7248023552
+      },
+      "usedStorage": 28992746844
+    }
+  }
+}

@@ -1,0 +1,596 @@
+{
+  "model_id": "all-mpnet-base-v2",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:11:30.665731",
+  "data": {
+    "card_data": {
+      "language": "en",
+      "license": "apache-2.0",
+      "library_name": "sentence-transformers",
+      "tags": [
+        "sentence-transformers",
+        "feature-extraction",
+        "sentence-similarity",
+        "transformers",
+        "text-embeddings-inference"
+      ],
+      "datasets": [
+        "s2orc",
+        "flax-sentence-embeddings/stackexchange_xml",
+        "ms_marco",
+        "gooaq",
+        "yahoo_answers_topics",
+        "code_search_net",
+        "search_qa",
+        "eli5",
+        "snli",
+        "multi_nli",
+        "wikihow",
+        "natural_questions",
+        "trivia_qa",
+        "embedding-data/sentence-compression",
+        "embedding-data/flickr30k-captions",
+        "embedding-data/altlex",
+        "embedding-data/simple-wiki",
+        "embedding-data/QQP",
+        "embedding-data/SPECTER",
+        "embedding-data/PAQ_pairs",
+        "embedding-data/WikiAnswers"
+      ],
+      "pipeline_tag": "sentence-similarity"
+    },
+    "config": {
+      "architectures": [
+        "MPNetForMaskedLM"
+      ],
+      "model_type": "mpnet",
+      "tokenizer_config": {
+        "bos_token": "<s>",
+        "eos_token": "</s>",
+        "sep_token": "</s>",
+        "cls_token": "<s>",
+        "unk_token": "[UNK]",
+        "pad_token": "<pad>",
+        "mask_token": "<mask>"
+      }
+    },
+    "readme_content": "---\nlanguage: en\nlicense: apache-2.0\nlibrary_name: sentence-transformers\ntags:\n- sentence-transformers\n- feature-extraction\n- sentence-similarity\n- transformers\n- text-embeddings-inference\ndatasets:\n- s2orc\n- flax-sentence-embeddings/stackexchange_xml\n- ms_marco\n- gooaq\n- yahoo_answers_topics\n- code_search_net\n- search_qa\n- eli5\n- snli\n- multi_nli\n- wikihow\n- natural_questions\n- trivia_qa\n- embedding-data/sentence-compression\n- embedding-data/flickr30k-captions\n- embedding-data/altlex\n- embedding-data/simple-wiki\n- embedding-data/QQP\n- embedding-data/SPECTER\n- embedding-data/PAQ_pairs\n- embedding-data/WikiAnswers\npipeline_tag: sentence-similarity\n---\n\n\n# all-mpnet-base-v2\nThis is a [sentence-transformers](https://www.SBERT.net) model: It maps sentences & paragraphs to a 768 dimensional dense vector space and can be used for tasks like clustering or semantic search.\n\n## Usage (Sentence-Transformers)\nUsing this model becomes easy when you have [sentence-transformers](https://www.SBERT.net) installed:\n\n```\npip install -U sentence-transformers\n```\n\nThen you can use the model like this:\n```python\nfrom sentence_transformers import SentenceTransformer\nsentences = [\"This is an example sentence\", \"Each sentence is converted\"]\n\nmodel = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')\nembeddings = model.encode(sentences)\nprint(embeddings)\n```\n\n## Usage (HuggingFace Transformers)\nWithout [sentence-transformers](https://www.SBERT.net), you can use the model like this: First, you pass your input through the transformer model, then you have to apply the right pooling-operation on-top of the contextualized word embeddings.\n\n```python\nfrom transformers import AutoTokenizer, AutoModel\nimport torch\nimport torch.nn.functional as F\n\n#Mean Pooling - Take attention mask into account for correct averaging\ndef mean_pooling(model_output, attention_mask):\n    token_embeddings = model_output[0] #First element of model_output contains all token embeddings\n    input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()\n    return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)\n\n\n# Sentences we want sentence embeddings for\nsentences = ['This is an example sentence', 'Each sentence is converted']\n\n# Load model from HuggingFace Hub\ntokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-mpnet-base-v2')\nmodel = AutoModel.from_pretrained('sentence-transformers/all-mpnet-base-v2')\n\n# Tokenize sentences\nencoded_input = tokenizer(sentences, padding=True, truncation=True, return_tensors='pt')\n\n# Compute token embeddings\nwith torch.no_grad():\n    model_output = model(**encoded_input)\n\n# Perform pooling\nsentence_embeddings = mean_pooling(model_output, encoded_input['attention_mask'])\n\n# Normalize embeddings\nsentence_embeddings = F.normalize(sentence_embeddings, p=2, dim=1)\n\nprint(\"Sentence embeddings:\")\nprint(sentence_embeddings)\n```\n\n## Usage (Text Embeddings Inference (TEI))\n\n[Text Embeddings Inference (TEI)](https://github.com/huggingface/text-embeddings-inference) is a blazing fast inference solution for text embedding models.\n\n- CPU:\n```bash\ndocker run -p 8080:80 -v hf_cache:/data --pull always ghcr.io/huggingface/text-embeddings-inference:cpu-latest --model-id sentence-transformers/all-mpnet-base-v2 --pooling mean --dtype float16\n```\n\n- NVIDIA GPU:\n```bash\ndocker run --gpus all -p 8080:80 -v hf_cache:/data --pull always ghcr.io/huggingface/text-embeddings-inference:cuda-latest --model-id sentence-transformers/all-mpnet-base-v2 --pooling mean --dtype float16\n```\n\nSend a request to `/v1/embeddings` to generate embeddings via the [OpenAI Embeddings API](https://platform.openai.com/docs/api-reference/embeddings/create):\n```bash\ncurl http://localhost:8080/v1/embeddings \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"sentence-transformers/all-mpnet-base-v2\",\n    \"input\": [\"This is an example sentence\", \"Each sentence is converted\"]\n  }'\n```\n\nOr check the [Text Embeddings Inference API specification](https://huggingface.github.io/text-embeddings-inference/) instead.\n\n------\n\n## Background\n\nThe project aims to train sentence embedding models on very large sentence level datasets using a self-supervised \ncontrastive learning objective. We used the pretrained [`microsoft/mpnet-base`](https://huggingface.co/microsoft/mpnet-base) model and fine-tuned in on a \n1B sentence pairs dataset. We use a contrastive learning objective: given a sentence from the pair, the model should predict which out of a set of randomly sampled other sentences, was actually paired with it in our dataset.\n\nWe developed this model during the \n[Community week using JAX/Flax for NLP & CV](https://discuss.huggingface.co/t/open-to-the-community-community-week-using-jax-flax-for-nlp-cv/7104), \norganized by Hugging Face. We developed this model as part of the project:\n[Train the Best Sentence Embedding Model Ever with 1B Training Pairs](https://discuss.huggingface.co/t/train-the-best-sentence-embedding-model-ever-with-1b-training-pairs/7354). We benefited from efficient hardware infrastructure to run the project: 7 TPUs v3-8, as well as intervention from Googles Flax, JAX, and Cloud team member about efficient deep learning frameworks.\n\n## Intended uses\n\nOur model is intented to be used as a sentence and short paragraph encoder. Given an input text, it outputs a vector which captures \nthe semantic information. The sentence vector may be used for information retrieval, clustering or sentence similarity tasks.\n\nBy default, input text longer than 384 word pieces is truncated.\n\n\n## Training procedure\n\n### Pre-training \n\nWe use the pretrained [`microsoft/mpnet-base`](https://huggingface.co/microsoft/mpnet-base) model. Please refer to the model card for more detailed information about the pre-training procedure.\n\n### Fine-tuning \n\nWe fine-tune the model using a contrastive objective. Formally, we compute the cosine similarity from each possible sentence pairs from the batch.\nWe then apply the cross entropy loss by comparing with true pairs.\n\n#### Hyper parameters\n\nWe trained our model on a TPU v3-8. We train the model during 100k steps using a batch size of 1024 (128 per TPU core).\nWe use a learning rate warm up of 500. The sequence length was limited to 128 tokens. We used the AdamW optimizer with\na 2e-5 learning rate. The full training script is accessible in this current repository: `train_script.py`.\n\n#### Training data\n\nWe use the concatenation from multiple datasets to fine-tune our model. The total number of sentence pairs is above 1 billion sentences.\nWe sampled each dataset given a weighted probability which configuration is detailed in the `data_config.json` file.\n\n\n| Dataset                                                  | Paper                                    | Number of training tuples  |\n|--------------------------------------------------------|:----------------------------------------:|:--------------------------:|\n| [Reddit comments (2015-2018)](https://github.com/PolyAI-LDN/conversational-datasets/tree/master/reddit) | [paper](https://arxiv.org/abs/1904.06472) | 726,484,430 |\n| [S2ORC](https://github.com/allenai/s2orc) Citation pairs (Abstracts) | [paper](https://aclanthology.org/2020.acl-main.447/) | 116,288,806 |\n| [WikiAnswers](https://github.com/afader/oqa#wikianswers-corpus) Duplicate question pairs | [paper](https://doi.org/10.1145/2623330.2623677) | 77,427,422 |\n| [PAQ](https://github.com/facebookresearch/PAQ) (Question, Answer) pairs | [paper](https://arxiv.org/abs/2102.07033) | 64,371,441 |\n| [S2ORC](https://github.com/allenai/s2orc) Citation pairs (Titles) | [paper](https://aclanthology.org/2020.acl-main.447/) | 52,603,982 |\n| [S2ORC](https://github.com/allenai/s2orc) (Title, Abstract) | [paper](https://aclanthology.org/2020.acl-main.447/) | 41,769,185 |\n| [Stack Exchange](https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_xml) (Title, Body) pairs  | - | 25,316,456 |\n| [Stack Exchange](https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_xml) (Title+Body, Answer) pairs  | - | 21,396,559 |\n| [Stack Exchange](https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_xml) (Title, Answer) pairs  | - | 21,396,559 |\n| [MS MARCO](https://microsoft.github.io/msmarco/) triplets | [paper](https://doi.org/10.1145/3404835.3462804) | 9,144,553 |\n| [GOOAQ: Open Question Answering with Diverse Answer Types](https://github.com/allenai/gooaq) | [paper](https://arxiv.org/pdf/2104.08727.pdf) | 3,012,496 |\n| [Yahoo Answers](https://www.kaggle.com/soumikrakshit/yahoo-answers-dataset) (Title, Answer) | [paper](https://proceedings.neurips.cc/paper/2015/hash/250cf8b51c773f3f8dc8b4be867a9a02-Abstract.html) | 1,198,260 |\n| [Code Search](https://huggingface.co/datasets/code_search_net) | - | 1,151,414 |\n| [COCO](https://cocodataset.org/#home) Image captions | [paper](https://link.springer.com/chapter/10.1007%2F978-3-319-10602-1_48) | 828,395|\n| [SPECTER](https://github.com/allenai/specter) citation triplets | [paper](https://doi.org/10.18653/v1/2020.acl-main.207) | 684,100 |\n| [Yahoo Answers](https://www.kaggle.com/soumikrakshit/yahoo-answers-dataset) (Question, Answer) | [paper](https://proceedings.neurips.cc/paper/2015/hash/250cf8b51c773f3f8dc8b4be867a9a02-Abstract.html) | 681,164 |\n| [Yahoo Answers](https://www.kaggle.com/soumikrakshit/yahoo-answers-dataset) (Title, Question) | [paper](https://proceedings.neurips.cc/paper/2015/hash/250cf8b51c773f3f8dc8b4be867a9a02-Abstract.html) | 659,896 |\n| [SearchQA](https://huggingface.co/datasets/search_qa) | [paper](https://arxiv.org/abs/1704.05179) | 582,261 |\n| [Eli5](https://huggingface.co/datasets/eli5) | [paper](https://doi.org/10.18653/v1/p19-1346) | 325,475 |\n| [Flickr 30k](https://shannon.cs.illinois.edu/DenotationGraph/) | [paper](https://transacl.org/ojs/index.php/tacl/article/view/229/33) | 317,695 |\n| [Stack Exchange](https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_xml) Duplicate questions (titles) | | 304,525 |\n| AllNLI ([SNLI](https://nlp.stanford.edu/projects/snli/) and [MultiNLI](https://cims.nyu.edu/~sbowman/multinli/) | [paper SNLI](https://doi.org/10.18653/v1/d15-1075), [paper MultiNLI](https://doi.org/10.18653/v1/n18-1101) | 277,230 | \n| [Stack Exchange](https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_xml) Duplicate questions (bodies) | | 250,519 |\n| [Stack Exchange](https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_xml) Duplicate questions (titles+bodies) | | 250,460 |\n| [Sentence Compression](https://github.com/google-research-datasets/sentence-compression) | [paper](https://www.aclweb.org/anthology/D13-1155/) | 180,000 |\n| [Wikihow](https://github.com/pvl/wikihow_pairs_dataset) | [paper](https://arxiv.org/abs/1810.09305) | 128,542 |\n| [Altlex](https://github.com/chridey/altlex/) | [paper](https://aclanthology.org/P16-1135.pdf) | 112,696 |\n| [Quora Question Triplets](https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs) | - | 103,663 |\n| [Simple Wikipedia](https://cs.pomona.edu/~dkauchak/simplification/) | [paper](https://www.aclweb.org/anthology/P11-2117/) | 102,225 |\n| [Natural Questions (NQ)](https://ai.google.com/research/NaturalQuestions) | [paper](https://transacl.org/ojs/index.php/tacl/article/view/1455) | 100,231 |\n| [SQuAD2.0](https://rajpurkar.github.io/SQuAD-explorer/) | [paper](https://aclanthology.org/P18-2124.pdf) | 87,599 |\n| [TriviaQA](https://huggingface.co/datasets/trivia_qa) | - | 73,346 |\n| **Total** | | **1,170,060,424** |",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "1_Pooling/config.json"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "config_sentence_transformers.json"
+      },
+      {
+        "rfilename": "data_config.json"
+      },
+      {
+        "rfilename": "model.safetensors"
+      },
+      {
+        "rfilename": "modules.json"
+      },
+      {
+        "rfilename": "onnx/model.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O1.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O2.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O3.onnx"
+      },
+      {
+        "rfilename": "onnx/model_O4.onnx"
+      },
+      {
+        "rfilename": "onnx/model_qint8_arm64.onnx"
+      },
+      {
+        "rfilename": "onnx/model_qint8_avx512.onnx"
+      },
+      {
+        "rfilename": "onnx/model_qint8_avx512_vnni.onnx"
+      },
+      {
+        "rfilename": "onnx/model_quint8_avx2.onnx"
+      },
+      {
+        "rfilename": "openvino/openvino_model.bin"
+      },
+      {
+        "rfilename": "openvino/openvino_model.xml"
+      },
+      {
+        "rfilename": "openvino/openvino_model_qint8_quantized.bin"
+      },
+      {
+        "rfilename": "openvino/openvino_model_qint8_quantized.xml"
+      },
+      {
+        "rfilename": "pytorch_model.bin"
+      },
+      {
+        "rfilename": "sentence_bert_config.json"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      },
+      {
+        "rfilename": "train_script.py"
+      },
+      {
+        "rfilename": "vocab.txt"
+      }
+    ],
+    "spaces": [
+      "mteb/leaderboard",
+      "eduagarcia/multilingual-tokenizer-leaderboard",
+      "DJ-Goanna-Coding/citadel-agentic-swarm",
+      "maxpar1/leaderboard",
+      "aryachakraborty/Lexis",
+      "faais-k/ascent-interview-backend",
+      "sentence-transformers/embeddings-semantic-search",
+      "huggingface/data-measurements-tool",
+      "nickmuchi/semantic-search-with-retrieve-and-rerank",
+      "nickmuchi/Earnings-Call-Analysis-Whisperer",
+      "mteb/leaderboard_legacy",
+      "garage-lab/MCP_HTML2JSON",
+      "fisherman611/gaia-agent",
+      "Zenne/chatbot_for_files_langchain",
+      "Gradio-Blocks/pubmed-abstract-retriever",
+      "antonovmaxim/text-generation-webui-space",
+      "Agents-MCP-Hackathon/MCP_Server_Web2JSON",
+      "cropinailab/aksara",
+      "luis112/text-generation-webui",
+      "pritamdeka/health-article-keyphrase-generator",
+      "nickmuchi/Netflix-Semantic-Search-Whisperer",
+      "EuroPython2022/clickbaitonator",
+      "nickmuchi/fintweet-GPT-Search",
+      "firefighter/TransDis-CreativityAutoAssessment",
+      "MarkoVidrih/Chat-With-PDF-document",
+      "samim2024/PDF-RAG",
+      "magnolia-psychometrics/synth-net",
+      "pritamdeka/pubmed-abstract-retriever",
+      "ysharma/Blip_PlaygroundAI",
+      "Aabbhishekk/ChatPdf",
+      "dorkai/text-generation-webui-main",
+      "yaoshining/text-generation-webui",
+      "bhavyagiri/retrieving-memes",
+      "raphaelsty/games",
+      "awinml/2-qa-earnings-sentencewise",
+      "BIOML-SVM/SVM",
+      "captain-awesome/Docuverse-zephyr-beta",
+      "avilum/anomaly-detection",
+      "SmileXing/leaderboard",
+      "Hellisotherpeople/DebateKG",
+      "Aabbhishekk/Chat-Pdf-With-Search-Assistant",
+      "vaishnaveswar/AIVIZ-BOT",
+      "GeorgiosIoannouCoder/cuny-tech-prep-tutorial-5",
+      "m96tkmok/llama3.2_RAG_PDF_Chatbot",
+      "lukasgarbas/transformer-ranker",
+      "ZeroTimo/RobotPai",
+      "GovindKurapati/dev_docs_chat",
+      "rivapereira123/firstaid",
+      "Shouryahere/infy",
+      "summerstay/vectorAPI",
+      "hf-task-exploration/ExploreACMnaacl",
+      "srush/minichain",
+      "xsigus24/text-generation-webui",
+      "Reiner4/extras",
+      "lonardonifabio/MistralUncensoredChat",
+      "HuggingFaceM4/IDEFICS_Data_Measurement_Tool",
+      "tensorgirl/Restaurant-Chatbot",
+      "Udbhav44/VOX_RAG",
+      "W404NET/My-Chat",
+      "theArijitDas/Product-Description-Similarity",
+      "Mishal23/e-commerce-customer-support-chatbot",
+      "prathameshks/Multi-File-Chatting",
+      "RaghuCourage9605/Multi-Modal-RAG",
+      "Reality123b/XylariaDeepReason",
+      "alx-d/PhiRAG",
+      "vikramronavrsc/BLOCHAIN_RAG_FOR_LASTDAY_EXAM_PREP",
+      "ChienChung/SmartRAG_Multi-Agent_Assistant_",
+      "KingName1/recipe_recommendation_system",
+      "atrmkj/medTranscript_QA_agent",
+      "Gabriel382/Final_Assignment_Template",
+      "pranavupadhyaya52/MediWiki_Medical_Assistant",
+      "Chinar-Q-AI/Resume-Matcher-Advisor",
+      "MahekTrivedi/forensiqally",
+      "yliu38/PhD-Graduation-UTH",
+      "anu151105/agentic-browser",
+      "ipepe/nomic-embeddings",
+      "martintaki/rp-chatbot",
+      "satyaki-mitra/Text_Authenticator",
+      "jnalv/embedding-fingerprints",
+      "sanket-ai-builder/medical-chatbot",
+      "pmikh26/emotion-speech-analyzer",
+      "amryassin/embedding-bench",
+      "Dusan/clickbaitonator",
+      "rizam/literature-research-tool",
+      "at2507/SM_NLP_RecoSys",
+      "simplyjaga/movie_genius",
+      "haoqi7/research",
+      "Devap001/top-5_movies_recommendation",
+      "anandaa/careerpal",
+      "czczycz/QABot",
+      "andreasmartin/faq",
+      "autumn8/selectModel",
+      "ashercn97/AsherTesting",
+      "pikto/Elite-text-gen-web",
+      "jdonovan/text-generation-webui",
+      "fittar/summagary",
+      "teganmosi/medicalchatbot",
+      "ashwinpatti/indian_movie_search",
+      "rngd/text-generation-webui",
+      "lonardonifabio/MistralDocIngestion"
+    ],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModelForMaskedLM",
+      "pipeline_tag": "fill-mask",
+      "processor": "AutoTokenizer"
+    },
+    "safetensors": {
+      "parameters": {
+        "I64": 514,
+        "F32": 109486464
+      },
+      "total": 109486978
+    },
+    "widgetData": [
+      {
+        "source_sentence": "That is a happy person",
+        "sentences": [
+          "That is a happy dog",
+          "That is a very happy person",
+          "Today is a sunny day"
+        ]
+      }
+    ],
+    "_raw_response": {
+      "_id": "621ffdc136468d709f180297",
+      "id": "sentence-transformers/all-mpnet-base-v2",
+      "private": false,
+      "pipeline_tag": "sentence-similarity",
+      "library_name": "sentence-transformers",
+      "tags": [
+        "sentence-transformers",
+        "pytorch",
+        "onnx",
+        "safetensors",
+        "openvino",
+        "mpnet",
+        "fill-mask",
+        "feature-extraction",
+        "sentence-similarity",
+        "transformers",
+        "text-embeddings-inference",
+        "en",
+        "dataset:s2orc",
+        "dataset:flax-sentence-embeddings/stackexchange_xml",
+        "dataset:ms_marco",
+        "dataset:gooaq",
+        "dataset:yahoo_answers_topics",
+        "dataset:code_search_net",
+        "dataset:search_qa",
+        "dataset:eli5",
+        "dataset:snli",
+        "dataset:multi_nli",
+        "dataset:wikihow",
+        "dataset:natural_questions",
+        "dataset:trivia_qa",
+        "dataset:embedding-data/sentence-compression",
+        "dataset:embedding-data/flickr30k-captions",
+        "dataset:embedding-data/altlex",
+        "dataset:embedding-data/simple-wiki",
+        "dataset:embedding-data/QQP",
+        "dataset:embedding-data/SPECTER",
+        "dataset:embedding-data/PAQ_pairs",
+        "dataset:embedding-data/WikiAnswers",
+        "arxiv:1904.06472",
+        "arxiv:2102.07033",
+        "arxiv:2104.08727",
+        "arxiv:1704.05179",
+        "arxiv:1810.09305",
+        "license:apache-2.0",
+        "eval-results",
+        "endpoints_compatible",
+        "deploy:azure",
+        "region:us"
+      ],
+      "downloads": 36066087,
+      "likes": 1284,
+      "modelId": "sentence-transformers/all-mpnet-base-v2",
+      "author": "sentence-transformers",
+      "sha": "e8c3b32edf5434bc2275fc9bab85f82640a19130",
+      "lastModified": "2025-08-19T10:14:25.000Z",
+      "gated": false,
+      "disabled": false,
+      "widgetData": [
+        {
+          "source_sentence": "That is a happy person",
+          "sentences": [
+            "That is a happy dog",
+            "That is a very happy person",
+            "Today is a sunny day"
+          ]
+        }
+      ],
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "MPNetForMaskedLM"
+        ],
+        "model_type": "mpnet",
+        "tokenizer_config": {
+          "bos_token": "<s>",
+          "eos_token": "</s>",
+          "sep_token": "</s>",
+          "cls_token": "<s>",
+          "unk_token": "[UNK]",
+          "pad_token": "<pad>",
+          "mask_token": "<mask>"
+        }
+      },
+      "cardData": {
+        "language": "en",
+        "license": "apache-2.0",
+        "library_name": "sentence-transformers",
+        "tags": [
+          "sentence-transformers",
+          "feature-extraction",
+          "sentence-similarity",
+          "transformers",
+          "text-embeddings-inference"
+        ],
+        "datasets": [
+          "s2orc",
+          "flax-sentence-embeddings/stackexchange_xml",
+          "ms_marco",
+          "gooaq",
+          "yahoo_answers_topics",
+          "code_search_net",
+          "search_qa",
+          "eli5",
+          "snli",
+          "multi_nli",
+          "wikihow",
+          "natural_questions",
+          "trivia_qa",
+          "embedding-data/sentence-compression",
+          "embedding-data/flickr30k-captions",
+          "embedding-data/altlex",
+          "embedding-data/simple-wiki",
+          "embedding-data/QQP",
+          "embedding-data/SPECTER",
+          "embedding-data/PAQ_pairs",
+          "embedding-data/WikiAnswers"
+        ],
+        "pipeline_tag": "sentence-similarity"
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForMaskedLM",
+        "pipeline_tag": "fill-mask",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "1_Pooling/config.json"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "config_sentence_transformers.json"
+        },
+        {
+          "rfilename": "data_config.json"
+        },
+        {
+          "rfilename": "model.safetensors"
+        },
+        {
+          "rfilename": "modules.json"
+        },
+        {
+          "rfilename": "onnx/model.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O1.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O2.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O3.onnx"
+        },
+        {
+          "rfilename": "onnx/model_O4.onnx"
+        },
+        {
+          "rfilename": "onnx/model_qint8_arm64.onnx"
+        },
+        {
+          "rfilename": "onnx/model_qint8_avx512.onnx"
+        },
+        {
+          "rfilename": "onnx/model_qint8_avx512_vnni.onnx"
+        },
+        {
+          "rfilename": "onnx/model_quint8_avx2.onnx"
+        },
+        {
+          "rfilename": "openvino/openvino_model.bin"
+        },
+        {
+          "rfilename": "openvino/openvino_model.xml"
+        },
+        {
+          "rfilename": "openvino/openvino_model_qint8_quantized.bin"
+        },
+        {
+          "rfilename": "openvino/openvino_model_qint8_quantized.xml"
+        },
+        {
+          "rfilename": "pytorch_model.bin"
+        },
+        {
+          "rfilename": "sentence_bert_config.json"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "train_script.py"
+        },
+        {
+          "rfilename": "vocab.txt"
+        }
+      ],
+      "spaces": [
+        "mteb/leaderboard",
+        "eduagarcia/multilingual-tokenizer-leaderboard",
+        "DJ-Goanna-Coding/citadel-agentic-swarm",
+        "maxpar1/leaderboard",
+        "aryachakraborty/Lexis",
+        "faais-k/ascent-interview-backend",
+        "sentence-transformers/embeddings-semantic-search",
+        "huggingface/data-measurements-tool",
+        "nickmuchi/semantic-search-with-retrieve-and-rerank",
+        "nickmuchi/Earnings-Call-Analysis-Whisperer",
+        "mteb/leaderboard_legacy",
+        "garage-lab/MCP_HTML2JSON",
+        "fisherman611/gaia-agent",
+        "Zenne/chatbot_for_files_langchain",
+        "Gradio-Blocks/pubmed-abstract-retriever",
+        "antonovmaxim/text-generation-webui-space",
+        "Agents-MCP-Hackathon/MCP_Server_Web2JSON",
+        "cropinailab/aksara",
+        "luis112/text-generation-webui",
+        "pritamdeka/health-article-keyphrase-generator",
+        "nickmuchi/Netflix-Semantic-Search-Whisperer",
+        "EuroPython2022/clickbaitonator",
+        "nickmuchi/fintweet-GPT-Search",
+        "firefighter/TransDis-CreativityAutoAssessment",
+        "MarkoVidrih/Chat-With-PDF-document",
+        "samim2024/PDF-RAG",
+        "magnolia-psychometrics/synth-net",
+        "pritamdeka/pubmed-abstract-retriever",
+        "ysharma/Blip_PlaygroundAI",
+        "Aabbhishekk/ChatPdf",
+        "dorkai/text-generation-webui-main",
+        "yaoshining/text-generation-webui",
+        "bhavyagiri/retrieving-memes",
+        "raphaelsty/games",
+        "awinml/2-qa-earnings-sentencewise",
+        "BIOML-SVM/SVM",
+        "captain-awesome/Docuverse-zephyr-beta",
+        "avilum/anomaly-detection",
+        "SmileXing/leaderboard",
+        "Hellisotherpeople/DebateKG",
+        "Aabbhishekk/Chat-Pdf-With-Search-Assistant",
+        "vaishnaveswar/AIVIZ-BOT",
+        "GeorgiosIoannouCoder/cuny-tech-prep-tutorial-5",
+        "m96tkmok/llama3.2_RAG_PDF_Chatbot",
+        "lukasgarbas/transformer-ranker",
+        "ZeroTimo/RobotPai",
+        "GovindKurapati/dev_docs_chat",
+        "rivapereira123/firstaid",
+        "Shouryahere/infy",
+        "summerstay/vectorAPI",
+        "hf-task-exploration/ExploreACMnaacl",
+        "srush/minichain",
+        "xsigus24/text-generation-webui",
+        "Reiner4/extras",
+        "lonardonifabio/MistralUncensoredChat",
+        "HuggingFaceM4/IDEFICS_Data_Measurement_Tool",
+        "tensorgirl/Restaurant-Chatbot",
+        "Udbhav44/VOX_RAG",
+        "W404NET/My-Chat",
+        "theArijitDas/Product-Description-Similarity",
+        "Mishal23/e-commerce-customer-support-chatbot",
+        "prathameshks/Multi-File-Chatting",
+        "RaghuCourage9605/Multi-Modal-RAG",
+        "Reality123b/XylariaDeepReason",
+        "alx-d/PhiRAG",
+        "vikramronavrsc/BLOCHAIN_RAG_FOR_LASTDAY_EXAM_PREP",
+        "ChienChung/SmartRAG_Multi-Agent_Assistant_",
+        "KingName1/recipe_recommendation_system",
+        "atrmkj/medTranscript_QA_agent",
+        "Gabriel382/Final_Assignment_Template",
+        "pranavupadhyaya52/MediWiki_Medical_Assistant",
+        "Chinar-Q-AI/Resume-Matcher-Advisor",
+        "MahekTrivedi/forensiqally",
+        "yliu38/PhD-Graduation-UTH",
+        "anu151105/agentic-browser",
+        "ipepe/nomic-embeddings",
+        "martintaki/rp-chatbot",
+        "satyaki-mitra/Text_Authenticator",
+        "jnalv/embedding-fingerprints",
+        "sanket-ai-builder/medical-chatbot",
+        "pmikh26/emotion-speech-analyzer",
+        "amryassin/embedding-bench",
+        "Dusan/clickbaitonator",
+        "rizam/literature-research-tool",
+        "at2507/SM_NLP_RecoSys",
+        "simplyjaga/movie_genius",
+        "haoqi7/research",
+        "Devap001/top-5_movies_recommendation",
+        "anandaa/careerpal",
+        "czczycz/QABot",
+        "andreasmartin/faq",
+        "autumn8/selectModel",
+        "ashercn97/AsherTesting",
+        "pikto/Elite-text-gen-web",
+        "jdonovan/text-generation-webui",
+        "fittar/summagary",
+        "teganmosi/medicalchatbot",
+        "ashwinpatti/indian_movie_search",
+        "rngd/text-generation-webui",
+        "lonardonifabio/MistralDocIngestion"
+      ],
+      "createdAt": "2022-03-02T23:29:05.000Z",
+      "safetensors": {
+        "parameters": {
+          "I64": 514,
+          "F32": 109486464
+        },
+        "total": 109486978
+      },
+      "inference": "warm",
+      "usedStorage": 4105073268
+    }
+  }
+}

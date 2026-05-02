@@ -1,0 +1,215 @@
+{
+  "model_id": "gpt-4o",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:11:58.613993",
+  "data": {
+    "card_data": {
+      "library_name": "transformers",
+      "base_model": [
+        "tartuNLP/Llammas-base"
+      ],
+      "language": [
+        "et"
+      ],
+      "pipeline_tag": "text-generation",
+      "license": "llama2",
+      "tags": [
+        "GEC"
+      ]
+    },
+    "config": {
+      "architectures": [
+        "LlamaForCausalLM"
+      ],
+      "model_type": "llama",
+      "tokenizer_config": {
+        "bos_token": "<s>",
+        "eos_token": "</s>",
+        "pad_token": null,
+        "unk_token": "<unk>",
+        "use_default_system_prompt": false
+      }
+    },
+    "readme_content": "---\nlibrary_name: transformers\nbase_model:\n- tartuNLP/Llammas-base\nlanguage:\n- et\npipeline_tag: text-generation\nlicense: llama2\ntags:\n- GEC\n---\n\n# Model Card for tartuNLP/Llammas-base-p1-GPT-4o-human-error-mix-paragraph-GEC\n\nThe user\u2019s input text, i.e., a paragraph, is passed to the first model M1 (this model) as a whole, which then outputs the corrected text.\n\n![image/png](assets/figure.png)\n\n## Citation\nhttps://aclanthology.org/2025.bea-1.72/\n\n**BibTeX:**\n\n```\n@inproceedings{vainikko-etal-2025-paragraph,\n    title = \"Paragraph-level Error Correction and Explanation Generation: Case Study for {E}stonian\",\n    author = \"Vainikko, Martin  and\n      Kamarik, Taavi  and\n      Kert, Karina  and\n      Liin, Krista  and\n      Maine, Silvia  and\n      Allkivi, Kais  and\n      Kaivapalu, Annekatrin  and\n      Fishel, Mark\",\n    editor = {Kochmar, Ekaterina  and\n      Alhafni, Bashar  and\n      Bexte, Marie  and\n      Burstein, Jill  and\n      Horbach, Andrea  and\n      Laarmann-Quante, Ronja  and\n      Tack, Ana{\\\"i}s  and\n      Yaneva, Victoria  and\n      Yuan, Zheng},\n    booktitle = \"Proceedings of the 20th Workshop on Innovative Use of NLP for Building Educational Applications (BEA 2025)\",\n    month = jul,\n    year = \"2025\",\n    address = \"Vienna, Austria\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://aclanthology.org/2025.bea-1.72/\",\n    doi = \"10.18653/v1/2025.bea-1.72\",\n    pages = \"953--967\",\n    ISBN = \"979-8-89176-270-1\",\n    abstract = \"We present a case study on building task-specific models for grammatical error correction and explanation generation tailored to learners of Estonian. Our approach handles whole paragraphs instead of sentences and leverages prompting proprietary large language models for generating synthetic training data, addressing the limited availability of error correction data and the complete absence of correction justification/explanation data in Estonian. We describe the chosen approach and pipeline and provide technical details for the experimental part. The final outcome is a set of open-weight models, which are released with a permissive license along with the generated synthetic error correction and explanation data.\"\n}\n```",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "assets/figure.png"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "generation_config.json"
+      },
+      {
+        "rfilename": "model-00001-of-00006.safetensors"
+      },
+      {
+        "rfilename": "model-00002-of-00006.safetensors"
+      },
+      {
+        "rfilename": "model-00003-of-00006.safetensors"
+      },
+      {
+        "rfilename": "model-00004-of-00006.safetensors"
+      },
+      {
+        "rfilename": "model-00005-of-00006.safetensors"
+      },
+      {
+        "rfilename": "model-00006-of-00006.safetensors"
+      },
+      {
+        "rfilename": "model.safetensors.index.json"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer.model"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModelForCausalLM",
+      "pipeline_tag": "text-generation",
+      "processor": "AutoTokenizer"
+    },
+    "safetensors": {
+      "parameters": {
+        "F32": 6738415616
+      },
+      "total": 6738415616
+    },
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "67ab4040298946442cd9858e",
+      "id": "tartuNLP/Llammas-base-p1-GPT-4o-human-error-mix-paragraph-GEC",
+      "private": false,
+      "pipeline_tag": "text-generation",
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "llama",
+        "text-generation",
+        "GEC",
+        "et",
+        "base_model:tartuNLP/Llammas-base",
+        "base_model:finetune:tartuNLP/Llammas-base",
+        "license:llama2",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "downloads": 36493,
+      "likes": 0,
+      "modelId": "tartuNLP/Llammas-base-p1-GPT-4o-human-error-mix-paragraph-GEC",
+      "author": "tartuNLP",
+      "sha": "effd79a34887e18294eae5867b04589361e118c0",
+      "lastModified": "2026-04-08T09:12:24.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "config": {
+        "architectures": [
+          "LlamaForCausalLM"
+        ],
+        "model_type": "llama",
+        "tokenizer_config": {
+          "bos_token": "<s>",
+          "eos_token": "</s>",
+          "pad_token": null,
+          "unk_token": "<unk>",
+          "use_default_system_prompt": false
+        }
+      },
+      "cardData": {
+        "library_name": "transformers",
+        "base_model": [
+          "tartuNLP/Llammas-base"
+        ],
+        "language": [
+          "et"
+        ],
+        "pipeline_tag": "text-generation",
+        "license": "llama2",
+        "tags": [
+          "GEC"
+        ]
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForCausalLM",
+        "pipeline_tag": "text-generation",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "assets/figure.png"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "generation_config.json"
+        },
+        {
+          "rfilename": "model-00001-of-00006.safetensors"
+        },
+        {
+          "rfilename": "model-00002-of-00006.safetensors"
+        },
+        {
+          "rfilename": "model-00003-of-00006.safetensors"
+        },
+        {
+          "rfilename": "model-00004-of-00006.safetensors"
+        },
+        {
+          "rfilename": "model-00005-of-00006.safetensors"
+        },
+        {
+          "rfilename": "model-00006-of-00006.safetensors"
+        },
+        {
+          "rfilename": "model.safetensors.index.json"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "tokenizer.model"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2025-02-11T12:19:12.000Z",
+      "safetensors": {
+        "parameters": {
+          "F32": 6738415616
+        },
+        "total": 6738415616
+      },
+      "usedStorage": 26954349900
+    }
+  }
+}

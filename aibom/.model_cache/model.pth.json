@@ -1,0 +1,177 @@
+{
+  "model_id": "model.pth",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:14:51.046128",
+  "data": {
+    "card_data": {
+      "license": "apache-2.0",
+      "base_model": "t5-small",
+      "tags": [
+        "generated_from_trainer"
+      ],
+      "metrics": [
+        "bleu"
+      ],
+      "model-index": [
+        {
+          "name": "model.pth",
+          "results": []
+        }
+      ]
+    },
+    "config": {
+      "architectures": [
+        "T5ForConditionalGeneration"
+      ],
+      "model_type": "t5",
+      "tokenizer_config": {
+        "eos_token": "</s>",
+        "pad_token": "<pad>",
+        "unk_token": "<unk>"
+      }
+    },
+    "readme_content": "---\nlicense: apache-2.0\nbase_model: t5-small\ntags:\n- generated_from_trainer\nmetrics:\n- bleu\nmodel-index:\n- name: model.pth\n  results: []\n---\n\n<!-- This model card has been generated automatically according to the information the Trainer had access to. You\nshould probably proofread and complete it, then remove this comment. -->\n\n# model.pth\n\nThis model is a fine-tuned version of [t5-small](https://huggingface.co/t5-small) on the None dataset.\nIt achieves the following results on the evaluation set:\n- Loss: 1.3288\n- Bleu: 32.5195\n- Gen Len: 15.495\n\n## Model description\n\nMore information needed\n\n## Intended uses & limitations\n\nMore information needed\n\n## Training and evaluation data\n\nMore information needed\n\n## Training procedure\n\n### Training hyperparameters\n\nThe following hyperparameters were used during training:\n- learning_rate: 2e-05\n- train_batch_size: 16\n- eval_batch_size: 16\n- seed: 42\n- optimizer: Adam with betas=(0.9,0.999) and epsilon=1e-08\n- lr_scheduler_type: linear\n- num_epochs: 5\n\n### Training results\n\n| Training Loss | Epoch | Step | Validation Loss | Bleu    | Gen Len |\n|:-------------:|:-----:|:----:|:---------------:|:-------:|:-------:|\n| 1.8396        | 1.0   | 1813 | 1.5050          | 27.2908 | 15.573  |\n| 1.6604        | 2.0   | 3626 | 1.4070          | 30.2936 | 15.532  |\n| 1.6017        | 3.0   | 5439 | 1.3574          | 31.9889 | 15.502  |\n| 1.5473        | 4.0   | 7252 | 1.3368          | 32.426  | 15.507  |\n| 1.5354        | 5.0   | 9065 | 1.3288          | 32.5195 | 15.495  |\n\n\n### Framework versions\n\n- Transformers 4.32.1\n- Pytorch 2.0.1\n- Datasets 2.14.5\n- Tokenizers 0.13.3\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "config.json"
+      },
+      {
+        "rfilename": "generation_config.json"
+      },
+      {
+        "rfilename": "pytorch_model.bin"
+      },
+      {
+        "rfilename": "special_tokens_map.json"
+      },
+      {
+        "rfilename": "spiece.model"
+      },
+      {
+        "rfilename": "tokenizer.json"
+      },
+      {
+        "rfilename": "tokenizer_config.json"
+      },
+      {
+        "rfilename": "training_args.bin"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {
+      "auto_model": "AutoModelForSeq2SeqLM",
+      "pipeline_tag": "text2text-generation",
+      "processor": "AutoTokenizer"
+    },
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "652e767e04a34a92828bf3f1",
+      "id": "USRNMISCL/model.pth",
+      "private": false,
+      "library_name": "transformers",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "t5",
+        "text2text-generation",
+        "generated_from_trainer",
+        "base_model:google-t5/t5-small",
+        "base_model:finetune:google-t5/t5-small",
+        "license:apache-2.0",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "downloads": 11,
+      "likes": 0,
+      "modelId": "USRNMISCL/model.pth",
+      "author": "USRNMISCL",
+      "sha": "c5d05697325a953796026f173bf76fc8597fdce7",
+      "lastModified": "2023-10-17T12:56:46.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": [
+        {
+          "name": "model.pth",
+          "results": []
+        }
+      ],
+      "config": {
+        "architectures": [
+          "T5ForConditionalGeneration"
+        ],
+        "model_type": "t5",
+        "tokenizer_config": {
+          "eos_token": "</s>",
+          "pad_token": "<pad>",
+          "unk_token": "<unk>"
+        }
+      },
+      "cardData": {
+        "license": "apache-2.0",
+        "base_model": "t5-small",
+        "tags": [
+          "generated_from_trainer"
+        ],
+        "metrics": [
+          "bleu"
+        ],
+        "model-index": [
+          {
+            "name": "model.pth",
+            "results": []
+          }
+        ]
+      },
+      "transformersInfo": {
+        "auto_model": "AutoModelForSeq2SeqLM",
+        "pipeline_tag": "text2text-generation",
+        "processor": "AutoTokenizer"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        },
+        {
+          "rfilename": "config.json"
+        },
+        {
+          "rfilename": "generation_config.json"
+        },
+        {
+          "rfilename": "pytorch_model.bin"
+        },
+        {
+          "rfilename": "special_tokens_map.json"
+        },
+        {
+          "rfilename": "spiece.model"
+        },
+        {
+          "rfilename": "tokenizer.json"
+        },
+        {
+          "rfilename": "tokenizer_config.json"
+        },
+        {
+          "rfilename": "training_args.bin"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2023-10-17T11:56:46.000Z",
+      "usedStorage": 5568418212
+    }
+  }
+}

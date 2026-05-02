@@ -1,0 +1,58 @@
+{
+  "model_id": "text-davinci-",
+  "source": "huggingface_searched",
+  "cached_at": "2026-04-30T17:15:39.566265",
+  "data": {
+    "card_data": {
+      "license": "apache-2.0"
+    },
+    "config": {},
+    "readme_content": "---\nlicense: apache-2.0\n---\n",
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      }
+    ],
+    "spaces": [],
+    "gated": false,
+    "disabled": false,
+    "transformersInfo": {},
+    "safetensors": {},
+    "widgetData": [],
+    "_raw_response": {
+      "_id": "6424873486a82ec815fb2fd1",
+      "id": "gaurangak/text-davinci-003",
+      "private": false,
+      "tags": [
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "downloads": 0,
+      "likes": 1,
+      "modelId": "gaurangak/text-davinci-003",
+      "author": "gaurangak",
+      "sha": "a77aa2c3120426e5c3d6027dd0877553b087bcc5",
+      "lastModified": "2023-03-29T18:45:08.000Z",
+      "gated": false,
+      "disabled": false,
+      "model-index": null,
+      "cardData": {
+        "license": "apache-2.0"
+      },
+      "siblings": [
+        {
+          "rfilename": ".gitattributes"
+        },
+        {
+          "rfilename": "README.md"
+        }
+      ],
+      "spaces": [],
+      "createdAt": "2023-03-29T18:45:08.000Z",
+      "usedStorage": 0
+    }
+  }
+}
