@@ -151,63 +151,6 @@ def build_ai_branches(
     return ai_branches
 
 
-def build_api_branches(
-    dependency_graph: Dict,
-    categorization_data: Dict
-) -> Dict[str, Dict]:
-    """
-    Build API branches by tracing dependencies for each API library.
-    Same logic as build_ai_branches but uses api_categories from categorization data.
-    """
-    graph_index = build_graph_index(dependency_graph)
-    reverse_adj = build_reverse_adjacency(dependency_graph)
-
-    api_branches = {}
-    api_categories = categorization_data.get("api_categories", {})
-
-    for cat_key, cat_data in api_categories.items():
-        category = cat_key.upper()
-        libraries = cat_data.get("libraries", [])
-
-        for lib in libraries:
-            lib_name = lib.get("library")
-            if not lib_name:
-                continue
-
-            source_files = _normalize_source_files(lib)
-            import_details = lib.get("import_details", [])
-
-            if not source_files:
-                language = "python"
-                api_branches[lib_name] = _create_branch_entry(
-                    lib_name, category, language, [],
-                    set(), import_details=import_details,
-                    error="No source files found for library"
-                )
-                continue
-
-            language = get_language_from_files(source_files)
-
-            all_traced_files: Set[str] = set()
-            for source_file in source_files:
-                node_id = find_node_by_file(dependency_graph, source_file, graph_index)
-                if node_id:
-                    traced = trace_importers(
-                        dependency_graph, node_id,
-                        index=graph_index, reverse_adj=reverse_adj
-                    )
-                    all_traced_files.update(traced)
-                else:
-                    all_traced_files.add(source_file)
-
-            api_branches[lib_name] = _create_branch_entry(
-                lib_name, category, language,
-                source_files, all_traced_files,
-                import_details=import_details
-            )
-
-    return api_branches
-
 # =============================================================================
 # MAIN ENTRY POINT
 # =============================================================================
@@ -260,22 +203,17 @@ def trace_ai_branches(
     categorization_data: Dict
 ) -> Dict:
     """
-    Main function to trace AI and API branches through the codebase.
-    Called by the /ai-branch-trace endpoint.
-    
-    Traces both AI library branches (from ai_categories / by_category)
-    and API library branches (from api_categories).
-    
+    Trace AI library dependencies through the codebase.
+
     Args:
-        checkout_dir: Base directory (currently unused but kept for API compatibility)
+        checkout_dir: Base directory (unused, kept for signature compatibility)
         dependency_graph: Pre-built dependency graph
-        categorization_data: Unified categorization results (ai_categories + api_categories)
-    
+        categorization_data: Categorization results from llm_categorizer
+
     Returns:
-        Dict with ai_branches, api_branches, and summary statistics
+        Dict with branches and summary statistics
     """
     ai_branches = build_ai_branches(dependency_graph, categorization_data)
-    api_branches = build_api_branches(dependency_graph, categorization_data)
 
     empty_summary = {
         "total_branches": 0,
@@ -287,12 +225,8 @@ def trace_ai_branches(
     }
 
     return {
-        # AI branches
         "branches": ai_branches,
         "summary": _compute_summary(ai_branches) if ai_branches else empty_summary,
-        # API branches
-        "api_branches": api_branches,
-        "api_summary": _compute_summary(api_branches) if api_branches else empty_summary,
     }
 
 def format_branch_summary(result: Dict) -> List[Dict]:

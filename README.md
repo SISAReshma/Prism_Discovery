@@ -30,10 +30,39 @@ Supports **Python, JavaScript/TypeScript, Go, .NET, and Java** and many more.
 
 ## Try Prism at prism.sisa.ai
 
-Prism Discovery is the one of the open-sourced product of SISA- AI Prism **[prism.sisa.ai](https://prism.sisa.ai/)** — SISA's hosted security intelligence platform for AI-aware software supply chain management.
+Prism Discovery is one of the open-sourced products of SISA AI Prism **[prism.sisa.ai](https://prism.sisa.ai/)** — SISA's hosted security intelligence platform for AI-aware software supply chain management.
 
 
 > **[Visit prism.sisa.ai →](https://prism.sisa.ai/)** — Scan directly from your browser. No setup, no API keys to manage.
+
+---
+
+## Open Source vs. Full Platform
+
+This open-source release covers the **core scanning engine** for AIBOM and SBOM. The full **[prism.sisa.ai](https://prism.sisa.ai/)** platform extends it with deeper AI-supply-chain intelligence and enterprise workflows that are **not** included in this repository:
+
+### AIBOM — extra capabilities on the hosted platform
+
+| Feature | Open Source | Full Platform |
+|---|---|---|
+| Detect AI/ML libraries and models in code | ✅ | ✅ |
+| Basic model metadata (parameters, license, context window) | ✅ | ✅ |
+| **Full model card details** (training data, evaluation, bias, intended use, limitations) | — | ✅ |
+| **Comprehensive model deprecation tracking** across all major providers | Partial (HuggingFace) | ✅ All providers |
+| **AI agents detection** — frameworks, orchestrators, tool use | — | ✅ |
+| **AI API call mapping** — which endpoints, models, providers your code is calling | — | ✅ |
+| **MCP (Model Context Protocol) usage detection** | — | ✅ |
+| **MCP server + agent capability mapping** — what tools / data each agent or MCP can reach | — | ✅ |
+
+### SBOM — extra capabilities on the hosted platform
+
+| Feature | Open Source | Full Platform |
+|---|---|---|
+| Manifest parsing, CVE / EPSS / KEV enrichment | ✅ | ✅ |
+| **Guided vulnerability remediation** — fix paths, version pinning advice, patch impact | — | ✅ |
+| Web dashboards, scan history, team collaboration, CI/CD integrations, scheduled scans, PDF/CSV export, policy alerting, enterprise SLA | — | ✅ |
+
+> 💬 **Need the full platform?** Reach out to us at **[prism.sisa.ai](https://prism.sisa.ai/)** for a demo, pricing, or a private trial.
 
 ---
 
@@ -91,7 +120,7 @@ flowchart LR
 
     GH & LOC & ZIP --> Prism
     P4 --> O1
-    Q4 --> O2 & O3
+    Q4 --> O2
     O1 & O2 --> O4
 ```
 
@@ -101,7 +130,7 @@ flowchart LR
 - Traces exactly which source files use each AI library through a file-level dependency graph
 - Runs provider-specific Semgrep rules to extract model names, API endpoints, and SDK method calls
 - Resolves model metadata (parameters, architecture, datasets, metrics, license, context window) from **HuggingFace Hub**
-- Checks model deprecation status against OpenAI, Anthropic, and Google deprecation databases with full replacement chain tracing
+- Checks model deprecation status against HuggingFace and OpenAI deprecation databases with full replacement chain tracing
 - Emits a **CycloneDX AI BOM** (standard format)
 
 ### SBOM
@@ -128,8 +157,8 @@ flowchart LR
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-org/prism-discovery.git
-cd prism-discovery/app
+git clone https://github.com/SISAReshma/Prism_Discovery.git
+cd Prism_Discovery/app
 
 # 2. Create and activate a virtual environment
 python -m venv .venv
@@ -179,6 +208,24 @@ python cli.py --local ./my_project --mode sbom
 # Custom output directory
 python cli.py --repo https://github.com/openai/whisper --reports-dir ./scans
 ```
+
+## CLI Reference
+
+```
+python cli.py (--repo REPO | --local LOCAL | --zip ZIP) [options]
+```
+
+| Argument | Required | Description |
+|---|---|---|
+| `--repo REPO` | One of three | Public or private Git repository URL (HTTPS or SSH) |
+| `--local LOCAL` | One of three | Path to a local project directory |
+| `--zip ZIP` | One of three | Path to a `.zip` archive |
+| `--token TOKEN` | No | GitHub Personal Access Token for private repositories |
+| `--username USERNAME` | No | Username for providers that require basic auth alongside `--token` |
+| `--mode {both,aibom,sbom}` | No | Which pipeline(s) to run — default: `both` |
+| `--reports-dir REPORTS_DIR` | No | Output directory for reports — default: `reports/` |
+
+---
 
 ## Environment Variables
 

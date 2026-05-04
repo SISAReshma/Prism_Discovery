@@ -398,20 +398,18 @@ LLM_TEMPERATURE: float = 0.0  # Deterministic responses
 # System prompt for AI library classification (optimized for concise, accurate responses)
 LLM_SYSTEM_PROMPT: str = """You are a classification assistant that labels programming libraries based on whether they are:
 
-1. AI_POSITIVE — libraries directly used for AI/ML tasks (training, inference, models, embeddings, vector DBs, orchestration),
-2. API_POSITIVE — libraries commonly used to make HTTP/API calls, i.e., network client or API client libs across languages
-3. BOTH — libraries that are both AI/ML related and used for API calls
-4. NON_RELEVANT — utilities, UI, data processing, framework code not used for AI or API calls
+1. AI_POSITIVE — libraries directly used for AI/ML tasks (training, inference, models, embeddings, vector DBs, orchestration)
+2. NON_RELEVANT — utilities, UI, data processing, framework code, HTTP clients, or anything not used for AI/ML
 
 Classify each library name provided into exactly one of:
-AI_POSITIVE | API_POSITIVE | BOTH | NON_RELEVANT
+AI_POSITIVE | NON_RELEVANT
 
 Return ONLY a JSON array like:
 
 [
   {
     "library":"<name>",
-    "classification":"AI_POSITIVE"|"API_POSITIVE"|"BOTH"|"NON_RELEVANT",
+    "classification":"AI_POSITIVE"|"NON_RELEVANT",
     "confidence":"HIGH"|"MEDIUM"|"LOW",
     "reason":"max 5 words"
   }
@@ -420,32 +418,20 @@ Return ONLY a JSON array like:
 Definitions and examples:
 
 AI_POSITIVE includes:
-• ML/DL frameworks (torch, tensorflow, keras) 
-• LLM/Transformer libs (transformers, langchain, llama-index) 
-• AI provider SDKs for inference (openai, anthropic, cohere)  
-• Vector DBs and embedding tools (chromadb, pinecone, qdrant, weaviate) 
+• ML/DL frameworks (torch, tensorflow, keras)
+• LLM/Transformer libs (transformers, langchain, llama-index)
+• AI provider SDKs for inference (openai, anthropic, cohere)
+• Vector DBs and embedding tools (chromadb, pinecone, qdrant, weaviate)
 • AI orchestration frameworks
 
-API_POSITIVE includes:
-• HTTP/network client libs (requests, httpx, aiohttp, urllib3, Axios, node-fetch, got, fetch-related)
-• API server frameworks that expose HTTP endpoints (flask, fastapi, express, django-rest-framework, hapi, koa, gin, echo)
-• Official API client libraries for external services (GitHub API, Google API, Kubernetes API, boto3, etc.)
-• REST/GraphQL/RPC clients and wrappers (graphql-request, grpcio, zeep)
-• WebSocket libraries (websockets, socket.io, ws)
-
-BOTH applies if the library is:
-• An AI SDK that also provides built-in HTTP client functionality  
-• An API client specifically for an AI service
-
 NON_RELEVANT applies if:
-• The library is utility, UI, data processing, build tooling, etc.
+• The library is utility, UI, data processing, build tooling, HTTP client, web framework, etc.
 
 Use concise reasons."""
 
-# System prompt for unified library categorization (AI + API in one LLM call)
-LLM_CATEGORIZATION_PROMPT: str = """You will receive a list of libraries. Each is labeled [AI], [API], or [BOTH].
+# System prompt for AI library categorization
+LLM_CATEGORIZATION_PROMPT: str = """You will receive a list of AI/ML libraries. Assign each ONE category:
 
-For [AI] libraries, assign ONE AI category:
 1. AI_PROVIDER: LLM APIs, AI SDKs (openai, anthropic, google-generativeai, cohere, replicate)
 2. ML_ALGORITHM: Classical ML (scikit-learn, xgboost, lightgbm, catboost)
 3. DL_ALGORITHM: Deep learning frameworks (torch, tensorflow, keras, jax)
@@ -453,20 +439,6 @@ For [AI] libraries, assign ONE AI category:
 5. AGENTIC_FRAMEWORK: Autonomous agent frameworks, multi-agent systems, tool-using agents (crewai, autogen, langgraph, agency-swarm, semantic-kernel, taskweaver, ag2, smolagents, pydantic-ai, openai-agents-sdk)
 6. VECTOR_DB: Embedding storage (chromadb, pinecone, qdrant, weaviate, faiss)
 7. DATA_PROCESSING: AI-focused data utils (datasets, tokenizers, sentence-transformers)
-
-For [API] libraries, assign ONE API category:
-1. HTTP_CLIENT: Outbound HTTP/REST calls (requests, httpx, aiohttp, urllib3, axios, node-fetch, got)
-2. API_FRAMEWORK: Web frameworks that serve HTTP endpoints (flask, fastapi, django, express, koa, gin, echo)
-3. GRAPHQL: GraphQL clients or servers (graphql-request, apollo-client, strawberry, ariadne)
-4. GRPC: gRPC/Protocol Buffer communication (grpcio, grpc-js, protobuf)
-5. WEBSOCKET: WebSocket or real-time communication (websockets, socket.io, ws, channels)
-6. CLOUD_SDK: Cloud provider SDKs (boto3, google-cloud-*, azure-sdk, aws-sdk)
-7. API_WRAPPER: Service-specific API clients (twilio, stripe, sendgrid, slack-sdk)
-
-For [BOTH] libraries, return TWO entries — one with the best AI category and one with the best API category.
-Example for [BOTH] openai:
-  {"library":"openai","category":"AI_PROVIDER","confidence":"HIGH","reason":"LLM inference SDK"},
-  {"library":"openai","category":"HTTP_CLIENT","confidence":"HIGH","reason":"Built-in API HTTP client"}
 
 Return ONLY JSON:
 [{"library":"name","category":"CATEGORY","confidence":"HIGH"|"MEDIUM"|"LOW","reason":"max 8 words"}]"""
@@ -479,15 +451,6 @@ VALID_CATEGORIES: FrozenSet[str] = frozenset({
 
 # AI Library Categories (lowercase version for empty category responses)
 AI_CATEGORIES: FrozenSet[str] = frozenset({c.lower() for c in VALID_CATEGORIES})
-
-# Valid API categories for validation (uppercase)
-VALID_API_CATEGORIES: FrozenSet[str] = frozenset({
-    "HTTP_CLIENT", "API_FRAMEWORK", "GRAPHQL",
-    "GRPC", "WEBSOCKET", "CLOUD_SDK", "API_WRAPPER", "UNKNOWN"
-})
-
-# API Library Categories (lowercase version for empty category responses)
-API_CATEGORIES: FrozenSet[str] = frozenset({c.lower() for c in VALID_API_CATEGORIES})
 
 # =============================================================================
 # MODEL TAGGING (maps library category → model tag: LLM / DL / ML / AI)

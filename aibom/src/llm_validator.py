@@ -53,11 +53,9 @@ def _empty_result() -> Dict:
     """Return empty validation result structure."""
     return {
         "ai_libraries": [],
-        "api_libraries": [],
         "non_ai_libraries": [],
         "total_classified": 0,
         "total_ai_positive": 0,
-        "total_api_positive": 0,
         "total_non_ai": 0,
         "model_used": LLM_MODEL
     }
@@ -454,32 +452,21 @@ def _build_result(
 ) -> Dict:
     """
     Build final validation result in single pass through classifications.
-    
-    Handles all LLM classification types:
-      AI_POSITIVE  → ai_libraries
-      API_POSITIVE → api_libraries
-      BOTH         → ai_libraries AND api_libraries
-      NON_RELEVANT → non_ai_libraries
-    
+
     Args:
         classifications: LLM classification results
         source_lookup: lib_name → {language, source_files} mapping
     """
     ai_libraries = []
-    api_libraries = []
     non_ai = []
-    
-    # Classifications that count as relevant (not NON_RELEVANT)
-    POSITIVE_CLASSES = {"AI_POSITIVE", "API_POSITIVE", "BOTH"}
-    
+
     for item in classifications:
         lib_name = item.get("library", "")
         classification = item.get("classification", "").upper()
         confidence = item.get("confidence", "LOW").upper()
         reason = item.get("reason", "")
-        
-        # Build enriched entry for any positive classification
-        if classification in POSITIVE_CLASSES:
+
+        if classification == "AI_POSITIVE":
             entry = {
                 "library": lib_name,
                 "classification": classification,
@@ -488,31 +475,19 @@ def _build_result(
                 "source_files": [],
                 "import_details": [],
             }
-            # Enrich from lookup
             if lib_name in source_lookup:
                 entry["source_files"] = source_lookup[lib_name].get("source_files", [])
                 entry["language"] = source_lookup[lib_name].get("language")
                 entry["import_details"] = source_lookup[lib_name].get("import_details", [])
-            
-            if classification == "AI_POSITIVE":
-                ai_libraries.append(entry)
-            elif classification == "API_POSITIVE":
-                api_libraries.append(entry)
-            elif classification == "BOTH":
-                # Add to both lists
-                ai_libraries.append(entry)
-                api_libraries.append({**entry})  # separate copy
+            ai_libraries.append(entry)
         else:
-            # NON_RELEVANT or unrecognized
             non_ai.append(lib_name)
-    
+
     return {
         "ai_libraries": ai_libraries,
-        "api_libraries": api_libraries,
         "non_ai_libraries": non_ai,
         "total_classified": len(classifications),
         "total_ai_positive": len(ai_libraries),
-        "total_api_positive": len(api_libraries),
         "total_non_ai": len(non_ai),
         "model_used": LLM_MODEL
     }

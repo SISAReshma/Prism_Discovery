@@ -70,7 +70,7 @@ from aibom.src.dependency_graph import build_dependency_graph
 from aibom.src.llm_validator import validate_libraries
 from aibom.src.llm_categorizer import run_categorization
 from aibom.src.ai_branch_tracer import trace_ai_branches
-from aibom.src.ai_targeted_scanner import scan_ai_branches, scan_api_branches
+from aibom.src.ai_targeted_scanner import scan_ai_branches
 
 from aibom.src.model_deprecation_checker import check_models_deprecation
 from aibom.src.aibom_connector import build_aibom
@@ -331,61 +331,53 @@ def run_aibom_pipeline(source_path: str, output_dir: Path) -> Optional[str]:
 
             pipeline_data["llm_validation"] = llm_result
             pipeline_data["ai_libraries"] = llm_result.get("ai_libraries", [])
-            pipeline_data["api_libraries"] = llm_result.get("api_libraries", [])
             print(f"           {llm_result['total_classified']} classified, "
-                  f"{llm_result['total_ai_positive']} AI-positive, "
-                  f"{llm_result['total_api_positive']} API-positive")
+                  f"{llm_result['total_ai_positive']} AI-positive")
 
         except Exception as e:
             logger.warning(f"LLM validation failed (non-fatal): {e}")
             print(f"           SKIPPED — LLM unavailable ({e})")
             pipeline_data["llm_validation"] = {
-                "ai_libraries": [], "api_libraries": [], "non_ai_libraries": [],
+                "ai_libraries": [], "non_ai_libraries": [],
                 "total_classified": 0, "total_ai_positive": 0,
-                "total_api_positive": 0, "total_non_ai": 0,
-                "model_used": "none"
+                "total_non_ai": 0, "model_used": "none"
             }
             pipeline_data["ai_libraries"] = []
-            pipeline_data["api_libraries"] = []
 
         # ================================================================
         # STEP 10: LLM categorization
         # ================================================================
-        step(10, "LLM categorization (AI/API library types)...")
+        step(10, "LLM categorization (AI library types)...")
         ai_libraries = pipeline_data.get("ai_libraries", [])
-        api_libraries = pipeline_data.get("api_libraries", [])
 
-        if not ai_libraries and not api_libraries:
-            print("           No AI or API libraries to categorize")
+        if not ai_libraries:
+            print("           No AI libraries to categorize")
             pipeline_data["llm_categorization"] = {
-                "ai_categories": {}, "api_categories": {},
-                "total_ai_libraries": 0, "total_api_libraries": 0,
+                "ai_categories": {}, "total_ai_libraries": 0,
                 "model_used": "none", "by_category": {}, "total_libraries": 0,
             }
         else:
             try:
-                cat_result = run_categorization(ai_libraries, api_libraries)
+                cat_result = run_categorization(ai_libraries)
                 if not cat_result:
                     raise ValueError("Categorization returned no results")
                 pipeline_data["llm_categorization"] = cat_result
-                print(f"           {cat_result['total_ai_libraries']} AI + "
-                      f"{cat_result['total_api_libraries']} API categorized")
+                print(f"           {cat_result['total_ai_libraries']} AI libraries categorized")
             except Exception as e:
                 logger.warning(f"LLM categorization failed (non-fatal): {e}")
                 print(f"           SKIPPED — {e}")
                 pipeline_data["llm_categorization"] = {
-                    "ai_categories": {}, "api_categories": {},
-                    "total_ai_libraries": 0, "total_api_libraries": 0,
+                    "ai_categories": {}, "total_ai_libraries": 0,
                     "model_used": "none", "by_category": {}, "total_libraries": 0,
                 }
 
         # ================================================================
         # STEP 11: AI branch trace
         # ================================================================
-        step(11, "Tracing AI + API library branches...")
+        step(11, "Tracing AI library branches...")
         if "llm_categorization" not in pipeline_data or "dependency_graph" not in pipeline_data:
             print("           SKIPPED — missing prerequisites")
-            pipeline_data["ai_branch_trace"] = {"branches": {}, "api_branches": {}, "summary": {}, "api_summary": {}}
+            pipeline_data["ai_branch_trace"] = {"branches": {}, "summary": {}}
         else:
             try:
                 trace_result = trace_ai_branches(
@@ -395,12 +387,11 @@ def run_aibom_pipeline(source_path: str, output_dir: Path) -> Optional[str]:
                 )
                 pipeline_data["ai_branch_trace"] = trace_result
                 ai_count = trace_result.get("summary", {}).get("total_branches", 0)
-                api_count = trace_result.get("api_summary", {}).get("total_branches", 0)
-                print(f"           {ai_count} AI branches + {api_count} API branches")
+                print(f"           {ai_count} AI branches traced")
             except Exception as e:
                 logger.warning(f"AI branch trace failed (non-fatal): {e}")
                 print(f"           SKIPPED — {e}")
-                pipeline_data["ai_branch_trace"] = {"branches": {}, "api_branches": {}, "summary": {}, "api_summary": {}}
+                pipeline_data["ai_branch_trace"] = {"branches": {}, "summary": {}}
 
         # ================================================================
         # STEP 12: AI targeted scan (semgrep model detection)
@@ -413,22 +404,13 @@ def run_aibom_pipeline(source_path: str, output_dir: Path) -> Optional[str]:
             try:
                 branch_trace = pipeline_data["ai_branch_trace"]
 
-                # AI scan pass
                 ai_scan_result = scan_ai_branches(
                     checkout_dir=source_path,
                     branch_trace=branch_trace,
                     languages_detected=languages_detected
                 )
 
-                # API scan pass
-                api_scan_result = scan_api_branches(
-                    checkout_dir=source_path,
-                    branch_trace=branch_trace,
-                    languages_detected=languages_detected
-                )
-
-                combined = {**ai_scan_result, **api_scan_result}
-                pipeline_data["ai_targeted_scan"] = combined
+                pipeline_data["ai_targeted_scan"] = ai_scan_result
 
                 models_count = ai_scan_result.get("summary", {}).get("unique_models_detected", 0)
                 findings_count = ai_scan_result.get("summary", {}).get("total_findings", 0)
